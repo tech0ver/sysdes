@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 720 276" role="img" aria-labelledby="memory-options-title memory-options-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="memory-options-title">A disk store with a cache versus an in-memory store</title>
+  <desc id="memory-options-desc">In a disk store, memory holds copies of hot pages (the page cache and the store's own cache), and the disk holds all data. In an in-memory store, memory holds all data in the store's own structures, and the disk holds only the log and a snapshot for recovery.</desc>
+  <defs>
+    <marker id="memory-options-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="memory-options-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="175" y="20" text-anchor="middle">Disk store</text>
+  <rect class="dg-zone" x="1" y="34" width="348" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="54">MEMORY</text>
+  <rect class="dg-zone" x="1" y="160" width="348" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="180">DISK</text>
+  <rect class="dg-box" x="75" y="66" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="175" y="89" text-anchor="middle">Copies of hot pages</text>
+  <text class="dg-sub" x="175" y="107" text-anchor="middle">page cache + store cache</text>
+  <rect class="dg-box-accent" x="75" y="192" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="175" y="215" text-anchor="middle">All data</text>
+  <text class="dg-sub" x="175" y="233" text-anchor="middle">the source of truth</text>
+  <text class="dg-name" x="545" y="20" text-anchor="middle">In-memory store</text>
+  <rect class="dg-zone" x="371" y="34" width="348" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="386" y="54">MEMORY</text>
+  <rect class="dg-zone" x="371" y="160" width="348" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="386" y="180">DISK</text>
+  <rect class="dg-box-accent" x="445" y="66" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="545" y="89" text-anchor="middle">All data</text>
+  <text class="dg-sub" x="545" y="107" text-anchor="middle">in the store's own structures</text>
+  <rect class="dg-box" x="445" y="192" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="545" y="215" text-anchor="middle">Log + snapshot</text>
+  <text class="dg-sub" x="545" y="233" text-anchor="middle">for recovery only</text>
+  <path class="dg-arrow" d="M175 192 V126" marker-end="url(#memory-options-head)"/>
+  <text class="dg-mono dg-muted-text" x="185" y="153">HOT PAGES COPIED</text>
+  <path class="dg-arrow" d="M545 118 V184" marker-end="url(#memory-options-head)"/>
+  <text class="dg-mono dg-muted-text" x="555" y="153">LOG, SNAPSHOT</text>
+</svg>

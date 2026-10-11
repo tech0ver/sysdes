@@ -159,7 +159,7 @@ Users far from the servers wait longer for every round trip.
 
 ## Users far away
 
-The messenger now has users on other continents. Every round trip to a distant server takes longer, and a new connection needs several of them before the first message moves. <!-- link: fundamentals/latency-numbers -->
+The messenger now has users on other continents. Every round trip to a distant server takes longer, and a new connection needs several of them before the first message moves. <!-- link: fundamentals/requirements -->
 
 Users also send photos and videos, and these files never change after upload. A CDN keeps copies on servers near users, so the files come from close by. <!-- link: technologies/cdn -->
 

@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="b-tree-wal-title b-tree-wal-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="b-tree-wal-title">A B-tree writes the log before the page</title>
+  <desc id="b-tree-wal-desc">Step 1: the change is appended to the WAL on disk and flushed. Step 2: the page is changed in memory, and the store says ok. Step 3: later, the changed page is written to disk. If a crash comes before step 3, the store repairs the page from the WAL.</desc>
+  <defs>
+    <marker id="b-tree-wal-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="b-tree-wal-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="1" y="8" width="300" height="220" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="28">MEMORY</text>
+  <rect class="dg-zone" x="340" y="8" width="379" height="220" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="355" y="28">DISK</text>
+  <rect class="dg-chip" x="16" y="40" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="56.0" y="56.0" text-anchor="middle">change</text>
+  <rect class="dg-box" x="40" y="140" width="220" height="52" rx="6"/>
+  <text class="dg-name" x="150" y="163" text-anchor="middle">Page 40</text>
+  <text class="dg-sub" x="150" y="181" text-anchor="middle">changed in memory</text>
+  <path class="dg-arrow dg-message" d="M72 64 V90 Q72 98 80 98 H568.0 Q576.0 98 576.0 90 V80" marker-end="url(#b-tree-wal-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="400" y="90" text-anchor="middle">1. LOG, FLUSH</text>
+  <rect class="dg-box" x="476" y="28" width="200" height="48" rx="6"/>
+  <text class="dg-name" x="576.0" y="57" text-anchor="middle">WAL</text>
+  <path class="dg-arrow" d="M40 64 V132" marker-end="url(#b-tree-wal-head)"/>
+  <text class="dg-mono dg-muted-text" x="48" y="124">2. CHANGE → OK</text>
+  <rect class="dg-box" x="476" y="140" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="576.0" y="163" text-anchor="middle">Page 40 on disk</text>
+  <text class="dg-sub" x="576.0" y="181" text-anchor="middle">old until step 3</text>
+  <path class="dg-arrow dg-empty" d="M260 166 H468" marker-end="url(#b-tree-wal-head)"/>
+  <text class="dg-mono dg-muted-text" x="354" y="158">3. WRITE LATER</text>
+  <path class="dg-arrow dg-empty" d="M646 76 V132" marker-end="url(#b-tree-wal-head)"/>
+  <text class="dg-mono dg-muted-text" x="654" y="112">REPAIR</text>
+  <text class="dg-sub" x="530" y="214" text-anchor="middle">a crash before step 3: repaired from the WAL</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg class="diagram-svg" viewBox="0 0 720 272" role="img" aria-labelledby="hash-index-title hash-index-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="hash-index-title">A hash index in memory pointing into the log file on disk</title>
+  <desc id="hash-index-desc">In memory, a hash map stores each key with the byte offset of its latest record: xyz at 24, abc at 46, qrs at 70. On disk, the log file holds four records; the old abc record at offset 0 stays in the file, but nothing points to it. A read of abc gets offset 46 from the map and reads that one record.</desc>
+  <defs>
+    <marker id="hash-index-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="hash-index-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <!-- Memory -->
+  <rect class="dg-zone" x="1" y="16" width="230" height="208" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="36">MEMORY</text>
+  <text class="dg-name" x="116" y="64" text-anchor="middle">Hash map</text>
+  <rect class="dg-chip" x="40" y="96" width="152" height="24" rx="4"/>
+  <text class="dg-code" x="116" y="112" text-anchor="middle">xyz → 24</text>
+  <rect class="dg-chip" x="40" y="128" width="152" height="24" rx="4"/>
+  <text class="dg-code" x="116" y="144" text-anchor="middle">abc → 46</text>
+  <rect class="dg-chip" x="40" y="160" width="152" height="24" rx="4"/>
+  <text class="dg-code" x="116" y="176" text-anchor="middle">qrs → 70</text>
+  <!-- Disk -->
+  <rect class="dg-zone" x="280" y="16" width="439" height="208" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="296" y="36">DISK</text>
+  <text class="dg-name" x="500" y="64" text-anchor="middle">Log file</text>
+  <text class="dg-mono dg-muted-text" x="326" y="75">OFFSET</text>
+  <rect class="dg-box-failed" x="320" y="80" width="384" height="24" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="336" y="96">0</text>
+  <text class="dg-code-muted" x="376" y="96">abc,https://a.example/1</text>
+  <text class="dg-sub" x="692" y="96" text-anchor="end">old: nothing points here</text>
+  <rect class="dg-box" x="320" y="112" width="384" height="24" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="336" y="128">24</text>
+  <text class="dg-code" x="376" y="128">xyz,https://b.example</text>
+  <rect class="dg-box-accent" x="320" y="144" width="384" height="24" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="336" y="160">46</text>
+  <text class="dg-code" x="376" y="160">abc,https://a.example/2</text>
+  <rect class="dg-box" x="320" y="176" width="384" height="24" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="336" y="192">70</text>
+  <text class="dg-code" x="376" y="192">qrs,https://c.example</text>
+  <!-- Pointers -->
+  <path class="dg-arrow" d="M192 108 C 256 108, 256 124, 312 124" marker-end="url(#hash-index-head)"/>
+  <path class="dg-arrow dg-message" d="M192 140 C 256 140, 256 156, 312 156" marker-end="url(#hash-index-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="252" y="137" text-anchor="middle">READ</text>
+  <path class="dg-arrow" d="M192 172 C 256 172, 256 188, 312 188" marker-end="url(#hash-index-head)"/>
+  <text class="dg-result" x="360" y="256" text-anchor="middle">A read: key → offset → one record</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 304" role="img" aria-labelledby="sparse-index-title sparse-index-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sparse-index-title">A sparse index over an SSTable</title>
+  <desc id="sparse-index-desc">On disk, an SSTable holds records sorted by (code, time), split into blocks of three. In memory, the sparse index keeps only the first key of each block. To read abc,fri, the store picks block 1, whose first key abc,thu is the closest one below, and reads only that block. The records of abc lie next to each other, so a range of them is read in one pass.</desc>
+  <defs>
+    <marker id="sparse-index-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sparse-index-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="1" y="8" width="718" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="28">MEMORY</text>
+  <text class="dg-name" x="16" y="52" text-anchor="start">Sparse index</text>
+  <rect class="dg-chip" x="27" y="68" width="216" height="24" rx="4"/>
+  <text class="dg-code" x="135.0" y="84.0" text-anchor="middle">abc,mon → block 0</text>
+  <rect class="dg-chip" x="249" y="68" width="216" height="24" rx="4"/>
+  <text class="dg-code" x="357.0" y="84.0" text-anchor="middle">abc,thu → block 1</text>
+  <rect class="dg-chip" x="471" y="68" width="216" height="24" rx="4"/>
+  <text class="dg-code" x="579.0" y="84.0" text-anchor="middle">kq7,tue → block 2</text>
+  <rect class="dg-zone" x="1" y="132" width="718" height="164" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="152">DISK</text>
+  <text class="dg-name" x="16" y="176" text-anchor="start">SSTable</text>
+  <rect class="dg-box" x="24" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="60.0" y="208.0" text-anchor="middle">abc,mon</text>
+  <rect class="dg-box" x="98" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="134.0" y="208.0" text-anchor="middle">abc,tue</text>
+  <rect class="dg-box" x="172" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="208.0" y="208.0" text-anchor="middle">abc,wed</text>
+  <text class="dg-mono dg-muted-text" x="135" y="238" text-anchor="middle">BLOCK 0</text>
+  <rect class="dg-box-accent" x="246" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="282.0" y="208.0" text-anchor="middle">abc,thu</text>
+  <rect class="dg-box-accent" x="320" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="356.0" y="208.0" text-anchor="middle">abc,fri</text>
+  <rect class="dg-box-accent" x="394" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="430.0" y="208.0" text-anchor="middle">kq7,mon</text>
+  <text class="dg-mono dg-muted-text" x="357" y="238" text-anchor="middle">BLOCK 1</text>
+  <rect class="dg-box" x="468" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="504.0" y="208.0" text-anchor="middle">kq7,tue</text>
+  <rect class="dg-box" x="542" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="578.0" y="208.0" text-anchor="middle">kq7,wed</text>
+  <rect class="dg-box" x="616" y="188" width="72" height="32" rx="4"/>
+  <text class="dg-code" x="652.0" y="208.0" text-anchor="middle">zzz,mon</text>
+  <text class="dg-mono dg-muted-text" x="579" y="238" text-anchor="middle">BLOCK 2</text>
+  <path class="dg-arrow dg-message" d="M357 92 V180" marker-end="url(#sparse-index-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="366" y="126">READ abc,fri</text>
+  <path class="dg-arrow" d="M24 252 V260 H392 V252"/>
+  <text class="dg-sub" x="208" y="280" text-anchor="middle">range: the clicks of abc lie together and are read in one pass</text>
+</svg>

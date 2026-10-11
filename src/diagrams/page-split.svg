@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="page-split-title page-split-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="page-split-title">A page split</title>
+  <desc id="page-split-desc">Before: the parent maps a to m to page 12 and n to z to page 40, and page 12 is full with b, d, f, h. Inserting e splits page 12 into two partly filled pages: page 12 with b, d, e and page 13 with f, h. The parent gets a new entry, f to m on page 13.</desc>
+  <defs>
+    <marker id="page-split-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="page-split-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="172" y="20" text-anchor="middle">Before</text>
+  <rect class="dg-box" x="68" y="40" width="104" height="32" rx="0"/>
+  <text class="dg-code" x="120.0" y="60.0" text-anchor="middle">a–m → 12</text>
+  <rect class="dg-box" x="172" y="40" width="104" height="32" rx="0"/>
+  <text class="dg-code" x="224.0" y="60.0" text-anchor="middle">n–z → 40</text>
+  <path class="dg-arrow" d="M120 72 V112" marker-end="url(#page-split-head)"/>
+  <rect class="dg-box" x="60" y="120" width="120" height="32" rx="6"/>
+  <text class="dg-code" x="120" y="141" text-anchor="middle">b d f h</text>
+  <text class="dg-mono dg-muted-text" x="120" y="172" text-anchor="middle">PAGE 12: FULL</text>
+  <text class="dg-mono dg-muted-text" x="260" y="110" text-anchor="middle">INSERT</text>
+  <rect class="dg-chip" x="238" y="124" width="44" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="140.0" text-anchor="middle">e</text>
+  <path class="dg-arrow" d="M238 136 H188" marker-end="url(#page-split-head)"/>
+  <line class="dg-rule" x1="360" y1="16" x2="360" y2="220"/>
+  <text class="dg-name" x="548" y="20" text-anchor="middle">After</text>
+  <rect class="dg-box" x="392" y="40" width="104" height="32" rx="0"/>
+  <text class="dg-code" x="444.0" y="60.0" text-anchor="middle">a–e → 12</text>
+  <rect class="dg-box-accent" x="496" y="40" width="104" height="32" rx="0"/>
+  <text class="dg-code" x="548.0" y="60.0" text-anchor="middle">f–m → 13</text>
+  <rect class="dg-box" x="600" y="40" width="104" height="32" rx="0"/>
+  <text class="dg-code" x="652.0" y="60.0" text-anchor="middle">n–z → 40</text>
+  <path class="dg-arrow" d="M444 72 V112" marker-end="url(#page-split-head)"/>
+  <path class="dg-arrow" d="M548 72 V112" marker-end="url(#page-split-head)"/>
+  <rect class="dg-box" x="396" y="120" width="96" height="32" rx="6"/>
+  <text class="dg-code" x="444" y="141" text-anchor="middle">b d e</text>
+  <text class="dg-mono dg-muted-text" x="444" y="172" text-anchor="middle">PAGE 12</text>
+  <rect class="dg-box" x="500" y="120" width="96" height="32" rx="6"/>
+  <text class="dg-code" x="548" y="141" text-anchor="middle">f h</text>
+  <text class="dg-mono dg-muted-text" x="548" y="172" text-anchor="middle">PAGE 13: NEW</text>
+  <text class="dg-sub" x="548" y="210" text-anchor="middle">two partly filled pages; the parent gets a new entry</text>
+</svg>

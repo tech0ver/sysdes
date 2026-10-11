@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 610 340" role="img" aria-labelledby="snapshot-recovery-title snapshot-recovery-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="snapshot-recovery-title">Recovery from a snapshot and the log written after it</title>
+  <desc id="snapshot-recovery-desc">Time runs top to bottom. Every write goes to the log. After write 4, a snapshot saves all data, so writes 1 to 4 are already in it. Writes 5 to 7 are only in the log. Then the store crashes. On restart, it first loads the snapshot, then replays writes 5 to 7 from the log, and memory is back to the last write the log kept.</desc>
+  <defs>
+    <marker id="snapshot-recovery-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="snapshot-recovery-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="40" y="72" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M40 82 V330" marker-end="url(#snapshot-recovery-head)"/>
+  <text class="dg-name" x="150" y="28" text-anchor="middle">Before the crash</text>
+  <text class="dg-sub" x="150" y="46" text-anchor="middle">every write goes to the log</text>
+  <line class="dg-line" x1="150" y1="82" x2="150" y2="300"/>
+  <circle class="dg-dot-muted" cx="150" cy="90" r="5"/>
+  <text class="dg-note" x="164" y="94">write 1</text>
+  <circle class="dg-dot-muted" cx="150" cy="115" r="5"/>
+  <text class="dg-note" x="164" y="119">write 2</text>
+  <circle class="dg-dot-muted" cx="150" cy="140" r="5"/>
+  <text class="dg-note" x="164" y="144">write 3</text>
+  <circle class="dg-dot-muted" cx="150" cy="165" r="5"/>
+  <text class="dg-note" x="164" y="169">write 4</text>
+  <circle class="dg-dot-muted" cx="150" cy="232" r="5"/>
+  <text class="dg-note" x="164" y="236">write 5</text>
+  <circle class="dg-dot-muted" cx="150" cy="257" r="5"/>
+  <text class="dg-note" x="164" y="261">write 6</text>
+  <circle class="dg-dot-muted" cx="150" cy="282" r="5"/>
+  <text class="dg-note" x="164" y="286">write 7</text>
+  <rect class="dg-box" x="70" y="184" width="160" height="28" rx="4"/>
+  <text class="dg-note" x="150" y="202" text-anchor="middle">snapshot of all data</text>
+  <path class="dg-arrow" d="M224 90 H232 V165 H224"/>
+  <text class="dg-sub" x="244" y="124" text-anchor="start">already in</text>
+  <text class="dg-sub" x="244" y="140" text-anchor="start">the snapshot</text>
+  <path class="dg-bracket-accent" d="M224 232 H232 V282 H224"/>
+  <text class="dg-mono dg-accent-text" x="244" y="261" text-anchor="start">ONLY IN THE LOG</text>
+  <line class="dg-cross" x1="142" y1="304" x2="158" y2="320"/>
+  <line class="dg-cross" x1="142" y1="320" x2="158" y2="304"/>
+  <text class="dg-mono dg-muted-text" x="166" y="316">CRASH</text>
+  <text class="dg-name" x="500" y="150" text-anchor="middle">Restart</text>
+  <text class="dg-sub" x="500" y="168" text-anchor="middle">rebuilds memory from the disk</text>
+  <rect class="dg-box" x="410" y="184" width="180" height="28" rx="4"/>
+  <text class="dg-note" x="500" y="202" text-anchor="middle">1. load the snapshot</text>
+  <path class="dg-arrow" d="M230 198 H406" marker-end="url(#snapshot-recovery-head)"/>
+  <rect class="dg-box-accent" x="410" y="243" width="180" height="28" rx="4"/>
+  <text class="dg-note" x="500" y="261" text-anchor="middle">2. replay writes 5–7</text>
+  <path class="dg-arrow dg-message" d="M362 257 H406" marker-end="url(#snapshot-recovery-head-accent)"/>
+  <text class="dg-sub" x="500" y="300" text-anchor="middle">memory is back to</text>
+  <text class="dg-sub" x="500" y="316" text-anchor="middle">the last logged write</text>
+</svg>

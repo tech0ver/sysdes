@@ -1,0 +1,65 @@
+<svg class="diagram-svg" viewBox="0 0 720 312" role="img" aria-labelledby="compaction-strategies-title compaction-strategies-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="compaction-strategies-title">Size-tiered and leveled compaction</title>
+  <desc id="compaction-strategies-desc">Size-tiered compaction merges files of similar size into bigger files: four small, two medium, one large, and every file can hold any key from a to z. A lookup for p may check all seven files. Leveled compaction keeps levels: level 0 holds newly flushed files that may overlap; in levels 1 and 2 the files split the keys without overlap. A lookup for p checks at most the two level 0 files, n to s in level 1, and p to r in level 2: up to four files. Size-tiered: more files per lookup, data rewritten fewer times, merges need spare space. Leveled: fewer files per lookup, data rewritten more often, less space.</desc>
+  <defs>
+    <marker id="compaction-strategies-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="compaction-strategies-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="260.0" y="20" text-anchor="middle">Size-tiered</text>
+  <text class="dg-sub" x="260.0" y="38" text-anchor="middle">merges files of similar size</text>
+  <text class="dg-name" x="570.0" y="20" text-anchor="middle">Leveled</text>
+  <text class="dg-sub" x="570.0" y="38" text-anchor="middle">levels split the keys</text>
+  <rect class="dg-box-accent" x="140.0" y="56" width="55.5" height="26" rx="4"/>
+  <text class="dg-code" x="167.75" y="73.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box-accent" x="201.5" y="56" width="55.5" height="26" rx="4"/>
+  <text class="dg-code" x="229.25" y="73.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box-accent" x="263.0" y="56" width="55.5" height="26" rx="4"/>
+  <text class="dg-code" x="290.75" y="73.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box-accent" x="324.5" y="56" width="55.5" height="26" rx="4"/>
+  <text class="dg-code" x="352.25" y="73.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box-accent" x="140.0" y="100" width="117.0" height="26" rx="4"/>
+  <text class="dg-code" x="198.5" y="117.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box-accent" x="263.0" y="100" width="117.0" height="26" rx="4"/>
+  <text class="dg-code" x="321.5" y="117.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box-accent" x="140.0" y="144" width="240.0" height="26" rx="4"/>
+  <text class="dg-code" x="260.0" y="161.0" text-anchor="middle">a–z</text>
+  <text class="dg-mono dg-muted-text" x="420" y="73">L0</text>
+  <text class="dg-mono dg-muted-text" x="420" y="117">L1</text>
+  <text class="dg-mono dg-muted-text" x="420" y="161">L2</text>
+  <rect class="dg-box-accent" x="450" y="56" width="150" height="26" rx="4"/>
+  <rect class="dg-box-accent" x="480" y="62" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="555.0" y="79.0" text-anchor="middle">a–z</text>
+  <text class="dg-sub" x="642" y="78">may overlap</text>
+  <rect class="dg-box" x="450.0" y="100" width="57.0" height="26" rx="4"/>
+  <text class="dg-code-muted" x="478.5" y="117.0" text-anchor="middle">a–f</text>
+  <rect class="dg-box" x="511.0" y="100" width="57.0" height="26" rx="4"/>
+  <text class="dg-code-muted" x="539.5" y="117.0" text-anchor="middle">g–m</text>
+  <rect class="dg-box-accent" x="572.0" y="100" width="57.0" height="26" rx="4"/>
+  <text class="dg-code" x="600.5" y="117.0" text-anchor="middle">n–s</text>
+  <rect class="dg-box" x="633.0" y="100" width="57.0" height="26" rx="4"/>
+  <text class="dg-code-muted" x="661.5" y="117.0" text-anchor="middle">t–z</text>
+  <rect class="dg-box" x="450.0" y="144" width="36.666666666666664" height="26" rx="4"/>
+  <text class="dg-code-muted" x="468.3333333333333" y="161.0" text-anchor="middle">a–c</text>
+  <rect class="dg-box" x="490.6666666666667" y="144" width="36.666666666666664" height="26" rx="4"/>
+  <text class="dg-code-muted" x="509.0" y="161.0" text-anchor="middle">d–f</text>
+  <rect class="dg-box" x="531.3333333333334" y="144" width="36.666666666666664" height="26" rx="4"/>
+  <text class="dg-code-muted" x="549.6666666666667" y="161.0" text-anchor="middle">g–k</text>
+  <rect class="dg-box" x="572.0" y="144" width="36.666666666666664" height="26" rx="4"/>
+  <text class="dg-code-muted" x="590.3333333333334" y="161.0" text-anchor="middle">l–o</text>
+  <rect class="dg-box-accent" x="612.6666666666666" y="144" width="36.666666666666664" height="26" rx="4"/>
+  <text class="dg-code" x="631.0" y="161.0" text-anchor="middle">p–r</text>
+  <rect class="dg-box" x="653.3333333333333" y="144" width="36.666666666666664" height="26" rx="4"/>
+  <text class="dg-code-muted" x="671.6666666666666" y="161.0" text-anchor="middle">s–z</text>
+  <text class="dg-mono dg-muted-text" x="260.0" y="200" text-anchor="middle">LOOKUP p: UP TO 7 FILES</text>
+  <text class="dg-mono dg-muted-text" x="570.0" y="200" text-anchor="middle">LOOKUP p: UP TO 4 FILES</text>
+  <line class="dg-rule" x1="0" y1="220" x2="720" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="16" y="248">READS</text>
+  <text class="dg-sub" x="260.0" y="248" text-anchor="middle">more files per lookup</text>
+  <text class="dg-sub" x="570.0" y="248" text-anchor="middle">fewer files per lookup</text>
+  <text class="dg-mono dg-muted-text" x="16" y="274">REWRITES</text>
+  <text class="dg-sub" x="260.0" y="274" text-anchor="middle">data rewritten fewer times</text>
+  <text class="dg-sub" x="570.0" y="274" text-anchor="middle">data rewritten more often</text>
+  <text class="dg-mono dg-muted-text" x="16" y="300">DISK SPACE</text>
+  <text class="dg-sub" x="260.0" y="300" text-anchor="middle">merges need spare space</text>
+  <text class="dg-sub" x="570.0" y="300" text-anchor="middle">less space</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg class="diagram-svg" viewBox="0 0 720 372" role="img" aria-labelledby="secondary-index-title secondary-index-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="secondary-index-title">A secondary index finds records by another column</title>
+  <desc id="secondary-index-desc">In the table, the records of user u42 (abc and mmm) lie apart. The index on user_id is sorted by user_id, so the u42 entries lie together; each entry holds the user_id and the record's code and points back to the record. Below, the two kinds of pointer: the record's place in the table file, reached in one jump; or its primary key, which needs a second lookup in the index on code.</desc>
+  <defs>
+    <marker id="secondary-index-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="secondary-index-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-code" x="16" y="22">WHERE user_id = u42</text>
+  <text class="dg-name" x="16" y="52" text-anchor="start">Index on user_id</text>
+  <text class="dg-sub" x="16" y="68">sorted by user_id: u42 entries lie together</text>
+  <text class="dg-name" x="420" y="52" text-anchor="start">Table</text>
+  <text class="dg-sub" x="420" y="68">u42 records lie apart</text>
+  <rect class="dg-box" x="16" y="80" width="170" height="24" rx="4"/>
+  <text class="dg-code-muted" x="101.0" y="96.0" text-anchor="middle">u17 | kq7</text>
+  <rect class="dg-box-accent" x="420" y="80" width="284" height="24" rx="4"/>
+  <text class="dg-code" x="562.0" y="96.0" text-anchor="middle">abc | u42 | https://a…</text>
+  <rect class="dg-box-accent" x="16" y="110" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="101.0" y="126.0" text-anchor="middle">u42 | abc</text>
+  <rect class="dg-box" x="420" y="110" width="284" height="24" rx="4"/>
+  <text class="dg-code-muted" x="562.0" y="126.0" text-anchor="middle">kq7 | u17 | https://k…</text>
+  <rect class="dg-box-accent" x="16" y="140" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="101.0" y="156.0" text-anchor="middle">u42 | mmm</text>
+  <rect class="dg-box-accent" x="420" y="140" width="284" height="24" rx="4"/>
+  <text class="dg-code" x="562.0" y="156.0" text-anchor="middle">mmm | u42 | https://m…</text>
+  <rect class="dg-box" x="16" y="170" width="170" height="24" rx="4"/>
+  <text class="dg-code-muted" x="101.0" y="186.0" text-anchor="middle">u77 | zzz</text>
+  <rect class="dg-box" x="420" y="170" width="284" height="24" rx="4"/>
+  <text class="dg-code-muted" x="562.0" y="186.0" text-anchor="middle">zzz | u77 | https://z…</text>
+  <path class="dg-arrow dg-message" d="M186 122 C300 122 300 92 412 92" marker-end="url(#secondary-index-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M186 152 C300 152 300 152 412 152" marker-end="url(#secondary-index-head-accent)"/>
+  <line class="dg-rule" x1="0" y1="210" x2="720" y2="210"/>
+  <text class="dg-mono dg-muted-text" x="16" y="236">AN ENTRY POINTS TO ITS RECORD BY</text>
+  <text class="dg-note" x="16" y="262">its place in the table file: one jump</text>
+  <rect class="dg-box" x="16" y="272" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="101.0" y="288.0" text-anchor="middle">u42 | page 7</text>
+  <path class="dg-arrow" d="M186 284 H412" marker-end="url(#secondary-index-head)"/>
+  <rect class="dg-box" x="420" y="272" width="284" height="24" rx="4"/>
+  <text class="dg-code" x="562.0" y="288.0" text-anchor="middle">abc | u42 | https://a…</text>
+  <text class="dg-note" x="16" y="322">its primary key: a second lookup in the index on code</text>
+  <rect class="dg-box" x="16" y="332" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="101.0" y="348.0" text-anchor="middle">u42 | abc</text>
+  <path class="dg-arrow" d="M186 344 H236" marker-end="url(#secondary-index-head)"/>
+  <rect class="dg-box" x="240" y="332" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="310.0" y="348.0" text-anchor="middle">abc → page 7</text>
+  <path class="dg-arrow" d="M380 344 H412" marker-end="url(#secondary-index-head)"/>
+  <rect class="dg-box" x="420" y="332" width="284" height="24" rx="4"/>
+  <text class="dg-code" x="562.0" y="348.0" text-anchor="middle">abc | u42 | https://a…</text>
+</svg>

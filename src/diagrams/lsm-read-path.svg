@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 720 196" role="img" aria-labelledby="lsm-read-path-title lsm-read-path-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lsm-read-path-title">An LSM-tree read checks the newest data first</title>
+  <desc id="lsm-read-path-desc">A read for mmm checks the memtable first, then the SSTables from newest to oldest. SSTable 1 holds keys abc to kq7, so it is skipped. SSTable 2 does not hold mmm. SSTable 3 holds it, so the read stops there, and SSTable 4 is not read.</desc>
+  <defs>
+    <marker id="lsm-read-path-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lsm-read-path-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="1" y="8" width="156" height="148" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="28">MEMORY</text>
+  <rect class="dg-zone" x="172" y="8" width="547" height="148" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="187" y="28">DISK</text>
+  <rect class="dg-box" x="16" y="64" width="124" height="72" rx="6"/>
+  <text class="dg-name" x="78.0" y="88" text-anchor="middle">Memtable</text>
+  <text class="dg-sub" x="78.0" y="106" text-anchor="middle">all keys</text>
+  <text class="dg-sub" x="78.0" y="126" text-anchor="middle">not here</text>
+  <rect class="dg-box-failed" x="188" y="64" width="110" height="72" rx="6"/>
+  <text class="dg-name-muted" x="243.0" y="88" text-anchor="middle">SSTable 1</text>
+  <text class="dg-sub" x="243.0" y="106" text-anchor="middle">abc – kq7</text>
+  <text class="dg-sub" x="243.0" y="126" text-anchor="middle">skipped: range</text>
+  <rect class="dg-box" x="320" y="64" width="110" height="72" rx="6"/>
+  <text class="dg-name" x="375.0" y="88" text-anchor="middle">SSTable 2</text>
+  <text class="dg-sub" x="375.0" y="106" text-anchor="middle">abc – zzz</text>
+  <text class="dg-sub" x="375.0" y="126" text-anchor="middle">not here</text>
+  <rect class="dg-box-accent" x="452" y="64" width="110" height="72" rx="6"/>
+  <text class="dg-name" x="507.0" y="88" text-anchor="middle">SSTable 3</text>
+  <text class="dg-sub" x="507.0" y="106" text-anchor="middle">kaa – zzz</text>
+  <text class="dg-sub" x="507.0" y="126" text-anchor="middle">found, stop</text>
+  <rect class="dg-box-failed" x="584" y="64" width="110" height="72" rx="6"/>
+  <text class="dg-name-muted" x="639.0" y="88" text-anchor="middle">SSTable 4</text>
+  <text class="dg-sub" x="639.0" y="106" text-anchor="middle">abc – zzz</text>
+  <text class="dg-sub" x="639.0" y="126" text-anchor="middle">not read</text>
+  <path class="dg-arrow dg-message" d="M140 100.0 H184" marker-end="url(#lsm-read-path-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M298 100.0 H316" marker-end="url(#lsm-read-path-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M430 100.0 H448" marker-end="url(#lsm-read-path-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="243" y="52" text-anchor="middle">NEWEST</text>
+  <text class="dg-mono dg-muted-text" x="639" y="52" text-anchor="middle">OLDEST</text>
+  <text class="dg-mono dg-accent-text" x="16" y="184">READ mmm</text>
+  <text class="dg-sub" x="92" y="184">newest first, stops at the first match</text>
+</svg>
