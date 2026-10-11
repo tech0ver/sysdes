@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="b-tree-title b-tree-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="b-tree-title">A B-tree of pages</title>
+  <desc id="b-tree-desc">The root page holds key ranges and page numbers: a to f on page 12, g to m on page 40, n to z on page 77. Every page is stored on disk; the upper levels stay cached in memory. The leaf pages on disk hold sorted keys. A lookup for kq7 follows one page per level: root, then page 40. Leaves point to their neighbors, so a range read walks along them.</desc>
+  <defs>
+    <marker id="b-tree-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="b-tree-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="1" y="8" width="718" height="96" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="28">MEMORY</text>
+  <text class="dg-sub" x="704" y="28" text-anchor="end">upper pages stay cached in memory</text>
+  <rect class="dg-box-accent" x="180" y="40" width="360" height="40" rx="6"/>
+  <text class="dg-code" x="210" y="64">a–f → 12</text>
+  <text class="dg-code" x="330" y="64">g–m → 40</text>
+  <text class="dg-code" x="450" y="64">n–z → 77</text>
+  <text class="dg-name" x="170" y="65" text-anchor="end">Root</text>
+  <rect class="dg-zone" x="1" y="128" width="718" height="184" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="148">DISK</text>
+  <rect class="dg-box" x="40" y="176" width="180" height="48" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="130" y="242" text-anchor="middle">PAGE 12</text>
+  <text class="dg-code" x="130" y="205" text-anchor="middle">ab7 abc f01</text>
+  <rect class="dg-box-accent" x="270" y="176" width="180" height="48" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="360" y="242" text-anchor="middle">PAGE 40</text>
+  <text class="dg-code" x="360" y="205" text-anchor="middle">gx1 h20 kq7</text>
+  <rect class="dg-box" x="500" y="176" width="180" height="48" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="590" y="242" text-anchor="middle">PAGE 77</text>
+  <text class="dg-code" x="590" y="205" text-anchor="middle">pq2 xyz zzz</text>
+  <path class="dg-arrow" d="M240 80 V140 Q240 148 232 148 H138 Q130 148 130 156 V168" marker-end="url(#b-tree-head)"/>
+  <path class="dg-arrow dg-message" d="M360 80 V168" marker-end="url(#b-tree-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="370" y="118">FIND kq7</text>
+  <path class="dg-arrow" d="M480 80 V140 Q480 148 488 148 H582 Q590 148 590 156 V168" marker-end="url(#b-tree-head)"/>
+  <path class="dg-arrow" d="M220 200 H262" marker-end="url(#b-tree-head)"/>
+  <path class="dg-arrow" d="M450 200 H492" marker-end="url(#b-tree-head)"/>
+  <text class="dg-sub" x="360" y="272" text-anchor="middle">leaves are in key order and point to their neighbors:</text>
+  <text class="dg-sub" x="360" y="290" text-anchor="middle">a range read walks along them</text>
+</svg>

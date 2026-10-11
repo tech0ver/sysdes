@@ -1,0 +1,99 @@
+<svg class="diagram-svg" viewBox="0 0 720 352" role="img" aria-labelledby="bloom-filter-title bloom-filter-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="bloom-filter-title">A Bloom filter says definitely not here or maybe here</title>
+  <desc id="bloom-filter-desc">The key mmm is hashed to bit positions 2, 5, and 9. In the filter of file A, bit 5 is 0, so mmm is definitely not in file A and the file is skipped. In the filter of file B, all three bits are 1, so mmm may be there and file B is opened. Below, the four outcomes: true positive, the file is opened and the key is found; false positive, the file is opened for nothing; false negative, never happens; true negative, the file is skipped.</desc>
+  <defs>
+    <marker id="bloom-filter-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="bloom-filter-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="16" y="30" text-anchor="start">Key mmm</text>
+  <text class="dg-sub" x="16" y="48">hashes to bits 2, 5, 9</text>
+  <text class="dg-mono dg-muted-text" x="181.0" y="48" text-anchor="middle">0</text>
+  <text class="dg-mono dg-muted-text" x="203.0" y="48" text-anchor="middle">1</text>
+  <text class="dg-mono dg-muted-text" x="225.0" y="48" text-anchor="middle">2</text>
+  <text class="dg-mono dg-muted-text" x="247.0" y="48" text-anchor="middle">3</text>
+  <text class="dg-mono dg-muted-text" x="269.0" y="48" text-anchor="middle">4</text>
+  <text class="dg-mono dg-muted-text" x="291.0" y="48" text-anchor="middle">5</text>
+  <text class="dg-mono dg-muted-text" x="313.0" y="48" text-anchor="middle">6</text>
+  <text class="dg-mono dg-muted-text" x="335.0" y="48" text-anchor="middle">7</text>
+  <text class="dg-mono dg-muted-text" x="357.0" y="48" text-anchor="middle">8</text>
+  <text class="dg-mono dg-muted-text" x="379.0" y="48" text-anchor="middle">9</text>
+  <text class="dg-mono dg-muted-text" x="401.0" y="48" text-anchor="middle">10</text>
+  <text class="dg-mono dg-muted-text" x="423.0" y="48" text-anchor="middle">11</text>
+  <line class="dg-lifeline" x1="225.0" y1="54" x2="225.0" y2="132"/>
+  <line class="dg-lifeline" x1="291.0" y1="54" x2="291.0" y2="132"/>
+  <line class="dg-lifeline" x1="379.0" y1="54" x2="379.0" y2="132"/>
+  <text class="dg-name" x="16" y="77" text-anchor="start">File A</text>
+  <rect class="dg-box" x="170" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="181.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="192" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="203.0" y="76.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="214" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code" x="225.0" y="76.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="236" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="247.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="258" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="269.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="280" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code" x="291.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="302" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="313.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="324" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="335.0" y="76.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="346" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="357.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="368" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code" x="379.0" y="76.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="390" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="401.0" y="76.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="412" y="60" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="423.0" y="76.0" text-anchor="middle">0</text>
+  <text class="dg-note" x="446" y="70">definitely not here</text>
+  <text class="dg-sub" x="446" y="86">bit 5 is 0: file A is skipped</text>
+  <text class="dg-name" x="16" y="117" text-anchor="start">File B</text>
+  <rect class="dg-box" x="170" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="181.0" y="116.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="192" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="203.0" y="116.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="214" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code" x="225.0" y="116.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="236" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="247.0" y="116.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="258" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="269.0" y="116.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="280" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code" x="291.0" y="116.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="302" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="313.0" y="116.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="324" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="335.0" y="116.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="346" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="357.0" y="116.0" text-anchor="middle">0</text>
+  <rect class="dg-box" x="368" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code" x="379.0" y="116.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="390" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="401.0" y="116.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="412" y="100" width="22" height="24" rx="0"/>
+  <text class="dg-code-muted" x="423.0" y="116.0" text-anchor="middle">0</text>
+  <text class="dg-note" x="446" y="110">maybe here</text>
+  <text class="dg-sub" x="446" y="126">bits 2, 5, 9 are 1: file B is opened</text>
+  <line class="dg-rule" x1="0" y1="150" x2="720" y2="150"/>
+  <text class="dg-mono dg-muted-text" x="302.0" y="176" text-anchor="middle">KEY IS IN THE FILE</text>
+  <text class="dg-mono dg-muted-text" x="578.0" y="176" text-anchor="middle">KEY IS NOT IN THE FILE</text>
+  <text class="dg-name" x="16" y="213" text-anchor="start">Filter: maybe</text>
+  <text class="dg-sub" x="16" y="231">positive</text>
+  <rect class="dg-box" x="170" y="188" width="264" height="56" rx="6"/>
+  <text class="dg-name" x="302.0" y="212" text-anchor="middle">True positive</text>
+  <text class="dg-sub" x="302.0" y="230" text-anchor="middle">file opened, key found</text>
+  <rect class="dg-box-accent" x="446" y="188" width="264" height="56" rx="6"/>
+  <text class="dg-name" x="578.0" y="212" text-anchor="middle">False positive</text>
+  <text class="dg-sub" x="578.0" y="230" text-anchor="middle">file opened for nothing</text>
+  <text class="dg-name" x="16" y="279" text-anchor="start">Filter: no</text>
+  <text class="dg-sub" x="16" y="297">negative</text>
+  <rect class="dg-box-failed" x="170" y="254" width="264" height="56" rx="6"/>
+  <text class="dg-name" x="302.0" y="278" text-anchor="middle">False negative</text>
+  <text class="dg-sub" x="302.0" y="296" text-anchor="middle">never happens</text>
+  <rect class="dg-box" x="446" y="254" width="264" height="56" rx="6"/>
+  <text class="dg-name" x="578.0" y="278" text-anchor="middle">True negative</text>
+  <text class="dg-sub" x="578.0" y="296" text-anchor="middle">file skipped</text>
+  <text class="dg-sub" x="440.0" y="338" text-anchor="middle">A "maybe" can be wrong; a "no" never is.</text>
+</svg>

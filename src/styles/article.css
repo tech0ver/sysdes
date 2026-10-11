@@ -203,3 +203,14 @@
 .diagram-svg .dg-dot-muted {
 	fill: var(--sl-color-gray-3);
 }
+.diagram-svg .dg-code-muted {
+	fill: var(--sl-color-gray-3);
+	font-family: var(--sl-font-mono, var(--sl-font-system-mono));
+	font-size: 12px;
+}
+.diagram-svg .dg-zone {
+	fill: none;
+	stroke: var(--sl-color-gray-4);
+	stroke-width: 1;
+	stroke-dasharray: 6 4;
+}

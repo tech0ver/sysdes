@@ -1,0 +1,55 @@
+<svg class="diagram-svg" viewBox="0 0 560 350" role="img" aria-labelledby="ack-timing-title ack-timing-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ack-timing-title">Saying ok after the flush or before it</title>
+  <desc id="ack-timing-desc">Time runs top to bottom, the same in both columns. Three writes arrive at the same moments. With ok after the flush, the writes wait for one shared flush (group commit) and then all get ok. With ok before the flush, each write gets ok at once and the flush comes later; a power loss between the first ok and the flush erases confirmed writes: the loss window.</desc>
+  <defs>
+    <marker id="ack-timing-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ack-timing-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="210" y="72" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M210 82 V330" marker-end="url(#ack-timing-head)"/>
+  <text class="dg-name" x="110" y="28" text-anchor="middle">Ok after the flush</text>
+  <text class="dg-sub" x="110" y="46" text-anchor="middle">group commit</text>
+  <line class="dg-line" x1="110" y1="82" x2="110" y2="95"/>
+  <line class="dg-line" x1="110" y1="105" x2="110" y2="125"/>
+  <line class="dg-line" x1="110" y1="135" x2="110" y2="155"/>
+  <circle class="dg-dot-muted" cx="110" cy="100" r="5"/>
+  <circle class="dg-dot-muted" cx="110" cy="130" r="5"/>
+  <circle class="dg-dot-muted" cx="110" cy="160" r="5"/>
+  <text class="dg-name" x="310" y="28" text-anchor="middle">Ok before the flush</text>
+  <text class="dg-sub" x="310" y="46" text-anchor="middle">flush every second or so</text>
+  <line class="dg-line" x1="310" y1="82" x2="310" y2="95"/>
+  <line class="dg-line" x1="310" y1="105" x2="310" y2="125"/>
+  <line class="dg-line" x1="310" y1="135" x2="310" y2="155"/>
+  <circle class="dg-dot-muted" cx="310" cy="100" r="5"/>
+  <circle class="dg-dot-muted" cx="310" cy="130" r="5"/>
+  <circle class="dg-dot-muted" cx="310" cy="160" r="5"/>
+  <text class="dg-note" x="124" y="104">write</text>
+  <text class="dg-note" x="124" y="134">write</text>
+  <text class="dg-note" x="124" y="164">write</text>
+  <path class="dg-arrow" d="M110 165 V192" marker-end="url(#ack-timing-head)"/>
+  <rect class="dg-box" x="50" y="196" width="120" height="28" rx="4"/>
+  <text class="dg-note" x="110" y="214" text-anchor="middle">one flush</text>
+  <path class="dg-arrow" d="M110 224 V246" marker-end="url(#ack-timing-head)"/>
+  <rect class="dg-box" x="50" y="250" width="120" height="28" rx="4"/>
+  <text class="dg-note" x="110" y="268" text-anchor="middle">ok × 3</text>
+  <text class="dg-sub" x="110" y="302" text-anchor="middle">nothing confirmed is lost</text>
+  <text class="dg-note" x="296" y="104" text-anchor="end">write</text>
+  <line class="dg-line" x1="315" y1="100" x2="324" y2="100"/>
+  <rect class="dg-box" x="326" y="89" width="32" height="22" rx="4"/>
+  <text class="dg-note" x="342" y="104" text-anchor="middle">ok</text>
+  <text class="dg-note" x="296" y="134" text-anchor="end">write</text>
+  <line class="dg-line" x1="315" y1="130" x2="324" y2="130"/>
+  <rect class="dg-box" x="326" y="119" width="32" height="22" rx="4"/>
+  <text class="dg-note" x="342" y="134" text-anchor="middle">ok</text>
+  <text class="dg-note" x="296" y="164" text-anchor="end">write</text>
+  <line class="dg-line" x1="315" y1="160" x2="324" y2="160"/>
+  <rect class="dg-box" x="326" y="149" width="32" height="22" rx="4"/>
+  <text class="dg-note" x="342" y="164" text-anchor="middle">ok</text>
+  <path class="dg-arrow" d="M310 165 V296" marker-end="url(#ack-timing-head)"/>
+  <rect class="dg-box" x="250" y="300" width="120" height="28" rx="4"/>
+  <text class="dg-note" x="310" y="318" text-anchor="middle">flush</text>
+  <path class="dg-bracket-accent" d="M364 100 H386 V314 H376"/>
+  <text class="dg-mono dg-accent-text" x="398" y="196" text-anchor="start">LOSS WINDOW</text>
+  <text class="dg-sub" x="398" y="214" text-anchor="start">a power loss here</text>
+  <text class="dg-sub" x="398" y="230" text-anchor="start">erases confirmed writes</text>
+</svg>

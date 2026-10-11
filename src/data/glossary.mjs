@@ -19,6 +19,11 @@ const networking = (anchor, section) => ({
 	label: `Networking: ${section}`,
 });
 
+const storageEngines = (anchor, section) => ({
+	href: `fundamentals/storage-engines/#${anchor}`,
+	label: `Storage engines: ${section}`,
+});
+
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}}>} */
 export const glossary = [
 	{
@@ -424,5 +429,289 @@ export const glossary = [
 		short: 'A guard that stops calls to a failing dependency for a while and fails fast instead.',
 		explanation: 'It has three states: closed (calls pass), open (calls fail fast), and half-open (a few test calls). It keeps one failure from spreading.',
 		readMore: networking('when-a-call-fails', 'When a call fails'),
+	},
+	{
+		id: 'storage-engine',
+		term: 'Storage engine',
+		aliases: ['storage engine', 'storage engines', 'Storage engine', 'Storage engines'],
+		short: 'The part of a database that stores records on disk or in memory and finds them again.',
+		explanation:
+			'It decides which reads and writes are cheap. Most engines are built on a B-tree or an LSM-tree, and the choice follows the workload.',
+		readMore: { href: 'fundamentals/storage-engines/', label: 'Storage engines' },
+	},
+	{
+		id: 'append-only-log',
+		term: 'Append-only log',
+		aliases: ['append-only log', 'append-only logs', 'Append-only log', 'append-only file', 'append-only files', 'Append-only file'],
+		short: 'A file of records that only grows at the end; old records are never changed.',
+		explanation:
+			'Appending is the cheapest write, and a newer record for a key replaces the older one. Many databases keep a log inside, for recovery or as their main storage.',
+		readMore: storageEngines('from-memory-to-disk', 'From memory to disk'),
+	},
+	{
+		id: 'index',
+		term: 'Index',
+		aliases: ['index', 'indexes', 'Index', 'Indexes'],
+		short: 'Extra data, built from the records, that finds a record without a full scan.',
+		explanation:
+			'An index speeds up reads, but it takes space and every write must update it too. So a database indexes only what its queries need.',
+		readMore: storageEngines('finding-a-record-fast', 'Finding a record fast'),
+	},
+	{
+		id: 'hash-index',
+		term: 'Hash index',
+		aliases: ['hash index', 'hash indexes', 'Hash index'],
+		short: 'An index that maps each key to the place of its record through a hash map.',
+		explanation:
+			'It answers lookups by exact key in one step, but it keeps no order, so it cannot return a range of keys. An in-memory hash index needs all keys to fit in RAM.',
+		readMore: storageEngines('finding-a-record-fast', 'Finding a record fast'),
+	},
+	{
+		id: 'compaction',
+		term: 'Compaction',
+		aliases: ['compaction', 'Compaction'],
+		short: 'Background work that merges data files and keeps only the latest record for each key.',
+		explanation:
+			'It frees the space taken by old and deleted records. It also competes with requests for the disk, and when writes outrun it, files pile up.',
+		readMore: storageEngines('reclaiming-space', 'Reclaiming space'),
+	},
+	{
+		id: 'tombstone',
+		term: 'Tombstone',
+		aliases: ['tombstone', 'tombstones', 'Tombstone'],
+		short: 'A record that marks a key as deleted.',
+		explanation:
+			'Files that are only appended to cannot erase a record, so a delete writes a tombstone. It must stay until no older file can bring the deleted value back, and until compaction removes the key, the deleted data is still on disk.',
+		readMore: storageEngines('reclaiming-space', 'Reclaiming space'),
+	},
+	{
+		id: 'checksum',
+		term: 'Checksum',
+		aliases: ['checksum', 'checksums', 'Checksum'],
+		short: 'A small value computed from data to detect whether the data has changed.',
+		explanation:
+			'The writer stores it next to the data, and the reader computes it again. A mismatch means the data is incomplete or damaged.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Checksum', label: 'Wikipedia: Checksum' },
+	},
+	{
+		id: 'page-cache',
+		term: 'Page cache',
+		aliases: ['page cache', 'Page cache'],
+		short: 'Memory where the operating system keeps recently read and written parts of files.',
+		explanation:
+			'Reads of hot data skip the disk. Written data waits there before it reaches the disk, so a power loss can erase it until a flush.',
+		readMore: storageEngines('surviving-a-crash', 'Surviving a crash'),
+	},
+	{
+		id: 'durability',
+		term: 'Durability',
+		aliases: ['durability', 'Durability', 'durable'],
+		short: 'The promise that a confirmed write survives a crash or a power loss.',
+		explanation:
+			'A write is durable only after a flush, such as fsync, puts it on disk. The store chooses whether to confirm a write before or after that flush.',
+		readMore: storageEngines('surviving-a-crash', 'Surviving a crash'),
+	},
+	{
+		id: 'group-commit',
+		term: 'Group commit',
+		aliases: ['group commit', 'Group commit'],
+		short: 'Making several writes durable with one shared flush.',
+		explanation:
+			'The store collects the writes that arrive within a few milliseconds and flushes them together. It can then wait for the disk before saying "ok" without paying a flush for each write.',
+		readMore: storageEngines('surviving-a-crash', 'Surviving a crash'),
+	},
+	{
+		id: 'snapshot',
+		term: 'Snapshot',
+		aliases: ['snapshot', 'snapshots', 'Snapshot'],
+		short: 'The state of data at one moment.',
+		explanation:
+			'An in-memory store saves snapshots for recovery: after a restart, it loads the last one and replays only the log written after it. With snapshots alone, the changes since the last one are lost.',
+		readMore: storageEngines('back-to-memory', 'Back to memory'),
+	},
+	{
+		id: 'sstable',
+		term: 'SSTable',
+		aliases: ['SSTable', 'SSTables', 'sorted string table'],
+		expansion: 'Sorted String Table',
+		short: 'A data file whose records are sorted by key and never change after it is written.',
+		explanation:
+			'The order allows a sparse index, range reads, and cheap merges. LSM-trees store their data in SSTables.',
+		readMore: storageEngines('keeping-records-sorted', 'Keeping records sorted'),
+	},
+	{
+		id: 'sparse-index',
+		term: 'Sparse index',
+		aliases: ['sparse index', 'sparse indexes', 'Sparse index'],
+		short: 'An index that keeps one key per block of sorted records instead of one key per record.',
+		explanation:
+			'A read finds the right block and scans it. The index is much smaller, so it fits in memory for far more data.',
+		readMore: storageEngines('keeping-records-sorted', 'Keeping records sorted'),
+	},
+	{
+		id: 'memtable',
+		term: 'Memtable',
+		aliases: ['memtable', 'memtables', 'Memtable'],
+		short: 'A sorted structure in memory that collects new writes before they go to disk.',
+		explanation:
+			'When it is full, it is written out as a new SSTable in one sequential write. A WAL protects it from a crash.',
+		readMore: storageEngines('sorting-writes-in-memory', 'Sorting writes in memory'),
+	},
+	{
+		id: 'wal',
+		term: 'WAL',
+		aliases: ['WAL', 'write-ahead log', 'Write-ahead log'],
+		expansion: 'Write-ahead log',
+		short: 'A log on disk where changes are written before the data files they change.',
+		explanation:
+			'After a crash, the database replays it to rebuild the memtable of an LSM-tree or to repair half-written pages of a B-tree. A write is confirmed once its log record is flushed.',
+		readMore: storageEngines('sorting-writes-in-memory', 'Sorting writes in memory'),
+	},
+	{
+		id: 'lsm-tree',
+		term: 'LSM-tree',
+		aliases: ['LSM-tree', 'LSM-trees', 'LSM tree', 'LSM trees', 'log-structured merge-tree'],
+		expansion: 'Log-structured merge-tree',
+		short: 'A storage engine that collects writes in memory and writes them out as sorted files merged in the background.',
+		explanation:
+			'The log is appended in order, and sorted files are written and merged in order, so writes tend to be fast. Reads may check several files, and compaction can fall behind under heavy writes.',
+		readMore: storageEngines('sorting-writes-in-memory', 'Sorting writes in memory'),
+	},
+	{
+		id: 'bloom-filter',
+		term: 'Bloom filter',
+		aliases: ['Bloom filter', 'Bloom filters', 'bloom filter', 'bloom filters'],
+		short: 'A small bit array that says whether a key is definitely absent or maybe present.',
+		explanation:
+			'It never misses a key that is there, but it sometimes says "maybe" for a key that is not. A lookup by key uses it to skip files that cannot hold the key; range reads get no help.',
+		readMore: storageEngines('keeping-reads-cheap', 'Keeping reads cheap'),
+	},
+	{
+		id: 'false-positive',
+		term: 'False positive',
+		aliases: ['false positive', 'false positives', 'False positive'],
+		short: 'A check that says "yes" or "maybe" when the true answer is "no".',
+		explanation:
+			'A Bloom filter can give false positives but never false negatives. A false positive costs extra work, such as opening a file for nothing, but never a wrong answer.',
+		readMore: storageEngines('keeping-reads-cheap', 'Keeping reads cheap'),
+	},
+	{
+		id: 'size-tiered-compaction',
+		term: 'Size-tiered compaction',
+		aliases: ['size-tiered compaction', 'Size-tiered compaction'],
+		short: 'A compaction strategy that merges files of similar size.',
+		explanation: 'It rewrites data fewer times than leveled compaction, so writes are cheaper. Reads check more files, and merges need more spare disk space.',
+		readMore: storageEngines('keeping-reads-cheap', 'Keeping reads cheap'),
+	},
+	{
+		id: 'leveled-compaction',
+		term: 'Leveled compaction',
+		aliases: ['leveled compaction', 'Leveled compaction'],
+		short: 'A compaction strategy that keeps files in levels where, apart from newly flushed files, the files of one level do not overlap in keys.',
+		explanation:
+			'A lookup by key checks the newly flushed files and at most one file in each other level. Data takes less space than with size-tiered compaction, but it is rewritten more often.',
+		readMore: storageEngines('keeping-reads-cheap', 'Keeping reads cheap'),
+	},
+	{
+		id: 'b-tree',
+		term: 'B-tree',
+		aliases: ['B-tree', 'B-trees', 'B+tree', 'B+trees'],
+		short: 'A storage structure that keeps sorted keys in a tree of fixed-size pages and changes them in place.',
+		explanation:
+			'A lookup follows one page per level, and the upper levels stay in memory. Leaves in key order serve ranges. It is the default index of most relational databases.',
+		readMore: storageEngines('updating-in-place', 'Updating in place'),
+	},
+	{
+		id: 'amplification',
+		term: 'Amplification',
+		aliases: [
+			'amplification',
+			'Read amplification',
+			'Write amplification',
+			'Space amplification',
+			'read amplification',
+			'write amplification',
+			'space amplification',
+		],
+		short: 'How much more the disk reads, writes, or stores than the data the app asked for.',
+		explanation: 'Read, write, and space amplification measure different costs. Compare storage engines on the same workload, since the numbers depend on it.',
+		readMore: storageEngines('choosing-an-engine', 'Choosing an engine'),
+	},
+	{
+		id: 'primary-key',
+		term: 'Primary key',
+		aliases: ['primary key', 'primary keys', 'Primary key'],
+		short: 'The column or columns that identify each record of a table.',
+		explanation: 'No two records share it. The database keeps an index on it to find records by it.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Primary_key', label: 'Wikipedia: Primary key' },
+	},
+	{
+		id: 'secondary-index',
+		term: 'Secondary index',
+		aliases: ['secondary index', 'secondary indexes', 'Secondary index'],
+		short: 'An additional index that finds records by columns other than the primary key.',
+		explanation:
+			'Values need not be unique, so each entry also identifies its record: by its place in the table or by its primary key. Every write that changes the indexed columns must update it.',
+		readMore: storageEngines('searching-by-other-columns', 'Searching by other columns'),
+	},
+	{
+		id: 'composite-index',
+		term: 'Composite index',
+		aliases: ['composite index', 'composite indexes', 'Composite index'],
+		short: 'An index on several columns, sorted by the first column, then by the next.',
+		explanation:
+			'Put the columns compared with = first and the sort or range column last. It usually cannot help a query that uses only a later column.',
+		readMore: storageEngines('searching-by-other-columns', 'Searching by other columns'),
+	},
+	{
+		id: 'covering-index',
+		term: 'Covering index',
+		aliases: ['covering index', 'covering indexes', 'Covering index'],
+		short: 'An index that holds every column a query needs.',
+		explanation: 'The database can answer the query from the index without reading the records. The price is a bigger index.',
+		readMore: storageEngines('searching-by-other-columns', 'Searching by other columns'),
+	},
+	{
+		id: 'query-plan',
+		term: 'Query plan',
+		aliases: ['query plan', 'query plans', 'Query plan'],
+		short: 'The steps a database chooses to run a query, such as which index to use.',
+		explanation: 'Databases show it on request (EXPLAIN in SQL). Check it to see whether a query really uses the index you added.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Query_plan', label: 'Wikipedia: Query plan' },
+	},
+	{
+		id: 'row-storage',
+		term: 'Row storage',
+		aliases: ['row storage', 'Row storage'],
+		short: 'Keeping all values of a record together in one place.',
+		explanation: 'It suits apps that read and write a few whole records at a time. A query that needs a few columns of many records still reads whole rows.',
+		readMore: storageEngines('scanning-for-analytics', 'Scanning for analytics'),
+	},
+	{
+		id: 'column-storage',
+		term: 'Column storage',
+		aliases: ['column storage', 'Column storage', 'column store', 'column stores', 'Column store'],
+		short: 'Keeping the values of each column together instead of each record together.',
+		explanation:
+			'A query reads only the columns it needs, and columns often compress well. New rows are collected in memory and written to the columns in batches, so work on single records is less efficient.',
+		readMore: storageEngines('scanning-for-analytics', 'Scanning for analytics'),
+	},
+	{
+		id: 'oltp',
+		term: 'OLTP',
+		aliases: ['OLTP', 'online transaction processing'],
+		expansion: 'Online transaction processing',
+		short: 'The workload of an app: many small reads and writes of single records by key.',
+		explanation: 'It needs fast lookups and steady latency. Row storage usually suits it.',
+		readMore: storageEngines('scanning-for-analytics', 'Scanning for analytics'),
+	},
+	{
+		id: 'olap',
+		term: 'OLAP',
+		aliases: ['OLAP', 'online analytical processing'],
+		expansion: 'Online analytical processing',
+		short: 'The workload of analytics: large scans and totals over many records.',
+		explanation: 'It often reads few columns of many records, which suits column storage. Analytics usually runs in a separate store loaded from the main one.',
+		readMore: storageEngines('scanning-for-analytics', 'Scanning for analytics'),
 	},
 ];

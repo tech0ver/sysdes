@@ -1,0 +1,59 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="lsm-write-path-title lsm-write-path-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lsm-write-path-title">The write path of an LSM-tree</title>
+  <desc id="lsm-write-path-desc">Writes arrive in any key order: kq7, abc, zzz, abc. Step 1: each write is appended to the WAL on disk in arrival order, and the log is flushed. Step 2: it is inserted into the memtable in memory, a sorted tree, and the store says ok. Step 3: when the memtable is full, it is flushed in key order as a new SSTable in one sequential write, and its WAL is deleted.</desc>
+  <defs>
+    <marker id="lsm-write-path-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lsm-write-path-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="40">WRITES</text>
+  <rect class="dg-chip" x="16" y="52" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="48.0" y="68.0" text-anchor="middle">kq7</text>
+  <rect class="dg-chip" x="16" y="82" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="48.0" y="98.0" text-anchor="middle">abc</text>
+  <rect class="dg-chip" x="16" y="112" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="48.0" y="128.0" text-anchor="middle">zzz</text>
+  <rect class="dg-chip" x="16" y="142" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="48.0" y="158.0" text-anchor="middle">abc</text>
+  <path class="dg-arrow" d="M80 64 H92 V154 H80"/>
+  <path class="dg-arrow" d="M92 110 H104"/>
+  <path class="dg-arrow" d="M104 110 V84 Q104 76 112 76 H494" marker-end="url(#lsm-write-path-head)"/>
+  <text class="dg-mono dg-muted-text" x="196" y="68">1. APPEND, FLUSH</text>
+  <path class="dg-arrow" d="M104 110 V166 Q104 174 112 174 H244" marker-end="url(#lsm-write-path-head)"/>
+  <text class="dg-mono dg-muted-text" x="112" y="166">2. INSERT → OK</text>
+  <rect class="dg-zone" x="232" y="100" width="244" height="192" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="247" y="120">MEMORY</text>
+  <rect class="dg-box" x="248" y="128" width="160" height="128" rx="6"/>
+  <text class="dg-name" x="328" y="150" text-anchor="middle">Memtable</text>
+  <rect class="dg-chip" x="304" y="166" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="328.0" y="182.0" text-anchor="middle">kq7</text>
+  <rect class="dg-chip" x="258" y="214" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="282.0" y="230.0" text-anchor="middle">abc</text>
+  <rect class="dg-chip" x="350" y="214" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="374.0" y="230.0" text-anchor="middle">zzz</text>
+  <path class="dg-arrow" d="M320 190 L282 214"/>
+  <path class="dg-arrow" d="M336 190 L374 214"/>
+  <text class="dg-sub" x="328" y="278" text-anchor="middle">key order</text>
+  <rect class="dg-zone" x="488" y="8" width="231" height="284" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="503" y="28">DISK</text>
+  <text class="dg-name" x="502" y="52" text-anchor="start">WAL</text>
+  <rect class="dg-box" x="502" y="64" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="526.0" y="80.0" text-anchor="middle">kq7</text>
+  <rect class="dg-box" x="554" y="64" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="578.0" y="80.0" text-anchor="middle">abc</text>
+  <rect class="dg-box" x="606" y="64" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="630.0" y="80.0" text-anchor="middle">zzz</text>
+  <rect class="dg-box" x="658" y="64" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="682.0" y="80.0" text-anchor="middle">abc</text>
+  <text class="dg-sub" x="502" y="108">arrival order, only appended</text>
+  <text class="dg-name" x="502" y="176" text-anchor="start">New SSTable</text>
+  <rect class="dg-box-accent" x="502" y="188" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="534.0" y="204.0" text-anchor="middle">abc</text>
+  <rect class="dg-box-accent" x="570" y="188" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="602.0" y="204.0" text-anchor="middle">kq7</text>
+  <rect class="dg-box-accent" x="638" y="188" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="670.0" y="204.0" text-anchor="middle">zzz</text>
+  <text class="dg-sub" x="502" y="232">key order, one sequential write</text>
+  <text class="dg-sub" x="502" y="250">then its WAL is deleted</text>
+  <path class="dg-arrow dg-message" d="M408 200 H494" marker-end="url(#lsm-write-path-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="414" y="192">3. FLUSH</text>
+</svg>

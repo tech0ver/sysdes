@@ -1,0 +1,40 @@
+<svg class="diagram-svg" viewBox="0 0 680 232" role="img" aria-labelledby="sstable-merge-title sstable-merge-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sstable-merge-title">Merging two SSTables in one sequential pass</title>
+  <desc id="sstable-merge-desc">Records are lined up by key. SSTable 1 (older) holds abc v1, kq7 v1, zzz v1. SSTable 2 (newer) holds abc v2 and mmm v1. Both are read in key order at the same time and written out as one sorted file: abc v2, kq7 v1, mmm v1, zzz v1. For the same key, the newer record wins and abc v1 is dropped.</desc>
+  <defs>
+    <marker id="sstable-merge-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sstable-merge-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <path class="dg-arrow" d="M150 14 H530" marker-end="url(#sstable-merge-head)"/>
+  <text class="dg-mono dg-muted-text" x="540" y="18">READ IN KEY ORDER</text>
+  <text class="dg-name" x="16" y="42" text-anchor="start">SSTable 1</text>
+  <text class="dg-sub" x="16" y="58">older</text>
+  <rect class="dg-box" x="150" y="28" width="120" height="32" rx="4"/>
+  <text class="dg-code-muted" x="210.0" y="48.0" text-anchor="middle">abc,v1</text>
+  <rect class="dg-box" x="280" y="28" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="340.0" y="48.0" text-anchor="middle">kq7,v1</text>
+  <rect class="dg-box" x="540" y="28" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="600.0" y="48.0" text-anchor="middle">zzz,v1</text>
+  <text class="dg-name" x="16" y="90" text-anchor="start">SSTable 2</text>
+  <text class="dg-sub" x="16" y="106">newer</text>
+  <rect class="dg-box" x="150" y="76" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="210.0" y="96.0" text-anchor="middle">abc,v2</text>
+  <rect class="dg-box" x="410" y="76" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="470.0" y="96.0" text-anchor="middle">mmm,v1</text>
+  <text class="dg-mono dg-muted-text" x="16" y="136">MERGE</text>
+  <path class="dg-arrow" d="M210 108 V140" marker-end="url(#sstable-merge-head)"/>
+  <path class="dg-arrow" d="M340 60 V140" marker-end="url(#sstable-merge-head)"/>
+  <path class="dg-arrow" d="M470 108 V140" marker-end="url(#sstable-merge-head)"/>
+  <path class="dg-arrow" d="M600 60 V140" marker-end="url(#sstable-merge-head)"/>
+  <text class="dg-name" x="16" y="162" text-anchor="start">New SSTable</text>
+  <text class="dg-sub" x="16" y="178">one sequential write</text>
+  <rect class="dg-box-accent" x="150" y="148" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="210.0" y="168.0" text-anchor="middle">abc,v2</text>
+  <rect class="dg-box-accent" x="280" y="148" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="340.0" y="168.0" text-anchor="middle">kq7,v1</text>
+  <rect class="dg-box-accent" x="410" y="148" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="470.0" y="168.0" text-anchor="middle">mmm,v1</text>
+  <rect class="dg-box-accent" x="540" y="148" width="120" height="32" rx="4"/>
+  <text class="dg-code" x="600.0" y="168.0" text-anchor="middle">zzz,v1</text>
+  <text class="dg-sub" x="150" y="210">same key: the newer record wins, abc,v1 is dropped</text>
+</svg>

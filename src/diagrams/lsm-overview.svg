@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="lsm-overview-title lsm-overview-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lsm-overview-title">The parts of an LSM-tree</title>
+  <desc id="lsm-overview-desc">In memory: the memtable takes writes, and a full memtable is being flushed. On disk: the WAL, and SSTables from newest to oldest. Flushes cross from memory to disk as new SSTables, and compaction merges older SSTables in the background.</desc>
+  <defs>
+    <marker id="lsm-overview-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lsm-overview-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="70">WRITES</text>
+  <rect class="dg-zone" x="100" y="8" width="619" height="120" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="115" y="28">MEMORY</text>
+  <path class="dg-arrow" d="M16 82 H156" marker-end="url(#lsm-overview-head)"/>
+  <rect class="dg-box" x="164" y="52" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="254" y="76" text-anchor="middle">Memtable</text>
+  <text class="dg-sub" x="254" y="94" text-anchor="middle">takes writes</text>
+  <rect class="dg-box" x="420" y="52" width="200" height="56" rx="6"/>
+  <text class="dg-name" x="520" y="76" text-anchor="middle">Full memtable</text>
+  <text class="dg-sub" x="520" y="94" text-anchor="middle">being flushed</text>
+  <path class="dg-arrow" d="M344 80 H412" marker-end="url(#lsm-overview-head)"/>
+  <text class="dg-mono dg-muted-text" x="378" y="72" text-anchor="middle">WHEN FULL</text>
+  <path class="dg-arrow" d="M60 82 V196 Q60 204 68 204 H112" marker-end="url(#lsm-overview-head)"/>
+  <rect class="dg-zone" x="1" y="152" width="718" height="160" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="172">DISK</text>
+  <rect class="dg-box" x="120" y="180" width="140" height="48" rx="6"/>
+  <text class="dg-name" x="190" y="202" text-anchor="middle">WAL</text>
+  <text class="dg-sub" x="190" y="219" text-anchor="middle">rebuilds the memtable</text>
+  <rect class="dg-box" x="300" y="180" width="96" height="48" rx="6"/>
+  <text class="dg-name" x="348" y="209" text-anchor="middle">SSTable</text>
+  <rect class="dg-box" x="404" y="180" width="96" height="48" rx="6"/>
+  <text class="dg-name" x="452" y="209" text-anchor="middle">SSTable</text>
+  <rect class="dg-box" x="508" y="180" width="96" height="48" rx="6"/>
+  <text class="dg-name" x="556" y="209" text-anchor="middle">SSTable</text>
+  <rect class="dg-box" x="612" y="180" width="96" height="48" rx="6"/>
+  <text class="dg-name" x="660" y="209" text-anchor="middle">SSTable</text>
+  <text class="dg-mono dg-muted-text" x="348" y="246" text-anchor="middle">NEWEST</text>
+  <text class="dg-mono dg-muted-text" x="660" y="246" text-anchor="middle">OLDEST</text>
+  <path class="dg-arrow dg-message" d="M520 108 V140 Q520 148 512 148 H356 Q348 148 348 156 V172" marker-end="url(#lsm-overview-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="434" y="140" text-anchor="middle">FLUSH</text>
+  <path class="dg-arrow" d="M508 256 V262 H708 V256"/>
+  <text class="dg-sub" x="608" y="282" text-anchor="middle">compaction merges older files</text>
+  <text class="dg-sub" x="608" y="298" text-anchor="middle">in the background</text>
+</svg>

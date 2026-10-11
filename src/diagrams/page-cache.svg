@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 720 196" role="img" aria-labelledby="page-cache-title page-cache-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="page-cache-title">A write goes through the page cache before it reaches the disk</title>
+  <desc id="page-cache-desc">The store process writes to the page cache, which is memory owned by the operating system. A flush such as fsync copies the data to the data file on disk, and only then is the write durable. If only the process crashes, the data in the page cache survives; if the power fails, it is lost.</desc>
+  <defs>
+    <marker id="page-cache-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="page-cache-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="1" y="16" width="410" height="172" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="36">MEMORY</text>
+  <rect class="dg-zone" x="510" y="16" width="209" height="172" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="525" y="36">DISK</text>
+  <rect class="dg-box" x="24" y="64" width="140" height="48" rx="6"/>
+  <text class="dg-name" x="94" y="93" text-anchor="middle">Store process</text>
+  <rect class="dg-box" x="224" y="64" width="160" height="48" rx="6"/>
+  <text class="dg-name" x="304" y="85" text-anchor="middle">Page cache</text>
+  <text class="dg-sub" x="304" y="102" text-anchor="middle">owned by the OS</text>
+  <path class="dg-arrow" d="M164 88 H216" marker-end="url(#page-cache-head)"/>
+  <text class="dg-mono dg-muted-text" x="190" y="80" text-anchor="middle">WRITE</text>
+  <rect class="dg-box" x="552" y="64" width="140" height="48" rx="6"/>
+  <text class="dg-name" x="622" y="85" text-anchor="middle">Data file</text>
+  <text class="dg-sub" x="622" y="102" text-anchor="middle">durable</text>
+  <path class="dg-arrow dg-message" d="M384 88 H544" marker-end="url(#page-cache-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="460" y="80" text-anchor="middle">FLUSH</text>
+  <text class="dg-mono dg-accent-text" x="460" y="104" text-anchor="middle">fsync</text>
+  <text class="dg-sub" x="224" y="140">process crash: the data survives</text>
+  <text class="dg-sub" x="224" y="160">power loss: the data is lost</text>
+</svg>

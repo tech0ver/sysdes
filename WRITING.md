@@ -14,9 +14,11 @@ What an article on this site must look like. Read it before you add or change a 
 2. **Running example.** One compact system (the Networking article uses a messenger) runs through the whole page. Each block adds a step to it, so the reader builds on what they already saw instead of meeting a new example every time.
 3. **Blocks.** One `##` section per problem, in the order the example meets them. Each block:
    - opens from the example: what the system is doing when the problem appears;
+   - has a heading that names the problem in the general terms of the article's topic: not the technology that solves it, and not the nouns of the running example ("Finding a record fast", not "Hash index" or "Finding a link fast");
    - names the problem, then gives one or more solutions;
+   - holds one idea that other articles may link to, so a link to its anchor explains exactly that idea; when a block explains several ideas that other articles will need separately, split it;
    - says what each solution costs and when to pick it; when each solution fixes a weakness of the previous one, show them as an evolution;
-   - ends with one short standalone sentence that names the next problem.
+   - ends with one short standalone sentence that names the next problem, but only when this block's solution causes it ("the file keeps growing"). When the next block starts from a new feature or requirement, end without a bridge: the next block opens with it.
 4. **Callouts, tables, and diagrams** go where the point comes up, not in a fixed order (see below).
 5. **Cheat sheet.** The last section: one line per block, for a quick review before an interview. Keep the conditions from the text; a cheat sheet line must never state a stricter or broader rule than the block it comes from.
 
@@ -27,8 +29,9 @@ What an article on this site must look like. Read it before you add or change a 
 - Introduce a term once, where it solves the problem at hand, and define it by its purpose. Mention it elsewhere only if it changes a decision there.
 - Keep the same level of detail for all options in one block. If one option needs more, its details belong to its own article.
 - When a point applies to a class of technologies, name the class ("long-lived connection"), not one member ("WebSocket").
+- The running example sets the scene: what the system does and what goes wrong. Explain how a solution works in the technical terms of the topic ("record", "key", "a delete"), not the nouns of the example ("link", "deleting a link"): an example noun can mean something else at the technical level.
 - Do not restate a conclusion the reader already drew from the text.
-- No sentences about the document itself ("in this article", "as shown below").
+- No sentences about the document itself ("in this article", "as shown below"). To recall an earlier step, name the idea, not the section: "back to a hash map in memory", not "the hash map from the first section".
 - Simple English that non-native readers can follow. Short sentences, common words. Speak to the reader directly ("use", "pick", "say"). No filler and no jokes.
 - Terms and abbreviations go to the [glossary](#glossary). Do not expand them in parentheses unless the article is where the term is explained.
 

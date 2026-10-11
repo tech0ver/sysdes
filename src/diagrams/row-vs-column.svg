@@ -1,0 +1,73 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="row-vs-column-title row-vs-column-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="row-vs-column-title">Row storage and column storage</title>
+  <desc id="row-vs-column-desc">The same five clicks with four columns: code, time, country, device. Row storage keeps each row together, so a query that needs only time and country still reads all 20 values and drops code and device. Column storage keeps each column together, so the query reads only the time and country columns: 10 values. A column holds values of one type that often repeat, so it compresses well.</desc>
+  <defs>
+    <marker id="row-vs-column-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="row-vs-column-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="164" y="24" text-anchor="middle">Row storage</text>
+  <text class="dg-sub" x="164" y="42" text-anchor="middle">each row stored together</text>
+  <text class="dg-mono dg-muted-text" x="56.0" y="70" text-anchor="middle">CODE</text>
+  <text class="dg-mono dg-muted-text" x="128.0" y="70" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="200.0" y="70" text-anchor="middle">COUNTRY</text>
+  <text class="dg-mono dg-muted-text" x="272.0" y="70" text-anchor="middle">DEVICE</text>
+  <rect class="dg-box-accent" x="24" y="82" width="280" height="28" rx="4"/>
+  <rect class="dg-box-accent" x="24" y="114" width="280" height="28" rx="4"/>
+  <rect class="dg-box-accent" x="24" y="146" width="280" height="28" rx="4"/>
+  <rect class="dg-box-accent" x="24" y="178" width="280" height="28" rx="4"/>
+  <rect class="dg-box-accent" x="24" y="210" width="280" height="28" rx="4"/>
+  <text class="dg-code-muted" x="56.0" y="100" text-anchor="middle">abc</text>
+  <text class="dg-code" x="128.0" y="100" text-anchor="middle">mon</text>
+  <text class="dg-code" x="200.0" y="100" text-anchor="middle">US</text>
+  <text class="dg-code-muted" x="272.0" y="100" text-anchor="middle">ios</text>
+  <text class="dg-code-muted" x="56.0" y="132" text-anchor="middle">kq7</text>
+  <text class="dg-code" x="128.0" y="132" text-anchor="middle">mon</text>
+  <text class="dg-code" x="200.0" y="132" text-anchor="middle">US</text>
+  <text class="dg-code-muted" x="272.0" y="132" text-anchor="middle">web</text>
+  <text class="dg-code-muted" x="56.0" y="164" text-anchor="middle">abc</text>
+  <text class="dg-code" x="128.0" y="164" text-anchor="middle">tue</text>
+  <text class="dg-code" x="200.0" y="164" text-anchor="middle">US</text>
+  <text class="dg-code-muted" x="272.0" y="164" text-anchor="middle">ios</text>
+  <text class="dg-code-muted" x="56.0" y="196" text-anchor="middle">zzz</text>
+  <text class="dg-code" x="128.0" y="196" text-anchor="middle">tue</text>
+  <text class="dg-code" x="200.0" y="196" text-anchor="middle">DE</text>
+  <text class="dg-code-muted" x="272.0" y="196" text-anchor="middle">web</text>
+  <text class="dg-code-muted" x="56.0" y="228" text-anchor="middle">abc</text>
+  <text class="dg-code" x="128.0" y="228" text-anchor="middle">wed</text>
+  <text class="dg-code" x="200.0" y="228" text-anchor="middle">DE</text>
+  <text class="dg-code-muted" x="272.0" y="228" text-anchor="middle">ios</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Column storage</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">each column stored together</text>
+  <text class="dg-mono dg-muted-text" x="432.0" y="70" text-anchor="middle">CODE</text>
+  <text class="dg-mono dg-muted-text" x="504.0" y="70" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="576.0" y="70" text-anchor="middle">COUNTRY</text>
+  <text class="dg-mono dg-muted-text" x="648.0" y="70" text-anchor="middle">DEVICE</text>
+  <rect class="dg-box" x="400" y="82" width="64" height="156" rx="4"/>
+  <rect class="dg-box-accent" x="472" y="82" width="64" height="156" rx="4"/>
+  <rect class="dg-box-accent" x="544" y="82" width="64" height="156" rx="4"/>
+  <rect class="dg-box" x="616" y="82" width="64" height="156" rx="4"/>
+  <text class="dg-code-muted" x="432.0" y="100" text-anchor="middle">abc</text>
+  <text class="dg-code" x="504.0" y="100" text-anchor="middle">mon</text>
+  <text class="dg-code" x="576.0" y="100" text-anchor="middle">US</text>
+  <text class="dg-code-muted" x="648.0" y="100" text-anchor="middle">ios</text>
+  <text class="dg-code-muted" x="432.0" y="132" text-anchor="middle">kq7</text>
+  <text class="dg-code" x="504.0" y="132" text-anchor="middle">mon</text>
+  <text class="dg-code" x="576.0" y="132" text-anchor="middle">US</text>
+  <text class="dg-code-muted" x="648.0" y="132" text-anchor="middle">web</text>
+  <text class="dg-code-muted" x="432.0" y="164" text-anchor="middle">abc</text>
+  <text class="dg-code" x="504.0" y="164" text-anchor="middle">tue</text>
+  <text class="dg-code" x="576.0" y="164" text-anchor="middle">US</text>
+  <text class="dg-code-muted" x="648.0" y="164" text-anchor="middle">ios</text>
+  <text class="dg-code-muted" x="432.0" y="196" text-anchor="middle">zzz</text>
+  <text class="dg-code" x="504.0" y="196" text-anchor="middle">tue</text>
+  <text class="dg-code" x="576.0" y="196" text-anchor="middle">DE</text>
+  <text class="dg-code-muted" x="648.0" y="196" text-anchor="middle">web</text>
+  <text class="dg-code-muted" x="432.0" y="228" text-anchor="middle">abc</text>
+  <text class="dg-code" x="504.0" y="228" text-anchor="middle">wed</text>
+  <text class="dg-code" x="576.0" y="228" text-anchor="middle">DE</text>
+  <text class="dg-code-muted" x="648.0" y="228" text-anchor="middle">ios</text>
+  <text class="dg-mono dg-muted-text" x="164" y="266" text-anchor="middle">READS ALL 20 VALUES</text>
+  <text class="dg-sub" x="164" y="286" text-anchor="middle">code and device are read, then dropped</text>
+  <text class="dg-mono dg-muted-text" x="540" y="266" text-anchor="middle">READS 10 VALUES</text>
+  <text class="dg-sub" x="540" y="286" text-anchor="middle">one type per column: compresses well</text>
+</svg>

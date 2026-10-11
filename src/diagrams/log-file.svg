@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 228" role="img" aria-labelledby="log-file-title log-file-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="log-file-title">An append-only log file: writes go to the end, reads scan it</title>
+  <desc id="log-file-desc">A log file holds four records: abc with URL 1, xyz, abc with URL 2, and the new record qrs. A write appends a new record at the end. A read for abc scans the whole file from the start and keeps the last match, so the second abc record is the current value and the first one is old.</desc>
+  <defs>
+    <marker id="log-file-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="log-file-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="1" y="16" width="718" height="196" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="16" y="36">DISK</text>
+  <text class="dg-name" x="290" y="46" text-anchor="middle">Log file</text>
+  <rect class="dg-box-failed" x="110" y="64" width="360" height="24" rx="4"/>
+  <text class="dg-code-muted" x="126" y="80">abc,https://a.example/1</text>
+  <text class="dg-sub" x="458" y="80" text-anchor="end">old value</text>
+  <rect class="dg-box" x="110" y="96" width="360" height="24" rx="4"/>
+  <text class="dg-code" x="126" y="112">xyz,https://b.example</text>
+  <rect class="dg-box-accent" x="110" y="128" width="360" height="24" rx="4"/>
+  <text class="dg-code" x="126" y="144">abc,https://a.example/2</text>
+  <text class="dg-sub" x="458" y="144" text-anchor="end">last match wins</text>
+  <rect class="dg-box" x="110" y="160" width="360" height="24" rx="4"/>
+  <text class="dg-code" x="126" y="176">qrs,https://c.example</text>
+  <text class="dg-sub" x="458" y="176" text-anchor="end">new record</text>
+  <path class="dg-arrow" d="M24 172 H102" marker-end="url(#log-file-head)"/>
+  <text class="dg-mono dg-muted-text" x="60" y="164" text-anchor="middle">APPEND</text>
+  <text class="dg-sub" x="24" y="196">only at the end</text>
+  <path class="dg-arrow" d="M494 64 V184" marker-end="url(#log-file-head)"/>
+  <text class="dg-mono dg-muted-text" x="510" y="76">READ abc</text>
+  <text class="dg-sub" x="510" y="96">scans the whole file</text>
+  <text class="dg-sub" x="510" y="114">from the start and keeps</text>
+  <text class="dg-sub" x="510" y="132">the last match</text>
+</svg>
