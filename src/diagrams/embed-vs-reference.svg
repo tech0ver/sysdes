@@ -1,0 +1,44 @@
+<svg class="diagram-svg" viewBox="0 0 720 276" role="img" aria-labelledby="embed-vs-reference-title embed-vs-reference-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="embed-vs-reference-title">The same post as several tables or as one document</title>
+  <desc id="embed-vs-reference-desc">Both panels open post 81 with the same data: the caption and place, two photos, and two tags. Normalized, they live in three tables, read with several queries or joins. As a document, they live in one record, read with one request. In both models, the author, the comments, and the photo files are stored apart and found by ID.</desc>
+  <defs>
+    <marker id="embed-vs-reference-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="embed-vs-reference-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="196"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">Normalized</text>
+  <text class="dg-sub" x="180" y="42" text-anchor="middle">three tables</text>
+  <rect class="dg-chip" x="16" y="100" width="100" height="28" rx="4"/>
+  <text class="dg-note" x="66.0" y="118.0" text-anchor="middle">Open post 81</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Document</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">one record</text>
+  <rect class="dg-chip" x="376" y="100" width="100" height="28" rx="4"/>
+  <text class="dg-note" x="426.0" y="118.0" text-anchor="middle">Open post 81</text>
+  <rect class="dg-box" x="164" y="64" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="176" y="82">posts</text>
+  <text class="dg-sub" x="332" y="82" text-anchor="end">1 row</text>
+  <path class="dg-arrow" d="M116 114 C140 114 134 78 158 78" marker-end="url(#embed-vs-reference-head)"/>
+  <rect class="dg-box" x="164" y="100" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="176" y="118">post_photos</text>
+  <text class="dg-sub" x="332" y="118" text-anchor="end">2 rows</text>
+  <path class="dg-arrow" d="M116 114 C140 114 134 114 158 114" marker-end="url(#embed-vs-reference-head)"/>
+  <rect class="dg-box" x="164" y="136" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="176" y="154">post_tags</text>
+  <text class="dg-sub" x="332" y="154" text-anchor="end">2 rows</text>
+  <path class="dg-arrow" d="M116 114 C140 114 134 150 158 150" marker-end="url(#embed-vs-reference-head)"/>
+  <text class="dg-mono dg-muted-text" x="254" y="186" text-anchor="middle">SEVERAL QUERIES OR JOINS</text>
+  <rect class="dg-box-accent" x="524" y="64" width="180" height="100" rx="6"/>
+  <text class="dg-code" x="536" y="82">caption, place</text>
+  <text class="dg-code" x="536" y="118">photos: 2 entries</text>
+  <text class="dg-code" x="536" y="154">tags: 2</text>
+  <path class="dg-arrow dg-message" d="M476 114 H518" marker-end="url(#embed-vs-reference-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="614" y="186" text-anchor="middle">1 REQUEST</text>
+  <line class="dg-rule" x1="0" y1="204" x2="720" y2="204"/>
+  <text class="dg-mono dg-muted-text" x="16" y="228">STORED APART IN BOTH, FOUND BY ID</text>
+  <rect class="dg-box" x="16" y="240" width="220" height="28" rx="4"/>
+  <text class="dg-code" x="126.0" y="258.0" text-anchor="middle">author 42</text>
+  <rect class="dg-box" x="250" y="240" width="220" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="258.0" text-anchor="middle">comments: thousands</text>
+  <rect class="dg-box" x="484" y="240" width="220" height="28" rx="4"/>
+  <text class="dg-code" x="594.0" y="258.0" text-anchor="middle">photo files</text>
+</svg>

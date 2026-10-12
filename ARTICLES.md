@@ -30,17 +30,18 @@ Then add links from the new article to the existing ones, and update `readMore` 
 
 ## Fundamentals
 
-Listed in the planned reading order. Each article tells the story of one system as it grows, where each solution brings the next problem, and ends with the problem the next article solves. Articles that exist on the site are marked **(written)**.
+Listed in the planned reading order. Each article tells the story of one system as it grows, where each solution brings the next problem. An article does not end with a bridge to the next one. Articles that exist on the site are marked **(written)**.
 
 - `fundamentals/networking` **(written)** — How components talk over a network: client and server, IP and DNS, TCP and UDP, TLS, HTTP, pushing updates, load balancing, stateless servers, regions and CDN, failed calls.
 - `fundamentals/storage-engines` **(written)** — How one node stores and finds data, built up from a plain file: append-only log, hash index, segments and compaction, crash recovery and when a write is durable, keeping all data in memory versus on disk, SSTable and LSM-tree, Bloom filters, B-tree, write-ahead log, B-tree versus LSM-tree, secondary, composite, and covering indexes and their cost, row and column storage, OLTP and OLAP. No concurrent access here.
-- `fundamentals/databases` — What shape to give data and where to keep it: relational, document, key-value, wide-column, graph, and time-series models; schema, normalization and denormalization; designing from access patterns; object storage for files; search indexes; using several databases at once. Builds on storage-engines: each model sits on an engine described there (for example, document stores on B-trees, wide-column stores on LSM-trees), and links to its blocks instead of repeating them. Ends where one machine is not enough.
-- `fundamentals/transactions` — Keeping data correct under concurrent access and crashes on one node: lost updates, atomic operations, ACID, isolation levels and their anomalies, snapshot isolation and MVCC, write skew, optimistic and pessimistic locking.
+- `fundamentals/databases` **(written)** — What shape to give data and where to keep it: relational, document, key-value, wide-column, graph, time-series, and analytics models; normalization and copies for fast reads; embedding versus referencing; schema flexibility; designing from the queries; partition and sort keys; object storage for files; full-text and vector search; which store owns each fact and which copies are derived from it; choosing and combining stores. Builds on storage-engines: each model sits on an engine described there, and links to its blocks instead of repeating them.
+- `fundamentals/transactions` — Keeping data correct under concurrent access and crashes on one node: lost updates, atomic operations, ACID and BASE, isolation levels and their anomalies, snapshot isolation and MVCC, write skew, optimistic and pessimistic locking.
 - `fundamentals/replication` — Copies of data across nodes and regions: leader and followers, multi-leader, leaderless and quorums, replication lag, stale reads, eventual consistency, read-your-writes and monotonic reads, failover.
 - `fundamentals/sharding` — Splitting data across nodes: shard keys, range and hash partitioning, consistent hashing, hot shards, rebalancing, secondary indexes across shards.
 - `fundamentals/consistency` — How nodes agree: consistency models from linearizable (strong) to causal and eventual, CAP and PACELC, time and ordering of events, consensus (Raft), leader election, distributed transactions (2PC, saga).
 - `fundamentals/caching` — Where to cache, cache-aside and write-through, HTTP caching (Cache-Control, ETag), invalidation, eviction, hot keys, cache stampede.
 - `fundamentals/async-communication` — Decoupling components in time: queues and logs, pub/sub, delivery guarantees (at-most-once, at-least-once, exactly-once), idempotent consumers, ordering, back-pressure.
+- `fundamentals/data-processing` — Moving and reshaping data after it is written: batch and stream processing, ETL and ELT, data warehouses and lakes, how fresh derived data is. Delivery guarantees stay in async-communication.
 - `fundamentals/failures` — Keeping the whole system up: partial failures, failure detection, redundancy and failover, availability math, blast radius, graceful degradation. A single failed call (timeouts, retries, idempotency keys) is in networking.
 - `fundamentals/security` — Authentication and authorization, CORS, cookies, mTLS, where to end TLS, secrets.
 - `fundamentals/observability` — Metrics, logs, traces, SLOs and alerts.
@@ -62,7 +63,10 @@ The word means different things in different articles. Each article says which o
 - `patterns/api-gateway` — One entry point for clients: API gateway, BFF, auth, routing, response composition.
 - `patterns/service-discovery` — Service registry, client-side load balancing, service mesh.
 - `patterns/proximity-search` — Finding things near a point: why a regular index fails in two dimensions, geohash, quadtree, R-tree.
-- `patterns/async-messaging` — Queues in a design: 202 Accepted and background work, transactional outbox, fan-out.
+- `patterns/async-messaging` — Queues in a design: 202 Accepted and background work, transactional outbox, change data capture (CDC), fan-out.
+- `patterns/news-feed` — Building a home feed: fan-out on write, on read, and the hybrid for accounts with many followers.
+- `patterns/cqrs` — Separate models for writes and reads (CQRS), and event sourcing as a separate choice.
+- `patterns/vector-search` — Similarity search over embeddings: exact and approximate indexes, filters, recall.
 
 ## Technologies
 
@@ -72,8 +76,14 @@ The word means different things in different articles. Each article says which o
 - `technologies/webrtc` — How WebRTC connects peers: NAT, STUN, TURN, signaling.
 - `technologies/postgresql` — PostgreSQL: B-tree storage, index types, when to pick it.
 - `technologies/mysql` — MySQL with InnoDB: clustered primary key, when to pick it.
+- `technologies/mongodb` — MongoDB: documents, embedding and references, schema validation, when to pick it.
+- `technologies/dynamodb` — DynamoDB: partition and sort keys, single-table design, secondary indexes.
 - `technologies/cassandra` — Cassandra: LSM-tree storage, partition and clustering keys, write-heavy workloads.
 - `technologies/rocksdb` — RocksDB: an embedded LSM-tree engine used inside other databases.
 - `technologies/redis` — Redis: an in-memory store, its data structures, persistence settings, use as a cache or as the main store.
 - `technologies/memcached` — Memcached: a cache-only in-memory store.
 - `technologies/elasticsearch` — Elasticsearch: full-text search with an inverted index.
+- `technologies/neo4j` — Neo4j: a graph database, Cypher, when a graph store pays off.
+- `technologies/object-storage` — Object storage (Amazon S3 and similar): keys and buckets, pre-signed URLs, multipart upload, durability and availability.
+- `technologies/clickhouse` — ClickHouse: a column store for analytics.
+- `technologies/time-series-databases` — Time-series databases (Prometheus, InfluxDB, TimescaleDB): ingestion, retention, rollups, cardinality.

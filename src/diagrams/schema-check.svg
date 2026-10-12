@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 316" role="img" aria-labelledby="schema-check-title schema-check-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="schema-check-title">Where the structure is checked: on write or on read</title>
+  <desc id="schema-check-desc">The same two writes go to both stores: a video post by author 42, and a poll post without an author_id. With schema-on-write, the database checks each write, stores the video post, and rejects the poll post back to the writer, so readers trust the shape. With schema-on-read, the store keeps both records as they came, and the reading code must handle every shape it finds.</desc>
+  <defs>
+    <marker id="schema-check-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="schema-check-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="308"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">Schema-on-write</text>
+  <text class="dg-sub" x="180" y="42" text-anchor="middle">the database checks</text>
+  <rect class="dg-chip" x="40" y="58" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="74.0" text-anchor="middle">{"author_id": 42, "type": "video"}</text>
+  <rect class="dg-chip" x="40" y="88" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="104.0" text-anchor="middle">{"type": "poll"}</text>
+  <path class="dg-arrow" d="M180 112 V130" marker-end="url(#schema-check-head)"/>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Schema-on-read</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">the reading code checks</text>
+  <rect class="dg-chip" x="400" y="58" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="74.0" text-anchor="middle">{"author_id": 42, "type": "video"}</text>
+  <rect class="dg-chip" x="400" y="88" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="104.0" text-anchor="middle">{"type": "poll"}</text>
+  <path class="dg-arrow" d="M540 112 V130" marker-end="url(#schema-check-head)"/>
+  <rect class="dg-box-accent" x="100" y="136" width="160" height="44" rx="6"/>
+  <text class="dg-name" x="180" y="156" text-anchor="middle">Database</text>
+  <text class="dg-note" x="180" y="172" text-anchor="middle">checks every write</text>
+  <path class="dg-arrow" d="M260 158 H326 Q338 158 338 146 V112 Q338 100 330 100 H326" marker-end="url(#schema-check-head)"/>
+  <text class="dg-mono dg-muted-text" x="298" y="176" text-anchor="middle">REJECTED</text>
+  <path class="dg-arrow" d="M180 180 V198" marker-end="url(#schema-check-head)"/>
+  <rect class="dg-box" x="40" y="204" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="220.0" text-anchor="middle">{"author_id": 42, "type": "video"}</text>
+  <path class="dg-arrow" d="M180 228 V270" marker-end="url(#schema-check-head)"/>
+  <rect class="dg-box" x="100" y="276" width="160" height="32" rx="6"/>
+  <text class="dg-note" x="180" y="297" text-anchor="middle">Reader trusts the shape</text>
+  <rect class="dg-box" x="460" y="136" width="160" height="44" rx="6"/>
+  <text class="dg-name" x="540" y="156" text-anchor="middle">Store</text>
+  <text class="dg-sub" x="540" y="172" text-anchor="middle">keeps what comes</text>
+  <path class="dg-arrow" d="M540 180 V198" marker-end="url(#schema-check-head)"/>
+  <rect class="dg-box" x="400" y="204" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="220.0" text-anchor="middle">{"author_id": 42, "type": "video"}</text>
+  <rect class="dg-box" x="400" y="232" width="280" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="248.0" text-anchor="middle">{"type": "poll"}</text>
+  <path class="dg-arrow" d="M540 256 V270" marker-end="url(#schema-check-head)"/>
+  <rect class="dg-box-accent" x="460" y="276" width="160" height="32" rx="6"/>
+  <text class="dg-note" x="540" y="297" text-anchor="middle">Reader handles both</text>
+</svg>

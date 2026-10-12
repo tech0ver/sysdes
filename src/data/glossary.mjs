@@ -24,6 +24,11 @@ const storageEngines = (anchor, section) => ({
 	label: `Storage engines: ${section}`,
 });
 
+const databases = (anchor, section) => ({
+	href: `fundamentals/databases/#${anchor}`,
+	label: `Databases: ${section}`,
+});
+
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}}>} */
 export const glossary = [
 	{
@@ -713,5 +718,409 @@ export const glossary = [
 		short: 'The workload of analytics: large scans and totals over many records.',
 		explanation: 'It often reads few columns of many records, which suits column storage. Analytics usually runs in a separate store loaded from the main one.',
 		readMore: storageEngines('scanning-for-analytics', 'Scanning for analytics'),
+	},
+	{
+		id: 'relational-model',
+		term: 'Relational model',
+		aliases: ['relational model', 'Relational model', 'relational store', 'relational stores'],
+		short: 'A data model that keeps data in tables of rows linked by keys.',
+		explanation:
+			'Queries combine tables with joins, and the database enforces rules with constraints. It is the default for data with many relations and rules.',
+		readMore: databases('storing-each-fact-once', 'Storing each fact once'),
+	},
+	{
+		id: 'foreign-key',
+		term: 'Foreign key',
+		aliases: ['foreign key', 'foreign keys', 'Foreign key'],
+		short: 'A column or group of columns whose values point to a unique key of a row, usually in another table.',
+		explanation:
+			'It links the two rows. The database can reject a value that points to no row and remove dependent rows on delete.',
+		readMore: databases('storing-each-fact-once', 'Storing each fact once'),
+	},
+	{
+		id: 'join',
+		term: 'Join',
+		aliases: ['join', 'joins', 'Join'],
+		short: 'A query operation that combines rows of tables by a matching condition, usually on keys.',
+		explanation:
+			'It turns stored IDs back into the data they point to, such as an author\'s name for a post. Every join is work on each read.',
+		readMore: databases('storing-each-fact-once', 'Storing each fact once'),
+	},
+	{
+		id: 'normalization',
+		term: 'Normalization',
+		aliases: ['normalization', 'Normalization', 'normalized'],
+		short: 'Storing each fact once and referring to it by key everywhere else.',
+		explanation:
+			'An update changes one place, so copies cannot disagree. The price is joins on reads.',
+		readMore: databases('storing-each-fact-once', 'Storing each fact once'),
+	},
+	{
+		id: 'constraint',
+		term: 'Constraint',
+		aliases: ['constraint', 'constraints', 'Constraint', 'Constraints'],
+		short: 'A rule that the database checks on every write, such as a unique key or a foreign key.',
+		explanation:
+			'The database rejects a write that breaks the rule, so a bug in one service cannot break it.',
+		readMore: databases('storing-each-fact-once', 'Storing each fact once'),
+	},
+	{
+		id: 'transaction',
+		term: 'Transaction',
+		aliases: ['transaction', 'transactions', 'Transaction'],
+		short: 'A group of reads and writes that the database applies as one unit.',
+		explanation:
+			'Either all of its changes happen or none do, and concurrent transactions do not see each other\'s half-done work.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Database_transaction', label: 'Wikipedia: Database transaction' },
+	},
+	{
+		id: 'sql',
+		term: 'SQL',
+		aliases: ['SQL'],
+		expansion: 'Structured Query Language',
+		short: 'The standard language for querying and changing data in relational databases.',
+		explanation:
+			'A query says what data it needs, and the database chooses how to get it, such as which indexes to use.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/SQL', label: 'Wikipedia: SQL' },
+	},
+	{
+		id: 'denormalization',
+		term: 'Denormalization',
+		aliases: ['denormalization', 'Denormalization', 'denormalize', 'Denormalize'],
+		short: 'Storing data a second time in the shape a read needs.',
+		explanation:
+			'A copied field, a counter, or a precomputed result makes a hot read cheap. Every write must also update the copy, and the copy can lag or disagree.',
+		readMore: databases('copying-data-for-fast-reads', 'Copying data for fast reads'),
+	},
+	{
+		id: 'json',
+		term: 'JSON',
+		aliases: ['JSON'],
+		expansion: 'JavaScript Object Notation',
+		short: 'A text format for nested data: objects with named fields, lists, strings, numbers, and booleans.',
+		explanation:
+			'Document stores keep records as JSON or a binary form of it, and relational databases have JSON columns.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/JSON', label: 'Wikipedia: JSON' },
+	},
+	{
+		id: 'document-model',
+		term: 'Document model',
+		aliases: ['document model', 'Document model', 'document store', 'document stores'],
+		short: 'A data model that keeps each record as one nested document, usually JSON.',
+		explanation:
+			'One request returns the whole tree. It fits records read whole and fits links between records poorly.',
+		readMore: databases('loading-a-record-in-one-read', 'Loading a record in one read'),
+	},
+	{
+		id: 'locality',
+		term: 'Locality',
+		aliases: ['locality', 'Locality'],
+		short: 'Keeping data that is used together close together in storage.',
+		explanation:
+			'One request then returns all of it with fewer lookups. It helps only when the reader needs most of the stored data.',
+		readMore: databases('loading-a-record-in-one-read', 'Loading a record in one read'),
+	},
+	{
+		id: 'schema',
+		term: 'Schema',
+		aliases: ['schema', 'schemas', 'Schema'],
+		short: 'The structure that records follow: their fields and the types of the fields.',
+		explanation:
+			'A relational table enforces its schema on every write. Without that check, the code that reads the data still relies on one.',
+		readMore: databases('records-with-different-fields', 'Records with different fields'),
+	},
+	{
+		id: 'schema-on-write',
+		term: 'Schema-on-write / schema-on-read',
+		aliases: ['schema-on-write', 'Schema-on-write', 'schema-on-read', 'Schema-on-read'],
+		short: 'Two places to check the structure of records: when they are written, or when they are read.',
+		explanation:
+			'Schema-on-write rejects bad records but needs migrations to change. With schema-on-read the store does not check records on write, so readers must handle every shape ever written.',
+		readMore: databases('records-with-different-fields', 'Records with different fields'),
+	},
+	{
+		id: 'object-storage',
+		term: 'Object storage',
+		aliases: ['object storage', 'Object storage'],
+		short: 'A store of files under keys in one flat namespace, read and written whole over HTTP.',
+		explanation:
+			'It is cheap, grows without limit, and keeps files durable. Amazon S3 is the best-known one.',
+		readMore: databases('storing-files', 'Storing files'),
+	},
+	{
+		id: 'pre-signed-url',
+		term: 'Pre-signed URL',
+		aliases: ['pre-signed URL', 'pre-signed URLs', 'Pre-signed URL'],
+		short: 'A time-limited link that allows one kind of operation on one object, such as an upload to one key.',
+		explanation:
+			'The client sends or gets the file straight from object storage, bypassing the app servers. The link works until it expires, so it can be used more than once.',
+		readMore: databases('storing-files', 'Storing files'),
+	},
+	{
+		id: 'sla',
+		term: 'SLA',
+		aliases: ['SLA', 'SLAs'],
+		expansion: 'Service-level agreement',
+		short: 'A promise from a provider about a service level, such as monthly availability.',
+		explanation:
+			'Breaking it usually earns the customer a credit, not the lost time back.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Service-level_agreement', label: 'Wikipedia: Service-level agreement' },
+	},
+	{
+		id: 'key-value-model',
+		term: 'Key-value model',
+		aliases: ['key-value model', 'Key-value model', 'key-value store', 'key-value stores'],
+		short: 'A data model with three operations: get, put, and delete a value by its full key.',
+		explanation:
+			'The store does not look inside the value. In return, the data is easy to spread across machines.',
+		readMore: databases('looking-up-by-key-only', 'Looking up by key only'),
+	},
+	{
+		id: 'backfill',
+		term: 'Backfill',
+		aliases: ['backfill', 'backfills', 'Backfill'],
+		short: 'A job that fills a new table or field from the data that already exists.',
+		explanation:
+			'It is needed when a new query gets its own table, and it can take hours on large data.',
+		readMore: databases('designing-from-the-queries', 'Designing from the queries'),
+	},
+	{
+		id: 'wide-column-model',
+		term: 'Wide-column model',
+		aliases: ['wide-column model', 'Wide-column model', 'wide-column store', 'wide-column stores'],
+		short: 'A data model that groups rows into partitions by key and sorts the rows inside each partition.',
+		explanation:
+			'A query reads a range of rows from one partition. Stores of this kind spread partitions across many machines and suit heavy writes.',
+		readMore: databases('keeping-related-rows-together-in-order', 'Keeping related rows together in order'),
+	},
+	{
+		id: 'partition-key',
+		term: 'Partition key',
+		aliases: ['partition key', 'partition keys', 'Partition key'],
+		short: 'The part of a key that decides which partition holds a record, and so which machines store it.',
+		explanation:
+			'A query that names it stays within one partition. Each partition must stay bounded in size.',
+		readMore: databases('keeping-related-rows-together-in-order', 'Keeping related rows together in order'),
+	},
+	{
+		id: 'clustering-key',
+		term: 'Clustering key',
+		aliases: ['clustering key', 'clustering keys', 'Clustering key', 'sort key', 'sort keys'],
+		short: 'The part of a key that sorts records inside one partition.',
+		explanation:
+			'It makes range reads, such as the latest 50 messages, one read. It must be unique within the partition, or a write with the same key updates the existing record.',
+		readMore: databases('keeping-related-rows-together-in-order', 'Keeping related rows together in order'),
+	},
+	{
+		id: 'graph-model',
+		term: 'Graph model',
+		aliases: ['graph model', 'Graph model', 'graph database', 'graph databases'],
+		short: 'A data model of vertices and the edges between them, both with properties.',
+		explanation:
+			'Queries follow edges, so paths of unknown length are easy to express. In SQL each step of a path is a join.',
+		readMore: databases('following-links-many-steps-deep', 'Following links many steps deep'),
+	},
+	{
+		id: 'time-series-store',
+		term: 'Time-series store',
+		aliases: ['time-series store', 'time-series stores', 'Time-series store', 'time-series database', 'time-series databases'],
+		short: 'A store built for measurements over time, typically appended in time order and queried over recent windows.',
+		explanation:
+			'Many such stores keep data in time blocks, so old data is dropped cheaply, and some compute rollups for long history.',
+		readMore: databases('measuring-over-time', 'Measuring over time'),
+	},
+	{
+		id: 'retention',
+		term: 'Retention',
+		aliases: ['retention', 'Retention'],
+		short: 'How long data is kept before it is deleted.',
+		explanation:
+			'Stores that keep data in time blocks drop a whole expired block at once, far cheaper than deleting rows one by one.',
+		readMore: databases('measuring-over-time', 'Measuring over time'),
+	},
+	{
+		id: 'rollup',
+		term: 'Rollup',
+		aliases: ['rollup', 'rollups', 'Rollup', 'Rollups'],
+		short: 'A precomputed summary of detailed data at a lower resolution, such as one point per hour.',
+		explanation:
+			'It keeps long history affordable and makes repeated numbers cheap to show.',
+		readMore: databases('measuring-over-time', 'Measuring over time'),
+	},
+	{
+		id: 'percentile',
+		term: 'Percentile',
+		aliases: ['percentile', 'percentiles', 'Percentile'],
+		short: 'The value below which a given share of measurements falls.',
+		explanation:
+			'The 99th percentile of latency is the time that 99% of requests beat. It shows slow requests that an average hides.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Percentile', label: 'Wikipedia: Percentile' },
+	},
+	{
+		id: 'analytics-store',
+		term: 'Analytics store',
+		aliases: ['analytics store', 'analytics stores', 'Analytics store'],
+		short: 'A separate store, usually with column storage, for large scans and totals over business events.',
+		explanation:
+			'It answers new questions over long history without slowing the app. Data arrives in batches or as a stream, so reports lag.',
+		readMore: databases('answering-new-questions-over-all-events', 'Answering new questions over all events'),
+	},
+	{
+		id: 'inverted-index',
+		term: 'Inverted index',
+		aliases: ['inverted index', 'inverted indexes', 'Inverted index'],
+		short: 'An index from each word to the list of records that contain it.',
+		explanation:
+			'It finds records by words inside text, which a B-tree index cannot do.',
+		readMore: databases('searching-by-words', 'Searching by words'),
+	},
+	{
+		id: 'search-engine',
+		term: 'Search engine',
+		aliases: ['search engine', 'search engines', 'Search engine'],
+		short: 'A separate store built for full-text search, such as Elasticsearch or OpenSearch.',
+		explanation:
+			'It adds language analysis, tuned relevance, and facets. In most designs it holds a copy of data owned elsewhere, which lags behind.',
+		readMore: databases('searching-by-words', 'Searching by words'),
+	},
+	{
+		id: 'embedding',
+		term: 'Embedding',
+		aliases: ['embedding', 'embeddings', 'Embedding'],
+		short: 'A vector of numbers that a model computes from a text or an image.',
+		explanation:
+			'Similar meanings get vectors close to each other, so a nearest-neighbor search finds similar items. Vectors from different models cannot be compared.',
+		readMore: databases('searching-by-meaning', 'Searching by meaning'),
+	},
+	{
+		id: 'recall',
+		term: 'Recall',
+		aliases: ['recall', 'Recall'],
+		short: 'The share of the true nearest neighbors that an approximate search returns.',
+		explanation:
+			'Approximate indexes trade recall for speed and memory.',
+		readMore: databases('searching-by-meaning', 'Searching by meaning'),
+	},
+	{
+		id: 'hnsw',
+		term: 'HNSW',
+		aliases: ['HNSW'],
+		expansion: 'Hierarchical navigable small world',
+		short: 'An approximate vector index built as a layered graph of nearby vectors.',
+		explanation:
+			'It is fast with good recall, but takes memory and time to build.',
+		readMore: { href: 'https://github.com/pgvector/pgvector#hnsw', label: 'pgvector: HNSW' },
+	},
+	{
+		id: 'ivf',
+		term: 'IVF',
+		aliases: ['IVF'],
+		expansion: 'Inverted file index',
+		short: 'An approximate vector index that groups vectors into clusters and searches only the nearest clusters.',
+		explanation:
+			'It builds faster and uses less memory than HNSW, with lower speed or recall.',
+		readMore: { href: 'https://github.com/pgvector/pgvector#ivfflat', label: 'pgvector: IVFFlat' },
+	},
+	{
+		id: 'system-of-record',
+		term: 'System of record',
+		aliases: ['system of record', 'System of record'],
+		short: 'The store that owns a fact: it is written first and wins when copies disagree.',
+		explanation:
+			'Every other copy of the fact is derived from it.',
+		readMore: databases('deciding-who-owns-each-fact', 'Deciding who owns each fact'),
+	},
+	{
+		id: 'derived-data',
+		term: 'Derived data',
+		aliases: ['derived data', 'Derived data'],
+		short: 'Data built from other data, such as a cache, a search index, or a rollup.',
+		explanation:
+			'It can be rebuilt from its inputs while they are kept, and it needs a stated delay and a way to receive deletes.',
+		readMore: databases('deciding-who-owns-each-fact', 'Deciding who owns each fact'),
+	},
+	{
+		id: 'dual-writes',
+		term: 'Dual writes',
+		aliases: ['dual writes', 'dual write', 'Dual writes'],
+		short: 'Writing the same change from the app to several stores, one after another.',
+		explanation:
+			'One write can fail after the other succeeded, and concurrent writes can arrive in different orders, which leaves the stores different without any error.',
+		readMore: databases('deciding-who-owns-each-fact', 'Deciding who owns each fact'),
+	},
+	{
+		id: 'cdc',
+		term: 'CDC',
+		aliases: ['CDC', 'change data capture', 'Change data capture'],
+		expansion: 'Change data capture',
+		short: 'Capturing the committed changes of a database, often from its log, and sending them to other systems.',
+		explanation:
+			'Derived stores follow the owner without dual writes from the app. Consumers must apply the changes of one record in order.',
+		readMore: databases('deciding-who-owns-each-fact', 'Deciding who owns each fact'),
+	},
+	{
+		id: 'outbox',
+		term: 'Outbox',
+		aliases: ['outbox', 'Outbox', 'transactional outbox'],
+		short: 'A table where the app writes an event in the same transaction as the change it describes.',
+		explanation:
+			'The change and its event commit together or not at all. A separate process delivers the events later and may retry.',
+		readMore: databases('deciding-who-owns-each-fact', 'Deciding who owns each fact'),
+	},
+	{
+		id: 'cqrs',
+		term: 'CQRS',
+		aliases: ['CQRS'],
+		expansion: 'Command query responsibility segregation',
+		short: 'Using separate models for writing data and for reading it.',
+		explanation:
+			'Reads get models shaped for them, which follow the write model with some delay.',
+		readMore: { href: 'https://martinfowler.com/bliki/CQRS.html', label: 'Martin Fowler: CQRS' },
+	},
+	{
+		id: 'event-sourcing',
+		term: 'Event sourcing',
+		aliases: ['event sourcing', 'Event sourcing'],
+		short: 'Storing every change as an event and deriving the current state from the events.',
+		explanation:
+			'The full history is kept and views can be rebuilt. Deleting data and changing event formats become harder.',
+		readMore: { href: 'https://martinfowler.com/eaaDev/EventSourcing.html', label: 'Martin Fowler: Event Sourcing' },
+	},
+	{
+		id: 'ram',
+		term: 'RAM',
+		aliases: ['RAM'],
+		expansion: 'Random-access memory',
+		short: 'The main memory of a server: fast, but lost on restart and much more expensive than disk.',
+		explanation:
+			'Data and indexes that fit in RAM are read without disk access.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Random-access_memory', label: 'Wikipedia: Random-access memory' },
+	},
+	{
+		id: 'hash-map',
+		term: 'Hash map',
+		aliases: ['hash map', 'hash maps', 'Hash map'],
+		short: 'An in-memory structure that finds a value by its key in constant time.',
+		explanation:
+			'It keeps no order, so it finds one key but cannot return a range of keys.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Hash_table', label: 'Wikipedia: Hash table' },
+	},
+	{
+		id: 'balanced-tree',
+		term: 'Balanced tree',
+		aliases: ['balanced tree', 'balanced trees', 'Balanced tree'],
+		short: 'A sorted tree that keeps all paths from the root to the leaves about the same length.',
+		explanation:
+			'Lookups, inserts, and range reads stay fast as the tree grows. Red-black and AVL trees are common in memory.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree', label: 'Wikipedia: Self-balancing binary search tree' },
+	},
+	{
+		id: 'merge-sort',
+		term: 'Merge sort',
+		aliases: ['merge sort', 'Merge sort'],
+		short: 'A sorting method that sorts parts separately and then merges the sorted parts in one pass.',
+		explanation:
+			'Merging sorted inputs reads each of them once, in order, which suits files on disk.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Merge_sort', label: 'Wikipedia: Merge sort' },
 	},
 ];

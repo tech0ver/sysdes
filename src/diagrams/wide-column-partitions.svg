@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 720 366" role="img" aria-labelledby="wide-column-partitions-title wide-column-partitions-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="wide-column-partitions-title">The key of messages_by_chat, and reading the latest messages of a chat</title>
+  <desc id="wide-column-partitions-desc">Top: the primary key has two parts. The partition key, chat_id and bucket, picks the partition and the machines that store it. The clustering key, message_id, sorts the rows inside the partition, newest first. Bottom: chat 7 has one partition per time bucket of about ten days. Reading its latest 50 messages starts with one range read in the newest bucket, which holds only two messages so far, and continues in the previous bucket until the page is full. The oldest bucket is not read.</desc>
+  <defs>
+    <marker id="wide-column-partitions-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="wide-column-partitions-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-code" x="360" y="22" text-anchor="middle">PRIMARY KEY ((chat_id, bucket), message_id)</text>
+  <text class="dg-mono dg-muted-text" x="244.0" y="52" text-anchor="middle">PARTITION KEY</text>
+  <rect class="dg-box" x="136" y="60" width="216" height="28" rx="4"/>
+  <text class="dg-code" x="244.0" y="78.0" text-anchor="middle">chat_id, bucket</text>
+  <text class="dg-sub" x="244.0" y="106" text-anchor="middle">picks the partition and its machines</text>
+  <text class="dg-mono dg-muted-text" x="476.0" y="52" text-anchor="middle">CLUSTERING KEY</text>
+  <rect class="dg-box" x="368" y="60" width="216" height="28" rx="4"/>
+  <text class="dg-code" x="476.0" y="78.0" text-anchor="middle">message_id</text>
+  <text class="dg-sub" x="476.0" y="106" text-anchor="middle">sorts rows inside it, newest first</text>
+  <line class="dg-rule" x1="16" y1="124" x2="704" y2="124"/>
+  <text class="dg-mono dg-muted-text" x="16" y="148">READ: LATEST 50 MESSAGES OF CHAT 7</text>
+  <text class="dg-code" x="16" y="176">chat 7, bucket 10</text>
+  <text class="dg-sub" x="16" y="194">Oct 1 to 10</text>
+  <rect class="dg-box" x="16" y="204" width="200" height="128" rx="6"/>
+  <rect class="dg-box" x="28" y="214" width="176" height="22" rx="4"/>
+  <text class="dg-code-muted" x="116.0" y="229.0" text-anchor="middle">1120</text>
+  <rect class="dg-box" x="28" y="242" width="176" height="22" rx="4"/>
+  <text class="dg-code-muted" x="116.0" y="257.0" text-anchor="middle">1119</text>
+  <rect class="dg-box" x="28" y="270" width="176" height="22" rx="4"/>
+  <text class="dg-code-muted" x="116.0" y="285.0" text-anchor="middle">1118</text>
+  <rect class="dg-box" x="28" y="298" width="176" height="22" rx="4"/>
+  <text class="dg-code-muted" x="116.0" y="313.0" text-anchor="middle">…</text>
+  <text class="dg-code" x="260" y="176">chat 7, bucket 11</text>
+  <text class="dg-sub" x="260" y="194">Oct 11 to 20</text>
+  <rect class="dg-box" x="260" y="204" width="200" height="128" rx="6"/>
+  <rect class="dg-box-accent" x="272" y="214" width="176" height="22" rx="4"/>
+  <text class="dg-code" x="360.0" y="229.0" text-anchor="middle">1180</text>
+  <rect class="dg-box-accent" x="272" y="242" width="176" height="22" rx="4"/>
+  <text class="dg-code" x="360.0" y="257.0" text-anchor="middle">1179</text>
+  <rect class="dg-box-accent" x="272" y="270" width="176" height="22" rx="4"/>
+  <text class="dg-code" x="360.0" y="285.0" text-anchor="middle">1178</text>
+  <rect class="dg-box" x="272" y="298" width="176" height="22" rx="4"/>
+  <text class="dg-code-muted" x="360.0" y="313.0" text-anchor="middle">…</text>
+  <text class="dg-code" x="504" y="176">chat 7, bucket 12</text>
+  <text class="dg-sub" x="504" y="194">Oct 21 to now</text>
+  <rect class="dg-box" x="504" y="204" width="200" height="128" rx="6"/>
+  <rect class="dg-box-accent" x="516" y="214" width="176" height="22" rx="4"/>
+  <text class="dg-code" x="604.0" y="229.0" text-anchor="middle">1209</text>
+  <rect class="dg-box-accent" x="516" y="242" width="176" height="22" rx="4"/>
+  <text class="dg-code" x="604.0" y="257.0" text-anchor="middle">1208</text>
+  <rect class="dg-box-failed" x="516" y="270" width="176" height="22" rx="4"/>
+  <rect class="dg-box-failed" x="516" y="298" width="176" height="22" rx="4"/>
+  <path class="dg-arrow dg-message" d="M516 253 C488 253 488 225 466 225" marker-end="url(#wide-column-partitions-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="116" y="354" text-anchor="middle">NOT READ</text>
+  <text class="dg-mono dg-accent-text" x="360" y="354" text-anchor="middle">2. CONTINUE HERE</text>
+  <text class="dg-mono dg-accent-text" x="604" y="354" text-anchor="middle">1. START IN THE NEWEST</text>
+</svg>

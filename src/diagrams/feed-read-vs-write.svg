@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 720 296" role="img" aria-labelledby="feed-read-vs-write-title feed-read-vs-write-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="feed-read-vs-write-title">A normalized feed works on every read; a precomputed feed works on every write</title>
+  <desc id="feed-read-vs-write-desc">Both panels show the same write and read. Normalized feed: a new post by Bo is one row in posts; when Ana opens her feed, the store finds the latest posts of the 200 authors she follows, then merges, sorts, and joins them. Precomputed feed: a new post by Bo is written to posts and as one row in the feed of each of his 200 followers; when Ana opens her feed, it is one range read of her own rows. The work moves from reads to writes.</desc>
+  <defs>
+    <marker id="feed-read-vs-write-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="feed-read-vs-write-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="288"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">Normalized feed</text>
+  <text class="dg-sub" x="180" y="42" text-anchor="middle">work on every read</text>
+  <text class="dg-mono dg-muted-text" x="16" y="68">WRITE</text>
+  <rect class="dg-chip" x="16" y="76" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="91.0" y="96.0" text-anchor="middle">New post by Bo</text>
+  <path class="dg-arrow" d="M166 92 H188" marker-end="url(#feed-read-vs-write-head)"/>
+  <rect class="dg-box" x="194" y="76" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="269.0" y="96.0" text-anchor="middle">posts: 1 row</text>
+  <text class="dg-mono dg-muted-text" x="269" y="128" text-anchor="middle">1 ROW</text>
+  <line class="dg-rule" x1="16" y1="142" x2="344" y2="142"/>
+  <text class="dg-mono dg-muted-text" x="16" y="166">READ</text>
+  <rect class="dg-chip" x="16" y="174" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="91.0" y="194.0" text-anchor="middle">Ana opens the feed</text>
+  <path class="dg-arrow dg-message" d="M166 190 H188" marker-end="url(#feed-read-vs-write-head-accent)"/>
+  <rect class="dg-box-accent" x="194" y="174" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="269.0" y="194.0" text-anchor="middle">posts of 200 authors</text>
+  <path class="dg-arrow dg-message" d="M269 206 V222" marker-end="url(#feed-read-vs-write-head-accent)"/>
+  <rect class="dg-box-accent" x="194" y="228" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="269.0" y="248.0" text-anchor="middle">merge, sort, join</text>
+  <text class="dg-mono dg-accent-text" x="269" y="280" text-anchor="middle">200 AUTHORS PER READ</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Precomputed feed</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">work on every write</text>
+  <text class="dg-mono dg-muted-text" x="376" y="68">WRITE</text>
+  <rect class="dg-chip" x="376" y="76" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="451.0" y="96.0" text-anchor="middle">New post by Bo</text>
+  <path class="dg-arrow dg-message" d="M526 92 H548" marker-end="url(#feed-read-vs-write-head-accent)"/>
+  <rect class="dg-box-accent" x="554" y="76" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="629.0" y="96.0" text-anchor="middle">posts + 200 feeds</text>
+  <text class="dg-mono dg-accent-text" x="629" y="128" text-anchor="middle">200 FEED ROWS</text>
+  <line class="dg-rule" x1="376" y1="142" x2="704" y2="142"/>
+  <text class="dg-mono dg-muted-text" x="376" y="166">READ</text>
+  <rect class="dg-chip" x="376" y="174" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="451.0" y="194.0" text-anchor="middle">Ana opens the feed</text>
+  <path class="dg-arrow" d="M526 190 H548" marker-end="url(#feed-read-vs-write-head)"/>
+  <rect class="dg-box" x="554" y="174" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="629.0" y="194.0" text-anchor="middle">Ana's feed</text>
+  <path class="dg-arrow" d="M629 206 V222" marker-end="url(#feed-read-vs-write-head)"/>
+  <rect class="dg-box" x="554" y="228" width="150" height="32" rx="4"/>
+  <text class="dg-note" x="629.0" y="248.0" text-anchor="middle">read 50 rows</text>
+  <text class="dg-mono dg-muted-text" x="629" y="280" text-anchor="middle">1 RANGE READ</text>
+</svg>

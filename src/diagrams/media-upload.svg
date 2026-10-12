@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 290" role="img" aria-labelledby="media-upload-title media-upload-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="media-upload-title">Uploading a photo straight to object storage</title>
+  <desc id="media-upload-desc">Time runs top to bottom. The client asks the app to create a post; the app saves it in the database as pending and returns a pre-signed URL. The client uploads the file straight to object storage, so the bytes do not pass through the app. Object storage tells the app that the upload is complete, and the app marks the post ready.</desc>
+  <defs>
+    <marker id="media-upload-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="media-upload-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="20" y="12" width="140" height="32" rx="6"/>
+  <text class="dg-name" x="90" y="33" text-anchor="middle">Client</text>
+  <line class="dg-lifeline" x1="90" y1="44" x2="90" y2="282"/>
+  <rect class="dg-box" x="200" y="12" width="140" height="32" rx="6"/>
+  <text class="dg-name" x="270" y="33" text-anchor="middle">App</text>
+  <line class="dg-lifeline" x1="270" y1="44" x2="270" y2="282"/>
+  <rect class="dg-box" x="380" y="12" width="140" height="32" rx="6"/>
+  <text class="dg-name" x="450" y="33" text-anchor="middle">Database</text>
+  <line class="dg-lifeline" x1="450" y1="44" x2="450" y2="282"/>
+  <rect class="dg-box" x="560" y="12" width="140" height="32" rx="6"/>
+  <text class="dg-name" x="630" y="33" text-anchor="middle">Object storage</text>
+  <line class="dg-lifeline" x1="630" y1="44" x2="630" y2="282"/>
+  <path class="dg-arrow" d="M90 82 H264" marker-end="url(#media-upload-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="76" text-anchor="middle">CREATE POST</text>
+  <path class="dg-arrow" d="M270 118 H444" marker-end="url(#media-upload-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="112" text-anchor="middle">SAVE AS PENDING</text>
+  <path class="dg-arrow" d="M270 154 H96" marker-end="url(#media-upload-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="148" text-anchor="middle">PRE-SIGNED URL</text>
+  <path class="dg-arrow dg-message" d="M90 190 H624" marker-end="url(#media-upload-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="184" text-anchor="middle">UPLOAD THE FILE</text>
+  <path class="dg-arrow" d="M630 226 H276" marker-end="url(#media-upload-head)"/>
+  <text class="dg-mono dg-muted-text" x="540" y="220" text-anchor="middle">UPLOAD COMPLETE</text>
+  <path class="dg-arrow" d="M270 262 H444" marker-end="url(#media-upload-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="256" text-anchor="middle">MARK READY</text>
+</svg>

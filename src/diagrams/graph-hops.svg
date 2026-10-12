@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 228" role="img" aria-labelledby="graph-hops-title graph-hops-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="graph-hops-title">A fixed two-hop query versus a path of variable length</title>
+  <desc id="graph-hops-desc">Top: people you may know. You follow ana, and ana follows cy, so cy is a suggestion: a fixed query of two hops through the follows table. Bottom: an investigation. Account 1 shares a phone with account 2, which shares an IP address with account 3, a banned account. The path length is not known in advance; the example query looks for paths of up to six links.</desc>
+  <defs>
+    <marker id="graph-hops-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="graph-hops-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="16" y="24" text-anchor="start">People you may know</text>
+  <text class="dg-sub" x="704" y="24" text-anchor="end">two hops</text>
+  <rect class="dg-box" x="16" y="40" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="68.0" y="58.0" text-anchor="middle">you</text>
+  <rect class="dg-box" x="160" y="40" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="212.0" y="58.0" text-anchor="middle">ana</text>
+  <rect class="dg-box" x="304" y="40" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="356.0" y="58.0" text-anchor="middle">cy</text>
+  <path class="dg-arrow" d="M120 54 H154" marker-end="url(#graph-hops-head)"/>
+  <text class="dg-mono dg-muted-text" x="140" y="88" text-anchor="middle">HOP 1</text>
+  <path class="dg-arrow" d="M264 54 H298" marker-end="url(#graph-hops-head)"/>
+  <text class="dg-mono dg-muted-text" x="284" y="88" text-anchor="middle">HOP 2</text>
+  <text class="dg-sub" x="448" y="59">cy: a suggestion</text>
+  <line class="dg-rule" x1="16" y1="110" x2="704" y2="110"/>
+  <text class="dg-name" x="16" y="136" text-anchor="start">Investigating a ring</text>
+  <text class="dg-sub" x="704" y="136" text-anchor="end">variable path, up to 6 links here</text>
+  <rect class="dg-box" x="16" y="152" width="104" height="40" rx="4"/>
+  <text class="dg-code" x="68.0" y="176.0" text-anchor="middle">account 1</text>
+  <rect class="dg-box" x="160" y="152" width="104" height="40" rx="4"/>
+  <text class="dg-code" x="212.0" y="176.0" text-anchor="middle">phone</text>
+  <rect class="dg-box" x="304" y="152" width="104" height="40" rx="4"/>
+  <text class="dg-code" x="356.0" y="176.0" text-anchor="middle">account 2</text>
+  <rect class="dg-box" x="448" y="152" width="104" height="40" rx="4"/>
+  <text class="dg-code" x="500.0" y="176.0" text-anchor="middle">IP address</text>
+  <rect class="dg-box-accent" x="592" y="152" width="104" height="40" rx="4"/>
+  <text class="dg-code" x="644" y="168" text-anchor="middle">account 3</text>
+  <text class="dg-note" x="644" y="184" text-anchor="middle">banned</text>
+  <path class="dg-arrow dg-message" d="M120 172 H160"/>
+  <text class="dg-mono dg-accent-text" x="140" y="212" text-anchor="middle">LINK 1</text>
+  <path class="dg-arrow dg-message" d="M264 172 H304"/>
+  <text class="dg-mono dg-accent-text" x="284" y="212" text-anchor="middle">LINK 2</text>
+  <path class="dg-arrow dg-message" d="M408 172 H448"/>
+  <text class="dg-mono dg-accent-text" x="428" y="212" text-anchor="middle">LINK 3</text>
+  <path class="dg-arrow dg-message" d="M552 172 H592"/>
+  <text class="dg-mono dg-accent-text" x="572" y="212" text-anchor="middle">LINK 4</text>
+</svg>
