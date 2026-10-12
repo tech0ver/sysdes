@@ -22,7 +22,7 @@ A personal system design knowledge base: articles for interview preparation, pub
 - `src/plugins/blocks.mjs` — Sätteri mdast plugin for article callouts: `:::do`, `:::tradeoff`, `:::interview`, `:::avoid`.
 - `src/plugins/diagrams.mjs` — Sätteri mdast plugin that inlines `src/diagrams/<name>.svg` where a page has `::diagram{name="<name>"}`. Inline SVG lets diagrams take their colors from the theme.
 - `src/styles/article.css` — styles for callouts and diagrams (the `dg-*` classes).
-- Astro caches rendered Markdown until the page file changes. After editing the glossary, a plugin, or a diagram SVG, delete `node_modules/.astro/data-store.json` before `bun run build` or `bun run dev`.
+- Astro caches rendered Markdown until the page file changes. After editing the glossary, a plugin, or a diagram SVG, delete `node_modules/.astro/data-store.json` before `bun run build`, and `.astro/data-store.json` before `bun run dev` (restart a running dev server).
 - `ARTICLES.md` — the map of written and planned articles, and the hidden link markers for articles that do not exist yet.
 - `public/favicon.png` — favicon (tech0ver organization logo). The site has no header logo; the header shows the title only.
 - `.claude/settings.json` — enables Claude Code plugins: [diagram-design](https://github.com/cathrynlavery/diagram-design) for diagrams and [humanizer](https://github.com/blader/humanizer) for editing text. Other agents can install the same skills from those repositories.

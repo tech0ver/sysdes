@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="ownership-map-title ownership-map-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ownership-map-title">Each fact has one owner; everything else is derived from the owners</title>
+  <desc id="ownership-map-desc">Owners on the left: the relational store owns users, posts, likes, and follows; the message store owns messages; object storage owns media files; a raw-event store, such as an event log, owns raw view events. Derived copies on the right are built from them: feeds, counters, the search index, and the vectors from the relational store, and rollups from the raw events. A derived copy can be rebuilt while its inputs are kept.</desc>
+  <defs>
+    <marker id="ownership-map-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ownership-map-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="24">OWNERS</text>
+  <text class="dg-mono dg-muted-text" x="704" y="24" text-anchor="end">DERIVED COPIES</text>
+  <rect class="dg-box-accent" x="16" y="40" width="232" height="52" rx="6"/>
+  <text class="dg-name" x="32" y="62" text-anchor="start">Relational store</text>
+  <text class="dg-note" x="32" y="80">users, posts, likes, follows</text>
+  <rect class="dg-box-accent" x="16" y="104" width="232" height="52" rx="6"/>
+  <text class="dg-name" x="32" y="126" text-anchor="start">Message store</text>
+  <text class="dg-note" x="32" y="144">messages</text>
+  <rect class="dg-box-accent" x="16" y="168" width="232" height="52" rx="6"/>
+  <text class="dg-name" x="32" y="190" text-anchor="start">Object storage</text>
+  <text class="dg-note" x="32" y="208">media files</text>
+  <rect class="dg-box-accent" x="16" y="232" width="232" height="52" rx="6"/>
+  <text class="dg-name" x="32" y="254" text-anchor="start">Raw-event store</text>
+  <text class="dg-note" x="32" y="272">view events, e.g. an event log</text>
+  <rect class="dg-box" x="504" y="40" width="200" height="36" rx="6"/>
+  <text class="dg-name" x="604" y="63" text-anchor="middle">Feeds</text>
+  <rect class="dg-box" x="504" y="88" width="200" height="36" rx="6"/>
+  <text class="dg-name" x="604" y="111" text-anchor="middle">Counters</text>
+  <rect class="dg-box" x="504" y="136" width="200" height="36" rx="6"/>
+  <text class="dg-name" x="604" y="159" text-anchor="middle">Search index</text>
+  <rect class="dg-box" x="504" y="184" width="200" height="36" rx="6"/>
+  <text class="dg-name" x="604" y="207" text-anchor="middle">Vectors</text>
+  <rect class="dg-box" x="504" y="244" width="200" height="36" rx="6"/>
+  <text class="dg-name" x="604" y="267" text-anchor="middle">Rollups</text>
+  <path class="dg-arrow" d="M248 66 C380 66 380 58 498 58" marker-end="url(#ownership-map-head)"/>
+  <path class="dg-arrow" d="M248 66 C380 66 380 106 498 106" marker-end="url(#ownership-map-head)"/>
+  <path class="dg-arrow" d="M248 66 C380 66 380 154 498 154" marker-end="url(#ownership-map-head)"/>
+  <path class="dg-arrow" d="M248 66 C380 66 380 202 498 202" marker-end="url(#ownership-map-head)"/>
+  <path class="dg-arrow" d="M248 258 C380 258 380 262 498 262" marker-end="url(#ownership-map-head)"/>
+</svg>

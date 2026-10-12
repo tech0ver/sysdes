@@ -1,0 +1,42 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="dual-writes-vs-cdc-title dual-writes-vs-cdc-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="dual-writes-vs-cdc-title">Dual writes versus copies that follow the owner</title>
+  <desc id="dual-writes-vs-cdc-desc">Both panels hold the same app, main store, and search engine. Left: dual writes. The app writes caption version 2 to the main store, then to the search engine; the second write fails, so the search engine keeps version 1. Right: the app writes only to the main store, the owner, and CDC or an outbox delivers its committed changes to the search engine, which reaches version 2.</desc>
+  <defs>
+    <marker id="dual-writes-vs-cdc-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="dual-writes-vs-cdc-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="292"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">Dual writes</text>
+  <text class="dg-sub" x="180" y="42" text-anchor="middle">the app writes each store</text>
+  <rect class="dg-box" x="100" y="60" width="160" height="32" rx="4"/>
+  <text class="dg-note" x="180.0" y="80.0" text-anchor="middle">App</text>
+  <path class="dg-arrow" d="M180 92 V114" marker-end="url(#dual-writes-vs-cdc-head)"/>
+  <text class="dg-mono dg-muted-text" x="190" y="108">1. WRITE</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Follow the owner</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">copies follow committed changes</text>
+  <rect class="dg-box" x="460" y="60" width="160" height="32" rx="4"/>
+  <text class="dg-note" x="540.0" y="80.0" text-anchor="middle">App</text>
+  <path class="dg-arrow" d="M540 92 V114" marker-end="url(#dual-writes-vs-cdc-head)"/>
+  <text class="dg-mono dg-muted-text" x="550" y="108">1. WRITE</text>
+  <rect class="dg-box" x="100" y="120" width="160" height="48" rx="6"/>
+  <text class="dg-note" x="180" y="140" text-anchor="middle">Main store</text>
+  <text class="dg-code" x="180" y="158" text-anchor="middle">caption v2</text>
+  <rect class="dg-box" x="100" y="244" width="160" height="48" rx="6"/>
+  <text class="dg-note" x="180" y="264" text-anchor="middle">Search engine</text>
+  <text class="dg-code-muted" x="180" y="282" text-anchor="middle">caption v1</text>
+  <rect class="dg-box-accent" x="460" y="120" width="160" height="48" rx="6"/>
+  <text class="dg-note" x="540" y="140" text-anchor="middle">Main store</text>
+  <text class="dg-code" x="540" y="158" text-anchor="middle">caption v2</text>
+  <rect class="dg-box" x="460" y="244" width="160" height="48" rx="6"/>
+  <text class="dg-note" x="540" y="264" text-anchor="middle">Search engine</text>
+  <text class="dg-code" x="540" y="282" text-anchor="middle">caption v2</text>
+  <path class="dg-arrow dg-empty" d="M260 76 H296 Q308 76 308 88 V256 Q308 268 296 268 H266" marker-end="url(#dual-writes-vs-cdc-head)"/>
+  <line class="dg-cross" x1="300" y1="198" x2="316" y2="214"/>
+  <line class="dg-cross" x1="316" y1="198" x2="300" y2="214"/>
+  <text class="dg-mono dg-muted-text" x="292" y="210" text-anchor="end">2. WRITE FAILED</text>
+  <path class="dg-arrow dg-message" d="M540 168 V190" marker-end="url(#dual-writes-vs-cdc-head-accent)"/>
+  <rect class="dg-box" x="460" y="196" width="160" height="28" rx="4"/>
+  <text class="dg-note" x="540.0" y="214.0" text-anchor="middle">CDC or outbox</text>
+  <path class="dg-arrow dg-message" d="M540 224 V238" marker-end="url(#dual-writes-vs-cdc-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="550" y="184">COMMITTED CHANGE</text>
+</svg>

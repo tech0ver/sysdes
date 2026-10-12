@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="key-value-title key-value-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="key-value-title">The same session as a table row and as a key-value pair</title>
+  <desc id="key-value-desc">Left: the session is a row in a table of the main store, with columns token, user_id, and expires. A query by token uses its index, and a query by user_id can get a second index. Right: in a plain key-value store the session is a key, session:7f3a9c, and a value that holds the same user_id and expiry, opaque to the store. A get by the full key goes to one place; a question about the values, such as all sessions of user 42, has no path.</desc>
+  <defs>
+    <marker id="key-value-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="key-value-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="228"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">Table in the main store</text>
+  <text class="dg-sub" x="180" y="42" text-anchor="middle">the store sees every column</text>
+  <line class="dg-rule" x1="16" y1="132" x2="344" y2="132"/>
+  <text class="dg-mono dg-muted-text" x="16" y="156">QUERIES</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Plain key-value store</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">the store sees only the key</text>
+  <line class="dg-rule" x1="376" y1="132" x2="704" y2="132"/>
+  <text class="dg-mono dg-muted-text" x="376" y="156">QUERIES</text>
+  <text class="dg-mono dg-muted-text" x="76.0" y="64" text-anchor="middle">TOKEN</text>
+  <rect class="dg-box" x="16" y="72" width="120" height="44" rx="4"/>
+  <text class="dg-code" x="76.0" y="98.0" text-anchor="middle">7f3a9c</text>
+  <text class="dg-mono dg-muted-text" x="184.0" y="64" text-anchor="middle">USER_ID</text>
+  <rect class="dg-box" x="136" y="72" width="96" height="44" rx="4"/>
+  <text class="dg-code" x="184.0" y="98.0" text-anchor="middle">42</text>
+  <text class="dg-mono dg-muted-text" x="288.0" y="64" text-anchor="middle">EXPIRES</text>
+  <rect class="dg-box" x="232" y="72" width="112" height="44" rx="4"/>
+  <text class="dg-code" x="288.0" y="98.0" text-anchor="middle">10:00</text>
+  <text class="dg-mono dg-muted-text" x="451" y="64" text-anchor="middle">KEY</text>
+  <rect class="dg-box" x="376" y="72" width="150" height="44" rx="4"/>
+  <text class="dg-code" x="451.0" y="98.0" text-anchor="middle">session:7f3a9c</text>
+  <text class="dg-mono dg-muted-text" x="615" y="64" text-anchor="middle">VALUE</text>
+  <rect class="dg-box" x="526" y="72" width="178" height="44" rx="4"/>
+  <text class="dg-code-muted" x="615" y="90" text-anchor="middle">user_id: 42</text>
+  <text class="dg-code-muted" x="615" y="106" text-anchor="middle">expires: 10:00</text>
+  <rect class="dg-chip" x="16" y="166" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="116.0" y="182.0" text-anchor="middle">WHERE token = '7f3a9c'</text>
+  <text class="dg-sub" x="228" y="183">its index finds it</text>
+  <rect class="dg-chip" x="16" y="200" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="116.0" y="216.0" text-anchor="middle">WHERE user_id = 42</text>
+  <text class="dg-sub" x="228" y="217">a second index</text>
+  <rect class="dg-box-accent" x="376" y="166" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="476.0" y="182.0" text-anchor="middle">GET session:7f3a9c</text>
+  <text class="dg-sub" x="588" y="183">one place</text>
+  <rect class="dg-box-failed" x="376" y="200" width="200" height="24" rx="4"/>
+  <text class="dg-code-muted" x="476.0" y="216.0" text-anchor="middle">sessions of user 42?</text>
+  <text class="dg-sub" x="588" y="217">no path</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg class="diagram-svg" viewBox="0 0 720 224" role="img" aria-labelledby="vector-space-title vector-space-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="vector-space-title">Similar meanings lie close together as vectors</title>
+  <desc id="vector-space-desc">Posts drawn as points by their vectors. The query beach sunset becomes a vector by the same model. The nearest vectors are evening at the sea and sunrise on the shore, which share no words with the query. Pasta recipe, my cat, city at night, and football match lie far away.</desc>
+  <defs>
+    <marker id="vector-space-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="vector-space-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="16" y="16" width="688" height="192" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="36">VECTORS</text>
+  <circle class="dg-bracket-accent" cx="380" cy="108" r="44"/>
+  <circle class="dg-dot-muted" cx="402" cy="88" r="5"/>
+  <text class="dg-sub" x="436" y="92">evening at the sea</text>
+  <circle class="dg-dot-muted" cx="396" cy="130" r="5"/>
+  <text class="dg-sub" x="436" y="134">sunrise on the shore</text>
+  <circle class="dg-dot-muted" cx="110" cy="72" r="5"/>
+  <text class="dg-sub" x="120" y="76">pasta recipe</text>
+  <circle class="dg-dot-muted" cx="150" cy="170" r="5"/>
+  <text class="dg-sub" x="160" y="174">my cat</text>
+  <circle class="dg-dot-muted" cx="560" cy="52" r="5"/>
+  <text class="dg-sub" x="570" y="56">city at night</text>
+  <circle class="dg-dot-muted" cx="600" cy="166" r="5"/>
+  <text class="dg-sub" x="610" y="170">football match</text>
+  <circle class="dg-dot" cx="380" cy="108" r="6"/>
+  <text class="dg-sub dg-accent-text" x="380" y="172" text-anchor="middle">beach sunset</text>
+</svg>

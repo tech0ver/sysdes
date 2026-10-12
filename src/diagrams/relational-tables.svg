@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 312" role="img" aria-labelledby="relational-tables-title relational-tables-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="relational-tables-title">Tables linked by keys, with a join table for likes</title>
+  <desc id="relational-tables-desc">Three tables. users holds each user once: 42 ana, 77 bo. posts stores author_id, a foreign key to users: one user has many posts. likes is a table of its own for a many-to-many relation: each row pairs a user_id with a post_id, such as user 42 and post 81. It has a primary key on (user_id, post_id) and an index on post_id.</desc>
+  <defs>
+    <marker id="relational-tables-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="relational-tables-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="40" y="30" text-anchor="start">users</text>
+  <text class="dg-mono dg-muted-text" x="130" y="54" text-anchor="middle">ID | NAME</text>
+  <rect class="dg-box" x="40" y="62" width="180" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="78.0" text-anchor="middle">42 | ana</text>
+  <rect class="dg-box" x="40" y="92" width="180" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="108.0" text-anchor="middle">77 | bo</text>
+  <path class="dg-arrow" d="M130 196 V128" marker-end="url(#relational-tables-head)"/>
+  <text class="dg-mono dg-muted-text" x="142" y="158">AUTHOR_ID</text>
+  <text class="dg-sub" x="142" y="176">one user, many posts</text>
+  <text class="dg-name" x="40" y="212" text-anchor="start">posts</text>
+  <text class="dg-mono dg-muted-text" x="130" y="236" text-anchor="middle">ID | AUTHOR_ID</text>
+  <rect class="dg-box" x="40" y="244" width="180" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="260.0" text-anchor="middle">81 | 42</text>
+  <rect class="dg-box" x="40" y="274" width="180" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="290.0" text-anchor="middle">90 | 77</text>
+  <text class="dg-name" x="444" y="104" text-anchor="start">likes</text>
+  <text class="dg-sub" x="704" y="104" text-anchor="end">many-to-many</text>
+  <text class="dg-mono dg-muted-text" x="574" y="128" text-anchor="middle">USER_ID | POST_ID</text>
+  <rect class="dg-box-accent" x="444" y="136" width="260" height="24" rx="4"/>
+  <text class="dg-code" x="574.0" y="152.0" text-anchor="middle">42 | 81</text>
+  <rect class="dg-box-accent" x="444" y="166" width="260" height="24" rx="4"/>
+  <text class="dg-code" x="574.0" y="182.0" text-anchor="middle">77 | 81</text>
+  <rect class="dg-box-accent" x="444" y="196" width="260" height="24" rx="4"/>
+  <text class="dg-code" x="574.0" y="212.0" text-anchor="middle">42 | 90</text>
+  <path class="dg-arrow" d="M444 148 C340 148 330 74 226 74" marker-end="url(#relational-tables-head)"/>
+  <text class="dg-mono dg-muted-text" x="236" y="64">USER_ID</text>
+  <path class="dg-arrow" d="M444 148 C340 148 330 256 226 256" marker-end="url(#relational-tables-head)"/>
+  <text class="dg-mono dg-muted-text" x="236" y="234">POST_ID</text>
+  <text class="dg-code" x="444" y="252">PRIMARY KEY (user_id, post_id)</text>
+  <text class="dg-code" x="444" y="280">INDEX (post_id)</text>
+</svg>

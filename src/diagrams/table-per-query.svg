@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 316" role="img" aria-labelledby="table-per-query-title table-per-query-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="table-per-query-title">A table per query, and a backfill for a new one</title>
+  <desc id="table-per-query-desc">Top: Ana sends hi to chat 7. The send updates two tables: it adds the message to messages_by_chat, keyed by chat, which serves the latest messages of a chat, and updates the chat list rows in chats_by_user, keyed by user. Bottom: the query that deletes Ana's messages has no message table keyed by user. Either scan all messages on every delete, or create messages_by_user, keyed by sender_id, and backfill it: copy every existing message into it. From then on, each send writes three tables.</desc>
+  <defs>
+    <marker id="table-per-query-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="table-per-query-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="24">ONE SEND UPDATES TWO TABLES</text>
+  <rect class="dg-chip" x="16" y="92" width="200" height="32" rx="4"/>
+  <text class="dg-note" x="116.0" y="112.0" text-anchor="middle">Ana sends "hi" to chat 7</text>
+  <text class="dg-code" x="268" y="40">messages_by_chat</text>
+  <text class="dg-sub" x="508" y="40" text-anchor="end">key: chat_id</text>
+  <rect class="dg-box" x="268" y="48" width="240" height="24" rx="4"/>
+  <text class="dg-code" x="388.0" y="64.0" text-anchor="middle">chat 7 | m1 | ana: hi</text>
+  <rect class="dg-box" x="268" y="76" width="240" height="24" rx="4"/>
+  <text class="dg-code-muted" x="388.0" y="92.0" text-anchor="middle">chat 7 | m0 | bo: hey</text>
+  <text class="dg-code" x="268" y="124">chats_by_user</text>
+  <text class="dg-sub" x="508" y="124" text-anchor="end">key: user_id</text>
+  <rect class="dg-box" x="268" y="132" width="240" height="24" rx="4"/>
+  <text class="dg-code" x="388.0" y="148.0" text-anchor="middle">ana | chat 7</text>
+  <rect class="dg-box" x="268" y="160" width="240" height="24" rx="4"/>
+  <text class="dg-code" x="388.0" y="176.0" text-anchor="middle">bo | chat 7</text>
+  <path class="dg-arrow" d="M216 108 C242 108 240 60 262 60" marker-end="url(#table-per-query-head)"/>
+  <path class="dg-arrow" d="M216 108 C242 108 240 144 262 144" marker-end="url(#table-per-query-head)"/>
+  <rect class="dg-chip" x="554" y="48" width="150" height="52" rx="4"/>
+  <text class="dg-note" x="629.0" y="78.0" text-anchor="middle">2. Latest 50 of a chat</text>
+  <rect class="dg-chip" x="554" y="132" width="150" height="52" rx="4"/>
+  <text class="dg-note" x="629.0" y="162.0" text-anchor="middle">3. My chats</text>
+  <path class="dg-arrow" d="M508 74 H548" marker-end="url(#table-per-query-head)"/>
+  <path class="dg-arrow" d="M508 158 H548" marker-end="url(#table-per-query-head)"/>
+  <line class="dg-rule" x1="16" y1="204" x2="704" y2="204"/>
+  <text class="dg-mono dg-muted-text" x="16" y="228">4. DELETE ANA'S MESSAGES: NO MESSAGE TABLE IS KEYED BY USER</text>
+  <rect class="dg-box" x="16" y="240" width="240" height="48" rx="6"/>
+  <text class="dg-code" x="32" y="260">messages_by_chat</text>
+  <text class="dg-sub" x="32" y="278">every chat, every existing row</text>
+  <path class="dg-arrow dg-message" d="M256 264 H458" marker-end="url(#table-per-query-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="357" y="256" text-anchor="middle">BACKFILL: COPY ALL ROWS</text>
+  <rect class="dg-box-accent" x="464" y="240" width="240" height="48" rx="6"/>
+  <text class="dg-code" x="480" y="260">messages_by_user</text>
+  <text class="dg-note" x="480" y="278">new table, key: sender_id</text>
+  <text class="dg-sub" x="16" y="306">or scan all messages on every delete</text>
+  <text class="dg-sub" x="704" y="306" text-anchor="end">from then on, each send writes 3 tables</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg class="diagram-svg" viewBox="0 0 720 228" role="img" aria-labelledby="time-blocks-title time-blocks-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="time-blocks-title">Time blocks: full detail for recent data, rollups for older data, expired blocks dropped</title>
+  <desc id="time-blocks-desc">Time runs left to right. The three newest blocks keep a point every 10 seconds, and new points are appended to the last one. Two older blocks keep rollups, one point per hour. The oldest block is past retention, and the store drops it as one block instead of deleting points one by one.</desc>
+  <defs>
+    <marker id="time-blocks-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="time-blocks-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-sub" x="68" y="40" text-anchor="middle">past retention</text>
+  <text class="dg-sub" x="242" y="40" text-anchor="middle">rollups: 1 point per hour</text>
+  <text class="dg-sub" x="532" y="40" text-anchor="middle">full detail: a point every 10 s</text>
+  <rect class="dg-box-failed" x="16" y="56" width="104" height="64" rx="6"/>
+  <circle class="dg-dot-muted" cx="42" cy="88" r="5"/>
+  <circle class="dg-dot-muted" cx="68" cy="88" r="5"/>
+  <circle class="dg-dot-muted" cx="94" cy="88" r="5"/>
+  <rect class="dg-box" x="132" y="56" width="104" height="64" rx="6"/>
+  <circle class="dg-dot-muted" cx="158" cy="88" r="5"/>
+  <circle class="dg-dot-muted" cx="184" cy="88" r="5"/>
+  <circle class="dg-dot-muted" cx="210" cy="88" r="5"/>
+  <rect class="dg-box" x="248" y="56" width="104" height="64" rx="6"/>
+  <circle class="dg-dot-muted" cx="274" cy="88" r="5"/>
+  <circle class="dg-dot-muted" cx="300" cy="88" r="5"/>
+  <circle class="dg-dot-muted" cx="326" cy="88" r="5"/>
+  <rect class="dg-box" x="364" y="56" width="104" height="64" rx="6"/>
+  <circle class="dg-dot-muted" cx="379" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="394" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="409" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="424" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="439" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="454" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="379" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="394" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="409" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="424" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="439" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="454" cy="98" r="3"/>
+  <rect class="dg-box" x="480" y="56" width="104" height="64" rx="6"/>
+  <circle class="dg-dot-muted" cx="495" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="510" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="525" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="540" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="555" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="570" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="495" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="510" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="525" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="540" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="555" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="570" cy="98" r="3"/>
+  <rect class="dg-box" x="596" y="56" width="104" height="64" rx="6"/>
+  <circle class="dg-dot-muted" cx="611" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="626" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="641" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="656" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="671" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="686" cy="76" r="3"/>
+  <circle class="dg-dot-muted" cx="611" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="626" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="641" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="656" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="671" cy="98" r="3"/>
+  <circle class="dg-dot-muted" cx="686" cy="98" r="3"/>
+  <path class="dg-arrow dg-message" d="M68 120 V146" marker-end="url(#time-blocks-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="68" y="162" text-anchor="middle">DROP AS ONE BLOCK</text>
+  <path class="dg-arrow" d="M648 146 V126" marker-end="url(#time-blocks-head)"/>
+  <text class="dg-mono dg-muted-text" x="648" y="162" text-anchor="middle">APPEND</text>
+  <path class="dg-arrow" d="M16 190 H700" marker-end="url(#time-blocks-head)"/>
+  <text class="dg-mono dg-muted-text" x="16" y="212">OLDER</text>
+  <text class="dg-mono dg-muted-text" x="700" y="212" text-anchor="end">NOW</text>
+</svg>

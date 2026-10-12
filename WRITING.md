@@ -10,7 +10,7 @@ What an article on this site must look like. Read it before you add or change a 
 
 ## Article shape
 
-1. **Intro.** One or two sentences: why the topic matters for a design. No list of questions and no "how to read this page": the reader sees the structure.
+1. **Intro.** One or two sentences: why the topic matters for a design, and what the reader must know to make and defend that part of it. The first sentence names the place of the topic in every design ("every arrow is a network call"), the second says what the article lets you do. No list of questions and no "how to read this page": the reader sees the structure.
 2. **Running example.** One compact system (the Networking article uses a messenger) runs through the whole page. Each block adds a step to it, so the reader builds on what they already saw instead of meeting a new example every time.
 3. **Blocks.** One `##` section per problem, in the order the example meets them. Each block:
    - opens from the example: what the system is doing when the problem appears;
@@ -18,7 +18,7 @@ What an article on this site must look like. Read it before you add or change a 
    - names the problem, then gives one or more solutions;
    - holds one idea that other articles may link to, so a link to its anchor explains exactly that idea; when a block explains several ideas that other articles will need separately, split it;
    - says what each solution costs and when to pick it; when each solution fixes a weakness of the previous one, show them as an evolution;
-   - ends with one short standalone sentence that names the next problem, but only when this block's solution causes it ("the file keeps growing"). When the next block starts from a new feature or requirement, end without a bridge: the next block opens with it.
+   - ends with one short standalone sentence that names the next problem, but only when this block's solution causes it ("the file keeps growing"). When the next block starts from a new feature or requirement, end without a bridge: the next block opens with it. The last block never bridges to another article.
 4. **Callouts, tables, and diagrams** go where the point comes up, not in a fixed order (see below).
 5. **Cheat sheet.** The last section: one line per block, for a quick review before an interview. Keep the conditions from the text; a cheat sheet line must never state a stricter or broader rule than the block it comes from.
 
@@ -27,10 +27,11 @@ What an article on this site must look like. Read it before you add or change a 
 - Essence first. Lead with the core idea; cut sentences the reader can infer.
 - Do not use a term before the block that introduces it, not even in an example.
 - Introduce a term once, where it solves the problem at hand, and define it by its purpose. Mention it elsewhere only if it changes a decision there.
+- Bold the term or terms that a block introduces, once, where the text defines them, so a reader who scans the page sees what each block is about. Bold nothing else. Each bold term gets a glossary entry whose `readMore` points to that block.
 - Keep the same level of detail for all options in one block. If one option needs more, its details belong to its own article.
 - When a point applies to a class of technologies, name the class ("long-lived connection"), not one member ("WebSocket").
 - The running example sets the scene: what the system does and what goes wrong. Explain how a solution works in the technical terms of the topic ("record", "key", "a delete"), not the nouns of the example ("link", "deleting a link"): an example noun can mean something else at the technical level.
-- Do not restate a conclusion the reader already drew from the text.
+- Do not restate a conclusion the reader already drew from the text. Do not list the same items twice in one passage: name them once and refer back.
 - No sentences about the document itself ("in this article", "as shown below"). To recall an earlier step, name the idea, not the section: "back to a hash map in memory", not "the hash map from the first section".
 - Simple English that non-native readers can follow. Short sentences, common words. Speak to the reader directly ("use", "pick", "say"). No filler and no jokes.
 - Terms and abbreviations go to the [glossary](#glossary). Do not expand them in parentheses unless the article is where the term is explained.
@@ -65,6 +66,7 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 [ARTICLES.md](ARTICLES.md) is the map of written and planned articles. Use it to decide what goes into this article and what gets one line plus a link to another one.
 
 - A topic that another article covers in depth gets one line here, enough for the decision, and a link.
+- Put the link on the words that already name the idea in the sentence: "for the same reason that [servers stay stateless](../networking/#servers-with-state)". When no words fit, end the sentence with `(more on [<the idea>](<link>))`, for example "(more on [composite indexes](../storage-engines/#searching-by-other-columns))". The link text names the idea in lowercase words, not the title of the target section.
 - If that article does not exist yet, put a hidden marker where the link should go: `<!-- link: patterns/real-time -->`. When the article is written, its markers are replaced with links (see ARTICLES.md).
 - When you add or plan an article, update ARTICLES.md.
 
@@ -86,7 +88,9 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 ## Sources
 
-- The author names the sources for each article: study notes, books, sites, or their own experience. The article never mentions its sources.
+- The author names the sources for each article: study notes, books, sites, or their own experience. The article does not cite them.
+- The one exception is a real company's case: one sentence about what the company did, with a link to its public source (an engineering blog post or a paper). Use only numbers you checked in that source, and give the year, since such cases age. If the source cannot be opened, drop the company name and keep the idea.
+- A product's limit, number, or feature named in the text (a size cap, a guideline value, a kind of key) links to the official documentation that describes it. When the site has an article about that product, the number moves there, and the link points to that article.
 - Write everything in your own words. Do not copy text from any source.
 - Other interview prep sites can show what to cover, not how to say it.
 - When sources disagree, ask the author. Do not pick one silently.
