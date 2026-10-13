@@ -24,8 +24,8 @@ Then add links from the new article to the existing ones, and update `readMore` 
 
 ## Sections
 
-- **Fundamentals** — the computer science under system design: concepts and trade-offs that every design uses, with no specific products. Once a fundamental article exists, the topic grows only through patterns and technologies.
-- **Patterns** — reusable solutions built from the fundamentals: how to solve a typical problem in a design.
+- **Fundamentals** — the computer science under system design: concepts and trade-offs that every design uses, with no specific products. A fundamental idea makes sense without the product around it: a lost update is the same for tickets, bank accounts, and stock. Once a fundamental article exists, the topic grows only through patterns and technologies.
+- **Patterns** — reusable solutions built from the fundamentals: how to solve a typical problem in a design. A pattern combines several primitives for one kind of product problem and has its own steps, numbers, background jobs, and edge cases; it often matches an interview task ("design a ticket booking"). A fundamentals article names a pattern and says when to pick it; the pattern's article says how to build it (see WRITING.md, "Other articles").
 - **Technologies** — specific tools and products, and how they implement the fundamentals.
 
 ## Fundamentals
@@ -35,7 +35,7 @@ Listed in the planned reading order. Each article tells the story of one system 
 - `fundamentals/networking` **(written)** — How components talk over a network: client and server, IP and DNS, TCP and UDP, TLS, HTTP, pushing updates, load balancing, stateless servers, regions and CDN, failed calls.
 - `fundamentals/storage-engines` **(written)** — How one node stores and finds data, built up from a plain file: append-only log, hash index, segments and compaction, crash recovery and when a write is durable, keeping all data in memory versus on disk, SSTable and LSM-tree, Bloom filters, B-tree, write-ahead log, B-tree versus LSM-tree, secondary, composite, and covering indexes and their cost, row and column storage, OLTP and OLAP. No concurrent access here.
 - `fundamentals/databases` **(written)** — What shape to give data and where to keep it: relational, document, key-value, wide-column, graph, time-series, and analytics models; normalization and copies for fast reads; embedding versus referencing; schema flexibility; designing from the queries; partition and sort keys; object storage for files; full-text and vector search; which store owns each fact and which copies are derived from it; choosing and combining stores. Builds on storage-engines: each model sits on an engine described there, and links to its blocks instead of repeating them.
-- `fundamentals/transactions` — Keeping data correct under concurrent access and crashes on one node: lost updates, atomic operations, ACID and BASE, isolation levels and their anomalies, snapshot isolation and MVCC, write skew, optimistic and pessimistic locking.
+- `fundamentals/transactions` **(written)** — Keeping data correct under concurrent access and crashes on one node: atomicity and recovery, lost updates and atomic operations, isolation levels and their anomalies, snapshot isolation and MVCC, optimistic and pessimistic locking, deadlocks, write skew and phantoms, serializable, holds that outlive a transaction, hot rows, retries, ACID and BASE.
 - `fundamentals/replication` — Copies of data across nodes and regions: leader and followers, multi-leader, leaderless and quorums, replication lag, stale reads, eventual consistency, read-your-writes and monotonic reads, failover.
 - `fundamentals/sharding` — Splitting data across nodes: shard keys, range and hash partitioning, consistent hashing, hot shards, rebalancing, secondary indexes across shards.
 - `fundamentals/consistency` — How nodes agree: consistency models from linearizable (strong) to causal and eventual, CAP and PACELC, time and ordering of events, consensus (Raft), leader election, distributed transactions (2PC, saga).
@@ -59,6 +59,7 @@ The word means different things in different articles. Each article says which o
 
 - `patterns/resilience` — Circuit breaker, bulkhead, retry budget, load shedding, cascading failures.
 - `patterns/rate-limiting` — Limiting algorithms, limits across many servers, the "design a rate limiter" task.
+- `patterns/reservations` — Holding limited stock while a user decides: holds with expiry, leases, locks with a time limit, releasing expired holds, overselling and overbooking, the "design a ticket or hotel booking" task.
 - `patterns/real-time` — Long-lived connections at scale: routing messages between servers, reconnect and replay, heartbeats, slow clients, presence.
 - `patterns/api-gateway` — One entry point for clients: API gateway, BFF, auth, routing, response composition.
 - `patterns/service-discovery` — Service registry, client-side load balancing, service mesh.

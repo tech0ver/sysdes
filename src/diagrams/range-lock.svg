@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 210" role="img" aria-labelledby="range-lock-title range-lock-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="range-lock-title">Row locks protect nothing when a search finds no rows; a range lock covers the gap</title>
+  <desc id="range-lock-desc">An index on buyer_id holds 41 and 43. A search for buyer 42 finds no rows. With row locks only, nothing is locked, so another transaction inserts an order for buyer 42 into the gap. With a range lock, the search locks the range between 41 and 43, and the insert of buyer 42 waits.</desc>
+  <defs>
+    <marker id="range-lock-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="range-lock-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="202"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Row locks only</text>
+  <text class="dg-mono dg-muted-text" x="16" y="68">INDEX ON BUYER_ID</text>
+  <rect class="dg-box" x="16" y="78" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="56.0" y="97.0" text-anchor="middle">41</text>
+  <rect class="dg-box" x="264" y="78" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="304.0" y="97.0" text-anchor="middle">43</text>
+  <rect class="dg-box-failed" x="104" y="78" width="152" height="30" rx="4"/>
+  <text class="dg-code-muted" x="180.0" y="97.0" text-anchor="middle">nothing locked</text>
+  <text class="dg-mono dg-muted-text" x="344" y="68" text-anchor="end">SEARCH 42: 0 ROWS</text>
+  <rect class="dg-chip" x="90" y="168" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="180.0" y="186.0" text-anchor="middle">INSERT buyer_id 42</text>
+  <path class="dg-arrow dg-message" d="M180 168 V114" marker-end="url(#range-lock-head-accent)"/>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Range lock</text>
+  <text class="dg-mono dg-muted-text" x="376" y="68">INDEX ON BUYER_ID</text>
+  <rect class="dg-box" x="376" y="78" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="416.0" y="97.0" text-anchor="middle">41</text>
+  <rect class="dg-box" x="624" y="78" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="664.0" y="97.0" text-anchor="middle">43</text>
+  <rect class="dg-box-accent" x="464" y="78" width="152" height="30" rx="4"/>
+  <text class="dg-code" x="540.0" y="97.0" text-anchor="middle">locked range</text>
+  <text class="dg-mono dg-muted-text" x="704" y="68" text-anchor="end">SEARCH 42: 0 ROWS</text>
+  <rect class="dg-chip" x="450" y="168" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="540.0" y="186.0" text-anchor="middle">INSERT buyer_id 42</text>
+  <path class="dg-arrow dg-empty" d="M540 168 V114" marker-end="url(#range-lock-head)"/>
+</svg>

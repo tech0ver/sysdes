@@ -4,10 +4,11 @@
 //   :::tradeoff      → "Trade-off": what you win and what you pay
 //   :::interview     → "In the interview": what to say
 //   :::avoid         → "Avoid": a common mistake
+//   :::distinguish   → "Do not confuse": two things that share a name or look alike
 //
 // Each becomes <div class="block block-<name>">; the label comes from CSS (src/styles/article.css).
 
-const BLOCKS = new Set(['do', 'tradeoff', 'interview', 'avoid']);
+const BLOCKS = new Set(['do', 'tradeoff', 'interview', 'avoid', 'distinguish']);
 
 export function blocksPlugin() {
 	return {

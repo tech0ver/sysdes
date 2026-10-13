@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 720 204" role="img" aria-labelledby="mvcc-versions-title mvcc-versions-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="mvcc-versions-title">Each snapshot picks the version of a row that it should see</title>
+  <desc id="mvcc-versions-desc">Seat 14 has two versions. Version 1, free, was created by T3 and replaced by T7. Version 2, sold, was created by T7. The report started before T7 committed: its snapshot lists T3 but not T7, so it reads version 1. A transaction that started later lists T7, so it reads version 2.</desc>
+  <defs>
+    <marker id="mvcc-versions-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="mvcc-versions-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="30">SNAPSHOTS</text>
+  <rect class="dg-box" x="16" y="52" width="230" height="52" rx="4"/>
+  <text class="dg-note" x="30" y="74">Report</text>
+  <text class="dg-code" x="30" y="94">committed: T3</text>
+  <rect class="dg-box" x="16" y="140" width="230" height="52" rx="4"/>
+  <text class="dg-note" x="30" y="162">Later transaction</text>
+  <text class="dg-code" x="30" y="182">committed: T3, T7</text>
+  <text class="dg-mono dg-muted-text" x="440" y="30">VERSIONS OF SEAT 14</text>
+  <text class="dg-mono dg-muted-text" x="470" y="58" text-anchor="middle">STATUS</text>
+  <text class="dg-mono dg-muted-text" x="560" y="58" text-anchor="middle">CREATED BY</text>
+  <text class="dg-mono dg-muted-text" x="650" y="58" text-anchor="middle">REPLACED BY</text>
+  <rect class="dg-box" x="420" y="66" width="284" height="30" rx="4"/>
+  <text class="dg-code" x="470" y="86" text-anchor="middle">free</text>
+  <text class="dg-code" x="560" y="86" text-anchor="middle">T3</text>
+  <text class="dg-code" x="650" y="86" text-anchor="middle">T7</text>
+  <rect class="dg-box" x="420" y="154" width="284" height="30" rx="4"/>
+  <text class="dg-code" x="470" y="174" text-anchor="middle">sold</text>
+  <text class="dg-code" x="560" y="174" text-anchor="middle">T7</text>
+  <text class="dg-code" x="650" y="174" text-anchor="middle">—</text>
+  <path class="dg-arrow dg-message" d="M246 78 H414" marker-end="url(#mvcc-versions-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M246 166 H414" marker-end="url(#mvcc-versions-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="330" y="70" text-anchor="middle">T7 NOT IN LIST</text>
+  <text class="dg-mono dg-accent-text" x="330" y="158" text-anchor="middle">T7 IN LIST</text>
+</svg>

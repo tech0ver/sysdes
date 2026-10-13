@@ -11,6 +11,8 @@
 // - `readMore`: where to read more. `href` is a site path (no leading slash, may have `#anchor`)
 //   or a full external URL. A page that is the `readMore` of a term explains it in its own text,
 //   so the term gets no tooltip on that page.
+// - `explainedIn`: other pages that explain the same word in their own sense ("consistency" in
+//   ACID versus between copies), so the term gets no tooltip there either.
 //
 // Write in simple English. Keep `short` and `explanation` true in any context.
 
@@ -29,7 +31,15 @@ const databases = (anchor, section) => ({
 	label: `Databases: ${section}`,
 });
 
-/** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}}>} */
+const transactions = (anchor, section) => ({
+	href: `fundamentals/transactions/#${anchor}`,
+	label: `Transactions: ${section}`,
+});
+
+/** Phrases that contain a term but are not that term, such as product names. They never get a tooltip. */
+export const glossarySkip = ['SQL Server', 'commit the layout'];
+
+/** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
 export const glossary = [
 	{
 		id: 'client-server',
@@ -404,6 +414,7 @@ export const glossary = [
 		explanation:
 			'With strong consistency, a read sees the latest completed write. Weaker consistency allows older data, which needs less coordination between copies and makes reads faster.',
 		readMore: { href: 'https://en.wikipedia.org/wiki/Consistency_model', label: 'Wikipedia: Consistency model' },
+		explainedIn: ['fundamentals/transactions'],
 	},
 	{
 		id: 'deadline',
@@ -515,6 +526,7 @@ export const glossary = [
 		explanation:
 			'A write is durable only after a flush, such as fsync, puts it on disk. The store chooses whether to confirm a write before or after that flush.',
 		readMore: storageEngines('surviving-a-crash', 'Surviving a crash'),
+		explainedIn: ['fundamentals/transactions'],
 	},
 	{
 		id: 'group-commit',
@@ -531,8 +543,9 @@ export const glossary = [
 		aliases: ['snapshot', 'snapshots', 'Snapshot'],
 		short: 'The state of data at one moment.',
 		explanation:
-			'An in-memory store saves snapshots for recovery: after a restart, it loads the last one and replays only the log written after it. With snapshots alone, the changes since the last one are lost.',
+			'An in-memory store saves one to disk for recovery and replays the log written after it. A transaction can read from one, so data does not change under it.',
 		readMore: storageEngines('back-to-memory', 'Back to memory'),
+		explainedIn: ['fundamentals/transactions'],
 	},
 	{
 		id: 'sstable',
@@ -771,7 +784,361 @@ export const glossary = [
 		short: 'A group of reads and writes that the database applies as one unit.',
 		explanation:
 			'Either all of its changes happen or none do, and concurrent transactions do not see each other\'s half-done work.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Database_transaction', label: 'Wikipedia: Database transaction' },
+		readMore: transactions('changing-several-rows-at-once', 'Changing several rows at once'),
+	},
+	{
+		id: 'commit',
+		term: 'Commit',
+		aliases: ['commit', 'commits', 'Commit', 'committed'],
+		short: 'The end of a transaction that makes all of its changes permanent at once.',
+		explanation:
+			'Other transactions see the changes only after the commit. A committed change is final: undoing it takes a new transaction that does the opposite.',
+		readMore: transactions('changing-several-rows-at-once', 'Changing several rows at once'),
+	},
+	{
+		id: 'rollback',
+		term: 'Rollback',
+		aliases: ['rollback', 'rollbacks', 'Rollback', 'roll back', 'rolls back', 'rolled back'],
+		short: 'The end of a transaction that discards all of its changes.',
+		explanation:
+			'The app rolls back when a check fails, and after a crash the database rolls back every transaction that did not commit.',
+		readMore: transactions('changing-several-rows-at-once', 'Changing several rows at once'),
+	},
+	{
+		id: 'atomicity',
+		term: 'Atomicity',
+		aliases: ['atomicity', 'Atomicity', 'atomic', 'Atomic'],
+		short: 'The rule that a set of changes is applied fully or not at all.',
+		explanation:
+			'A failure in the middle never leaves part of the changes behind. A transaction gives it to several rows, and most stores give it to a single record.',
+		readMore: transactions('changing-several-rows-at-once', 'Changing several rows at once'),
+	},
+	{
+		id: 'autocommit',
+		term: 'Autocommit',
+		aliases: ['autocommit', 'Autocommit'],
+		short: 'A mode in which each statement is a transaction of its own and commits when it ends.',
+		explanation:
+			'It is the default in most databases and drivers. Statements that must succeed together need an explicit transaction.',
+		readMore: transactions('changing-several-rows-at-once', 'Changing several rows at once'),
+	},
+	{
+		id: 'commit-record',
+		term: 'Commit record',
+		aliases: ['commit record', 'commit records', 'Commit record'],
+		short: 'The entry in the write-ahead log that marks a transaction as committed.',
+		explanation:
+			'The transaction is committed once this entry is on disk. After a crash, the database keeps transactions that have one and removes the rest.',
+		readMore: transactions('undoing-a-half-done-transaction', 'Undoing a half-done transaction'),
+	},
+	{
+		id: 'checkpoint',
+		term: 'Checkpoint',
+		aliases: ['checkpoint', 'checkpoints', 'Checkpoint'],
+		short: 'A mark in the log from which recovery after a crash can start.',
+		explanation:
+			'The database writes changed pages to disk from time to time and records a checkpoint, so recovery does not replay the log from the beginning.',
+		readMore: transactions('undoing-a-half-done-transaction', 'Undoing a half-done transaction'),
+	},
+	{
+		id: 'undo-log',
+		term: 'Undo log',
+		aliases: ['undo log', 'undo logs', 'Undo log'],
+		short: 'A separate area that keeps the old values of rows changed in place.',
+		explanation:
+			'A rollback copies the old values back, and readers that need an older version rebuild it from there.',
+		readMore: transactions('undoing-a-half-done-transaction', 'Undoing a half-done transaction'),
+	},
+	{
+		id: 'row-version',
+		term: 'Row version',
+		aliases: ['row version', 'row versions', 'Row version', 'Row versions'],
+		short: 'One state of a row, kept so that each transaction can read the state it should see.',
+		explanation:
+			'Versions are kept as separate copies of the row or rebuilt from an undo log. Readers pick the version they should see, and old versions are cleaned up later.',
+		readMore: transactions('undoing-a-half-done-transaction', 'Undoing a half-done transaction'),
+	},
+	{
+		id: 'lost-update',
+		term: 'Lost update',
+		aliases: ['lost update', 'lost updates', 'Lost update', 'Lost updates'],
+		short: 'A write that overwrites another write that it never saw.',
+		explanation:
+			'Two transactions read a value, change it, and write it back; one change disappears. An atomic update or compare-and-set prevents it.',
+		readMore: transactions('two-writers-on-one-value', 'Two writers on one value'),
+	},
+	{
+		id: 'atomic-update',
+		term: 'Atomic update',
+		aliases: ['atomic update', 'atomic updates', 'Atomic update'],
+		short: 'A single statement that computes a new value from the current one, such as subtracting from a counter.',
+		explanation:
+			'The database reads and changes the row in one step, so no other write can land in between. A condition in the statement can keep a rule, such as "never below zero".',
+		readMore: transactions('two-writers-on-one-value', 'Two writers on one value'),
+	},
+	{
+		id: 'compare-and-set',
+		term: 'Compare-and-set',
+		aliases: ['compare-and-set', 'Compare-and-set', 'CAS'],
+		short: 'A write that succeeds only if the value is still the one the writer read.',
+		explanation:
+			'If another writer changed it first, the write does nothing, and the writer reads again and retries.',
+		readMore: transactions('two-writers-on-one-value', 'Two writers on one value'),
+	},
+	{
+		id: 'dirty-read',
+		term: 'Dirty read',
+		aliases: ['dirty read', 'dirty reads', 'Dirty read'],
+		short: 'A read that sees changes another transaction has not committed yet.',
+		explanation:
+			'If that transaction rolls back, the reader acted on data that never existed. Read committed and stronger levels prevent it.',
+		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+	},
+	{
+		id: 'dirty-write',
+		term: 'Dirty write',
+		aliases: ['dirty write', 'dirty writes', 'Dirty write'],
+		short: 'A write that overwrites a change another transaction has not committed yet.',
+		explanation:
+			'Interleaved writes can leave rows that belong to different transactions. Every isolation level prevents it.',
+		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+	},
+	{
+		id: 'isolation',
+		term: 'Isolation',
+		aliases: ['isolation', 'Isolation', 'isolation level', 'isolation levels', 'Isolation level'],
+		short: 'How much concurrent transactions are kept from seeing or overwriting each other\'s work.',
+		explanation:
+			'Each level, from read committed to serializable, blocks a different set of anomalies. Stronger levels cost waits or retries.',
+		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+	},
+	{
+		id: 'read-committed',
+		term: 'Read committed',
+		aliases: ['read committed', 'Read committed'],
+		short: 'The isolation level at which each statement sees only committed data.',
+		explanation:
+			'It prevents dirty reads and dirty writes, and it is the default in most databases. Data can still change between two statements of one transaction.',
+		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+	},
+	{
+		id: 'read-uncommitted',
+		term: 'Read uncommitted',
+		aliases: ['read uncommitted', 'Read uncommitted'],
+		short: 'The lowest isolation level, which lets a transaction see uncommitted changes.',
+		explanation: 'It allows dirty reads and is rarely useful.',
+		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+	},
+	{
+		id: 'lock',
+		term: 'Lock',
+		aliases: ['lock', 'locks', 'Lock', 'Locks', 'row lock', 'row locks', 'Row locks'],
+		short: 'A mark that reserves a row or a range of rows for one transaction and makes conflicting transactions wait.',
+		explanation:
+			'A write takes an exclusive lock on its row until the transaction ends, and readers can share a shared lock. Locks prevent conflicting writes but cause waits and deadlocks.',
+		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+	},
+	{
+		id: 'read-skew',
+		term: 'Read skew',
+		aliases: ['read skew', 'Read skew', 'non-repeatable read', 'non-repeatable reads', 'Non-repeatable read'],
+		short: 'Reads in one transaction that see the data at different moments, so their results disagree.',
+		explanation:
+			'Reading the same row twice and getting two values is its simplest form, a non-repeatable read. Snapshot isolation prevents it.',
+		readMore: transactions('reading-a-consistent-picture', 'Reading a consistent picture'),
+	},
+	{
+		id: 'snapshot-isolation',
+		term: 'Snapshot isolation',
+		aliases: ['snapshot isolation', 'Snapshot isolation'],
+		short: 'An isolation level at which a transaction reads the data as it was when the transaction started.',
+		explanation:
+			'Later commits are invisible to it, so all its reads agree. It prevents read skew and lost updates, but not write skew.',
+		readMore: transactions('reading-a-consistent-picture', 'Reading a consistent picture'),
+	},
+	{
+		id: 'mvcc',
+		term: 'MVCC',
+		aliases: ['MVCC'],
+		expansion: 'Multi-version concurrency control',
+		short: 'Keeping several versions of a row so that each transaction reads the one it should see.',
+		explanation:
+			'Plain reads do not block writers, and writers do not block plain reads. Old versions stay until no transaction needs them, so long transactions make data grow.',
+		readMore: transactions('reading-a-consistent-picture', 'Reading a consistent picture'),
+	},
+	{
+		id: 'shared-lock',
+		term: 'Shared lock',
+		aliases: ['shared lock', 'shared locks', 'Shared lock', 'Shared locks'],
+		short: 'A lock that many readers can hold at once, but that makes a writer wait.',
+		explanation:
+			'A reader that keeps it until commit sees the same rows on every read. Readers and writers then block each other.',
+		readMore: transactions('reading-a-consistent-picture', 'Reading a consistent picture'),
+	},
+	{
+		id: 'repeatable-read',
+		term: 'Repeatable read',
+		aliases: ['repeatable read', 'Repeatable read'],
+		short: 'The isolation level of the SQL standard that rules out non-repeatable reads.',
+		explanation:
+			'Databases with row versions usually provide it as snapshot isolation, others with shared locks. What it allows differs between products.',
+		readMore: transactions('reading-a-consistent-picture', 'Reading a consistent picture'),
+	},
+	{
+		id: 'pessimistic-locking',
+		term: 'Pessimistic locking',
+		aliases: ['pessimistic locking', 'Pessimistic locking'],
+		short: 'Locking rows when they are read, so that no other transaction can change them before the write.',
+		explanation:
+			'Conflicting transactions wait instead of failing. It suits rows that many transactions want at once.',
+		readMore: transactions('checking-then-writing', 'Checking, then writing'),
+	},
+	{
+		id: 'optimistic-locking',
+		term: 'Optimistic locking',
+		aliases: ['optimistic locking', 'Optimistic locking'],
+		short: 'Checking at write time that a row has not changed since it was read, usually by a version number.',
+		explanation:
+			'No lock is held between the read and the write. On a conflict the work is retried, so it suits rows that rarely conflict.',
+		readMore: transactions('checking-then-writing', 'Checking, then writing'),
+	},
+	{
+		id: 'serialization-error',
+		term: 'Serialization error',
+		aliases: ['serialization error', 'serialization errors', 'Serialization error', 'serialization failure', 'serialization failures'],
+		short: 'An error by which the database aborts a transaction that conflicts with a concurrent one.',
+		explanation: 'The app must run the whole transaction again from the start.',
+		readMore: transactions('checking-then-writing', 'Checking, then writing'),
+	},
+	{
+		id: 'deadlock',
+		term: 'Deadlock',
+		aliases: ['deadlock', 'deadlocks', 'Deadlock', 'Deadlocks'],
+		short: 'Two or more transactions that each wait for a lock another one holds, so none can go on.',
+		explanation:
+			'The database detects the cycle and aborts one transaction, which the app rolls back and retries. Taking locks in one fixed order prevents it.',
+		readMore: transactions('waiting-for-each-other', 'Waiting for each other'),
+	},
+	{
+		id: 'lock-timeout',
+		term: 'Lock timeout',
+		aliases: ['lock timeout', 'lock timeouts', 'Lock timeout'],
+		short: 'The longest time a transaction waits for a lock before it fails.',
+		explanation:
+			'Too short aborts transactions that were only slow; too long keeps users waiting.',
+		readMore: transactions('waiting-for-each-other', 'Waiting for each other'),
+	},
+	{
+		id: 'write-skew',
+		term: 'Write skew',
+		aliases: ['write skew', 'Write skew'],
+		short: 'Two transactions that read the same data and write different rows, together breaking a rule that each one kept.',
+		explanation:
+			'No two writes touch the same row, so row locks and snapshot isolation miss it. A shared row that both write, a unique constraint, or serializable isolation stops it.',
+		readMore: transactions('a-rule-across-several-rows', 'A rule across several rows'),
+	},
+	{
+		id: 'phantom',
+		term: 'Phantom',
+		aliases: ['phantom', 'phantoms', 'Phantom', 'Phantoms'],
+		short: 'A write by one transaction that changes which rows match another transaction\'s search.',
+		explanation:
+			'The rows that match now did not match when the search ran, so there was nothing to lock. Range locks, a shared row that both write, or serializable isolation prevent the damage.',
+		readMore: transactions('a-rule-across-several-rows', 'A rule across several rows'),
+	},
+	{
+		id: 'materializing-the-conflict',
+		term: 'Materializing the conflict',
+		aliases: ['materializing the conflict', 'materialized conflict', 'Materializing the conflict'],
+		short: 'Turning a rule across many rows into one row that every transaction affected by the rule must write.',
+		explanation:
+			'The conflict becomes an ordinary conflict on one row, which locks or snapshot isolation already catch. A counter per buyer is an example.',
+		readMore: transactions('a-rule-across-several-rows', 'A rule across several rows'),
+	},
+	{
+		id: 'serializable',
+		term: 'Serializable',
+		aliases: ['serializable', 'Serializable', 'serializable isolation', 'Serializable isolation'],
+		short: 'The isolation level at which concurrent transactions end as if they had run one after another.',
+		explanation:
+			'It rules out every anomaly, at the cost of waits or retries. It covers only transactions that run at this level.',
+		readMore: transactions('running-as-if-one-at-a-time', 'Running as if one at a time'),
+	},
+	{
+		id: 'serial-execution',
+		term: 'Serial execution',
+		aliases: ['serial execution', 'Serial execution'],
+		short: 'Running transactions one after another on one thread, so they never overlap.',
+		explanation:
+			'It gives serializable isolation without locks and works best with short transactions on data in memory. One thread caps throughput.',
+		readMore: transactions('running-as-if-one-at-a-time', 'Running as if one at a time'),
+	},
+	{
+		id: '2pl',
+		term: '2PL',
+		aliases: ['2PL', 'two-phase locking', 'Two-phase locking'],
+		expansion: 'Two-phase locking',
+		short: 'A way to get serializable isolation by holding read and write locks until the transaction ends.',
+		explanation:
+			'Queries also lock the ranges they searched, to stop phantoms. Readers and writers block each other, and deadlocks are common. Not to be confused with two-phase commit.',
+		readMore: transactions('running-as-if-one-at-a-time', 'Running as if one at a time'),
+	},
+	{
+		id: 'ssi',
+		term: 'SSI',
+		aliases: ['SSI', 'serializable snapshot isolation', 'Serializable snapshot isolation'],
+		expansion: 'Serializable snapshot isolation',
+		short: 'A way to get serializable isolation by reading from snapshots and aborting transactions whose reads and writes conflict.',
+		explanation:
+			'Reads never wait, but some transactions fail, including false alarms, and must be retried. Two writers of one row still wait as usual.',
+		readMore: transactions('running-as-if-one-at-a-time', 'Running as if one at a time'),
+	},
+	{
+		id: 'business-transaction',
+		term: 'Business transaction',
+		aliases: ['business transaction', 'business transactions', 'Business transaction'],
+		short: 'A user\'s action that spans several requests and minutes, such as a checkout.',
+		explanation:
+			'Each step runs as a short database transaction. A claim that must last across the steps is stored in the data, not in an open transaction.',
+		readMore: transactions('work-that-outlives-a-transaction', 'Work that outlives a transaction'),
+	},
+	{
+		id: 'hold',
+		term: 'Hold',
+		aliases: ['hold with an expiry', 'holds with an expiry'],
+		short: 'A claim on a resource, stored in its row as a state with an expiry time.',
+		explanation:
+			'Short transactions set and check it, and an expired hold counts as free. The final transaction checks the hold again.',
+		readMore: transactions('work-that-outlives-a-transaction', 'Work that outlives a transaction'),
+	},
+	{
+		id: 'hot-row',
+		term: 'Hot row',
+		aliases: ['hot row', 'hot rows', 'Hot row'],
+		short: 'A row that many transactions write at once, so they wait for its lock one by one.',
+		explanation:
+			'Throughput drops to one transaction at a time. Splitting the row into many rows that writers take independently removes the queue.',
+		readMore: transactions('contention-on-one-row', 'Contention on one row'),
+	},
+	{
+		id: 'acid',
+		term: 'ACID',
+		aliases: ['ACID'],
+		expansion: 'Atomicity, consistency, isolation, durability',
+		short: 'The four guarantees of database transactions.',
+		explanation:
+			'Consistency here means the data follows its rules, unlike consistency between copies. The isolation is often weaker than serializable by default, so "ACID" does not say which anomalies remain.',
+		readMore: transactions('stores-without-transactions-across-records', 'Stores without transactions across records'),
+	},
+	{
+		id: 'base',
+		term: 'BASE',
+		aliases: ['BASE'],
+		expansion: 'Basically available, soft state, eventually consistent',
+		short: 'A loose label for stores that put availability and scale first and let copies disagree for a while.',
+		explanation:
+			'Many of them make only a write to one record atomic. It is not a precise guarantee, so check what the store actually provides.',
+		readMore: transactions('stores-without-transactions-across-records', 'Stores without transactions across records'),
 	},
 	{
 		id: 'sql',
@@ -869,7 +1236,7 @@ export const glossary = [
 	{
 		id: 'key-value-model',
 		term: 'Key-value model',
-		aliases: ['key-value model', 'Key-value model', 'key-value store', 'key-value stores'],
+		aliases: ['key-value model', 'Key-value model', 'key-value store', 'key-value stores', 'Key-value store', 'Key-value stores'],
 		short: 'A data model with three operations: get, put, and delete a value by its full key.',
 		explanation:
 			'The store does not look inside the value. In return, the data is easy to spread across machines.',

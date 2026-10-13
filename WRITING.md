@@ -34,6 +34,7 @@ What an article on this site must look like. Read it before you add or change a 
 - Do not restate a conclusion the reader already drew from the text. Do not list the same items twice in one passage: name them once and refer back.
 - No sentences about the document itself ("in this article", "as shown below"). To recall an earlier step, name the idea, not the section: "back to a hash map in memory", not "the hash map from the first section".
 - Simple English that non-native readers can follow. Short sentences, common words. Speak to the reader directly ("use", "pick", "say"). No filler and no jokes.
+- In SQL, put each clause (`SELECT`, `FROM`, `JOIN`, `WHERE`, `SET`, `VALUES`) on its own line and each `AND` on its own indented line. Show a query's result as a comment on the line below it, and leave a blank line between queries.
 - Terms and abbreviations go to the [glossary](#glossary). Do not expand them in parentheses unless the article is where the term is explained.
 
 ## Callouts
@@ -46,6 +47,9 @@ Callouts are container directives (`src/plugins/blocks.mjs`). Use them sparingly
 | `:::tradeoff` | Trade-off | What you win and what you pay |
 | `:::interview` | In the interview | What to say when the interviewer asks about it |
 | `:::avoid` | Avoid | A common mistake |
+| `:::distinguish` | Do not confuse | Two things that share a name or look alike, such as the meanings of "consistency" |
+
+A callout states a rule the reader can apply to any system, in the technical terms of the topic ("a transaction", "a row"), not in the nouns of the running example ("a purchase", "a seat").
 
 ## Diagrams
 
@@ -66,7 +70,9 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 [ARTICLES.md](ARTICLES.md) is the map of written and planned articles. Use it to decide what goes into this article and what gets one line plus a link to another one.
 
 - A topic that another article covers in depth gets one line here, enough for the decision, and a link.
+- A fundamentals article stays at the level of mechanisms: what goes wrong, which primitives exist, what they cost, and when to pick each. A pattern built from them gets a short mention: its name, the problem it solves, the primitives it uses, and when to pick it. Its steps, numbers (timeouts, intervals), background jobs, and edge cases go to the pattern's article. When a block in a fundamentals article starts to describe jobs, timers, UI, or refunds, it has crossed into a pattern.
 - Put the link on the words that already name the idea in the sentence: "for the same reason that [servers stay stateless](../networking/#servers-with-state)". When no words fit, end the sentence with `(more on [<the idea>](<link>))`, for example "(more on [composite indexes](../storage-engines/#searching-by-other-columns))". The link text names the idea in lowercase words, not the title of the target section.
+- When the idea is a single glossary term whose `readMore` already points to the article that explains it, use the term by its short name and add no link: the tooltip carries it ("It uses the WAL for this").
 - If that article does not exist yet, put a hidden marker where the link should go: `<!-- link: patterns/real-time -->`. When the article is written, its markers are replaced with links (see ARTICLES.md).
 - When you add or plan an article, update ARTICLES.md.
 
@@ -84,6 +90,7 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 - `explanation` is two or three sentences: what it is and why it matters in a design.
 - `expansion` is what an abbreviation stands for. Only for abbreviations.
 - `readMore` points to the page on this site that explains the term. If no page does, point to a trusted external source (MDN, the official docs, Wikipedia).
+- When a page explains a word in another sense than its glossary entry, add the page to the entry's `explainedIn`, so the page gets no wrong tooltip. Product names that contain a term ("SQL Server") go to `glossarySkip`.
 - Remove entries that no page uses.
 
 ## Sources

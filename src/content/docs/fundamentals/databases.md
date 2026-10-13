@@ -35,7 +35,7 @@ The primary key on the pair rejects a second like from the same user and finds a
 
 **Normalization** keeps each fact in one place, and everything else refers to it by key. A user's name lives only in `users`; posts and comments store `author_id`. A rename is one update, and no post keeps the old name. Normalization is about correctness: when a fact has several copies, an update that misses one leaves them disagreeing. The price is paid on reads. To show a post with its author's name, a **join** matches the post's `author_id` to a row in `users`.
 
-**Constraints** make the database enforce the rules, so a bug in one service cannot break them. The primary key on `likes` blocks the second like, a foreign key blocks a like for a post that does not exist, and `ON DELETE CASCADE` removes an account's likes with it. A change that touches several rows at once, such as deleting a post with its comments, relies on transactions. <!-- link: fundamentals/transactions -->
+**Constraints** make the database enforce the rules, so a bug in one service cannot break them. The primary key on `likes` blocks the second like, a foreign key blocks a like for a post that does not exist, and `ON DELETE CASCADE` removes an account's likes with it. A change that touches several rows at once, such as deleting a post with its comments, relies on transactions.
 
 PostgreSQL and MySQL are the usual choices here. <!-- link: technologies/postgresql --> <!-- link: technologies/mysql -->
 

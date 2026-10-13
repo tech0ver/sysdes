@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 284" role="img" aria-labelledby="half-order-title half-order-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="half-order-title">A crash between statements with autocommit and with one transaction</title>
+  <desc id="half-order-desc">The same purchase: insert the order, update seats 14 and 15, insert the payment. The server crashes after the second statement. With autocommit, each statement committed on its own, so the order and the sold seats stay and the payment never comes: half an order. In one transaction, the database rolls back both statements after the crash, and nothing changes.</desc>
+  <defs>
+    <marker id="half-order-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="half-order-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="276"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Autocommit</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">each statement is a transaction</text>
+  <rect class="dg-box-accent" x="16" y="70" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="106" y="88" text-anchor="middle">INSERT order 501</text>
+  <text class="dg-mono dg-muted-text" x="212" y="88">COMMITTED</text>
+  <rect class="dg-box-accent" x="16" y="110" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="106" y="128" text-anchor="middle">UPDATE seats 14, 15</text>
+  <text class="dg-mono dg-muted-text" x="212" y="128">COMMITTED</text>
+  <rect class="dg-box-failed" x="16" y="186" width="180" height="28" rx="4"/>
+  <text class="dg-code-muted" x="106" y="204" text-anchor="middle">INSERT payment</text>
+  <text class="dg-mono dg-muted-text" x="212" y="204">NEVER RAN</text>
+  <line class="dg-cross" x1="16" y1="172" x2="344" y2="172"/>
+  <text class="dg-mono dg-muted-text" x="344" y="164" text-anchor="end">CRASH</text>
+  <text class="dg-result" x="180" y="264" text-anchor="middle">Seats sold, no payment</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">One transaction</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">BEGIN … COMMIT</text>
+  <rect class="dg-box" x="376" y="70" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="466" y="88" text-anchor="middle">INSERT order 501</text>
+  <text class="dg-mono dg-muted-text" x="572" y="88">ROLLED BACK</text>
+  <rect class="dg-box" x="376" y="110" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="466" y="128" text-anchor="middle">UPDATE seats 14, 15</text>
+  <text class="dg-mono dg-muted-text" x="572" y="128">ROLLED BACK</text>
+  <rect class="dg-box-failed" x="376" y="186" width="180" height="28" rx="4"/>
+  <text class="dg-code-muted" x="466" y="204" text-anchor="middle">INSERT payment</text>
+  <text class="dg-mono dg-muted-text" x="572" y="204">NEVER RAN</text>
+  <line class="dg-cross" x1="376" y1="172" x2="704" y2="172"/>
+  <text class="dg-mono dg-muted-text" x="704" y="164" text-anchor="end">CRASH</text>
+  <text class="dg-result" x="540" y="264" text-anchor="middle">No order, seats free</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 590 290" role="img" aria-labelledby="lost-commit-title lost-commit-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lost-commit-title">A retry after a lost answer to COMMIT, with an idempotency key</title>
+  <desc id="lost-commit-desc">The app inserts order 501 with key b7e4c2d0 and commits; the database commits, but the answer is lost. After a timeout, the app retries with the same key. The insert fails on the unique key, the app rolls that attempt back, reads the order by its key in a new transaction, and gets order 501: one order, not two.</desc>
+  <defs>
+    <marker id="lost-commit-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lost-commit-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="90" y="24" text-anchor="middle">APP</text>
+  <line class="dg-lifeline" x1="90" y1="34" x2="90" y2="276"/>
+  <text class="dg-mono dg-muted-text" x="370" y="24" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="370" y1="34" x2="370" y2="276"/>
+  <text class="dg-mono dg-muted-text" x="230.0" y="58" text-anchor="middle">ORDER 501, KEY b7e4c2d0, COMMIT</text>
+  <path class="dg-arrow" d="M90 68 H362" marker-end="url(#lost-commit-head)"/>
+  <rect class="dg-box" x="382" y="54" width="190" height="26" rx="4"/>
+  <text class="dg-code" x="477.0" y="71.0" text-anchor="middle">committed</text>
+  <text class="dg-mono dg-muted-text" x="290.0" y="104" text-anchor="middle">OK LOST</text>
+  <path class="dg-arrow dg-empty" d="M370 114 H226.0"/>
+  <line class="dg-cross" x1="212.0" y1="108" x2="220.0" y2="120"/>
+  <line class="dg-cross" x1="212.0" y1="120" x2="220.0" y2="108"/>
+  <line class="dg-line" x1="82" y1="148" x2="98" y2="148"/>
+  <text class="dg-mono dg-muted-text" x="76" y="152" text-anchor="end">TIMEOUT</text>
+  <text class="dg-mono dg-accent-text" x="230.0" y="178" text-anchor="middle">RETRY, KEY b7e4c2d0</text>
+  <path class="dg-arrow dg-message" d="M90 188 H362" marker-end="url(#lost-commit-head-accent)"/>
+  <rect class="dg-box-accent" x="382" y="174" width="190" height="26" rx="4"/>
+  <text class="dg-code" x="477.0" y="191.0" text-anchor="middle">duplicate key: rollback</text>
+  <text class="dg-mono dg-muted-text" x="230.0" y="222" text-anchor="middle">NEW TRANSACTION: READ BY KEY</text>
+  <path class="dg-arrow" d="M90 232 H362" marker-end="url(#lost-commit-head)"/>
+  <text class="dg-mono dg-muted-text" x="230.0" y="254" text-anchor="middle">ORDER 501</text>
+  <path class="dg-arrow" d="M370 264 H98" marker-end="url(#lost-commit-head)"/>
+</svg>

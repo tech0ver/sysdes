@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 400 336" role="img" aria-labelledby="compare-and-set-title compare-and-set-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="compare-and-set-title">Compare-and-set: the write succeeds only if the old value is still there</title>
+  <desc id="compare-and-set-desc">Both purchases read 10. A writes 8 only if the value is still 10, one row changes, and A commits. B tries the same, but the value is now 8, so no rows change. B reads again, gets 8, and writes 6 only if the value is still 8.</desc>
+  <defs>
+    <marker id="compare-and-set-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="compare-and-set-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="108.0" y="20" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="292.0" y="20" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="200.0" y="20" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="108.0" y1="28" x2="108.0" y2="296"/>
+  <line class="dg-lifeline" x1="292.0" y1="28" x2="292.0" y2="296"/>
+  <path class="dg-arrow" d="M200.0 28 V296" marker-end="url(#compare-and-set-head)"/>
+  <rect class="dg-box" x="26.0" y="38" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="108.0" y="55" text-anchor="middle">read → 10</text>
+  <rect class="dg-box" x="210.0" y="74" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="91" text-anchor="middle">read → 10</text>
+  <rect class="dg-box" x="26.0" y="110" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="108.0" y="127" text-anchor="middle">set 8 if 10: 1 row</text>
+  <rect class="dg-box" x="26.0" y="146" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="108.0" y="163" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="210.0" y="182" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="199" text-anchor="middle">set 8 if 10: 0 rows</text>
+  <rect class="dg-box" x="210.0" y="218" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="235" text-anchor="middle">read → 8</text>
+  <rect class="dg-box" x="210.0" y="254" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="271" text-anchor="middle">set 6 if 8: 1 row</text>
+  <text class="dg-result" x="200.0" y="322" text-anchor="middle">6 left</text>
+</svg>

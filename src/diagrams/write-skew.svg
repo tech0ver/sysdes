@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 270" role="img" aria-labelledby="write-skew-title write-skew-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="write-skew-title">Write skew under a limit of four tickets, and a shared counter row that stops it</title>
+  <desc id="write-skew-desc">Count, then sell: two tabs of the same buyer both count zero tickets, then each sells three different seats and commits, so the buyer ends up with six. Shared counter row: tab 1 adds 3 to the counter and sells; tab 2 waits for the row, then finds 3 tickets, changes nothing, and rolls back.</desc>
+  <defs>
+    <marker id="write-skew-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="write-skew-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Count, then sell</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="56" text-anchor="middle">TAB 1</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="56" text-anchor="middle">TAB 2</text>
+  <text class="dg-mono dg-muted-text" x="180.0" y="56" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="98.0" y1="64" x2="98.0" y2="224"/>
+  <line class="dg-lifeline" x1="262.0" y1="64" x2="262.0" y2="224"/>
+  <path class="dg-arrow" d="M180.0 64 V224" marker-end="url(#write-skew-head)"/>
+  <rect class="dg-box" x="28.0" y="74" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="91" text-anchor="middle">count → 0</text>
+  <rect class="dg-box" x="192.0" y="110" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="127" text-anchor="middle">count → 0</text>
+  <rect class="dg-box-accent" x="28.0" y="146" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="163" text-anchor="middle">21–23, COMMIT</text>
+  <rect class="dg-box-accent" x="192.0" y="182" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="199" text-anchor="middle">31–33, COMMIT</text>
+  <text class="dg-result" x="180.0" y="250" text-anchor="middle">6 tickets, limit 4</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Shared counter row</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="56" text-anchor="middle">TAB 1</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="56" text-anchor="middle">TAB 2</text>
+  <text class="dg-mono dg-muted-text" x="540.0" y="56" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="458.0" y1="64" x2="458.0" y2="224"/>
+  <line class="dg-lifeline" x1="622.0" y1="64" x2="622.0" y2="224"/>
+  <path class="dg-arrow" d="M540.0 64 V224" marker-end="url(#write-skew-head)"/>
+  <rect class="dg-box" x="388.0" y="74" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="91" text-anchor="middle">0 → 3, 21–23</text>
+  <rect class="dg-box-failed" x="552.0" y="110" width="140" height="26" rx="4"/>
+  <text class="dg-code-muted" x="622.0" y="127" text-anchor="middle">waits for tab 1</text>
+  <rect class="dg-box" x="388.0" y="146" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="163" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="552.0" y="182" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="199" text-anchor="middle">3 + 3 &gt; 4: ROLLBACK</text>
+  <text class="dg-result" x="540.0" y="250" text-anchor="middle">3 tickets</text>
+</svg>
