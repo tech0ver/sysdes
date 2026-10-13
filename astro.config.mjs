@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { satteri } from '@astrojs/markdown-satteri';
-import { glossary } from './src/data/glossary.mjs';
+import { glossary, glossarySkip } from './src/data/glossary.mjs';
 import { glossaryPlugin } from './src/plugins/glossary.mjs';
 import { blocksPlugin } from './src/plugins/blocks.mjs';
 import { diagramsPlugin } from './src/plugins/diagrams.mjs';
@@ -13,7 +13,7 @@ export default defineConfig({
 	site: 'https://tech0ver.github.io',
 	base,
 	markdown: {
-		processor: satteri({ mdastPlugins: [blocksPlugin(), diagramsPlugin()], hastPlugins: [glossaryPlugin({ entries: glossary, base })] }),
+		processor: satteri({ mdastPlugins: [blocksPlugin(), diagramsPlugin()], hastPlugins: [glossaryPlugin({ entries: glossary, skip: glossarySkip, base })] }),
 	},
 	integrations: [
 		starlight({
@@ -28,7 +28,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Fundamentals',
-					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases'],
+					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions'],
 				},
 				'glossary',
 			],

@@ -19,7 +19,7 @@ A personal system design knowledge base: articles for interview preparation, pub
 - `src/data/glossary.mjs` — the site glossary, one entry per term. Rules for entries are in WRITING.md.
 - `src/plugins/glossary.mjs` — Markdown plugin that adds a tooltip to the first mention of each glossary term on a page. Astro 7 renders Markdown with Sätteri, so this is a Sätteri hast plugin (set in `markdown.processor` in `astro.config.mjs`), not a remark plugin.
 - `src/components/Glossary.astro` and `src/content/docs/glossary.mdx` — the Glossary page. `src/styles/glossary.css` — tooltip and glossary styles. `src/routeData.ts` (Starlight route middleware) builds the page's "On this page" list from the glossary.
-- `src/plugins/blocks.mjs` — Sätteri mdast plugin for article callouts: `:::do`, `:::tradeoff`, `:::interview`, `:::avoid`.
+- `src/plugins/blocks.mjs` — Sätteri mdast plugin for article callouts: `:::do`, `:::tradeoff`, `:::interview`, `:::avoid`, `:::distinguish`.
 - `src/plugins/diagrams.mjs` — Sätteri mdast plugin that inlines `src/diagrams/<name>.svg` where a page has `::diagram{name="<name>"}`. Inline SVG lets diagrams take their colors from the theme.
 - `src/styles/article.css` — styles for callouts and diagrams (the `dg-*` classes).
 - Astro caches rendered Markdown until the page file changes. After editing the glossary, a plugin, or a diagram SVG, delete `node_modules/.astro/data-store.json` before `bun run build`, and `.astro/data-store.json` before `bun run dev` (restart a running dev server).

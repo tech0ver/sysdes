@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 720 212" role="img" aria-labelledby="undo-vs-versions-title undo-vs-versions-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="undo-vs-versions-title">Two ways to remove an unfinished change: an undo log and row versions</title>
+  <desc id="undo-vs-versions-desc">Transaction T7 sold seat 14 and has not committed. With an undo log, the row is changed in place and its old value, free, is saved in the undo area; a rollback copies it back. With row versions, the new version sold, created by T7, sits next to the old version free; a rollback only marks T7 as aborted, and readers skip its version until cleanup removes it.</desc>
+  <defs>
+    <marker id="undo-vs-versions-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="undo-vs-versions-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="204"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Undo log</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">change in place, old value saved</text>
+  <text class="dg-mono dg-muted-text" x="16" y="72">TABLE</text>
+  <rect class="dg-box-accent" x="16" y="80" width="200" height="30" rx="4"/>
+  <text class="dg-code" x="116.0" y="99.0" text-anchor="middle">seat 14 | sold | T7</text>
+  <text class="dg-mono dg-muted-text" x="16" y="150">UNDO AREA</text>
+  <rect class="dg-box" x="16" y="158" width="200" height="30" rx="4"/>
+  <text class="dg-code" x="116.0" y="177.0" text-anchor="middle">seat 14 | free</text>
+  <path class="dg-arrow" d="M226 173 C270 173 270 95 226 95" marker-end="url(#undo-vs-versions-head)"/>
+  <text class="dg-mono dg-muted-text" x="262" y="130" text-anchor="start">ROLLBACK</text>
+  <text class="dg-mono dg-muted-text" x="262" y="144" text-anchor="start">COPIES BACK</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Row versions</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">new version next to the old one</text>
+  <text class="dg-mono dg-muted-text" x="376" y="72">TABLE</text>
+  <rect class="dg-box" x="376" y="80" width="200" height="30" rx="4"/>
+  <text class="dg-code" x="476.0" y="99.0" text-anchor="middle">seat 14 | free | T3</text>
+  <rect class="dg-box-accent" x="376" y="118" width="200" height="30" rx="4"/>
+  <text class="dg-code" x="476.0" y="137.0" text-anchor="middle">seat 14 | sold | T7</text>
+  <rect class="dg-chip" x="376" y="172" width="120" height="26" rx="4"/>
+  <text class="dg-code" x="436.0" y="189.0" text-anchor="middle">T7: aborted</text>
+  <text class="dg-mono dg-muted-text" x="508" y="189" text-anchor="start">ROLLBACK MARKS IT</text>
+  <text class="dg-sub" x="592" y="138" text-anchor="start">readers skip it</text>
+</svg>

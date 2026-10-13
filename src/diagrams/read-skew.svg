@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 270" role="img" aria-labelledby="read-skew-title read-skew-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="read-skew-title">Read skew under read committed, and the same report under snapshot isolation</title>
+  <desc id="read-skew-desc">The report counts sold seats, then sums payments, at 90 per seat. Between the two queries, a purchase of two seats for 180 commits. Under read committed, the count is 120 seats but the sum is 10,980, which includes the new purchase, so the totals disagree. Under snapshot isolation, both queries read the snapshot taken at the start: 120 seats and 10,800.</desc>
+  <defs>
+    <marker id="read-skew-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="read-skew-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Read committed</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="56" text-anchor="middle">REPORT</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="56" text-anchor="middle">PURCHASE</text>
+  <text class="dg-mono dg-muted-text" x="180.0" y="56" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="98.0" y1="64" x2="98.0" y2="224"/>
+  <line class="dg-lifeline" x1="262.0" y1="64" x2="262.0" y2="224"/>
+  <path class="dg-arrow" d="M180.0 64 V224" marker-end="url(#read-skew-head)"/>
+  <rect class="dg-box" x="28.0" y="74" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="91" text-anchor="middle">seats: 120</text>
+  <rect class="dg-box" x="192.0" y="110" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="127" text-anchor="middle">2 seats, pay 180</text>
+  <rect class="dg-box" x="192.0" y="146" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="163" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="28.0" y="182" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="199" text-anchor="middle">payments: 10 980</text>
+  <text class="dg-result" x="180.0" y="250" text-anchor="middle">120 seats, 10 980 paid</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Snapshot isolation</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="56" text-anchor="middle">REPORT</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="56" text-anchor="middle">PURCHASE</text>
+  <text class="dg-mono dg-muted-text" x="540.0" y="56" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="458.0" y1="64" x2="458.0" y2="224"/>
+  <line class="dg-lifeline" x1="622.0" y1="64" x2="622.0" y2="224"/>
+  <path class="dg-arrow" d="M540.0 64 V224" marker-end="url(#read-skew-head)"/>
+  <rect class="dg-box" x="388.0" y="74" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="91" text-anchor="middle">seats: 120</text>
+  <rect class="dg-box" x="552.0" y="110" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="127" text-anchor="middle">2 seats, pay 180</text>
+  <rect class="dg-box" x="552.0" y="146" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="163" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box" x="388.0" y="182" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="199" text-anchor="middle">payments: 10 800</text>
+  <text class="dg-result" x="540.0" y="250" text-anchor="middle">120 seats, 10 800 paid</text>
+</svg>

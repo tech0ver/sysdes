@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 600 270" role="img" aria-labelledby="serializable-ways-title serializable-ways-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="serializable-ways-title">The same two conflicting transactions under three ways to get serializable</title>
+  <desc id="serializable-ways-desc">Time runs left to right. One thread: T2 starts only after T1 ends. Two-phase locking: T2 starts, needs a row that T1 has locked, and waits until T1 ends. SSI: T1 and T2 run at the same time on snapshots; at commit, the database aborts T2, and T2 runs again.</desc>
+  <defs>
+    <marker id="serializable-ways-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="serializable-ways-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="196" y="30">TIME</text>
+  <path class="dg-arrow" d="M236 26 H584" marker-end="url(#serializable-ways-head)"/>
+  <text class="dg-name" x="16" y="78" text-anchor="start">One thread</text>
+  <text class="dg-mono dg-muted-text" x="196" y="69">T1</text>
+  <rect class="dg-box" x="226" y="52" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="301.0" y="68" text-anchor="middle">runs</text>
+  <text class="dg-mono dg-muted-text" x="196" y="101">T2</text>
+  <rect class="dg-box" x="382" y="84" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="457.0" y="100" text-anchor="middle">runs</text>
+  <line class="dg-rule" x1="16" y1="118" x2="584" y2="118"/>
+  <text class="dg-name" x="16" y="154" text-anchor="start">Two-phase locking</text>
+  <text class="dg-mono dg-muted-text" x="196" y="145">T1</text>
+  <rect class="dg-box" x="226" y="128" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="301.0" y="144" text-anchor="middle">runs</text>
+  <text class="dg-mono dg-muted-text" x="196" y="177">T2</text>
+  <rect class="dg-box-failed" x="266" y="160" width="110" height="24" rx="4"/>
+  <text class="dg-code-muted" x="321.0" y="176" text-anchor="middle">waits for T1</text>
+  <rect class="dg-box" x="382" y="160" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="437.0" y="176" text-anchor="middle">runs</text>
+  <line class="dg-rule" x1="16" y1="194" x2="584" y2="194"/>
+  <text class="dg-name" x="16" y="230" text-anchor="start">SSI</text>
+  <text class="dg-mono dg-muted-text" x="196" y="221">T1</text>
+  <rect class="dg-box" x="226" y="204" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="301.0" y="220" text-anchor="middle">runs</text>
+  <text class="dg-mono dg-muted-text" x="196" y="253">T2</text>
+  <rect class="dg-box-accent" x="266" y="236" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="341.0" y="252" text-anchor="middle">conflict: aborted</text>
+  <rect class="dg-box" x="422" y="236" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="497.0" y="252" text-anchor="middle">runs again</text>
+</svg>

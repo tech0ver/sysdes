@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 200" role="img" aria-labelledby="business-transaction-title business-transaction-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="business-transaction-title">One business transaction made of two short database transactions</title>
+  <desc id="business-transaction-desc">Time runs left to right through a five-minute checkout: the buyer picks seats, fills in the form, and pays. The whole checkout is one business transaction. In the database it is two short transactions: T1 takes the hold at the start, and T2 sells the seats at the end. Between them no transaction is open, and the row alone keeps the claim: held until 10:10.</desc>
+  <defs>
+    <marker id="business-transaction-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="business-transaction-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="200" y="30">10:00</text>
+  <text class="dg-mono dg-muted-text" x="704" y="30" text-anchor="end">10:05</text>
+  <path class="dg-arrow" d="M244 26 H660" marker-end="url(#business-transaction-head)"/>
+  <text class="dg-mono dg-muted-text" x="16" y="66">BUYER</text>
+  <rect class="dg-chip" x="200" y="48" width="90.72" height="26" rx="4"/>
+  <text class="dg-note" x="245.36" y="65.0" text-anchor="middle">picks seats</text>
+  <rect class="dg-chip" x="300.8" y="48" width="302.40000000000003" height="26" rx="4"/>
+  <text class="dg-note" x="452.0" y="65.0" text-anchor="middle">fills in the form</text>
+  <rect class="dg-chip" x="613.28" y="48" width="90.72000000000003" height="26" rx="4"/>
+  <text class="dg-note" x="658.64" y="65.0" text-anchor="middle">pays</text>
+  <line class="dg-rule" x1="16" y1="92" x2="704" y2="92"/>
+  <text class="dg-name" x="16" y="124" text-anchor="start">Business transaction</text>
+  <rect class="dg-box" x="200" y="106" width="504" height="28" rx="4"/>
+  <text class="dg-note" x="452.0" y="124.0" text-anchor="middle">checkout, 5 minutes</text>
+  <line class="dg-rule" x1="16" y1="152" x2="704" y2="152"/>
+  <text class="dg-name" x="16" y="184" text-anchor="start">Database</text>
+  <rect class="dg-box-accent" x="200" y="166" width="90.72" height="28" rx="4"/>
+  <text class="dg-note" x="245.36" y="184.0" text-anchor="middle">T1: take hold</text>
+  <rect class="dg-chip" x="300.8" y="166" width="302.4" height="28" rx="4"/>
+  <text class="dg-code-muted" x="452.0" y="184.0" text-anchor="middle">nothing open; row: held until 10:10</text>
+  <rect class="dg-box-accent" x="613.28" y="166" width="90.72" height="28" rx="4"/>
+  <text class="dg-note" x="658.64" y="184.0" text-anchor="middle">T2: sell</text>
+</svg>

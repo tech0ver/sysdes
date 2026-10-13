@@ -4,6 +4,8 @@
 // Rules:
 // - Only the first mention of a term on a page gets a tooltip.
 // - A page that a term's `readMore` points to explains it in its text, so it gets no tooltip there.
+//   The same holds for the pages in `explainedIn`: they explain the word in their own sense.
+// - Phrases in `skip` (such as product names that contain a term: "SQL Server") never get a tooltip.
 // - Text inside links, code, headings, and the glossary page itself is left alone.
 // - Matching is exact and case-sensitive on the term's aliases, on whole words. Without
 //   aliases, a term also matches with a lowercase first letter ("Failover" finds "failover").
@@ -32,13 +34,14 @@ function readMoreSlug(href) {
 	return href.split('#')[0].replace(/^\/+|\/+$/g, '');
 }
 
-export function glossaryPlugin({ entries, base = '/' }) {
+export function glossaryPlugin({ entries, skip = [], base = '/' }) {
 	const root = base.endsWith('/') ? base : `${base}/`;
 	const byAlias = new Map();
 	for (const entry of entries) {
 		const lowerFirst = entry.term[0].toLowerCase() + entry.term.slice(1);
 		for (const alias of entry.aliases ?? [entry.term, lowerFirst]) byAlias.set(alias, entry);
 	}
+	for (const phrase of skip) byAlias.set(phrase, null);
 	const aliases = [...byAlias.keys()].sort((a, b) => b.length - a.length);
 	const pattern = new RegExp(`(?<![\\w/.-])(${aliases.map(escapeRegExp).join('|')})(?![\\w/-])`, 'g');
 
@@ -65,7 +68,11 @@ export function glossaryPlugin({ entries, base = '/' }) {
 	return (factoryCtx) => {
 		const slug = pageSlug(factoryCtx.fileURL);
 		if (slug === undefined || slug === 'glossary') return null;
-		const used = new Set(entries.filter((e) => e.readMore && readMoreSlug(e.readMore.href) === slug).map((e) => e.id));
+		const used = new Set(
+			entries
+				.filter((e) => (e.readMore && readMoreSlug(e.readMore.href) === slug) || e.explainedIn?.includes(slug))
+				.map((e) => e.id),
+		);
 
 		return {
 			name: 'sysdis-glossary',
@@ -79,7 +86,7 @@ export function glossaryPlugin({ entries, base = '/' }) {
 				pattern.lastIndex = 0;
 				for (let m; (m = pattern.exec(value)); ) {
 					const entry = byAlias.get(m[1]);
-					if (used.has(entry.id)) continue;
+					if (!entry || used.has(entry.id)) continue;
 					used.add(entry.id);
 					if (m.index > last) parts.push({ type: 'text', value: value.slice(last, m.index) });
 					parts.push({ type: 'raw', value: tooltip(entry, m[1]) });

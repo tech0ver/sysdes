@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 270" role="img" aria-labelledby="lost-update-title lost-update-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lost-update-title">A lost update under read committed, and an atomic update that prevents it</title>
+  <desc id="lost-update-desc">Two purchases of two standing tickets each, with 10 places left. Read, then write: both read 10, A writes 8 and commits, then B writes 8 and commits; four tickets are sold while the count drops by two. Atomic update: A computes 10 minus 2 and holds the row lock; B waits until A commits, then computes 8 minus 2 and writes 6.</desc>
+  <defs>
+    <marker id="lost-update-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lost-update-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Read, then write</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="56" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="56" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="180.0" y="56" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="98.0" y1="64" x2="98.0" y2="224"/>
+  <line class="dg-lifeline" x1="262.0" y1="64" x2="262.0" y2="224"/>
+  <path class="dg-arrow" d="M180.0 64 V224" marker-end="url(#lost-update-head)"/>
+  <rect class="dg-box" x="28.0" y="74" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="91" text-anchor="middle">read → 10</text>
+  <rect class="dg-box" x="192.0" y="110" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="127" text-anchor="middle">read → 10</text>
+  <rect class="dg-box" x="28.0" y="146" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="163" text-anchor="middle">write 8, COMMIT</text>
+  <rect class="dg-box-accent" x="192.0" y="182" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="199" text-anchor="middle">write 8, COMMIT</text>
+  <text class="dg-result" x="180.0" y="250" text-anchor="middle">4 sold, 8 left</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Atomic update</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="56" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="56" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="540.0" y="56" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="458.0" y1="64" x2="458.0" y2="224"/>
+  <line class="dg-lifeline" x1="622.0" y1="64" x2="622.0" y2="224"/>
+  <path class="dg-arrow" d="M540.0 64 V224" marker-end="url(#lost-update-head)"/>
+  <rect class="dg-box" x="388.0" y="74" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="91" text-anchor="middle">10 − 2 → 8</text>
+  <rect class="dg-box-failed" x="552.0" y="110" width="140" height="26" rx="4"/>
+  <text class="dg-code-muted" x="622.0" y="127" text-anchor="middle">waits for A</text>
+  <rect class="dg-box" x="388.0" y="146" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="163" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="552.0" y="182" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="199" text-anchor="middle">8 − 2 → 6, COMMIT</text>
+  <text class="dg-result" x="540.0" y="250" text-anchor="middle">4 sold, 6 left</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 400 296" role="img" aria-labelledby="check-then-write-title check-then-write-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="check-then-write-title">Two purchases check the same seats, then both sell them</title>
+  <desc id="check-then-write-desc">Purchase A and purchase B both check that seats 14 and 15 are free and both find them free. A sells them and commits. B then sells the same seats and commits, overwriting A: the seats end up in B’s order.</desc>
+  <defs>
+    <marker id="check-then-write-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="check-then-write-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="108.0" y="20" text-anchor="middle">PURCHASE A</text>
+  <text class="dg-mono dg-muted-text" x="292.0" y="20" text-anchor="middle">PURCHASE B</text>
+  <text class="dg-mono dg-muted-text" x="200.0" y="20" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="108.0" y1="28" x2="108.0" y2="260"/>
+  <line class="dg-lifeline" x1="292.0" y1="28" x2="292.0" y2="260"/>
+  <path class="dg-arrow" d="M200.0 28 V260" marker-end="url(#check-then-write-head)"/>
+  <rect class="dg-box" x="26.0" y="38" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="108.0" y="55" text-anchor="middle">check: free</text>
+  <rect class="dg-box" x="210.0" y="74" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="91" text-anchor="middle">check: free</text>
+  <rect class="dg-box" x="26.0" y="110" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="108.0" y="127" text-anchor="middle">sell 14, 15</text>
+  <rect class="dg-box" x="26.0" y="146" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="108.0" y="163" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="210.0" y="182" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="199" text-anchor="middle">sell 14, 15</text>
+  <rect class="dg-box" x="210.0" y="218" width="164" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="235" text-anchor="middle">COMMIT</text>
+  <text class="dg-result" x="200.0" y="286" text-anchor="middle">14, 15 are in B’s order</text>
+</svg>
