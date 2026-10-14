@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 720 196" role="img" aria-labelledby="new-follower-title new-follower-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="new-follower-title">A new follower starts from a snapshot and catches up from the log</title>
+  <desc id="new-follower-desc">The leader log holds changes 1 to 12. A snapshot matches log position 6. The new follower loads the snapshot, which covers changes 1 to 6, then applies changes 7 to 12 from the leader log. The leader must keep changes 7 to 12 until the follower has read them.</desc>
+  <defs>
+    <marker id="new-follower-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="new-follower-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="20" y="64" text-anchor="start">Leader log</text>
+  <rect class="dg-chip" x="150" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="170.0" y="65.0" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="196" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="216.0" y="65.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="242" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="65.0" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="288" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="308.0" y="65.0" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="334" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="354.0" y="65.0" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="380" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="400.0" y="65.0" text-anchor="middle">6</text>
+  <rect class="dg-chip" x="426" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="446.0" y="65.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="472" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="492.0" y="65.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="518" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="538.0" y="65.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="564" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="584.0" y="65.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="610" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="630.0" y="65.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="656" y="48" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="676.0" y="65.0" text-anchor="middle">12</text>
+  <line class="dg-guide" x1="423.0" y1="30" x2="423.0" y2="186"/>
+  <text class="dg-mono dg-accent-text" x="423.0" y="22" text-anchor="middle">POSITION 6</text>
+  <path class="dg-arrow" d="M426 82 V90 H696 V82"/>
+  <text class="dg-mono dg-muted-text" x="561.0" y="104" text-anchor="middle">KEPT FOR THE FOLLOWER</text>
+  <text class="dg-name" x="20" y="164" text-anchor="start">New follower</text>
+  <rect class="dg-box" x="150" y="148" width="270" height="26" rx="4"/>
+  <text class="dg-code" x="285.0" y="165.0" text-anchor="middle">snapshot: 1-6</text>
+  <rect class="dg-chip" x="426" y="148" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="446.0" y="165.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="472" y="148" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="492.0" y="165.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="518" y="148" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="538.0" y="165.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="564" y="148" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="584.0" y="165.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="610" y="148" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="630.0" y="165.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="656" y="148" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="676.0" y="165.0" text-anchor="middle">12</text>
+  <path class="dg-arrow" d="M436 116 V140" marker-end="url(#new-follower-head)"/>
+  <text class="dg-mono dg-muted-text" x="444" y="132" text-anchor="start">CATCH UP</text>
+</svg>

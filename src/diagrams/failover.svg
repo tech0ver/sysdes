@@ -1,0 +1,85 @@
+<svg class="diagram-svg" viewBox="0 0 720 262" role="img" aria-labelledby="failover-title failover-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="failover-title">Failover to the most up-to-date follower</title>
+  <desc id="failover-desc">Two panels with the same three nodes and log positions 94 to 100. Before: the leader has changes up to 100 and fails; follower 1 has changes up to 98, follower 2 up to 95. Changes 99 and 100 were confirmed but exist only on the leader. After failover: the old leader is down, follower 1 is the new leader with changes up to 98, and follower 2 replicates from it and catches up to 98. Changes 99 and 100 are lost.</desc>
+  <defs>
+    <marker id="failover-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="failover-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="254"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Before: the leader fails</text>
+  <text class="dg-name" x="20" y="67" text-anchor="start">Leader</text>
+  <text class="dg-sub" x="20" y="84" text-anchor="start">fails</text>
+  <rect class="dg-chip" x="144" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="156.0" y="68.0" text-anchor="middle">94</text>
+  <rect class="dg-chip" x="172" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="184.0" y="68.0" text-anchor="middle">95</text>
+  <rect class="dg-chip" x="200" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="212.0" y="68.0" text-anchor="middle">96</text>
+  <rect class="dg-chip" x="228" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="240.0" y="68.0" text-anchor="middle">97</text>
+  <rect class="dg-chip" x="256" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="268.0" y="68.0" text-anchor="middle">98</text>
+  <rect class="dg-box-accent" x="284" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="296.0" y="68.0" text-anchor="middle">99</text>
+  <rect class="dg-box-accent" x="312" y="52" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="324.0" y="68.0" text-anchor="middle">100</text>
+  <text class="dg-name" x="20" y="131" text-anchor="start">Follower 1</text>
+  <rect class="dg-chip" x="144" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="156.0" y="132.0" text-anchor="middle">94</text>
+  <rect class="dg-chip" x="172" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="184.0" y="132.0" text-anchor="middle">95</text>
+  <rect class="dg-chip" x="200" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="212.0" y="132.0" text-anchor="middle">96</text>
+  <rect class="dg-chip" x="228" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="240.0" y="132.0" text-anchor="middle">97</text>
+  <rect class="dg-chip" x="256" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="268.0" y="132.0" text-anchor="middle">98</text>
+  <rect class="dg-box-failed" x="284" y="116" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="312" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-name" x="20" y="195" text-anchor="start">Follower 2</text>
+  <rect class="dg-chip" x="144" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="156.0" y="196.0" text-anchor="middle">94</text>
+  <rect class="dg-chip" x="172" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="184.0" y="196.0" text-anchor="middle">95</text>
+  <rect class="dg-box-failed" x="200" y="180" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="228" y="180" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="256" y="180" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="284" y="180" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="312" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">After failover</text>
+  <text class="dg-name" x="380" y="67" text-anchor="start">Old leader</text>
+  <text class="dg-sub" x="380" y="84" text-anchor="start">down</text>
+  <rect class="dg-box-failed" x="504" y="52" width="192" height="24" rx="4"/>
+  <text class="dg-code-muted" x="600.0" y="68.0" text-anchor="middle">down</text>
+  <text class="dg-name" x="380" y="131" text-anchor="start">New leader</text>
+  <text class="dg-sub" x="380" y="148" text-anchor="start">was follower 1</text>
+  <rect class="dg-chip" x="504" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="516.0" y="132.0" text-anchor="middle">94</text>
+  <rect class="dg-chip" x="532" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="544.0" y="132.0" text-anchor="middle">95</text>
+  <rect class="dg-chip" x="560" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="572.0" y="132.0" text-anchor="middle">96</text>
+  <rect class="dg-chip" x="588" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="132.0" text-anchor="middle">97</text>
+  <rect class="dg-chip" x="616" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="628.0" y="132.0" text-anchor="middle">98</text>
+  <rect class="dg-box-failed" x="644" y="116" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="672" y="116" width="24" height="24" rx="4"/>
+  <text class="dg-name" x="380" y="195" text-anchor="start">Follower 2</text>
+  <text class="dg-sub" x="380" y="212" text-anchor="start">follows new leader</text>
+  <rect class="dg-chip" x="504" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="516.0" y="196.0" text-anchor="middle">94</text>
+  <rect class="dg-chip" x="532" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="544.0" y="196.0" text-anchor="middle">95</text>
+  <rect class="dg-chip" x="560" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="572.0" y="196.0" text-anchor="middle">96</text>
+  <rect class="dg-chip" x="588" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="196.0" text-anchor="middle">97</text>
+  <rect class="dg-chip" x="616" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-code" x="628.0" y="196.0" text-anchor="middle">98</text>
+  <rect class="dg-box-failed" x="644" y="180" width="24" height="24" rx="4"/>
+  <rect class="dg-box-failed" x="672" y="180" width="24" height="24" rx="4"/>
+  <text class="dg-mono dg-accent-text" x="670.0" y="108" text-anchor="middle">LOST</text>
+  <text class="dg-result" x="180" y="246" text-anchor="middle">99 and 100 confirmed, only on the leader</text>
+  <text class="dg-result" x="540" y="246" text-anchor="middle">99 and 100 are gone</text>
+</svg>

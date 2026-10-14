@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 276" role="img" aria-labelledby="hinted-handoff-title hinted-handoff-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="hinted-handoff-title">Hinted handoff</title>
+  <desc id="hinted-handoff-desc">A writer sends version 2 to replicas A, B, and C. C is down, so node D stores the write with a hint that it belongs to C. A and B save it. When C comes back, still with version 1, D hands version 2 over to C.</desc>
+  <defs>
+    <marker id="hinted-handoff-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="hinted-handoff-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="60" y="28" text-anchor="middle">WRITER</text>
+  <line class="dg-lifeline" x1="60" y1="40" x2="60" y2="266"/>
+  <text class="dg-mono dg-muted-text" x="200" y="28" text-anchor="middle">REPLICA A</text>
+  <line class="dg-lifeline" x1="200" y1="40" x2="200" y2="266"/>
+  <text class="dg-mono dg-muted-text" x="340" y="28" text-anchor="middle">REPLICA B</text>
+  <line class="dg-lifeline" x1="340" y1="40" x2="340" y2="266"/>
+  <text class="dg-mono dg-muted-text" x="480" y="28" text-anchor="middle">REPLICA C</text>
+  <line class="dg-lifeline" x1="480" y1="40" x2="480" y2="266"/>
+  <text class="dg-mono dg-muted-text" x="630" y="28" text-anchor="middle">NODE D</text>
+  <line class="dg-lifeline" x1="630" y1="40" x2="630" y2="266"/>
+  <rect class="dg-box-failed" x="440" y="82" width="80" height="90" rx="4"/>
+  <text class="dg-code-muted" x="480.0" y="131.0" text-anchor="middle">down</text>
+  <text class="dg-mono dg-muted-text" x="130.0" y="62" text-anchor="middle">WRITE v2</text>
+  <path class="dg-arrow" d="M60 70 H622" marker-end="url(#hinted-handoff-head)"/>
+  <rect class="dg-chip" x="160" y="82" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="200.0" y="98.0" text-anchor="middle">v2</text>
+  <rect class="dg-chip" x="300" y="82" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="340.0" y="98.0" text-anchor="middle">v2</text>
+  <rect class="dg-box" x="572" y="82" width="116" height="40" rx="4"/>
+  <text class="dg-code" x="630" y="98" text-anchor="middle">hint for C</text>
+  <text class="dg-code-muted" x="630" y="114" text-anchor="middle">v2</text>
+  <rect class="dg-box" x="440" y="182" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="198.0" text-anchor="middle">back: v1</text>
+  <text class="dg-mono dg-accent-text" x="555.0" y="224" text-anchor="middle">HAND OFF v2</text>
+  <path class="dg-arrow dg-message" d="M630 232 H488" marker-end="url(#hinted-handoff-head-accent)"/>
+  <rect class="dg-box-accent" x="440" y="242" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="258.0" text-anchor="middle">v2</text>
+</svg>

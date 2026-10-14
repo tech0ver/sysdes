@@ -1,0 +1,46 @@
+<svg class="diagram-svg" viewBox="0 0 720 244" role="img" aria-labelledby="quorum-overlap-title quorum-overlap-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="quorum-overlap-title">A quorum write and a quorum read share a replica</title>
+  <desc id="quorum-overlap-desc">Two panels with three replicas, A, B, and C, so N is 3. Write with W = 2: the client sends version 2 to all three; A and B save it and confirm, C is down and keeps version 1; two confirmations make the write done. Read with R = 2: later, C is back; the client gets answers from B and C, version 2 and version 1, and returns version 2, the newer one. Replica B is in both sets.</desc>
+  <defs>
+    <marker id="quorum-overlap-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="quorum-overlap-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="236"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Write, W = 2</text>
+  <rect class="dg-box" x="130" y="40" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="180.0" y="58.0" text-anchor="middle">client</text>
+  <text class="dg-mono dg-muted-text" x="60" y="154" text-anchor="middle">REPLICA A</text>
+  <text class="dg-mono dg-muted-text" x="180" y="154" text-anchor="middle">REPLICA B</text>
+  <text class="dg-mono dg-muted-text" x="300" y="154" text-anchor="middle">REPLICA C</text>
+  <path class="dg-arrow" d="M140.0 68 L60 140" marker-end="url(#quorum-overlap-head)"/>
+  <path class="dg-arrow" d="M180.0 68 L180 140" marker-end="url(#quorum-overlap-head)"/>
+  <path class="dg-arrow dg-empty" d="M220.0 68 L300 140" marker-end="url(#quorum-overlap-head)"/>
+  <line class="dg-cross" x1="294" y1="106" x2="306" y2="118"/>
+  <line class="dg-cross" x1="294" y1="118" x2="306" y2="106"/>
+  <text class="dg-mono dg-muted-text" x="70" y="110" text-anchor="end">V2</text>
+  <text class="dg-mono dg-muted-text" x="188" y="110" text-anchor="start">V2</text>
+  <rect class="dg-chip" x="15" y="164" width="90" height="26" rx="4"/>
+  <text class="dg-code" x="60.0" y="181.0" text-anchor="middle">v2</text>
+  <rect class="dg-box-accent" x="135" y="164" width="90" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="181.0" text-anchor="middle">v2</text>
+  <rect class="dg-box-failed" x="255" y="164" width="90" height="26" rx="4"/>
+  <text class="dg-code-muted" x="300.0" y="181.0" text-anchor="middle">down: v1</text>
+  <text class="dg-result" x="180" y="226" text-anchor="middle">Done: 2 of 3 saved v2</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Read, R = 2</text>
+  <rect class="dg-box" x="490" y="40" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="540.0" y="58.0" text-anchor="middle">client</text>
+  <text class="dg-mono dg-muted-text" x="420" y="154" text-anchor="middle">REPLICA A</text>
+  <text class="dg-mono dg-muted-text" x="540" y="154" text-anchor="middle">REPLICA B</text>
+  <text class="dg-mono dg-muted-text" x="660" y="154" text-anchor="middle">REPLICA C</text>
+  <path class="dg-arrow" d="M540 140 L540.0 76" marker-end="url(#quorum-overlap-head)"/>
+  <path class="dg-arrow" d="M660 140 L580.0 76" marker-end="url(#quorum-overlap-head)"/>
+  <text class="dg-mono dg-muted-text" x="548" y="110" text-anchor="start">V2</text>
+  <text class="dg-mono dg-muted-text" x="638" y="110" text-anchor="end">V1</text>
+  <rect class="dg-box-failed" x="375" y="164" width="90" height="26" rx="4"/>
+  <text class="dg-code-muted" x="420.0" y="181.0" text-anchor="middle">slow</text>
+  <rect class="dg-box-accent" x="495" y="164" width="90" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="181.0" text-anchor="middle">v2</text>
+  <rect class="dg-chip" x="615" y="164" width="90" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="181.0" text-anchor="middle">v1</text>
+  <text class="dg-result" x="540" y="226" text-anchor="middle">Returns v2, the newer one</text>
+</svg>

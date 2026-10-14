@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 360 250" role="img" aria-labelledby="ryw-problem-title ryw-problem-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ryw-problem-title">A user does not see their own write</title>
+  <desc id="ryw-problem-desc">The shopper sends a new address to the leader, which stores it at log position 41. The checkout page then reads from a follower that has applied the log only up to position 39, so it returns the old address.</desc>
+  <defs>
+    <marker id="ryw-problem-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ryw-problem-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="55" y="20" text-anchor="middle">SHOPPER</text>
+  <line class="dg-lifeline" x1="55" y1="32" x2="55" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="175" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="175" y1="32" x2="175" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="295" y="20" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="295" y1="32" x2="295" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="54" text-anchor="middle">NEW ADDRESS</text>
+  <path class="dg-arrow" d="M55 62 H167" marker-end="url(#ryw-problem-head)"/>
+  <rect class="dg-box" x="135" y="74" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="175.0" y="90.0" text-anchor="middle">pos 41</text>
+  <rect class="dg-box-failed" x="255" y="74" width="80" height="24" rx="4"/>
+  <text class="dg-code-muted" x="295.0" y="90.0" text-anchor="middle">pos 39</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="132" text-anchor="middle">READ ADDRESS</text>
+  <path class="dg-arrow" d="M55 140 H287" marker-end="url(#ryw-problem-head)"/>
+  <text class="dg-mono dg-accent-text" x="235.0" y="188" text-anchor="middle">OLD ADDRESS</text>
+  <path class="dg-arrow dg-message" d="M295 196 H63" marker-end="url(#ryw-problem-head-accent)"/>
+</svg>

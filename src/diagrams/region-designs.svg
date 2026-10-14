@@ -1,0 +1,78 @@
+<svg class="diagram-svg" viewBox="0 0 720 430" role="img" aria-labelledby="region-designs-title region-designs-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="region-designs-title">Four designs for writes from several regions</title>
+  <desc id="region-designs-desc">Four panels with the same three regions, US East, US West, and EU. One leader region: the leader is in US East and the other regions hold followers. A home region per user: US users have their leader in US East, EU users in the EU. A majority across three regions: a write waits until two of the three regions have saved it. Multi-leader: each region has a leader, and the leaders replicate to each other asynchronously.</desc>
+  <defs>
+    <marker id="region-designs-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="region-designs-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="422"/>
+  <line class="dg-rule" x1="8" y1="215" x2="712" y2="215"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">One leader region</text>
+  <rect class="dg-zone" x="20" y="40" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="35" y="60">US EAST</text>
+  <rect class="dg-box-accent" x="28" y="76" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="68.0" y="93.0" text-anchor="middle">leader</text>
+  <rect class="dg-zone" x="132" y="40" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="147" y="60">US WEST</text>
+  <rect class="dg-box" x="140" y="76" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="93.0" text-anchor="middle">follower</text>
+  <rect class="dg-zone" x="244" y="40" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="259" y="60">EU</text>
+  <rect class="dg-box" x="252" y="76" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="93.0" text-anchor="middle">follower</text>
+  <path class="dg-arrow dg-empty" d="M68 102 V128 H292 V110" marker-end="url(#region-designs-head)"/>
+  <path class="dg-arrow dg-empty" d="M180 128 V110" marker-end="url(#region-designs-head)"/>
+  <text class="dg-mono dg-muted-text" x="180" y="162" text-anchor="middle">ASYNC</text>
+  <text class="dg-result" x="180" y="190" text-anchor="middle">EU writes cross the ocean</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Home region per user</text>
+  <rect class="dg-zone" x="380" y="40" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="395" y="60">US EAST</text>
+  <rect class="dg-box-accent" x="388" y="76" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="428.0" y="93.0" text-anchor="middle">leader, US</text>
+  <rect class="dg-zone" x="492" y="40" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="507" y="60">US WEST</text>
+  <rect class="dg-box" x="500" y="76" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="93.0" text-anchor="middle">follower</text>
+  <rect class="dg-zone" x="604" y="40" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="619" y="60">EU</text>
+  <rect class="dg-box-accent" x="612" y="76" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="652.0" y="93.0" text-anchor="middle">leader, EU</text>
+  <path class="dg-arrow dg-empty" d="M428 102 V128 H652 V102"/>
+  <path class="dg-arrow dg-empty" d="M540 128 V110" marker-end="url(#region-designs-head)"/>
+  <text class="dg-mono dg-muted-text" x="540" y="162" text-anchor="middle">ASYNC BOTH WAYS</text>
+  <text class="dg-result" x="540" y="190" text-anchor="middle">Each record has one leader</text>
+  <text class="dg-name" x="180" y="239" text-anchor="middle">Majority across regions</text>
+  <rect class="dg-zone" x="20" y="255" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="35" y="275">US EAST</text>
+  <rect class="dg-box-accent" x="28" y="291" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="68.0" y="308.0" text-anchor="middle">leader</text>
+  <rect class="dg-zone" x="132" y="255" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="147" y="275">US WEST</text>
+  <rect class="dg-box" x="140" y="291" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="308.0" text-anchor="middle">follower</text>
+  <rect class="dg-zone" x="244" y="255" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="259" y="275">EU</text>
+  <rect class="dg-box" x="252" y="291" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="308.0" text-anchor="middle">follower</text>
+  <path class="dg-arrow dg-message" d="M68 317 V343 H292 V325" marker-end="url(#region-designs-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M180 343 V325" marker-end="url(#region-designs-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="180" y="377" text-anchor="middle">SYNC, MAJORITY</text>
+  <text class="dg-result" x="180" y="405" text-anchor="middle">Write waits for 2 of 3 regions</text>
+  <text class="dg-name" x="540" y="239" text-anchor="middle">Multi-leader</text>
+  <rect class="dg-zone" x="380" y="255" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="395" y="275">US EAST</text>
+  <rect class="dg-box-accent" x="388" y="291" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="428.0" y="308.0" text-anchor="middle">leader</text>
+  <rect class="dg-zone" x="492" y="255" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="507" y="275">US WEST</text>
+  <rect class="dg-box-accent" x="500" y="291" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="308.0" text-anchor="middle">leader</text>
+  <rect class="dg-zone" x="604" y="255" width="96" height="104" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="619" y="275">EU</text>
+  <rect class="dg-box-accent" x="612" y="291" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="652.0" y="308.0" text-anchor="middle">leader</text>
+  <path class="dg-arrow dg-empty" d="M428 317 V343 H652 V317"/>
+  <path class="dg-arrow dg-empty" d="M540 317 V343"/>
+  <text class="dg-mono dg-muted-text" x="540" y="377" text-anchor="middle">ASYNC BOTH WAYS</text>
+  <text class="dg-result" x="540" y="405" text-anchor="middle">Local writes, conflicts</text>
+</svg>

@@ -28,7 +28,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Fundamentals',
-					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions'],
+					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication'],
 				},
 				'glossary',
 			],

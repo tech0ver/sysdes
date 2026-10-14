@@ -36,6 +36,11 @@ const transactions = (anchor, section) => ({
 	label: `Transactions: ${section}`,
 });
 
+const replication = (anchor, section) => ({
+	href: `fundamentals/replication/#${anchor}`,
+	label: `Replication: ${section}`,
+});
+
 /** Phrases that contain a term but are not that term, such as product names. They never get a tooltip. */
 export const glossarySkip = ['SQL Server', 'commit the layout'];
 
@@ -412,9 +417,9 @@ export const glossary = [
 		aliases: ['consistency', 'Consistency'],
 		short: 'The rules for which version of data a read may return.',
 		explanation:
-			'With strong consistency, a read sees the latest completed write. Weaker consistency allows older data, which needs less coordination between copies and makes reads faster.',
+			'Stronger guarantees need more coordination between copies. Weaker ones allow older data and need less coordination.',
 		readMore: { href: 'https://en.wikipedia.org/wiki/Consistency_model', label: 'Wikipedia: Consistency model' },
-		explainedIn: ['fundamentals/transactions'],
+		explainedIn: ['fundamentals/transactions', 'fundamentals/replication'],
 	},
 	{
 		id: 'deadline',
@@ -1489,5 +1494,406 @@ export const glossary = [
 		explanation:
 			'Merging sorted inputs reads each of them once, in order, which suits files on disk.',
 		readMore: { href: 'https://en.wikipedia.org/wiki/Merge_sort', label: 'Wikipedia: Merge sort' },
+	},
+	{
+		id: 'replication',
+		term: 'Replication',
+		aliases: ['replication', 'Replication', 'replicated', 'replicate', 'replicates'],
+		short: 'Keeping a copy of the same data on several nodes.',
+		explanation:
+			'Copies let the data survive the loss of a node, spread reads, and sit close to users. The hard part is keeping them in step while the data changes.',
+		readMore: replication('keeping-a-copy-on-another-node', 'Keeping a copy on another node'),
+	},
+	{
+		id: 'replica',
+		term: 'Replica',
+		aliases: ['replica', 'replicas', 'Replica', 'Replicas'],
+		short: 'One copy of the data in a replicated system.',
+		explanation:
+			'In a leader-based design, a replica is either the leader or a follower.',
+		readMore: replication('keeping-a-copy-on-another-node', 'Keeping a copy on another node'),
+	},
+	{
+		id: 'leader',
+		term: 'Leader',
+		aliases: ['leader', 'leaders', 'Leader', 'Leaders'],
+		short: 'The replica that accepts writes and decides their order.',
+		explanation:
+			'It sends each change to the followers through the replication log. Products also call it the primary or the source.',
+		readMore: replication('keeping-a-copy-on-another-node', 'Keeping a copy on another node'),
+	},
+	{
+		id: 'follower',
+		term: 'Follower',
+		aliases: ['follower', 'followers', 'Follower', 'Followers', 'read replica', 'read replicas'],
+		explainedIn: ['fundamentals/databases'],
+		short: 'A replica that applies the changes of a leader in the same order.',
+		explanation:
+			'It serves reads and can become the leader after a failover. Products also call it a secondary, a standby, or a read replica.',
+		readMore: replication('keeping-a-copy-on-another-node', 'Keeping a copy on another node'),
+	},
+	{
+		id: 'replication-log',
+		term: 'Replication log',
+		aliases: ['replication log', 'Replication log', 'replication logs'],
+		short: 'The stream of changes that a leader sends to its followers, in the order it applied them.',
+		explanation:
+			'It can carry statements, pages of the WAL, or changed rows. A position in it measures how far a follower has got.',
+		readMore: replication('keeping-a-copy-on-another-node', 'Keeping a copy on another node'),
+	},
+	{
+		id: 'synchronous-replication',
+		term: 'Synchronous replication',
+		aliases: ['synchronous replication', 'Synchronous replication', 'synchronous follower', 'synchronous followers'],
+		short: 'Replication where the leader confirms a write only after a follower has saved it.',
+		explanation:
+			'A confirmed write survives the loss of the leader if failover promotes a follower that has it. Every write waits for the follower, and writes stop when it fails.',
+		readMore: replication('deciding-when-a-write-is-done', 'Deciding when a write is done'),
+	},
+	{
+		id: 'asynchronous-replication',
+		term: 'Asynchronous replication',
+		aliases: ['asynchronous replication', 'Asynchronous replication', 'asynchronous follower', 'asynchronous followers'],
+		short: 'Replication where confirming a write does not wait for followers.',
+		explanation:
+			'Writes are fast and do not depend on followers, but a confirmed write can be lost if the leader fails before a follower gets it.',
+		readMore: replication('deciding-when-a-write-is-done', 'Deciding when a write is done'),
+	},
+	{
+		id: 'semi-synchronous-replication',
+		term: 'Semi-synchronous replication',
+		aliases: ['semi-synchronous replication', 'Semi-synchronous replication', 'semi-synchronous', 'Semi-synchronous'],
+		short: 'Replication with one synchronous follower and the rest asynchronous.',
+		explanation:
+			'While the synchronous follower answers, every confirmed write is on two nodes. Some products fall back to asynchronous replication when it does not answer in time.',
+		readMore: replication('deciding-when-a-write-is-done', 'Deciding when a write is done'),
+	},
+	{
+		id: 'statement-based-replication',
+		term: 'Statement-based replication',
+		aliases: ['statement-based replication', 'Statement-based replication', 'statement logs'],
+		short: 'Replication that sends each write statement for followers to run again.',
+		explanation:
+			'The log is small, but statements such as UUID() or an update with LIMIT can give a different result on each replica.',
+		readMore: replication('choosing-what-the-log-carries', 'Choosing what the log carries'),
+	},
+	{
+		id: 'physical-replication',
+		term: 'Physical replication',
+		aliases: ['physical replication', 'Physical replication', 'physical log', 'physical logs', 'WAL shipping'],
+		short: 'Replication that sends the changed bytes of pages from the WAL.',
+		explanation:
+			'Followers become exact copies, but every replica needs the same storage format, usually the same major version, so a major upgrade usually needs downtime.',
+		readMore: replication('choosing-what-the-log-carries', 'Choosing what the log carries'),
+	},
+	{
+		id: 'logical-replication',
+		term: 'Logical replication',
+		aliases: ['logical replication', 'Logical replication', 'logical log', 'logical row logs', 'row-based replication'],
+		short: 'Replication that sends changed rows instead of statements or pages.',
+		explanation:
+			'Replicas can run different compatible versions, which allows an upgrade with a short switch, and other systems can read the same log for CDC.',
+		readMore: replication('choosing-what-the-log-carries', 'Choosing what the log carries'),
+	},
+	{
+		id: 'log-position',
+		term: 'Log position',
+		aliases: ['log position', 'log positions', 'Log position'],
+		short: 'A point in a replication log, such as the number of the last change a replica applied.',
+		explanation:
+			'A new follower starts from the position of its snapshot. The gap between the leader and a follower shows how much log is still to apply.',
+		readMore: replication('starting-a-new-copy', 'Starting a new copy'),
+	},
+	{
+		id: 'backup',
+		term: 'Backup',
+		aliases: ['backup', 'backups', 'Backup', 'Backups'],
+		short: 'A copy of data as it was at an earlier moment.',
+		explanation:
+			'Replicas copy a bad write within seconds, so recovering data from before it needs an older copy. A backup is proven only by a test restore.',
+		readMore: replication('undoing-a-bad-write', 'Undoing a bad write'),
+	},
+	{
+		id: 'point-in-time-recovery',
+		term: 'Point-in-time recovery',
+		aliases: ['point-in-time recovery', 'Point-in-time recovery'],
+		short: 'Restoring a database to a chosen moment covered by a snapshot and an unbroken archived log.',
+		explanation:
+			'Restore the last snapshot before a mistake and replay the log up to just before it.',
+		readMore: replication('undoing-a-bad-write', 'Undoing a bad write'),
+	},
+	{
+		id: 'replication-lag',
+		term: 'Replication lag',
+		aliases: ['replication lag', 'Replication lag'],
+		short: 'The delay between a write on the leader and the same write on a follower.',
+		explanation:
+			'It is usually under a second but has no upper limit, and reads from a follower that is behind return old data.',
+		readMore: replication('reading-from-a-copy-that-is-behind', 'Reading from a copy that is behind'),
+	},
+	{
+		id: 'stale-read',
+		term: 'Stale read',
+		aliases: ['stale read', 'stale reads', 'Stale read', 'Stale reads'],
+		short: 'A read that returns an older version of data than the latest write.',
+		explanation:
+			'It happens on a replica that has not applied the write yet. Decide for each read whether an old answer is acceptable.',
+		readMore: replication('reading-from-a-copy-that-is-behind', 'Reading from a copy that is behind'),
+	},
+	{
+		id: 'eventual-consistency',
+		term: 'Eventual consistency',
+		aliases: ['eventual consistency', 'Eventual consistency', 'eventually consistent', 'Eventually consistent'],
+		short: 'The promise that replicas match once writes stop and every change can arrive.',
+		explanation:
+			'It says nothing about how long that takes or what a read returns in the meantime. Session guarantees need extra routing or freshness checks.',
+		readMore: replication('reading-from-a-copy-that-is-behind', 'Reading from a copy that is behind'),
+	},
+	{
+		id: 'read-your-writes',
+		term: 'Read-your-writes',
+		aliases: ['read-your-writes', 'Read-your-writes', 'read-after-write consistency'],
+		short: 'The guarantee that a user\'s reads include the user\'s own completed writes.',
+		explanation:
+			'Read a user\'s own data from the leader, or only from replicas that have applied the user\'s last write.',
+		readMore: replication('seeing-your-own-writes', 'Seeing your own writes'),
+	},
+	{
+		id: 'monotonic-reads',
+		term: 'Monotonic reads',
+		aliases: ['monotonic reads', 'Monotonic reads'],
+		short: 'The guarantee that a user never sees older data after seeing newer data.',
+		explanation:
+			'Keep each user on one replica while it is up, and track the newest position the user has seen to stay safe after a switch.',
+		readMore: replication('not-going-back-in-time', 'Not going back in time'),
+	},
+	{
+		id: 'consistent-prefix-reads',
+		term: 'Consistent prefix reads',
+		aliases: ['consistent prefix reads', 'Consistent prefix reads', 'consistent prefix', 'Consistent prefix'],
+		short: 'The guarantee that readers see writes in the order they happened.',
+		explanation:
+			'One query to one replica of one log gives it. It breaks when a page combines reads taken at different points, such as different shards or two queries.',
+		readMore: replication('seeing-writes-in-order', 'Seeing writes in order'),
+	},
+	{
+		id: 'failover',
+		term: 'Failover',
+		aliases: ['failover', 'failovers', 'Failover'],
+		short: 'Moving work to another instance when the active one fails.',
+		explanation:
+			'In replication, a follower that has every confirmed write becomes the leader. A timeout only suspects the failure, so the old leader must be fenced.',
+		readMore: replication('replacing-a-failed-leader', 'Replacing a failed leader'),
+	},
+	{
+		id: 'split-brain',
+		term: 'Split brain',
+		aliases: ['split brain', 'Split brain'],
+		short: 'Two nodes acting as leader at the same time.',
+		explanation:
+			'Both accept writes, and the writes conflict. It happens when an old leader was only slow or cut off.',
+		readMore: replication('replacing-a-failed-leader', 'Replacing a failed leader'),
+	},
+	{
+		id: 'fencing',
+		term: 'Fencing',
+		aliases: ['fencing', 'Fencing'],
+		short: 'Stopping an old leader from writing after a new one takes over.',
+		explanation:
+			'Each new leader gets a higher number, and nodes reject writes with an older one. A timeout alone does not prove the old leader stopped.',
+		readMore: replication('replacing-a-failed-leader', 'Replacing a failed leader'),
+	},
+	{
+		id: 'availability-zone',
+		term: 'Availability zone',
+		aliases: ['availability zone', 'availability zones', 'Availability zone', 'Availability zones'],
+		short: 'One of several separate failure areas in a cloud region, with one or more data centers.',
+		explanation:
+			'Zones are close enough for synchronous replication. Replicas spread over zones survive the loss of a zone, but not of the whole region.',
+		readMore: replication('deciding-when-a-write-is-done', 'Deciding when a write is done'),
+	},
+	{
+		id: 'multi-leader-replication',
+		term: 'Multi-leader replication',
+		aliases: ['multi-leader replication', 'Multi-leader replication', 'multi-leader', 'Multi-leader'],
+		short: 'Replication where several leaders accept writes and replicate them to each other.',
+		explanation:
+			'Each region writes locally and survives being cut off, but concurrent writes conflict and rules over all the data cannot be checked.',
+		readMore: replication('writing-from-several-regions', 'Writing from several regions'),
+	},
+	{
+		id: 'version-vector',
+		term: 'Version vector',
+		aliases: ['version vector', 'version vectors', 'Version vector', 'Version vectors'],
+		short: 'A counter per replica for each key that shows which writes a version has seen.',
+		explanation:
+			'Comparing two vectors tells whether one write replaced the other or both were concurrent. A timestamp cannot tell.',
+		readMore: replication('resolving-conflicting-writes', 'Resolving conflicting writes'),
+	},
+	{
+		id: 'last-write-wins',
+		term: 'Last write wins',
+		aliases: ['last write wins', 'Last write wins', 'LWW'],
+		short: 'Resolving a conflict by keeping the write with the latest timestamp.',
+		explanation:
+			'Replicas converge, but the other write is lost without an error, and clocks that differ can make an older write win.',
+		readMore: replication('resolving-conflicting-writes', 'Resolving conflicting writes'),
+	},
+	{
+		id: 'siblings',
+		term: 'Siblings',
+		aliases: ['siblings', 'Siblings'],
+		short: 'Concurrent versions of one record that a database keeps instead of choosing one.',
+		explanation:
+			'The app merges them on the next read or asks the user.',
+		readMore: replication('resolving-conflicting-writes', 'Resolving conflicting writes'),
+	},
+	{
+		id: 'crdt',
+		term: 'CRDT',
+		aliases: ['CRDT', 'CRDTs'],
+		expansion: 'Conflict-free replicated data type',
+		short: 'A data type whose copies merge concurrent changes by a fixed rule and reach the same value.',
+		explanation:
+			'Each type has its own rule, for example what wins when an add and a remove are concurrent. Replicas converge without a central order.',
+		readMore: replication('resolving-conflicting-writes', 'Resolving conflicting writes'),
+	},
+	{
+		id: 'leaderless-replication',
+		term: 'Leaderless replication',
+		aliases: ['leaderless replication', 'Leaderless replication', 'leaderless', 'Leaderless'],
+		short: 'Replication where any replica accepts writes and clients write to and read from several replicas.',
+		explanation:
+			'No leader promotion is needed when a replica fails. Reads and writes go on while enough replicas answer; concurrent writes still need a conflict rule.',
+		readMore: replication('writing-without-a-leader', 'Writing without a leader'),
+	},
+	{
+		id: 'quorum',
+		term: 'Quorum',
+		aliases: ['quorum', 'quorums', 'Quorum', 'Quorums'],
+		short: 'The number of replicas that must answer a read or a write.',
+		explanation:
+			'With N replicas, W write answers, and R read answers, W + R > N makes the read and write sets overlap, so a read usually reaches the latest confirmed write. It is not a strong guarantee.',
+		readMore: replication('writing-without-a-leader', 'Writing without a leader'),
+	},
+	{
+		id: 'read-repair',
+		term: 'Read repair',
+		aliases: ['read repair', 'Read repair'],
+		short: 'Fixing an old replica during a read by writing the newest or missing versions back to it.',
+		explanation:
+			'It repairs keys that are read often and leaves rarely read keys old.',
+		readMore: replication('repairing-copies-that-missed-writes', 'Repairing copies that missed writes'),
+	},
+	{
+		id: 'hinted-handoff',
+		term: 'Hinted handoff',
+		aliases: ['hinted handoff', 'Hinted handoff'],
+		short: 'Storing writes for a replica that is down on another node and passing them on when it returns.',
+		explanation:
+			'It covers short outages. Data held only as hints is not readable from the key\'s own replicas.',
+		readMore: replication('repairing-copies-that-missed-writes', 'Repairing copies that missed writes'),
+	},
+	{
+		id: 'sloppy-quorum',
+		term: 'Sloppy quorum',
+		aliases: ['sloppy quorum', 'sloppy quorums', 'Sloppy quorum'],
+		short: 'Counting writes on substitute nodes toward a quorum when the usual replicas do not answer.',
+		explanation:
+			'Writes keep succeeding during failures, but reads from the usual replicas may miss them until the handoff.',
+		readMore: replication('writing-without-a-leader', 'Writing without a leader'),
+	},
+	{
+		id: 'anti-entropy',
+		term: 'Anti-entropy',
+		aliases: ['anti-entropy', 'Anti-entropy'],
+		short: 'A background process that compares replicas and copies the data they are missing.',
+		explanation:
+			'It repairs keys that are never read and costs disk and network time. It must cover every replica before deletes are purged, or deleted data comes back.',
+		readMore: replication('repairing-copies-that-missed-writes', 'Repairing copies that missed writes'),
+	},
+	{
+		id: 'merkle-tree',
+		term: 'Merkle tree',
+		aliases: ['Merkle tree', 'Merkle trees'],
+		short: 'A tree of hashes in which each parent hash covers the hashes below it.',
+		explanation:
+			'Two replicas compare the roots and walk down only where hashes differ, so they find different ranges without sending all the data.',
+		readMore: replication('repairing-copies-that-missed-writes', 'Repairing copies that missed writes'),
+	},
+	{
+		id: 'shard',
+		term: 'Shard',
+		aliases: ['shard', 'shards', 'Shard', 'Shards'],
+		short: 'One part of a dataset that is split across nodes.',
+		explanation:
+			'Each node stores and serves only its shards, so data and writes can grow past one machine.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Shard_(database_architecture)', label: 'Wikipedia: Shard (database architecture)' },
+	},
+	{
+		id: 'concurrent-writes',
+		term: 'Concurrent writes',
+		aliases: ['concurrent writes', 'Concurrent writes'],
+		short: 'Writes to the same data where neither knew about the other.',
+		explanation:
+			'Time does not matter: edits hours apart on two offline devices are concurrent. With several leaders or no leader, they conflict and must be resolved.',
+		readMore: replication('resolving-conflicting-writes', 'Resolving conflicting writes'),
+	},
+	{
+		id: 'rpo',
+		term: 'RPO',
+		aliases: ['RPO'],
+		expansion: 'Recovery point objective',
+		short: 'The largest window of recent data a system may lose in a failure, set as a target.',
+		explanation:
+			'A failover to an asynchronous follower typically loses up to its lag. Synchronous replication can bring it to zero for the loss of one node.',
+		readMore: replication('replacing-a-failed-leader', 'Replacing a failed leader'),
+	},
+	{
+		id: 'rto',
+		term: 'RTO',
+		aliases: ['RTO'],
+		expansion: 'Recovery time objective',
+		short: 'The longest time a system may take to recover from a failure, set as a target.',
+		explanation:
+			'A failover takes seconds to minutes. A restore of a large database from backups can take hours.',
+		readMore: replication('replacing-a-failed-leader', 'Replacing a failed leader'),
+	},
+	{
+		id: 'cap',
+		term: 'CAP',
+		aliases: ['CAP'],
+		expansion: 'Consistency, availability, partition tolerance',
+		short: 'The rule that during a network break a replicated system either refuses some requests or lets copies disagree.',
+		explanation:
+			'It applies only while the network is split. In normal work the trade-off is between latency and consistency.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/CAP_theorem', label: 'Wikipedia: CAP theorem' },
+	},
+	{
+		id: 'monotonic-writes',
+		term: 'Monotonic writes',
+		aliases: ['monotonic writes', 'Monotonic writes'],
+		short: 'The guarantee that a user\'s writes apply in the order the user made them.',
+		explanation:
+			'One leader with an intact log gives it to a user who waits for each write. Failover, parallel requests, or several leaders need tracking.',
+		readMore: replication('seeing-writes-in-order', 'Seeing writes in order'),
+	},
+	{
+		id: 'writes-follow-reads',
+		term: 'Writes follow reads',
+		aliases: ['writes follow reads', 'Writes follow reads', 'writes-follow-reads'],
+		short: 'The guarantee that a write applies after the writes its author had read.',
+		explanation:
+			'A reply is never applied before the post it answers. One leader with an intact log gives it to a user who waits for each write.',
+		readMore: replication('seeing-writes-in-order', 'Seeing writes in order'),
+	},
+	{
+		id: 'consensus',
+		term: 'Consensus',
+		aliases: ['consensus', 'Consensus'],
+		short: 'Several nodes agreeing on one value or one order of writes, even when some fail.',
+		explanation:
+			'A majority must agree, so the system survives a minority of failed nodes. Raft and Paxos are common algorithms.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Consensus_(computer_science)', label: 'Wikipedia: Consensus' },
 	},
 ];

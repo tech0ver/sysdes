@@ -1,0 +1,69 @@
+<svg class="diagram-svg" viewBox="0 0 720 296" role="img" aria-labelledby="anti-entropy-title anti-entropy-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="anti-entropy-title">Anti-entropy with Merkle trees</title>
+  <desc id="anti-entropy-desc">Replicas B and C each build a tree of hashes over keys 1 to 100. The top hashes differ. One level down, the hashes of keys 1 to 50 match, so that half is skipped; the hashes of keys 51 to 100 differ. One more level down, keys 51 to 75 match and keys 76 to 100 differ, so only keys 76 to 100 are copied.</desc>
+  <defs>
+    <marker id="anti-entropy-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="anti-entropy-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="232"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Replica B</text>
+  <rect class="dg-box" x="115" y="40" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="180" y="56" text-anchor="middle">keys 1-100</text>
+  <text class="dg-code-muted" x="180" y="72" text-anchor="middle">7e2</text>
+  <line class="dg-line" x1="180" y1="80" x2="98" y2="112"/>
+  <rect class="dg-chip" x="61" y="112" width="74" height="40" rx="4"/>
+  <text class="dg-code" x="98" y="128" text-anchor="middle">1-50</text>
+  <text class="dg-code-muted" x="98" y="144" text-anchor="middle">a3f</text>
+  <line class="dg-line" x1="180" y1="80" x2="262" y2="112"/>
+  <rect class="dg-box" x="225" y="112" width="74" height="40" rx="4"/>
+  <text class="dg-code" x="262" y="128" text-anchor="middle">51-100</text>
+  <text class="dg-code-muted" x="262" y="144" text-anchor="middle">c18</text>
+  <line class="dg-line" x1="98" y1="152" x2="55" y2="184"/>
+  <rect class="dg-chip" x="20" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="55" y="200" text-anchor="middle">1-25</text>
+  <text class="dg-code-muted" x="55" y="216" text-anchor="middle">5d0</text>
+  <line class="dg-line" x1="98" y1="152" x2="137" y2="184"/>
+  <rect class="dg-chip" x="102" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="137" y="200" text-anchor="middle">26-50</text>
+  <text class="dg-code-muted" x="137" y="216" text-anchor="middle">61b</text>
+  <line class="dg-line" x1="262" y1="152" x2="219" y2="184"/>
+  <rect class="dg-box" x="184" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="219" y="200" text-anchor="middle">51-75</text>
+  <text class="dg-code-muted" x="219" y="216" text-anchor="middle">2c4</text>
+  <line class="dg-line" x1="262" y1="152" x2="301" y2="184"/>
+  <rect class="dg-box-accent" x="266" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="301" y="200" text-anchor="middle">76-100</text>
+  <text class="dg-code-muted" x="301" y="216" text-anchor="middle">9aa</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Replica C</text>
+  <rect class="dg-box" x="475" y="40" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="540" y="56" text-anchor="middle">keys 1-100</text>
+  <text class="dg-code-muted" x="540" y="72" text-anchor="middle">4b9</text>
+  <line class="dg-line" x1="540" y1="80" x2="458" y2="112"/>
+  <rect class="dg-chip" x="421" y="112" width="74" height="40" rx="4"/>
+  <text class="dg-code" x="458" y="128" text-anchor="middle">1-50</text>
+  <text class="dg-code-muted" x="458" y="144" text-anchor="middle">a3f</text>
+  <line class="dg-line" x1="540" y1="80" x2="622" y2="112"/>
+  <rect class="dg-box" x="585" y="112" width="74" height="40" rx="4"/>
+  <text class="dg-code" x="622" y="128" text-anchor="middle">51-100</text>
+  <text class="dg-code-muted" x="622" y="144" text-anchor="middle">d02</text>
+  <line class="dg-line" x1="458" y1="152" x2="415" y2="184"/>
+  <rect class="dg-chip" x="380" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="415" y="200" text-anchor="middle">1-25</text>
+  <text class="dg-code-muted" x="415" y="216" text-anchor="middle">5d0</text>
+  <line class="dg-line" x1="458" y1="152" x2="497" y2="184"/>
+  <rect class="dg-chip" x="462" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="497" y="200" text-anchor="middle">26-50</text>
+  <text class="dg-code-muted" x="497" y="216" text-anchor="middle">61b</text>
+  <line class="dg-line" x1="622" y1="152" x2="579" y2="184"/>
+  <rect class="dg-box" x="544" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="579" y="200" text-anchor="middle">51-75</text>
+  <text class="dg-code-muted" x="579" y="216" text-anchor="middle">2c4</text>
+  <line class="dg-line" x1="622" y1="152" x2="661" y2="184"/>
+  <rect class="dg-box-accent" x="626" y="184" width="70" height="40" rx="4"/>
+  <text class="dg-code" x="661" y="200" text-anchor="middle">76-100</text>
+  <text class="dg-code-muted" x="661" y="216" text-anchor="middle">e5f</text>
+  <line class="dg-rule" x1="8" y1="244" x2="712" y2="244"/>
+  <text class="dg-mono dg-muted-text" x="120" y="268" text-anchor="middle">1. TOP HASHES DIFFER</text>
+  <text class="dg-mono dg-muted-text" x="360" y="268" text-anchor="middle">2. 1-50 MATCH: SKIP; 51-100 DIFFER: GO DOWN</text>
+  <text class="dg-mono dg-accent-text" x="600" y="268" text-anchor="middle">3. COPY KEYS 76-100 ONLY</text>
+</svg>

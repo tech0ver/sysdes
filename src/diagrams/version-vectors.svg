@@ -1,0 +1,56 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="version-vectors-title version-vectors-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="version-vectors-title">Version vectors tell a replacement from a concurrent write</title>
+  <desc id="version-vectors-desc">Two panels. Both replicas start with "Red mug" and the vector EU 1, US 1. Left: the EU replica accepts "Mug, red" and raises its own counter to EU 2, US 1. When this reaches the US replica, the new vector is ahead in one counter and behind in none, so "Mug, red" replaces "Red mug". Right: at the same time the US replica accepts "Red coffee mug" with EU 1, US 2. When the writes cross, each vector is ahead in one counter, so the writes are concurrent and both replicas keep both titles.</desc>
+  <defs>
+    <marker id="version-vectors-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="version-vectors-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">One write replaces another</text>
+  <text class="dg-mono dg-muted-text" x="90" y="50" text-anchor="middle">EU REPLICA</text>
+  <line class="dg-lifeline" x1="90" y1="58" x2="90" y2="256"/>
+  <text class="dg-mono dg-muted-text" x="270" y="50" text-anchor="middle">US REPLICA</text>
+  <line class="dg-lifeline" x1="270" y1="58" x2="270" y2="256"/>
+  <rect class="dg-chip" x="25" y="64" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="90" y="81" text-anchor="middle">Red mug</text>
+  <text class="dg-code-muted" x="90" y="97" text-anchor="middle">[EU 1, US 1]</text>
+  <rect class="dg-chip" x="205" y="64" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="270" y="81" text-anchor="middle">Red mug</text>
+  <text class="dg-code-muted" x="270" y="97" text-anchor="middle">[EU 1, US 1]</text>
+  <rect class="dg-box" x="25" y="122" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="90" y="139" text-anchor="middle">Mug, red</text>
+  <text class="dg-code-muted" x="90" y="155" text-anchor="middle">[EU 2, US 1]</text>
+  <path class="dg-arrow" d="M90 168 L264 206" marker-end="url(#version-vectors-head)"/>
+  <rect class="dg-box" x="205" y="214" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="270" y="231" text-anchor="middle">Mug, red</text>
+  <text class="dg-code-muted" x="270" y="247" text-anchor="middle">[EU 2, US 1]</text>
+  <text class="dg-mono dg-muted-text" x="180" y="282" text-anchor="middle">[EU 2, US 1] VS [EU 1, US 1]</text>
+  <text class="dg-result" x="180" y="306" text-anchor="middle">Ahead, not behind: replaces</text>
+  <text class="dg-mono dg-muted-text" x="180" y="176" text-anchor="middle">REPLICATE</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Concurrent writes</text>
+  <text class="dg-mono dg-muted-text" x="450" y="50" text-anchor="middle">EU REPLICA</text>
+  <line class="dg-lifeline" x1="450" y1="58" x2="450" y2="256"/>
+  <text class="dg-mono dg-muted-text" x="630" y="50" text-anchor="middle">US REPLICA</text>
+  <line class="dg-lifeline" x1="630" y1="58" x2="630" y2="256"/>
+  <rect class="dg-chip" x="385" y="64" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="450" y="81" text-anchor="middle">Red mug</text>
+  <text class="dg-code-muted" x="450" y="97" text-anchor="middle">[EU 1, US 1]</text>
+  <rect class="dg-chip" x="565" y="64" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="630" y="81" text-anchor="middle">Red mug</text>
+  <text class="dg-code-muted" x="630" y="97" text-anchor="middle">[EU 1, US 1]</text>
+  <rect class="dg-box" x="385" y="122" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="450" y="139" text-anchor="middle">Mug, red</text>
+  <text class="dg-code-muted" x="450" y="155" text-anchor="middle">[EU 2, US 1]</text>
+  <rect class="dg-box" x="565" y="122" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="630" y="139" text-anchor="middle">Red coffee mug</text>
+  <text class="dg-code-muted" x="630" y="155" text-anchor="middle">[EU 1, US 2]</text>
+  <path class="dg-arrow" d="M450 168 L624 206" marker-end="url(#version-vectors-head)"/>
+  <path class="dg-arrow" d="M630 168 L456 206" marker-end="url(#version-vectors-head)"/>
+  <rect class="dg-box-accent" x="385" y="214" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="450.0" y="238.0" text-anchor="middle">keeps both</text>
+  <rect class="dg-box-accent" x="565" y="214" width="130" height="40" rx="4"/>
+  <text class="dg-code" x="630.0" y="238.0" text-anchor="middle">keeps both</text>
+  <text class="dg-mono dg-muted-text" x="540" y="282" text-anchor="middle">[EU 2, US 1] VS [EU 1, US 2]</text>
+  <text class="dg-result" x="540" y="306" text-anchor="middle">Each ahead in one: concurrent</text>
+  <text class="dg-mono dg-muted-text" x="540" y="176" text-anchor="middle">REPLICATE</text>
+</svg>

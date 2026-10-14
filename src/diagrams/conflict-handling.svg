@@ -1,0 +1,82 @@
+<svg class="diagram-svg" viewBox="0 0 720 500" role="img" aria-labelledby="conflict-handling-title conflict-handling-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="conflict-handling-title">Four ways to handle the same two cart changes</title>
+  <desc id="conflict-handling-desc">Four panels with the same history. The cart holds Book and DVD. Device 1 removes Book, device 2 adds Soap. One leader: both writes go to one leader, which applies them in order, giving DVD, Soap with no conflict. Last write wins: the two versions DVD and Book, DVD, Soap conflict, the later one by the clock, DVD, is kept, and Soap is lost. Siblings: the app merges both versions as a union and gets Book, DVD, Soap, so the removed Book comes back. CRDT set: the set knows Book was removed and gives DVD, Soap.</desc>
+  <defs>
+    <marker id="conflict-handling-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="conflict-handling-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="492"/>
+  <line class="dg-rule" x1="8" y1="250" x2="712" y2="250"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">One leader</text>
+  <rect class="dg-chip" x="110" y="40" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="57.0" text-anchor="middle">Book, DVD</text>
+  <path class="dg-arrow" d="M180 66 V114" marker-end="url(#conflict-handling-head)"/>
+  <text class="dg-mono dg-muted-text" x="190" y="88" text-anchor="start">DEVICE 1:</text>
+  <text class="dg-mono dg-muted-text" x="190" y="101" text-anchor="start">REMOVE BOOK</text>
+  <rect class="dg-box" x="110" y="122" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="139.0" text-anchor="middle">DVD</text>
+  <path class="dg-arrow" d="M180 148 V184" marker-end="url(#conflict-handling-head)"/>
+  <text class="dg-mono dg-muted-text" x="190" y="164" text-anchor="start">THEN DEVICE 2:</text>
+  <text class="dg-mono dg-muted-text" x="190" y="177" text-anchor="start">ADD SOAP</text>
+  <text class="dg-mono dg-accent-text" x="100" y="139" text-anchor="end">IN ORDER</text>
+  <rect class="dg-box" x="110" y="192" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="209.0" text-anchor="middle">DVD, Soap</text>
+  <text class="dg-result" x="180" y="238" text-anchor="middle">No conflict</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Last write wins</text>
+  <rect class="dg-chip" x="470" y="40" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="57.0" text-anchor="middle">Book, DVD</text>
+  <text class="dg-mono dg-muted-text" x="484" y="88" text-anchor="end">DEVICE 1:</text>
+  <text class="dg-mono dg-muted-text" x="484" y="101" text-anchor="end">REMOVE BOOK</text>
+  <text class="dg-mono dg-muted-text" x="596" y="88" text-anchor="start">DEVICE 2:</text>
+  <text class="dg-mono dg-muted-text" x="596" y="101" text-anchor="start">ADD SOAP</text>
+  <rect class="dg-box" x="380" y="122" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="450.0" y="139.0" text-anchor="middle">DVD</text>
+  <path class="dg-arrow" d="M520 66 L470 116" marker-end="url(#conflict-handling-head)"/>
+  <path class="dg-arrow" d="M560 66 L610 116" marker-end="url(#conflict-handling-head)"/>
+  <rect class="dg-box" x="560" y="122" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="630.0" y="139.0" text-anchor="middle">Book, DVD, Soap</text>
+  <path class="dg-arrow" d="M450 148 L520 184" marker-end="url(#conflict-handling-head)"/>
+  <path class="dg-arrow" d="M630 148 L560 184" marker-end="url(#conflict-handling-head)"/>
+  <text class="dg-mono dg-accent-text" x="540" y="172" text-anchor="middle">LATER WINS</text>
+  <rect class="dg-box" x="470" y="192" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="209.0" text-anchor="middle">DVD</text>
+  <text class="dg-result" x="540" y="238" text-anchor="middle">Soap is lost</text>
+  <text class="dg-name" x="180" y="274" text-anchor="middle">Siblings</text>
+  <rect class="dg-chip" x="110" y="290" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="307.0" text-anchor="middle">Book, DVD</text>
+  <text class="dg-mono dg-muted-text" x="124" y="338" text-anchor="end">DEVICE 1:</text>
+  <text class="dg-mono dg-muted-text" x="124" y="351" text-anchor="end">REMOVE BOOK</text>
+  <text class="dg-mono dg-muted-text" x="236" y="338" text-anchor="start">DEVICE 2:</text>
+  <text class="dg-mono dg-muted-text" x="236" y="351" text-anchor="start">ADD SOAP</text>
+  <rect class="dg-box" x="20" y="372" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="90.0" y="389.0" text-anchor="middle">DVD</text>
+  <path class="dg-arrow" d="M160 316 L110 366" marker-end="url(#conflict-handling-head)"/>
+  <path class="dg-arrow" d="M200 316 L250 366" marker-end="url(#conflict-handling-head)"/>
+  <rect class="dg-box" x="200" y="372" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="270.0" y="389.0" text-anchor="middle">Book, DVD, Soap</text>
+  <path class="dg-arrow" d="M90 398 L160 434" marker-end="url(#conflict-handling-head)"/>
+  <path class="dg-arrow" d="M270 398 L200 434" marker-end="url(#conflict-handling-head)"/>
+  <text class="dg-mono dg-accent-text" x="180" y="422" text-anchor="middle">APP: UNION</text>
+  <rect class="dg-box" x="110" y="442" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="459.0" text-anchor="middle">Book, DVD, Soap</text>
+  <text class="dg-result" x="180" y="488" text-anchor="middle">Book comes back</text>
+  <text class="dg-name" x="540" y="274" text-anchor="middle">CRDT set</text>
+  <rect class="dg-chip" x="470" y="290" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="307.0" text-anchor="middle">Book, DVD</text>
+  <text class="dg-mono dg-muted-text" x="484" y="338" text-anchor="end">DEVICE 1:</text>
+  <text class="dg-mono dg-muted-text" x="484" y="351" text-anchor="end">REMOVE BOOK</text>
+  <text class="dg-mono dg-muted-text" x="596" y="338" text-anchor="start">DEVICE 2:</text>
+  <text class="dg-mono dg-muted-text" x="596" y="351" text-anchor="start">ADD SOAP</text>
+  <rect class="dg-box" x="380" y="372" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="450.0" y="389.0" text-anchor="middle">DVD</text>
+  <path class="dg-arrow" d="M520 316 L470 366" marker-end="url(#conflict-handling-head)"/>
+  <path class="dg-arrow" d="M560 316 L610 366" marker-end="url(#conflict-handling-head)"/>
+  <rect class="dg-box" x="560" y="372" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="630.0" y="389.0" text-anchor="middle">Book, DVD, Soap</text>
+  <path class="dg-arrow" d="M450 398 L520 434" marker-end="url(#conflict-handling-head)"/>
+  <path class="dg-arrow" d="M630 398 L560 434" marker-end="url(#conflict-handling-head)"/>
+  <text class="dg-mono dg-accent-text" x="540" y="422" text-anchor="middle">SET RULE</text>
+  <rect class="dg-box" x="470" y="442" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="459.0" text-anchor="middle">DVD, Soap</text>
+  <text class="dg-result" x="540" y="488" text-anchor="middle">Book stays removed</text>
+</svg>

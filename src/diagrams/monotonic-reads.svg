@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 720 260" role="img" aria-labelledby="monotonic-reads-title monotonic-reads-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="monotonic-reads-title">Two reads from followers at different points</title>
+  <desc id="monotonic-reads-desc">Two panels. Left: the first read goes to follower A at position 50 and shows "shipped"; the reload goes to follower B at position 45 and shows "paid", an older state. Right: both reads go to follower A, chosen by a hash of the user ID, and show "shipped".</desc>
+  <defs>
+    <marker id="monotonic-reads-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="monotonic-reads-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="252"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Random follower</text>
+  <text class="dg-mono dg-muted-text" x="55" y="52" text-anchor="middle">SHOPPER</text>
+  <line class="dg-lifeline" x1="55" y1="62" x2="55" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="175" y="52" text-anchor="middle">FOLLOWER A</text>
+  <line class="dg-lifeline" x1="175" y1="62" x2="175" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="295" y="52" text-anchor="middle">FOLLOWER B</text>
+  <line class="dg-lifeline" x1="295" y1="62" x2="295" y2="236"/>
+  <rect class="dg-chip" x="139" y="72" width="72" height="22" rx="4"/>
+  <text class="dg-code" x="175.0" y="87.0" text-anchor="middle">pos 50</text>
+  <rect class="dg-chip" x="259" y="72" width="72" height="22" rx="4"/>
+  <text class="dg-code" x="295.0" y="87.0" text-anchor="middle">pos 45</text>
+  <text class="dg-mono dg-muted-text" x="115.0" y="112" text-anchor="middle">READ</text>
+  <path class="dg-arrow" d="M55 120 H167" marker-end="url(#monotonic-reads-head)"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="138" text-anchor="middle">SHIPPED</text>
+  <path class="dg-arrow" d="M175 146 H63" marker-end="url(#monotonic-reads-head)"/>
+  <text class="dg-mono dg-muted-text" x="175.0" y="180" text-anchor="middle">RELOAD</text>
+  <path class="dg-arrow" d="M55 188 H287" marker-end="url(#monotonic-reads-head)"/>
+  <text class="dg-mono dg-accent-text" x="175.0" y="206" text-anchor="middle">PAID</text>
+  <path class="dg-arrow dg-message" d="M295 214 H63" marker-end="url(#monotonic-reads-head-accent)"/>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Same follower</text>
+  <text class="dg-mono dg-muted-text" x="415" y="52" text-anchor="middle">SHOPPER</text>
+  <line class="dg-lifeline" x1="415" y1="62" x2="415" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="535" y="52" text-anchor="middle">FOLLOWER A</text>
+  <line class="dg-lifeline" x1="535" y1="62" x2="535" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="655" y="52" text-anchor="middle">FOLLOWER B</text>
+  <line class="dg-lifeline" x1="655" y1="62" x2="655" y2="236"/>
+  <rect class="dg-chip" x="499" y="72" width="72" height="22" rx="4"/>
+  <text class="dg-code" x="535.0" y="87.0" text-anchor="middle">pos 50</text>
+  <rect class="dg-chip" x="619" y="72" width="72" height="22" rx="4"/>
+  <text class="dg-code" x="655.0" y="87.0" text-anchor="middle">pos 45</text>
+  <text class="dg-mono dg-muted-text" x="475.0" y="112" text-anchor="middle">READ</text>
+  <path class="dg-arrow" d="M415 120 H527" marker-end="url(#monotonic-reads-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="138" text-anchor="middle">SHIPPED</text>
+  <path class="dg-arrow" d="M535 146 H423" marker-end="url(#monotonic-reads-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="180" text-anchor="middle">RELOAD</text>
+  <path class="dg-arrow" d="M415 188 H527" marker-end="url(#monotonic-reads-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="206" text-anchor="middle">SHIPPED</text>
+  <path class="dg-arrow" d="M535 214 H423" marker-end="url(#monotonic-reads-head)"/>
+</svg>

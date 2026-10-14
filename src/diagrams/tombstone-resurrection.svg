@@ -1,0 +1,52 @@
+<svg class="diagram-svg" viewBox="0 0 720 280" role="img" aria-labelledby="tombstone-resurrection-title tombstone-resurrection-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="tombstone-resurrection-title">A deleted cart comes back after the tombstones are purged</title>
+  <desc id="tombstone-resurrection-desc">Three rows show replicas A, B, and C over time. On day 0 cart 42 is deleted: A and B replace it with a tombstone, but C is down and misses the delete, so it keeps cart 42. After the 10-day grace period, A and B purge the tombstone and hold nothing. On day 11 repair compares the replicas, finds cart 42 only on C, and copies it back to A and B, so the deleted cart returns.</desc>
+  <defs>
+    <marker id="tombstone-resurrection-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="tombstone-resurrection-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-line" x1="140" y1="52" x2="680" y2="52"/>
+  <line class="dg-line" x1="230" y1="48" x2="230" y2="56"/>
+  <text class="dg-mono dg-muted-text" x="230" y="24" text-anchor="middle">DAY 0</text>
+  <text class="dg-mono dg-muted-text" x="230" y="38" text-anchor="middle">DELETE</text>
+  <line class="dg-guide" x1="230" y1="60" x2="230" y2="214"/>
+  <line class="dg-line" x1="470" y1="48" x2="470" y2="56"/>
+  <text class="dg-mono dg-muted-text" x="470" y="24" text-anchor="middle">DAY 10</text>
+  <text class="dg-mono dg-muted-text" x="470" y="38" text-anchor="middle">PURGE</text>
+  <line class="dg-guide" x1="470" y1="60" x2="470" y2="214"/>
+  <line class="dg-line" x1="560" y1="48" x2="560" y2="56"/>
+  <text class="dg-mono dg-muted-text" x="560" y="24" text-anchor="middle">DAY 11</text>
+  <text class="dg-mono dg-muted-text" x="560" y="38" text-anchor="middle">REPAIR</text>
+  <line class="dg-guide" x1="560" y1="60" x2="560" y2="214"/>
+  <text class="dg-name" x="20" y="87" text-anchor="start">Replica A</text>
+  <rect class="dg-chip" x="140" y="70" width="90" height="26" rx="4"/>
+  <text class="dg-code" x="185.0" y="87.0" text-anchor="middle">cart 42</text>
+  <rect class="dg-box" x="230" y="70" width="240" height="26" rx="4"/>
+  <text class="dg-code" x="350.0" y="87.0" text-anchor="middle">tombstone</text>
+  <rect class="dg-box-failed" x="470" y="70" width="90" height="26" rx="4"/>
+  <text class="dg-code-muted" x="515.0" y="87.0" text-anchor="middle">nothing</text>
+  <rect class="dg-box-accent" x="560" y="70" width="120" height="26" rx="4"/>
+  <text class="dg-code" x="620.0" y="87.0" text-anchor="middle">cart 42 again</text>
+  <text class="dg-name" x="20" y="135" text-anchor="start">Replica B</text>
+  <rect class="dg-chip" x="140" y="118" width="90" height="26" rx="4"/>
+  <text class="dg-code" x="185.0" y="135.0" text-anchor="middle">cart 42</text>
+  <rect class="dg-box" x="230" y="118" width="240" height="26" rx="4"/>
+  <text class="dg-code" x="350.0" y="135.0" text-anchor="middle">tombstone</text>
+  <rect class="dg-box-failed" x="470" y="118" width="90" height="26" rx="4"/>
+  <text class="dg-code-muted" x="515.0" y="135.0" text-anchor="middle">nothing</text>
+  <rect class="dg-box-accent" x="560" y="118" width="120" height="26" rx="4"/>
+  <text class="dg-code" x="620.0" y="135.0" text-anchor="middle">cart 42 again</text>
+  <text class="dg-name" x="20" y="183" text-anchor="start">Replica C</text>
+  <rect class="dg-chip" x="140" y="166" width="70" height="26" rx="4"/>
+  <text class="dg-code" x="175.0" y="183.0" text-anchor="middle">cart 42</text>
+  <rect class="dg-box-failed" x="210" y="166" width="80" height="26" rx="4"/>
+  <text class="dg-code-muted" x="250.0" y="183.0" text-anchor="middle">down</text>
+  <rect class="dg-chip" x="290" y="166" width="390" height="26" rx="4"/>
+  <text class="dg-code" x="485.0" y="183.0" text-anchor="middle">cart 42: missed the delete</text>
+  <path class="dg-arrow" d="M230 222 V228 H470 V222"/>
+  <text class="dg-mono dg-muted-text" x="350.0" y="244" text-anchor="middle">GRACE PERIOD: 10 DAYS</text>
+  <path class="dg-arrow dg-message" d="M680 179 H702 V83 H688" marker-end="url(#tombstone-resurrection-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M702 131 H688" marker-end="url(#tombstone-resurrection-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="680" y="212" text-anchor="end">REPAIR COPIES IT FROM C</text>
+  <text class="dg-result" x="360" y="272" text-anchor="middle">The deleted cart is back on every replica</text>
+</svg>

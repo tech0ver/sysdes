@@ -35,6 +35,8 @@ What an article on this site must look like. Read it before you add or change a 
 - No sentences about the document itself ("in this article", "as shown below"). To recall an earlier step, name the idea, not the section: "back to a hash map in memory", not "the hash map from the first section".
 - Simple English that non-native readers can follow. Short sentences, common words. Speak to the reader directly ("use", "pick", "say"). No filler and no jokes.
 - In SQL, put each clause (`SELECT`, `FROM`, `JOIN`, `WHERE`, `SET`, `VALUES`) on its own line and each `AND` on its own indented line. Show a query's result as a comment on the line below it, and leave a blank line between queries.
+- Use one name for each concept across the whole article. Where several names exist (leader, primary, source), give the others once, where the term is introduced, and then use only the chosen one, also in real cases.
+- Write single-letter variables in formulas as capital letters (N, W, R), so they stand out from the words around them.
 - Terms and abbreviations go to the [glossary](#glossary). Do not expand them in parentheses unless the article is where the term is explained.
 
 ## Callouts

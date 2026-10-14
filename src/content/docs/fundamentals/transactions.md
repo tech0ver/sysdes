@@ -279,7 +279,7 @@ Locking the rows on read does not help either: it locks the buyer's seats that e
 The limit is one of the rules that make the data correct. Keeping the data within its rules is **consistency**. The database enforces the rules it is told about, such as constraints. A rule across several rows is usually the app's job, and atomicity and isolation are its tools for it.
 
 :::distinguish
-"Consistency" in transactions means that the data follows its rules. For copies of data on several nodes, the same word means whether every copy shows the same value. <!-- link: fundamentals/replication --> <!-- link: fundamentals/consistency -->
+"Consistency" in transactions means that the data follows its rules. For [copies of data on several nodes](../replication/#reading-from-a-copy-that-is-behind), the same word means whether every copy shows the same value. <!-- link: fundamentals/consistency -->
 :::
 
 The fix turns the rule into a row that every such transaction writes, so the conflict becomes an ordinary conflict on one row. This is **materializing the conflict**. Keep a count of tickets per buyer and event, and change it with an atomic update that carries the rule:
@@ -468,7 +468,7 @@ The seat map now gets most of the traffic, and the team considers a key-value st
 
 The guarantees so far have one name: **ACID**, for atomicity, consistency, isolation, and durability. In theory, the isolation in ACID is serializable, but many databases run at read committed by default, so "ACID" on a product page does not say which anomalies remain.
 
-**BASE**, for "basically available, soft state, eventually consistent", names the opposite direction: a store that puts availability and scale first, lets its copies disagree for a while, and often has no transactions across records. It is a loose label, not a guarantee to check against. What happens between the copies belongs to replication. <!-- link: fundamentals/replication -->
+**BASE**, for "basically available, soft state, eventually consistent", names the opposite direction: a store that puts availability and scale first, lets its copies disagree for a while, and often has no transactions across records. It is a loose label, not a guarantee to check against. What happens between the copies belongs to replication.
 
 Most such stores still make a write to one record atomic: a write to one row, document, or key applies fully or not at all. Such stores offer the tools of a single value: an increment and a conditional write, which is compare-and-set. So keep what must change together in [one record](../databases/#loading-a-record-in-one-read): an order with its seats in one document changes in one write. That makes the order atomic, but two orders can still take the same seat, so a rule across records, such as one owner per seat, still needs a conditional write on the seat's own record. A hold in a key-value store is a conditional write with an expiry.
 
