@@ -1,0 +1,50 @@
+---
+// Copy of Starlight's MobileMenuToggle: the burger sits on the left and shows below
+// 72rem; its border and hover come from the shared header control style.
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex lg:sl-hidden print:hidden">
+	<Icon name="bars" class="open-menu" />
+	<Icon name="close" class="close-menu" />
+	<span class="sr-only">{Astro.locals.t('menuButton.accessibleLabel')}</span>
+</button>
+
+<style>
+	@layer starlight.core {
+		button {
+			position: fixed;
+			top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
+			inset-inline-start: var(--sl-nav-pad-x);
+			z-index: var(--sl-z-index-navbar);
+			border: 0;
+			width: var(--sl-menu-button-size);
+			height: var(--sl-menu-button-size);
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		button:has(~ :popover-open) .open-menu {
+			display: none;
+		}
+
+		button:not(:has(~ :popover-open)) .close-menu {
+			display: none;
+		}
+
+	}
+</style>
+
+<style is:global>
+	@layer starlight.core {
+		body:has(#starlight__sidebar:popover-open) {
+			overflow: hidden;
+		}
+
+		@media (min-width: 72rem) {
+			body:has(#starlight__sidebar:popover-open) {
+				overflow: auto;
+			}
+		}
+	}
+</style>

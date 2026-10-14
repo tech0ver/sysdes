@@ -1,0 +1,30 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default />
+<p class="site-license">
+  © 2026 <a href="https://alexengrig.github.io">Grig Alex</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>
+</p>
+
+<style>
+  .site-license {
+    margin-top: 1.5rem;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+    text-align: center;
+  }
+  .site-license a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .site-license a:hover { color: var(--sl-color-text-accent); }
+  .site-license a:focus-visible {
+    outline: none;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+  @media print { .site-license { display: none; } }
+</style>

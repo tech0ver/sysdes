@@ -17,13 +17,23 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'System Design',
+			title: 'SystemDesign0ver',
 			favicon: '/favicon.png',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/tech0ver/sysdis' }],
 			routeMiddleware: './src/routeData.ts',
-			customCss: ['./src/styles/theme.css', './src/styles/glossary.css', './src/styles/article.css'],
+			customCss: ['./src/styles/theme.css', './src/styles/ui.css', './src/styles/glossary.css', './src/styles/article.css'],
 			components: {
 				ThemeSelect: './src/components/ThemeToggle.astro',
+				SiteTitle: './src/components/SiteTitle.astro',
+				PageFrame: './src/components/PageFrame.astro',
+				MobileMenuToggle: './src/components/MenuToggle.astro',
+				TwoColumnContent: './src/components/TwoColumnContent.astro',
+				PageSidebar: './src/components/PageSidebar.astro',
+				Sidebar: './src/components/Sidebar.astro',
+				PageTitle: './src/components/PageTitle.astro',
+				Pagination: './src/components/Pagination.astro',
+				Search: './src/components/Search.astro',
+				Hero: './src/components/Hero.astro',
+				Footer: './src/components/Footer.astro',
 			},
 			sidebar: [
 				{

@@ -14,7 +14,8 @@ A personal system design knowledge base: articles for interview preparation, pub
 
 - `astro.config.mjs` — site config and sidebar (pages are listed in `sidebar` explicitly).
 - `src/content/docs/` — pages (Markdown/MDX). File path = URL. `index.mdx` is the home page.
-- `src/styles/theme.css` — color theme (based on Skeleton's "Mona"). Change colors here only, through Starlight `--sl-*` variables.
+- `src/styles/theme.css` — color theme (based on Skeleton's "Wintry"). Change colors here only, through Starlight `--sl-*` variables.
+- `src/styles/ui.css` — reading styles, navigation, and controls for the redesigned UI. Layout component overrides live in `src/components/`; keep palette changes in `theme.css`.
 - `src/components/ThemeToggle.astro` — replaces Starlight's `ThemeSelect`. Two-way dark/light toggle; with no saved choice the site follows `prefers-color-scheme`.
 - `src/data/glossary.mjs` — the site glossary, one entry per term. Rules for entries are in WRITING.md.
 - `src/plugins/glossary.mjs` — Markdown plugin that adds a tooltip to the first mention of each glossary term on a page. Astro 7 renders Markdown with Sätteri, so this is a Sätteri hast plugin (set in `markdown.processor` in `astro.config.mjs`), not a remark plugin.
@@ -24,7 +25,7 @@ A personal system design knowledge base: articles for interview preparation, pub
 - `src/styles/article.css` — styles for callouts and diagrams (the `dg-*` classes).
 - Astro caches rendered Markdown until the page file changes. After editing the glossary, a plugin, or a diagram SVG, delete `node_modules/.astro/data-store.json` before `bun run build`, and `.astro/data-store.json` before `bun run dev` (restart a running dev server).
 - `ARTICLES.md` — the map of written and planned articles, and the hidden link markers for articles that do not exist yet.
-- `public/favicon.png` — favicon (tech0ver organization logo). The site has no header logo; the header shows the title only.
+- `public/favicon.png` — favicon (tech0ver organization logo). The site has no header logo; the title sits at the top of the sidebar.
 - `.claude/settings.json` — enables Claude Code plugins: [diagram-design](https://github.com/cathrynlavery/diagram-design) for diagrams and [humanizer](https://github.com/blader/humanizer) for editing text. Other agents can install the same skills from those repositories.
 
 ## Conventions

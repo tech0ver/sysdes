@@ -1,0 +1,475 @@
+:root {
+  --sl-text-body: 1rem;
+  --sl-text-body-lg: 1.08rem;
+  --sl-text-h1: clamp(1.85rem, 3vw, 2.65rem);
+  --sl-text-h2: clamp(1.4rem, 2vw, 1.7rem);
+  --sl-text-h3: 1.2rem;
+  --sl-content-width: 43rem;
+  --sl-sidebar-width: 17rem;
+  --site-left-sidebar-width: 200px;
+  --sl-line-height: 1.7;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+}
+
+.sl-markdown-content {
+  max-width: 66ch;
+  font-size: 1.05rem;
+  line-height: 1.78;
+}
+
+.sl-markdown-content p,
+.sl-markdown-content ul,
+.sl-markdown-content ol,
+.sl-markdown-content table,
+.sl-markdown-content blockquote {
+  margin-block: 1.05em;
+}
+
+.sl-markdown-content img {
+  width: min(100%, 15rem);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 1rem;
+}
+
+.sl-markdown-content a { text-decoration: none; text-underline-offset: 0.18em; }
+.sl-markdown-content a:hover { text-decoration: underline; }
+
+.site-title { color: var(--sl-color-white); }
+
+.article-heading { padding-block: 0.4rem 0.2rem; }
+.article-heading h1 {
+  font-size: var(--sl-text-h1);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  color: var(--sl-color-white);
+  font-weight: 650;
+  margin-block: 0.4rem 0;
+}
+.sidebar-content a, .sidebar-content summary { transition: background-color 120ms, color 120ms; }
+.sidebar-content details:has(a[aria-current='page']) > summary { color: var(--sl-color-text-accent); }
+/* Only navigation entries get the hover plaque, not the logo link above them. */
+.sidebar-content ul a { border-radius: 0.5rem; }
+.sidebar-content ul a:hover { background: var(--sl-color-gray-6); }
+.sidebar-content a[aria-current='page'] {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-text-accent);
+}
+
+
+.sl-markdown-content > :is(h2, h3) { margin-top: 2.25rem; letter-spacing: -0.02em; }
+.site-pagination { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+.site-pagination a { display: flex; flex-direction: column; gap: 0.3rem; text-decoration: none; border: 1px solid var(--sl-color-hairline); border-radius: 0.65rem; padding: 1rem; color: var(--sl-color-text); min-width: 0; transition: border-color 120ms; }
+.site-pagination a:hover { border-color: var(--sl-color-accent); }
+.site-pagination [rel='next'] { grid-column: 2; text-align: end; }
+.pagination-direction, .pagination-section { font-size: 0.78rem; color: var(--sl-color-gray-3); }
+.pagination-title { font-size: 1.1rem; font-weight: 600; color: var(--sl-color-white); overflow-wrap: anywhere; }
+
+
+@media (max-width: 50rem) { .site-pagination { grid-template-columns: 1fr; } .site-pagination [rel="next"] { grid-column: 1; } }
+.sl-markdown-content pre {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.08);
+}
+
+@media (max-width: 50rem) {
+  .sl-markdown-content { max-width: none; }
+}
+
+@media (max-width: 22.5rem) {
+  .sl-markdown-content { font-size: 0.98rem; }
+  .sl-markdown-content table { display: block; max-width: 100%; overflow-x: auto; }
+}
+
+/* Mobile navigation gets generous tap areas without changing article typography. */
+@media (width < 50rem) {
+  .site-title { font-size: 1.0625rem; }
+  .site-title span { text-overflow: ellipsis; }
+  .sidebar-content :is(ul a, summary) {
+    min-height: 2.75rem;
+    padding-block: 0.55rem;
+  }
+  .sidebar-content ul a { display: flex; align-items: center; }
+  mobile-starlight-toc .dropdown {
+    max-height: min(26rem, calc(100dvh - var(--sl-nav-height) - var(--sl-mobile-toc-height) - 1rem));
+  }
+  mobile-starlight-toc .dropdown a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    line-height: 1.4;
+  }
+  .sl-markdown-content table,
+  .expressive-code pre { overscroll-behavior-inline: contain; }
+  .site-pagination { gap: 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media print {
+  header,
+  nav,
+  .sidebar,
+  .right-sidebar,
+  .sl-banner,
+  .pagination-links,
+  .site-pagination,
+  footer {
+    display: none !important;
+  }
+
+  main,
+  .sl-markdown-content {
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  a { color: inherit !important; text-decoration: underline; }
+  pre, img { break-inside: avoid; }
+}
+
+
+@media (width < 50rem) { .header .right-group.sl-hidden { display: flex; } .mobile-preferences { display: none; } }
+/* Layout priority: between 50rem and 72rem the left sidebar collapses into the
+   menu (see PageFrame) while the right table of contents stays visible. */
+@media (min-width: 50rem) and (max-width: 71.99rem) {
+  html[data-has-sidebar] { --sl-content-inline-start: 0rem; }
+  .right-sidebar-panel .sl-container { max-width: none; }
+}
+@media (min-width: 50rem) {
+  :root { --sl-mobile-toc-height: 0rem; }
+  html { scroll-padding-top: calc(1.5rem + var(--sl-nav-height)); }
+}
+/* On tablets the collapsed sidebar opens as a drawer from the left, not full width. */
+@media (min-width: 50rem) and (max-width: 71.99rem) {
+  .sidebar-pane {
+    width: min(100%, var(--site-left-sidebar-width));
+    border-inline-end: 1px solid var(--sl-color-hairline);
+  }
+}
+
+/* Header layout in the Hello Interview manner: the title lives in the sidebar,
+   the header holds search on the left and GitHub and theme on the right. */
+[data-has-sidebar] .header .title-wrapper { display: none; }
+@media (min-width: 72rem) {
+  [data-has-sidebar] header.header {
+    inset-inline-start: var(--site-left-sidebar-width);
+    width: calc(100% - var(--site-left-sidebar-width));
+  }
+  [data-has-sidebar] .sidebar-pane { inset-block-start: 0; }
+}
+
+/* Without the title the header has two columns: search, then GitHub and theme
+   pinned to the right edge. */
+@media (min-width: 50rem) {
+  [data-has-sidebar] .header > .header { grid-template-columns: 1fr auto; }
+}
+
+/* Header: 16px padding on every side and one style for every control —
+   burger, search (bar or icon), GitHub and theme. 40px high, a thin border
+   that lightens on hover like the "On this page" toggle, accent when open. */
+:root {
+  --site-control: 2.5rem;
+  --sl-nav-height: 3rem;
+  --sl-nav-pad-x: 1rem;
+  --sl-nav-pad-y: 0.5rem;
+  --sl-nav-gap: 0.5rem;
+  --sl-menu-button-size: var(--site-control);
+}
+.header .right-group { gap: 0.5rem; }
+.sl-menu-button,
+site-search button[data-open-modal],
+.site-theme-toggle {
+  align-items: center;
+  justify-content: center;
+  height: var(--site-control);
+  min-width: var(--site-control);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  background: var(--sl-color-black);
+  color: var(--sl-color-gray-2);
+  box-shadow: none;
+  cursor: pointer;
+  transition: border-color 120ms, color 120ms;
+}
+.sl-menu-button:hover,
+site-search button[data-open-modal]:hover,
+.site-theme-toggle:hover {
+  border-color: var(--sl-color-gray-2);
+  color: var(--sl-color-white);
+}
+.sl-menu-button:has(~ :popover-open) {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-white);
+}
+
+/* Phones: the search dialog closes with a cross in the same 40px button as the
+   burger, not with the word "Cancel". The word stays for screen readers. */
+@media (width < 50rem) {
+  site-search dialog { border: 0; }
+  site-search .dialog-frame { padding-block: 0.5rem; }
+  site-search button[data-close-modal] {
+    top: 0.5rem;
+    inset-inline-end: 1rem;
+    justify-content: center;
+    width: var(--site-control);
+    height: var(--site-control);
+    padding: 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    color: var(--sl-color-gray-2);
+    font-size: 0;
+  }
+  site-search button[data-close-modal]:hover {
+    border-color: var(--sl-color-gray-2);
+    color: var(--sl-color-white);
+  }
+  site-search button[data-close-modal]::before {
+    content: '';
+    width: 1.25rem;
+    height: 1.25rem;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  #starlight__search { --sl-search-cancel-space: calc(var(--site-control) + 0.5rem); }
+}
+
+/* The search field is as tall as the buttons; the magnifier stays centred. */
+site-search dialog {
+  background: var(--sl-color-bg-nav);
+}
+#starlight__search .pagefind-ui__search-input {
+  height: var(--site-control);
+  border: 0;
+  border-radius: 0.375rem;
+  background: var(--sl-color-bg);
+  box-shadow: none;
+}
+#starlight__search .pagefind-ui__search-input:focus {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+#starlight__search .pagefind-ui__form::before {
+  top: calc((var(--site-control) - 18px * var(--pagefind-ui-scale, 0.8)) / 2);
+}
+
+/* The cross that clears the query: the same 40px square and icon as the close
+   button, without a border. */
+#starlight__search .pagefind-ui__search-clear {
+  top: 0;
+  inset-inline-end: calc(var(--sl-search-cancel-space) + 0.375rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--site-control);
+  height: var(--site-control);
+  border-radius: 0.5rem;
+  color: var(--sl-color-gray-2);
+  font-size: 0;
+}
+#starlight__search .pagefind-ui__search-clear:hover { color: var(--sl-color-white); }
+#starlight__search .pagefind-ui__search-clear::before {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* While the burger is visible, search is a square icon button. */
+@media (max-width: 71.99rem) {
+  site-search button[data-open-modal] {
+    width: var(--site-control);
+    max-width: none;
+    padding: 0;
+    font-size: var(--sl-text-xl);
+  }
+  site-search button[data-open-modal] > span,
+  site-search button[data-open-modal] > kbd { display: none !important; }
+}
+/* No reserved scrollbar gutter in the sidebar or the mobile menu: the line
+   under the logo then spans the full width. */
+.sidebar-pane { scrollbar-gutter: auto; }
+
+/* The copy button of code blocks matches the other buttons: 40px, 8px corners. */
+:root .expressive-code .copy button {
+  width: var(--site-control);
+  height: var(--site-control);
+  border-radius: 0.5rem;
+}
+:root .expressive-code .copy button::before {
+  border-color: var(--sl-color-gray-5);
+  opacity: 1;
+}
+:root .expressive-code .copy button::after {
+  margin: 0.625rem;
+}
+
+
+/* Social links use the same shape as the other header controls. */
+.header .social-icons { gap: 0.5rem; }
+.header .social-icons::after { display: none; }
+.header .social-icons a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--site-control); height: var(--site-control);
+  border: 1px solid var(--sl-color-gray-5); border-radius: 0.5rem;
+  color: var(--sl-color-gray-2); background: var(--sl-color-black);
+}
+.header .social-icons a:hover { border-color: var(--sl-color-gray-2); color: var(--sl-color-white); }
+:is(.sl-menu-button, .site-theme-toggle, .header .social-icons a, site-search button):focus-visible {
+  outline: 2px solid var(--sl-color-accent); outline-offset: 3px;
+}
+
+/* Home page fills the viewport and keeps the footer at the bottom. */
+:root:has(.site-hero) main { display: flex; flex-direction: column; min-height: calc(100dvh - var(--sl-nav-height)); }
+:root:has(.site-hero) main > .content-panel,
+:root:has(.site-hero) main > .content-panel > .sl-container { display: flex; flex: 1; flex-direction: column; }
+:root:has(.site-hero) main > .content-panel > .sl-container { width: 100%; }
+:root:has(.site-hero) main footer { margin-top: auto; }
+
+/* Source footnotes from Markdown [^n]: the number in the text is a small outlined
+   circle that opens the source in a new tab; the list stays under the sources heading. */
+.sl-markdown-content sup:has(> a[data-footnote-ref]) {
+  line-height: 0;
+}
+.sl-markdown-content a[data-footnote-ref] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.45em;
+  height: 1.45em;
+  margin-inline-start: 0.15em;
+  padding-inline: 0.3em;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+.sl-markdown-content a[data-footnote-ref]:hover {
+  background: var(--sl-color-accent-low);
+}
+
+
+/* Text controls: color indicates hover and open states, without plaques. */
+:root { --site-control: 2rem; }
+:root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
+  site-search button[data-open-modal], site-search button[data-close-modal],
+  #starlight__search .pagefind-ui__search-clear, .sl-link-button) {
+  border: 0;
+  background: var(--site-control-bg, transparent);
+  box-shadow: none;
+  color: var(--site-control-color, var(--sl-color-gray-2));
+  -webkit-tap-highlight-color: transparent;
+}
+:root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
+  site-search button[data-close-modal], #starlight__search .pagefind-ui__search-clear) {
+  border-radius: 50%;
+}
+:root site-search button[data-open-modal] { border-radius: 0; padding-inline: 0.25rem; }
+:root .sl-link-button { border-radius: 0; color: var(--sl-color-text-accent); font-weight: 600; }
+:root .site-hero .sl-link-button:hover {
+  --site-control-color: var(--sl-color-text-accent);
+}
+:root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
+  site-search button, .sl-link-button):hover { color: var(--sl-color-text-accent); }
+:root .sl-menu-button:has(~ :popover-open) { color: var(--sl-color-text-accent); }
+:root mobile-starlight-toc .toggle {
+  border: 0; border-radius: 0; background: transparent;
+  padding: 0; gap: 0.5rem; color: var(--sl-color-gray-2);
+}
+:root mobile-starlight-toc details[open] .toggle { color: var(--sl-color-text-accent); }
+:root mobile-starlight-toc summary { -webkit-tap-highlight-color: transparent; }
+:root :is(.sidebar-content ul a, .sidebar-content summary, .site-pagination a) {
+  border-radius: 0; background: transparent; box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+:root .sidebar-content ul a:hover { background: transparent; color: var(--sl-color-text-accent); }
+:root .sidebar-content a[aria-current='page'] { background: transparent; color: var(--sl-color-text-accent); font-weight: 600; }
+:root .site-pagination a { border: 0; padding: 0.5rem 0; }
+:root .site-search-start a {
+  -webkit-tap-highlight-color: transparent;
+}
+:root :is(.sl-link-button, .site-title, .site-pagination a, .site-search-start a,
+  .sidebar-content a, .sidebar-content summary, mobile-starlight-toc summary,
+  .sl-menu-button, .site-theme-toggle, .header .social-icons a, site-search button):focus {
+  outline: none;
+}
+/* Keyboard focus stays visible; pointer clicks do not leave a rectangular ring. */
+:root :is(.sl-link-button, .site-title, .site-pagination a, .site-search-start a,
+  .sidebar-content a, .sidebar-content summary, site-search button[data-open-modal]):focus-visible {
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em;
+}
+:root mobile-starlight-toc summary:focus-visible .toggle {
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em;
+}
+:root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
+  site-search button[data-close-modal], #starlight__search .pagefind-ui__search-clear):focus-visible {
+  outline: 2px solid var(--sl-color-accent); outline-offset: 2px;
+}
+@media (max-width: 71.99rem) {
+  :root site-search button[data-open-modal] { border-radius: 50%; }
+  :root site-search button[data-open-modal]:focus-visible {
+    outline: 2px solid var(--sl-color-accent); outline-offset: 2px;
+  }
+}
+/* The header and table-of-contents row are 48px; controls remain 32px. */
+@media (width < 50rem) {
+  :root { --sl-mobile-toc-height: 3rem; }
+  mobile-starlight-toc summary { height: var(--sl-mobile-toc-height); padding: 0.5rem 1rem; }
+  mobile-starlight-toc .toggle { min-height: var(--site-control); }
+}
+
+:root :is(mobile-starlight-toc a, .right-sidebar a, .sl-markdown-content a):focus { outline: none; }
+:root :is(mobile-starlight-toc a, .right-sidebar a, .sl-markdown-content a):focus-visible {
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em;
+}
+:root .sl-anchor-link { border-radius: 50%; -webkit-tap-highlight-color: transparent; }
+:root .sl-anchor-link:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 2px; }
+
+/* Header icon controls have explicit boxes; custom elements add no baseline space. */
+.header .social-icons, .mobile-preferences .social-icons { display: none; }
+site-theme-toggle { display: flex; flex: 0 0 var(--site-control); width: var(--site-control); height: var(--site-control); line-height: 0; }
+:root :is(.sl-menu-button, button.site-theme-toggle) {
+  display: flex; width: var(--site-control); height: var(--site-control);
+  min-width: var(--site-control); min-height: var(--site-control); padding: 0;
+  box-sizing: border-box; flex-shrink: 0;
+}
+:root :is(.sl-menu-button, site-search button[data-open-modal]) svg { width: 1.25rem; height: 1.25rem; }
+@media (max-width: 71.99rem) {
+  :root site-search button[data-open-modal] { width: var(--site-control); height: var(--site-control); padding: 0; box-sizing: border-box; }
+}
+
+/* Inset dividers do not subtract a pixel from the 32px control row. */
+:root header.header, :root mobile-starlight-toc summary {
+  border-bottom: 0;
+  box-shadow: inset 0 -1px var(--sl-color-hairline-shade);
+}
+
+@media (min-width: 72rem) {
+  html[data-has-sidebar] { --sl-content-inline-start: var(--site-left-sidebar-width); }
+  :root button.sl-menu-button { display: none; }
+  /* The reading background makes search visible against the header. */
+  :root site-search button[data-open-modal] {
+    --site-control-bg: var(--sl-color-bg);
+    width: 12.5rem;
+    height: var(--site-control);
+    padding-inline: 0.5rem;
+    border-radius: 0.375rem;
+    box-sizing: border-box;
+  }
+}

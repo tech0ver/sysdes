@@ -1,0 +1,11 @@
+---
+const { pagination } = Astro.locals.starlightRoute;
+---
+<nav class="site-pagination print:hidden" aria-label="Article navigation">
+  {[{ page: pagination.prev, direction: 'prev' }, { page: pagination.next, direction: 'next' }].map(({ page, direction }) => page && (
+    <a href={page.href} rel={direction}>
+      <span class="pagination-direction">{direction === 'prev' ? '← Previous' : 'Next →'}</span>
+      <span class="pagination-title">{page.label}</span>
+    </a>
+  ))}
+</nav>

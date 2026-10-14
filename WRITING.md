@@ -61,7 +61,8 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 - Use the words of the text. No term before its block, same as in prose.
 - Write the diagram as an SVG file in `src/diagrams/<name>.svg` and insert it with `::diagram{name="<name>"}` on its own line (`src/plugins/diagrams.mjs`). The SVG is inlined into the page.
 - Color only through the `dg-*` classes in `src/styles/article.css`, never with hard-coded colors, so the diagram follows the light and dark themes.
-- Accent marks the one thing the diagram is about. An accented box or badge gets the accent border and tint, and its text stays the normal color. An accented arrow, line, or dot gets the accent color, and so does its label. No other text uses the accent.
+- Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent focused on the idea the diagram teaches.
+- Ordinary labels, including text inside accented boxes and badges, use the same theme-aware text color (`--sl-color-gray-3` through the `dg-*` classes). Do not leave white text after removing an accent fill. Check text contrast against the neutral background in both themes.
 - Text: names in the sans font (`dg-name`), notes in `dg-sub`, arrow labels in uppercase mono (`dg-mono`). Technical values (domains, IP addresses, paths) keep their case.
 - Draw on a grid 720 units wide. When the content is narrower, trim the `viewBox` to the content: the plugin then gives the diagram a matching share of the column, so text keeps the same size in every diagram.
 - Every SVG has `role="img"`, `aria-labelledby`, a `<title>`, and a `<desc>` that says what the diagram shows (it is the alt text). Prefix all IDs with the diagram name.

@@ -1,55 +1,97 @@
 /*
- * Color theme based on Skeleton's "Mona" theme (https://www.skeleton.dev/themes).
- * Palette values are copied from Skeleton's primary-* and surface-* tokens.
+ * Wintry palette and heading font from Skeleton (MIT License).
+ * https://github.com/skeletonlabs/skeleton/blob/main/packages/skeleton/src/themes/wintry.css
+ * Copyright (c) 2023 Skeleton Labs, LLC.
+ * Mapped to Starlight; use primary-600 for readable light-mode controls and links.
  */
 
 /* Dark mode */
 :root {
-	--sl-color-white: oklch(100% 0 0); /* surface-50 */
-	--sl-color-gray-1: oklch(92.83% 0 287.25deg); /* surface-100 */
-	--sl-color-gray-2: oklch(85.51% 0 286.73deg); /* surface-200 */
-	--sl-color-gray-3: oklch(62.6% 0.01 258.36deg); /* surface-500 */
-	--sl-color-gray-4: oklch(47.73% 0.01 261.77deg); /* surface-700 */
-	--sl-color-gray-5: oklch(31.6% 0.02 262.55deg); /* surface-900 */
-	--sl-color-gray-6: oklch(26.5% 0.025 260deg); /* between surface-900 and surface-950 */
-	--sl-color-black: oklch(22.88% 0.03 258.32deg); /* surface-950 */
-
-	--sl-color-accent-low: oklch(33.76% 0.13 299.57deg); /* primary-950 */
-	--sl-color-accent: oklch(63.71% 0.17 298.81deg); /* primary-400 */
-	--sl-color-accent-high: oklch(79.22% 0.11 306.63deg); /* primary-200 */
+	--sl-font: system-ui, sans-serif;
+	--sl-color-white: oklch(97.59% 0 264.7deg);
+	--sl-color-gray-1: oklch(88.12% 0.01 261.81deg);
+	--sl-color-gray-2: oklch(78.51% 0.02 265.97deg);
+	--sl-color-gray-3: oklch(68.49% 0.03 264.38deg);
+	--sl-color-gray-4: oklch(47.47% 0.05 264.53deg);
+	--sl-color-gray-5: oklch(36.45% 0.05 264.44deg);
+	--sl-color-gray-6: oklch(24.95% 0.04 264.15deg);
+	--sl-color-gray-7: oklch(18.53% 0.04 263.67deg);
+	--sl-color-black: oklch(18.53% 0.04 263.67deg);
+	--sl-color-accent-low: oklch(29.67% 0.16 263.4deg);
+	--sl-color-accent: oklch(68.61% 0.15 257.7deg);
+	--sl-color-accent-high: oklch(82.2% 0.09 245.96deg);
+	--sl-color-text: oklch(88.12% 0.01 261.81deg);
+	--sl-color-text-accent: oklch(75.45% 0.12 253.41deg);
+	--sl-color-text-invert: oklch(18.53% 0.04 263.67deg);
+	--sl-color-bg: oklch(18.53% 0.04 263.67deg);
+	--sl-color-bg-nav: oklch(24.95% 0.04 264.15deg);
+	--sl-color-bg-sidebar: oklch(18.53% 0.04 263.67deg);
+	--sl-color-bg-inline-code: oklch(24.95% 0.04 264.15deg);
+	--sl-color-hairline: oklch(36.45% 0.05 264.44deg);
+	--sl-color-hairline-light: oklch(31.02% 0.04 264.35deg);
+	--sl-color-hairline-shade: oklch(36.45% 0.05 264.44deg);
+	--sl-color-green-low: oklch(38.95% 0.13 142.5deg);
+	--sl-color-green: oklch(80.8% 0.19 127.53deg);
+	--sl-color-green-high: oklch(89.31% 0.16 120.22deg);
+	--sl-color-orange-low: oklch(31.98% 0.06 75.91deg);
+	--sl-color-orange: oklch(82.95% 0.16 91.25deg);
+	--sl-color-orange-high: oklch(90.39% 0.15 99.65deg);
+	--sl-color-red-low: oklch(28.04% 0.11 358.71deg);
+	--sl-color-red: oklch(62.02% 0.21 353.41deg);
+	--sl-color-red-high: oklch(75.2% 0.14 345.21deg);
+	--sl-color-purple-low: oklch(27.57% 0.17 280.45deg);
+	--sl-color-purple: oklch(71.31% 0.15 283.43deg);
+	--sl-color-purple-high: oklch(81.6% 0.1 290.49deg);
+	--sl-color-teal: #5eead4;
 }
 
 /* Light mode */
 :root[data-theme='light'] {
-	--sl-color-white: oklch(22.88% 0.03 258.32deg); /* surface-950 */
-	--sl-color-gray-1: oklch(31.6% 0.02 262.55deg); /* surface-900 */
-	--sl-color-gray-2: oklch(39.92% 0.02 255.6deg); /* surface-800 */
-	--sl-color-gray-3: oklch(47.73% 0.01 261.77deg); /* surface-700 */
-	--sl-color-gray-4: oklch(62.6% 0.01 258.36deg); /* surface-500 */
-	--sl-color-gray-5: oklch(85.51% 0 286.73deg); /* surface-200 */
-	--sl-color-gray-6: oklch(95.5% 0.005 287deg); /* between surface-50 and surface-100 */
-	--sl-color-gray-7: oklch(97.8% 0.003 287deg);
-	--sl-color-black: oklch(100% 0 0); /* surface-50 */
-
-	--sl-color-accent-low: oklch(95.05% 0.04 325.97deg); /* primary-50 */
-	--sl-color-accent: oklch(56.31% 0.21 294.98deg); /* primary-500 */
-	--sl-color-accent-high: oklch(43.11% 0.16 296.99deg); /* primary-800 */
+	--sl-color-white: oklch(18.53% 0.04 263.67deg);
+	--sl-color-gray-1: oklch(24.95% 0.04 264.15deg);
+	--sl-color-gray-2: oklch(31.02% 0.04 264.35deg);
+	--sl-color-gray-3: oklch(47.47% 0.05 264.53deg);
+	--sl-color-gray-4: oklch(58.25% 0.04 265.77deg);
+	--sl-color-gray-5: oklch(78.51% 0.02 265.97deg);
+	--sl-color-gray-6: oklch(97.59% 0 264.7deg);
+	--sl-color-gray-7: oklch(99% 0 0);
+	--sl-color-black: oklch(100% 0 0);
+	--sl-color-accent-low: oklch(96.19% 0.04 201.62deg);
+	--sl-color-accent: oklch(56.01% 0.18 260.79deg);
+	--sl-color-accent-high: oklch(43.07% 0.17 262.89deg);
+	--sl-color-text: oklch(24.95% 0.04 264.15deg);
+	--sl-color-text-accent: oklch(56.01% 0.18 260.79deg);
+	--sl-color-text-invert: oklch(100% 0 0);
+	--sl-color-bg: oklch(100% 0 0);
+	--sl-color-bg-nav: oklch(97.59% 0 264.7deg);
+	--sl-color-bg-sidebar: oklch(100% 0 0);
+	--sl-color-bg-inline-code: oklch(97.59% 0 264.7deg);
+	--sl-color-hairline: oklch(88.12% 0.01 261.81deg);
+	--sl-color-hairline-light: oklch(97.59% 0 264.7deg);
+	--sl-color-hairline-shade: oklch(88.12% 0.01 261.81deg);
+	--sl-color-green-low: oklch(97.96% 0.12 108.35deg);
+	--sl-color-green: oklch(54.52% 0.17 138.28deg);
+	--sl-color-green-high: oklch(38.95% 0.13 142.5deg);
+	--sl-color-orange-low: oklch(97.87% 0.12 108.45deg);
+	--sl-color-orange: oklch(52.18% 0.1 83.48deg);
+	--sl-color-orange-high: oklch(31.98% 0.06 75.91deg);
+	--sl-color-red-low: oklch(91.14% 0.07 332.14deg);
+	--sl-color-red: oklch(40.37% 0.16 358.83deg);
+	--sl-color-red-high: oklch(28.04% 0.11 358.71deg);
+	--sl-color-purple-low: oklch(92.26% 0.05 306.01deg);
+	--sl-color-purple: oklch(42.59% 0.18 283.85deg);
+	--sl-color-purple-high: oklch(27.57% 0.17 280.45deg);
+	--sl-color-teal: #0f766e;
 }
 
-/* Mona typography: system font, heavy headings */
-:root {
-	--sl-font: system-ui, sans-serif;
+/* Match Wintry headings without adding remote font requests. */
+h1, .site-title, .sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+  font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 }
 
-h1,
-.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
-	font-weight: 900;
-}
-
-/* Starlight uses blue for "note" asides; tie them to the accent color instead */
-:root,
-:root[data-theme='light'] {
-	--sl-color-blue-low: var(--sl-color-accent-low);
-	--sl-color-blue: var(--sl-color-accent);
-	--sl-color-blue-high: var(--sl-color-accent-high);
+/* Notes and definition blocks follow the primary palette. */
+:root, :root[data-theme='light'] {
+  --sl-color-blue-low: var(--sl-color-accent-low);
+  --sl-color-blue: var(--sl-color-accent);
+  --sl-color-blue-high: var(--sl-color-accent-high);
 }

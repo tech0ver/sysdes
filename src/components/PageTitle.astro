@@ -1,0 +1,22 @@
+---
+const { entry, sidebar } = Astro.locals.starlightRoute;
+type SidebarEntry = (typeof sidebar)[number];
+const containsCurrent = (item: SidebarEntry): boolean =>
+  item.type === 'link' ? item.isCurrent : item.entries.some(containsCurrent);
+const section = sidebar.find((item) => item.type === 'group' && containsCurrent(item));
+const { title, description } = entry.data;
+---
+<div class="article-heading">
+  {section && <p class="article-section">{section.label}</p>}
+  <h1 id="_top">{title}</h1>
+  {description && description !== 'TODO' && <p class="article-description">{description}</p>}
+</div>
+<style>
+  .article-section { margin: 0 0 0.25rem; color: var(--sl-color-gray-3); font-size: var(--sl-text-xl); }
+  .article-description {
+    margin: 0.6rem 0 0;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-lg);
+    line-height: 1.55;
+  }
+</style>
