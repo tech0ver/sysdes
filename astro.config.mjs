@@ -22,6 +22,7 @@ export default defineConfig({
 			routeMiddleware: './src/routeData.ts',
 			customCss: ['./src/styles/theme.css', './src/styles/ui.css', './src/styles/glossary.css', './src/styles/article.css'],
 			components: {
+				Head: './src/components/Head.astro',
 				ThemeSelect: './src/components/ThemeToggle.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 				PageFrame: './src/components/PageFrame.astro',
