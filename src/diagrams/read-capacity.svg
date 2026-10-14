@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="read-capacity-title read-capacity-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="read-capacity-title">Every replica applies every write</title>
+  <desc id="read-capacity-desc">Two panels with a leader and two followers. Each bar is the full capacity of one node, split into writes and reads. With 10% writes, every node spends 10% on writes and 90% on reads, so the three nodes give 2.7 nodes of read capacity. With 50% writes, every node spends half on writes, so the three nodes give 1.5 nodes of read capacity.</desc>
+  <defs>
+    <marker id="read-capacity-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="read-capacity-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="292"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">10% writes</text>
+  <rect class="dg-box-accent" x="50" y="218.0" width="60" height="18.0" rx="2"/>
+  <text class="dg-code" x="80" y="231.0" text-anchor="middle">10%</text>
+  <rect class="dg-box" x="50" y="56" width="60" height="162.0" rx="2"/>
+  <text class="dg-code" x="80" y="141.0" text-anchor="middle">90%</text>
+  <text class="dg-sub" x="80" y="254" text-anchor="middle">leader</text>
+  <rect class="dg-box-accent" x="150" y="218.0" width="60" height="18.0" rx="2"/>
+  <text class="dg-code" x="180" y="231.0" text-anchor="middle">10%</text>
+  <rect class="dg-box" x="150" y="56" width="60" height="162.0" rx="2"/>
+  <text class="dg-code" x="180" y="141.0" text-anchor="middle">90%</text>
+  <text class="dg-sub" x="180" y="254" text-anchor="middle">follower</text>
+  <rect class="dg-box-accent" x="250" y="218.0" width="60" height="18.0" rx="2"/>
+  <text class="dg-code" x="280" y="231.0" text-anchor="middle">10%</text>
+  <rect class="dg-box" x="250" y="56" width="60" height="162.0" rx="2"/>
+  <text class="dg-code" x="280" y="141.0" text-anchor="middle">90%</text>
+  <text class="dg-sub" x="280" y="254" text-anchor="middle">follower</text>
+  <text class="dg-mono dg-muted-text" x="180" y="44" text-anchor="middle">READS ABOVE, WRITES BELOW</text>
+  <text class="dg-result" x="180" y="288" text-anchor="middle">Read capacity: 2.7 nodes</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">50% writes</text>
+  <rect class="dg-box-accent" x="410" y="146.0" width="60" height="90.0" rx="2"/>
+  <text class="dg-code" x="440" y="195.0" text-anchor="middle">50%</text>
+  <rect class="dg-box" x="410" y="56" width="60" height="90.0" rx="2"/>
+  <text class="dg-code" x="440" y="105.0" text-anchor="middle">50%</text>
+  <text class="dg-sub" x="440" y="254" text-anchor="middle">leader</text>
+  <rect class="dg-box-accent" x="510" y="146.0" width="60" height="90.0" rx="2"/>
+  <text class="dg-code" x="540" y="195.0" text-anchor="middle">50%</text>
+  <rect class="dg-box" x="510" y="56" width="60" height="90.0" rx="2"/>
+  <text class="dg-code" x="540" y="105.0" text-anchor="middle">50%</text>
+  <text class="dg-sub" x="540" y="254" text-anchor="middle">follower</text>
+  <rect class="dg-box-accent" x="610" y="146.0" width="60" height="90.0" rx="2"/>
+  <text class="dg-code" x="640" y="195.0" text-anchor="middle">50%</text>
+  <rect class="dg-box" x="610" y="56" width="60" height="90.0" rx="2"/>
+  <text class="dg-code" x="640" y="105.0" text-anchor="middle">50%</text>
+  <text class="dg-sub" x="640" y="254" text-anchor="middle">follower</text>
+  <text class="dg-mono dg-muted-text" x="540" y="44" text-anchor="middle">READS ABOVE, WRITES BELOW</text>
+  <text class="dg-result" x="540" y="288" text-anchor="middle">Read capacity: 1.5 nodes</text>
+</svg>

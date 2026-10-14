@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 230" role="img" aria-labelledby="semi-sync-zones-title semi-sync-zones-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="semi-sync-zones-title">Replicas spread over zones and regions</title>
+  <desc id="semi-sync-zones-desc">The US region has three availability zones. The leader is in zone A. It waits for a synchronous follower in zone B before it confirms a write, and sends the change asynchronously to a follower in zone C and to a follower in the EU region.</desc>
+  <defs>
+    <marker id="semi-sync-zones-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="semi-sync-zones-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="10" y="10" width="470" height="210" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="25" y="30">REGION US</text>
+  <rect class="dg-zone" x="500" y="10" width="210" height="210" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="515" y="30">REGION EU</text>
+  <rect class="dg-zone" x="25" y="40" width="130" height="165" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="40" y="60">ZONE A</text>
+  <rect class="dg-zone" x="180" y="40" width="130" height="165" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="195" y="60">ZONE B</text>
+  <rect class="dg-zone" x="335" y="40" width="130" height="165" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="350" y="60">ZONE C</text>
+  <rect class="dg-box" x="45" y="90" width="90" height="30" rx="4"/>
+  <text class="dg-code" x="90.0" y="109.0" text-anchor="middle">leader</text>
+  <rect class="dg-box-accent" x="200" y="90" width="90" height="30" rx="4"/>
+  <text class="dg-code" x="245.0" y="109.0" text-anchor="middle">follower</text>
+  <rect class="dg-box" x="355" y="90" width="90" height="30" rx="4"/>
+  <text class="dg-code" x="400.0" y="109.0" text-anchor="middle">follower</text>
+  <rect class="dg-box" x="560" y="90" width="90" height="30" rx="4"/>
+  <text class="dg-code" x="605.0" y="109.0" text-anchor="middle">follower</text>
+  <path class="dg-arrow dg-message" d="M135 105 H192" marker-end="url(#semi-sync-zones-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="140" y="97" text-anchor="start">SYNC</text>
+  <path class="dg-arrow dg-empty" d="M90 120 V150 H400 V128" marker-end="url(#semi-sync-zones-head)"/>
+  <text class="dg-mono dg-muted-text" x="245" y="144" text-anchor="middle">ASYNC</text>
+  <path class="dg-arrow dg-empty" d="M90 120 V180 H605 V128" marker-end="url(#semi-sync-zones-head)"/>
+  <text class="dg-mono dg-muted-text" x="560" y="174" text-anchor="middle">ASYNC</text>
+</svg>

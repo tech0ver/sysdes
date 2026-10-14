@@ -1,0 +1,50 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="ryw-options-title ryw-options-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ryw-options-title">Three ways to provide read-your-writes</title>
+  <desc id="ryw-options-desc">Three panels with the same layout. Own data from the leader: a read of the shopper's own address goes to the leader, a product page goes to a follower. Leader for a minute: a read 10 seconds after the shopper's write goes to the leader, a read 2 minutes after goes to a follower whose lag is under a minute. Read after a position: the read carries log position 41; a follower at 39 waits, a follower at 41 answers.</desc>
+  <defs>
+    <marker id="ryw-options-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ryw-options-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="228"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="228"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">Own data from leader</text>
+  <rect class="dg-box" x="70" y="44" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="120.0" y="62.0" text-anchor="middle">shopper</text>
+  <rect class="dg-box" x="15" y="160" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="65.0" y="178.0" text-anchor="middle">leader</text>
+  <path class="dg-arrow dg-message" d="M105 72 L70 152" marker-end="url(#ryw-options-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="78" y="108" text-anchor="end">MY</text>
+  <text class="dg-mono dg-accent-text" x="78" y="121" text-anchor="end">ADDRESS</text>
+  <rect class="dg-box" x="125" y="160" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="175.0" y="178.0" text-anchor="middle">follower</text>
+  <path class="dg-arrow" d="M135 72 L170 152" marker-end="url(#ryw-options-head)"/>
+  <text class="dg-mono dg-muted-text" x="162" y="108" text-anchor="start">PRODUCT</text>
+  <text class="dg-mono dg-muted-text" x="162" y="121" text-anchor="start">PAGE</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Leader for a minute</text>
+  <rect class="dg-box" x="310" y="44" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="62.0" text-anchor="middle">shopper</text>
+  <rect class="dg-box" x="255" y="160" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="305.0" y="178.0" text-anchor="middle">leader</text>
+  <path class="dg-arrow dg-message" d="M345 72 L310 152" marker-end="url(#ryw-options-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="318" y="108" text-anchor="end">10 S AFTER</text>
+  <text class="dg-mono dg-accent-text" x="318" y="121" text-anchor="end">MY WRITE</text>
+  <rect class="dg-box" x="365" y="160" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="415.0" y="178.0" text-anchor="middle">follower</text>
+  <path class="dg-arrow" d="M375 72 L410 152" marker-end="url(#ryw-options-head)"/>
+  <text class="dg-mono dg-muted-text" x="402" y="108" text-anchor="start">2 MIN</text>
+  <text class="dg-mono dg-muted-text" x="402" y="121" text-anchor="start">AFTER</text>
+  <text class="dg-sub" x="415" y="208" text-anchor="middle">lag under 1 min</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Read after position</text>
+  <rect class="dg-box" x="550" y="44" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="600.0" y="62.0" text-anchor="middle">shopper</text>
+  <rect class="dg-box-failed" x="495" y="160" width="100" height="28" rx="4"/>
+  <text class="dg-code-muted" x="545.0" y="178.0" text-anchor="middle">follower, 39</text>
+  <path class="dg-arrow dg-empty" d="M585 72 L550 152" marker-end="url(#ryw-options-head)"/>
+  <text class="dg-mono dg-muted-text" x="558" y="108" text-anchor="end">WAITS OR</text>
+  <text class="dg-mono dg-muted-text" x="558" y="121" text-anchor="end">SKIPPED</text>
+  <rect class="dg-box" x="605" y="160" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="655.0" y="178.0" text-anchor="middle">follower, 41</text>
+  <path class="dg-arrow dg-message" d="M615 72 L650 152" marker-end="url(#ryw-options-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="642" y="108" text-anchor="start">AFTER 41:</text>
+  <text class="dg-mono dg-accent-text" x="642" y="121" text-anchor="start">ANSWERS</text>
+</svg>

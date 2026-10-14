@@ -1,0 +1,55 @@
+<svg class="diagram-svg" viewBox="0 0 720 352" role="img" aria-labelledby="sync-vs-async-title sync-vs-async-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sync-vs-async-title">Asynchronous and synchronous replication when the leader fails</title>
+  <desc id="sync-vs-async-desc">Two panels with the same steps in time. Asynchronous: the leader saves order 501 and answers OK at once, then fails before the follower gets the order, so the follower that takes over has no order 501. Synchronous: the leader saves the order, sends it to the follower, waits until the follower has saved it, and only then answers OK; when the leader fails, the follower that takes over has order 501.</desc>
+  <defs>
+    <marker id="sync-vs-async-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sync-vs-async-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="344"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Asynchronous</text>
+  <text class="dg-mono dg-muted-text" x="55" y="52" text-anchor="middle">CLIENT</text>
+  <text class="dg-mono dg-muted-text" x="175" y="52" text-anchor="middle">LEADER</text>
+  <text class="dg-mono dg-muted-text" x="295" y="52" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="55" y1="62" x2="55" y2="300"/>
+  <line class="dg-lifeline" x1="175" y1="62" x2="175" y2="262"/>
+  <line class="dg-lifeline" x1="295" y1="62" x2="295" y2="280"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="78" text-anchor="middle">ORDER 501</text>
+  <path class="dg-arrow" d="M55 86 H167" marker-end="url(#sync-vs-async-head)"/>
+  <rect class="dg-box" x="135" y="98" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="175.0" y="114.0" text-anchor="middle">saved</text>
+  <text class="dg-mono dg-accent-text" x="115.0" y="140" text-anchor="middle">OK</text>
+  <path class="dg-arrow dg-message" d="M175 148 H63" marker-end="url(#sync-vs-async-head-accent)"/>
+  <line class="dg-cross" x1="169" y1="256" x2="181" y2="268"/>
+  <line class="dg-cross" x1="169" y1="268" x2="181" y2="256"/>
+  <text class="dg-mono dg-muted-text" x="161" y="266" text-anchor="end">FAILS</text>
+  <rect class="dg-box-failed" x="237" y="280" width="116" height="24" rx="4"/>
+  <text class="dg-code-muted" x="295.0" y="296.0" text-anchor="middle">no order 501</text>
+  <text class="dg-result" x="180" y="336" text-anchor="middle">Confirmed order lost</text>
+  <text class="dg-mono dg-muted-text" x="295" y="318" text-anchor="middle">NEW LEADER</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Synchronous</text>
+  <text class="dg-mono dg-muted-text" x="415" y="52" text-anchor="middle">CLIENT</text>
+  <text class="dg-mono dg-muted-text" x="535" y="52" text-anchor="middle">LEADER</text>
+  <text class="dg-mono dg-muted-text" x="655" y="52" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="415" y1="62" x2="415" y2="300"/>
+  <line class="dg-lifeline" x1="535" y1="62" x2="535" y2="262"/>
+  <line class="dg-lifeline" x1="655" y1="62" x2="655" y2="280"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="78" text-anchor="middle">ORDER 501</text>
+  <path class="dg-arrow" d="M415 86 H527" marker-end="url(#sync-vs-async-head)"/>
+  <rect class="dg-box" x="495" y="98" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="535.0" y="114.0" text-anchor="middle">saved</text>
+  <text class="dg-mono dg-muted-text" x="595.0" y="140" text-anchor="middle">ORDER 501</text>
+  <path class="dg-arrow" d="M535 148 H647" marker-end="url(#sync-vs-async-head)"/>
+  <rect class="dg-box" x="615" y="160" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="655.0" y="176.0" text-anchor="middle">saved</text>
+  <text class="dg-mono dg-muted-text" x="595.0" y="202" text-anchor="middle">SAVED</text>
+  <path class="dg-arrow" d="M655 210 H543" marker-end="url(#sync-vs-async-head)"/>
+  <text class="dg-mono dg-accent-text" x="475.0" y="232" text-anchor="middle">OK</text>
+  <path class="dg-arrow dg-message" d="M535 240 H423" marker-end="url(#sync-vs-async-head-accent)"/>
+  <line class="dg-cross" x1="529" y1="256" x2="541" y2="268"/>
+  <line class="dg-cross" x1="529" y1="268" x2="541" y2="256"/>
+  <text class="dg-mono dg-muted-text" x="521" y="266" text-anchor="end">FAILS</text>
+  <rect class="dg-box" x="597" y="280" width="116" height="24" rx="4"/>
+  <text class="dg-code" x="655.0" y="296.0" text-anchor="middle">order 501</text>
+  <text class="dg-result" x="540" y="336" text-anchor="middle">Confirmed order kept</text>
+  <text class="dg-mono dg-muted-text" x="655" y="318" text-anchor="middle">NEW LEADER</text>
+</svg>

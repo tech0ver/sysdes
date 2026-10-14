@@ -1,0 +1,98 @@
+<svg class="diagram-svg" viewBox="0 0 720 440" role="img" aria-labelledby="quorum-caveats-title quorum-caveats-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="quorum-caveats-title">Six ways a quorum read can miss the latest write</title>
+  <desc id="quorum-caveats-desc">Six panels with replicas A, B, and C, N = 3, W = 2, R = 2. Clocks differ: v1 is stamped 10:05 by a fast clock, the later v2 is stamped 10:02, and last write wins keeps v1. Read during a write: v2 has reached only A; a read of A and B gets v2, a later read of B and C gets v1. Failed write: only A saved v2 and the client got an error, but a read of A and B can still return v2. Replica restored: v2 was confirmed by A and B, then B was restored from an old copy, and a read of B and C gets v1. Sloppy quorum: A and B were cut off, C and a substitute node D confirmed v2, and a read of A and B gets v1. Concurrent writes: write a reached A and B, write b reached B and C, and a read gets both.</desc>
+  <defs>
+    <marker id="quorum-caveats-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="quorum-caveats-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="432"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="432"/>
+  <line class="dg-rule" x1="8" y1="220" x2="712" y2="220"/>
+  <text class="dg-name" x="120" y="26" text-anchor="middle">Clocks differ</text>
+  <text class="dg-mono dg-muted-text" x="120" y="52" text-anchor="middle">v1, FAST CLOCK: 10:05</text>
+  <text class="dg-mono dg-muted-text" x="44.0" y="76" text-anchor="middle">A</text>
+  <rect class="dg-box" x="12.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="44.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="120.0" y="76" text-anchor="middle">B</text>
+  <rect class="dg-box" x="88.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="120.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="196.0" y="76" text-anchor="middle">C</text>
+  <rect class="dg-box" x="164.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="196.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="120" y="136" text-anchor="middle">THEN v2, CLOCK: 10:02</text>
+  <text class="dg-mono dg-accent-text" x="120" y="156" text-anchor="middle">LAST WRITE WINS KEEPS v1</text>
+  <text class="dg-result" x="120" y="190" text-anchor="middle">The newer v2 is lost</text>
+  <text class="dg-name" x="360" y="26" text-anchor="middle">Read during a write</text>
+  <text class="dg-mono dg-muted-text" x="360" y="52" text-anchor="middle">v2 HAS REACHED A ONLY</text>
+  <text class="dg-mono dg-muted-text" x="284.0" y="76" text-anchor="middle">A</text>
+  <rect class="dg-box" x="252.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="284.0" y="101.0" text-anchor="middle">v2</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="76" text-anchor="middle">B</text>
+  <rect class="dg-chip" x="328.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code-muted" x="360.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="436.0" y="76" text-anchor="middle">C</text>
+  <rect class="dg-chip" x="404.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code-muted" x="436.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="360" y="136" text-anchor="middle">READ A, B GETS v2</text>
+  <text class="dg-mono dg-accent-text" x="360" y="156" text-anchor="middle">LATER READ B, C GETS v1</text>
+  <text class="dg-result" x="360" y="190" text-anchor="middle">A later read goes back</text>
+  <text class="dg-name" x="600" y="26" text-anchor="middle">Failed write</text>
+  <text class="dg-mono dg-muted-text" x="600" y="52" text-anchor="middle">ONLY A SAVES v2</text>
+  <text class="dg-mono dg-muted-text" x="524.0" y="76" text-anchor="middle">A</text>
+  <rect class="dg-box" x="492.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="524.0" y="101.0" text-anchor="middle">v2</text>
+  <text class="dg-mono dg-muted-text" x="600.0" y="76" text-anchor="middle">B</text>
+  <rect class="dg-box-failed" x="568.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code-muted" x="600.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="676.0" y="76" text-anchor="middle">C</text>
+  <rect class="dg-box-failed" x="644.0" y="84" width="64" height="26" rx="4"/>
+  <text class="dg-code-muted" x="676.0" y="101.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="600" y="136" text-anchor="middle">THE CLIENT GETS AN ERROR</text>
+  <text class="dg-mono dg-accent-text" x="600" y="156" text-anchor="middle">READ A, B CAN GET v2</text>
+  <text class="dg-result" x="600" y="190" text-anchor="middle">A failed write shows up</text>
+  <text class="dg-name" x="120" y="246" text-anchor="middle">Replica restored</text>
+  <text class="dg-mono dg-muted-text" x="120" y="272" text-anchor="middle">A, B CONFIRM v2</text>
+  <text class="dg-mono dg-muted-text" x="44.0" y="296" text-anchor="middle">A</text>
+  <rect class="dg-box" x="12.0" y="304" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="44.0" y="321.0" text-anchor="middle">v2</text>
+  <text class="dg-mono dg-muted-text" x="120.0" y="296" text-anchor="middle">B</text>
+  <rect class="dg-box-failed" x="88.0" y="304" width="64" height="26" rx="4"/>
+  <text class="dg-code-muted" x="120.0" y="321.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="196.0" y="296" text-anchor="middle">C</text>
+  <rect class="dg-chip" x="164.0" y="304" width="64" height="26" rx="4"/>
+  <text class="dg-code-muted" x="196.0" y="321.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="120" y="356" text-anchor="middle">B RESTORED FROM AN OLD COPY</text>
+  <text class="dg-mono dg-accent-text" x="120" y="376" text-anchor="middle">READ B, C GETS v1</text>
+  <text class="dg-result" x="120" y="410" text-anchor="middle">A confirmed write is missed</text>
+  <text class="dg-name" x="360" y="246" text-anchor="middle">Sloppy quorum</text>
+  <text class="dg-mono dg-muted-text" x="360" y="272" text-anchor="middle">A, B CUT OFF; D STANDS IN</text>
+  <text class="dg-mono dg-muted-text" x="275.0" y="296" text-anchor="middle">A</text>
+  <rect class="dg-chip" x="252.0" y="304" width="46" height="26" rx="4"/>
+  <text class="dg-code-muted" x="275.0" y="321.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="331.6666666666667" y="296" text-anchor="middle">B</text>
+  <rect class="dg-chip" x="308.6666666666667" y="304" width="46" height="26" rx="4"/>
+  <text class="dg-code-muted" x="331.6666666666667" y="321.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="388.3333333333333" y="296" text-anchor="middle">C</text>
+  <rect class="dg-box" x="365.3333333333333" y="304" width="46" height="26" rx="4"/>
+  <text class="dg-code" x="388.3333333333333" y="321.0" text-anchor="middle">v2</text>
+  <text class="dg-mono dg-muted-text" x="445.0" y="296" text-anchor="middle">D</text>
+  <rect class="dg-box" x="422.0" y="304" width="46" height="26" rx="4"/>
+  <text class="dg-code" x="445.0" y="321.0" text-anchor="middle">v2</text>
+  <text class="dg-mono dg-muted-text" x="360" y="356" text-anchor="middle">C AND D CONFIRM v2</text>
+  <text class="dg-mono dg-accent-text" x="360" y="376" text-anchor="middle">READ A, B GETS v1</text>
+  <text class="dg-result" x="360" y="410" text-anchor="middle">The read misses the write</text>
+  <text class="dg-name" x="600" y="246" text-anchor="middle">Concurrent writes</text>
+  <text class="dg-mono dg-muted-text" x="600" y="272" text-anchor="middle">WRITES a AND b AT ONCE</text>
+  <text class="dg-mono dg-muted-text" x="524.0" y="296" text-anchor="middle">A</text>
+  <rect class="dg-box" x="492.0" y="304" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="524.0" y="321.0" text-anchor="middle">a</text>
+  <text class="dg-mono dg-muted-text" x="600.0" y="296" text-anchor="middle">B</text>
+  <rect class="dg-box" x="568.0" y="304" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="600.0" y="321.0" text-anchor="middle">a, b</text>
+  <text class="dg-mono dg-muted-text" x="676.0" y="296" text-anchor="middle">C</text>
+  <rect class="dg-box" x="644.0" y="304" width="64" height="26" rx="4"/>
+  <text class="dg-code" x="676.0" y="321.0" text-anchor="middle">b</text>
+  <text class="dg-mono dg-muted-text" x="600" y="356" text-anchor="middle">a ON A, B; b ON B, C</text>
+  <text class="dg-mono dg-accent-text" x="600" y="376" text-anchor="middle">READ A, B GETS a AND b</text>
+  <text class="dg-result" x="600" y="410" text-anchor="middle">A conflict to resolve</text>
+</svg>

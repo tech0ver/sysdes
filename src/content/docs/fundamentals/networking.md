@@ -161,7 +161,7 @@ Messages still go to your servers. To bring them closer, run the servers in seve
 When a region fails, health checks remove it from the DNS answers, and the TTL decides how soon clients see the change. A short TTL moves users away quickly, but clients look up the name more often. A long TTL means fewer lookups, but users keep going to the failed region for longer.
 :::
 
-Each region needs the data its users read. Copying data between regions makes reads fast but forces a choice between speed and consistency. <!-- link: fundamentals/replication -->
+Each region needs the data its users read. [Copying data between regions](../replication/#writing-from-several-regions) makes reads fast but forces a choice between speed and consistency.
 
 :::do
 Put static files behind a CDN first. Add regions when users on several continents need fast responses from your servers.

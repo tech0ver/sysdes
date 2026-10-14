@@ -1,0 +1,25 @@
+<svg class="diagram-svg" viewBox="0 0 720 250" role="img" aria-labelledby="log-formats-title log-formats-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="log-formats-title">One update in three log formats</title>
+  <desc id="log-formats-desc">The update sets the price of product 7 to 9.99. A statement log carries the SQL text, and the follower runs it again. A physical log carries the changed bytes of a table page and an index page, and the follower writes the same bytes. A logical log carries the changed row, product 7 with the new price, and a commit; the follower updates the row and its own indexes.</desc>
+  <defs>
+    <marker id="log-formats-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="log-formats-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="345" y="22" text-anchor="middle">WHAT THE LOG CARRIES</text>
+  <text class="dg-mono dg-muted-text" x="600" y="22" text-anchor="middle">WHAT THE FOLLOWER DOES</text>
+  <text class="dg-name" x="20" y="74" text-anchor="start">Statement</text>
+  <rect class="dg-code-box" x="140" y="40" width="330" height="56" rx="4"/>
+  <text class="dg-code" x="152" y="63">UPDATE products SET price = 9.99</text>
+  <text class="dg-code" x="152" y="81">WHERE id = 7</text>
+  <text class="dg-note" x="490" y="72">runs the SQL again</text>
+  <text class="dg-name" x="20" y="144" text-anchor="start">Physical</text>
+  <rect class="dg-code-box" x="140" y="110" width="330" height="56" rx="4"/>
+  <text class="dg-code" x="152" y="133">page 4211: bytes 96-103 changed</text>
+  <text class="dg-code" x="152" y="151">index page 88: bytes 12-19 changed</text>
+  <text class="dg-note" x="490" y="142">writes the same bytes</text>
+  <text class="dg-name" x="20" y="214" text-anchor="start">Logical</text>
+  <rect class="dg-code-box" x="140" y="180" width="330" height="56" rx="4"/>
+  <text class="dg-code" x="152" y="203">products id=7: price = 9.99</text>
+  <text class="dg-code" x="152" y="221">commit</text>
+  <text class="dg-note" x="490" y="212">updates row 7 and its own indexes</text>
+</svg>

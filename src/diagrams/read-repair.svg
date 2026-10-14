@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 250" role="img" aria-labelledby="read-repair-title read-repair-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="read-repair-title">Read repair</title>
+  <desc id="read-repair-desc">A reader asks replicas A, B, and C for cart 7. A and B answer with version 2, C answers with version 1, so C missed a write. The reader returns version 2 and writes version 2 back to C.</desc>
+  <defs>
+    <marker id="read-repair-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="read-repair-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="80" y="28" text-anchor="middle">READER</text>
+  <line class="dg-lifeline" x1="80" y1="40" x2="80" y2="240"/>
+  <text class="dg-mono dg-muted-text" x="300" y="28" text-anchor="middle">REPLICA A</text>
+  <line class="dg-lifeline" x1="300" y1="40" x2="300" y2="240"/>
+  <text class="dg-mono dg-muted-text" x="450" y="28" text-anchor="middle">REPLICA B</text>
+  <line class="dg-lifeline" x1="450" y1="40" x2="450" y2="240"/>
+  <text class="dg-mono dg-muted-text" x="600" y="28" text-anchor="middle">REPLICA C</text>
+  <line class="dg-lifeline" x1="600" y1="40" x2="600" y2="240"/>
+  <text class="dg-mono dg-muted-text" x="190.0" y="58" text-anchor="middle">READ CART 7 FROM A, B, C</text>
+  <path class="dg-arrow" d="M80 66 H592" marker-end="url(#read-repair-head)"/>
+  <rect class="dg-chip" x="260" y="78" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="300.0" y="94.0" text-anchor="middle">v2</text>
+  <rect class="dg-chip" x="410" y="78" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="94.0" text-anchor="middle">v2</text>
+  <rect class="dg-box-failed" x="560" y="78" width="80" height="24" rx="4"/>
+  <text class="dg-code-muted" x="600.0" y="94.0" text-anchor="middle">v1</text>
+  <text class="dg-mono dg-muted-text" x="190.0" y="122" text-anchor="middle">ANSWERS: v2, v2, v1</text>
+  <path class="dg-arrow" d="M600 130 H88" marker-end="url(#read-repair-head)"/>
+  <rect class="dg-box" x="20" y="146" width="120" height="40" rx="4"/>
+  <text class="dg-code" x="80" y="162" text-anchor="middle">returns v2</text>
+  <text class="dg-code-muted" x="80" y="178" text-anchor="middle">C is behind</text>
+  <text class="dg-mono dg-accent-text" x="505.0" y="198" text-anchor="middle">WRITE BACK v2 TO C</text>
+  <path class="dg-arrow dg-message" d="M80 206 H592" marker-end="url(#read-repair-head-accent)"/>
+  <rect class="dg-box-accent" x="560" y="216" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="232.0" text-anchor="middle">v2</text>
+</svg>

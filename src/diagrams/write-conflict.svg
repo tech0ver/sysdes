@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 262" role="img" aria-labelledby="write-conflict-title write-conflict-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="write-conflict-title">Two leaders change the same title at once</title>
+  <desc id="write-conflict-desc">Both leaders start with the title "Red mug". An employee in the EU changes it to "Mug, red" on the EU leader, and an employee in the US changes it to "Red coffee mug" on the US leader. Each leader sends its change to the other, so each ends up with two different titles for the same record: a conflict.</desc>
+  <defs>
+    <marker id="write-conflict-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="write-conflict-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="200" y="30" text-anchor="middle">EU LEADER</text>
+  <line class="dg-lifeline" x1="200" y1="44" x2="200" y2="248"/>
+  <text class="dg-mono dg-muted-text" x="520" y="30" text-anchor="middle">US LEADER</text>
+  <line class="dg-lifeline" x1="520" y1="44" x2="520" y2="248"/>
+  <rect class="dg-chip" x="120" y="54" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="200.0" y="70.0" text-anchor="middle">Red mug</text>
+  <rect class="dg-chip" x="440" y="54" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="70.0" text-anchor="middle">Red mug</text>
+  <text class="dg-mono dg-muted-text" x="67.0" y="104" text-anchor="middle">EMPLOYEE</text>
+  <path class="dg-arrow" d="M14 112 H112" marker-end="url(#write-conflict-head)"/>
+  <text class="dg-mono dg-muted-text" x="653.0" y="104" text-anchor="middle">EMPLOYEE</text>
+  <path class="dg-arrow" d="M706 112 H608" marker-end="url(#write-conflict-head)"/>
+  <rect class="dg-box" x="120" y="100" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="200.0" y="116.0" text-anchor="middle">Mug, red</text>
+  <rect class="dg-box" x="440" y="100" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="116.0" text-anchor="middle">Red coffee mug</text>
+  <path class="dg-arrow" d="M200 132 L514 172" marker-end="url(#write-conflict-head)"/>
+  <path class="dg-arrow" d="M520 132 L206 172" marker-end="url(#write-conflict-head)"/>
+  <text class="dg-mono dg-muted-text" x="360" y="138" text-anchor="middle">REPLICATE</text>
+  <rect class="dg-box" x="120" y="184" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="200.0" y="200.0" text-anchor="middle">Mug, red</text>
+  <rect class="dg-box-accent" x="120" y="214" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="200.0" y="230.0" text-anchor="middle">Red coffee mug</text>
+  <rect class="dg-box" x="440" y="184" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="200.0" text-anchor="middle">Red coffee mug</text>
+  <rect class="dg-box-accent" x="440" y="214" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="230.0" text-anchor="middle">Mug, red</text>
+  <text class="dg-mono dg-accent-text" x="360" y="214" text-anchor="middle">SAME RECORD,</text>
+  <text class="dg-mono dg-accent-text" x="360" y="228" text-anchor="middle">TWO TITLES</text>
+</svg>
