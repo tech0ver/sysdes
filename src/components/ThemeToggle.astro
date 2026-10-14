@@ -1,59 +1,54 @@
 ---
+// One button that switches between dark and light. The first visit follows the
+// browser's color scheme (Starlight's ThemeProvider sets it before paint); a
+// click stores the explicit choice under the same key Starlight uses.
 import { Icon } from '@astrojs/starlight/components';
+const label = 'Toggle theme';
 ---
 
-<!--
-	Replaces Starlight's three-way theme select (dark / light / auto) with a two-way toggle.
-	Until the user picks a theme, the page follows the browser's `prefers-color-scheme`
-	(initial value is set by Starlight's ThemeProvider before paint).
--->
-<sysdis-theme-toggle>
-	<button type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
-		<Icon name="moon" class="moon" />
-		<Icon name="sun" class="sun" />
-	</button>
-</sysdis-theme-toggle>
-
-<style>
-	button {
-		display: flex;
-		align-items: center;
-		padding: 0.25rem;
-		border: 0;
-		background: none;
-		color: var(--sl-color-gray-1);
-		cursor: pointer;
-	}
-	button:hover {
-		color: var(--sl-color-accent-high);
-	}
-	:global(:root[data-theme='light']) .sun,
-	:global(:root[data-theme='dark']) .moon {
-		display: none;
-	}
-</style>
+<site-theme-toggle>
+  <button type="button" class="site-theme-toggle" aria-label={label} title={label}>
+    <Icon size="1.25rem" name="moon" class="site-theme-icon site-theme-moon" />
+    <Icon size="1.25rem" name="sun" class="site-theme-icon site-theme-sun" />
+  </button>
+</site-theme-toggle>
 
 <script>
-	/** Same key Starlight's ThemeProvider reads on page load. */
-	const storageKey = 'starlight-theme';
-	const root = document.documentElement;
+  const storageKey = 'starlight-theme';
+  const system = () => (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
 
-	const hasStoredTheme = () => Boolean(localStorage.getItem(storageKey));
+  class SiteThemeToggle extends HTMLElement {
+    constructor() {
+      super();
+      this.querySelector('button')?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem(storageKey, next); } catch {}
+      });
+    }
+  }
+  customElements.define('site-theme-toggle', SiteThemeToggle);
 
-	// Follow the browser's color scheme until the user picks a theme explicitly.
-	matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-		if (!hasStoredTheme()) root.dataset.theme = e.matches ? 'light' : 'dark';
-	});
-
-	class SysdisThemeToggle extends HTMLElement {
-		constructor() {
-			super();
-			this.querySelector('button')?.addEventListener('click', () => {
-				const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-				root.dataset.theme = next;
-				localStorage.setItem(storageKey, next);
-			});
-		}
-	}
-	customElements.define('sysdis-theme-toggle', SysdisThemeToggle);
+  // Until the reader picks a theme, follow changes of the system scheme.
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+    let stored = null;
+    try { stored = localStorage.getItem(storageKey); } catch {}
+    if (stored !== 'light' && stored !== 'dark') document.documentElement.dataset.theme = system();
+  });
 </script>
+
+<style>
+  /* Size, border and hover come from the shared header control style (ui.css). */
+  .site-theme-toggle {
+    display: inline-flex;
+    padding: 0;
+  }
+  .site-theme-toggle :global(.site-theme-icon) {
+    font-size: 1.25rem;
+  }
+  /* Show what a click will switch to: the moon in light mode, the sun in dark mode. */
+  :global(:root[data-theme='light']) .site-theme-toggle :global(.site-theme-sun),
+  :global(:root:not([data-theme='light'])) .site-theme-toggle :global(.site-theme-moon) {
+    display: none;
+  }
+</style>

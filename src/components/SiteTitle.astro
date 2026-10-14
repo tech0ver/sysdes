@@ -1,0 +1,16 @@
+---
+import SiteName from './SiteName.astro';
+const { siteTitleHref } = Astro.locals.starlightRoute;
+---
+<a href={siteTitleHref} class="site-title sl-flex"><SiteName /></a>
+<style>
+  .site-title {
+    display: flex;
+    align-items: center;
+    font-size: var(--sl-text-base);
+    font-weight: 600;
+    color: var(--sl-color-white);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+</style>
