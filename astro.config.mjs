@@ -18,6 +18,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'SystemDesign0ver',
+			disable404Route: true,
 			favicon: '/favicon.png',
 			routeMiddleware: './src/routeData.ts',
 			customCss: ['./src/styles/theme.css', './src/styles/ui.css', './src/styles/glossary.css', './src/styles/article.css'],
