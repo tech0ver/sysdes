@@ -304,18 +304,24 @@ site-search dialog {
    under the logo then spans the full width. */
 .sidebar-pane { scrollbar-gutter: auto; }
 
-/* The copy button of code blocks matches the other buttons: 40px, 8px corners. */
+/* Copy controls use the same box and icon size as the header icon buttons. */
 :root .expressive-code .copy button {
+  /* Shield the icon from scrolling code without adding a visible plaque. */
+  --site-control-bg: var(--code-background);
   width: var(--site-control);
   height: var(--site-control);
-  border-radius: 0.5rem;
+  border-radius: 50%;
+  transition: opacity 120ms, color 120ms;
 }
-:root .expressive-code .copy button::before {
-  border-color: var(--sl-color-gray-5);
-  opacity: 1;
+:root .expressive-code .copy button::before,
+:root .expressive-code .copy button > div {
+  display: none;
 }
 :root .expressive-code .copy button::after {
-  margin: 0.625rem;
+  margin: calc((var(--site-control) - 1.25rem) / 2);
+  background-color: currentColor;
+  mask-position: center;
+  mask-size: contain;
 }
 
 
@@ -369,7 +375,8 @@ site-search dialog {
 :root { --site-control: 2rem; }
 :root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
   site-search button[data-open-modal], site-search button[data-close-modal],
-  #starlight__search .pagefind-ui__search-clear, .sl-link-button) {
+  #starlight__search .pagefind-ui__search-clear, .sl-link-button,
+  .expressive-code .copy button) {
   border: 0;
   background: var(--site-control-bg, transparent);
   box-shadow: none;
@@ -386,7 +393,8 @@ site-search dialog {
   --site-control-color: var(--sl-color-text-accent);
 }
 :root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
-  site-search button, .sl-link-button):hover { color: var(--sl-color-text-accent); }
+  site-search button, .sl-link-button,
+  .expressive-code .copy button):hover { --site-control-color: var(--sl-color-text-accent); }
 :root .sl-menu-button:has(~ :popover-open) { color: var(--sl-color-text-accent); }
 :root mobile-starlight-toc .toggle {
   border: 0; border-radius: 0; background: transparent;
@@ -406,7 +414,8 @@ site-search dialog {
 }
 :root :is(.sl-link-button, .site-title, .site-pagination a, .site-search-start a,
   .sidebar-content a, .sidebar-content summary, mobile-starlight-toc summary,
-  .sl-menu-button, .site-theme-toggle, .header .social-icons a, site-search button):focus {
+  .sl-menu-button, .site-theme-toggle, .header .social-icons a, site-search button,
+  .expressive-code .copy button):focus {
   outline: none;
 }
 /* Keyboard focus stays visible; pointer clicks do not leave a rectangular ring. */
@@ -418,7 +427,8 @@ site-search dialog {
   text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em;
 }
 :root :is(.sl-menu-button, .site-theme-toggle, .header .social-icons a,
-  site-search button[data-close-modal], #starlight__search .pagefind-ui__search-clear):focus-visible {
+  site-search button[data-close-modal], #starlight__search .pagefind-ui__search-clear,
+  .expressive-code .copy button):focus-visible {
   outline: 2px solid var(--sl-color-accent); outline-offset: 2px;
 }
 @media (max-width: 71.99rem) {
