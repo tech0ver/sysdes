@@ -27,6 +27,8 @@ Then add links from the new article to the existing ones, and update `readMore` 
 - **Fundamentals** — the computer science under system design: concepts and trade-offs that every design uses, with no specific products. A fundamental idea makes sense without the product around it: a lost update is the same for tickets, bank accounts, and stock. Once a fundamental article exists, the topic grows only through patterns and technologies.
 - **Patterns** — reusable solutions built from the fundamentals: how to solve a typical problem in a design. A pattern combines several primitives for one kind of product problem and has its own steps, numbers, background jobs, and edge cases; it often matches an interview task ("design a ticket booking"). A fundamentals article names a pattern and says when to pick it; the pattern's article says how to build it (see WRITING.md, "Other articles").
 - **Technologies** — specific tools and products, and how they implement the fundamentals.
+- **Framework** — how to work through a design interview: the purpose of each step, questions to ask, expected outputs, and time to spend.
+- **Systems** — complete system designs that apply the framework, fundamentals, patterns, and technologies, with alternative designs and the requirements that favor each one.
 
 ## Fundamentals
 
@@ -80,6 +82,7 @@ The word means different things in different articles. Each article says which o
 - `technologies/cdn` — How a CDN works, anycast routing to a nearby edge, what to cache on it, invalidation.
 - `technologies/webrtc` — How WebRTC connects peers: NAT, STUN, TURN, signaling.
 - `technologies/postgresql` — PostgreSQL: B-tree storage, index types, when to pick it.
+- `technologies/kafka` — Kafka: topics and partitions, consumer groups, retention, and replay.
 - `technologies/mysql` — MySQL with InnoDB: clustered primary key, when to pick it.
 - `technologies/mongodb` — MongoDB: documents, embedding and references, schema validation, when to pick it.
 - `technologies/dynamodb` — DynamoDB: partition and sort keys, single-table design, secondary indexes.
@@ -92,3 +95,11 @@ The word means different things in different articles. Each article says which o
 - `technologies/object-storage` — Object storage (Amazon S3 and similar): keys and buckets, pre-signed URLs, multipart upload, durability and availability.
 - `technologies/clickhouse` — ClickHouse: a column store for analytics.
 - `technologies/time-series-databases` — Time-series databases (Prometheus, InfluxDB, TimescaleDB): ingestion, retention, rollups, cardinality.
+
+## Framework
+
+- `framework/functional-requirements` — Clarifying users and their main actions, choosing the core scenarios, agreeing on scope, and knowing when to move on. Includes example questions, expected outputs, and a time budget for this interview step.
+
+## Systems
+
+- `systems/url-shortener` — A complete URL shortener design, from requirements and estimates to APIs, data storage, short code generation, caching, and scaling. Compares alternatives and explains when to choose each one.

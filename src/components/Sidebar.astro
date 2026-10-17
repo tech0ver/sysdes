@@ -1,14 +1,21 @@
 ---
 // The site title sits at the top of the left navigation (and of the
 // mobile menu), above Starlight's sidebar.
-import Default from '@astrojs/starlight/components/Sidebar.astro';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from './SidebarSublist.astro';
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 ---
 
 <div class="site-sidebar-brand">
   <SiteTitle />
 </div>
-<Default />
+<SidebarPersister>
+  <SidebarSublist sublist={Astro.locals.starlightRoute.sidebar} />
+</SidebarPersister>
+<div class="md:sl-hidden">
+  <MobileMenuFooter />
+</div>
 
 <style>
   /* Full sidebar width and the header's height, so its bottom line continues

@@ -22,18 +22,15 @@ const diagram = await sharp(Buffer.from(diagramSvg.replace('</svg>', `
     rect { fill: none; stroke: #77b5ff; stroke-width: 1.5; stroke-linejoin: round; }
     text { fill: #c5cad4; font-family: DejaVu Sans, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
   </style>
-</svg>`)), { density: 144 }).resize(720, 320).png().toBuffer();
+</svg>`)), { density: 144 }).resize(1000, 440, { fit: 'inside' }).png().toBuffer();
+const { width: diagramWidth } = await sharp(diagram).metadata();
 
 const card = Buffer.from(`
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#0f172a" />
-  <g font-family="DejaVu Sans, sans-serif" text-anchor="middle">
-    <text x="600" y="210" font-size="30" fill="#c5cad4">System design materials for interview preparation.</text>
-    <text x="1140" y="590" font-size="24" text-anchor="end" fill="#939baa">tech0ver.github.io/sysdis</text>
-  </g>
 </svg>`);
 
 await sharp(card)
-  .composite([{ input: title, left: 60, top: 56 }, { input: diagram, left: 240, top: 250 }])
+  .composite([{ input: title, left: 60, top: 56 }, { input: diagram, left: Math.round((1200 - diagramWidth) / 2), top: 170 }])
   .png()
   .toFile(fileURLToPath(new URL('../public/social-preview.png', import.meta.url)));
