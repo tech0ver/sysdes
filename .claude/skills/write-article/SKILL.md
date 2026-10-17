@@ -51,8 +51,9 @@ Show the plan to the author and wait for approval. Add new planned articles to A
 ## 5. Finish the text
 
 1. **Intro and cheat sheet.** Write them after all blocks are approved (WRITING.md, "Article shape").
-2. **Glossary pass.** Add missing terms, point `readMore` of the terms this article explains to its sections, fix entries that disagree with the text, remove unused ones. Then check the built page: each tooltip must be on a first mention, and no term the page explains may have one. Delete `node_modules/.astro/data-store.json` before the build, or the page keeps old tooltips.
-3. **External review.** Ask a reviewer with fresh context (a subagent, or another model in a separate thread) to check accuracy, story, interview value, and language, and to answer for each block: what to pick by default and when to pick something else. Triage every finding with the author (apply, soften, defer to another article, or reject) and show the triage before you apply anything. A second round checks the fixes.
+2. **Sources.** Check each source in `sources.md` against the final text and list the ones whose ideas made it in (WRITING.md, "Sources").
+3. **Glossary pass.** Add missing terms, point `readMore` of the terms this article explains to its sections, fix entries that disagree with the text, remove unused ones. Then check the built page: each tooltip must be on a first mention, and no term the page explains may have one. Delete `node_modules/.astro/data-store.json` before the build, or the page keeps old tooltips.
+4. **External review.** Ask a reviewer with fresh context (a subagent, or another model in a separate thread) to check accuracy, story, interview value, and language, and to answer for each block: what to pick by default and when to pick something else. Triage every finding with the author (apply, soften, defer to another article, or reject) and show the triage before you apply anything. A second round checks the fixes.
 
 ## 6. Diagrams
 

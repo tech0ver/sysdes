@@ -494,3 +494,20 @@ If asked about ACID versus BASE, say that ACID names guarantees of transactions,
 - Writers of a hot row run one at a time. Write it last and commit right after; for more, split it into rows that writers take independently, and claim "any N" with `SKIP LOCKED`.
 - Retry only conflict errors, run the whole transaction again, and limit the attempts with a growing pause. An idempotency key written in the same transaction makes a retry after a lost answer harmless. Commit local state before calling another system.
 - ACID does not say which isolation level a database uses by default. Most stores without transactions across records still make one record atomic: keep what changes together in one record, and use conditional writes.
+
+## Sources
+
+- Jimmy Angelakos. [PostgreSQL Mistakes and How to Avoid Them](https://www.manning.com/books/postgresql-mistakes-and-how-to-avoid-them). Manning, 2025. Chapters 6 and 7.
+- Martin Fowler. [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html). Addison-Wesley, 2003. Chapters 5 and 16.
+- Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 8.
+- Vlad Mihalcea. [High-Performance Java Persistence](https://vladmihalcea.com/books/high-performance-java-persistence/). 2016. Part II.
+- Alex Petrov. [Database Internals](https://www.oreilly.com/library/view/database-internals/9781492040330/). O'Reilly, 2019. Chapter 5.
+- Egor Rogov. [PostgreSQL 14 Internals](https://postgrespro.com/community/books/internals). Postgres Professional, 2023. Chapters 2–4, 13, and 14.
+- Abraham Silberschatz, Henry F. Korth, S. Sudarshan. [Database System Concepts](https://www.db-book.com/), 7th edition. McGraw-Hill, 2020. Chapters 17 and 18.
+- Zhiyong Tan. [Acing the System Design Interview](https://www.manning.com/books/acing-the-system-design-interview). Manning, 2024. Chapter 15.
+- Alex Xu, Sahn Lam. [System Design Interview: An Insider's Guide, Volume 2](https://www.amazon.com/dp/1736049119). ByteByteGo, 2022. Chapter 7.
+- Hal Berenson, Phil Bernstein, Jim Gray, Jim Melton, Elizabeth O'Neil, Patrick O'Neil. [A Critique of ANSI SQL Isolation Levels](https://arxiv.org/abs/cs/0701157). SIGMOD, 1995.
+- Jepsen. [Snapshot Isolation](https://jepsen.io/consistency/models/snapshot-isolation).
+- Brandur Leach. [Implementing Stripe-like Idempotency Keys in Postgres](https://brandur.org/idempotency-keys). 2017.
+- MySQL. [Using SKIP LOCKED and NOWAIT to handle hot rows](https://dev.mysql.com/blog-archive/mysql-8-0-1-using-skip-locked-and-nowait-to-handle-hot-rows/). MySQL Server Blog, 2017.
+- PostgreSQL. [Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html) and [Serialization Failure Handling](https://www.postgresql.org/docs/current/mvcc-serialization-failure-handling.html). PostgreSQL documentation.

@@ -277,3 +277,12 @@ Keep the app's records in row storage. Move analytics to a column store when que
 - Pick a B-tree by default for reads by key and by range with a mix of writes. Consider an LSM-tree when measured write load is more than a B-tree keeps up with, and pay for it with read work and compaction. Both are tendencies that depend on the workload.
 - Add the smallest index that serves a frequent query which picks a small share of the rows: columns compared with `=` first, then the sort or range column. Make it a covering index only for a proven bottleneck. A full scan is fine for small tables or when most rows match.
 - Use row storage for the app's records. Use column storage for large scans and totals when reports can tolerate the loading delay.
+
+## Sources
+
+- Lukas Fittl. [Effective Indexing in Postgres](https://pganalyze.com/postgres-indexing). pganalyze, 2021.
+- Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 4.
+- Alex Petrov. [Database Internals](https://www.oreilly.com/library/view/database-internals/9781492040330/). O'Reilly, 2019. Chapters 2, 3, and 7.
+- James Smith. [Build Your Own Database From Scratch](https://build-your-own.org/database/). Chapters 1 and 2.
+- Markus Winand. [Use The Index, Luke](https://use-the-index-luke.com/).
+- Justin Sheehy, David Smith. [Bitcask: A Log-Structured Hash Table for Fast Key/Value Data](https://riak.com/assets/bitcask-intro.pdf). Basho Technologies, 2010.

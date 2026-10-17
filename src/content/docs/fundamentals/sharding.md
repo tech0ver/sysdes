@@ -444,3 +444,18 @@ When asked how to shard, answer in order: why one node is not enough, with numbe
 - A local index costs one shard per write and every shard per read without the shard key. A global index costs one index shard per read and a second shard per write, so it slows writes or lags. Use a global index for frequent lookups without the key; for uniqueness across shards, write its entry first or in the same transaction.
 - A transaction covers one shard. Keep writes that must be atomic on one shard through the key; for the rare write across shards use steps that are safe to repeat for moves, a saga when earlier steps may need undoing, and a distributed transaction only where the database provides it.
 - Default scheme for a multi-tenant app: shard by tenant ID, hash into a fixed number of logical shards, keep the map in a store built on consensus, add a directory for the largest tenants and the silos, and sort rows inside a tenant by a second column. Let a database that shards on its own do the sharding when you can, with the tenant ID as its key; shard in the app only for full control over the split or to stay on your current database service.
+
+## Sources
+
+- Martin L. Abbott, Michael T. Fisher. [The Art of Scalability](https://www.informit.com/store/art-of-scalability-scalable-web-architecture-processes-9780137030422). Addison-Wesley, 2009. Chapters 22–24.
+- Shannon Bradshaw, Eoin Brazil, Kristina Chodorow. [MongoDB: The Definitive Guide](https://www.oreilly.com/library/view/mongodb-the-definitive/9781491954454/), 3rd edition. O'Reilly, 2019. Chapters 14–17.
+- Brendan Burns. [Designing Distributed Systems](https://www.oreilly.com/library/view/designing-distributed-systems/9781491983638/). O'Reilly, 2018. Chapters 6 and 7.
+- Artur Ejsmont. [Web Scalability for Startup Engineers](https://www.mheducation.com/highered/mhp/product/web-scalability-startup-engineers.html). McGraw-Hill, 2015. Chapter 5.
+- Pekka Enberg. [Latency: Reduce Delay in Software Systems](https://www.manning.com/books/latency). Manning, 2025. Chapter 5.
+- Tod Golding. [Building Multi-Tenant SaaS Architectures](https://www.oreilly.com/library/view/building-multi-tenant-saas/9781098140632/). O'Reilly, 2024. Chapters 3 and 8.
+- Unmesh Joshi. [Patterns of Distributed Systems](https://martinfowler.com/books/patterns-distributed.html). Addison-Wesley, 2023. "Fixed Partitions" and "Key-Range Partitions".
+- Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 7.
+- Alex Xu. [System Design Interview: An Insider's Guide](https://www.amazon.com/dp/B08CMF2CQF), 2nd edition. 2020. Chapter 5.
+- Amazon Web Services. [Reducing the Scope of Impact with Cell-Based Architecture](https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/reducing-scope-of-impact-with-cell-based-architecture.html). AWS whitepaper, 2023.
+- Amazon Web Services. [SaaS Storage Strategies](https://docs.aws.amazon.com/whitepapers/latest/multi-tenant-saas-storage-strategies/multi-tenant-saas-storage-strategies.html). AWS whitepaper, 2021.
+- John Lamping, Eric Veach. [A Fast, Minimal Memory, Consistent Hash Algorithm](https://arxiv.org/abs/1406.2294). arXiv, 2014.

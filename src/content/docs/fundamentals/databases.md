@@ -413,3 +413,18 @@ Each fact still has one owner. The feeds, counters, search index, vectors, and r
 - Start with full-text search in the main store. Add a search engine when the product needs behavior the main store lacks, such as per-language analysis, tuned relevance, or facets, or search needs its own machines; it holds a copy that lags.
 - Keep vectors in a store you already run. Choose a dedicated vector database when measured recall with filters, latency, memory, or rebuild time require it.
 - Give each fact one owner. A copy in the same store can change in the same transaction as the original; a copy in another store follows the owner's committed changes through CDC or an outbox rather than dual writes. Each copy has a stated delay and receives deletes.
+
+## Sources
+
+- Dave Bechberger, Josh Perryman. [Graph Databases in Action](https://www.manning.com/books/graph-databases-in-action). Manning, 2020. Chapters 1, 7, and 10.
+- Arek Borucki. [MongoDB 8.0 in Action](https://www.manning.com/books/mongodb-in-action-third-edition), 3rd edition. Manning, 2025. Chapters 5 and 12.
+- Nitin Borwankar. [Vector Databases](https://www.oreilly.com/library/view/vector-databases/9781098177584/). O'Reilly, 2026. Chapters 1 and 5.
+- Jeff Carpenter, Eben Hewitt. [Cassandra: The Definitive Guide](https://www.oreilly.com/library/view/cassandra-the-definitive/9781492097136/), 3rd edition. O'Reilly, 2022. Chapters 1, 5, and 7.
+- Aman Dhingra, Mike Mackay. [Amazon DynamoDB: The Definitive Guide](https://www.packtpub.com/en-us/product/amazon-dynamodb-the-definitive-guide-9781803246895). Packt, 2024. Chapters 1, 4, 5, 7, and 15.
+- Qiang Hao, Michail Tsikerdekis. [Grokking Relational Database Design](https://www.manning.com/books/grokking-relational-database-design). Manning, 2025. Chapters 6 and 7.
+- Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapters 1–4 and 12.
+- Madhusudhan Konda. [Elasticsearch in Action](https://www.manning.com/books/elasticsearch-in-action-second-edition), 2nd edition. Manning, 2023. Chapters 1 and 3.
+- Alex Xu. [System Design Interview: An Insider's Guide](https://www.amazon.com/dp/B08CMF2CQF), 2nd edition. 2020. Chapters 11, 12, 14, and 15.
+- Alex Xu, Sahn Lam. [System Design Interview: An Insider's Guide, Volume 2](https://www.amazon.com/dp/1736049119). ByteByteGo, 2022. Chapters 5, 6, and 9.
+- Apache Cassandra. [Data Modeling](https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html). Cassandra documentation.
+- MongoDB. [Embedding vs. references](https://www.mongodb.com/docs/manual/data-modeling/concepts/embedding-vs-references/). MongoDB Manual.
