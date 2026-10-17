@@ -337,3 +337,17 @@ When asked how data is replicated, answer three questions: who accepts writes, w
 - Leaderless replication writes to W and reads from R of N replicas, usually 3, 2, and 2. With W + R > N a read usually sees the latest confirmed write, but clocks, concurrent writes, failed writes, changed or restored replicas, and sloppy quorums break it.
 - Replicas that missed writes are fixed by read repair, hinted handoff, and anti-entropy. Finish repair within the tombstone grace period, or deleted data comes back, and rebuild replicas that were away longer.
 - Default to a single leader. Pick multi-leader for writes in several regions or offline, and leaderless for writes that must keep working while nodes fail and can merge.
+
+## Sources
+
+- Laine Campbell, Charity Majors. [Database Reliability Engineering](https://www.oreilly.com/library/view/database-reliability-engineering/9781491925935/). O'Reilly, 2017. Chapter 7.
+- Pekka Enberg. [Latency: Reduce Delay in Software Systems](https://www.manning.com/books/latency). Manning, 2025. Chapter 4.
+- Unmesh Joshi. [Patterns of Distributed Systems](https://martinfowler.com/books/patterns-distributed.html). Addison-Wesley, 2023. "Leader and Followers", "Follower Reads", "Generation Clock", and "High-Water Mark".
+- Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapters 6 and 10.
+- Alex Petrov. [Database Internals](https://www.oreilly.com/library/view/database-internals/9781492040330/). O'Reilly, 2019. Chapters 11 and 12.
+- Baron Schwartz, Peter Zaitsev, Vadim Tkachenko. [High Performance MySQL](https://www.oreilly.com/library/view/high-performance-mysql/9781449332471/), 3rd edition. O'Reilly, 2012. Chapters 10, 12, and 15.
+- Dominik Tornow. [Think Distributed Systems](https://www.manning.com/books/think-distributed-systems). Manning, 2025. Chapter 8.
+- Maarten van Steen, Andrew S. Tanenbaum. [Distributed Systems](https://www.distributed-systems.net/index.php/books/ds4/), 4th edition. 2025. Chapter 7.
+- Roberto Vitillo. [Understanding Distributed Systems](https://understandingdistributed.systems/), 2nd edition. 2022. Chapters 11 and 19.
+- Douglas B. Terry, Alan J. Demers, Karin Petersen, Mike J. Spreitzer, Marvin M. Theimer, Brent B. Welch. [Session Guarantees for Weakly Consistent Replicated Data](https://doi.org/10.1109/PDIS.1994.331722). PDIS, 1994.
+- Werner Vogels. [Eventually Consistent – Revisited](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html). All Things Distributed, 2008.

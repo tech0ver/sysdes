@@ -99,8 +99,12 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 ## Sources
 
-- The author names the sources for each article: study notes, books, sites, or their own experience. The article does not cite them.
-- The one exception is a real company's case: one sentence about what the company did, with a link to its public source (an engineering blog post or a paper). Use only numbers you checked in that source, and give the year, since such cases age. If the source cannot be opened, drop the company name and keep the idea.
+- The author names the sources for each article: study notes, books, sites, or their own experience.
+- The article ends with a `## Sources` section after the cheat sheet: one list of the books, papers, and articles whose ideas made it into the text. Books come first, then papers and articles; each group is sorted by the first author's last name. The text itself has no footnotes or citations.
+- A book entry gives the authors, the title as a link, the edition, the publisher, the year, and the chapters used: "Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 7." Link the edition you used, on the publisher's site, or on the book's own site or a store when the publisher has no page. A paper or an article gives the authors or the company, the title as a link, where it appeared, and the year.
+- List only English books and articles. When we read a translation or another language's edition, cite the English edition; when there is none, leave the source out. Personal notes are never a source: cite the book or article they summarize.
+- Leave out a source that the text already links to, a source that gave only a product detail, a source the text did not use, and interview prep sites that only showed what to cover.
+- A real company's case gets one sentence about what the company did, with a link in the text to its public source (an engineering blog post or a paper). Use only numbers you checked in that source, and give the year, since such cases age. If the source cannot be opened, drop the company name and keep the idea.
 - A product's limit, number, or feature named in the text (a size cap, a guideline value, a kind of key) links to the official documentation that describes it. When the site has an article about that product, the number moves there, and the link points to that article.
 - Write everything in your own words. Do not copy text from any source.
 - Other interview prep sites can show what to cover, not how to say it.

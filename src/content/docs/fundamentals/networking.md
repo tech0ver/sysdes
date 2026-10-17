@@ -206,3 +206,12 @@ When a dependency keeps failing, retries only make it worse. A **circuit breaker
 - Keep servers stateless with state in a shared store. Use sticky sessions only when state cannot leave the server. An open connection stays on its server.
 - For distant users: a CDN for static files first, then regions with GeoDNS. Health checks and the TTL decide how fast users leave a failed region.
 - Every call gets a timeout; after a timeout, the call may still have worked. Retry temporary failures only when repeating is safe, a few times, with backoff and jitter. Use an idempotency key for writes that could create duplicates, wait as long as Retry-After asks, and stop calling a failing dependency with a circuit breaker.
+
+## Sources
+
+- Betsy Beyer, Chris Jones, Jennifer Petoff, Niall Richard Murphy (editors). [Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/). O'Reilly, 2016. Chapters 19–22.
+- Lukasz Dynowski, Marcin Dulak. [Learning API Styles](https://www.oreilly.com/library/view/learning-api-styles/9781098153984/). O'Reilly, 2025. Chapters 2, 5, 6, 8, and 10.
+- Ian Gorton. [Foundations of Scalable Systems](https://www.oreilly.com/library/view/foundations-of-scalable/9781098106058/). O'Reilly, 2022. Chapter 5.
+- Ilya Grigorik. [High Performance Browser Networking](https://hpbn.co/). O'Reilly, 2013. Chapters 3 and 16–18.
+- Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 9.
+- Michael T. Nygard. [Release It!](https://pragprog.com/titles/mnee2/release-it-second-edition/), 2nd edition. The Pragmatic Bookshelf, 2018. Chapter 5.
