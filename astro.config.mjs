@@ -18,7 +18,6 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'SystemDesign0ver',
-			disable404Route: true,
 			favicon: '/favicon.png',
 			routeMiddleware: './src/routeData.ts',
 			customCss: ['./src/styles/theme.css', './src/styles/ui.css', './src/styles/glossary.css', './src/styles/article.css'],
@@ -39,8 +38,24 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
+					label: 'Framework',
+					items: [],
+				},
+				{
 					label: 'Fundamentals',
 					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding'],
+				},
+				{
+					label: 'Patterns',
+					items: [],
+				},
+				{
+					label: 'Technologies',
+					items: [],
+				},
+				{
+					label: 'Systems',
+					items: [],
 				},
 				'glossary',
 			],
