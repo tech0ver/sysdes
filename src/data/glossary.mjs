@@ -41,6 +41,11 @@ const replication = (anchor, section) => ({
 	label: `Replication: ${section}`,
 });
 
+const sharding = (anchor, section) => ({
+	href: `fundamentals/sharding/#${anchor}`,
+	label: `Sharding: ${section}`,
+});
+
 /** Phrases that contain a term but are not that term, such as product names. They never get a tooltip. */
 export const glossarySkip = ['SQL Server', 'commit the layout'];
 
@@ -1824,11 +1829,11 @@ export const glossary = [
 	{
 		id: 'shard',
 		term: 'Shard',
-		aliases: ['shard', 'shards', 'Shard', 'Shards'],
-		short: 'One part of a dataset that is split across nodes.',
+		aliases: ['shard', 'shards', 'Shard', 'Shards', 'sharding', 'Sharding', 'sharded'],
+		short: 'One part of a dataset that is split across nodes; sharding is the split itself.',
 		explanation:
-			'Each node stores and serves only its shards, so data and writes can grow past one machine.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Shard_(database_architecture)', label: 'Wikipedia: Shard (database architecture)' },
+			'Each row lives in exactly one shard, and each shard has its own leader and followers, so data and writes can grow past one machine.',
+		readMore: sharding('splitting-a-table-across-nodes', 'Splitting a table across nodes'),
 	},
 	{
 		id: 'concurrent-writes',
@@ -1895,5 +1900,311 @@ export const glossary = [
 		explanation:
 			'A majority must agree, so the system survives a minority of failed nodes. Raft and Paxos are common algorithms.',
 		readMore: { href: 'https://en.wikipedia.org/wiki/Consensus_(computer_science)', label: 'Wikipedia: Consensus' },
+	},
+	{
+		id: 'vertical-scaling',
+		term: 'Vertical scaling',
+		aliases: ['vertical scaling', 'Vertical scaling', 'scaling up', 'scale up'],
+		short: 'Handling more load by moving to a bigger machine.',
+		explanation:
+			'The code does not change, but the largest machine is a hard ceiling, and maintenance on one huge database gets slow.',
+		readMore: sharding('outgrowing-one-node', 'Outgrowing one node'),
+	},
+	{
+		id: 'functional-partitioning',
+		term: 'Functional partitioning',
+		aliases: ['functional partitioning', 'Functional partitioning'],
+		short: 'Moving whole features or groups of tables to their own databases.',
+		explanation:
+			'Each database gets smaller and can be tuned for its load, but joins and transactions no longer cross them. It cannot split one large table.',
+		readMore: sharding('outgrowing-one-node', 'Outgrowing one node'),
+	},
+	{
+		id: 'horizontal-scaling',
+		term: 'Horizontal scaling',
+		aliases: ['horizontal scaling', 'Horizontal scaling', 'scaling out', 'scale out'],
+		short: 'Handling more load by adding machines instead of buying a bigger one.',
+		explanation:
+			'Stateless servers scale this way easily. Data scales this way through sharding, which needs a key, routing, and moving data.',
+		readMore: sharding('splitting-a-table-across-nodes', 'Splitting a table across nodes'),
+	},
+	{
+		id: 'shard-key',
+		term: 'Shard key',
+		aliases: ['shard key', 'shard keys', 'Shard key', 'sharding key'],
+		short: 'The column whose value decides which shard holds a row.',
+		explanation:
+			'A query that names it goes to one shard; a query without it asks every shard. Changing it later means moving every row.',
+		readMore: sharding('choosing-the-shard-key', 'Choosing the shard key'),
+	},
+	{
+		id: 'co-location',
+		term: 'Co-location',
+		aliases: ['co-location', 'Co-location', 'co-located', 'co-locate'],
+		short: 'Storing rows that are read or changed together on the same shard.',
+		explanation:
+			'Every related table carries the same shard key, so joins and transactions on that key stay inside one shard.',
+		readMore: sharding('choosing-the-shard-key', 'Choosing the shard key'),
+	},
+	{
+		id: 'range-partitioning',
+		term: 'Range partitioning',
+		aliases: ['range partitioning', 'Range partitioning', 'range sharding', 'key-range partitioning'],
+		short: 'Giving each shard a contiguous range of key values.',
+		explanation:
+			'Range reads stay on one shard or a few neighbors, and ranges split as they grow. Keys written in order, such as timestamps, all land in the last range.',
+		readMore: sharding('splitting-by-key-ranges', 'Splitting by key ranges'),
+	},
+	{
+		id: 'hash-partitioning',
+		term: 'Hash partitioning',
+		aliases: ['hash partitioning', 'Hash partitioning', 'hash sharding', 'hash-based sharding'],
+		short: 'Placing each row on a shard by a hash of its key.',
+		explanation:
+			'Neighboring keys land on different shards, so writes spread evenly whatever order keys arrive in. Key order is lost: a range read over the hashed key asks every shard.',
+		readMore: sharding('splitting-by-hash-of-the-key', 'Splitting by hash of the key'),
+	},
+	{
+		id: 'logical-shard',
+		term: 'Logical shard',
+		aliases: ['logical shard', 'logical shards', 'Logical shard', 'Logical shards'],
+		short: 'One of a fixed number of shards, many more than nodes, that a separate map assigns to nodes.',
+		explanation:
+			'Keys map to shards by a hash that never changes. Adding a node moves whole shards and changes only the map.',
+		readMore: sharding('adding-nodes-without-moving-every-key', 'Adding nodes without moving every key'),
+	},
+	{
+		id: 'consistent-hashing',
+		term: 'Consistent hashing',
+		aliases: ['consistent hashing', 'Consistent hashing'],
+		short: 'Placing nodes and keys on one ring of hash values, so that a key belongs to the next node clockwise.',
+		explanation:
+			'Adding or removing a node moves only about 1/N of the keys, and every client computes placement without a central map.',
+		readMore: sharding('placing-keys-without-a-central-map', 'Placing keys without a central map'),
+	},
+	{
+		id: 'virtual-node',
+		term: 'Virtual node',
+		aliases: ['virtual node', 'virtual nodes', 'Virtual node', 'Virtual nodes', 'vnode', 'vnodes'],
+		short: 'One of many positions that a node takes on a consistent hashing ring.',
+		explanation:
+			'Many positions per node even out the load, spread a failed node over the rest, and let a bigger machine take more keys.',
+		readMore: sharding('placing-keys-without-a-central-map', 'Placing keys without a central map'),
+	},
+	{
+		id: 'rendezvous-hashing',
+		term: 'Rendezvous hashing',
+		aliases: ['rendezvous hashing', 'Rendezvous hashing', 'highest random weight hashing'],
+		short: 'Sending each key to the node with the highest hash of the pair (key, node).',
+		explanation:
+			'Like consistent hashing, it moves few keys when nodes change, and needs no ring.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Rendezvous_hashing', label: 'Wikipedia: Rendezvous hashing' },
+	},
+	{
+		id: 'jump-consistent-hash',
+		term: 'Jump consistent hash',
+		aliases: ['jump consistent hash', 'Jump consistent hash', 'jump hash'],
+		short: 'A short function that maps a key to one of N numbered shards with no stored state.',
+		explanation:
+			'Growing N moves only about 1/N of the keys. Shards are numbered in order, so only the last one can be removed.',
+		readMore: { href: 'https://arxiv.org/abs/1406.2294', label: 'Lamping, Veach: A Fast, Minimal Memory, Consistent Hash Algorithm' },
+	},
+	{
+		id: 'shard-directory',
+		term: 'Shard directory',
+		aliases: ['shard directory', 'shard directories', 'Shard directory', 'directory-based sharding'],
+		short: 'A table that maps each key, such as a tenant, to the shard that holds it.',
+		explanation:
+			'It lets you place and move one tenant at a time. Every request needs a lookup, so the directory must stay available.',
+		readMore: sharding('finding-the-shard-for-a-request', 'Finding the shard for a request'),
+	},
+	{
+		id: 'rebalancing',
+		term: 'Rebalancing',
+		aliases: ['rebalancing', 'Rebalancing', 'rebalance', 'rebalances'],
+		short: 'Moving shards between nodes so that data and load spread evenly again.',
+		explanation:
+			'A move copies a snapshot, streams the changes, and switches the shard map after a short write pause. Moves add load, so plan them before peaks.',
+		readMore: sharding('moving-data-between-nodes', 'Moving data between nodes'),
+	},
+	{
+		id: 'skew',
+		term: 'Skew',
+		aliases: ['skew', 'Skew'],
+		short: 'An uneven split of data or load across shards.',
+		explanation:
+			'Even when keys spread evenly, some key values carry far more data or requests, such as one large tenant. The busiest shard runs out of capacity first, while others sit idle.',
+		readMore: sharding('one-tenant-bigger-than-the-rest', 'One tenant bigger than the rest'),
+	},
+	{
+		id: 'hot-shard',
+		term: 'Hot shard',
+		aliases: ['hot shard', 'hot shards', 'Hot shard', 'hot spot', 'hot spots'],
+		short: 'A shard that gets far more load than the others.',
+		explanation:
+			'It runs out of capacity while other shards sit idle. Causes include a large tenant or keys written in order. One key that alone needs more than a shard is a hot key.',
+		readMore: sharding('one-tenant-bigger-than-the-rest', 'One tenant bigger than the rest'),
+	},
+	{
+		id: 'pool-model',
+		term: 'Pool model',
+		aliases: ['pool model', 'Pool model', 'pooled', 'Pooled'],
+		short: 'Storing all tenants in shared databases and tables, told apart by a tenant ID in every row.',
+		explanation:
+			'Cheap and simple to run and to onboard new tenants, but an outage or a heavy tenant affects everyone.',
+		readMore: sharding('dedicated-or-shared-storage-per-tenant', 'Dedicated or shared storage per tenant'),
+	},
+	{
+		id: 'bridge-model',
+		term: 'Bridge model',
+		aliases: ['bridge model', 'Bridge model'],
+		short: 'Giving each tenant its own database schema or tables inside a shared database.',
+		explanation:
+			'A middle ground between the pool and the silo models: some separation per tenant at a lower cost than a database each.',
+		readMore: sharding('dedicated-or-shared-storage-per-tenant', 'Dedicated or shared storage per tenant'),
+	},
+	{
+		id: 'silo-model',
+		term: 'Silo model',
+		aliases: ['silo model', 'Silo model', 'silo', 'silos', 'siloed'],
+		short: 'Giving each tenant a database of its own.',
+		explanation:
+			'It keeps one tenant\'s load and failures away from the others and allows per-tenant backup, restore, and data residency, at the cost of many databases to run.',
+		readMore: sharding('dedicated-or-shared-storage-per-tenant', 'Dedicated or shared storage per tenant'),
+	},
+	{
+		id: 'noisy-neighbor',
+		term: 'Noisy neighbor',
+		aliases: ['noisy neighbor', 'noisy neighbors', 'Noisy neighbor', 'Noisy neighbors'],
+		short: 'A tenant whose heavy load slows other tenants that share its resources.',
+		explanation:
+			'Per-tenant limits, a dedicated shard, or a silo keep one tenant from degrading the rest.',
+		readMore: sharding('dedicated-or-shared-storage-per-tenant', 'Dedicated or shared storage per tenant'),
+	},
+	{
+		id: 'cell',
+		term: 'Cell',
+		aliases: ['cells', 'Cells', 'cell-based architecture', 'Cell-based architecture'],
+		short: 'An independent copy of the whole stack that serves a subset of customers.',
+		explanation:
+			'A failure or a bad deploy stays inside one cell. A thin router sends each customer to its cell.',
+		readMore: { href: 'https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/what-is-a-cell-based-architecture.html', label: 'AWS: What is a cell-based architecture' },
+	},
+	{
+		id: 'database-schema',
+		term: 'Database schema',
+		aliases: ['database schema', 'database schemas', 'Database schema'],
+		short: 'A named group of tables inside one database, such as a schema in PostgreSQL.',
+		explanation:
+			'Tables in different schemas can share a name, so each tenant or service can get its own set of tables in one database.',
+		readMore: { href: 'https://www.postgresql.org/docs/current/ddl-schemas.html', label: 'PostgreSQL docs: Schemas' },
+	},
+	{
+		id: 'hot-key',
+		term: 'Hot key',
+		aliases: ['hot key', 'hot keys', 'Hot key', 'Hot keys'],
+		short: 'One key value that gets more traffic than a whole shard can serve.',
+		explanation:
+			'Adding or moving shards does not help, since the key lives on one shard. Cache it for reads, or salt it for writes.',
+		readMore: sharding('one-key-with-too-much-traffic', 'One key with too much traffic'),
+	},
+	{
+		id: 'salting',
+		term: 'Salting',
+		aliases: ['salting', 'Salting', 'salted key', 'salted keys'],
+		short: 'Adding a suffix to a hot key so that its writes spread over many keys and shards.',
+		explanation:
+			'Reading all the data of the original key then means reading every suffix and merging the results.',
+		readMore: sharding('one-key-with-too-much-traffic', 'One key with too much traffic'),
+	},
+	{
+		id: 'scatter-gather',
+		term: 'Scatter-gather',
+		aliases: ['scatter-gather', 'Scatter-gather'],
+		short: 'Sending a query to every shard and merging the results.',
+		explanation:
+			'Every shard does the work, and the slowest shard sets the latency, so keep such queries rare.',
+		readMore: sharding('querying-without-the-shard-key', 'Querying without the shard key'),
+	},
+	{
+		id: 'local-index',
+		term: 'Local index',
+		aliases: ['local index', 'local indexes', 'Local index'],
+		short: 'A secondary index on each shard that covers only that shard\'s rows.',
+		explanation:
+			'A write updates one shard. A query without the shard key has to ask every shard.',
+		readMore: sharding('finding-records-by-another-field', 'Finding records by another field'),
+	},
+	{
+		id: 'global-index',
+		term: 'Global index',
+		aliases: ['global index', 'global indexes', 'Global index', 'global secondary index', 'global secondary indexes'],
+		short: 'A secondary index over all shards, itself sharded by the indexed value.',
+		explanation:
+			'A lookup reads one index shard. Every write also touches the index shard, so the index either slows writes or lags behind them.',
+		readMore: sharding('finding-records-by-another-field', 'Finding records by another field'),
+	},
+	{
+		id: 'distributed-transaction',
+		term: 'Distributed transaction',
+		aliases: ['distributed transaction', 'distributed transactions', 'Distributed transaction', 'Distributed transactions'],
+		short: 'A transaction that changes data on several nodes and commits on all of them or on none.',
+		explanation:
+			'It needs a protocol such as two-phase commit, which adds round trips and holds locks across them.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Distributed_transaction', label: 'Wikipedia: Distributed transaction' },
+	},
+	{
+		id: 'two-phase-commit',
+		term: 'Two-phase commit',
+		aliases: ['two-phase commit', 'Two-phase commit', '2PC'],
+		short: 'A protocol in which every node first prepares a change and promises to apply it, then all commit together.',
+		explanation:
+			'It makes a write across nodes atomic, but a failed coordinator can leave nodes waiting with locks held.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Two-phase_commit_protocol', label: 'Wikipedia: Two-phase commit protocol' },
+	},
+	{
+		id: 'saga',
+		term: 'Saga',
+		aliases: ['saga', 'sagas', 'Saga', 'Sagas'],
+		short: 'A chain of local transactions in which each step has an undo step for when a later step fails.',
+		explanation:
+			'No locks span services or shards, but other requests can see the state between steps.',
+		readMore: { href: 'https://microservices.io/patterns/data/saga.html', label: 'microservices.io: Saga' },
+	},
+	{
+		id: 'composite-key',
+		term: 'Composite key',
+		aliases: ['composite key', 'composite keys', 'Composite key', 'compound key', 'compound keys'],
+		short: 'A key made of several columns, such as (workspace_id, id).',
+		explanation:
+			'An index on it sorts rows by the first column, then by the next. In a sharded table, the shard key comes first, and the rest sorts the rows inside the shard.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/Composite_key', label: 'Wikipedia: Composite key' },
+	},
+	{
+		id: 'murmurhash',
+		term: 'MurmurHash',
+		aliases: ['MurmurHash', 'MurmurHash3'],
+		short: 'A fast hash function that is not meant for security.',
+		explanation:
+			'It gives the same result on every machine and spreads similar inputs evenly, so databases such as Cassandra use it to place keys.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/MurmurHash', label: 'Wikipedia: MurmurHash' },
+	},
+	{
+		id: 'md5',
+		term: 'MD5',
+		aliases: ['MD5'],
+		short: 'A 128-bit hash function, broken for security but still used to spread keys.',
+		explanation:
+			'Its output is the same on every machine, so a database can place keys with it. Do not use it for passwords or signatures.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/MD5', label: 'Wikipedia: MD5' },
+	},
+	{
+		id: 'hedged-request',
+		term: 'Hedged request',
+		aliases: ['hedged request', 'hedged requests', 'Hedged request', 'Hedged requests'],
+		short: 'A second copy of a slow request, sent to another replica; the first answer wins.',
+		explanation:
+			'It cuts tail latency for a small share of extra load, because the second copy goes out only after a short wait.',
+		readMore: { href: 'https://www.barroso.org/publications/TheTailAtScale.pdf', label: 'Dean, Barroso: The Tail at Scale' },
 	},
 ];

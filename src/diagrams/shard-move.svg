@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 420" role="img" aria-labelledby="shard-move-title shard-move-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="shard-move-title">Moving shard 217 from an old node to a new one</title>
+  <desc id="shard-move-desc">Time runs down. Step 1: the old node sends a snapshot of shard 217 to the new node while it keeps serving writes. Step 2: it streams the changes made since the snapshot, and the copies are checked against each other. Step 3: writes pause for a moment, the last changes go over, and the shard map switches shard 217 to the new node, which serves writes from then on. Step 4: the new node streams changes back to the old copy, which is deleted later.</desc>
+  <defs>
+    <marker id="shard-move-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="shard-move-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="200" y="24" text-anchor="middle">OLD NODE</text>
+  <line class="dg-lifeline" x1="200" y1="34" x2="200" y2="408"/>
+  <text class="dg-mono dg-muted-text" x="430" y="24" text-anchor="middle">NEW NODE</text>
+  <line class="dg-lifeline" x1="430" y1="34" x2="430" y2="408"/>
+  <text class="dg-mono dg-muted-text" x="620" y="24" text-anchor="middle">SHARD MAP</text>
+  <line class="dg-lifeline" x1="620" y1="34" x2="620" y2="408"/>
+  <rect class="dg-chip" x="550" y="44" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="620.0" y="60.0" text-anchor="middle">217 → old node</text>
+  <line class="dg-wait" x1="200" y1="44" x2="200" y2="254"/>
+  <line class="dg-wait" x1="430" y1="310" x2="430" y2="408"/>
+  <text class="dg-mono dg-accent-text" x="190" y="60" text-anchor="end">SERVES WRITES</text>
+  <text class="dg-mono dg-accent-text" x="440" y="326" text-anchor="start">SERVES WRITES</text>
+  <text class="dg-mono dg-muted-text" x="30" y="100">STEP 1</text>
+  <text class="dg-mono dg-muted-text" x="30" y="154">STEP 2</text>
+  <text class="dg-mono dg-muted-text" x="30" y="266">STEP 3</text>
+  <text class="dg-mono dg-muted-text" x="30" y="356">STEP 4</text>
+  <text class="dg-mono dg-muted-text" x="315.0" y="88" text-anchor="middle">SNAPSHOT</text>
+  <path class="dg-arrow" d="M200 96 H422" marker-end="url(#shard-move-head)"/>
+  <text class="dg-mono dg-muted-text" x="315.0" y="142" text-anchor="middle">CHANGES</text>
+  <path class="dg-arrow" d="M200 150 H422" marker-end="url(#shard-move-head)"/>
+  <text class="dg-mono dg-muted-text" x="315.0" y="172" text-anchor="middle">CHANGES</text>
+  <path class="dg-arrow" d="M200 180 H422" marker-end="url(#shard-move-head)"/>
+  <path class="dg-arrow dg-empty" d="M208 216 H422" marker-end="url(#shard-move-head)"/>
+  <path class="dg-arrow dg-empty" d="M422 216 H208" marker-end="url(#shard-move-head)"/>
+  <text class="dg-mono dg-muted-text" x="315.0" y="208" text-anchor="middle">CHECK: COPIES MATCH</text>
+  <rect class="dg-box-failed" x="130" y="256" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="200.0" y="272.0" text-anchor="middle">writes paused</text>
+  <text class="dg-mono dg-muted-text" x="315.0" y="292" text-anchor="middle">LAST CHANGES</text>
+  <path class="dg-arrow" d="M200 300 H422" marker-end="url(#shard-move-head)"/>
+  <rect class="dg-box-accent" x="550" y="288" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="620.0" y="304.0" text-anchor="middle">217 → new node</text>
+  <text class="dg-mono dg-muted-text" x="315.0" y="344" text-anchor="middle">CHANGES BACK</text>
+  <path class="dg-arrow" d="M430 352 H208" marker-end="url(#shard-move-head)"/>
+  <rect class="dg-box-failed" x="130" y="382" width="140" height="24" rx="4"/>
+  <text class="dg-code-muted" x="200.0" y="398.0" text-anchor="middle">old copy deleted</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg class="diagram-svg" viewBox="0 0 720 460" role="img" aria-labelledby="local-vs-global-index-title local-vs-global-index-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="local-vs-global-index-title">Reads and writes by email with a local and a global index</title>
+  <desc id="local-vs-global-index-desc">Users are sharded by workspace over shards 1 to 3. Local index: each shard indexes its own users, so a lookup of ann@acme.com asks all three shards, and adding bob@acme.com writes the row and its index entry on shard 2 only. Global index: two index shards are sharded by email. The lookup first reads index shard 1, which says that ann is on shard 3, and then reads shard 3. Adding bob writes the row on shard 2 and the index entry on index shard 2.</desc>
+  <defs>
+    <marker id="local-vs-global-index-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="local-vs-global-index-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="452"/>
+  <line class="dg-rule" x1="8" y1="232" x2="712" y2="232"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Local index</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Global index</text>
+  <rect class="dg-chip" x="95" y="34" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="50.0" text-anchor="middle">find ann@acme.com</text>
+  <rect class="dg-box" x="15" y="154" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="65.0" y="174.0" text-anchor="middle">Shard 1</text>
+  <text class="dg-sub" x="65.0" y="190.0" text-anchor="middle">users + index</text>
+  <rect class="dg-box" x="130" y="154" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="180.0" y="174.0" text-anchor="middle">Shard 2</text>
+  <text class="dg-sub" x="180.0" y="190.0" text-anchor="middle">users + index</text>
+  <rect class="dg-box" x="245" y="154" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="295.0" y="174.0" text-anchor="middle">Shard 3</text>
+  <text class="dg-sub" x="295.0" y="190.0" text-anchor="middle">users + index</text>
+  <path class="dg-arrow dg-message" d="M164 58 L65 146" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M180 58 L180 146" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M196 58 L295 146" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <text class="dg-result" x="180" y="220" text-anchor="middle">Asks every shard</text>
+  <rect class="dg-chip" x="455" y="34" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="50.0" text-anchor="middle">find ann@acme.com</text>
+  <rect class="dg-box" x="375" y="154" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="425.0" y="174.0" text-anchor="middle">Shard 1</text>
+  <text class="dg-sub" x="425.0" y="190.0" text-anchor="middle">users</text>
+  <rect class="dg-box" x="490" y="154" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="540.0" y="174.0" text-anchor="middle">Shard 2</text>
+  <text class="dg-sub" x="540.0" y="190.0" text-anchor="middle">users</text>
+  <rect class="dg-box" x="605" y="154" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="655.0" y="174.0" text-anchor="middle">Shard 3</text>
+  <text class="dg-sub" x="655.0" y="190.0" text-anchor="middle">users</text>
+  <rect class="dg-box" x="400" y="100" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="460.0" y="123.0" text-anchor="middle">Index shard 1</text>
+  <rect class="dg-box" x="560" y="100" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="620.0" y="123.0" text-anchor="middle">Index shard 2</text>
+  <path class="dg-arrow dg-message" d="M460 58 V92" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="468" y="82">1</text>
+  <path class="dg-arrow dg-message" d="M625 46 H695 V146" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="703" y="78">2</text>
+  <text class="dg-result" x="540" y="220" text-anchor="middle">Asks 2 shards, one after another</text>
+  <rect class="dg-chip" x="95" y="246" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="262.0" text-anchor="middle">add bob@acme.com</text>
+  <rect class="dg-box" x="15" y="366" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="65.0" y="386.0" text-anchor="middle">Shard 1</text>
+  <text class="dg-sub" x="65.0" y="402.0" text-anchor="middle">users + index</text>
+  <rect class="dg-box" x="130" y="366" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="180.0" y="386.0" text-anchor="middle">Shard 2</text>
+  <text class="dg-sub" x="180.0" y="402.0" text-anchor="middle">users + index</text>
+  <rect class="dg-box" x="245" y="366" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="295.0" y="386.0" text-anchor="middle">Shard 3</text>
+  <text class="dg-sub" x="295.0" y="402.0" text-anchor="middle">users + index</text>
+  <path class="dg-arrow dg-message" d="M180 270 V358" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <text class="dg-result" x="180" y="432" text-anchor="middle">Writes 1 shard</text>
+  <rect class="dg-chip" x="455" y="246" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="262.0" text-anchor="middle">add bob@acme.com</text>
+  <rect class="dg-box" x="375" y="366" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="425.0" y="386.0" text-anchor="middle">Shard 1</text>
+  <text class="dg-sub" x="425.0" y="402.0" text-anchor="middle">users</text>
+  <rect class="dg-box" x="490" y="366" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="540.0" y="386.0" text-anchor="middle">Shard 2</text>
+  <text class="dg-sub" x="540.0" y="402.0" text-anchor="middle">users</text>
+  <rect class="dg-box" x="605" y="366" width="100" height="44" rx="6"/>
+  <text class="dg-name" x="655.0" y="386.0" text-anchor="middle">Shard 3</text>
+  <text class="dg-sub" x="655.0" y="402.0" text-anchor="middle">users</text>
+  <rect class="dg-box" x="400" y="312" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="460.0" y="335.0" text-anchor="middle">Index shard 1</text>
+  <rect class="dg-box" x="560" y="312" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="620.0" y="335.0" text-anchor="middle">Index shard 2</text>
+  <path class="dg-arrow dg-message" d="M540 270 V358" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M605 270 V304" marker-end="url(#local-vs-global-index-head-accent)"/>
+  <text class="dg-result" x="540" y="432" text-anchor="middle">Writes 2 shards</text>
+</svg>

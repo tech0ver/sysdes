@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 340" role="img" aria-labelledby="project-move-title project-move-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="project-move-title">Moving project 12 between shards: the state after each step</title>
+  <desc id="project-move-desc">Time runs down. Before the move, project 12 lives on shard A, in workspace 42. Step 1 stops writes to it. Step 2 copies its rows to shard B, in workspace 58, as a hidden copy. Step 3 marks the old project as moved with one write on shard A; from this moment the copy on shard B is the real one. Step 4 shows the copy on shard B, and step 5 deletes the old rows on shard A. At every moment exactly one copy is the real one.</desc>
+  <defs>
+    <marker id="project-move-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="project-move-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="330" y="22" text-anchor="middle">SHARD A</text>
+  <text class="dg-sub" x="330" y="40" text-anchor="middle">workspace 42</text>
+  <text class="dg-mono dg-muted-text" x="460" y="22" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="590" y="22" text-anchor="middle">SHARD B</text>
+  <text class="dg-sub" x="590" y="40" text-anchor="middle">workspace 58</text>
+  <path class="dg-arrow" d="M460 56 V300" marker-end="url(#project-move-head)"/>
+  <text class="dg-code" x="20" y="80">before</text>
+  <rect class="dg-box-accent" x="240" y="62" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="330.0" y="80.0" text-anchor="middle">project 12</text>
+  <rect class="dg-box-failed" x="500" y="62" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="20" y="120">1. pause writes</text>
+  <rect class="dg-box-accent" x="240" y="102" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="330.0" y="120.0" text-anchor="middle">project 12, no writes</text>
+  <rect class="dg-box-failed" x="500" y="102" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="20" y="160">2. copy rows, hidden</text>
+  <rect class="dg-box-accent" x="240" y="142" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="330.0" y="160.0" text-anchor="middle">project 12, no writes</text>
+  <rect class="dg-chip" x="500" y="142" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="590.0" y="160.0" text-anchor="middle">copy, hidden</text>
+  <text class="dg-code" x="20" y="200">3. mark as moved</text>
+  <rect class="dg-chip" x="240" y="182" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="330.0" y="200.0" text-anchor="middle">marked as moved</text>
+  <rect class="dg-box-accent" x="500" y="182" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="590.0" y="200.0" text-anchor="middle">copy, hidden</text>
+  <text class="dg-code" x="20" y="240">4. show the copy</text>
+  <rect class="dg-chip" x="240" y="222" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="330.0" y="240.0" text-anchor="middle">marked as moved</text>
+  <rect class="dg-box-accent" x="500" y="222" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="590.0" y="240.0" text-anchor="middle">project 12</text>
+  <text class="dg-code" x="20" y="280">5. delete old rows</text>
+  <rect class="dg-box-failed" x="240" y="262" width="180" height="28" rx="4"/>
+  <rect class="dg-box-accent" x="500" y="262" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="590.0" y="280.0" text-anchor="middle">project 12</text>
+  <rect class="dg-box-accent" x="240" y="312" width="22" height="16" rx="3"/>
+  <text class="dg-sub" x="270" y="325">the real copy</text>
+  <rect class="dg-box-failed" x="500" y="312" width="22" height="16" rx="3"/>
+  <text class="dg-sub" x="530" y="325">no rows of project 12</text>
+</svg>

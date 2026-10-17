@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 356" role="img" aria-labelledby="stale-map-title stale-map-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stale-map-title">A request made with an old map is rejected and retried</title>
+  <desc id="stale-map-desc">The router holds map version 7 and sends a request for workspace 42 to node 2. The shard has moved to node 3 in map version 8, so node 2 rejects the request. The router fetches map version 8 from the map store and sends the request again, to node 3, which answers.</desc>
+  <defs>
+    <marker id="stale-map-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stale-map-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="90" y="24" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="90" y1="34" x2="90" y2="344"/>
+  <text class="dg-mono dg-muted-text" x="270" y="24" text-anchor="middle">NODE 2</text>
+  <line class="dg-lifeline" x1="270" y1="34" x2="270" y2="344"/>
+  <text class="dg-mono dg-muted-text" x="450" y="24" text-anchor="middle">NODE 3</text>
+  <line class="dg-lifeline" x1="450" y1="34" x2="450" y2="344"/>
+  <text class="dg-mono dg-muted-text" x="630" y="24" text-anchor="middle">MAP STORE</text>
+  <line class="dg-lifeline" x1="630" y1="34" x2="630" y2="344"/>
+  <rect class="dg-chip" x="50" y="44" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="90.0" y="60.0" text-anchor="middle">map v7</text>
+  <rect class="dg-chip" x="590" y="44" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="630.0" y="60.0" text-anchor="middle">map v8</text>
+  <text class="dg-mono dg-muted-text" x="180.0" y="96" text-anchor="middle">WS 42, MAP V7</text>
+  <path class="dg-arrow" d="M90 104 H262" marker-end="url(#stale-map-head)"/>
+  <rect class="dg-box" x="210" y="116" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="132.0" text-anchor="middle">not the owner</text>
+  <text class="dg-mono dg-accent-text" x="180.0" y="160" text-anchor="middle">REJECT: MAP V8</text>
+  <path class="dg-arrow dg-message" d="M270 168 H98" marker-end="url(#stale-map-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="200" text-anchor="middle">GET MAP</text>
+  <path class="dg-arrow" d="M90 208 H622" marker-end="url(#stale-map-head)"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="232" text-anchor="middle">MAP V8</text>
+  <path class="dg-arrow" d="M630 240 H98" marker-end="url(#stale-map-head)"/>
+  <rect class="dg-box-accent" x="50" y="252" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="90.0" y="268.0" text-anchor="middle">map v8</text>
+  <text class="dg-mono dg-accent-text" x="360.0" y="296" text-anchor="middle">WS 42, MAP V8</text>
+  <path class="dg-arrow dg-message" d="M90 304 H442" marker-end="url(#stale-map-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="326" text-anchor="middle">BOARD 7</text>
+  <path class="dg-arrow" d="M450 334 H98" marker-end="url(#stale-map-head)"/>
+</svg>

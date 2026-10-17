@@ -37,7 +37,7 @@ Listed in the planned reading order. Each article tells the story of one system 
 - `fundamentals/databases` **(written)** — What shape to give data and where to keep it: relational, document, key-value, wide-column, graph, time-series, and analytics models; normalization and copies for fast reads; embedding versus referencing; schema flexibility; designing from the queries; partition and sort keys; object storage for files; full-text and vector search; which store owns each fact and which copies are derived from it; choosing and combining stores. Builds on storage-engines: each model sits on an engine described there, and links to its blocks instead of repeating them.
 - `fundamentals/transactions` **(written)** — Keeping data correct under concurrent access and crashes on one node: atomicity and recovery, lost updates and atomic operations, isolation levels and their anomalies, snapshot isolation and MVCC, optimistic and pessimistic locking, deadlocks, write skew and phantoms, serializable, holds that outlive a transaction, hot rows, retries, ACID and BASE.
 - `fundamentals/replication` **(written)** — Copies of data across nodes and regions: leader and followers, synchronous and asynchronous replication, replication log formats, new followers, backups, replication lag, stale reads, eventual consistency, read-your-writes, monotonic reads, consistent prefix, failover, multi-leader and regions, write conflicts, leaderless and quorums, repairing copies.
-- `fundamentals/sharding` — Splitting data across nodes: shard keys, range and hash partitioning, consistent hashing, hot shards, rebalancing, secondary indexes across shards.
+- `fundamentals/sharding` **(written)** — Splitting data across nodes: what to try before sharding, shard keys, range and hash partitioning, logical shards, consistent hashing, routing, rebalancing, uneven tenants, silo and pool storage per tenant, hot keys, scatter-gather, secondary indexes across shards, writes across shards.
 - `fundamentals/consistency` — How nodes agree: consistency models from linearizable (strong) to causal and eventual, CAP and PACELC, time and ordering of events, consensus (Raft), leader election, distributed transactions (2PC, saga).
 - `fundamentals/caching` — Where to cache, cache-aside and write-through, HTTP caching (Cache-Control, ETag), invalidation, eviction, hot keys, cache stampede.
 - `fundamentals/async-communication` — Decoupling components in time: queues and logs, pub/sub, delivery guarantees (at-most-once, at-least-once, exactly-once), idempotent consumers, ordering, back-pressure.
@@ -57,6 +57,7 @@ The word means different things in different articles. Each article says which o
 
 ## Patterns
 
+- `patterns/scaling` — Making a system take ten times the load: the AKF scale cube (copies, split by function, split by key), finding the bottleneck first (reads, writes, data size, app compute), then steps in order of cost for reads (query and index fixes, denormalized copies, followers, cache, CDN) and for writes (a bigger machine, batching and queues, a write-optimized engine, split by function, sharding, hot keys). Each step gives its signal and price and links to the article that explains it.
 - `patterns/resilience` — Circuit breaker, bulkhead, retry budget, load shedding, cascading failures.
 - `patterns/rate-limiting` — Limiting algorithms, limits across many servers, the "design a rate limiter" task.
 - `patterns/reservations` — Holding limited stock while a user decides: holds with expiry, leases, locks with a time limit, releasing expired holds, overselling and overbooking, the "design a ticket or hotel booking" task.
@@ -64,6 +65,8 @@ The word means different things in different articles. Each article says which o
 - `patterns/api-gateway` — One entry point for clients: API gateway, BFF, auth, routing, response composition.
 - `patterns/service-discovery` — Service registry, client-side load balancing, service mesh.
 - `patterns/proximity-search` — Finding things near a point: why a regular index fails in two dimensions, geohash, quadtree, R-tree.
+- `patterns/data-migration` — Moving live data without downtime: copying a snapshot and streaming changes, double writes, backfills, comparing reads, cutover and rollback; used for moving tenants between shards, resharding, schema changes, and switching stores.
+- `patterns/unique-ids` — Generating unique IDs across many nodes: database sequences and ranges per node, UUIDs, time-ordered IDs (Snowflake-style, ULID, UUIDv7), IDs that carry the shard.
 - `patterns/async-messaging` — Queues in a design: 202 Accepted and background work, transactional outbox, change data capture (CDC), fan-out.
 - `patterns/news-feed` — Building a home feed: fan-out on write, on read, and the hybrid for accounts with many followers.
 - `patterns/cqrs` — Separate models for writes and reads (CQRS), and event sourcing as a separate choice.

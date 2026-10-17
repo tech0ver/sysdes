@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 232" role="img" aria-labelledby="scatter-gather-title scatter-gather-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="scatter-gather-title">A scatter-gather query waits for the slowest shard</title>
+  <desc id="scatter-gather-desc">The router sends the query to four shards and merges their answers. Shards 1, 2, and 4 answer in 8, 11, and 9 ms; shard 3 answers in 140 ms, so the merged answer is ready only at 140 ms.</desc>
+  <defs>
+    <marker id="scatter-gather-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="scatter-gather-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="86" width="110" height="46" rx="6"/>
+  <text class="dg-name" x="71" y="108" text-anchor="middle">Router</text>
+  <text class="dg-sub" x="71" y="124" text-anchor="middle">merges</text>
+  <rect class="dg-box" x="186" y="26" width="84" height="32" rx="6"/>
+  <text class="dg-name" x="228.0" y="47.0" text-anchor="middle">Shard 1</text>
+  <path class="dg-arrow" d="M126 94 L178 42" marker-end="url(#scatter-gather-head)"/>
+  <rect class="dg-chip" x="300" y="34" width="20.8" height="16" rx="2"/>
+  <text class="dg-code" x="328.8" y="47">8 ms</text>
+  <rect class="dg-box" x="186" y="70" width="84" height="32" rx="6"/>
+  <text class="dg-name" x="228.0" y="91.0" text-anchor="middle">Shard 2</text>
+  <path class="dg-arrow" d="M126 104 L178 86" marker-end="url(#scatter-gather-head)"/>
+  <rect class="dg-chip" x="300" y="78" width="28.6" height="16" rx="2"/>
+  <text class="dg-code" x="336.6" y="91">11 ms</text>
+  <rect class="dg-box" x="186" y="114" width="84" height="32" rx="6"/>
+  <text class="dg-name" x="228.0" y="135.0" text-anchor="middle">Shard 3</text>
+  <path class="dg-arrow" d="M126 114 L178 130" marker-end="url(#scatter-gather-head)"/>
+  <rect class="dg-box-accent" x="300" y="122" width="364.0" height="16" rx="2"/>
+  <text class="dg-code" x="672.0" y="135">140 ms</text>
+  <rect class="dg-box" x="186" y="158" width="84" height="32" rx="6"/>
+  <text class="dg-name" x="228.0" y="179.0" text-anchor="middle">Shard 4</text>
+  <path class="dg-arrow" d="M126 124 L178 174" marker-end="url(#scatter-gather-head)"/>
+  <rect class="dg-chip" x="300" y="166" width="23.400000000000002" height="16" rx="2"/>
+  <text class="dg-code" x="331.4" y="179">9 ms</text>
+  <text class="dg-mono dg-muted-text" x="150" y="64" text-anchor="end">QUERY</text>
+  <line class="dg-line" x1="300" y1="204" x2="690.0" y2="204"/>
+  <line class="dg-line" x1="300.0" y1="204" x2="300.0" y2="209"/>
+  <text class="dg-mono dg-muted-text" x="300.0" y="222" text-anchor="middle">0 MS</text>
+  <line class="dg-line" x1="430.0" y1="204" x2="430.0" y2="209"/>
+  <text class="dg-mono dg-muted-text" x="430.0" y="222" text-anchor="middle">50 MS</text>
+  <line class="dg-line" x1="560.0" y1="204" x2="560.0" y2="209"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="222" text-anchor="middle">100 MS</text>
+  <line class="dg-line" x1="690.0" y1="204" x2="690.0" y2="209"/>
+  <text class="dg-mono dg-muted-text" x="690.0" y="222" text-anchor="middle">150 MS</text>
+  <line class="dg-guide" x1="664.0" y1="18" x2="664.0" y2="204"/>
+  <text class="dg-mono dg-accent-text" x="658.0" y="14" text-anchor="end">ANSWER READY</text>
+</svg>

@@ -1,0 +1,215 @@
+<svg class="diagram-svg" viewBox="0 0 720 446" role="img" aria-labelledby="mod-n-vs-logical-title mod-n-vs-logical-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="mod-n-vs-logical-title">Adding a fifth node with hash mod N and with logical shards</title>
+  <desc id="mod-n-vs-logical-desc">Left: each box is one key, shown by its hash value from 1 to 20. Keys are placed by hash mod 4 on four nodes, then by hash mod 5 on five nodes; only keys 1, 2, 3, and 20 stay where they were, and 16 of 20 keys move. Right: each box is a logical shard that holds all keys with the same hash mod 20, s0 to s19. 20 shards sit five per node on four nodes; the fifth node takes shards s4, s9, s14, and s19, one from each old node, and 4 of 20 shards move.</desc>
+  <defs>
+    <marker id="mod-n-vs-logical-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="mod-n-vs-logical-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="438"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Hash mod N</text>
+  <text class="dg-sub" x="180" y="40" text-anchor="middle">each box is one key, shown by its hash</text>
+  <text class="dg-mono dg-muted-text" x="180" y="66" text-anchor="middle">NODE = HASH MOD 4</text>
+  <rect class="dg-box" x="12" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="42" y="94" text-anchor="middle">node 1</text>
+  <rect class="dg-chip" x="18" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="117.0" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="18" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="143.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="18" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="169.0" text-anchor="middle">12</text>
+  <rect class="dg-chip" x="18" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="195.0" text-anchor="middle">16</text>
+  <rect class="dg-chip" x="18" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="221.0" text-anchor="middle">20</text>
+  <rect class="dg-box" x="81" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="111" y="94" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="87" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="117.0" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="87" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="143.0" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="87" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="169.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="87" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="195.0" text-anchor="middle">13</text>
+  <rect class="dg-chip" x="87" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="221.0" text-anchor="middle">17</text>
+  <rect class="dg-box" x="150" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="180" y="94" text-anchor="middle">node 3</text>
+  <rect class="dg-chip" x="156" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="117.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="156" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="143.0" text-anchor="middle">6</text>
+  <rect class="dg-chip" x="156" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="169.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="156" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="195.0" text-anchor="middle">14</text>
+  <rect class="dg-chip" x="156" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="221.0" text-anchor="middle">18</text>
+  <rect class="dg-box" x="219" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="249" y="94" text-anchor="middle">node 4</text>
+  <rect class="dg-chip" x="225" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="117.0" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="225" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="143.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="225" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="169.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="225" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="195.0" text-anchor="middle">15</text>
+  <rect class="dg-chip" x="225" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="221.0" text-anchor="middle">19</text>
+  <text class="dg-mono dg-muted-text" x="180" y="262" text-anchor="middle">NODE = HASH MOD 5</text>
+  <rect class="dg-box" x="12" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="42" y="290" text-anchor="middle">node 1</text>
+  <rect class="dg-box-accent" x="18" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="313.0" text-anchor="middle">5</text>
+  <rect class="dg-box-accent" x="18" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="339.0" text-anchor="middle">10</text>
+  <rect class="dg-box-accent" x="18" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="365.0" text-anchor="middle">15</text>
+  <rect class="dg-chip" x="18" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="42.0" y="391.0" text-anchor="middle">20</text>
+  <rect class="dg-box" x="81" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="111" y="290" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="87" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="313.0" text-anchor="middle">1</text>
+  <rect class="dg-box-accent" x="87" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="339.0" text-anchor="middle">6</text>
+  <rect class="dg-box-accent" x="87" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="365.0" text-anchor="middle">11</text>
+  <rect class="dg-box-accent" x="87" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="111.0" y="391.0" text-anchor="middle">16</text>
+  <rect class="dg-box" x="150" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="180" y="290" text-anchor="middle">node 3</text>
+  <rect class="dg-chip" x="156" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="313.0" text-anchor="middle">2</text>
+  <rect class="dg-box-accent" x="156" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="339.0" text-anchor="middle">7</text>
+  <rect class="dg-box-accent" x="156" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="365.0" text-anchor="middle">12</text>
+  <rect class="dg-box-accent" x="156" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="391.0" text-anchor="middle">17</text>
+  <rect class="dg-box" x="219" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="249" y="290" text-anchor="middle">node 4</text>
+  <rect class="dg-chip" x="225" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="313.0" text-anchor="middle">3</text>
+  <rect class="dg-box-accent" x="225" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="339.0" text-anchor="middle">8</text>
+  <rect class="dg-box-accent" x="225" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="365.0" text-anchor="middle">13</text>
+  <rect class="dg-box-accent" x="225" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="249.0" y="391.0" text-anchor="middle">18</text>
+  <rect class="dg-box" x="288" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="318" y="290" text-anchor="middle">node 5</text>
+  <rect class="dg-box-accent" x="294" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="318.0" y="313.0" text-anchor="middle">4</text>
+  <rect class="dg-box-accent" x="294" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="318.0" y="339.0" text-anchor="middle">9</text>
+  <rect class="dg-box-accent" x="294" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="318.0" y="365.0" text-anchor="middle">14</text>
+  <rect class="dg-box-accent" x="294" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="318.0" y="391.0" text-anchor="middle">19</text>
+  <text class="dg-result" x="180" y="430" text-anchor="middle">16 of 20 keys move (80%)</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Logical shards</text>
+  <text class="dg-sub" x="540" y="40" text-anchor="middle">each box is a shard: many keys, same hash mod 20</text>
+  <text class="dg-mono dg-muted-text" x="540" y="66" text-anchor="middle">MAP: 20 SHARDS ON 4 NODES</text>
+  <rect class="dg-box" x="372" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="402" y="94" text-anchor="middle">node 1</text>
+  <rect class="dg-chip" x="378" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="117.0" text-anchor="middle">s0</text>
+  <rect class="dg-chip" x="378" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="143.0" text-anchor="middle">s1</text>
+  <rect class="dg-chip" x="378" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="169.0" text-anchor="middle">s2</text>
+  <rect class="dg-chip" x="378" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="195.0" text-anchor="middle">s3</text>
+  <rect class="dg-chip" x="378" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="221.0" text-anchor="middle">s4</text>
+  <rect class="dg-box" x="441" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="471" y="94" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="447" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="117.0" text-anchor="middle">s5</text>
+  <rect class="dg-chip" x="447" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="143.0" text-anchor="middle">s6</text>
+  <rect class="dg-chip" x="447" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="169.0" text-anchor="middle">s7</text>
+  <rect class="dg-chip" x="447" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="195.0" text-anchor="middle">s8</text>
+  <rect class="dg-chip" x="447" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="221.0" text-anchor="middle">s9</text>
+  <rect class="dg-box" x="510" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="540" y="94" text-anchor="middle">node 3</text>
+  <rect class="dg-chip" x="516" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="117.0" text-anchor="middle">s10</text>
+  <rect class="dg-chip" x="516" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="143.0" text-anchor="middle">s11</text>
+  <rect class="dg-chip" x="516" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="169.0" text-anchor="middle">s12</text>
+  <rect class="dg-chip" x="516" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="195.0" text-anchor="middle">s13</text>
+  <rect class="dg-chip" x="516" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="221.0" text-anchor="middle">s14</text>
+  <rect class="dg-box" x="579" y="76" width="60" height="160" rx="6"/>
+  <text class="dg-sub" x="609" y="94" text-anchor="middle">node 4</text>
+  <rect class="dg-chip" x="585" y="102" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="117.0" text-anchor="middle">s15</text>
+  <rect class="dg-chip" x="585" y="128" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="143.0" text-anchor="middle">s16</text>
+  <rect class="dg-chip" x="585" y="154" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="169.0" text-anchor="middle">s17</text>
+  <rect class="dg-chip" x="585" y="180" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="195.0" text-anchor="middle">s18</text>
+  <rect class="dg-chip" x="585" y="206" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="221.0" text-anchor="middle">s19</text>
+  <text class="dg-mono dg-muted-text" x="540" y="262" text-anchor="middle">MAP: 20 SHARDS ON 5 NODES</text>
+  <rect class="dg-box" x="372" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="402" y="290" text-anchor="middle">node 1</text>
+  <rect class="dg-chip" x="378" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="313.0" text-anchor="middle">s0</text>
+  <rect class="dg-chip" x="378" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="339.0" text-anchor="middle">s1</text>
+  <rect class="dg-chip" x="378" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="365.0" text-anchor="middle">s2</text>
+  <rect class="dg-chip" x="378" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="402.0" y="391.0" text-anchor="middle">s3</text>
+  <rect class="dg-box" x="441" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="471" y="290" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="447" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="313.0" text-anchor="middle">s5</text>
+  <rect class="dg-chip" x="447" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="339.0" text-anchor="middle">s6</text>
+  <rect class="dg-chip" x="447" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="365.0" text-anchor="middle">s7</text>
+  <rect class="dg-chip" x="447" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="471.0" y="391.0" text-anchor="middle">s8</text>
+  <rect class="dg-box" x="510" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="540" y="290" text-anchor="middle">node 3</text>
+  <rect class="dg-chip" x="516" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="313.0" text-anchor="middle">s10</text>
+  <rect class="dg-chip" x="516" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="339.0" text-anchor="middle">s11</text>
+  <rect class="dg-chip" x="516" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="365.0" text-anchor="middle">s12</text>
+  <rect class="dg-chip" x="516" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="391.0" text-anchor="middle">s13</text>
+  <rect class="dg-box" x="579" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="609" y="290" text-anchor="middle">node 4</text>
+  <rect class="dg-chip" x="585" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="313.0" text-anchor="middle">s15</text>
+  <rect class="dg-chip" x="585" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="339.0" text-anchor="middle">s16</text>
+  <rect class="dg-chip" x="585" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="365.0" text-anchor="middle">s17</text>
+  <rect class="dg-chip" x="585" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="609.0" y="391.0" text-anchor="middle">s18</text>
+  <rect class="dg-box" x="648" y="272" width="60" height="134" rx="6"/>
+  <text class="dg-sub" x="678" y="290" text-anchor="middle">node 5</text>
+  <rect class="dg-box-accent" x="654" y="298" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="678.0" y="313.0" text-anchor="middle">s4</text>
+  <rect class="dg-box-accent" x="654" y="324" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="678.0" y="339.0" text-anchor="middle">s9</text>
+  <rect class="dg-box-accent" x="654" y="350" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="678.0" y="365.0" text-anchor="middle">s14</text>
+  <rect class="dg-box-accent" x="654" y="376" width="48" height="22" rx="4"/>
+  <text class="dg-code" x="678.0" y="391.0" text-anchor="middle">s19</text>
+  <text class="dg-result" x="540" y="430" text-anchor="middle">4 of 20 shards move (20%)</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 254" role="img" aria-labelledby="overload-spread-title overload-spread-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="overload-spread-title">Automatic moves spread an overload</title>
+  <desc id="overload-spread-desc">Bars show the load of three nodes against their capacity. First, node 2 is overloaded and answers slowly. Then failure detection declares it dead, and its shards move to nodes 1 and 3. Finally, nodes 1 and 3 each carry their own load plus half of node 2's, and both go over their capacity.</desc>
+  <defs>
+    <marker id="overload-spread-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="overload-spread-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="246"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="246"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">1. Node 2 overloaded</text>
+  <line class="dg-line dg-empty" x1="10" y1="94" x2="230" y2="94"/>
+  <line class="dg-line" x1="10" y1="204" x2="230" y2="204"/>
+  <rect class="dg-chip" x="32" y="134" width="44" height="70" rx="2"/>
+  <text class="dg-sub" x="54" y="222" text-anchor="middle">node 1</text>
+  <rect class="dg-box-accent" x="98" y="80" width="44" height="124" rx="2"/>
+  <text class="dg-sub" x="120" y="222" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="164" y="140" width="44" height="64" rx="2"/>
+  <text class="dg-sub" x="186" y="222" text-anchor="middle">node 3</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">2. Declared dead</text>
+  <line class="dg-line dg-empty" x1="250" y1="94" x2="470" y2="94"/>
+  <line class="dg-line" x1="250" y1="204" x2="470" y2="204"/>
+  <rect class="dg-chip" x="272" y="134" width="44" height="70" rx="2"/>
+  <text class="dg-sub" x="294" y="222" text-anchor="middle">node 1</text>
+  <rect class="dg-box-failed" x="338" y="80" width="44" height="124" rx="2"/>
+  <text class="dg-sub" x="360" y="222" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="404" y="140" width="44" height="64" rx="2"/>
+  <text class="dg-sub" x="426" y="222" text-anchor="middle">node 3</text>
+  <path class="dg-arrow dg-message" d="M350 76 C336 62 294 62 294 126" marker-end="url(#overload-spread-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M370 76 C384 62 426 62 426 132" marker-end="url(#overload-spread-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="360" y="46" text-anchor="middle">SHARDS MOVE</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">3. Receivers overloaded</text>
+  <line class="dg-line dg-empty" x1="490" y1="94" x2="710" y2="94"/>
+  <line class="dg-line" x1="490" y1="204" x2="710" y2="204"/>
+  <rect class="dg-chip" x="512" y="134" width="44" height="70" rx="2"/>
+  <rect class="dg-box-accent" x="512" y="72" width="44" height="62" rx="2"/>
+  <text class="dg-code" x="534" y="107.0" text-anchor="middle">moved</text>
+  <text class="dg-sub" x="534" y="222" text-anchor="middle">node 1</text>
+  <rect class="dg-box-failed" x="578" y="80" width="44" height="124" rx="2"/>
+  <text class="dg-sub" x="600" y="222" text-anchor="middle">node 2</text>
+  <rect class="dg-chip" x="644" y="140" width="44" height="64" rx="2"/>
+  <rect class="dg-box-accent" x="644" y="78" width="44" height="62" rx="2"/>
+  <text class="dg-code" x="666" y="113.0" text-anchor="middle">moved</text>
+  <text class="dg-sub" x="666" y="222" text-anchor="middle">node 3</text>
+  <text class="dg-mono dg-muted-text" x="230" y="88" text-anchor="end">CAPACITY</text>
+</svg>

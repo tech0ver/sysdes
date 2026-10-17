@@ -1,0 +1,63 @@
+<svg class="diagram-svg" viewBox="0 0 720 298" role="img" aria-labelledby="top-n-merge-title top-n-merge-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="top-n-merge-title">Merging the top user from each shard misses the real top user</title>
+  <desc id="top-n-merge-desc">Each box lists users and their closed tasks. Shard A counts ann 16, bob 12, joe 5; shard B counts eve 14, bob 11, kim 3. Each shard sends only its top user, ann 16 and eve 14, and the router picks ann. Across all shards bob has 23 and is the real top user.</desc>
+  <defs>
+    <marker id="top-n-merge-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="top-n-merge-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="520" y1="8" x2="520" y2="290"/>
+  <rect class="dg-box" x="16" y="8" width="150" height="124" rx="6"/>
+  <text class="dg-name" x="30" y="28" text-anchor="start">Shard A</text>
+  <text class="dg-mono dg-muted-text" x="32" y="46">USER</text>
+  <text class="dg-mono dg-muted-text" x="150" y="46" text-anchor="end">CLOSED</text>
+  <rect class="dg-chip" x="24" y="54" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="32" y="70">ann</text>
+  <text class="dg-code" x="150" y="70" text-anchor="end">16</text>
+  <rect class="dg-box-accent" x="24" y="80" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="32" y="96">bob</text>
+  <text class="dg-code" x="150" y="96" text-anchor="end">12</text>
+  <rect class="dg-chip" x="24" y="106" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="32" y="122">joe</text>
+  <text class="dg-code" x="150" y="122" text-anchor="end">5</text>
+  <rect class="dg-box" x="16" y="154" width="150" height="124" rx="6"/>
+  <text class="dg-name" x="30" y="174" text-anchor="start">Shard B</text>
+  <text class="dg-mono dg-muted-text" x="32" y="192">USER</text>
+  <text class="dg-mono dg-muted-text" x="150" y="192" text-anchor="end">CLOSED</text>
+  <rect class="dg-chip" x="24" y="200" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="32" y="216">eve</text>
+  <text class="dg-code" x="150" y="216" text-anchor="end">14</text>
+  <rect class="dg-box-accent" x="24" y="226" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="32" y="242">bob</text>
+  <text class="dg-code" x="150" y="242" text-anchor="end">11</text>
+  <rect class="dg-chip" x="24" y="252" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="32" y="268">kim</text>
+  <text class="dg-code" x="150" y="268" text-anchor="end">3</text>
+  <rect class="dg-box" x="300" y="98" width="150" height="98" rx="6"/>
+  <text class="dg-name" x="314" y="118" text-anchor="start">Router: top 1</text>
+  <text class="dg-mono dg-muted-text" x="316" y="136">USER</text>
+  <text class="dg-mono dg-muted-text" x="434" y="136" text-anchor="end">CLOSED</text>
+  <rect class="dg-chip" x="308" y="144" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="316" y="160">ann</text>
+  <text class="dg-code" x="434" y="160" text-anchor="end">16</text>
+  <rect class="dg-chip" x="308" y="170" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="316" y="186">eve</text>
+  <text class="dg-code" x="434" y="186" text-anchor="end">14</text>
+  <path class="dg-arrow" d="M166 65 C230 65 230 155 292 155" marker-end="url(#top-n-merge-head)"/>
+  <path class="dg-arrow" d="M166 211 C230 211 230 181 292 181" marker-end="url(#top-n-merge-head)"/>
+  <text class="dg-mono dg-muted-text" x="232" y="150" text-anchor="middle">TOP 1</text>
+  <text class="dg-result" x="375" y="238" text-anchor="middle">Picks ann</text>
+  <rect class="dg-box" x="545" y="85" width="150" height="124" rx="6"/>
+  <text class="dg-name" x="559" y="105" text-anchor="start">All shards</text>
+  <text class="dg-mono dg-muted-text" x="561" y="123">USER</text>
+  <text class="dg-mono dg-muted-text" x="679" y="123" text-anchor="end">CLOSED</text>
+  <rect class="dg-box-accent" x="553" y="131" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="561" y="147">bob</text>
+  <text class="dg-code" x="679" y="147" text-anchor="end">23</text>
+  <rect class="dg-chip" x="553" y="157" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="561" y="173">ann</text>
+  <text class="dg-code" x="679" y="173" text-anchor="end">16</text>
+  <rect class="dg-chip" x="553" y="183" width="134" height="22" rx="3"/>
+  <text class="dg-code" x="561" y="199">eve</text>
+  <text class="dg-code" x="679" y="199" text-anchor="end">14</text>
+  <text class="dg-result" x="620" y="238" text-anchor="middle">Real top: bob</text>
+</svg>
