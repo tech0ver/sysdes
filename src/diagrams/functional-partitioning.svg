@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 324" role="img" aria-labelledby="functional-partitioning-title functional-partitioning-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="functional-partitioning-title">One database split into several by function</title>
+  <desc id="functional-partitioning-desc">Left: one database holds the tasks, comments, and activity log, the billing, the notifications, the files, and the search index. Right: each of these features moves to a store of its own: the main database keeps the tasks, comments, and activity log; billing and notifications get databases of their own; files go to object storage; the search index goes to a search engine.</desc>
+  <defs>
+    <marker id="functional-partitioning-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="functional-partitioning-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="140" y="20" text-anchor="middle">One database</text>
+  <text class="dg-name" x="580" y="20" text-anchor="middle">Split by function</text>
+  <rect class="dg-box" x="20" y="44" width="240" height="268" rx="6"/>
+  <text class="dg-sub" x="140" y="70" text-anchor="middle">tasks, comments, activity log</text>
+  <rect class="dg-box-accent" x="460" y="44" width="240" height="44" rx="6"/>
+  <text class="dg-name" x="580.0" y="71.0" text-anchor="middle">Main database</text>
+  <path class="dg-arrow dg-message" d="M260 66 H452" marker-end="url(#functional-partitioning-head-accent)"/>
+  <line class="dg-line" x1="20" y1="94" x2="260" y2="94"/>
+  <text class="dg-sub" x="140" y="126" text-anchor="middle">billing</text>
+  <rect class="dg-box-accent" x="460" y="100" width="240" height="44" rx="6"/>
+  <text class="dg-name" x="580.0" y="127.0" text-anchor="middle">Billing database</text>
+  <path class="dg-arrow dg-message" d="M260 122 H452" marker-end="url(#functional-partitioning-head-accent)"/>
+  <line class="dg-line" x1="20" y1="150" x2="260" y2="150"/>
+  <text class="dg-sub" x="140" y="182" text-anchor="middle">notifications</text>
+  <rect class="dg-box-accent" x="460" y="156" width="240" height="44" rx="6"/>
+  <text class="dg-name" x="580.0" y="183.0" text-anchor="middle">Notifications database</text>
+  <path class="dg-arrow dg-message" d="M260 178 H452" marker-end="url(#functional-partitioning-head-accent)"/>
+  <line class="dg-line" x1="20" y1="206" x2="260" y2="206"/>
+  <text class="dg-sub" x="140" y="238" text-anchor="middle">files</text>
+  <rect class="dg-box-accent" x="460" y="212" width="240" height="44" rx="6"/>
+  <text class="dg-name" x="580.0" y="239.0" text-anchor="middle">Object storage</text>
+  <path class="dg-arrow dg-message" d="M260 234 H452" marker-end="url(#functional-partitioning-head-accent)"/>
+  <line class="dg-line" x1="20" y1="262" x2="260" y2="262"/>
+  <text class="dg-sub" x="140" y="294" text-anchor="middle">search index</text>
+  <rect class="dg-box-accent" x="460" y="268" width="240" height="44" rx="6"/>
+  <text class="dg-name" x="580.0" y="295.0" text-anchor="middle">Search engine</text>
+  <path class="dg-arrow dg-message" d="M260 290 H452" marker-end="url(#functional-partitioning-head-accent)"/>
+</svg>

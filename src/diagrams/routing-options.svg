@@ -1,0 +1,63 @@
+<svg class="diagram-svg" viewBox="0 0 720 322" role="img" aria-labelledby="routing-options-title routing-options-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="routing-options-title">Three places for the router</title>
+  <desc id="routing-options-desc">The same request, board 7 of workspace 42, goes to node 2, which holds that workspace. Client library: the library inside the app finds node 2 and connects to it directly. Routing tier: the app sends the request to a proxy, which forwards it to node 2. Any node: a load balancer sends it to node 1, which forwards it to node 2 inside the cluster.</desc>
+  <defs>
+    <marker id="routing-options-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="routing-options-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="314"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="314"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">Client library</text>
+  <rect class="dg-box-accent" x="50" y="38" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="120" y="61" text-anchor="middle">App + library</text>
+  <text class="dg-mono dg-muted-text" x="128" y="94">WS 42</text>
+  <rect class="dg-box" x="12" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="46.0" y="217.0" text-anchor="middle">Node 1</text>
+  <text class="dg-sub" x="46.0" y="233.0" text-anchor="middle">ws 17</text>
+  <rect class="dg-box" x="86" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="120.0" y="217.0" text-anchor="middle">Node 2</text>
+  <text class="dg-sub" x="120.0" y="233.0" text-anchor="middle">ws 42</text>
+  <rect class="dg-box" x="160" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="194.0" y="217.0" text-anchor="middle">Node 3</text>
+  <text class="dg-sub" x="194.0" y="233.0" text-anchor="middle">ws 58</text>
+  <path class="dg-arrow" d="M120 74 V188" marker-end="url(#routing-options-head)"/>
+  <text class="dg-result" x="120" y="312" text-anchor="middle">No extra hop</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Routing tier</text>
+  <rect class="dg-box" x="290" y="38" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="360" y="61" text-anchor="middle">App</text>
+  <text class="dg-mono dg-muted-text" x="368" y="94">WS 42</text>
+  <rect class="dg-box" x="252" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="286.0" y="217.0" text-anchor="middle">Node 1</text>
+  <text class="dg-sub" x="286.0" y="233.0" text-anchor="middle">ws 17</text>
+  <rect class="dg-box" x="326" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="360.0" y="217.0" text-anchor="middle">Node 2</text>
+  <text class="dg-sub" x="360.0" y="233.0" text-anchor="middle">ws 42</text>
+  <rect class="dg-box" x="400" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="434.0" y="217.0" text-anchor="middle">Node 3</text>
+  <text class="dg-sub" x="434.0" y="233.0" text-anchor="middle">ws 58</text>
+  <rect class="dg-box-accent" x="290" y="112" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="360" y="135" text-anchor="middle">Routing tier</text>
+  <path class="dg-arrow" d="M360 74 V104" marker-end="url(#routing-options-head)"/>
+  <path class="dg-arrow" d="M360 148 V188" marker-end="url(#routing-options-head)"/>
+  <text class="dg-result" x="360" y="312" text-anchor="middle">One extra hop</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Any node</text>
+  <rect class="dg-box" x="530" y="38" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="600" y="61" text-anchor="middle">App</text>
+  <text class="dg-mono dg-muted-text" x="608" y="94">WS 42</text>
+  <rect class="dg-box-accent" x="492" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="526.0" y="217.0" text-anchor="middle">Node 1</text>
+  <text class="dg-sub" x="526.0" y="233.0" text-anchor="middle">ws 17</text>
+  <rect class="dg-box" x="566" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="600.0" y="217.0" text-anchor="middle">Node 2</text>
+  <text class="dg-sub" x="600.0" y="233.0" text-anchor="middle">ws 42</text>
+  <rect class="dg-box" x="640" y="196" width="68" height="46" rx="6"/>
+  <text class="dg-name" x="674.0" y="217.0" text-anchor="middle">Node 3</text>
+  <text class="dg-sub" x="674.0" y="233.0" text-anchor="middle">ws 58</text>
+  <rect class="dg-box" x="530" y="112" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="600" y="135" text-anchor="middle">Load balancer</text>
+  <path class="dg-arrow" d="M600 74 V104" marker-end="url(#routing-options-head)"/>
+  <path class="dg-arrow" d="M560 148 L526 188" marker-end="url(#routing-options-head)"/>
+  <path class="dg-arrow" d="M526 242 V268 H600 V250" marker-end="url(#routing-options-head)"/>
+  <text class="dg-mono dg-muted-text" x="563.0" y="284" text-anchor="middle">FORWARD</text>
+  <text class="dg-result" x="600" y="312" text-anchor="middle">Extra hop in the cluster</text>
+</svg>

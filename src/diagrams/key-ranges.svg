@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 232" role="img" aria-labelledby="key-ranges-title key-ranges-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="key-ranges-title">A range that grows past the size limit splits, and one half moves</title>
+  <desc id="key-ranges-desc">Before: node 1 holds workspaces 1 to 4,000, node 2 holds 4,001 to 9,000, and node 3 holds 9,001 to 30,000. The ranges have different widths because they follow the data. The first and last ranges are below the size limit; the middle range has grown past it. After: the middle range splits into 4,001 to 6,500 on node 2 and 6,501 to 9,000, which moves to a new node 4.</desc>
+  <defs>
+    <marker id="key-ranges-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="key-ranges-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="224"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Before</text>
+  <line class="dg-line dg-empty" x1="12" y1="76" x2="348" y2="76"/>
+  <text class="dg-mono dg-muted-text" x="348" y="70" text-anchor="end">SIZE LIMIT</text>
+  <line class="dg-line" x1="12" y1="186" x2="348" y2="186"/>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">After the split</text>
+  <line class="dg-line dg-empty" x1="372" y1="76" x2="708" y2="76"/>
+  <text class="dg-mono dg-muted-text" x="708" y="70" text-anchor="end">SIZE LIMIT</text>
+  <line class="dg-line" x1="372" y1="186" x2="708" y2="186"/>
+  <rect class="dg-chip" x="36" y="104.0" width="76" height="82.0" rx="3"/>
+  <text class="dg-sub" x="74" y="204" text-anchor="middle">1–4,000</text>
+  <text class="dg-mono dg-muted-text" x="74" y="220" text-anchor="middle">NODE 1</text>
+  <rect class="dg-box-accent" x="142" y="58.0" width="76" height="128.0" rx="3"/>
+  <text class="dg-sub" x="180" y="204" text-anchor="middle">4,001–9,000</text>
+  <text class="dg-mono dg-muted-text" x="180" y="220" text-anchor="middle">NODE 2</text>
+  <rect class="dg-chip" x="248" y="110.0" width="76" height="76.0" rx="3"/>
+  <text class="dg-sub" x="286" y="204" text-anchor="middle">9,001–30,000</text>
+  <text class="dg-mono dg-muted-text" x="286" y="220" text-anchor="middle">NODE 3</text>
+  <rect class="dg-chip" x="376" y="104.0" width="76" height="82.0" rx="3"/>
+  <text class="dg-sub" x="414" y="204" text-anchor="middle">1–4,000</text>
+  <text class="dg-mono dg-muted-text" x="414" y="220" text-anchor="middle">NODE 1</text>
+  <rect class="dg-chip" x="460" y="120.0" width="76" height="66.0" rx="3"/>
+  <text class="dg-sub" x="498" y="204" text-anchor="middle">4,001–6,500</text>
+  <text class="dg-mono dg-muted-text" x="498" y="220" text-anchor="middle">NODE 2</text>
+  <rect class="dg-box-accent" x="544" y="124.0" width="76" height="62.0" rx="3"/>
+  <text class="dg-sub" x="582" y="204" text-anchor="middle">6,501–9,000</text>
+  <text class="dg-mono dg-muted-text" x="582" y="220" text-anchor="middle">NODE 4 (NEW)</text>
+  <rect class="dg-chip" x="628" y="110.0" width="76" height="76.0" rx="3"/>
+  <text class="dg-sub" x="666" y="204" text-anchor="middle">9,001–30,000</text>
+  <text class="dg-mono dg-muted-text" x="666" y="220" text-anchor="middle">NODE 3</text>
+</svg>

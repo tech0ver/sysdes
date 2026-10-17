@@ -1,0 +1,52 @@
+<svg class="diagram-svg" viewBox="0 0 720 252" role="img" aria-labelledby="salting-title salting-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="salting-title">Writes to one hot key, without and with salting</title>
+  <desc id="salting-desc">Left: three writes to project 7 of workspace 42 all carry the key (42, 7) and go to shard 2, and a read of the project asks only shard 2. Right: the writes carry the keys (42, 7, 13), (42, 7, 58), and (42, 7, 91) and go to shards 1, 3, and 4, while a read of the whole project asks every shard and merges the results.</desc>
+  <defs>
+    <marker id="salting-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="salting-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="244"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Key: (42, 7)</text>
+  <rect class="dg-chip" x="26" y="38" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="74.0" y="53.0" text-anchor="middle">(42, 7)</text>
+  <rect class="dg-chip" x="134" y="38" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="182.0" y="53.0" text-anchor="middle">(42, 7)</text>
+  <rect class="dg-chip" x="242" y="38" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="290.0" y="53.0" text-anchor="middle">(42, 7)</text>
+  <rect class="dg-box" x="14" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="52.0" y="145.0" text-anchor="middle">Shard 1</text>
+  <rect class="dg-box-accent" x="98" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="136.0" y="145.0" text-anchor="middle">Shard 2</text>
+  <rect class="dg-box" x="182" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="220.0" y="145.0" text-anchor="middle">Shard 3</text>
+  <rect class="dg-box" x="266" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="304.0" y="145.0" text-anchor="middle">Shard 4</text>
+  <path class="dg-arrow dg-message" d="M74 60 L114 112" marker-end="url(#salting-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M182 60 L136 112" marker-end="url(#salting-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M290 60 L158 112" marker-end="url(#salting-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="180" y="238" text-anchor="middle">READ PROJECT 7</text>
+  <path class="dg-arrow dg-empty" d="M180.0 226 L136 168" marker-end="url(#salting-head)"/>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Key: (42, 7, suffix)</text>
+  <rect class="dg-chip" x="386" y="38" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="434.0" y="53.0" text-anchor="middle">(42, 7, 13)</text>
+  <rect class="dg-chip" x="494" y="38" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="542.0" y="53.0" text-anchor="middle">(42, 7, 58)</text>
+  <rect class="dg-chip" x="602" y="38" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="650.0" y="53.0" text-anchor="middle">(42, 7, 91)</text>
+  <rect class="dg-box" x="374" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="412.0" y="145.0" text-anchor="middle">Shard 1</text>
+  <rect class="dg-box" x="458" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="496.0" y="145.0" text-anchor="middle">Shard 2</text>
+  <rect class="dg-box" x="542" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="580.0" y="145.0" text-anchor="middle">Shard 3</text>
+  <rect class="dg-box" x="626" y="120" width="76" height="40" rx="6"/>
+  <text class="dg-name" x="664.0" y="145.0" text-anchor="middle">Shard 4</text>
+  <path class="dg-arrow dg-message" d="M434 60 L412 112" marker-end="url(#salting-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M542 60 L580 112" marker-end="url(#salting-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M650 60 L664 112" marker-end="url(#salting-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="540" y="238" text-anchor="middle">READ PROJECT 7</text>
+  <path class="dg-arrow dg-empty" d="M516.0 226 L412 168" marker-end="url(#salting-head)"/>
+  <path class="dg-arrow dg-empty" d="M532.0 226 L496 168" marker-end="url(#salting-head)"/>
+  <path class="dg-arrow dg-empty" d="M548.0 226 L580 168" marker-end="url(#salting-head)"/>
+  <path class="dg-arrow dg-empty" d="M564.0 226 L664 168" marker-end="url(#salting-head)"/>
+</svg>

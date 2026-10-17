@@ -1,0 +1,100 @@
+<svg class="diagram-svg" viewBox="0 0 720 356" role="img" aria-labelledby="shard-directory-title shard-directory-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="shard-directory-title">The same workspaces placed by a formula and by a shard directory</title>
+  <desc id="shard-directory-desc">Five workspaces on three shards; workspace 42 is much bigger than the rest, and 71 is new. Computed: the shard is hash mod 3, so 42 shares shard 2 with 17, 58 sits on shard 1, and 33 and the new 71 land on shard 3, wherever the hash puts them. Shard directory: a table maps each workspace to its shard, so 42 gets shard 3 to itself, 33 has been moved to shard 2, and 71 is placed on the emptiest shard, shard 1.</desc>
+  <defs>
+    <marker id="shard-directory-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="shard-directory-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="348"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Computed</text>
+  <text class="dg-mono dg-muted-text" x="24" y="48">SHARD = HASH MOD 3</text>
+  <rect class="dg-chip" x="24" y="58" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="57.0" y="74.0" text-anchor="middle">ws 17</text>
+  <path class="dg-arrow" d="M96 70 H126" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="134" y="58" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="74.0" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="24" y="88" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="57.0" y="104.0" text-anchor="middle">ws 33</text>
+  <path class="dg-arrow" d="M96 100 H126" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="134" y="88" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="104.0" text-anchor="middle">shard 3</text>
+  <rect class="dg-chip" x="24" y="118" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="57.0" y="134.0" text-anchor="middle">ws 42</text>
+  <path class="dg-arrow" d="M96 130 H126" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="134" y="118" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="134.0" text-anchor="middle">shard 2</text>
+  <text class="dg-sub" x="236" y="134">big</text>
+  <rect class="dg-chip" x="24" y="148" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="57.0" y="164.0" text-anchor="middle">ws 58</text>
+  <path class="dg-arrow" d="M96 160 H126" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="134" y="148" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="164.0" text-anchor="middle">shard 1</text>
+  <rect class="dg-chip" x="24" y="178" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="57.0" y="194.0" text-anchor="middle">ws 71</text>
+  <path class="dg-arrow" d="M96 190 H126" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="134" y="178" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="194.0" text-anchor="middle">shard 3</text>
+  <text class="dg-sub" x="236" y="194">new</text>
+  <rect class="dg-box" x="24" y="222" width="96" height="122" rx="6"/>
+  <text class="dg-sub" x="72" y="242" text-anchor="middle">shard 1</text>
+  <rect class="dg-chip" x="34" y="252" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="72.0" y="268.0" text-anchor="middle">ws 58</text>
+  <rect class="dg-box" x="132" y="222" width="96" height="122" rx="6"/>
+  <text class="dg-sub" x="180" y="242" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="142" y="252" width="76" height="50" rx="4"/>
+  <text class="dg-code" x="180.0" y="281.0" text-anchor="middle">ws 42</text>
+  <rect class="dg-chip" x="142" y="306" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="322.0" text-anchor="middle">ws 17</text>
+  <rect class="dg-box" x="240" y="222" width="96" height="122" rx="6"/>
+  <text class="dg-sub" x="288" y="242" text-anchor="middle">shard 3</text>
+  <rect class="dg-chip" x="250" y="252" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="288.0" y="268.0" text-anchor="middle">ws 33</text>
+  <rect class="dg-chip" x="250" y="280" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="288.0" y="296.0" text-anchor="middle">ws 71</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Shard directory</text>
+  <text class="dg-mono dg-muted-text" x="384" y="48">WORKSPACE → SHARD</text>
+  <rect class="dg-chip" x="384" y="58" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="417.0" y="74.0" text-anchor="middle">ws 17</text>
+  <path class="dg-arrow" d="M456 70 H486" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="494" y="58" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="539.0" y="74.0" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="384" y="88" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="417.0" y="104.0" text-anchor="middle">ws 33</text>
+  <path class="dg-arrow" d="M456 100 H486" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box-accent" x="494" y="88" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="539.0" y="104.0" text-anchor="middle">shard 2</text>
+  <text class="dg-sub" x="596" y="104">moved</text>
+  <rect class="dg-chip" x="384" y="118" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="417.0" y="134.0" text-anchor="middle">ws 42</text>
+  <path class="dg-arrow" d="M456 130 H486" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box-accent" x="494" y="118" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="539.0" y="134.0" text-anchor="middle">shard 3</text>
+  <text class="dg-sub" x="596" y="134">big, own shard</text>
+  <rect class="dg-chip" x="384" y="148" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="417.0" y="164.0" text-anchor="middle">ws 58</text>
+  <path class="dg-arrow" d="M456 160 H486" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box" x="494" y="148" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="539.0" y="164.0" text-anchor="middle">shard 1</text>
+  <rect class="dg-chip" x="384" y="178" width="66" height="24" rx="4"/>
+  <text class="dg-code" x="417.0" y="194.0" text-anchor="middle">ws 71</text>
+  <path class="dg-arrow" d="M456 190 H486" marker-end="url(#shard-directory-head)"/>
+  <rect class="dg-box-accent" x="494" y="178" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="539.0" y="194.0" text-anchor="middle">shard 1</text>
+  <text class="dg-sub" x="596" y="194">new, emptiest</text>
+  <rect class="dg-box" x="384" y="222" width="96" height="122" rx="6"/>
+  <text class="dg-sub" x="432" y="242" text-anchor="middle">shard 1</text>
+  <rect class="dg-chip" x="394" y="252" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="432.0" y="268.0" text-anchor="middle">ws 58</text>
+  <rect class="dg-chip" x="394" y="280" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="432.0" y="296.0" text-anchor="middle">ws 71</text>
+  <rect class="dg-box" x="492" y="222" width="96" height="122" rx="6"/>
+  <text class="dg-sub" x="540" y="242" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="502" y="252" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="268.0" text-anchor="middle">ws 17</text>
+  <rect class="dg-chip" x="502" y="280" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="296.0" text-anchor="middle">ws 33</text>
+  <rect class="dg-box" x="600" y="222" width="96" height="122" rx="6"/>
+  <text class="dg-sub" x="648" y="242" text-anchor="middle">shard 3</text>
+  <rect class="dg-chip" x="610" y="252" width="76" height="50" rx="4"/>
+  <text class="dg-code" x="648.0" y="281.0" text-anchor="middle">ws 42</text>
+</svg>

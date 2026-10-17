@@ -19,7 +19,7 @@ Products also call these roles primary and secondary, primary and standby, or so
 
 In the store, a product page reads from a follower, and a new order goes to the leader. Since one node orders all writes, the replicas never disagree on which write came first.
 
-Followers add read capacity, not write capacity. Every follower must apply every write, and that work takes capacity it could spend on reads. When the writes or the data outgrow one node, the data is split into shards, and each shard has its own leader and followers. <!-- link: fundamentals/sharding -->
+Followers add read capacity, not write capacity. Every follower must apply every write, and that work takes capacity it could spend on reads. When the writes or the data outgrow one node, the data is split into shards, and each shard has its own leader and followers.
 
 ::diagram{name="read-capacity"}
 
@@ -151,7 +151,7 @@ The simple fix is to send each user to the same replica, for example by a hash o
 
 A shopper asks a question on a product page, and the seller answers it. Another shopper sees the answer before the question.
 
-One query to one replica that follows one log cannot show this: the replica applies the writes in the leader's order, so a query sees the history up to some point. It happens when one page combines reads taken at different points. Parts of the data can replicate separately, such as questions and answers in different shards with their own logs. Or two queries of one page can run at different moments, on different followers or even on the same one. <!-- link: fundamentals/sharding -->
+One query to one replica that follows one log cannot show this: the replica applies the writes in the leader's order, so a query sees the history up to some point. It happens when one page combines reads taken at different points. Parts of the data can replicate separately, such as questions and answers in [different shards with their own logs](../sharding/#splitting-a-table-across-nodes). Or two queries of one page can run at different moments, on different followers or even on the same one.
 
 **Consistent prefix reads** means that when writes happen in some order, every reader sees them in that order and never sees a later write without the earlier ones.
 

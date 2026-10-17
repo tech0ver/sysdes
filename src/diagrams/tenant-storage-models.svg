@@ -1,0 +1,53 @@
+<svg class="diagram-svg" viewBox="0 0 720 220" role="img" aria-labelledby="tenant-storage-models-title tenant-storage-models-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="tenant-storage-models-title">Pool, bridge, and silo for the same three tenants</title>
+  <desc id="tenant-storage-models-desc">Tenants acme, globex, and bank. Pool: one database with one tasks table, and the tenant column tells their rows apart. Bridge: one database with a database schema per tenant, each holding its own tasks table. Silo: a separate database per tenant. The bank's data is marked in each model.</desc>
+  <defs>
+    <marker id="tenant-storage-models-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="tenant-storage-models-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="212"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="212"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">Pool</text>
+  <rect class="dg-box" x="16" y="38" width="208" height="172" rx="6"/>
+  <text class="dg-sub" x="120" y="58" text-anchor="middle">database</text>
+  <rect class="dg-code-box" x="30" y="66" width="180" height="136" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="44" y="82">TENANT</text>
+  <text class="dg-mono dg-muted-text" x="196" y="82" text-anchor="end">TASK</text>
+  <rect class="dg-chip" x="38" y="93" width="164" height="22" rx="3"/>
+  <text class="dg-code" x="46" y="109">acme</text>
+  <text class="dg-code" x="194" y="109" text-anchor="end">101</text>
+  <rect class="dg-chip" x="38" y="133" width="164" height="22" rx="3"/>
+  <text class="dg-code" x="46" y="149">globex</text>
+  <text class="dg-code" x="194" y="149" text-anchor="end">205</text>
+  <rect class="dg-box-accent" x="38" y="173" width="164" height="22" rx="3"/>
+  <text class="dg-code" x="46" y="189">bank</text>
+  <text class="dg-code" x="194" y="189" text-anchor="end">310</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Bridge</text>
+  <rect class="dg-box" x="256" y="38" width="208" height="172" rx="6"/>
+  <text class="dg-sub" x="360" y="58" text-anchor="middle">database</text>
+  <rect class="dg-box" x="270" y="88" width="180" height="32" rx="6"/>
+  <text class="dg-code" x="280" y="109">schema acme</text>
+  <rect class="dg-chip" x="388" y="93" width="54" height="22" rx="4"/>
+  <text class="dg-code" x="415.0" y="108.0" text-anchor="middle">tasks</text>
+  <rect class="dg-box" x="270" y="128" width="180" height="32" rx="6"/>
+  <text class="dg-code" x="280" y="149">schema globex</text>
+  <rect class="dg-chip" x="388" y="133" width="54" height="22" rx="4"/>
+  <text class="dg-code" x="415.0" y="148.0" text-anchor="middle">tasks</text>
+  <rect class="dg-box-accent" x="270" y="168" width="180" height="32" rx="6"/>
+  <text class="dg-code" x="280" y="189">schema bank</text>
+  <rect class="dg-chip" x="388" y="173" width="54" height="22" rx="4"/>
+  <text class="dg-code" x="415.0" y="188.0" text-anchor="middle">tasks</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Silo</text>
+  <rect class="dg-box" x="496" y="87" width="208" height="34" rx="6"/>
+  <text class="dg-sub" x="512" y="108">database acme</text>
+  <rect class="dg-chip" x="628" y="93" width="56" height="22" rx="4"/>
+  <text class="dg-code" x="656.0" y="108.0" text-anchor="middle">tasks</text>
+  <rect class="dg-box" x="496" y="127" width="208" height="34" rx="6"/>
+  <text class="dg-sub" x="512" y="148">database globex</text>
+  <rect class="dg-chip" x="628" y="133" width="56" height="22" rx="4"/>
+  <text class="dg-code" x="656.0" y="148.0" text-anchor="middle">tasks</text>
+  <rect class="dg-box-accent" x="496" y="167" width="208" height="34" rx="6"/>
+  <text class="dg-sub" x="512" y="188">database bank</text>
+  <rect class="dg-chip" x="628" y="173" width="56" height="22" rx="4"/>
+  <text class="dg-code" x="656.0" y="188.0" text-anchor="middle">tasks</text>
+</svg>

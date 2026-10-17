@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 288" role="img" aria-labelledby="cells-title cells-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="cells-title">Cells: a full stack per group of tenants</title>
+  <desc id="cells-desc">A thin router sends each tenant to its cell. Each of three cells runs its own app servers, cache, and database shards for a group of tenants. A bad deploy breaks the app servers of cell 2, and only the tenants of cell 2 are affected.</desc>
+  <defs>
+    <marker id="cells-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="cells-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="290" y="8" width="140" height="30" rx="6"/>
+  <text class="dg-name" x="360" y="28" text-anchor="middle">Router</text>
+  <rect class="dg-box" x="20" y="96" width="208" height="182" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="35" y="116">CELL 1</text>
+  <text class="dg-sub" x="213" y="116" text-anchor="end">tenants 1–500</text>
+  <rect class="dg-chip" x="36" y="128" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="124.0" y="148.0" text-anchor="middle">app servers</text>
+  <rect class="dg-chip" x="36" y="170" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="124.0" y="190.0" text-anchor="middle">cache</text>
+  <rect class="dg-chip" x="36" y="212" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="124.0" y="232.0" text-anchor="middle">database shards</text>
+  <path class="dg-arrow" d="M360 64 H124 V88" marker-end="url(#cells-head)"/>
+  <rect class="dg-box-accent" x="256" y="96" width="208" height="182" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="271" y="116">CELL 2</text>
+  <text class="dg-sub" x="449" y="116" text-anchor="end">tenants 501–1,000</text>
+  <rect class="dg-box-failed" x="272" y="128" width="176" height="32" rx="4"/>
+  <text class="dg-code-muted" x="360.0" y="148.0" text-anchor="middle">app servers</text>
+  <rect class="dg-chip" x="272" y="170" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="360.0" y="190.0" text-anchor="middle">cache</text>
+  <rect class="dg-chip" x="272" y="212" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="360.0" y="232.0" text-anchor="middle">database shards</text>
+  <path class="dg-arrow" d="M360 38 V88" marker-end="url(#cells-head)"/>
+  <rect class="dg-box" x="492" y="96" width="208" height="182" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="507" y="116">CELL 3</text>
+  <text class="dg-sub" x="685" y="116" text-anchor="end">tenants 1,001–1,500</text>
+  <rect class="dg-chip" x="508" y="128" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="596.0" y="148.0" text-anchor="middle">app servers</text>
+  <rect class="dg-chip" x="508" y="170" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="596.0" y="190.0" text-anchor="middle">cache</text>
+  <rect class="dg-chip" x="508" y="212" width="176" height="32" rx="4"/>
+  <text class="dg-code" x="596.0" y="232.0" text-anchor="middle">database shards</text>
+  <path class="dg-arrow" d="M360 64 H596 V88" marker-end="url(#cells-head)"/>
+  <text class="dg-mono dg-accent-text" x="360" y="266" text-anchor="middle">BAD DEPLOY STAYS IN CELL 2</text>
+</svg>

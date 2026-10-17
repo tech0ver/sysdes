@@ -1,0 +1,58 @@
+<svg class="diagram-svg" viewBox="0 0 720 272" role="img" aria-labelledby="co-location-title co-location-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="co-location-title">Co-located workspace tables and a copied pricing table</title>
+  <desc id="co-location-desc">Shard 1 holds the tasks, comments, and activity log of workspace 17; shard 2 holds those of workspace 42. Each row is keyed by (workspace_id, id). A change to task 101 updates the task and adds activity entry 5550 in one local transaction on shard 2. Both shards hold a copy of the pricing plans, so a change to a plan is written to every shard.</desc>
+  <defs>
+    <marker id="co-location-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="co-location-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="360" y="12" text-anchor="middle">PLAN CHANGE</text>
+  <line class="dg-arrow dg-empty" x1="360" y1="18" x2="360" y2="42"/>
+  <rect class="dg-box" x="20" y="52" width="310" height="210" rx="6"/>
+  <text class="dg-name" x="36" y="74" text-anchor="start">Shard 1</text>
+  <text class="dg-sub" x="36" y="104">pricing plans</text>
+  <rect class="dg-chip" x="144" y="88" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="184.0" y="103.0" text-anchor="middle">free</text>
+  <rect class="dg-chip" x="232" y="88" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="272.0" y="103.0" text-anchor="middle">pro</text>
+  <line class="dg-line dg-empty" x1="32" y1="122" x2="318" y2="122"/>
+  <text class="dg-mono dg-muted-text" x="144" y="140">(WORKSPACE_ID, ID)</text>
+  <text class="dg-sub" x="36" y="164">tasks</text>
+  <rect class="dg-chip" x="144" y="148" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="184.0" y="163.0" text-anchor="middle">17, 201</text>
+  <rect class="dg-chip" x="232" y="148" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="272.0" y="163.0" text-anchor="middle">17, 202</text>
+  <text class="dg-sub" x="36" y="194">comments</text>
+  <rect class="dg-chip" x="232" y="178" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="272.0" y="193.0" text-anchor="middle">17, 9002</text>
+  <text class="dg-sub" x="36" y="224">activity log</text>
+  <rect class="dg-chip" x="144" y="208" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="184.0" y="223.0" text-anchor="middle">17, 5560</text>
+  <rect class="dg-chip" x="232" y="208" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="272.0" y="223.0" text-anchor="middle">17, 5561</text>
+  <path class="dg-arrow dg-empty" d="M360 42 H184 V80" marker-end="url(#co-location-head)"/>
+  <rect class="dg-box" x="390" y="52" width="310" height="210" rx="6"/>
+  <text class="dg-name" x="406" y="74" text-anchor="start">Shard 2</text>
+  <text class="dg-sub" x="406" y="104">pricing plans</text>
+  <rect class="dg-chip" x="514" y="88" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="554.0" y="103.0" text-anchor="middle">free</text>
+  <rect class="dg-chip" x="602" y="88" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="642.0" y="103.0" text-anchor="middle">pro</text>
+  <line class="dg-line dg-empty" x1="402" y1="122" x2="688" y2="122"/>
+  <text class="dg-mono dg-muted-text" x="514" y="140">(WORKSPACE_ID, ID)</text>
+  <text class="dg-sub" x="406" y="164">tasks</text>
+  <rect class="dg-box-accent" x="514" y="148" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="554.0" y="163.0" text-anchor="middle">42, 101</text>
+  <rect class="dg-chip" x="602" y="148" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="642.0" y="163.0" text-anchor="middle">42, 102</text>
+  <text class="dg-sub" x="406" y="194">comments</text>
+  <rect class="dg-chip" x="602" y="178" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="642.0" y="193.0" text-anchor="middle">42, 9001</text>
+  <text class="dg-sub" x="406" y="224">activity log</text>
+  <rect class="dg-box-accent" x="514" y="208" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="554.0" y="223.0" text-anchor="middle">42, 5550</text>
+  <rect class="dg-chip" x="602" y="208" width="80" height="22" rx="4"/>
+  <text class="dg-code" x="642.0" y="223.0" text-anchor="middle">42, 5551</text>
+  <path class="dg-arrow dg-empty" d="M360 42 H554 V80" marker-end="url(#co-location-head)"/>
+  <line class="dg-message" x1="554" y1="170" x2="554" y2="208"/>
+  <text class="dg-mono dg-accent-text" x="554" y="250" text-anchor="middle">ONE LOCAL TRANSACTION</text>
+</svg>

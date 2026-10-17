@@ -1,0 +1,73 @@
+<svg class="diagram-svg" viewBox="0 0 720 250" role="img" aria-labelledby="range-vs-hash-title range-vs-hash-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="range-vs-hash-title">Workspaces 41 to 49 placed by range and by hash</title>
+  <desc id="range-vs-hash-desc">Workspaces 47 to 49 are the newest. By range, shard 1 holds workspaces 41 to 43, shard 2 holds 44 to 46, and shard 3 holds 47 to 49, so every new workspace lands on shard 3, while a read of workspaces 41 to 43 asks one shard. By hash, neighbors are scattered: shard 1 holds 42, 46, 49; shard 2 holds 41, 45, 47; shard 3 holds 43, 44, 48. The new workspaces spread over all three shards, and the same read asks all three.</desc>
+  <defs>
+    <marker id="range-vs-hash-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="range-vs-hash-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="242"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">By range</text>
+  <text class="dg-mono dg-accent-text" x="180" y="44" text-anchor="middle">NEW WORKSPACES 47–49</text>
+  <rect class="dg-box" x="12" y="108" width="104" height="70" rx="6"/>
+  <text class="dg-name" x="64" y="128" text-anchor="middle">Shard 1</text>
+  <rect class="dg-chip" x="20" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="33.0" y="157.0" text-anchor="middle">41</text>
+  <rect class="dg-chip" x="51" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="64.0" y="157.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="82" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="95.0" y="157.0" text-anchor="middle">43</text>
+  <rect class="dg-box" x="128" y="108" width="104" height="70" rx="6"/>
+  <text class="dg-name" x="180" y="128" text-anchor="middle">Shard 2</text>
+  <rect class="dg-chip" x="136" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="149.0" y="157.0" text-anchor="middle">44</text>
+  <rect class="dg-chip" x="167" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="180.0" y="157.0" text-anchor="middle">45</text>
+  <rect class="dg-chip" x="198" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="211.0" y="157.0" text-anchor="middle">46</text>
+  <rect class="dg-box" x="244" y="108" width="104" height="70" rx="6"/>
+  <text class="dg-name" x="296" y="128" text-anchor="middle">Shard 3</text>
+  <rect class="dg-box-accent" x="252" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="265.0" y="157.0" text-anchor="middle">47</text>
+  <rect class="dg-box-accent" x="283" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="296.0" y="157.0" text-anchor="middle">48</text>
+  <rect class="dg-box-accent" x="314" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="327.0" y="157.0" text-anchor="middle">49</text>
+  <path class="dg-arrow dg-message" d="M164 52 L274 100" marker-end="url(#range-vs-hash-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M180 52 L296 100" marker-end="url(#range-vs-hash-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M196 52 L318 100" marker-end="url(#range-vs-hash-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="180" y="240" text-anchor="middle">READ WORKSPACES 41–43</text>
+  <path class="dg-arrow dg-empty" d="M180.0 228 L64 186" marker-end="url(#range-vs-hash-head)"/>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">By hash</text>
+  <text class="dg-mono dg-accent-text" x="540" y="44" text-anchor="middle">NEW WORKSPACES 47–49</text>
+  <rect class="dg-box" x="372" y="108" width="104" height="70" rx="6"/>
+  <text class="dg-name" x="424" y="128" text-anchor="middle">Shard 1</text>
+  <rect class="dg-chip" x="380" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="393.0" y="157.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="411" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="424.0" y="157.0" text-anchor="middle">46</text>
+  <rect class="dg-box-accent" x="442" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="455.0" y="157.0" text-anchor="middle">49</text>
+  <rect class="dg-box" x="488" y="108" width="104" height="70" rx="6"/>
+  <text class="dg-name" x="540" y="128" text-anchor="middle">Shard 2</text>
+  <rect class="dg-chip" x="496" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="509.0" y="157.0" text-anchor="middle">41</text>
+  <rect class="dg-chip" x="527" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="540.0" y="157.0" text-anchor="middle">45</text>
+  <rect class="dg-box-accent" x="558" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="571.0" y="157.0" text-anchor="middle">47</text>
+  <rect class="dg-box" x="604" y="108" width="104" height="70" rx="6"/>
+  <text class="dg-name" x="656" y="128" text-anchor="middle">Shard 3</text>
+  <rect class="dg-chip" x="612" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="625.0" y="157.0" text-anchor="middle">43</text>
+  <rect class="dg-chip" x="643" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="656.0" y="157.0" text-anchor="middle">44</text>
+  <rect class="dg-box-accent" x="674" y="142" width="26" height="22" rx="4"/>
+  <text class="dg-code" x="687.0" y="157.0" text-anchor="middle">48</text>
+  <path class="dg-arrow dg-message" d="M524 52 L424 100" marker-end="url(#range-vs-hash-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M540 52 L540 100" marker-end="url(#range-vs-hash-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M556 52 L656 100" marker-end="url(#range-vs-hash-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="540" y="240" text-anchor="middle">READ WORKSPACES 41–43</text>
+  <path class="dg-arrow dg-empty" d="M524.0 228 L424 186" marker-end="url(#range-vs-hash-head)"/>
+  <path class="dg-arrow dg-empty" d="M540.0 228 L540 186" marker-end="url(#range-vs-hash-head)"/>
+  <path class="dg-arrow dg-empty" d="M556.0 228 L656 186" marker-end="url(#range-vs-hash-head)"/>
+</svg>

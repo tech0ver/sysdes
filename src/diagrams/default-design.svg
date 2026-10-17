@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 720 296" role="img" aria-labelledby="default-design-title default-design-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="default-design-title">The default design for a multi-tenant app</title>
+  <desc id="default-design-desc">A map store built on consensus sends map changes to the router, which caches the map. The router checks the override table first. The bank is listed there, so its request goes to the bank's own database. Workspace 42 is not listed, so the router hashes 42 into logical shard 217 of 480 and looks up node 9 in the map.</desc>
+  <defs>
+    <marker id="default-design-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="default-design-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="280" y="8" width="160" height="44" rx="6"/>
+  <text class="dg-name" x="360.0" y="28.0" text-anchor="middle">Map store</text>
+  <text class="dg-sub" x="360.0" y="44.0" text-anchor="middle">consensus</text>
+  <path class="dg-arrow dg-empty" d="M360 52 V82" marker-end="url(#default-design-head)"/>
+  <text class="dg-mono dg-muted-text" x="368" y="72">MAP CHANGES</text>
+  <rect class="dg-box" x="190" y="90" width="340" height="194" rx="6"/>
+  <text class="dg-name" x="206" y="112" text-anchor="start">Router</text>
+  <rect class="dg-chip" x="206" y="124" width="308" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="142.0" text-anchor="middle">overrides: bank → silo</text>
+  <rect class="dg-chip" x="206" y="188" width="308" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="204.0" text-anchor="middle">hash(42) mod 480 = 217</text>
+  <rect class="dg-chip" x="206" y="244" width="308" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="260.0" text-anchor="middle">map v8: 217 → node 9</text>
+  <path class="dg-arrow dg-message" d="M300 152 V180" marker-end="url(#default-design-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="308" y="170">NOT LISTED</text>
+  <path class="dg-arrow dg-message" d="M300 212 V236" marker-end="url(#default-design-head-accent)"/>
+  <rect class="dg-chip" x="16" y="92" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="81.0" y="108.0" text-anchor="middle">workspace 42</text>
+  <rect class="dg-chip" x="16" y="156" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="81.0" y="172.0" text-anchor="middle">bank</text>
+  <path class="dg-arrow dg-message" d="M146 104 H170 V132 H198" marker-end="url(#default-design-head-accent)"/>
+  <path class="dg-arrow" d="M146 168 H170 V144 H198" marker-end="url(#default-design-head)"/>
+  <rect class="dg-box" x="584" y="116" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="644.0" y="136.0" text-anchor="middle">Bank database</text>
+  <text class="dg-sub" x="644.0" y="152.0" text-anchor="middle">silo</text>
+  <path class="dg-arrow" d="M514 138 H576" marker-end="url(#default-design-head)"/>
+  <text class="dg-mono dg-muted-text" x="557" y="130" text-anchor="middle">LISTED</text>
+  <rect class="dg-box-accent" x="584" y="234" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="644.0" y="254.0" text-anchor="middle">Node 9</text>
+  <text class="dg-sub" x="644.0" y="270.0" text-anchor="middle">shard 217</text>
+  <path class="dg-arrow dg-message" d="M514 256 H576" marker-end="url(#default-design-head-accent)"/>
+</svg>

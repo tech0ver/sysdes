@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 112" role="img" aria-labelledby="shards-on-nodes-title shards-on-nodes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="shards-on-nodes-title">Four shards on four nodes</title>
+  <desc id="shards-on-nodes-desc">The tasks table is split into four shards. Each shard has a leader and a follower on two different nodes. Node 1 leads shard 1 and follows shard 4, node 2 leads shard 2 and follows shard 1, and so on, so each node stores half of the data and takes the writes of one shard.</desc>
+  <defs>
+    <marker id="shards-on-nodes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="shards-on-nodes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="22" y="8" width="160" height="96" rx="6"/>
+  <text class="dg-name" x="102" y="32" text-anchor="middle">Node 1</text>
+  <rect class="dg-box-accent" x="34" y="46" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="102.0" y="62.0" text-anchor="middle">shard 1: leader</text>
+  <rect class="dg-chip" x="34" y="74" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="102.0" y="90.0" text-anchor="middle">shard 4: follower</text>
+  <rect class="dg-box" x="194" y="8" width="160" height="96" rx="6"/>
+  <text class="dg-name" x="274" y="32" text-anchor="middle">Node 2</text>
+  <rect class="dg-box-accent" x="206" y="46" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="274.0" y="62.0" text-anchor="middle">shard 2: leader</text>
+  <rect class="dg-chip" x="206" y="74" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="274.0" y="90.0" text-anchor="middle">shard 1: follower</text>
+  <rect class="dg-box" x="366" y="8" width="160" height="96" rx="6"/>
+  <text class="dg-name" x="446" y="32" text-anchor="middle">Node 3</text>
+  <rect class="dg-box-accent" x="378" y="46" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="446.0" y="62.0" text-anchor="middle">shard 3: leader</text>
+  <rect class="dg-chip" x="378" y="74" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="446.0" y="90.0" text-anchor="middle">shard 2: follower</text>
+  <rect class="dg-box" x="538" y="8" width="160" height="96" rx="6"/>
+  <text class="dg-name" x="618" y="32" text-anchor="middle">Node 4</text>
+  <rect class="dg-box-accent" x="550" y="46" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="618.0" y="62.0" text-anchor="middle">shard 4: leader</text>
+  <rect class="dg-chip" x="550" y="74" width="136" height="24" rx="4"/>
+  <text class="dg-code" x="618.0" y="90.0" text-anchor="middle">shard 3: follower</text>
+</svg>

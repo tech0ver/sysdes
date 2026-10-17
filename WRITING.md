@@ -93,6 +93,7 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 - `explanation` is two or three sentences: what it is and why it matters in a design.
 - `expansion` is what an abbreviation stands for. Only for abbreviations.
 - `readMore` points to the page on this site that explains the term. If no page does, point to a trusted external source (MDN, the official docs, Wikipedia).
+- Do not use a glossary term's word in another sense, such as "join" for a new customer or "index" for a list: the first such use gets the term's tooltip. Pick another word ("sign up", "grow").
 - When a page explains a word in another sense than its glossary entry, add the page to the entry's `explainedIn`, so the page gets no wrong tooltip. Product names that contain a term ("SQL Server") go to `glossarySkip`.
 - Remove entries that no page uses.
 

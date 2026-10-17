@@ -1,0 +1,61 @@
+<svg class="diagram-svg" viewBox="0 0 720 228" role="img" aria-labelledby="shard-key-choice-title shard-key-choice-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="shard-key-choice-title">Where the tasks of one board land with three shard keys</title>
+  <desc id="shard-key-choice-desc">Board 7 of workspace 42 has tasks 101 to 104, owned by users 5, 8, 9, and 5. Each box shows the task and the value of the shard key. Sharded by task ID, the tasks land on all three shards. Sharded by user ID, they land on all three shards too. Sharded by workspace ID, all four tasks share the value 42 and land on shard 2, so opening the board asks one shard instead of three.</desc>
+  <defs>
+    <marker id="shard-key-choice-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="shard-key-choice-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="220"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="220"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">Key: task_id</text>
+  <text class="dg-mono dg-muted-text" x="120" y="42" text-anchor="middle">TASK</text>
+  <rect class="dg-box-accent" x="3" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="41" y="70" text-anchor="middle">shard 1</text>
+  <rect class="dg-chip" x="7" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="41.0" y="95.0" text-anchor="middle">101</text>
+  <rect class="dg-chip" x="7" y="106" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="41.0" y="121.0" text-anchor="middle">104</text>
+  <rect class="dg-box-accent" x="82" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="120" y="70" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="86" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="120.0" y="95.0" text-anchor="middle">102</text>
+  <rect class="dg-box-accent" x="161" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="199" y="70" text-anchor="middle">shard 3</text>
+  <rect class="dg-chip" x="165" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="199.0" y="95.0" text-anchor="middle">103</text>
+  <text class="dg-result" x="120" y="216" text-anchor="middle">Board read: 3 shards</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Key: user_id</text>
+  <text class="dg-mono dg-muted-text" x="360" y="42" text-anchor="middle">TASK · USER_ID</text>
+  <rect class="dg-box-accent" x="243" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="281" y="70" text-anchor="middle">shard 1</text>
+  <rect class="dg-chip" x="247" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="281.0" y="95.0" text-anchor="middle">101 · 5</text>
+  <rect class="dg-chip" x="247" y="106" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="281.0" y="121.0" text-anchor="middle">104 · 5</text>
+  <rect class="dg-box-accent" x="322" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="360" y="70" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="326" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="360.0" y="95.0" text-anchor="middle">103 · 9</text>
+  <rect class="dg-box-accent" x="401" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="439" y="70" text-anchor="middle">shard 3</text>
+  <rect class="dg-chip" x="405" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="439.0" y="95.0" text-anchor="middle">102 · 8</text>
+  <text class="dg-result" x="360" y="216" text-anchor="middle">Board read: 3 shards</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Key: workspace_id</text>
+  <text class="dg-mono dg-muted-text" x="600" y="42" text-anchor="middle">TASK · WORKSPACE_ID</text>
+  <rect class="dg-box" x="483" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="521" y="70" text-anchor="middle">shard 1</text>
+  <rect class="dg-box-accent" x="562" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="600" y="70" text-anchor="middle">shard 2</text>
+  <rect class="dg-chip" x="566" y="80" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="600.0" y="95.0" text-anchor="middle">101 · 42</text>
+  <rect class="dg-chip" x="566" y="106" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="600.0" y="121.0" text-anchor="middle">102 · 42</text>
+  <rect class="dg-chip" x="566" y="132" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="600.0" y="147.0" text-anchor="middle">103 · 42</text>
+  <rect class="dg-chip" x="566" y="158" width="68" height="22" rx="4"/>
+  <text class="dg-code" x="600.0" y="173.0" text-anchor="middle">104 · 42</text>
+  <rect class="dg-box" x="641" y="52" width="76" height="140" rx="6"/>
+  <text class="dg-sub" x="679" y="70" text-anchor="middle">shard 3</text>
+  <text class="dg-result" x="600" y="216" text-anchor="middle">Board read: 1 shard</text>
+</svg>
