@@ -160,7 +160,7 @@ body {
   }
 }
 
-/* Header layout in the Hello Interview manner: the title lives in the sidebar,
+/* Header layout: the title lives in the sidebar,
    the header holds search on the left and GitHub and theme on the right. */
 [data-has-sidebar] .header .title-wrapper { display: none; }
 @media (min-width: 72rem) {

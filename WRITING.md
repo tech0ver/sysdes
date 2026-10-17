@@ -38,6 +38,7 @@ What an article on this site must look like. Read it before you add or change a 
 - Use one name for each concept across the whole article. Where several names exist (leader, primary, source), give the others once, where the term is introduced, and then use only the chosen one, also in real cases.
 - Write single-letter variables in formulas as capital letters (N, W, R), so they stand out from the words around them.
 - Terms and abbreviations go to the [glossary](#glossary). Do not expand them in parentheses unless the article is where the term is explained.
+- A well-known model named in the text, such as the AKF scale cube, links to its primary description.
 
 ## Callouts
 
@@ -61,7 +62,12 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 - Use the words of the text. No term before its block, same as in prose.
 - Write the diagram as an SVG file in `src/diagrams/<name>.svg` and insert it with `::diagram{name="<name>"}` on its own line (`src/plugins/diagrams.mjs`). The SVG is inlined into the page.
 - Color only through the `dg-*` classes in `src/styles/article.css`, never with hard-coded colors, so the diagram follows the light and dark themes.
-- Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent focused on the idea the diagram teaches.
+- Comparisons use equal panels side by side with the same data on one grid: the same rows, values, and order in each panel, aligned across the panels, with a vertical rule between them. Keep the halves symmetric and the strokes the same weight.
+- Show concrete rows and values (workspace 42, order 501) rather than abstract boxes.
+- Do not add caption lines that restate the paragraph next to the diagram. A label names what the reader sees; when panels count different things (keys in one, shards in the other), a short legend says what a cell stands for.
+- Time runs from top to bottom. When two actors act in time, put the TIME axis between their columns.
+- Arrows: several arrows into one box end side by side, never in one point, and avoid crossings by ordering their start points. Give every leg of a bent arrow real length: short legs look crooked. Labels never cross the border of a zone or a box.
+- Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent on the idea the diagram teaches (for example, that one database became many), not on an element that only happens to be there.
 - Ordinary labels, including text inside accented boxes and badges, use the same theme-aware text color (`--sl-color-gray-3` through the `dg-*` classes). Do not leave white text after removing an accent fill. Check text contrast against the neutral background in both themes.
 - Text: names in the sans font (`dg-name`), notes in `dg-sub`, arrow labels in uppercase mono (`dg-mono`). Technical values (domains, IP addresses, paths) keep their case.
 - Draw on a grid 720 units wide. When the content is narrower, trim the `viewBox` to the content: the plugin then gives the diagram a matching share of the column, so text keeps the same size in every diagram.
