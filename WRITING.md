@@ -38,6 +38,7 @@ What an article on this site must look like. Read it before you add or change a 
 - Use one name for each concept across the whole article. Where several names exist (leader, primary, source), give the others once, where the term is introduced, and then use only the chosen one, also in real cases.
 - Write single-letter variables in formulas as capital letters (N, W, R), so they stand out from the words around them.
 - Terms and abbreviations go to the [glossary](#glossary). Do not expand them in parentheses unless the article is where the term is explained.
+- A well-known model named in the text, such as the AKF scale cube, links to its primary description.
 
 ## Callouts
 
@@ -106,7 +107,6 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 - The author names the sources for each article: study notes, books, sites, or their own experience. The article does not cite them.
 - The one exception is a real company's case: one sentence about what the company did, with a link to its public source (an engineering blog post or a paper). Use only numbers you checked in that source, and give the year, since such cases age. If the source cannot be opened, drop the company name and keep the idea.
-- A well-known model named in the text, such as the AKF scale cube, links to its primary description.
 - A product's limit, number, or feature named in the text (a size cap, a guideline value, a kind of key) links to the official documentation that describes it. When the site has an article about that product, the number moves there, and the link points to that article.
 - Write everything in your own words. Do not copy text from any source.
 - Other interview prep sites can show what to cover, not how to say it.
