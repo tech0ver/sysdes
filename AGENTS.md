@@ -30,7 +30,7 @@ A personal system design knowledge base: articles for interview preparation, pub
 
 ## Conventions
 
-- To write or rewrite an article, use the `write-article` skill (`.claude/skills/write-article/`). The rules for the result are in [WRITING.md](WRITING.md). Which topic goes into which article is in [ARTICLES.md](ARTICLES.md).
+- To write or rewrite an article, use the `write-article` skill (`.claude/skills/write-article/`, with scripts for drawing diagrams and taking their screenshots in `scripts/`). The rules for the result are in [WRITING.md](WRITING.md). Which topic goes into which article is in [ARTICLES.md](ARTICLES.md).
 - Internal links are relative (`../caching/`) so they keep working under `base`.
 - Do not duplicate information between README.md and AGENTS.md: README is for running the project, AGENTS.md is for working on it.
 - Before finishing a change, run `bun run build` — it must pass with no errors.

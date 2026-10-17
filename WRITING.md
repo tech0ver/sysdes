@@ -61,7 +61,12 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 - Use the words of the text. No term before its block, same as in prose.
 - Write the diagram as an SVG file in `src/diagrams/<name>.svg` and insert it with `::diagram{name="<name>"}` on its own line (`src/plugins/diagrams.mjs`). The SVG is inlined into the page.
 - Color only through the `dg-*` classes in `src/styles/article.css`, never with hard-coded colors, so the diagram follows the light and dark themes.
-- Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent focused on the idea the diagram teaches.
+- Comparisons use equal panels side by side with the same data on one grid: the same rows, values, and order in each panel, aligned across the panels, with a vertical rule between them. Keep the halves symmetric and the strokes the same weight.
+- Show concrete rows and values (workspace 42, order 501) rather than abstract boxes.
+- Do not add caption lines that restate the paragraph next to the diagram. A label names what the reader sees; when panels count different things (keys in one, shards in the other), a short legend says what a cell stands for.
+- Time runs from top to bottom. When two actors act in time, put the TIME axis between their columns.
+- Arrows: several arrows into one box end side by side, never in one point, and avoid crossings by ordering their start points. Give every leg of a bent arrow real length: short legs look crooked. Labels never cross the border of a zone or a box.
+- Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent on the idea the diagram teaches (for example, that one database became many), not on an element that only happens to be there.
 - Ordinary labels, including text inside accented boxes and badges, use the same theme-aware text color (`--sl-color-gray-3` through the `dg-*` classes). Do not leave white text after removing an accent fill. Check text contrast against the neutral background in both themes.
 - Text: names in the sans font (`dg-name`), notes in `dg-sub`, arrow labels in uppercase mono (`dg-mono`). Technical values (domains, IP addresses, paths) keep their case.
 - Draw on a grid 720 units wide. When the content is narrower, trim the `viewBox` to the content: the plugin then gives the diagram a matching share of the column, so text keeps the same size in every diagram.
@@ -101,6 +106,7 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 - The author names the sources for each article: study notes, books, sites, or their own experience. The article does not cite them.
 - The one exception is a real company's case: one sentence about what the company did, with a link to its public source (an engineering blog post or a paper). Use only numbers you checked in that source, and give the year, since such cases age. If the source cannot be opened, drop the company name and keep the idea.
+- A well-known model named in the text, such as the AKF scale cube, links to its primary description.
 - A product's limit, number, or feature named in the text (a size cap, a guideline value, a kind of key) links to the official documentation that describes it. When the site has an article about that product, the number moves there, and the link points to that article.
 - Write everything in your own words. Do not copy text from any source.
 - Other interview prep sites can show what to cover, not how to say it.

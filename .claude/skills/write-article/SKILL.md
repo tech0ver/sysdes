@@ -16,14 +16,14 @@ Keep working notes in `.agents/<article-slug>/` (git-ignored): `sources.md`, `pl
 Ask the author, or confirm from the request:
 
 - The topic and the target page (new file, or an existing one to rewrite).
-- The sources for this article: study notes (for example Notion pages), books, sites, the author's own experience. Other interview prep sites only show what to cover.
+- The sources for this article: study notes, books, sites, the author's own experience. Other interview prep sites only show what to cover.
 - Anything that must be in the article, or must stay out.
 
 Read [ARTICLES.md](../../../ARTICLES.md): it says which topics belong to this article and which belong to others. If the author gives no sources, propose some and wait for an answer.
 
 ## 2. Collect from the sources
 
-- Read every source the author named. If a source has its own reading guide (for example an instructions page in a notes workspace), follow it.
+- Read every source the author named. If a source comes with its own reading guide, follow it.
 - Write the facts to `sources.md`, grouped by subtopic, with the source of each fact.
 - Keep facts that change a design decision: a default choice, a signal to pick something else, a trade-off, a number, a common mistake. Drop internals, history, and "why it exists".
 - List conflicts between sources and open questions separately.
@@ -43,6 +43,7 @@ Show the plan to the author and wait for approval. Add new planned articles to A
 
 - Write the first blocks one at a time, and later ones in groups of two or three; a disputed block goes alone.
 - Before showing a block: run the `humanizer` skill on it (if a suggestion breaks WRITING.md, WRITING.md wins), run `bun run build`, and check the page in a preview.
+- Show the block on the running site (`bun run dev --host 0.0.0.0` lets the author open it from another device): give the link and short notes on what the block covers, what it leaves out and why, and the open questions. Do not paste the block's text into the chat.
 - Wait for the author's feedback and fix the block before moving on.
 - Every style remark from the author becomes a rule in `plan.md`. If the rule applies to any article, add it to WRITING.md too.
 - Check claims against the sources. When the author questions a fact, check the sources before answering.
@@ -57,8 +58,8 @@ Show the plan to the author and wait for approval. Add new planned articles to A
 ## 6. Diagrams
 
 1. Read the whole article and propose where diagrams help: what each one shows (a difference, an evolution, or how something works) and why. Agree on the list with the author.
-2. Draw one diagram as a style sample and get the author's approval before drawing the rest. The `diagram-design` skill helps with layout, but the result must follow WRITING.md, "Diagrams": an SVG in `src/diagrams/` with `dg-*` classes, not a standalone HTML file.
-3. Check every diagram in both themes and at phone width (take screenshots of the built page), then show them to the author.
+2. Draw one diagram as a style sample and get the author's approval before drawing the rest. The result must follow WRITING.md, "Diagrams": an SVG in `src/diagrams/` with `dg-*` classes, not a standalone HTML file. Write the diagrams with a generator in `.agents/<article-slug>/diagrams_gen.py` built on [scripts/svg.py](scripts/svg.py) (its docstring shows how), so a fix to one diagram is a quick rerun. The `diagram-design` skill can help with layout ideas.
+3. Check every diagram in both themes and at phone width with [scripts/shot.py](scripts/shot.py), which screenshots the diagrams of a page on the dev server. Look at each screenshot for overlaps, cut-off labels, and uneven spacing before you show the set to the author.
 4. Before showing the set, check that all diagrams follow the same rules, especially the accent.
 
 ## 7. Link the articles
