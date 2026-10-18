@@ -8,6 +8,8 @@
   --sl-sidebar-width: 17rem;
   --site-left-sidebar-width: 200px;
   --sl-line-height: 1.7;
+  --site-article-font-size: 1.05rem;
+  --site-article-line-height: 1.78;
 }
 
 html { scroll-behavior: smooth; }
@@ -19,8 +21,8 @@ body {
 
 .sl-markdown-content {
   max-width: 66ch;
-  font-size: 1.05rem;
-  line-height: 1.78;
+  font-size: var(--site-article-font-size);
+  line-height: var(--site-article-line-height);
 }
 
 .sl-markdown-content p,
@@ -82,7 +84,7 @@ body {
 }
 
 @media (max-width: 22.5rem) {
-  .sl-markdown-content { font-size: 0.98rem; }
+  :root { --site-article-font-size: 0.98rem; }
   .sl-markdown-content table { display: block; max-width: 100%; overflow-x: auto; }
 }
 
