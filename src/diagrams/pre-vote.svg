@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 720 294" role="img" aria-labelledby="pre-vote-title pre-vote-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pre-vote-title">A node cut off from the leader only, without and with pre-vote</title>
+  <desc id="pre-vote-desc">Three nodes. The link between the leader N1 and N3 is down; N2 reaches both. N3's log is behind N2's, so N3 cannot win. Left, without pre-vote: N3 keeps starting elections for terms 5, 6, and so on; N2 refuses each vote but moves to the new term, and N1 steps down when it sees that term, so writes are refused. Right, with pre-vote: N3 first asks whether it could win; N2 says no, no term changes, and the leader keeps working.</desc>
+  <defs>
+    <marker id="pre-vote-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="pre-vote-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="286"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Without pre-vote</text>
+  <line class="dg-line" x1="102" y1="76" x2="258" y2="76"/>
+  <line class="dg-line" x1="270" y1="93" x2="200" y2="159"/>
+  <line class="dg-line dg-empty" x1="90" y1="93" x2="160" y2="159"/>
+  <line class="dg-cross" x1="119.0" y1="120.0" x2="131.0" y2="132.0"/>
+  <line class="dg-cross" x1="119.0" y1="132.0" x2="131.0" y2="120.0"/>
+  <rect class="dg-box" x="38.0" y="59.0" width="64" height="34" rx="6"/>
+  <text class="dg-name" x="70" y="81" text-anchor="middle">N1</text>
+  <text class="dg-mono dg-muted-text" x="70" y="50" text-anchor="middle">LEADER, TERM 4</text>
+  <rect class="dg-box" x="258.0" y="59.0" width="64" height="34" rx="6"/>
+  <text class="dg-name" x="290" y="81" text-anchor="middle">N2</text>
+  <rect class="dg-box" x="148.0" y="159.0" width="64" height="34" rx="6"/>
+  <text class="dg-name" x="180" y="181" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-muted-text" x="136" y="180" text-anchor="end">LOG BEHIND N2</text>
+  <path class="dg-arrow dg-message" d="M214 150 L264 106" marker-end="url(#pre-vote-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="180" y="220" text-anchor="middle">VOTE? TERM 5, 6, …</text>
+  <text class="dg-mono dg-muted-text" x="180" y="236" text-anchor="middle">N2: NO, BUT MOVES TO THAT TERM</text>
+  <text class="dg-mono dg-muted-text" x="180" y="252" text-anchor="middle">N1 SEES IT AND STEPS DOWN</text>
+  <text class="dg-result" x="180" y="280" text-anchor="middle">Writes refused</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">With pre-vote</text>
+  <line class="dg-line" x1="462" y1="76" x2="618" y2="76"/>
+  <line class="dg-line" x1="630" y1="93" x2="560" y2="159"/>
+  <line class="dg-line dg-empty" x1="450" y1="93" x2="520" y2="159"/>
+  <line class="dg-cross" x1="479.0" y1="120.0" x2="491.0" y2="132.0"/>
+  <line class="dg-cross" x1="479.0" y1="132.0" x2="491.0" y2="120.0"/>
+  <rect class="dg-box" x="398.0" y="59.0" width="64" height="34" rx="6"/>
+  <text class="dg-name" x="430" y="81" text-anchor="middle">N1</text>
+  <text class="dg-mono dg-muted-text" x="430" y="50" text-anchor="middle">LEADER, TERM 4</text>
+  <rect class="dg-box" x="618.0" y="59.0" width="64" height="34" rx="6"/>
+  <text class="dg-name" x="650" y="81" text-anchor="middle">N2</text>
+  <rect class="dg-box" x="508.0" y="159.0" width="64" height="34" rx="6"/>
+  <text class="dg-name" x="540" y="181" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-muted-text" x="496" y="180" text-anchor="end">LOG BEHIND N2</text>
+  <path class="dg-arrow dg-message" d="M574 150 L624 106" marker-end="url(#pre-vote-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="540" y="220" text-anchor="middle">PRE-VOTE: COULD I WIN?</text>
+  <text class="dg-mono dg-muted-text" x="540" y="236" text-anchor="middle">N2: NO</text>
+  <text class="dg-mono dg-muted-text" x="540" y="252" text-anchor="middle">NO NEW TERM; N1 STAYS THE LEADER</text>
+  <text class="dg-result" x="540" y="280" text-anchor="middle">The leader keeps working</text>
+</svg>

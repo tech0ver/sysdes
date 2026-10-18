@@ -1,0 +1,53 @@
+<svg class="diagram-svg" viewBox="0 0 720 252" role="img" aria-labelledby="partition-choice-title partition-choice-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="partition-choice-title">Refusing or accepting a transfer on the side without the leader</title>
+  <desc id="partition-choice-desc">Account 42 has $30 in both copies, and the link between Europe and the US is down. A user in Europe and a user in the US each send $20 from it. Left: the US follower refuses its transfer, so only one is accepted and the balance becomes $10. Right: the US copy accepts the transfer as a local write; the merge after the partition keeps both transfers, and the balance is -$10.</desc>
+  <defs>
+    <marker id="partition-choice-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="partition-choice-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="244"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Refuse on the side without the leader</text>
+  <text class="dg-sub" x="180" y="40" text-anchor="middle">account 42, $30 in both copies</text>
+  <rect class="dg-zone" x="12" y="58" width="150" height="142" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="27" y="78">EUROPE</text>
+  <rect class="dg-box" x="26" y="92" width="122" height="44" rx="6"/>
+  <text class="dg-name" x="87.0" y="112" text-anchor="middle">Leader</text>
+  <text class="dg-sub" x="87.0" y="128" text-anchor="middle">balance $30</text>
+  <rect class="dg-zone" x="198" y="58" width="150" height="142" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="213" y="78">US</text>
+  <rect class="dg-box" x="212" y="92" width="122" height="44" rx="6"/>
+  <text class="dg-name" x="273.0" y="112" text-anchor="middle">Follower</text>
+  <text class="dg-sub" x="273.0" y="128" text-anchor="middle">balance $30</text>
+  <line class="dg-line" x1="162" y1="114" x2="198" y2="114"/>
+  <line class="dg-cross" x1="174" y1="108" x2="186" y2="120"/>
+  <line class="dg-cross" x1="174" y1="120" x2="186" y2="108"/>
+  <text class="dg-mono dg-muted-text" x="87" y="156" text-anchor="middle">SEND $20</text>
+  <text class="dg-mono dg-muted-text" x="273" y="156" text-anchor="middle">SEND $20</text>
+  <rect class="dg-box" x="32" y="164" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="87.0" y="180.0" text-anchor="middle">accepted</text>
+  <rect class="dg-box-accent" x="218" y="164" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="273.0" y="180.0" text-anchor="middle">refused</text>
+  <text class="dg-result" x="180" y="234" text-anchor="middle">Balance: $10</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Accept on both sides</text>
+  <text class="dg-sub" x="540" y="40" text-anchor="middle">account 42, $30 in both copies</text>
+  <rect class="dg-zone" x="372" y="58" width="150" height="142" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="387" y="78">EUROPE</text>
+  <rect class="dg-box" x="386" y="92" width="122" height="44" rx="6"/>
+  <text class="dg-name" x="447.0" y="112" text-anchor="middle">Leader</text>
+  <text class="dg-sub" x="447.0" y="128" text-anchor="middle">balance $30</text>
+  <rect class="dg-zone" x="558" y="58" width="150" height="142" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="573" y="78">US</text>
+  <rect class="dg-box" x="572" y="92" width="122" height="44" rx="6"/>
+  <text class="dg-name" x="633.0" y="112" text-anchor="middle">US copy</text>
+  <text class="dg-sub" x="633.0" y="128" text-anchor="middle">balance $30</text>
+  <line class="dg-line" x1="522" y1="114" x2="558" y2="114"/>
+  <line class="dg-cross" x1="534" y1="108" x2="546" y2="120"/>
+  <line class="dg-cross" x1="534" y1="120" x2="546" y2="108"/>
+  <text class="dg-mono dg-muted-text" x="447" y="156" text-anchor="middle">SEND $20</text>
+  <text class="dg-mono dg-muted-text" x="633" y="156" text-anchor="middle">SEND $20, LOCAL WRITE</text>
+  <rect class="dg-box" x="392" y="164" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="447.0" y="180.0" text-anchor="middle">accepted</text>
+  <rect class="dg-box-accent" x="578" y="164" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="633.0" y="180.0" text-anchor="middle">accepted</text>
+  <text class="dg-result" x="540" y="234" text-anchor="middle">Merge keeps both: −$10</text>
+</svg>

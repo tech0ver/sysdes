@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 290" role="img" aria-labelledby="tpc-abort-title tpc-abort-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="tpc-abort-title">A missing vote makes the coordinator abort</title>
+  <desc id="tpc-abort-desc">The coordinator asks shard 1 and shard 7 to prepare transfer t-501. Shard 1 prepares and votes yes. Shard 7 does not answer in time. The coordinator writes abort to its log and tells both shards; shard 1 undoes its prepared change and releases its locks.</desc>
+  <defs>
+    <marker id="tpc-abort-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="tpc-abort-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="130" y="20" text-anchor="middle">SHARD 1</text>
+  <line class="dg-lifeline" x1="130" y1="34" x2="130" y2="280"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">COORDINATOR</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="280"/>
+  <text class="dg-mono dg-muted-text" x="590" y="20" text-anchor="middle">SHARD 7</text>
+  <line class="dg-lifeline" x1="590" y1="34" x2="590" y2="280"/>
+  <text class="dg-mono dg-muted-text" x="245.0" y="58" text-anchor="middle">PREPARE t-501</text>
+  <path class="dg-arrow" d="M360 66 H138" marker-end="url(#tpc-abort-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="58" text-anchor="middle">PREPARE t-501</text>
+  <path class="dg-arrow" d="M360 66 H582" marker-end="url(#tpc-abort-head)"/>
+  <rect class="dg-box" x="17.0" y="76" width="226" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="92.0" text-anchor="middle">Anna −$50: prepared, locked</text>
+  <line class="dg-cross" x1="584" y1="86" x2="596" y2="98"/>
+  <line class="dg-cross" x1="584" y1="98" x2="596" y2="86"/>
+  <text class="dg-sub" x="604" y="96" text-anchor="start">no answer</text>
+  <text class="dg-mono dg-muted-text" x="245.0" y="120" text-anchor="middle">YES</text>
+  <path class="dg-arrow" d="M130 128 H352" marker-end="url(#tpc-abort-head)"/>
+  <line class="dg-arrow dg-wait" x1="370" y1="74" x2="370" y2="150"/>
+  <text class="dg-mono dg-accent-text" x="380" y="114" text-anchor="start">TIMEOUT</text>
+  <rect class="dg-box-accent" x="285.0" y="160" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="176.0" text-anchor="middle">log: abort</text>
+  <text class="dg-mono dg-muted-text" x="245.0" y="214" text-anchor="middle">ABORT</text>
+  <path class="dg-arrow" d="M360 222 H138" marker-end="url(#tpc-abort-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="214" text-anchor="middle">ABORT</text>
+  <path class="dg-arrow dg-empty" d="M360 222 H582" marker-end="url(#tpc-abort-head)"/>
+  <rect class="dg-box" x="35.0" y="232" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="248.0" text-anchor="middle">undone, unlocked</text>
+</svg>

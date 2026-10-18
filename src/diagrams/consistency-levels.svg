@@ -1,0 +1,65 @@
+<svg class="diagram-svg" viewBox="0 0 720 344" role="img" aria-labelledby="consistency-levels-title consistency-levels-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="consistency-levels-title">What a read may return at each Cosmos DB level</title>
+  <desc id="consistency-levels-desc">Top: one record has versions v1 to v5, v5 is the latest, and the reader itself wrote v2. Strong: the read returns v5. Bounded staleness, in an example bound of two versions: v3, v4, or v5. Session: its own v2 or newer. Bottom: one transaction writes t1 and t2 together. Consistent prefix: a read sees neither or both, never t1 alone. Eventual: any of the three, including t1 alone.</desc>
+  <defs>
+    <marker id="consistency-levels-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="consistency-levels-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="20" y="24" text-anchor="start">ONE RECORD: v1 … v5, v5 IS THE LATEST; THE READER WROTE v2</text>
+  <text class="dg-name" x="20" y="57" text-anchor="start">Strong</text>
+  <rect class="dg-box-failed" x="190" y="40" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="210.0" y="56.0" text-anchor="middle">v1</text>
+  <rect class="dg-box-failed" x="236" y="40" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="256.0" y="56.0" text-anchor="middle">v2</text>
+  <rect class="dg-box-failed" x="282" y="40" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="302.0" y="56.0" text-anchor="middle">v3</text>
+  <rect class="dg-box-failed" x="328" y="40" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="348.0" y="56.0" text-anchor="middle">v4</text>
+  <rect class="dg-chip" x="374" y="40" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="394.0" y="56.0" text-anchor="middle">v5</text>
+  <text class="dg-mono dg-muted-text" x="460" y="56" text-anchor="start">ONLY THE LATEST</text>
+  <text class="dg-name" x="20" y="95" text-anchor="start">Bounded staleness</text>
+  <rect class="dg-box-failed" x="190" y="78" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="210.0" y="94.0" text-anchor="middle">v1</text>
+  <rect class="dg-box-failed" x="236" y="78" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="256.0" y="94.0" text-anchor="middle">v2</text>
+  <rect class="dg-chip" x="282" y="78" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="302.0" y="94.0" text-anchor="middle">v3</text>
+  <rect class="dg-chip" x="328" y="78" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="348.0" y="94.0" text-anchor="middle">v4</text>
+  <rect class="dg-chip" x="374" y="78" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="394.0" y="94.0" text-anchor="middle">v5</text>
+  <text class="dg-mono dg-muted-text" x="460" y="94" text-anchor="start">AT MOST 2 VERSIONS BEHIND (EXAMPLE)</text>
+  <text class="dg-name" x="20" y="133" text-anchor="start">Session</text>
+  <rect class="dg-box-failed" x="190" y="116" width="40" height="24" rx="4"/>
+  <text class="dg-code-muted" x="210.0" y="132.0" text-anchor="middle">v1</text>
+  <rect class="dg-chip" x="236" y="116" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="256.0" y="132.0" text-anchor="middle">v2</text>
+  <rect class="dg-chip" x="282" y="116" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="302.0" y="132.0" text-anchor="middle">v3</text>
+  <rect class="dg-chip" x="328" y="116" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="348.0" y="132.0" text-anchor="middle">v4</text>
+  <rect class="dg-chip" x="374" y="116" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="394.0" y="132.0" text-anchor="middle">v5</text>
+  <text class="dg-mono dg-muted-text" x="460" y="132" text-anchor="start">ITS OWN v2 OR NEWER</text>
+  <line class="dg-rule" x1="8" y1="166" x2="712" y2="166"/>
+  <text class="dg-mono dg-muted-text" x="20" y="192" text-anchor="start">ONE TRANSACTION WRITES t1 AND t2 TOGETHER</text>
+  <text class="dg-name" x="20" y="225" text-anchor="start">Consistent prefix</text>
+  <rect class="dg-chip" x="190" y="208" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="230.0" y="224.0" text-anchor="middle">neither</text>
+  <rect class="dg-box-failed" x="274" y="208" width="80" height="24" rx="4"/>
+  <text class="dg-code-muted" x="314.0" y="224.0" text-anchor="middle">t1 alone</text>
+  <rect class="dg-chip" x="358" y="208" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="398.0" y="224.0" text-anchor="middle">t1 and t2</text>
+  <text class="dg-mono dg-muted-text" x="460" y="224" text-anchor="start">ALL OF IT OR NONE</text>
+  <text class="dg-name" x="20" y="263" text-anchor="start">Eventual</text>
+  <rect class="dg-chip" x="190" y="246" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="230.0" y="262.0" text-anchor="middle">neither</text>
+  <rect class="dg-box-accent" x="274" y="246" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="314.0" y="262.0" text-anchor="middle">t1 alone</text>
+  <rect class="dg-chip" x="358" y="246" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="398.0" y="262.0" text-anchor="middle">t1 and t2</text>
+  <text class="dg-mono dg-muted-text" x="460" y="262" text-anchor="start">PART OF IT IS POSSIBLE</text>
+  <text class="dg-sub" x="190" y="312">solid: a read may return it; dashed: it may not</text>
+  <text class="dg-sub" x="190" y="330">guarantees hold within one logical partition</text>
+</svg>

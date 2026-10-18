@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 304" role="img" aria-labelledby="linearizable-reads-title linearizable-reads-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="linearizable-reads-title">Reads that overlap a write</title>
+  <desc id="linearizable-reads-desc">The balance is 100, and a write sets it to 150. Read A overlaps the write and returns 150. Read B starts after read A has returned and still overlaps the write. Read C starts after the write has finished. Left, linearizable: B and C return 150. Right, not linearizable: B returns 100, going back after A has already seen 150.</desc>
+  <defs>
+    <marker id="linearizable-reads-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="linearizable-reads-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="296"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Linearizable</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">the balance was 100</text>
+  <text class="dg-sub" x="180" y="294" text-anchor="middle">each box runs from the request to the answer</text>
+  <text class="dg-mono dg-muted-text" x="95" y="66" text-anchor="middle">WRITE</text>
+  <text class="dg-mono dg-muted-text" x="265" y="66" text-anchor="middle">READS</text>
+  <text class="dg-mono dg-muted-text" x="180" y="66" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M180 74 V246" marker-end="url(#linearizable-reads-head)"/>
+  <rect class="dg-box" x="30" y="84" width="130" height="112" rx="4"/>
+  <text class="dg-code" x="95" y="144" text-anchor="middle">write 150</text>
+  <rect class="dg-box" x="200" y="92" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="265.0" y="110.0" text-anchor="middle">read A: 150</text>
+  <rect class="dg-box-accent" x="200" y="142" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="265.0" y="160.0" text-anchor="middle">read B: 150</text>
+  <rect class="dg-box" x="200" y="208" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="265.0" y="226.0" text-anchor="middle">read C: 150</text>
+  <text class="dg-result" x="180" y="272" text-anchor="middle">B and C return 150</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Not linearizable</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">the balance was 100</text>
+  <text class="dg-sub" x="540" y="294" text-anchor="middle">each box runs from the request to the answer</text>
+  <text class="dg-mono dg-muted-text" x="455" y="66" text-anchor="middle">WRITE</text>
+  <text class="dg-mono dg-muted-text" x="625" y="66" text-anchor="middle">READS</text>
+  <text class="dg-mono dg-muted-text" x="540" y="66" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M540 74 V246" marker-end="url(#linearizable-reads-head)"/>
+  <rect class="dg-box" x="390" y="84" width="130" height="112" rx="4"/>
+  <text class="dg-code" x="455" y="144" text-anchor="middle">write 150</text>
+  <rect class="dg-box" x="560" y="92" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="625.0" y="110.0" text-anchor="middle">read A: 150</text>
+  <rect class="dg-box-accent" x="560" y="142" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="625.0" y="160.0" text-anchor="middle">read B: 100</text>
+  <rect class="dg-box" x="560" y="208" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="625.0" y="226.0" text-anchor="middle">read C: 150</text>
+  <text class="dg-result" x="540" y="272" text-anchor="middle">B goes back to 100</text>
+</svg>

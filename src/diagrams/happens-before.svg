@@ -1,0 +1,28 @@
+<svg class="diagram-svg" viewBox="0 0 720 268" role="img" aria-labelledby="happens-before-title happens-before-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="happens-before-title">Events linked by a message, and an event that is concurrent with them</title>
+  <desc id="happens-before-desc">Three processes: payments, refunds, and reports. Payments writes a payment and sends a message; refunds receives it and then writes the refund. The payment happens before the refund through this chain. Reports runs a report with no message to or from the others, so it is concurrent with all four events.</desc>
+  <defs>
+    <marker id="happens-before-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="happens-before-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="140" y="20" text-anchor="middle">PAYMENTS</text>
+  <line class="dg-lifeline" x1="140" y1="34" x2="140" y2="222"/>
+  <text class="dg-mono dg-muted-text" x="380" y="20" text-anchor="middle">REFUNDS</text>
+  <line class="dg-lifeline" x1="380" y1="34" x2="380" y2="222"/>
+  <text class="dg-mono dg-muted-text" x="600" y="20" text-anchor="middle">REPORTS</text>
+  <line class="dg-lifeline" x1="600" y1="34" x2="600" y2="222"/>
+  <circle class="dg-dot" cx="140" cy="70" r="4"/>
+  <text class="dg-sub" x="128" y="74" text-anchor="end">payment written</text>
+  <circle class="dg-dot" cx="140" cy="110" r="4"/>
+  <text class="dg-sub" x="128" y="114" text-anchor="end">message sent</text>
+  <path class="dg-arrow dg-message" d="M140 110 L372.2 158.4" marker-end="url(#happens-before-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="260.0" y="124" text-anchor="middle">PAYMENT DONE</text>
+  <circle class="dg-dot" cx="380" cy="160" r="4"/>
+  <text class="dg-sub" x="392" y="164" text-anchor="start">received</text>
+  <circle class="dg-dot" cx="380" cy="200" r="4"/>
+  <text class="dg-sub" x="392" y="204" text-anchor="start">refund written</text>
+  <circle class="dg-dot-muted" cx="600" cy="130" r="4"/>
+  <text class="dg-sub" x="588" y="134" text-anchor="end">report run</text>
+  <text class="dg-mono dg-accent-text" x="260" y="252" text-anchor="middle">ONE CHAIN: HAPPENS BEFORE</text>
+  <text class="dg-mono dg-muted-text" x="560" y="252" text-anchor="middle">NO PATH: CONCURRENT</text>
+</svg>

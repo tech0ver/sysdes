@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 286" role="img" aria-labelledby="token-read-title token-read-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="token-read-title">A read that waits for the position named in a push</title>
+  <desc id="token-read-desc">The leader commits Anna's transfer at log position 812 and pushes a notification to Ben that carries the position. Ben reads his balance from the nearest copy and asks for a state that has applied at least 812. The copy has applied the log only up to 810, so it waits until entries 811 and 812 arrive and are applied, then returns $150.</desc>
+  <defs>
+    <marker id="token-read-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="token-read-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="90" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="90" y1="34" x2="90" y2="276"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">NEAREST COPY</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="276"/>
+  <text class="dg-mono dg-muted-text" x="630" y="20" text-anchor="middle">BEN</text>
+  <line class="dg-lifeline" x1="630" y1="34" x2="630" y2="276"/>
+  <rect class="dg-box" x="30.0" y="50" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="90.0" y="66.0" text-anchor="middle">commit at 812</text>
+  <rect class="dg-box" x="300.0" y="50" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="66.0" text-anchor="middle">applied: 810</text>
+  <text class="dg-mono dg-muted-text" x="225" y="96" text-anchor="middle">PUSH: ANNA SENT $50, POSITION 812</text>
+  <path class="dg-arrow" d="M90 104 H622" marker-end="url(#token-read-head)"/>
+  <text class="dg-mono dg-muted-text" x="495.0" y="136" text-anchor="middle">READ: APPLIED ≥ 812</text>
+  <path class="dg-arrow" d="M630 144 H368" marker-end="url(#token-read-head)"/>
+  <line class="dg-arrow dg-wait" x1="360" y1="150" x2="360" y2="214"/>
+  <text class="dg-mono dg-accent-text" x="372" y="186" text-anchor="start">WAITS</text>
+  <text class="dg-mono dg-muted-text" x="225.0" y="198" text-anchor="middle">LOG 811, 812</text>
+  <path class="dg-arrow" d="M90 206 H352" marker-end="url(#token-read-head)"/>
+  <rect class="dg-box" x="300.0" y="222" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="238.0" text-anchor="middle">applied: 812</text>
+  <text class="dg-mono dg-muted-text" x="495.0" y="258" text-anchor="middle">$150</text>
+  <path class="dg-arrow" d="M360 266 H622" marker-end="url(#token-read-head)"/>
+</svg>

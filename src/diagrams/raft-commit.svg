@@ -1,0 +1,40 @@
+<svg class="diagram-svg" viewBox="0 0 720 400" role="img" aria-labelledby="raft-commit-title raft-commit-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="raft-commit-title">An entry of the current term commits once a majority has saved it</title>
+  <desc id="raft-commit-desc">The leader of term 4 gets Anna's $50 transfer, saves it as entry 8 of term 4, and sends it to both followers. Follower 1 saves it and answers first: with the leader, two of three nodes have entry 8, so it is committed. The leader applies it to the balances and answers Anna. Follower 2 saves it later. The next message from the leader tells the followers that the log is committed up to 8.</desc>
+  <defs>
+    <marker id="raft-commit-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="raft-commit-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="70" y="20" text-anchor="middle">ANNA</text>
+  <line class="dg-lifeline" x1="70" y1="34" x2="70" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="260" y="20" text-anchor="middle">LEADER, TERM 4</text>
+  <line class="dg-lifeline" x1="260" y1="34" x2="260" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="470" y="20" text-anchor="middle">FOLLOWER 1</text>
+  <line class="dg-lifeline" x1="470" y1="34" x2="470" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="650" y="20" text-anchor="middle">FOLLOWER 2</text>
+  <line class="dg-lifeline" x1="650" y1="34" x2="650" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="165.0" y="58" text-anchor="middle">SEND $50</text>
+  <path class="dg-arrow" d="M70 66 H252" marker-end="url(#raft-commit-head)"/>
+  <rect class="dg-box" x="165.0" y="74" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="90.0" text-anchor="middle">saved 8 (term 4)</text>
+  <text class="dg-mono dg-muted-text" x="365.0" y="116" text-anchor="middle">APPEND 8</text>
+  <path class="dg-arrow" d="M260 124 H462" marker-end="url(#raft-commit-head)"/>
+  <text class="dg-mono dg-muted-text" x="560" y="140" text-anchor="middle">APPEND 8</text>
+  <path class="dg-arrow" d="M260 148 H642" marker-end="url(#raft-commit-head)"/>
+  <rect class="dg-box" x="420.0" y="158" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="470.0" y="174.0" text-anchor="middle">saved 8</text>
+  <text class="dg-mono dg-muted-text" x="365.0" y="198" text-anchor="middle">SAVED</text>
+  <path class="dg-arrow" d="M470 206 H268" marker-end="url(#raft-commit-head)"/>
+  <rect class="dg-box-accent" x="175.0" y="214" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="230.0" text-anchor="middle">committed: 2 of 3</text>
+  <rect class="dg-box" x="175.0" y="246" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="262.0" text-anchor="middle">applied 8</text>
+  <text class="dg-mono dg-muted-text" x="165.0" y="294" text-anchor="middle">SENT</text>
+  <path class="dg-arrow" d="M260 302 H78" marker-end="url(#raft-commit-head)"/>
+  <rect class="dg-box" x="600.0" y="222" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="650.0" y="238.0" text-anchor="middle">saved 8</text>
+  <text class="dg-mono dg-muted-text" x="365.0" y="338" text-anchor="middle">COMMITTED UP TO 8</text>
+  <path class="dg-arrow" d="M260 346 H462" marker-end="url(#raft-commit-head)"/>
+  <text class="dg-mono dg-muted-text" x="560" y="362" text-anchor="middle">COMMITTED UP TO 8</text>
+  <path class="dg-arrow" d="M260 370 H642" marker-end="url(#raft-commit-head)"/>
+</svg>

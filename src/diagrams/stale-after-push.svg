@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 262" role="img" aria-labelledby="stale-after-push-title stale-after-push-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stale-after-push-title">A push arrives before the follower has the transfer</title>
+  <desc id="stale-after-push-desc">Anna sends Ben $50. The leader commits the transfer and answers Anna. A push tells Ben that Anna sent him $50. Ben reads his balance from a follower that has not applied the transfer yet and gets $100. The transfer reaches the follower only later.</desc>
+  <defs>
+    <marker id="stale-after-push-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stale-after-push-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="70" y="20" text-anchor="middle">ANNA</text>
+  <line class="dg-lifeline" x1="70" y1="34" x2="70" y2="252"/>
+  <text class="dg-mono dg-muted-text" x="250" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="250" y1="34" x2="250" y2="252"/>
+  <text class="dg-mono dg-muted-text" x="470" y="20" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="470" y1="34" x2="470" y2="252"/>
+  <text class="dg-mono dg-muted-text" x="650" y="20" text-anchor="middle">BEN</text>
+  <line class="dg-lifeline" x1="650" y1="34" x2="650" y2="252"/>
+  <rect class="dg-box" x="420.0" y="44" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="470.0" y="60.0" text-anchor="middle">Ben: $100</text>
+  <text class="dg-mono dg-muted-text" x="160.0" y="58" text-anchor="middle">SEND $50 TO BEN</text>
+  <path class="dg-arrow" d="M70 66 H242" marker-end="url(#stale-after-push-head)"/>
+  <rect class="dg-box" x="200.0" y="76" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="250.0" y="92.0" text-anchor="middle">Ben: $150</text>
+  <text class="dg-mono dg-muted-text" x="160.0" y="114" text-anchor="middle">SENT</text>
+  <path class="dg-arrow" d="M250 122 H78" marker-end="url(#stale-after-push-head)"/>
+  <text class="dg-mono dg-muted-text" x="360" y="142" text-anchor="middle">PUSH: ANNA SENT YOU $50</text>
+  <path class="dg-arrow" d="M250 150 H642" marker-end="url(#stale-after-push-head)"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="178" text-anchor="middle">READ BALANCE</text>
+  <path class="dg-arrow" d="M650 186 H478" marker-end="url(#stale-after-push-head)"/>
+  <text class="dg-mono dg-accent-text" x="560.0" y="214" text-anchor="middle">$100</text>
+  <path class="dg-arrow dg-message" d="M470 222 H642" marker-end="url(#stale-after-push-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="238" text-anchor="middle">TRANSFER, LATE</text>
+  <path class="dg-arrow dg-empty" d="M250 246 H462" marker-end="url(#stale-after-push-head)"/>
+</svg>

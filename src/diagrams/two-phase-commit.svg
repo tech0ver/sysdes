@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 310" role="img" aria-labelledby="two-phase-commit-title two-phase-commit-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="two-phase-commit-title">Two-phase commit of a transfer across two shards</title>
+  <desc id="two-phase-commit-desc">The coordinator asks shard 1 and shard 7 to prepare transfer t-501. Shard 1 saves Anna −$50 and shard 7 saves Ben +$50; each keeps its change locked and votes yes. After both votes, the coordinator writes commit to its log, and from that moment the transaction is committed. It tells both shards to commit, and each commits and releases its locks.</desc>
+  <defs>
+    <marker id="two-phase-commit-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="two-phase-commit-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="130" y="20" text-anchor="middle">SHARD 1</text>
+  <line class="dg-lifeline" x1="130" y1="34" x2="130" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">COORDINATOR</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="590" y="20" text-anchor="middle">SHARD 7</text>
+  <line class="dg-lifeline" x1="590" y1="34" x2="590" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="245.0" y="58" text-anchor="middle">PREPARE t-501</text>
+  <path class="dg-arrow" d="M360 66 H138" marker-end="url(#two-phase-commit-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="58" text-anchor="middle">PREPARE t-501</text>
+  <path class="dg-arrow" d="M360 66 H582" marker-end="url(#two-phase-commit-head)"/>
+  <rect class="dg-box" x="17.0" y="76" width="226" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="92.0" text-anchor="middle">Anna −$50: prepared, locked</text>
+  <rect class="dg-box" x="477.0" y="76" width="226" height="24" rx="4"/>
+  <text class="dg-code" x="590.0" y="92.0" text-anchor="middle">Ben +$50: prepared, locked</text>
+  <text class="dg-mono dg-muted-text" x="245.0" y="120" text-anchor="middle">YES</text>
+  <path class="dg-arrow" d="M130 128 H352" marker-end="url(#two-phase-commit-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="144" text-anchor="middle">YES</text>
+  <path class="dg-arrow" d="M590 152 H368" marker-end="url(#two-phase-commit-head)"/>
+  <rect class="dg-box-accent" x="285.0" y="164" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="180.0" text-anchor="middle">log: commit</text>
+  <text class="dg-mono dg-accent-text" x="444" y="180" text-anchor="start">COMMIT POINT</text>
+  <text class="dg-mono dg-muted-text" x="245.0" y="228" text-anchor="middle">COMMIT</text>
+  <path class="dg-arrow" d="M360 236 H138" marker-end="url(#two-phase-commit-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="228" text-anchor="middle">COMMIT</text>
+  <path class="dg-arrow" d="M360 236 H582" marker-end="url(#two-phase-commit-head)"/>
+  <rect class="dg-box" x="35.0" y="246" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="262.0" text-anchor="middle">committed, unlocked</text>
+  <rect class="dg-box" x="495.0" y="246" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="590.0" y="262.0" text-anchor="middle">committed, unlocked</text>
+</svg>

@@ -221,7 +221,7 @@ The shard can be computed from the key, as with logical shards, or looked up per
 
 ::diagram{name="shard-directory"}
 
-The authoritative map lives in a small store that agrees on changes through consensus, such as ZooKeeper, etcd, or MongoDB's config servers. <!-- link: fundamentals/consistency --> Routers cache the map and get notified when it changes. A router can still send a request by an old map to a node that no longer owns the shard. To catch this, each version of the map gets a number: the node rejects a request made with an older version, and the router fetches the new map and retries.
+The authoritative map lives in a small store that agrees on changes through consensus, such as ZooKeeper, etcd, or MongoDB's config servers. Routers cache the map and get notified when it changes. A router can still send a request by an old map to a node that no longer owns the shard. To catch this, each version of the map gets a number: the node rejects a request made with an older version, and the router fetches the new map and retries.
 
 ::diagram{name="stale-map"}
 
@@ -392,7 +392,7 @@ When a write must span shards, there are two tools:
 - A distributed transaction with two-phase commit: every shard first prepares the change and promises to apply it, then all commit together. The write is atomic, but it costs extra round trips, holds locks across them, and a failed coordinator can leave the shards waiting. Distributed SQL databases run it for you.
 - A saga: a chain of local transactions, one per shard, where each step has an undo step that runs if a later step fails. No locks span shards, but other requests can see the state between steps.
 
-A rare move like the project's can also be made safe with steps that can repeat without harm: pause writes to the project, copy its rows under the new workspace ID as hidden, mark the old project as moved with one write on its shard, then show the new copy and delete the old rows. The mark decides which copy is real, and each step can run again after a crash, the way a tenant move works. <!-- link: fundamentals/consistency -->
+A rare move like the project's can also be made safe with steps that can repeat without harm: pause writes to the project, copy its rows under the new workspace ID as hidden, mark the old project as moved with one write on its shard, then show the new copy and delete the old rows. The mark decides which copy is real, and each step can run again after a crash, the way a tenant move works (more on [steps that are safe to repeat](../consistency/#steps-that-cannot-be-rolled-back)).
 
 ::diagram{name="project-move"}
 

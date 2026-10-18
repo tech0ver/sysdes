@@ -1,0 +1,77 @@
+<svg class="diagram-svg" viewBox="0 0 720 520" role="img" aria-labelledby="linearizable-setups-title linearizable-setups-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="linearizable-setups-title">Which replication setups give linearizable operations</title>
+  <desc id="linearizable-setups-desc">Four panels. One leader: a client reads and writes on the leader, which confirms with the followers that it still leads before it answers; linearizable. Follower read: the follower asks the leader how far writes have finished, then waits until it has applied them; linearizable. Independent leaders: each accepts a write before the other learns about it; not linearizable. Leaderless quorum with N = 3, W = 2, R = 2: a write of v2 is still running and only replica A has saved it; a read of A and B returns v2, and a later read of B and C returns v1; not linearizable.</desc>
+  <defs>
+    <marker id="linearizable-setups-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="linearizable-setups-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="512"/>
+  <line class="dg-rule" x1="8" y1="260" x2="712" y2="260"/>
+  <text class="dg-name" x="180" y="24" text-anchor="middle">One leader</text>
+  <text class="dg-sub" x="180" y="42" text-anchor="middle">reads and writes go to the leader</text>
+  <rect class="dg-box" x="16.0" y="145.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="56" y="165" text-anchor="middle">Follower</text>
+  <rect class="dg-box" x="140.0" y="145.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="180" y="165" text-anchor="middle">Leader</text>
+  <rect class="dg-box" x="264.0" y="145.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="304" y="165" text-anchor="middle">Follower</text>
+  <text class="dg-result" x="180" y="242" text-anchor="middle">Linearizable</text>
+  <rect class="dg-box" x="130" y="58" width="100" height="30" rx="6"/>
+  <text class="dg-name" x="180.0" y="78.0" text-anchor="middle">Client</text>
+  <path class="dg-arrow" d="M180 88 V137" marker-end="url(#linearizable-setups-head)"/>
+  <text class="dg-mono dg-muted-text" x="188" y="118" text-anchor="start">READ, WRITE</text>
+  <path class="dg-arrow dg-message" d="M140 160 H104" marker-end="url(#linearizable-setups-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M220 160 H256" marker-end="url(#linearizable-setups-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="180" y="200" text-anchor="middle">CONFIRMS IT STILL LEADS</text>
+  <text class="dg-mono dg-accent-text" x="180" y="216" text-anchor="middle">BEFORE IT ANSWERS</text>
+  <text class="dg-name" x="540" y="24" text-anchor="middle">Follower read</text>
+  <text class="dg-sub" x="540" y="42" text-anchor="middle">the client reads from a follower</text>
+  <rect class="dg-box" x="376.0" y="145.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="416" y="165" text-anchor="middle">Leader</text>
+  <rect class="dg-box" x="500.0" y="145.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="540" y="165" text-anchor="middle">Follower</text>
+  <rect class="dg-box" x="624.0" y="145.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="664" y="165" text-anchor="middle">Follower</text>
+  <text class="dg-result" x="540" y="242" text-anchor="middle">Linearizable</text>
+  <rect class="dg-box" x="490" y="58" width="100" height="30" rx="6"/>
+  <text class="dg-name" x="540.0" y="78.0" text-anchor="middle">Client</text>
+  <path class="dg-arrow" d="M540 88 V137" marker-end="url(#linearizable-setups-head)"/>
+  <text class="dg-mono dg-muted-text" x="548" y="118" text-anchor="start">READ</text>
+  <path class="dg-arrow dg-message" d="M500 160 H464" marker-end="url(#linearizable-setups-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="540" y="200" text-anchor="middle">ASKS HOW FAR WRITES FINISHED</text>
+  <text class="dg-mono dg-accent-text" x="540" y="216" text-anchor="middle">WAITS UNTIL IT HAS APPLIED THEM</text>
+  <text class="dg-name" x="180" y="284" text-anchor="middle">Independent leaders</text>
+  <text class="dg-sub" x="180" y="302" text-anchor="middle">each region has its own leader</text>
+  <rect class="dg-box" x="16.0" y="405.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="56" y="425" text-anchor="middle">Leader</text>
+  <rect class="dg-box" x="264.0" y="405.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="304" y="425" text-anchor="middle">Leader</text>
+  <text class="dg-result" x="180" y="502" text-anchor="middle">Not linearizable</text>
+  <rect class="dg-box" x="8" y="318" width="96" height="30" rx="6"/>
+  <text class="dg-name" x="56.0" y="338.0" text-anchor="middle">Client</text>
+  <rect class="dg-box" x="256" y="318" width="96" height="30" rx="6"/>
+  <text class="dg-name" x="304.0" y="338.0" text-anchor="middle">Client</text>
+  <path class="dg-arrow dg-message" d="M56 348 V397" marker-end="url(#linearizable-setups-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M304 348 V397" marker-end="url(#linearizable-setups-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="64" y="378" text-anchor="start">WRITE $50</text>
+  <text class="dg-mono dg-accent-text" x="296" y="378" text-anchor="end">WRITE $80</text>
+  <path class="dg-arrow dg-empty" d="M96 420 H256" marker-end="url(#linearizable-setups-head)"/>
+  <text class="dg-mono dg-muted-text" x="180" y="412" text-anchor="middle">LATER</text>
+  <text class="dg-mono dg-muted-text" x="180" y="460" text-anchor="middle">EACH ACCEPTS A WRITE</text>
+  <text class="dg-mono dg-muted-text" x="180" y="476" text-anchor="middle">BEFORE THE OTHER LEARNS OF IT</text>
+  <text class="dg-name" x="540" y="284" text-anchor="middle">Leaderless quorum</text>
+  <text class="dg-sub" x="540" y="302" text-anchor="middle">N = 3, W = 2, R = 2</text>
+  <text class="dg-result" x="540" y="502" text-anchor="middle">Not linearizable</text>
+  <rect class="dg-box" x="490" y="318" width="100" height="30" rx="6"/>
+  <text class="dg-name" x="540.0" y="338.0" text-anchor="middle">Client</text>
+  <rect class="dg-box-accent" x="376" y="405" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="416.0" y="424.0" text-anchor="middle">A: v2</text>
+  <rect class="dg-box" x="500" y="405" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="540.0" y="424.0" text-anchor="middle">B: v1</text>
+  <rect class="dg-box" x="624" y="405" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="664.0" y="424.0" text-anchor="middle">C: v1</text>
+  <path class="dg-arrow" d="M510 348 L422 398" marker-end="url(#linearizable-setups-head)"/>
+  <text class="dg-mono dg-muted-text" x="488" y="376" text-anchor="start">WRITE v2, STILL RUNNING</text>
+  <text class="dg-mono dg-muted-text" x="540" y="460" text-anchor="middle">READ A, B: v2</text>
+  <text class="dg-mono dg-accent-text" x="540" y="476" text-anchor="middle">LATER READ B, C: v1</text>
+</svg>

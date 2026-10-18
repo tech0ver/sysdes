@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="orchestration-vs-choreography-title orchestration-vs-choreography-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="orchestration-vs-choreography-title">A saga driven by an orchestrator and by events</title>
+  <desc id="orchestration-vs-choreography-desc">Left, orchestration: a top-up orchestrator stores the saga's progress and sends commands: the ledger records the pending top-up, the payments service charges the card, and the ledger credits the balance. Right, choreography: the ledger publishes the event "top-up pending", the payments service charges the card and publishes "card charged", and the ledger credits the balance when it gets that event.</desc>
+  <defs>
+    <marker id="orchestration-vs-choreography-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="orchestration-vs-choreography-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="228"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Orchestration</text>
+  <text class="dg-sub" x="180" y="40" text-anchor="middle">commands from one place</text>
+  <rect class="dg-box-accent" x="100" y="54" width="160" height="44" rx="6"/>
+  <text class="dg-name" x="180.0" y="74.0" text-anchor="middle">Orchestrator</text>
+  <text class="dg-sub" x="180.0" y="90.0" text-anchor="middle">stores progress</text>
+  <rect class="dg-box" x="20" y="166" width="130" height="44" rx="6"/>
+  <text class="dg-name" x="85.0" y="186.0" text-anchor="middle">Ledger</text>
+  <text class="dg-sub" x="85.0" y="202.0" text-anchor="middle">pending, credit</text>
+  <rect class="dg-box" x="210" y="166" width="130" height="44" rx="6"/>
+  <text class="dg-name" x="275.0" y="186.0" text-anchor="middle">Payments</text>
+  <text class="dg-sub" x="275.0" y="202.0" text-anchor="middle">charge</text>
+  <path class="dg-arrow dg-message" d="M130 98 V158" marker-end="url(#orchestration-vs-choreography-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="122" y="134" text-anchor="end">RECORD PENDING,</text>
+  <text class="dg-mono dg-accent-text" x="122" y="148" text-anchor="end">CREDIT</text>
+  <path class="dg-arrow dg-message" d="M230 98 V158" marker-end="url(#orchestration-vs-choreography-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="238" y="134" text-anchor="start">CHARGE</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Choreography</text>
+  <text class="dg-sub" x="540" y="40" text-anchor="middle">events between services</text>
+  <rect class="dg-box" x="380" y="166" width="130" height="44" rx="6"/>
+  <text class="dg-name" x="445.0" y="186.0" text-anchor="middle">Ledger</text>
+  <text class="dg-sub" x="445.0" y="202.0" text-anchor="middle">credits on event</text>
+  <rect class="dg-box" x="570" y="166" width="130" height="44" rx="6"/>
+  <text class="dg-name" x="635.0" y="186.0" text-anchor="middle">Payments</text>
+  <text class="dg-sub" x="635.0" y="202.0" text-anchor="middle">charges on event</text>
+  <path class="dg-arrow dg-message" d="M510 178 H562" marker-end="url(#orchestration-vs-choreography-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="540" y="158" text-anchor="middle">TOP-UP PENDING</text>
+  <path class="dg-arrow dg-message" d="M570 198 H518" marker-end="url(#orchestration-vs-choreography-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="540" y="224" text-anchor="middle">CARD CHARGED</text>
+</svg>

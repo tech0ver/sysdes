@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 230" role="img" aria-labelledby="two-writes-title two-writes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="two-writes-title">A transfer as two writes, interrupted between them</title>
+  <desc id="two-writes-desc">A process debits Anna's $50 on shard 1, so her balance goes from $100 to $50. The process stops before it credits Ben on shard 7, so Ben stays at $0, and $50 is gone.</desc>
+  <defs>
+    <marker id="two-writes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="two-writes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">SHARD 1</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="190"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">PROCESS</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="190"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">SHARD 7</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="190"/>
+  <rect class="dg-box" x="45.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="60.0" text-anchor="middle">Anna: $100</text>
+  <rect class="dg-box" x="545.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="60.0" text-anchor="middle">Ben: $0</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="92" text-anchor="middle">DEBIT ANNA $50</text>
+  <path class="dg-arrow" d="M360 100 H118" marker-end="url(#two-writes-head)"/>
+  <rect class="dg-box" x="45.0" y="108" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="124.0" text-anchor="middle">Anna: $50</text>
+  <line class="dg-cross" x1="354" y1="134" x2="366" y2="146"/>
+  <line class="dg-cross" x1="354" y1="146" x2="366" y2="134"/>
+  <text class="dg-sub" x="374" y="144" text-anchor="start">stops</text>
+  <text class="dg-mono dg-accent-text" x="485.0" y="162" text-anchor="middle">CREDIT BEN $50</text>
+  <path class="dg-arrow dg-message dg-empty" d="M360 170 H602" marker-end="url(#two-writes-head-accent)"/>
+  <line class="dg-cross" x1="545" y1="165" x2="555" y2="175"/>
+  <line class="dg-cross" x1="545" y1="175" x2="555" y2="165"/>
+  <text class="dg-result" x="360" y="220" text-anchor="middle">$50 is gone</text>
+</svg>

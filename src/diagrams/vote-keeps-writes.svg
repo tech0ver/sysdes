@@ -1,0 +1,65 @@
+<svg class="diagram-svg" viewBox="0 0 720 214" role="img" aria-labelledby="vote-keeps-writes-title vote-keeps-writes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="vote-keeps-writes-title">The vote rule keeps a finished write</title>
+  <desc id="vote-keeps-writes-desc">All entries are from term 3. Entry 7 is saved on nodes 1 and 2, a majority, so it has finished. Node 1 fails. In term 4, node 3, whose log ends at 6, votes for itself and asks node 2, which refuses because node 3's log is behind. In term 5, node 2 votes for itself and asks node 3, which votes yes, so node 2 becomes the leader and has entry 7.</desc>
+  <defs>
+    <marker id="vote-keeps-writes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="vote-keeps-writes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="140" y="24" text-anchor="middle">LOGS, ALL ENTRIES FROM TERM 3</text>
+  <text class="dg-name" x="20" y="61" text-anchor="start">Node 1</text>
+  <rect class="dg-chip" x="90" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="103.0" y="60.0" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="120" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="133.0" y="60.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="150" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="163.0" y="60.0" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="180" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="193.0" y="60.0" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="210" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="223.0" y="60.0" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="240" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="253.0" y="60.0" text-anchor="middle">6</text>
+  <rect class="dg-box-accent" x="270" y="44" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="283.0" y="60.0" text-anchor="middle">7</text>
+  <line class="dg-cross" x1="307" y1="51" x2="317" y2="61"/>
+  <line class="dg-cross" x1="307" y1="61" x2="317" y2="51"/>
+  <text class="dg-name" x="20" y="105" text-anchor="start">Node 2</text>
+  <rect class="dg-chip" x="90" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="103.0" y="104.0" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="120" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="133.0" y="104.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="150" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="163.0" y="104.0" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="180" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="193.0" y="104.0" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="210" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="223.0" y="104.0" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="240" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="253.0" y="104.0" text-anchor="middle">6</text>
+  <rect class="dg-box-accent" x="270" y="88" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="283.0" y="104.0" text-anchor="middle">7</text>
+  <text class="dg-name" x="20" y="149" text-anchor="start">Node 3</text>
+  <rect class="dg-chip" x="90" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="103.0" y="148.0" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="120" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="133.0" y="148.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="150" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="163.0" y="148.0" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="180" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="193.0" y="148.0" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="210" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="223.0" y="148.0" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="240" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-code" x="253.0" y="148.0" text-anchor="middle">6</text>
+  <rect class="dg-box-failed" x="270" y="132" width="26" height="24" rx="4"/>
+  <text class="dg-mono dg-accent-text" x="196" y="186" text-anchor="middle">ENTRY 7 IS ON A MAJORITY</text>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="206"/>
+  <text class="dg-mono dg-muted-text" x="540" y="24" text-anchor="middle">NODE 1 FAILS; TWO ELECTIONS</text>
+  <text class="dg-name" x="390" y="68" text-anchor="start">Term 4: node 3 asks node 2</text>
+  <line class="dg-cross" x1="393" y1="85" x2="403" y2="95"/>
+  <line class="dg-cross" x1="393" y1="95" x2="403" y2="85"/>
+  <text class="dg-sub" x="414" y="94">no: your log is behind</text>
+  <text class="dg-name" x="390" y="138" text-anchor="start">Term 5: node 2 asks node 3</text>
+  <path class="dg-arrow" d="M392 160 L396 165 L405 154"/>
+  <text class="dg-sub" x="414" y="164">yes: node 2 leads, with entry 7</text>
+</svg>

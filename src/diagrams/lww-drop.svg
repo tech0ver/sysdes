@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 720 186" role="img" aria-labelledby="lww-drop-title lww-drop-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lww-drop-title">Last write wins drops the later write from a slower clock</title>
+  <desc id="lww-drop-desc">Server A's clock runs 200 ms ahead; server B's clock is correct. Server A writes v1 at real time .000 with stamp .200. Server B writes v2 100 ms later with stamp .100. Last write wins compares the stamps, keeps v1, and drops v2, the later write, without an error.</desc>
+  <defs>
+    <marker id="lww-drop-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lww-drop-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="24" text-anchor="middle">SERVER A, CLOCK +200 MS</text>
+  <text class="dg-mono dg-muted-text" x="330" y="24" text-anchor="middle">SERVER B, CORRECT CLOCK</text>
+  <text class="dg-mono dg-muted-text" x="220" y="48" text-anchor="middle">REAL TIME</text>
+  <path class="dg-arrow" d="M220 56 V182" marker-end="url(#lww-drop-head)"/>
+  <rect class="dg-box" x="20" y="70" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="110.0" y="90.0" text-anchor="middle">write v1</text>
+  <text class="dg-sub" x="110.0" y="106.0" text-anchor="middle">real .000, stamp .200</text>
+  <rect class="dg-box" x="240" y="126" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="330.0" y="146.0" text-anchor="middle">write v2</text>
+  <text class="dg-sub" x="330.0" y="162.0" text-anchor="middle">real .100, stamp .100</text>
+  <line class="dg-rule" x1="460" y1="8" x2="460" y2="178"/>
+  <text class="dg-mono dg-muted-text" x="590" y="48" text-anchor="middle">LAST WRITE WINS</text>
+  <rect class="dg-box" x="500" y="70" width="180" height="44" rx="4"/>
+  <text class="dg-code" x="590.0" y="96.0" text-anchor="middle">kept: v1 (.200)</text>
+  <rect class="dg-box-accent dg-empty" x="500" y="126" width="180" height="44" rx="4"/>
+  <text class="dg-code" x="590.0" y="152.0" text-anchor="middle">dropped: v2 (.100)</text>
+</svg>

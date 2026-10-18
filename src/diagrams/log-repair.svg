@@ -1,0 +1,59 @@
+<svg class="diagram-svg" viewBox="0 0 480 262" role="img" aria-labelledby="log-repair-title log-repair-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="log-repair-title">A leader repairs a follower whose log differs</title>
+  <desc id="log-repair-desc">Columns are log positions 1 to 6; each cell shows the term of the entry. The leader has 5 and 6 from term 3. The follower has 5 and 6 from term 2, written by a leader that failed. The leader sends entry 6 with the previous entry (5, term 3); the follower does not match there and refuses. The leader retries from entry 5 with the previous entry (4, term 2), which matches. The follower drops its 5 and 6 and appends the leader's.</desc>
+  <defs>
+    <marker id="log-repair-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="log-repair-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="20" y="24" text-anchor="start">POSITION</text>
+  <text class="dg-mono dg-muted-text" x="170" y="24" text-anchor="middle">1</text>
+  <text class="dg-mono dg-muted-text" x="222" y="24" text-anchor="middle">2</text>
+  <text class="dg-mono dg-muted-text" x="274" y="24" text-anchor="middle">3</text>
+  <text class="dg-mono dg-muted-text" x="326" y="24" text-anchor="middle">4</text>
+  <text class="dg-mono dg-muted-text" x="378" y="24" text-anchor="middle">5</text>
+  <text class="dg-mono dg-muted-text" x="430" y="24" text-anchor="middle">6</text>
+  <text class="dg-name" x="20" y="53" text-anchor="start">Leader</text>
+  <rect class="dg-chip" x="150" y="36" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="170.0" y="52.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="202" y="36" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="222.0" y="52.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="254" y="36" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="274.0" y="52.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="306" y="36" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="326.0" y="52.0" text-anchor="middle">t2</text>
+  <rect class="dg-chip" x="358" y="36" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="378.0" y="52.0" text-anchor="middle">t3</text>
+  <rect class="dg-chip" x="410" y="36" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="430.0" y="52.0" text-anchor="middle">t3</text>
+  <text class="dg-name" x="20" y="93" text-anchor="start">Follower, before</text>
+  <rect class="dg-chip" x="150" y="76" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="170.0" y="92.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="202" y="76" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="222.0" y="92.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="254" y="76" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="274.0" y="92.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="306" y="76" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="326.0" y="92.0" text-anchor="middle">t2</text>
+  <rect class="dg-box-accent dg-empty" x="358" y="76" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="378.0" y="92.0" text-anchor="middle">t2</text>
+  <rect class="dg-box-accent dg-empty" x="410" y="76" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="430.0" y="92.0" text-anchor="middle">t2</text>
+  <text class="dg-name" x="20" y="233" text-anchor="start">Follower, after</text>
+  <rect class="dg-chip" x="150" y="216" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="170.0" y="232.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="202" y="216" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="222.0" y="232.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="254" y="216" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="274.0" y="232.0" text-anchor="middle">t1</text>
+  <rect class="dg-chip" x="306" y="216" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="326.0" y="232.0" text-anchor="middle">t2</text>
+  <rect class="dg-box-accent" x="358" y="216" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="378.0" y="232.0" text-anchor="middle">t3</text>
+  <rect class="dg-box-accent" x="410" y="216" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="430.0" y="232.0" text-anchor="middle">t3</text>
+  <line class="dg-cross" x1="151" y1="131" x2="161" y2="141"/>
+  <line class="dg-cross" x1="151" y1="141" x2="161" y2="131"/>
+  <text class="dg-mono dg-muted-text" x="174" y="140" text-anchor="start">APPEND 6, PREVIOUS (5, t3): NO MATCH</text>
+  <path class="dg-arrow" d="M150 166 L154 171 L163 160"/>
+  <text class="dg-mono dg-accent-text" x="174" y="170" text-anchor="start">APPEND 5–6, PREVIOUS (4, t2): MATCH</text>
+</svg>

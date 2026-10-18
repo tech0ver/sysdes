@@ -47,6 +47,11 @@ const sharding = (anchor, section) => ({
 });
 
 /** Phrases that contain a term but are not that term, such as product names. They never get a tooltip. */
+const consistency = (anchor, section) => ({
+	href: `fundamentals/consistency/#${anchor}`,
+	label: `Consistency: ${section}`,
+});
+
 export const glossarySkip = ['SQL Server', 'commit the layout'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
@@ -423,7 +428,7 @@ export const glossary = [
 		short: 'The rules for which version of data a read may return.',
 		explanation:
 			'Stronger guarantees need more coordination between copies. Weaker ones allow older data and need less coordination.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Consistency_model', label: 'Wikipedia: Consistency model' },
+		readMore: consistency('acting-as-one-copy', 'Acting as one copy'),
 		explainedIn: ['fundamentals/transactions', 'fundamentals/replication'],
 	},
 	{
@@ -1872,7 +1877,7 @@ export const glossary = [
 		short: 'The rule that during a network break a replicated system either refuses some requests or lets copies disagree.',
 		explanation:
 			'It applies only while the network is split. In normal work the trade-off is between latency and consistency.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/CAP_theorem', label: 'Wikipedia: CAP theorem' },
+		readMore: consistency('answering-during-a-network-partition', 'Answering during a network partition'),
 	},
 	{
 		id: 'monotonic-writes',
@@ -1893,13 +1898,331 @@ export const glossary = [
 		readMore: replication('seeing-writes-in-order', 'Seeing writes in order'),
 	},
 	{
+		id: 'linearizability',
+		term: 'Linearizability',
+		aliases: ['linearizability', 'Linearizability', 'linearizable', 'Linearizable', 'strong consistency', 'Strong consistency'],
+		short: 'The guarantee that all reads and writes fit one order on a single copy, matching real time.',
+		explanation:
+			'Once a write finishes, every later read returns it or a newer value. It needs coordination between copies, so it costs latency and makes some nodes refuse requests during a network partition.',
+		readMore: consistency('acting-as-one-copy', 'Acting as one copy'),
+	},
+	{
+		id: 'network-partition',
+		term: 'Network partition',
+		aliases: ['network partition', 'network partitions', 'Network partition', 'Network partitions'],
+		short: 'A network failure that splits nodes into groups that cannot reach each other.',
+		explanation:
+			'During a partition, a system with copies cannot both stay linearizable and complete every request. A node sees a partition only as a timeout.',
+		readMore: consistency('answering-during-a-network-partition', 'Answering during a network partition'),
+	},
+	{
+		id: 'pacelc',
+		term: 'PACELC',
+		aliases: ['PACELC'],
+		short: 'The rule that adds to CAP: without a partition, a system trades latency against consistency.',
+		explanation:
+			'Every operation that must confirm with other copies waits for the network, even when nothing fails.',
+		readMore: consistency('paying-for-consistency-without-failures', 'Paying for consistency without failures'),
+	},
+	{
+		id: 'bounded-staleness',
+		term: 'Bounded staleness',
+		aliases: ['bounded staleness', 'Bounded staleness'],
+		short: 'A guarantee that a read is behind by no more than a set number of versions or seconds.',
+		explanation:
+			'It sits between linearizable and eventual reads, and lets reads come from a nearby copy while limiting how old they are.',
+		readMore: consistency('paying-for-consistency-without-failures', 'Paying for consistency without failures'),
+	},
+	{
+		id: 'causal-consistency',
+		term: 'Causal consistency',
+		aliases: ['causal consistency', 'Causal consistency', 'causally consistent'],
+		short: 'The guarantee that writes which depend on each other show up in the same order on every node.',
+		explanation:
+			'Concurrent writes may show up in different orders. It can keep working during a network partition for clients that stay with a copy holding their past.',
+		readMore: consistency('keeping-cause-before-effect', 'Keeping cause before effect'),
+	},
+	{
+		id: 'sequential-consistency',
+		term: 'Sequential consistency',
+		aliases: ['sequential consistency', 'Sequential consistency'],
+		short: 'The guarantee that all operations fit one order that keeps each client\'s own order.',
+		explanation:
+			'The order need not follow real time between clients, so a read may miss a write another client has finished. Like linearizability, it makes some nodes refuse requests during a partition.',
+		readMore: consistency('keeping-cause-before-effect', 'Keeping cause before effect'),
+	},
+	{
+		id: 'time-of-day-clock',
+		term: 'Time-of-day clock',
+		aliases: ['time-of-day clock', 'time-of-day clocks', 'Time-of-day clock', 'wall clock', 'wall-clock'],
+		short: 'A clock that returns the date and time, corrected by a sync service such as NTP.',
+		explanation:
+			'It can jump forward or back, and clocks on different machines are not guaranteed to agree, so its timestamps cannot order close events on different nodes.',
+		readMore: consistency('clocks-that-disagree', 'Clocks that disagree'),
+	},
+	{
+		id: 'monotonic-clock',
+		term: 'Monotonic clock',
+		aliases: ['monotonic clock', 'monotonic clocks', 'Monotonic clock'],
+		short: 'A clock that only moves forward, used to measure time passed on one machine.',
+		explanation:
+			'Use it for timeouts and durations. Its values cannot be compared across machines.',
+		readMore: consistency('clocks-that-disagree', 'Clocks that disagree'),
+	},
+	{
+		id: 'clock-skew',
+		term: 'Clock skew',
+		aliases: ['clock skew', 'Clock skew'],
+		short: 'The difference between the readings of two clocks at the same moment.',
+		explanation:
+			'It grows between syncs because clocks run at slightly different speeds, which is clock drift. An ordinary clock reading does not show it.',
+		readMore: consistency('clocks-that-disagree', 'Clocks that disagree'),
+	},
+	{
+		id: 'clock-drift',
+		term: 'Clock drift',
+		aliases: ['clock drift', 'Clock drift'],
+		short: 'The difference in how fast two clocks run.',
+		explanation:
+			'A quartz clock that drifts by 200 parts per million, a common assumption, gains about 17 seconds a day without syncing.',
+		readMore: consistency('clocks-that-disagree', 'Clocks that disagree'),
+	},
+	{
+		id: 'happens-before',
+		term: 'Happens-before',
+		aliases: ['happens-before', 'Happens-before', 'happens before'],
+		short: 'The order of events in which one event could have affected another: earlier in the same process, or through a message.',
+		explanation:
+			'Events where neither happens before the other are concurrent, whatever the clocks say.',
+		readMore: consistency('ordering-events-by-cause', 'Ordering events by cause'),
+	},
+	{
+		id: 'lamport-clock',
+		term: 'Lamport clock',
+		aliases: ['Lamport clock', 'Lamport clocks', 'Lamport timestamp', 'Lamport timestamps'],
+		short: 'A counter that gives every event a number, so that an event that happens before another gets a smaller one.',
+		explanation:
+			'Each message carries the counter, and a receiver jumps past it. The pair (counter, process ID) gives one sort order that respects cause, but cannot detect concurrent events.',
+		readMore: consistency('ordering-events-by-cause', 'Ordering events by cause'),
+	},
+	{
+		id: 'vector-clock',
+		term: 'Vector clock',
+		aliases: ['vector clock', 'vector clocks', 'Vector clock'],
+		short: 'A set of counters, one per node, attached to events to detect which ones are concurrent.',
+		explanation:
+			'It shows whether one event happens before another or neither does, at the cost of a counter per node in every message.',
+		readMore: consistency('ordering-events-by-cause', 'Ordering events by cause'),
+	},
+	{
+		id: 'state-machine-replication',
+		term: 'State machine replication',
+		aliases: ['state machine replication', 'State machine replication'],
+		short: 'Keeping replicas equal by applying the same deterministic commands in the same order from the same state.',
+		explanation:
+			'Consensus agrees on the order of the commands in a log. Values that could differ between replicas, such as timestamps, are chosen once and stored in the command.',
+		readMore: consistency('agreeing-on-one-value', 'Agreeing on one value'),
+	},
+	{
+		id: 'raft-term',
+		term: 'Term',
+		aliases: ['Raft term', 'Raft terms'],
+		short: 'In Raft, the number of an election period, with at most one leader per term.',
+		explanation:
+			'Every message carries the term, and nodes reject older terms, which stops an old leader.',
+		readMore: consistency('choosing-a-leader-everyone-accepts', 'Choosing a leader everyone accepts'),
+	},
+	{
+		id: 'election-timeout',
+		term: 'Election timeout',
+		aliases: ['election timeout', 'election timeouts', 'Election timeout'],
+		short: 'How long a follower waits without hearing from the leader before it starts an election.',
+		explanation:
+			'Raft picks it at random from a range; the paper\'s example is 150 to 300 ms. When a leader fails, writes pause for about this long plus the election.',
+		readMore: consistency('choosing-a-leader-everyone-accepts', 'Choosing a leader everyone accepts'),
+	},
+	{
+		id: 'coordination-service',
+		term: 'Coordination service',
+		aliases: ['coordination service', 'coordination services', 'Coordination service'],
+		short: 'A small consensus group, such as etcd, ZooKeeper, or Consul, that other systems use for locks, leaders, and configuration.',
+		explanation:
+			'It stores small keys with linearizable writes, leases, and watches. It is meant for shared metadata; app data belongs in a database that spreads it over many groups.',
+		readMore: consistency('letting-only-one-node-act', 'Letting only one node act'),
+	},
+	{
+		id: 'lease',
+		term: 'Lease',
+		aliases: ['lease', 'leases', 'Lease', 'Leases'],
+		short: 'A right, such as a lock, that lasts a set time and must be renewed.',
+		explanation:
+			'When the holder stops renewing it, the lease runs out and another holder can take over. A lease that guards outside work needs a fencing token or work that is safe to repeat, since a paused holder may still act.',
+		readMore: consistency('committing-through-a-majority', 'Committing through a majority'),
+	},
+	{
+		id: 'fencing-token',
+		term: 'Fencing token',
+		aliases: ['fencing token', 'fencing tokens', 'Fencing token'],
+		short: 'A number that grows with every grant of a lock, checked by the system that receives the work.',
+		explanation:
+			'The receiver durably keeps the largest token it has accepted and, in the same atomic operation as the change, rejects older ones. A stale holder is stopped only where a newer token has already arrived.',
+		readMore: consistency('letting-only-one-node-act', 'Letting only one node act'),
+	},
+	{
+		id: 'atomic-commit',
+		term: 'Atomic commit',
+		aliases: ['atomic commit', 'Atomic commit'],
+		short: 'Committing a change on every node it touches, or on none.',
+		explanation:
+			'Two-phase commit provides it. Without it, a process that stops between two writes on two nodes leaves the change half done.',
+		readMore: consistency('committing-on-several-nodes', 'Committing on several nodes'),
+	},
+	{
+		id: 'in-doubt',
+		term: 'In doubt',
+		aliases: ['in doubt', 'in-doubt'],
+		short: 'The state of a two-phase commit participant that voted yes but has not learned the decision.',
+		explanation:
+			'It must wait and keep its locks until the coordinator answers, since aborting on its own could break atomicity.',
+		readMore: consistency('committing-on-several-nodes', 'Committing on several nodes'),
+	},
+	{
+		id: 'timestamp-oracle',
+		term: 'Timestamp oracle',
+		aliases: ['timestamp oracle', 'Timestamp oracle'],
+		short: 'One service that hands out increasing timestamps to transactions.',
+		explanation:
+			'It gives an exact order, but every transaction waits for its answers, so it should sit close to them and be replicated. Percolator and TiDB use one.',
+		readMore: consistency('ordering-transactions-across-nodes-by-time', 'Ordering transactions across nodes by time'),
+	},
+	{
+		id: 'truetime',
+		term: 'TrueTime',
+		aliases: ['TrueTime'],
+		short: 'Spanner\'s clock, which returns an interval that surely contains the real time.',
+		explanation:
+			'GPS receivers and atomic clocks keep the interval to a few milliseconds, and commit wait uses it to order transactions by real time.',
+		readMore: consistency('ordering-transactions-across-nodes-by-time', 'Ordering transactions across nodes by time'),
+	},
+	{
+		id: 'commit-wait',
+		term: 'Commit wait',
+		aliases: ['commit wait', 'Commit wait'],
+		short: 'Waiting until a commit timestamp is surely in the past before showing the commit.',
+		explanation:
+			'Any transaction that starts later then gets a larger timestamp. The wait depends on the clock error, and part of it can overlap other work of the commit.',
+		readMore: consistency('ordering-transactions-across-nodes-by-time', 'Ordering transactions across nodes by time'),
+	},
+	{
+		id: 'hybrid-logical-clock',
+		term: 'Hybrid logical clock',
+		aliases: ['hybrid logical clock', 'hybrid logical clocks', 'Hybrid logical clock', 'HLC'],
+		short: 'A timestamp made of physical time plus a counter, which never goes back and stays close to real time.',
+		explanation:
+			'Timestamps respect cause, never go back, and stay close to real time, but do not prove real-time order. A database adds isolation and rules for clock skew on top.',
+		readMore: consistency('ordering-transactions-across-nodes-by-time', 'Ordering transactions across nodes by time'),
+	},
+	{
+		id: 'strict-serializability',
+		term: 'Strict serializability',
+		aliases: ['strict serializability', 'Strict serializability', 'strictly serializable', 'external consistency'],
+		short: 'Serializable transactions in an order that matches real time.',
+		explanation:
+			'A transaction that commits before another starts comes first. Spanner provides it with commit wait.',
+		readMore: consistency('ordering-transactions-across-nodes-by-time', 'Ordering transactions across nodes by time'),
+	},
+	{
+		id: 'compensating-transaction',
+		term: 'Compensating transaction',
+		aliases: ['compensating transaction', 'compensating transactions', 'Compensating transaction', 'compensation', 'compensations'],
+		short: 'A step that undoes the business effect of an earlier step, such as a refund for a charge.',
+		explanation:
+			'It is a new change, not an erase: both stay in the records. A saga that gives up before its pivot runs compensations in reverse order.',
+		readMore: consistency('steps-that-cannot-be-rolled-back', 'Steps that cannot be rolled back'),
+	},
+	{
+		id: 'pivot-transaction',
+		term: 'Pivot',
+		aliases: ['pivot', 'pivot transaction'],
+		short: 'The step of a saga after which it can no longer be undone and must finish.',
+		explanation:
+			'Steps before it have compensations; steps after it are retried until they succeed.',
+		readMore: consistency('steps-that-cannot-be-rolled-back', 'Steps that cannot be rolled back'),
+	},
+	{
+		id: 'semantic-lock',
+		term: 'Semantic lock',
+		aliases: ['semantic lock', 'semantic locks', 'Semantic lock'],
+		short: 'A mark that a record is in the middle of a saga, which other operations check.',
+		explanation:
+			'Pending money cannot be spent, and an operation on a marked record is refused or waits until the saga ends.',
+		readMore: consistency('steps-that-cannot-be-rolled-back', 'Steps that cannot be rolled back'),
+	},
+	{
+		id: 'try-confirm-cancel',
+		term: 'Try, confirm, cancel',
+		aliases: ['try, confirm, cancel', 'Try, confirm, cancel', 'TCC', 'TC/C'],
+		short: 'A saga form whose first step only holds a resource, and later steps confirm or release the hold.',
+		explanation:
+			'The middle state is a hold, not a move, so other requests see less that may be undone.',
+		readMore: consistency('steps-that-cannot-be-rolled-back', 'Steps that cannot be rolled back'),
+	},
+	{
+		id: 'raft',
+		term: 'Raft',
+		aliases: ['Raft'],
+		short: 'A consensus algorithm in which one elected leader replicates a log to the other nodes.',
+		explanation:
+			'A leader commits an entry of its current term once a majority has saved it, along with every entry before it. etcd, Consul, and CockroachDB use it.',
+		readMore: consistency('choosing-a-leader-everyone-accepts', 'Choosing a leader everyone accepts'),
+	},
+	{
+		id: 'paxos',
+		term: 'Paxos',
+		aliases: ['Paxos', 'Multi-Paxos'],
+		short: 'A family of consensus algorithms; Multi-Paxos agrees on a log of values with a stable leader.',
+		explanation:
+			'For a design it gives the same as Raft: a log agreed by a majority. Spanner and Chubby use it.',
+		readMore: consistency('agreeing-on-one-value', 'Agreeing on one value'),
+	},
+	{
+		id: 'zab',
+		term: 'ZAB',
+		aliases: ['ZAB'],
+		expansion: 'ZooKeeper Atomic Broadcast',
+		short: 'The consensus protocol of ZooKeeper, which orders all writes through one leader.',
+		explanation:
+			'It gives the same guarantees as Raft for writes; ZooKeeper reads come from any server and may be behind.',
+		readMore: consistency('agreeing-on-one-value', 'Agreeing on one value'),
+	},
+	{
+		id: 'ntp',
+		term: 'NTP',
+		aliases: ['NTP'],
+		expansion: 'Network Time Protocol',
+		short: 'A protocol that sets a machine\'s clock from servers with better clocks.',
+		explanation:
+			'It keeps clocks close, often within milliseconds, but a correction can move a clock back, and it gives no guaranteed bound.',
+		readMore: consistency('clocks-that-disagree', 'Clocks that disagree'),
+	},
+	{
+		id: 'xa',
+		term: 'XA',
+		aliases: ['XA'],
+		expansion: 'eXtended Architecture',
+		short: 'A standard for running two-phase commit across different products, such as a database and a message broker.',
+		explanation:
+			'Each product must support prepare, and every product adds its own failure and recovery cases.',
+		readMore: { href: 'https://en.wikipedia.org/wiki/X/Open_XA', label: 'Wikipedia: X/Open XA' },
+	},
+	{
 		id: 'consensus',
 		term: 'Consensus',
 		aliases: ['consensus', 'Consensus'],
 		short: 'Several nodes agreeing on one value or one order of writes, even when some fail.',
 		explanation:
-			'A majority must agree, so the system survives a minority of failed nodes. Raft and Paxos are common algorithms.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Consensus_(computer_science)', label: 'Wikipedia: Consensus' },
+			'Crash-tolerant majority protocols need 2F + 1 voting nodes to keep working after F crashes, and progress needs timely messages. Raft, Paxos, and ZAB are common algorithms.',
+		readMore: consistency('agreeing-on-one-value', 'Agreeing on one value'),
 	},
 	{
 		id: 'vertical-scaling',
@@ -2151,25 +2474,25 @@ export const glossary = [
 		short: 'A transaction that changes data on several nodes and commits on all of them or on none.',
 		explanation:
 			'It needs a protocol such as two-phase commit, which adds round trips and holds locks across them.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Distributed_transaction', label: 'Wikipedia: Distributed transaction' },
+		readMore: consistency('committing-on-several-nodes', 'Committing on several nodes'),
 	},
 	{
 		id: 'two-phase-commit',
 		term: 'Two-phase commit',
 		aliases: ['two-phase commit', 'Two-phase commit', '2PC'],
-		short: 'A protocol in which every node first prepares a change and promises to apply it, then all commit together.',
+		short: 'A protocol in which participants first prepare a change and vote, then all commit if every vote is yes, or all abort.',
 		explanation:
-			'It makes a write across nodes atomic, but a failed coordinator can leave nodes waiting with locks held.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Two-phase_commit_protocol', label: 'Wikipedia: Two-phase commit protocol' },
+			'A prepared participant must follow the final decision, so a failed coordinator leaves it waiting with changes locked. It gives atomicity, not isolation.',
+		readMore: consistency('committing-on-several-nodes', 'Committing on several nodes'),
 	},
 	{
 		id: 'saga',
 		term: 'Saga',
 		aliases: ['saga', 'sagas', 'Saga', 'Sagas'],
-		short: 'A chain of local transactions in which each step has an undo step for when a later step fails.',
+		short: 'A chain of local transactions in which steps that may need undoing have compensating steps.',
 		explanation:
-			'No locks span services or shards, but other requests can see the state between steps.',
-		readMore: { href: 'https://microservices.io/patterns/data/saga.html', label: 'microservices.io: Saga' },
+			'No locks span services or shards, and other requests can see the state between steps. It finishes only if its retries and compensations do.',
+		readMore: consistency('steps-that-cannot-be-rolled-back', 'Steps that cannot be rolled back'),
 	},
 	{
 		id: 'composite-key',

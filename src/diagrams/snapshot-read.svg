@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 252" role="img" aria-labelledby="snapshot-read-title snapshot-read-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="snapshot-read-title">A read as of timestamp 100 on two shards</title>
+  <desc id="snapshot-read-desc">Before: Anna $100 on shard 1, Ben $0 on shard 7. Transfer t-501 at timestamp 95 moves $50 from Anna to Ben. A report reads both shards as of 100. Shard 1 has applied commits up to 104. Shard 7 has applied only up to 90. Left: shard 7 answers at once with Ben $0, its version from before 95, so the report shows the debit without the credit. Right: shard 7 waits until it has applied up to 100 and answers with Ben $50, the version at 95.</desc>
+  <defs>
+    <marker id="snapshot-read-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="snapshot-read-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">BEFORE: ANNA $100, BEN $0 · t-501 AT 95: ANNA −$50, BEN +$50</text>
+  <line class="dg-rule" x1="8" y1="34" x2="712" y2="34"/>
+  <line class="dg-rule" x1="360" y1="42" x2="360" y2="244"/>
+  <text class="dg-name" x="180" y="58" text-anchor="middle">Shard 7 answers at once</text>
+  <text class="dg-mono dg-muted-text" x="180" y="80" text-anchor="middle">REPORT AS OF 100</text>
+  <rect class="dg-box" x="16" y="92" width="328" height="52" rx="6"/>
+  <text class="dg-name" x="32" y="114" text-anchor="start">Shard 1</text>
+  <text class="dg-sub" x="32" y="132">applied to 104</text>
+  <rect class="dg-chip" x="176" y="104" width="152" height="28" rx="4"/>
+  <text class="dg-code" x="252.0" y="122.0" text-anchor="middle">Anna: $50 (at 95)</text>
+  <rect class="dg-box" x="16" y="156" width="328" height="52" rx="6"/>
+  <text class="dg-name" x="32" y="178" text-anchor="start">Shard 7</text>
+  <text class="dg-sub" x="32" y="196">applied to 90</text>
+  <rect class="dg-box-accent" x="176" y="168" width="152" height="28" rx="4"/>
+  <text class="dg-code" x="252.0" y="186.0" text-anchor="middle">Ben: $0 (at 80)</text>
+  <text class="dg-result" x="180" y="240" text-anchor="middle">$50 missing</text>
+  <text class="dg-name" x="540" y="58" text-anchor="middle">Shard 7 waits for 100</text>
+  <text class="dg-mono dg-muted-text" x="540" y="80" text-anchor="middle">REPORT AS OF 100</text>
+  <rect class="dg-box" x="376" y="92" width="328" height="52" rx="6"/>
+  <text class="dg-name" x="392" y="114" text-anchor="start">Shard 1</text>
+  <text class="dg-sub" x="392" y="132">applied to 104</text>
+  <rect class="dg-chip" x="536" y="104" width="152" height="28" rx="4"/>
+  <text class="dg-code" x="612.0" y="122.0" text-anchor="middle">Anna: $50 (at 95)</text>
+  <rect class="dg-box" x="376" y="156" width="328" height="52" rx="6"/>
+  <text class="dg-name" x="392" y="178" text-anchor="start">Shard 7</text>
+  <text class="dg-sub" x="392" y="196">applied to 100</text>
+  <rect class="dg-box-accent" x="536" y="168" width="152" height="28" rx="4"/>
+  <text class="dg-code" x="612.0" y="186.0" text-anchor="middle">Ben: $50 (at 95)</text>
+  <text class="dg-result" x="540" y="240" text-anchor="middle">Totals match</text>
+</svg>
