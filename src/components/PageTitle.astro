@@ -1,16 +1,21 @@
 ---
+import ArticleTutor from './ArticleTutor.astro';
+
 const { entry, sidebar } = Astro.locals.starlightRoute;
 type SidebarEntry = (typeof sidebar)[number];
 const containsCurrent = (item: SidebarEntry): boolean =>
   item.type === 'link' ? item.isCurrent : item.entries.some(containsCurrent);
 const section = sidebar.find((item) => item.type === 'group' && containsCurrent(item));
 const { title, description } = entry.data;
+const sourcePath = entry.filePath?.replaceAll('\\', '/').split('src/content/docs/')[1];
+const isArticle = sourcePath && !/^(index|glossary)\.mdx?$/.test(sourcePath) && entry.data.template !== 'splash';
 ---
 <div class="article-heading">
   {section && <p class="article-section">{section.label}</p>}
   <h1 id="_top">{title}</h1>
   {description && description !== 'TODO' && <p class="article-description">{description}</p>}
 </div>
+{isArticle && sourcePath && <ArticleTutor title={title} sourcePath={sourcePath} />}
 <style>
   .article-section { margin: 0 0 0.25rem; color: var(--sl-color-gray-3); font-size: var(--sl-text-xl); }
   .article-description {
