@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="old-leader-steps-down-title old-leader-steps-down-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="old-leader-steps-down-title">An old leader learns the newer term and steps down</title>
+  <desc id="old-leader-steps-down-desc">Node 1 leads term 3 and pauses. Node 2 becomes the leader of term 4 and sends heartbeats to node 3, which moves to term 4. Node 1 wakes up and still believes it leads: it sends an append for term 3 to node 3. Node 3 rejects it and answers with term 4, and node 1 steps down to follower in term 4.</desc>
+  <defs>
+    <marker id="old-leader-steps-down-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="old-leader-steps-down-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">NODE 1</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">NODE 3</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">NODE 2</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="290"/>
+  <rect class="dg-box" x="45.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="60.0" text-anchor="middle">leader, term 3</text>
+  <rect class="dg-box-failed" x="60" y="84" width="100" height="72" rx="4"/>
+  <text class="dg-code-muted" x="110.0" y="124.0" text-anchor="middle">paused</text>
+  <rect class="dg-box" x="545.0" y="72" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="88.0" text-anchor="middle">leader, term 4</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="120" text-anchor="middle">HEARTBEAT, TERM 4</text>
+  <path class="dg-arrow" d="M610 128 H368" marker-end="url(#old-leader-steps-down-head)"/>
+  <rect class="dg-box" x="305.0" y="136" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="152.0" text-anchor="middle">term 4</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="182" text-anchor="middle">APPEND, TERM 3</text>
+  <path class="dg-arrow" d="M110 190 H352" marker-end="url(#old-leader-steps-down-head)"/>
+  <text class="dg-mono dg-accent-text" x="235.0" y="222" text-anchor="middle">REJECTED: TERM 4</text>
+  <path class="dg-arrow dg-message" d="M360 230 H118" marker-end="url(#old-leader-steps-down-head-accent)"/>
+  <rect class="dg-box-accent" x="35.0" y="246" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="262.0" text-anchor="middle">follower, term 4</text>
+</svg>

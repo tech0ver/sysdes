@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 238" role="img" aria-labelledby="state-machine-replication-title state-machine-replication-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="state-machine-replication-title">Replicas that apply one log in one order reach one state</title>
+  <desc id="state-machine-replication-desc">All replicas start from Anna $100, Ben $0, Chris $0. One log of commands: 1, transfer t-501, Anna to Ben, $50; 2, transfer t-502, Ben to Chris, $20; 3, fee f-17 of $1 from Anna, at 10:02, with the time chosen once and stored in the command. The whole log goes to every replica; each applies it in order and ends with Anna $49, Ben $30, Chris $20.</desc>
+  <defs>
+    <marker id="state-machine-replication-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="state-machine-replication-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="20" y="30" width="320" height="168" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="35" y="50">LOG, AGREED BY CONSENSUS</text>
+  <rect class="dg-box" x="36" y="60" width="288" height="28" rx="4"/>
+  <text class="dg-code" x="180.0" y="78.0" text-anchor="middle">1  t-501: Anna → Ben $50</text>
+  <rect class="dg-box" x="36" y="96" width="288" height="28" rx="4"/>
+  <text class="dg-code" x="180.0" y="114.0" text-anchor="middle">2  t-502: Ben → Chris $20</text>
+  <rect class="dg-box" x="36" y="132" width="288" height="28" rx="4"/>
+  <text class="dg-code" x="180.0" y="150.0" text-anchor="middle">3  f-17: Anna fee $1, 10:02</text>
+  <text class="dg-sub" x="36" y="186">start: Anna 100 · Ben 0 · Chris 0</text>
+  <text class="dg-sub" x="180" y="222" text-anchor="middle">the fee's time is chosen once and stored</text>
+  <text class="dg-mono dg-accent-text" x="585" y="22" text-anchor="middle">THE WHOLE LOG, IN ORDER</text>
+  <path class="dg-arrow dg-message" d="M340 114 H392"/>
+  <circle class="dg-dot" cx="392" cy="114" r="3"/>
+  <rect class="dg-box" x="470" y="36" width="230" height="56" rx="6"/>
+  <text class="dg-name" x="486" y="58" text-anchor="start">Replica 1</text>
+  <text class="dg-code" x="486" y="78" text-anchor="start">Anna 49 · Ben 30 · Chris 20</text>
+  <path class="dg-arrow dg-message" d="M392 114 C430 114, 420 64, 462 64" marker-end="url(#state-machine-replication-head-accent)"/>
+  <rect class="dg-box" x="470" y="104" width="230" height="56" rx="6"/>
+  <text class="dg-name" x="486" y="126" text-anchor="start">Replica 2</text>
+  <text class="dg-code" x="486" y="146" text-anchor="start">Anna 49 · Ben 30 · Chris 20</text>
+  <path class="dg-arrow dg-message" d="M392 114 C430 114, 420 132, 462 132" marker-end="url(#state-machine-replication-head-accent)"/>
+  <rect class="dg-box" x="470" y="172" width="230" height="56" rx="6"/>
+  <text class="dg-name" x="486" y="194" text-anchor="start">Replica 3</text>
+  <text class="dg-code" x="486" y="214" text-anchor="start">Anna 49 · Ben 30 · Chris 20</text>
+  <path class="dg-arrow dg-message" d="M392 114 C430 114, 420 200, 462 200" marker-end="url(#state-machine-replication-head-accent)"/>
+</svg>

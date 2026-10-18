@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="raft-election-title raft-election-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="raft-election-title">An election after the leader fails</title>
+  <desc id="raft-election-desc">Node 1 leads term 3 and sends heartbeats, then fails. Node 2's election timeout of 210 ms runs out first; node 3's is 280 ms. Node 2 starts term 4, saves a vote for itself, and asks node 3 for a vote, which resets node 3's timer. Node 3 saves its vote for node 2 to disk and answers yes. With two of three votes, its own and node 3's, node 2 leads term 4.</desc>
+  <defs>
+    <marker id="raft-election-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="raft-election-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">NODE 1</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">NODE 2</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">NODE 3</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="290"/>
+  <rect class="dg-box" x="45.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="60.0" text-anchor="middle">leader, term 3</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="84" text-anchor="middle">HEARTBEAT</text>
+  <path class="dg-arrow" d="M110 92 H352" marker-end="url(#raft-election-head)"/>
+  <line class="dg-cross" x1="104" y1="118" x2="116" y2="130"/>
+  <line class="dg-cross" x1="104" y1="130" x2="116" y2="118"/>
+  <text class="dg-sub" x="98" y="128" text-anchor="end">fails</text>
+  <line class="dg-arrow dg-wait" x1="350" y1="98" x2="350" y2="172"/>
+  <text class="dg-mono dg-accent-text" x="342" y="140" text-anchor="end">TIMEOUT 210 MS</text>
+  <line class="dg-arrow dg-empty" x1="620" y1="98" x2="620" y2="196"/>
+  <text class="dg-mono dg-muted-text" x="628" y="144" text-anchor="start">280 MS</text>
+  <text class="dg-mono dg-muted-text" x="628" y="200" text-anchor="start">RESET</text>
+  <text class="dg-mono dg-muted-text" x="342" y="186" text-anchor="end">TERM 4, VOTES FOR ITSELF</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="188" text-anchor="middle">VOTE FOR ME? TERM 4</text>
+  <path class="dg-arrow" d="M360 196 H602" marker-end="url(#raft-election-head)"/>
+  <rect class="dg-box" x="515.0" y="210" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="226.0" text-anchor="middle">on disk: voted node 2</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="250" text-anchor="middle">YES</text>
+  <path class="dg-arrow" d="M610 258 H368" marker-end="url(#raft-election-head)"/>
+  <rect class="dg-box-accent" x="265.0" y="266" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="282.0" text-anchor="middle">leader: 2 of 3 votes</text>
+</svg>

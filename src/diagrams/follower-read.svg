@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="follower-read-title follower-read-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="follower-read-title">A linearizable read served by a follower</title>
+  <desc id="follower-read-desc">The client reads from a follower. The follower asks the leader how far the log is committed. The leader confirms with a heartbeat to a majority that it still leads and answers 812. The follower waits until it has applied the log up to 812, then answers $150.</desc>
+  <defs>
+    <marker id="follower-read-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="follower-read-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="70" y="20" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="70" y1="34" x2="70" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="260" y="20" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="260" y1="34" x2="260" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="470" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="470" y1="34" x2="470" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="650" y="20" text-anchor="middle">OTHER FOLLOWER</text>
+  <line class="dg-lifeline" x1="650" y1="34" x2="650" y2="290"/>
+  <rect class="dg-box" x="200.0" y="44" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="60.0" text-anchor="middle">applied: 809</text>
+  <text class="dg-mono dg-muted-text" x="165.0" y="84" text-anchor="middle">READ</text>
+  <path class="dg-arrow" d="M70 92 H252" marker-end="url(#follower-read-head)"/>
+  <text class="dg-mono dg-muted-text" x="365.0" y="114" text-anchor="middle">COMMITTED UP TO?</text>
+  <path class="dg-arrow" d="M260 122 H462" marker-end="url(#follower-read-head)"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="144" text-anchor="middle">HEARTBEAT</text>
+  <path class="dg-arrow" d="M470 152 H642" marker-end="url(#follower-read-head)"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="174" text-anchor="middle">STILL LEADER</text>
+  <path class="dg-arrow" d="M650 182 H478" marker-end="url(#follower-read-head)"/>
+  <text class="dg-mono dg-accent-text" x="365.0" y="204" text-anchor="middle">812</text>
+  <path class="dg-arrow dg-message" d="M470 212 H268" marker-end="url(#follower-read-head-accent)"/>
+  <line class="dg-arrow dg-wait" x1="260" y1="218" x2="260" y2="262"/>
+  <text class="dg-mono dg-accent-text" x="250" y="244" text-anchor="end">APPLY TO 812</text>
+  <text class="dg-mono dg-muted-text" x="165.0" y="276" text-anchor="middle">$150</text>
+  <path class="dg-arrow" d="M260 284 H78" marker-end="url(#follower-read-head)"/>
+</svg>

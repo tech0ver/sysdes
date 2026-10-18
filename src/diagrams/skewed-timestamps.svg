@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 720 186" role="img" aria-labelledby="skewed-timestamps-title skewed-timestamps-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="skewed-timestamps-title">A clock that runs ahead puts a refund before its payment</title>
+  <desc id="skewed-timestamps-desc">Server A's clock runs 200 ms ahead; server B's clock is correct. Server A writes the payment at real time 10:00:00.000 and stamps it .200. Server B writes the refund 100 ms later and stamps it .100. Sorted by stamp, the history shows the refund first.</desc>
+  <defs>
+    <marker id="skewed-timestamps-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="skewed-timestamps-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="24" text-anchor="middle">SERVER A, CLOCK +200 MS</text>
+  <text class="dg-mono dg-muted-text" x="330" y="24" text-anchor="middle">SERVER B, CORRECT CLOCK</text>
+  <text class="dg-mono dg-muted-text" x="220" y="48" text-anchor="middle">REAL TIME</text>
+  <path class="dg-arrow" d="M220 56 V182" marker-end="url(#skewed-timestamps-head)"/>
+  <rect class="dg-box" x="20" y="70" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="110.0" y="90.0" text-anchor="middle">payment</text>
+  <text class="dg-sub" x="110.0" y="106.0" text-anchor="middle">real .000, stamp .200</text>
+  <rect class="dg-box" x="240" y="126" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="330.0" y="146.0" text-anchor="middle">refund</text>
+  <text class="dg-sub" x="330.0" y="162.0" text-anchor="middle">real .100, stamp .100</text>
+  <line class="dg-rule" x1="460" y1="8" x2="460" y2="178"/>
+  <text class="dg-mono dg-muted-text" x="590" y="48" text-anchor="middle">HISTORY, BY STAMP</text>
+  <rect class="dg-box-accent" x="500" y="70" width="180" height="44" rx="4"/>
+  <text class="dg-code" x="590.0" y="96.0" text-anchor="middle">1. .100 refund</text>
+  <rect class="dg-box" x="500" y="126" width="180" height="44" rx="4"/>
+  <text class="dg-code" x="590.0" y="152.0" text-anchor="middle">2. .200 payment</text>
+</svg>

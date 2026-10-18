@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 720 206" role="img" aria-labelledby="split-brain-majority-title split-brain-majority-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="split-brain-majority-title">A new election on each side of a partition under two schemes</title>
+  <desc id="split-brain-majority-desc">Five nodes are split into a side of three (N1 to N3) and a side of two (N4, N5), and each side holds a new election. Left, the node with the highest ID it can reach becomes the leader: N3 on one side and N5 on the other, two leaders. Right, a leader needs votes from a majority: N3 wins on the side of three, and the side of two cannot elect a leader. An old leader cut off on the small side may still believe it leads, but it cannot commit.</desc>
+  <defs>
+    <marker id="split-brain-majority-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="split-brain-majority-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="198"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Highest reachable ID</text>
+  <text class="dg-sub" x="180" y="40" text-anchor="middle">a new election after the split</text>
+  <line class="dg-line dg-empty" x1="200" y1="56" x2="200" y2="162"/>
+  <line class="dg-cross" x1="194" y1="103" x2="206" y2="115"/>
+  <line class="dg-cross" x1="194" y1="115" x2="206" y2="103"/>
+  <rect class="dg-box" x="16.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="40" y="114" text-anchor="middle">N1</text>
+  <rect class="dg-box" x="76.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="100" y="114" text-anchor="middle">N2</text>
+  <rect class="dg-box-accent" x="136.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="160" y="114" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-accent-text" x="160" y="146" text-anchor="middle">LEADER</text>
+  <rect class="dg-box" x="236.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="260" y="114" text-anchor="middle">N4</text>
+  <rect class="dg-box-accent" x="296.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="320" y="114" text-anchor="middle">N5</text>
+  <text class="dg-mono dg-accent-text" x="320" y="146" text-anchor="middle">LEADER</text>
+  <text class="dg-mono dg-muted-text" x="100" y="72" text-anchor="middle">3 OF 5</text>
+  <text class="dg-mono dg-muted-text" x="290" y="72" text-anchor="middle">2 OF 5</text>
+  <text class="dg-result" x="180" y="192" text-anchor="middle">Two leaders</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Majority vote</text>
+  <text class="dg-sub" x="540" y="40" text-anchor="middle">a new election after the split</text>
+  <line class="dg-line dg-empty" x1="560" y1="56" x2="560" y2="162"/>
+  <line class="dg-cross" x1="554" y1="103" x2="566" y2="115"/>
+  <line class="dg-cross" x1="554" y1="115" x2="566" y2="103"/>
+  <rect class="dg-box" x="376.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="400" y="114" text-anchor="middle">N1</text>
+  <rect class="dg-box" x="436.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="460" y="114" text-anchor="middle">N2</text>
+  <rect class="dg-box-accent" x="496.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="520" y="114" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-accent-text" x="520" y="146" text-anchor="middle">LEADER</text>
+  <rect class="dg-box" x="596.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="620" y="114" text-anchor="middle">N4</text>
+  <rect class="dg-box" x="656.0" y="92.0" width="48" height="34" rx="6"/>
+  <text class="dg-name" x="680" y="114" text-anchor="middle">N5</text>
+  <text class="dg-mono dg-muted-text" x="460" y="72" text-anchor="middle">3 OF 5</text>
+  <text class="dg-mono dg-muted-text" x="650" y="72" text-anchor="middle">2 OF 5</text>
+  <text class="dg-mono dg-muted-text" x="650" y="146" text-anchor="middle">NO MAJORITY</text>
+  <text class="dg-result" x="540" y="192" text-anchor="middle">Only the side of 3 elects one</text>
+</svg>

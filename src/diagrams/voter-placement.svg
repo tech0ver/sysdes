@@ -1,0 +1,50 @@
+<svg class="diagram-svg" viewBox="0 0 720 228" role="img" aria-labelledby="voter-placement-title voter-placement-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="voter-placement-title">Three ways to place three voting nodes</title>
+  <desc id="voter-placement-desc">Each small box is a voting node; the outlined pair is one majority. Left: three zones A, B, C in one region, with a short round trip between them. Middle: one voting node in each of three regions; any two regions form a majority, so one region can fail without losing a committed write, and every write waits for the nearest other region. Right: two nodes in Europe and one in the US; when the link breaks, Europe holds the majority and stays writable, and the US cannot write.</desc>
+  <defs>
+    <marker id="voter-placement-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="voter-placement-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="204"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="204"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">One region, 3 zones</text>
+  <rect class="dg-zone" x="14" y="40" width="212" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="29" y="60">REGION</text>
+  <rect class="dg-zone" x="26" y="64" width="58" height="72" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="55" y="80" text-anchor="middle">ZONE A</text>
+  <rect class="dg-box-accent" x="38" y="94" width="34" height="30" rx="4"/>
+  <rect class="dg-zone" x="92" y="64" width="58" height="72" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="121" y="80" text-anchor="middle">ZONE B</text>
+  <rect class="dg-box-accent" x="104" y="94" width="34" height="30" rx="4"/>
+  <rect class="dg-zone" x="158" y="64" width="58" height="72" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="187" y="80" text-anchor="middle">ZONE C</text>
+  <rect class="dg-box" x="170" y="94" width="34" height="30" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="120" y="168" text-anchor="middle">SHORT ROUND TRIP</text>
+  <text class="dg-result" x="120" y="196" text-anchor="middle">Fast writes</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">One node per region</text>
+  <rect class="dg-zone" x="252" y="50" width="66" height="98" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="285" y="68" text-anchor="middle">EU</text>
+  <rect class="dg-box-accent" x="268" y="94" width="34" height="30" rx="4"/>
+  <rect class="dg-zone" x="326" y="50" width="66" height="98" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="359" y="68" text-anchor="middle">US</text>
+  <rect class="dg-box-accent" x="342" y="94" width="34" height="30" rx="4"/>
+  <rect class="dg-zone" x="400" y="50" width="66" height="98" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="433" y="68" text-anchor="middle">ASIA</text>
+  <rect class="dg-box" x="416" y="94" width="34" height="30" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="360" y="168" text-anchor="middle">ANY 2 REGIONS: MAJORITY</text>
+  <text class="dg-result" x="360" y="196" text-anchor="middle">Survives one region failure</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Two regions, 2 + 1</text>
+  <rect class="dg-zone" x="496" y="40" width="118" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="511" y="60">EUROPE</text>
+  <rect class="dg-zone" x="646" y="40" width="66" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="661" y="60">US</text>
+  <rect class="dg-box-accent" x="513" y="94" width="34" height="30" rx="4"/>
+  <rect class="dg-box-accent" x="563" y="94" width="34" height="30" rx="4"/>
+  <rect class="dg-box" x="662" y="94" width="34" height="30" rx="4"/>
+  <line class="dg-line" x1="614" y1="109" x2="646" y2="109"/>
+  <line class="dg-cross" x1="625" y1="104" x2="635" y2="114"/>
+  <line class="dg-cross" x1="625" y1="114" x2="635" y2="104"/>
+  <text class="dg-mono dg-muted-text" x="600" y="168" text-anchor="middle">EUROPE STAYS WRITABLE</text>
+  <text class="dg-result" x="600" y="196" text-anchor="middle">The US cannot write</text>
+  <text class="dg-sub" x="360" y="222" text-anchor="middle">small box: a voting node; outlined pair: a majority</text>
+</svg>

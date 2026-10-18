@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="retry-with-key-title retry-with-key-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="retry-with-key-title">A retry after a leader failed finds its key in the log</title>
+  <desc id="retry-with-key-desc">Anna sends $50 with idempotency key k-77. The old leader commits the transfer with the key and fails before it answers. Anna's app retries with the same key on the new leader, which finds k-77 in the log and returns the first answer instead of moving the money again.</desc>
+  <defs>
+    <marker id="retry-with-key-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="retry-with-key-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="90" y="20" text-anchor="middle">ANNA</text>
+  <line class="dg-lifeline" x1="90" y1="34" x2="90" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">OLD LEADER</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="630" y="20" text-anchor="middle">NEW LEADER</text>
+  <line class="dg-lifeline" x1="630" y1="34" x2="630" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="225.0" y="58" text-anchor="middle">SEND $50, KEY k-77</text>
+  <path class="dg-arrow" d="M90 66 H352" marker-end="url(#retry-with-key-head)"/>
+  <rect class="dg-box" x="275.0" y="76" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="92.0" text-anchor="middle">committed with k-77</text>
+  <line class="dg-cross" x1="354" y1="122" x2="366" y2="134"/>
+  <line class="dg-cross" x1="354" y1="134" x2="366" y2="122"/>
+  <text class="dg-sub" x="374" y="132" text-anchor="start">fails before it answers</text>
+  <line class="dg-arrow dg-empty" x1="80" y1="72" x2="80" y2="170"/>
+  <text class="dg-mono dg-muted-text" x="72" y="124" text-anchor="end">NO ANSWER</text>
+  <text class="dg-mono dg-muted-text" x="225" y="184" text-anchor="middle">RETRY: SEND $50, KEY k-77</text>
+  <path class="dg-arrow" d="M90 192 H622" marker-end="url(#retry-with-key-head)"/>
+  <rect class="dg-box-accent" x="555.0" y="202" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="630.0" y="218.0" text-anchor="middle">k-77 in the log</text>
+  <text class="dg-mono dg-accent-text" x="225" y="254" text-anchor="middle">SENT, THE FIRST ANSWER</text>
+  <path class="dg-arrow dg-message" d="M630 262 H98" marker-end="url(#retry-with-key-head-accent)"/>
+</svg>

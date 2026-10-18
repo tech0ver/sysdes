@@ -1,0 +1,59 @@
+<svg class="diagram-svg" viewBox="0 0 720 340" role="img" aria-labelledby="causal-order-title causal-order-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="causal-order-title">A payment shown before or after the request it answers</title>
+  <desc id="causal-order-desc">Anna's request #7 is written in Europe and replicates to the US slowly. A push carries #7 to Ben, who pays in the US; the payment carries the dependency on #7. A friend of Ben's reads from the US. Left: the US shows writes as they arrive, so the friend sees the payment without the request. Right: the US stores the payment but does not show it until #7 arrives, then shows both.</desc>
+  <defs>
+    <marker id="causal-order-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="causal-order-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="332"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">Shown as it arrives</text>
+  <text class="dg-mono dg-muted-text" x="50" y="50" text-anchor="middle">EUROPE</text>
+  <line class="dg-lifeline" x1="50" y1="62" x2="50" y2="306"/>
+  <text class="dg-mono dg-muted-text" x="140" y="50" text-anchor="middle">BEN</text>
+  <line class="dg-lifeline" x1="140" y1="62" x2="140" y2="306"/>
+  <text class="dg-mono dg-muted-text" x="230" y="50" text-anchor="middle">US</text>
+  <line class="dg-lifeline" x1="230" y1="62" x2="230" y2="306"/>
+  <text class="dg-mono dg-muted-text" x="320" y="50" text-anchor="middle">FRIEND</text>
+  <line class="dg-lifeline" x1="320" y1="62" x2="320" y2="306"/>
+  <rect class="dg-box" x="8.0" y="70" width="84" height="24" rx="4"/>
+  <text class="dg-code" x="50.0" y="86.0" text-anchor="middle">request #7</text>
+  <text class="dg-mono dg-muted-text" x="95.0" y="108" text-anchor="middle">PUSH #7</text>
+  <path class="dg-arrow" d="M50 116 H132" marker-end="url(#causal-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="185.0" y="142" text-anchor="middle">PAY, AFTER #7</text>
+  <path class="dg-arrow" d="M140 150 H222" marker-end="url(#causal-order-head)"/>
+  <rect class="dg-box" x="188.0" y="158" width="84" height="24" rx="4"/>
+  <text class="dg-code" x="230.0" y="174.0" text-anchor="middle">payment</text>
+  <path class="dg-arrow dg-empty" d="M50 96 L224.2 264.4" marker-end="url(#causal-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="56" y="240" text-anchor="start">REQUEST #7</text>
+  <text class="dg-mono dg-accent-text" x="275.0" y="228" text-anchor="middle">PAYMENT ONLY</text>
+  <path class="dg-arrow dg-message" d="M230 236 H312" marker-end="url(#causal-order-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="275.0" y="284" text-anchor="middle">#7, PAYMENT</text>
+  <path class="dg-arrow" d="M230 292 H312" marker-end="url(#causal-order-head)"/>
+  <text class="dg-result" x="180" y="330" text-anchor="middle">The friend sees the effect first</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">Shown after its dependencies</text>
+  <text class="dg-mono dg-muted-text" x="410" y="50" text-anchor="middle">EUROPE</text>
+  <line class="dg-lifeline" x1="410" y1="62" x2="410" y2="306"/>
+  <text class="dg-mono dg-muted-text" x="500" y="50" text-anchor="middle">BEN</text>
+  <line class="dg-lifeline" x1="500" y1="62" x2="500" y2="306"/>
+  <text class="dg-mono dg-muted-text" x="590" y="50" text-anchor="middle">US</text>
+  <line class="dg-lifeline" x1="590" y1="62" x2="590" y2="306"/>
+  <text class="dg-mono dg-muted-text" x="680" y="50" text-anchor="middle">FRIEND</text>
+  <line class="dg-lifeline" x1="680" y1="62" x2="680" y2="306"/>
+  <rect class="dg-box" x="368.0" y="70" width="84" height="24" rx="4"/>
+  <text class="dg-code" x="410.0" y="86.0" text-anchor="middle">request #7</text>
+  <text class="dg-mono dg-muted-text" x="455.0" y="108" text-anchor="middle">PUSH #7</text>
+  <path class="dg-arrow" d="M410 116 H492" marker-end="url(#causal-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="545.0" y="142" text-anchor="middle">PAY, AFTER #7</text>
+  <path class="dg-arrow" d="M500 150 H582" marker-end="url(#causal-order-head)"/>
+  <rect class="dg-box" x="548.0" y="158" width="84" height="24" rx="4"/>
+  <text class="dg-code" x="590.0" y="174.0" text-anchor="middle">payment</text>
+  <path class="dg-arrow dg-empty" d="M410 96 L584.2 264.4" marker-end="url(#causal-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="416" y="240" text-anchor="start">REQUEST #7</text>
+  <line class="dg-arrow dg-wait" x1="590" y1="190" x2="590" y2="270"/>
+  <text class="dg-mono dg-accent-text" x="600" y="206" text-anchor="start">NOT SHOWN</text>
+  <text class="dg-mono dg-muted-text" x="635.0" y="228" text-anchor="middle">NOTHING NEW</text>
+  <path class="dg-arrow" d="M590 236 H672" marker-end="url(#causal-order-head)"/>
+  <text class="dg-mono dg-accent-text" x="635.0" y="284" text-anchor="middle">#7, PAYMENT</text>
+  <path class="dg-arrow dg-message" d="M590 292 H672" marker-end="url(#causal-order-head-accent)"/>
+  <text class="dg-result" x="540" y="330" text-anchor="middle">Cause before effect</text>
+</svg>

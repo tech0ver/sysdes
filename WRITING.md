@@ -65,6 +65,7 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 - Comparisons use equal panels side by side with the same data on one grid: the same rows, values, and order in each panel, aligned across the panels, with a vertical rule between them. Keep the halves symmetric and the strokes the same weight.
 - Show concrete rows and values (workspace 42, order 501) rather than abstract boxes.
 - Do not add caption lines that restate the paragraph next to the diagram. A label names what the reader sees; when panels count different things (keys in one, shards in the other), a short legend says what a cell stands for.
+- Explain an encoding once. When a diagram just above already has the same legend (what a cell or a mark stands for), do not repeat it.
 - Time runs from top to bottom. When two actors act in time, put the TIME axis between their columns.
 - Arrows: several arrows into one box end side by side, never in one point, and avoid crossings by ordering their start points. Give every leg of a bent arrow real length: short legs look crooked. Labels never cross the border of a zone or a box.
 - Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent on the idea the diagram teaches (for example, that one database became many), not on an element that only happens to be there.

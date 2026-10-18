@@ -279,7 +279,7 @@ Locking the rows on read does not help either: it locks the buyer's seats that e
 The limit is one of the rules that make the data correct. Keeping the data within its rules is **consistency**. The database enforces the rules it is told about, such as constraints. A rule across several rows is usually the app's job, and atomicity and isolation are its tools for it.
 
 :::distinguish
-"Consistency" in transactions means that the data follows its rules. For [copies of data on several nodes](../replication/#reading-from-a-copy-that-is-behind), the same word means whether every copy shows the same value. <!-- link: fundamentals/consistency -->
+"Consistency" in transactions means that the data follows its rules. For [copies of data on several nodes](../replication/#reading-from-a-copy-that-is-behind), the same word means whether every copy shows the same value (more on [guarantees between copies](../consistency/#acting-as-one-copy)).
 :::
 
 The fix turns the rule into a row that every such transaction writes, so the conflict becomes an ordinary conflict on one row. This is **materializing the conflict**. Keep a count of tickets per buyer and event, and change it with an atomic update that carries the rule:
@@ -323,7 +323,7 @@ Databases provide it in three ways.
 The guarantee covers only transactions that run at this level. A transaction at a weaker level that writes the same data can still break the rule.
 
 :::distinguish
-Two-phase locking keeps concurrent transactions in one database apart. Two-phase commit makes one transaction commit on all of several nodes or on none of them. <!-- link: fundamentals/consistency -->
+Two-phase locking keeps concurrent transactions in one database apart. Two-phase commit makes one transaction commit on all of several nodes or on none of them.
 :::
 
 :::tradeoff
@@ -456,7 +456,7 @@ The retry of a purchase that did commit fails on the key. The app rolls that att
 
 ::diagram{name="lost-commit"}
 
-The payment provider is another system, and a rollback cannot take back a charge. So the purchase commits its own state first, an order waiting for payment, then calls the provider and passes it the same key, so a repeated call does not charge twice, if the provider supports such keys. The result goes into the database in a new transaction. A chain of steps across several systems, where each step must be undone when a later one fails, belongs to distributed transactions. <!-- link: fundamentals/consistency -->
+The payment provider is another system, and a rollback cannot take back a charge. So the purchase commits its own state first, an order waiting for payment, then calls the provider and passes it the same key, so a repeated call does not charge twice, if the provider supports such keys. The result goes into the database in a new transaction. A chain of steps across several systems, where each step must be undone when a later one fails, is a saga.
 
 :::do
 Retry only conflict errors, run the whole transaction again, and limit the attempts with a growing pause. Write an idempotency key in the same transaction as the change, so a retry after a lost answer does no harm.

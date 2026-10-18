@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 380" role="img" aria-labelledby="fencing-token-title fencing-token-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fencing-token-title">A fencing token stops a paused lock holder at the receiver</title>
+  <desc id="fencing-token-desc">Runner A gets the lock with token 33 and pauses for a long garbage collection. Its lease runs out, and runner B gets the lock with token 34 and sends a payout with token 34; in one atomic step the receiver checks the token and saves 34 as the largest. Runner A wakes up and sends a payout with token 33; the receiver rejects it, because 33 is older than 34.</desc>
+  <defs>
+    <marker id="fencing-token-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="fencing-token-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="80" y="20" text-anchor="middle">RUNNER A</text>
+  <line class="dg-lifeline" x1="80" y1="34" x2="80" y2="370"/>
+  <text class="dg-mono dg-muted-text" x="260" y="20" text-anchor="middle">LOCK SERVICE</text>
+  <line class="dg-lifeline" x1="260" y1="34" x2="260" y2="370"/>
+  <text class="dg-mono dg-muted-text" x="460" y="20" text-anchor="middle">RUNNER B</text>
+  <line class="dg-lifeline" x1="460" y1="34" x2="460" y2="370"/>
+  <text class="dg-mono dg-muted-text" x="640" y="20" text-anchor="middle">RECEIVER</text>
+  <line class="dg-lifeline" x1="640" y1="34" x2="640" y2="370"/>
+  <text class="dg-mono dg-muted-text" x="170.0" y="58" text-anchor="middle">LOCK?</text>
+  <path class="dg-arrow" d="M80 66 H252" marker-end="url(#fencing-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="170.0" y="88" text-anchor="middle">YES, TOKEN 33</text>
+  <path class="dg-arrow" d="M260 96 H88" marker-end="url(#fencing-token-head)"/>
+  <rect class="dg-box-failed" x="30" y="110" width="100" height="150" rx="4"/>
+  <text class="dg-code-muted" x="80.0" y="189.0" text-anchor="middle">paused</text>
+  <rect class="dg-box" x="185.0" y="128" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="144.0" text-anchor="middle">A's lease ran out</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="178" text-anchor="middle">LOCK?</text>
+  <path class="dg-arrow" d="M460 186 H268" marker-end="url(#fencing-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="208" text-anchor="middle">YES, TOKEN 34</text>
+  <path class="dg-arrow" d="M260 216 H452" marker-end="url(#fencing-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="550.0" y="242" text-anchor="middle">PAY, TOKEN 34</text>
+  <path class="dg-arrow" d="M460 250 H632" marker-end="url(#fencing-token-head)"/>
+  <rect class="dg-box" x="565.0" y="258" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="640.0" y="274.0" text-anchor="middle">check, save 34</text>
+  <text class="dg-mono dg-muted-text" x="360" y="302" text-anchor="middle">PAY, TOKEN 33</text>
+  <path class="dg-arrow" d="M80 310 H632" marker-end="url(#fencing-token-head)"/>
+  <text class="dg-mono dg-accent-text" x="360" y="342" text-anchor="middle">REJECTED: 33 &lt; 34</text>
+  <path class="dg-arrow dg-message" d="M640 350 H88" marker-end="url(#fencing-token-head-accent)"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg class="diagram-svg" viewBox="0 0 600 196" role="img" aria-labelledby="majority-overlap-title majority-overlap-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="majority-overlap-title">Two majorities of five nodes share a node</title>
+  <desc id="majority-overlap-desc">Five nodes. Nodes 1, 2, and 3 decide that @anna goes to Anna. Later, nodes 3, 4, and 5 form a majority. Node 3 is in both, so the later majority learns about the decision and cannot replace it.</desc>
+  <defs>
+    <marker id="majority-overlap-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="majority-overlap-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <path class="dg-bracket-accent" d="M46 62 V52 H334 V62"/>
+  <text class="dg-mono dg-accent-text" x="190.0" y="40" text-anchor="middle">DECIDES: @anna → ANNA</text>
+  <rect class="dg-box" x="40.0" y="77.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="80" y="97" text-anchor="middle">Node 1</text>
+  <rect class="dg-box" x="150.0" y="77.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="190" y="97" text-anchor="middle">Node 2</text>
+  <rect class="dg-box-accent" x="260.0" y="77.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="300" y="97" text-anchor="middle">Node 3</text>
+  <rect class="dg-box" x="370.0" y="77.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="410" y="97" text-anchor="middle">Node 4</text>
+  <rect class="dg-box" x="480.0" y="77.0" width="80" height="30" rx="6"/>
+  <text class="dg-name" x="520" y="97" text-anchor="middle">Node 5</text>
+  <path class="dg-line" d="M266 122 V132 H554 V122" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="410.0" y="150" text-anchor="middle">A LATER MAJORITY</text>
+  <text class="dg-result" x="300" y="184" text-anchor="middle">Node 3 is in both</text>
+</svg>

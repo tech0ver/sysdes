@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 284" role="img" aria-labelledby="tpc-on-consensus-title tpc-on-consensus-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="tpc-on-consensus-title">Two-phase commit where every party is a consensus group</title>
+  <desc id="tpc-on-consensus-desc">The coordinator and the two shards are each a group of three nodes. The coordinator group keeps the decision in its log, and each shard group keeps its prepared state in its log. Node N1, the leader of the coordinator group, fails, and N2 becomes the leader and carries on with the decision.</desc>
+  <defs>
+    <marker id="tpc-on-consensus-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="tpc-on-consensus-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="240" y="8" width="240" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="360" y="28" text-anchor="middle">COORDINATOR</text>
+  <rect class="dg-box-failed" x="265.0" y="43.0" width="52" height="30" rx="6"/>
+  <text class="dg-name-muted" x="291" y="63" text-anchor="middle">N1</text>
+  <line class="dg-cross" x1="309" y1="55" x2="315" y2="61"/>
+  <line class="dg-cross" x1="309" y1="61" x2="315" y2="55"/>
+  <rect class="dg-box-accent" x="334.0" y="43.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="360" y="63" text-anchor="middle">N2</text>
+  <rect class="dg-box" x="398.0" y="43.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="424" y="63" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-muted-text" x="360" y="100" text-anchor="middle">DECISION IN ITS LOG</text>
+  <text class="dg-mono dg-accent-text" x="360" y="132" text-anchor="middle">N2 TAKES OVER</text>
+  <rect class="dg-zone" x="20" y="168" width="240" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="140" y="188" text-anchor="middle">SHARD 1</text>
+  <rect class="dg-box" x="50.0" y="203.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="76" y="223" text-anchor="middle">N1</text>
+  <rect class="dg-box" x="114.0" y="203.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="140" y="223" text-anchor="middle">N2</text>
+  <rect class="dg-box" x="178.0" y="203.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="204" y="223" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-muted-text" x="140" y="260" text-anchor="middle">PREPARED STATE IN ITS LOG</text>
+  <rect class="dg-zone" x="460" y="168" width="240" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="580" y="188" text-anchor="middle">SHARD 7</text>
+  <rect class="dg-box" x="490.0" y="203.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="516" y="223" text-anchor="middle">N1</text>
+  <rect class="dg-box" x="554.0" y="203.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="580" y="223" text-anchor="middle">N2</text>
+  <rect class="dg-box" x="618.0" y="203.0" width="52" height="30" rx="6"/>
+  <text class="dg-name" x="644" y="223" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-muted-text" x="580" y="260" text-anchor="middle">PREPARED STATE IN ITS LOG</text>
+  <path class="dg-arrow" d="M290 116 L190 160" marker-end="url(#tpc-on-consensus-head)"/>
+  <path class="dg-arrow" d="M430 116 L530 160" marker-end="url(#tpc-on-consensus-head)"/>
+  <text class="dg-mono dg-muted-text" x="214" y="128" text-anchor="end">PREPARE, COMMIT</text>
+</svg>

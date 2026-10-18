@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 720 196" role="img" aria-labelledby="semantic-lock-title semantic-lock-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="semantic-lock-title">Pending money cannot be spent until the saga ends</title>
+  <desc id="semantic-lock-desc">Left, while the top-up saga runs: the account shows $40 available and a pending top-up of $100; a payment of $120 is refused, because pending money cannot be spent. Right, after the credit: $140 is available, and the same payment goes through.</desc>
+  <defs>
+    <marker id="semantic-lock-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="semantic-lock-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="188"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">While the saga runs</text>
+  <rect class="dg-box" x="40" y="42" width="280" height="74" rx="6"/>
+  <text class="dg-name" x="56" y="64" text-anchor="start">Account</text>
+  <text class="dg-code" x="56" y="86" text-anchor="start">available: $40</text>
+  <rect class="dg-box-accent dg-empty" x="48" y="92" width="150" height="20" rx="3"/>
+  <text class="dg-code" x="56" y="106" text-anchor="start">pending: +$100</text>
+  <text class="dg-mono dg-muted-text" x="180" y="142" text-anchor="middle">PAY $120</text>
+  <text class="dg-result" x="180" y="176" text-anchor="middle">Refused</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">After the credit</text>
+  <rect class="dg-box" x="400" y="42" width="280" height="74" rx="6"/>
+  <text class="dg-name" x="416" y="64" text-anchor="start">Account</text>
+  <text class="dg-code" x="416" y="86" text-anchor="start">available: $140</text>
+  <text class="dg-code-muted" x="416" y="106" text-anchor="start">no pending top-up</text>
+  <text class="dg-mono dg-muted-text" x="540" y="142" text-anchor="middle">PAY $120</text>
+  <text class="dg-result" x="540" y="176" text-anchor="middle">Accepted</text>
+</svg>

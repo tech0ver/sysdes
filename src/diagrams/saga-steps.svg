@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 600 276" role="img" aria-labelledby="saga-steps-title saga-steps-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="saga-steps-title">The steps of a card top-up saga and its pivot</title>
+  <desc id="saga-steps-desc">Three local steps, from top to bottom: record the top-up as pending and check the limits; charge the card, which is the pivot; credit the balance. If the charge is declined, the compensation marks the top-up failed. After the charge, the saga only moves forward: the credit is retried with the same ID until it is done.</desc>
+  <defs>
+    <marker id="saga-steps-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="saga-steps-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="180" y="20" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="280.0" y="44.0" text-anchor="middle">1. Pending</text>
+  <text class="dg-sub" x="280.0" y="60.0" text-anchor="middle">check limits</text>
+  <rect class="dg-box-accent" x="180" y="112" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="280.0" y="136.0" text-anchor="middle">2. Charge card</text>
+  <text class="dg-sub" x="280.0" y="152.0" text-anchor="middle">the pivot</text>
+  <rect class="dg-box" x="180" y="204" width="200" height="52" rx="6"/>
+  <text class="dg-name" x="280.0" y="228.0" text-anchor="middle">3. Credit</text>
+  <text class="dg-sub" x="280.0" y="244.0" text-anchor="middle">the balance</text>
+  <path class="dg-arrow" d="M280 72 V104" marker-end="url(#saga-steps-head)"/>
+  <path class="dg-arrow" d="M280 164 V196" marker-end="url(#saga-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="290" y="186" text-anchor="start">CHARGED</text>
+  <path class="dg-line" d="M168 20 H160 V72 H168" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="150" y="50" text-anchor="end">MAY BE UNDONE</text>
+  <path class="dg-line" d="M168 204 H160 V256 H168" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="150" y="234" text-anchor="end">ONLY FORWARD</text>
+  <rect class="dg-box" x="450" y="176" width="140" height="52" rx="6"/>
+  <text class="dg-name" x="520.0" y="200.0" text-anchor="middle">Mark failed</text>
+  <text class="dg-sub" x="520.0" y="216.0" text-anchor="middle">compensation</text>
+  <path class="dg-arrow dg-empty" d="M380 138 H520 V168" marker-end="url(#saga-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="450" y="130" text-anchor="middle">DECLINED</text>
+  <path class="dg-arrow dg-empty" d="M380 222 H424 V246 H388" marker-end="url(#saga-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="388" y="266" text-anchor="start">RETRY, SAME ID</text>
+</svg>

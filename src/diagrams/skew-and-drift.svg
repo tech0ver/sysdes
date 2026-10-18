@@ -1,0 +1,50 @@
+<svg class="diagram-svg" viewBox="0 0 600 340" role="img" aria-labelledby="skew-and-drift-title skew-and-drift-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="skew-and-drift-title">Two clocks drifting from real time between syncs</title>
+  <desc id="skew-and-drift-desc">Time runs down over 90 seconds, with a sync at 0, 30, and 60 seconds. Across is the offset from real time in milliseconds. Clock A runs fast and gains 6 ms in each 30 seconds; clock B runs slow and loses 4 ms in each 30 seconds. Each sync sets both back to real time. The slope of each line is its drift; the gap between the two clocks at one moment, 8 ms at 24 seconds, is the clock skew.</desc>
+  <defs>
+    <marker id="skew-and-drift-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="skew-and-drift-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="300" y="24" text-anchor="middle">REAL TIME</text>
+  <line class="dg-line" x1="300" y1="34" x2="300" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="168" y="24" text-anchor="middle">CLOCK B, SLOW</text>
+  <text class="dg-mono dg-muted-text" x="432" y="24" text-anchor="middle">CLOCK A, FAST</text>
+  <line class="dg-line dg-empty" x1="60" y1="50.0" x2="500" y2="50.0"/>
+  <text class="dg-mono dg-muted-text" x="52" y="54.0" text-anchor="end">0 S</text>
+  <line class="dg-line dg-empty" x1="60" y1="123.33333333333334" x2="500" y2="123.33333333333334"/>
+  <text class="dg-mono dg-muted-text" x="52" y="127.33333333333334" text-anchor="end">30 S</text>
+  <text class="dg-mono dg-muted-text" x="508" y="127.33333333333334" text-anchor="start">SYNC: BACK</text>
+  <text class="dg-mono dg-muted-text" x="508" y="139.33333333333334" text-anchor="start">TO 0</text>
+  <line class="dg-line dg-empty" x1="60" y1="196.66666666666669" x2="500" y2="196.66666666666669"/>
+  <text class="dg-mono dg-muted-text" x="52" y="200.66666666666669" text-anchor="end">60 S</text>
+  <text class="dg-mono dg-muted-text" x="508" y="200.66666666666669" text-anchor="start">SYNC: BACK</text>
+  <text class="dg-mono dg-muted-text" x="508" y="212.66666666666669" text-anchor="start">TO 0</text>
+  <line class="dg-line dg-empty" x1="60" y1="270.0" x2="500" y2="270.0"/>
+  <text class="dg-mono dg-muted-text" x="52" y="274.0" text-anchor="end">90 S</text>
+  <path class="dg-arrow" d="M300 50.0 L432 123.33333333333334"/>
+  <path class="dg-arrow" d="M300 50.0 L212 123.33333333333334"/>
+  <path class="dg-arrow" d="M300 123.33333333333334 L432 196.66666666666669"/>
+  <path class="dg-arrow" d="M300 123.33333333333334 L212 196.66666666666669"/>
+  <path class="dg-arrow" d="M300 196.66666666666669 L432 270.0"/>
+  <path class="dg-arrow" d="M300 196.66666666666669 L212 270.0"/>
+  <path class="dg-bracket-accent" d="M229.6 102.66666666666667 V108.66666666666667 H405.6 V102.66666666666667"/>
+  <text class="dg-mono dg-accent-text" x="419.6" y="112.66666666666667" text-anchor="start">AT 24 S: SKEW 8 MS</text>
+  <text class="dg-mono dg-muted-text" x="378.0" y="84.66666666666667" text-anchor="start">DRIFT: +6 MS PER 30 S</text>
+  <text class="dg-mono dg-muted-text" x="244.0" y="84.66666666666667" text-anchor="end">DRIFT: −4 MS PER 30 S</text>
+  <line class="dg-line" x1="168" y1="294" x2="432" y2="294"/>
+  <line class="dg-line" x1="168" y1="290" x2="168" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="168" y="312" text-anchor="middle">-6</text>
+  <line class="dg-line" x1="212" y1="290" x2="212" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="212" y="312" text-anchor="middle">-4</text>
+  <line class="dg-line" x1="256" y1="290" x2="256" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="256" y="312" text-anchor="middle">-2</text>
+  <line class="dg-line" x1="300" y1="290" x2="300" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="300" y="312" text-anchor="middle">0</text>
+  <line class="dg-line" x1="344" y1="290" x2="344" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="344" y="312" text-anchor="middle">+2</text>
+  <line class="dg-line" x1="388" y1="290" x2="388" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="388" y="312" text-anchor="middle">+4</text>
+  <line class="dg-line" x1="432" y1="290" x2="432" y2="298"/>
+  <text class="dg-mono dg-muted-text" x="432" y="312" text-anchor="middle">+6</text>
+  <text class="dg-mono dg-muted-text" x="300" y="332" text-anchor="middle">OFFSET FROM REAL TIME, MS</text>
+</svg>

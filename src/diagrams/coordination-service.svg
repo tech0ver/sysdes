@@ -1,0 +1,42 @@
+<svg class="diagram-svg" viewBox="0 0 720 254" role="img" aria-labelledby="coordination-service-title coordination-service-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="coordination-service-title">A coordination service holding a lock and a shard map</title>
+  <desc id="coordination-service-desc">A coordination service runs on three nodes, N1 to N3. It holds two small keys: the payout lock, held by runner A through session 81, at revision 1043; and the shard map, version 8, at revision 1040. Runner A renews its session with heartbeats; runners B and C watch the lock. When the shard map changes, the service tells the two routers that watch it.</desc>
+  <defs>
+    <marker id="coordination-service-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="coordination-service-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="200" y="20" width="320" height="220" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="360" y="40" text-anchor="middle">COORDINATION SERVICE</text>
+  <rect class="dg-box" x="240.0" y="51.0" width="60" height="30" rx="6"/>
+  <text class="dg-name" x="270" y="71" text-anchor="middle">N1</text>
+  <rect class="dg-box" x="330.0" y="51.0" width="60" height="30" rx="6"/>
+  <text class="dg-name" x="360" y="71" text-anchor="middle">N2</text>
+  <rect class="dg-box" x="420.0" y="51.0" width="60" height="30" rx="6"/>
+  <text class="dg-name" x="450" y="71" text-anchor="middle">N3</text>
+  <text class="dg-mono dg-muted-text" x="360" y="104" text-anchor="middle">KEYS</text>
+  <rect class="dg-box" x="216" y="112" width="288" height="40" rx="4"/>
+  <text class="dg-code" x="232" y="129" text-anchor="start">payout lock: runner A</text>
+  <text class="dg-code-muted" x="232" y="145" text-anchor="start">session 81 · revision 1043</text>
+  <rect class="dg-box-accent" x="216" y="164" width="288" height="40" rx="4"/>
+  <text class="dg-code" x="232" y="181" text-anchor="start">shard map: version 8</text>
+  <text class="dg-code-muted" x="232" y="197" text-anchor="start">revision 1040</text>
+  <rect class="dg-box" x="20" y="96" width="100" height="32" rx="6"/>
+  <text class="dg-name" x="70.0" y="117.0" text-anchor="middle">Runner A</text>
+  <path class="dg-arrow" d="M120 112 H192" marker-end="url(#coordination-service-head)"/>
+  <text class="dg-mono dg-muted-text" x="156" y="106" text-anchor="middle">HEARTBEAT</text>
+  <rect class="dg-box" x="20" y="140" width="100" height="32" rx="6"/>
+  <text class="dg-name" x="70.0" y="161.0" text-anchor="middle">Runner B</text>
+  <path class="dg-arrow dg-empty" d="M120 156 H192" marker-end="url(#coordination-service-head)"/>
+  <text class="dg-mono dg-muted-text" x="156" y="150" text-anchor="middle">WATCH LOCK</text>
+  <rect class="dg-box" x="20" y="184" width="100" height="32" rx="6"/>
+  <text class="dg-name" x="70.0" y="205.0" text-anchor="middle">Runner C</text>
+  <path class="dg-arrow dg-empty" d="M120 200 H192" marker-end="url(#coordination-service-head)"/>
+  <text class="dg-mono dg-muted-text" x="156" y="194" text-anchor="middle">WATCH LOCK</text>
+  <text class="dg-mono dg-accent-text" x="650" y="112" text-anchor="middle">MAP CHANGED: v8</text>
+  <rect class="dg-box" x="600" y="124" width="100" height="32" rx="6"/>
+  <text class="dg-name" x="650.0" y="145.0" text-anchor="middle">Router 1</text>
+  <rect class="dg-box" x="600" y="196" width="100" height="32" rx="6"/>
+  <text class="dg-name" x="650.0" y="217.0" text-anchor="middle">Router 2</text>
+  <path class="dg-arrow dg-message" d="M504 176 H548 V140 H592" marker-end="url(#coordination-service-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M504 192 H548 V212 H592" marker-end="url(#coordination-service-head-accent)"/>
+</svg>

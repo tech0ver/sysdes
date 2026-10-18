@@ -40,7 +40,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Fundamentals',
-					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding'],
+					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency'],
 				},
 				'glossary',
 			],

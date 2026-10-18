@@ -35,7 +35,7 @@ With **synchronous replication**, the leader confirms a write only after a follo
 
 ::diagram{name="sync-vs-async"}
 
-A common compromise is **semi-synchronous replication**: the leader waits for one follower and lets the others catch up in the background. While that follower answers, every confirmed write is on at least two nodes. If it fails, the system must pick another follower to wait for, or fall back to asynchronous replication. Some systems wait for a majority of replicas instead, such as three of five. <!-- link: fundamentals/consistency -->
+A common compromise is **semi-synchronous replication**: the leader waits for one follower and lets the others catch up in the background. While that follower answers, every confirmed write is on at least two nodes. If it fails, the system must pick another follower to wait for, or fall back to asynchronous replication. Some systems wait for a majority of replicas instead, such as three of five (more on [majority commits](../consistency/#committing-through-a-majority)).
 
 A cloud region has several separate failure areas called **availability zones**, each with one or more data centers. Zones are close enough that waiting for a follower in another zone adds little, though every write still waits for that round trip. Spread replicas over zones to survive the loss of one zone, for example three replicas, one per zone. Surviving the loss of a whole region needs copies in another region.
 
@@ -110,7 +110,7 @@ Decide for each read whether a stale answer is acceptable. A product page can sh
 Watch the lag. The leader's log position minus the position a follower has applied shows how much log the follower still has to apply. To see the lag in seconds, let the leader write the current time into a row every second: the lag is the time now minus the time in the follower's copy of that row, give or take that second. A follower that falls too far behind should stop serving reads until it catches up.
 
 :::distinguish
-"Consistency" here means whether replicas show the same data. In transactions, the same word means that data follows its rules (more on [consistency in transactions](../transactions/#a-rule-across-several-rows)). <!-- link: fundamentals/consistency -->
+"Consistency" here means [whether replicas show the same data](../consistency/#acting-as-one-copy). In transactions, the same word means that data follows its rules (more on [consistency in transactions](../transactions/#a-rule-across-several-rows)).
 :::
 
 Lag also breaks what a user expects from their own actions.
@@ -155,9 +155,9 @@ One query to one replica that follows one log cannot show this: the replica appl
 
 **Consistent prefix reads** means that when writes happen in some order, every reader sees them in that order and never sees a later write without the earlier ones.
 
-Keep writes that depend on each other in one log, and read them together: store the questions and answers of a product in the same shard, keyed by the product, and load them in one query, or in one transaction that reads a [consistent picture](../transactions/#reading-a-consistent-picture). When that is impossible, the system has to track which write depends on which. <!-- link: fundamentals/consistency -->
+Keep writes that depend on each other in one log, and read them together: store the questions and answers of a product in the same shard, keyed by the product, and load them in one query, or in one transaction that reads a [consistent picture](../transactions/#reading-a-consistent-picture). When that is impossible, the system has to [track which write depends on which](../consistency/#keeping-cause-before-effect).
 
-Two related guarantees cover a user's own writes. With **monotonic writes**, a user's writes apply in the order the user made them. With **writes follow reads**, a write applies after the writes the user had read before making it, so a reply never comes before its question. One leader whose log survives gives both to a user who waits for each write to finish before the next. Failovers that lose writes, parallel requests, and several leaders need explicit tracking. <!-- link: fundamentals/consistency -->
+Two related guarantees cover a user's own writes. With **monotonic writes**, a user's writes apply in the order the user made them. With **writes follow reads**, a write applies after the writes the user had read before making it, so a reply never comes before its question. One leader whose log survives gives both to a user who waits for each write to finish before the next. Failovers that lose writes, parallel requests, and several leaders need [explicit tracking](../consistency/#keeping-cause-before-effect).
 
 ## Replacing a failed leader
 
@@ -166,7 +166,7 @@ The leader's machine dies during a sale. Followers still serve product pages, bu
 **Failover** makes a follower the new leader:
 
 1. Suspect the failure. Nodes check each other, and a leader that does not answer within a timeout, such as 30 seconds, is treated as dead, though it may only be slow.
-2. Pick the new leader: a follower that has every confirmed write, which is the synchronous follower when there is one, and among those the most up-to-date. The other replicas elect it by majority, or a separate controller appoints it. <!-- link: fundamentals/consistency -->
+2. Pick the new leader: a follower that has every confirmed write, which is the synchronous follower when there is one, and among those the most up-to-date. The other replicas [elect it by majority](../consistency/#choosing-a-leader-everyone-accepts), or a separate controller appoints it.
 3. Stop the old leader from writing, send writes to the new one, and make the other followers replicate from it. When the old leader comes back, it must become a follower.
 
 ::diagram{name="failover"}
@@ -178,7 +178,7 @@ A planned switch, for maintenance or an upgrade, loses nothing: stop writes on t
 - The old leader may only be slow or cut off from the others, not dead. It keeps accepting writes while the new leader does too. Two leaders at once is **split brain**, and their writes conflict.
 - A short timeout fails over on a load spike or a network hiccup, and the failover adds load at the worst time. A long timeout keeps the store without writes for longer.
 
-The defense against split brain is **fencing**: before the new leader takes writes, make sure the old leader's writes cannot take effect. Each new leader gets a higher number, and every node and storage system rejects writes that carry an older number. Some setups also cut the old leader off from the storage or the network. A timeout alone does not prove that the old leader has stopped: a paused process can wake up and keep writing. <!-- link: fundamentals/consistency -->
+The defense against split brain is **fencing**: before the new leader takes writes, make sure the old leader's writes cannot take effect. Each new leader gets a higher number, and every node and storage system rejects writes that carry an older number. Some setups also cut the old leader off from the storage or the network. A timeout alone does not prove that the old leader has stopped: a paused process can wake up and keep writing (more on [fencing tokens](../consistency/#letting-only-one-node-act)).
 
 ::diagram{name="split-brain-fencing"}
 
@@ -196,7 +196,7 @@ Between regions there are four designs:
 
 - One leader region. All writes go to one region, and the other regions hold followers. Rules over all the data, such as "do not sell more than the stock", stay simple, since one node sees every write. Writes from far away are slow, and losing the leader's region means a failover across regions with asynchronous lag. In 2018, a [43-second network break](https://github.blog/news-insights/company-news/oct21-post-incident-analysis/) made GitHub's tool promote new leaders on the other coast. Both coasts then held writes the other lacked, the site was degraded for 24 hours, and GitHub stopped promoting leaders across regions.
 - A home region per user. Assign each user's records to one region, usually the nearest, and route their writes there. Writes stay local while the user is near home. Every record still has one leader, but different records have leaders in different regions. A user who travels writes across the ocean, and moving a user's home is a special operation.
-- A majority across three regions. Place the voting replicas so that any two regions hold a majority, and confirm a write once that majority has saved it. Losing a whole region then loses no confirmed write, and the other two keep working. Every write pays a round trip to another region. Databases built on consensus work this way. DynamoDB's [strong mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html) uses exactly three regions: three replicas, or two replicas and a witness that only helps form the majority. <!-- link: fundamentals/consistency -->
+- A majority across three regions. Place the voting replicas so that any two regions hold a majority, and confirm a write once that majority has saved it. Losing a whole region then loses no confirmed write, and the other two keep working. Every write pays a round trip to another region. Databases built on consensus work this way. DynamoDB's [strong mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html) uses exactly three regions: three replicas, or two replicas and a witness that only helps form the majority (more on [majority commits](../consistency/#committing-through-a-majority)).
 - **Multi-leader replication** gives each region a leader that accepts writes and replicates them asynchronously to the leaders of the other regions. Writes are local, and a region keeps working when it is cut off. The cost is that two regions can change the same record at once. No node sees every write, so independent writes cannot check a rule over all the data: two regions can sell the last mug, or register the same email. Such rules need coordination, usually one leader. Many databases add multi-leader on top of a single-leader design, and features built for one writer can fail: generated IDs can collide, and a constraint checked in one region does not see the rows of another.
 
 ::diagram{name="region-designs"}
@@ -263,7 +263,7 @@ The overlap makes a read return the latest value in normal work, but it is not a
 
 ::diagram{name="quorum-caveats"}
 
-In a [2013 Jepsen test](https://aphyr.com/posts/294-call-me-maybe-cassandra), Cassandra with quorum reads and writes kept updating one cell, and last write wins silently dropped 28% of the confirmed writes. Treat W and R as a dial for how often a read is stale. Lowering W makes writes wait for fewer replicas, and lowering R does the same for reads, so each survives more failed replicas. With W + R ≤ N, though, the read and write sets may not overlap. How often a read is then stale depends on how fast changes spread: a [2012 study](https://arxiv.org/abs/1204.6082) based on production latencies found such reads often fresh within tens of milliseconds. <!-- link: fundamentals/consistency -->
+In a [2013 Jepsen test](https://aphyr.com/posts/294-call-me-maybe-cassandra), Cassandra with quorum reads and writes kept updating one cell, and last write wins silently dropped 28% of the confirmed writes. Treat W and R as a dial for how often a read is stale. Lowering W makes writes wait for fewer replicas, and lowering R does the same for reads, so each survives more failed replicas. With W + R ≤ N, though, the read and write sets may not overlap. How often a read is then stale depends on how fast changes spread: a [2012 study](https://arxiv.org/abs/1204.6082) based on production latencies found such reads often fresh within tens of milliseconds. Quorums alone do not make reads linearizable.
 
 Without a leader there is no failover: a slow or dead replica is one of N, and the client uses the answers that come first. The costs are conflicts on concurrent writes and lag that is hard to measure without one log. A larger quorum also waits for more replicas, so a slow one delays it more often.
 
@@ -314,7 +314,7 @@ In the store, orders and stock use one leader. Accounts use a home region per us
 
 Most designs need a single leader: followers in other zones and regions, asynchronous or semi-synchronous replication, reads from followers where a stale answer is fine, and read-your-writes where users expect to see their changes.
 
-During a network break, a system either refuses some requests or lets copies disagree. A single leader refuses writes on the side without it; multi-leader and a sloppy quorum keep writing and let copies disagree. This choice is what CAP describes. <!-- link: fundamentals/consistency -->
+During a network break, a system either refuses some requests or lets copies disagree. A single leader refuses writes on the side without it; multi-leader and a sloppy quorum keep writing and let copies disagree. This choice is what CAP describes.
 
 :::interview
 When asked how data is replicated, answer three questions: who accepts writes, when a write counts as done, and what a read may see. Then say what a failover loses, and which reads must go to the leader.
