@@ -113,7 +113,7 @@ Each fix does a different job:
 
 ::diagram{name="version-marker"}
 
-- Deletes from the database's change log make sure every write gets its delete. If the app commits and then crashes before its delete, the old value stays until its TTL. A process that reads committed changes through CDC deletes the matching keys. It covers app crashes and writes from other services, scripts, and manual fixes, and it can send a lost delete again. It adds a delay and does not stop the race: keep the app's own delete and the checked fills. <!-- link: patterns/async-messaging -->
+- Deletes from the database's change log make sure every write gets its delete. If the app commits and then crashes before its delete, the old value stays until its TTL. A process that reads committed changes through CDC deletes the matching keys. It covers app crashes and writes from other services, scripts, and manual fixes, and it can send a lost delete again. It adds a delay and does not stop the race: keep the app's own delete and the checked fills. <!-- link: patterns/messaging -->
 
 ::diagram{name="change-log-deletes"}
 
@@ -167,7 +167,7 @@ The cache now holds data that exists nowhere else, so it has become a store. If 
 Write-behind turns many small writes into a few large ones and takes them off the request path. You pay with the writes that were not flushed when the cache fails, and with a cache that needs the care of a store.
 :::
 
-Use it for numbers where losing some updates is acceptable: view counts, the time a user was last seen. Do not use it for anything the user was told is saved, such as a comment, a payment, or the fact that the user liked a post; the count of likes may still be batched. For those, write to the database or to a durable queue first. <!-- link: fundamentals/async-communication -->
+Use it for numbers where losing some updates is acceptable: view counts, the time a user was last seen. Do not use it for anything the user was told is saved, such as a comment, a payment, or the fact that the user liked a post; the count of likes may still be batched. For those, write to the database or to a durable queue first. <!-- link: fundamentals/async -->
 
 ## Caching responses outside your servers
 
