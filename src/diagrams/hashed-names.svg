@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 176" role="img" aria-labelledby="hashed-names-title hashed-names-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="hashed-names-title">A new file name for every version</title>
+  <desc id="hashed-names-desc">The page from yesterday, still open in a tab, asks for app.3f9a1c.js. The new page asks for app.8b20e4.js. The server keeps both files for a while, and each can be cached for a year because its content never changes.</desc>
+  <defs>
+    <marker id="hashed-names-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="hashed-names-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="96" y="20" text-anchor="middle">PAGE</text>
+  <text class="dg-mono dg-muted-text" x="310" y="20" text-anchor="middle">ASKS FOR</text>
+  <text class="dg-mono dg-muted-text" x="587" y="20" text-anchor="middle">SERVER KEEPS</text>
+  <rect class="dg-box" x="470" y="30" width="234" height="126" rx="6"/>
+  <rect class="dg-box" x="16" y="34" width="160" height="54" rx="6"/>
+  <text class="dg-name" x="96.0" y="59.0" text-anchor="middle">Page v1</text>
+  <text class="dg-sub" x="96.0" y="75.0" text-anchor="middle">open tab</text>
+  <rect class="dg-chip" x="230" y="47" width="160" height="28" rx="4"/>
+  <text class="dg-code" x="310.0" y="65.0" text-anchor="middle">app.3f9a1c.js</text>
+  <path class="dg-arrow" d="M176 61 H222" marker-end="url(#hashed-names-head)"/>
+  <path class="dg-arrow" d="M390 61 H482" marker-end="url(#hashed-names-head)"/>
+  <rect class="dg-chip" x="490" y="47" width="194" height="28" rx="4"/>
+  <text class="dg-code" x="587.0" y="65.0" text-anchor="middle">app.3f9a1c.js</text>
+  <rect class="dg-box" x="16" y="98" width="160" height="54" rx="6"/>
+  <text class="dg-name" x="96.0" y="123.0" text-anchor="middle">Page v2</text>
+  <text class="dg-sub" x="96.0" y="139.0" text-anchor="middle">new</text>
+  <rect class="dg-box-accent" x="230" y="111" width="160" height="28" rx="4"/>
+  <text class="dg-code" x="310.0" y="129.0" text-anchor="middle">app.8b20e4.js</text>
+  <path class="dg-arrow" d="M176 125 H222" marker-end="url(#hashed-names-head)"/>
+  <path class="dg-arrow" d="M390 125 H482" marker-end="url(#hashed-names-head)"/>
+  <rect class="dg-chip" x="490" y="111" width="194" height="28" rx="4"/>
+  <text class="dg-code" x="587.0" y="129.0" text-anchor="middle">app.8b20e4.js</text>
+</svg>

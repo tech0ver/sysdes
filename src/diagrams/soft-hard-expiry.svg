@@ -1,0 +1,23 @@
+<svg class="diagram-svg" viewBox="0 0 712 130" role="img" aria-labelledby="soft-hard-expiry-title soft-hard-expiry-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="soft-hard-expiry-title">Soft and hard expiry</title>
+  <desc id="soft-hard-expiry-desc">A value is fresh until its soft expiry. Between the soft and the hard expiry, reads get the old value while one request refreshes it. After the hard expiry, the old value is not used, and reads wait for the load.</desc>
+  <defs>
+    <marker id="soft-hard-expiry-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="soft-hard-expiry-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-4 0)">
+  <rect class="dg-box" x="40.0" y="30" width="264.0" height="40" rx="4"/>
+  <text class="dg-code" x="172.0" y="54.0" text-anchor="middle">fresh: hits</text>
+  <rect class="dg-box-accent" x="304.0" y="30" width="264.0" height="40" rx="4"/>
+  <text class="dg-code" x="436.0" y="54.0" text-anchor="middle">old value while one refresh runs</text>
+  <rect class="dg-box-failed" x="568.0" y="30" width="132.0" height="40" rx="4"/>
+  <text class="dg-code-muted" x="634.0" y="54.0" text-anchor="middle">not done: wait</text>
+  <line class="dg-line" x1="40" y1="100" x2="700.0" y2="100"/>
+  <line class="dg-line" x1="40.0" y1="100" x2="40.0" y2="106"/>
+  <text class="dg-mono dg-muted-text" x="40.0" y="118" text-anchor="middle">STORED</text>
+  <line class="dg-line" x1="304.0" y1="100" x2="304.0" y2="106"/>
+  <text class="dg-mono dg-muted-text" x="304.0" y="118" text-anchor="middle">SOFT EXPIRY</text>
+  <line class="dg-line" x1="568.0" y1="100" x2="568.0" y2="106"/>
+  <text class="dg-mono dg-muted-text" x="568.0" y="118" text-anchor="middle">HARD EXPIRY</text>
+  </g>
+</svg>

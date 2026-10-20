@@ -1,0 +1,85 @@
+<svg class="diagram-svg" viewBox="0 0 686 268" role="img" aria-labelledby="eviction-policies-title eviction-policies-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="eviction-policies-title">What LRU, LFU, and FIFO drop</title>
+  <desc id="eviction-policies-desc">A cache of four keys starts empty. Twelve reads: the first four, A, B, C, D, store the keys; then come B, B, B, A, A, D, D, C. A new key E arrives. LRU drops B, whose last read is the oldest. LFU drops C, read the fewest times. FIFO drops A, stored first.</desc>
+  <defs>
+    <marker id="eviction-policies-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="eviction-policies-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="30" text-anchor="start">READS</text>
+  <text class="dg-mono dg-muted-text" x="135" y="22" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="120" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="135.0" y="46.0" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="175" y="22" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="160" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="175.0" y="46.0" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="215" y="22" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="200" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="215.0" y="46.0" text-anchor="middle">C</text>
+  <text class="dg-mono dg-muted-text" x="255" y="22" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="240" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="255.0" y="46.0" text-anchor="middle">D</text>
+  <text class="dg-mono dg-muted-text" x="295" y="22" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="280" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="295.0" y="46.0" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="335" y="22" text-anchor="middle">6</text>
+  <rect class="dg-chip" x="320" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="335.0" y="46.0" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="375" y="22" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="360" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="375.0" y="46.0" text-anchor="middle">B</text>
+  <text class="dg-mono dg-muted-text" x="415" y="22" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="400" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="415.0" y="46.0" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="455" y="22" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="440" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="455.0" y="46.0" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="495" y="22" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="480" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="495.0" y="46.0" text-anchor="middle">D</text>
+  <text class="dg-mono dg-muted-text" x="535" y="22" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="520" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="535.0" y="46.0" text-anchor="middle">D</text>
+  <text class="dg-mono dg-muted-text" x="575" y="22" text-anchor="middle">12</text>
+  <rect class="dg-chip" x="560" y="30" width="30" height="24" rx="4"/>
+  <text class="dg-code" x="575.0" y="46.0" text-anchor="middle">C</text>
+  <path class="dg-bracket-accent" d="M120 62 V68 H270 V62"/>
+  <text class="dg-mono dg-accent-text" x="195" y="82" text-anchor="middle">STORE A-D</text>
+  <rect class="dg-box-accent" x="620" y="30" width="50" height="24" rx="4"/>
+  <text class="dg-code" x="645.0" y="46.0" text-anchor="middle">E</text>
+  <text class="dg-mono dg-accent-text" x="645" y="22" text-anchor="middle">NEW</text>
+  <text class="dg-name" x="16" y="131" text-anchor="start">LRU</text>
+  <text class="dg-mono dg-muted-text" x="120" y="106" text-anchor="start">LAST READ</text>
+  <rect class="dg-box" x="120" y="112" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="150.0" y="130.0" text-anchor="middle">A: 9</text>
+  <rect class="dg-box-accent" x="190" y="112" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="220.0" y="130.0" text-anchor="middle">B: 7</text>
+  <rect class="dg-box" x="260" y="112" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="290.0" y="130.0" text-anchor="middle">C: 12</text>
+  <rect class="dg-box" x="330" y="112" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="130.0" text-anchor="middle">D: 11</text>
+  <text class="dg-sub" x="420" y="131">drops B: read longest ago</text>
+  <text class="dg-name" x="16" y="183" text-anchor="start">LFU</text>
+  <text class="dg-mono dg-muted-text" x="120" y="158" text-anchor="start">READS</text>
+  <rect class="dg-box" x="120" y="164" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="150.0" y="182.0" text-anchor="middle">A: 3</text>
+  <rect class="dg-box" x="190" y="164" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="220.0" y="182.0" text-anchor="middle">B: 4</text>
+  <rect class="dg-box-accent" x="260" y="164" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="290.0" y="182.0" text-anchor="middle">C: 2</text>
+  <rect class="dg-box" x="330" y="164" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="182.0" text-anchor="middle">D: 3</text>
+  <text class="dg-sub" x="420" y="183">drops C: read the fewest times</text>
+  <text class="dg-name" x="16" y="235" text-anchor="start">FIFO</text>
+  <text class="dg-mono dg-muted-text" x="120" y="210" text-anchor="start">STORED</text>
+  <rect class="dg-box-accent" x="120" y="216" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="150.0" y="234.0" text-anchor="middle">A: 1</text>
+  <rect class="dg-box" x="190" y="216" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="220.0" y="234.0" text-anchor="middle">B: 2</text>
+  <rect class="dg-box" x="260" y="216" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="290.0" y="234.0" text-anchor="middle">C: 3</text>
+  <rect class="dg-box" x="330" y="216" width="60" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="234.0" text-anchor="middle">D: 4</text>
+  <text class="dg-sub" x="420" y="235">drops A: stored first</text>
+  </g>
+</svg>

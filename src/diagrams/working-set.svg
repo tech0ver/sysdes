@@ -1,0 +1,22 @@
+<svg class="diagram-svg" viewBox="0 0 706 168" role="img" aria-labelledby="working-set-title working-set-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="working-set-title">The working set fits in the cache</title>
+  <desc id="working-set-desc">The archive holds 2 million articles, 100 GB, ordered from the newest to the oldest. The working set, the articles of the last few days, is a small part at the newest end. The cache holds 16 GB, enough for the working set.</desc>
+  <defs>
+    <marker id="working-set-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="working-set-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="120" y="22" text-anchor="start">NEWEST</text>
+  <text class="dg-mono dg-muted-text" x="690" y="22" text-anchor="end">OLDEST</text>
+  <text class="dg-name" x="16" y="59" text-anchor="start">Archive</text>
+  <rect class="dg-box" x="120" y="34" width="570" height="40" rx="4"/>
+  <text class="dg-code" x="676" y="59" text-anchor="end">2 million articles, 100 GB</text>
+  <rect class="dg-box-accent" x="120" y="34" width="46" height="40" rx="4"/>
+  <text class="dg-name" x="16" y="125" text-anchor="start">Cache</text>
+  <rect class="dg-box" x="120" y="100" width="91" height="40" rx="4"/>
+  <rect class="dg-box-accent" x="120" y="100" width="46" height="40" rx="4"/>
+  <text class="dg-code" x="223" y="125" text-anchor="start">16 GB</text>
+  <line class="dg-guide" x1="166" y1="74" x2="166" y2="100"/>
+  <text class="dg-mono dg-accent-text" x="120" y="160" text-anchor="start">WORKING SET (EXAMPLE)</text>
+  </g>
+</svg>

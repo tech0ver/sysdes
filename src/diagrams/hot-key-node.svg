@@ -1,0 +1,20 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="hot-key-node-title hot-key-node-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="hot-key-node-title">One hot key on one cache node</title>
+  <desc id="hot-key-node-desc">Four cache nodes. Node 1 holds article 42 and must send 50,000 reads per second of 50 KB, 20 Gbit/s, twice what its 10 Gbit/s network can carry. Nodes 2 to 4 send little.</desc>
+  <defs>
+    <marker id="hot-key-node-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="hot-key-node-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="16" y="44" text-anchor="start">Node 1</text>
+  <rect class="dg-box-accent" x="120" y="26" width="520" height="26" rx="3"/>
+  <text class="dg-code" x="650" y="44">20 Gbit/s</text>
+  <text class="dg-code" x="132" y="44">key 42: 50,000 reads/s</text>
+  <text class="dg-name" x="16" y="88" text-anchor="start">Node 2</text>
+  <rect class="dg-bar" x="120" y="70" width="21" height="26" rx="3"/>
+  <text class="dg-name" x="16" y="132" text-anchor="start">Node 3</text>
+  <rect class="dg-bar" x="120" y="114" width="16" height="26" rx="3"/>
+  <text class="dg-name" x="16" y="176" text-anchor="start">Node 4</text>
+  <rect class="dg-bar" x="120" y="158" width="23" height="26" rx="3"/>
+  <line class="dg-guide" x1="380" y1="16" x2="380" y2="196"/>
+  <text class="dg-mono dg-accent-text" x="380" y="214" text-anchor="middle">NETWORK: 10 GBIT/S</text>
+</svg>

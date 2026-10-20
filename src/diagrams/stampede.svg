@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 720 190" role="img" aria-labelledby="stampede-title stampede-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stampede-title">A cache stampede</title>
+  <desc id="stampede-desc">Readers send 50,000 reads per second of article 42. Its key is gone for the 80 ms of a rebuild, so 4,000 requests miss and each runs five queries: 20,000 queries within 80 ms. The database slows down, the rebuild takes longer, and more requests miss.</desc>
+  <defs>
+    <marker id="stampede-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stampede-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="86" width="140" height="64" rx="6"/>
+  <text class="dg-name" x="86.0" y="116.0" text-anchor="middle">Readers</text>
+  <text class="dg-sub" x="86.0" y="132.0" text-anchor="middle">50,000/s</text>
+  <path class="dg-arrow" d="M156 118 H242" marker-end="url(#stampede-head)"/>
+  <text class="dg-mono dg-muted-text" x="203.0" y="110" text-anchor="middle">GET 42</text>
+  <rect class="dg-box" x="250" y="86" width="170" height="64" rx="6"/>
+  <text class="dg-name" x="335.0" y="116.0" text-anchor="middle">Cache</text>
+  <text class="dg-sub" x="335.0" y="132.0" text-anchor="middle">42 gone for 80 ms</text>
+  <path class="dg-arrow dg-message" d="M420 92.0 H544" marker-end="url(#stampede-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M420 100.5 H544" marker-end="url(#stampede-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M420 109.0 H544" marker-end="url(#stampede-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M420 117.5 H544" marker-end="url(#stampede-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M420 126.0 H544" marker-end="url(#stampede-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M420 134.5 H544" marker-end="url(#stampede-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M420 143.0 H544" marker-end="url(#stampede-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="486" y="82" text-anchor="middle">4,000 MISSES</text>
+  <rect class="dg-box-accent" x="552" y="86" width="152" height="64" rx="6"/>
+  <text class="dg-name" x="628.0" y="116.0" text-anchor="middle">Database</text>
+  <text class="dg-sub" x="628.0" y="132.0" text-anchor="middle">20,000 queries</text>
+  <path class="dg-arrow dg-empty" d="M628 86 V40 H335 V78" marker-end="url(#stampede-head)"/>
+  <text class="dg-mono dg-muted-text" x="482" y="32" text-anchor="middle">SLOWER REBUILD, MORE MISSES</text>
+</svg>

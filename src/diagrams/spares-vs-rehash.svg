@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 720 270" role="img" aria-labelledby="spares-vs-rehash-title spares-vs-rehash-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="spares-vs-rehash-title">Where requests for a failed node's keys go</title>
+  <desc id="spares-vs-rehash-desc">Node D fails; it held the hot key 42. Left: requests for its keys go to the remaining nodes, and node B serves key 42 on top of its own keys. Right: they go to a spare node, which starts empty and loads key 42 from the database, while nodes A to C keep only their own load.</desc>
+  <defs>
+    <marker id="spares-vs-rehash-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="spares-vs-rehash-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">To the remaining nodes</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">To a spare</text>
+  <rect class="dg-box" x="16" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name" x="51.0" y="85.0" text-anchor="middle">A</text>
+  <rect class="dg-box" x="100" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name" x="135.0" y="85.0" text-anchor="middle">B</text>
+  <rect class="dg-box" x="184" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name" x="219.0" y="85.0" text-anchor="middle">C</text>
+  <rect class="dg-box-failed" x="268" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name-muted" x="303.0" y="85.0" text-anchor="middle">D</text>
+  <line class="dg-cross" x1="319" y1="67" x2="329" y2="77"/>
+  <line class="dg-cross" x1="319" y1="77" x2="329" y2="67"/>
+  <rect class="dg-chip" x="27" y="116" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="51.0" y="132.0" text-anchor="middle">k1</text>
+  <rect class="dg-chip" x="111" y="116" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="135.0" y="132.0" text-anchor="middle">k2</text>
+  <rect class="dg-chip" x="195" y="116" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="219.0" y="132.0" text-anchor="middle">k3</text>
+  <text class="dg-mono dg-muted-text" x="303" y="124" text-anchor="middle">D'S REQUESTS</text>
+  <rect class="dg-box-accent" x="111" y="146" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="135.0" y="162.0" text-anchor="middle">42</text>
+  <path class="dg-arrow" d="M303 132 V158 H167" marker-end="url(#spares-vs-rehash-head)"/>
+  <text class="dg-result" x="180" y="254" text-anchor="middle">B: its own load plus key 42</text>
+  <rect class="dg-box" x="376" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name" x="411.0" y="85.0" text-anchor="middle">A</text>
+  <rect class="dg-box" x="460" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name" x="495.0" y="85.0" text-anchor="middle">B</text>
+  <rect class="dg-box" x="544" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name" x="579.0" y="85.0" text-anchor="middle">C</text>
+  <rect class="dg-box-failed" x="628" y="60" width="70" height="40" rx="6"/>
+  <text class="dg-name-muted" x="663.0" y="85.0" text-anchor="middle">D</text>
+  <line class="dg-cross" x1="679" y1="67" x2="689" y2="77"/>
+  <line class="dg-cross" x1="679" y1="77" x2="689" y2="67"/>
+  <rect class="dg-chip" x="387" y="116" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="411.0" y="132.0" text-anchor="middle">k1</text>
+  <rect class="dg-chip" x="471" y="116" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="495.0" y="132.0" text-anchor="middle">k2</text>
+  <rect class="dg-chip" x="555" y="116" width="48" height="24" rx="4"/>
+  <text class="dg-code" x="579.0" y="132.0" text-anchor="middle">k3</text>
+  <text class="dg-mono dg-muted-text" x="663" y="124" text-anchor="middle">D'S REQUESTS</text>
+  <rect class="dg-box-accent" x="618" y="172" width="90" height="50" rx="6"/>
+  <text class="dg-name" x="663" y="192" text-anchor="middle">Spare</text>
+  <text class="dg-sub" x="663" y="210" text-anchor="middle">cold: loads 42</text>
+  <path class="dg-arrow" d="M663 132 V164" marker-end="url(#spares-vs-rehash-head)"/>
+  <text class="dg-result" x="540" y="254" text-anchor="middle">A to C keep their own load</text>
+</svg>

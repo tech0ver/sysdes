@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 230" role="img" aria-labelledby="change-log-deletes-title change-log-deletes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="change-log-deletes-title">Deletes from the change log</title>
+  <desc id="change-log-deletes-desc">Three writers change the database: the app, which crashed before sending its own delete, another service, and a script. Each commit goes into the database's change log. A CDC process reads the committed changes and deletes the matching keys in the cache, so every write gets its delete.</desc>
+  <defs>
+    <marker id="change-log-deletes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="change-log-deletes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="24" width="150" height="50" rx="6"/>
+  <text class="dg-name" x="91.0" y="47.0" text-anchor="middle">App</text>
+  <text class="dg-sub" x="91.0" y="63.0" text-anchor="middle">crashed before its delete</text>
+  <path class="dg-arrow" d="M166 49 H196 V101 H232" marker-end="url(#change-log-deletes-head)"/>
+  <rect class="dg-box" x="16" y="90" width="150" height="50" rx="6"/>
+  <text class="dg-name" x="91.0" y="120.0" text-anchor="middle">Other service</text>
+  <path class="dg-arrow" d="M166 115 H232" marker-end="url(#change-log-deletes-head)"/>
+  <rect class="dg-box" x="16" y="156" width="150" height="50" rx="6"/>
+  <text class="dg-name" x="91.0" y="186.0" text-anchor="middle">Script</text>
+  <path class="dg-arrow" d="M166 181 H196 V129 H232" marker-end="url(#change-log-deletes-head)"/>
+  <rect class="dg-box" x="240" y="87" width="120" height="56" rx="6"/>
+  <text class="dg-name" x="300.0" y="113.0" text-anchor="middle">Database</text>
+  <text class="dg-sub" x="300.0" y="129.0" text-anchor="middle">change log</text>
+  <path class="dg-arrow" d="M360 115 H432" marker-end="url(#change-log-deletes-head)"/>
+  <text class="dg-mono dg-muted-text" x="400.0" y="107" text-anchor="middle">COMMITS</text>
+  <rect class="dg-box" x="440" y="87" width="110" height="56" rx="6"/>
+  <text class="dg-name" x="495.0" y="113.0" text-anchor="middle">CDC</text>
+  <text class="dg-sub" x="495.0" y="129.0" text-anchor="middle">reads the log</text>
+  <path class="dg-arrow dg-message" d="M550 115 H612" marker-end="url(#change-log-deletes-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="585.0" y="107" text-anchor="middle">DELETE</text>
+  <rect class="dg-box-accent" x="620" y="87" width="84" height="56" rx="6"/>
+  <text class="dg-name" x="662.0" y="120.0" text-anchor="middle">Cache</text>
+</svg>

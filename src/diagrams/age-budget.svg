@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 680 138" role="img" aria-labelledby="age-budget-title age-budget-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="age-budget-title">Splitting one minute of allowed age between the layers</title>
+  <desc id="age-budget-desc">An article page may be at most 60 seconds old. The remote cache may keep a value for 20 seconds, the HTTP response then lives 30 seconds, shared by the CDN and the browser, and stale-while-revalidate adds up to 10 seconds.</desc>
+  <defs>
+    <marker id="age-budget-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="age-budget-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-14 0)">
+  <path class="dg-bracket-accent" d="M40 40 V30 H664.0 V40"/>
+  <text class="dg-mono dg-accent-text" x="352.0" y="22" text-anchor="middle">ALLOWED AGE: 60 S</text>
+  <rect class="dg-box" x="40.0" y="50" width="208.0" height="40" rx="4"/>
+  <text class="dg-code" x="144.0" y="74.0" text-anchor="middle">remote cache: 20 s</text>
+  <rect class="dg-box" x="248.0" y="50" width="312.0" height="40" rx="4"/>
+  <text class="dg-code" x="404.0" y="74.0" text-anchor="middle">CDN and browser: 30 s</text>
+  <rect class="dg-box" x="560.0" y="50" width="104.0" height="40" rx="4"/>
+  <text class="dg-code" x="612.0" y="74.0" text-anchor="middle">stale: 10 s</text>
+  <line class="dg-line" x1="40" y1="106" x2="664.0" y2="106"/>
+  <line class="dg-line" x1="40.0" y1="106" x2="40.0" y2="112"/>
+  <text class="dg-mono dg-muted-text" x="40.0" y="124" text-anchor="middle">0 S</text>
+  <line class="dg-line" x1="248.0" y1="106" x2="248.0" y2="112"/>
+  <text class="dg-mono dg-muted-text" x="248.0" y="124" text-anchor="middle">20 S</text>
+  <line class="dg-line" x1="560.0" y1="106" x2="560.0" y2="112"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="124" text-anchor="middle">50 S</text>
+  <line class="dg-line" x1="664.0" y1="106" x2="664.0" y2="112"/>
+  <text class="dg-mono dg-muted-text" x="664.0" y="124" text-anchor="middle">60 S</text>
+  </g>
+</svg>

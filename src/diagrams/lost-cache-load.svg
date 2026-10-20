@@ -1,0 +1,28 @@
+<svg class="diagram-svg" viewBox="0 0 703 160" role="img" aria-labelledby="lost-cache-load-title lost-cache-load-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lost-cache-load-title">Database load when the cache is lost</title>
+  <desc id="lost-cache-load-desc">With 95% hits the database builds 150 pages per second, and it was sized for that plus some headroom. Without the cache it gets 3,000 page builds per second, far above its capacity.</desc>
+  <defs>
+    <marker id="lost-cache-load-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lost-cache-load-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-accent-text" x="246.0" y="20" text-anchor="start">DATABASE CAPACITY</text>
+  <line class="dg-guide" x1="238.0" y1="12" x2="238.0" y2="118"/>
+  <text class="dg-name" x="16" y="53" text-anchor="start">95% hits</text>
+  <rect class="dg-bar" x="190" y="34" width="24" height="26" rx="3"/>
+  <text class="dg-code" x="224" y="52">150/s</text>
+  <text class="dg-name" x="16" y="93" text-anchor="start">Cache lost</text>
+  <rect class="dg-box-accent" x="190" y="74" width="480" height="26" rx="3"/>
+  <text class="dg-code" x="660" y="92" text-anchor="end">3,000/s</text>
+  <line class="dg-line" x1="190" y1="118" x2="670.0" y2="118"/>
+  <line class="dg-line" x1="190.0" y1="118" x2="190.0" y2="124"/>
+  <text class="dg-mono dg-muted-text" x="190.0" y="136" text-anchor="middle">0</text>
+  <line class="dg-line" x1="350.0" y1="118" x2="350.0" y2="124"/>
+  <text class="dg-mono dg-muted-text" x="350.0" y="136" text-anchor="middle">1,000</text>
+  <line class="dg-line" x1="510.0" y1="118" x2="510.0" y2="124"/>
+  <text class="dg-mono dg-muted-text" x="510.0" y="136" text-anchor="middle">2,000</text>
+  <line class="dg-line" x1="670.0" y1="118" x2="670.0" y2="124"/>
+  <text class="dg-mono dg-muted-text" x="670.0" y="136" text-anchor="middle">3,000</text>
+  <text class="dg-mono dg-muted-text" x="670.0" y="154" text-anchor="end">PAGE BUILDS PER SECOND</text>
+  </g>
+</svg>

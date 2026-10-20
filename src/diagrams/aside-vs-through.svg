@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 686 270" role="img" aria-labelledby="aside-vs-through-title aside-vs-through-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="aside-vs-through-title">Who loads a missing value</title>
+  <desc id="aside-vs-through-desc">Left, cache-aside: the app asks the cache, gets a miss, reads the database, stores the value in the cache, and uses it. Right, read-through: the app asks only the cache; the cache loads the value from the database, stores it, and returns it.</desc>
+  <defs>
+    <marker id="aside-vs-through-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="aside-vs-through-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-17 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Cache-aside</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">the app loads the miss</text>
+  <text class="dg-mono dg-muted-text" x="60" y="56" text-anchor="middle">APP</text>
+  <line class="dg-lifeline" x1="60" y1="64" x2="60" y2="262"/>
+  <text class="dg-mono dg-muted-text" x="180" y="56" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="180" y1="64" x2="180" y2="262"/>
+  <text class="dg-mono dg-muted-text" x="300" y="56" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="300" y1="64" x2="300" y2="262"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="84" text-anchor="middle">GET 42</text>
+  <path class="dg-arrow" d="M60 92 H172" marker-end="url(#aside-vs-through-head)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="116" text-anchor="middle">MISS</text>
+  <path class="dg-arrow" d="M180 124 H68" marker-end="url(#aside-vs-through-head)"/>
+  <text class="dg-mono dg-accent-text" x="240" y="148" text-anchor="middle">READ 42</text>
+  <path class="dg-arrow dg-message" d="M60 156 H292" marker-end="url(#aside-vs-through-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="240" y="180" text-anchor="middle">ROWS</text>
+  <path class="dg-arrow dg-message" d="M300 188 H68" marker-end="url(#aside-vs-through-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="212" text-anchor="middle">SET 42</text>
+  <path class="dg-arrow" d="M60 220 H172" marker-end="url(#aside-vs-through-head)"/>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Read-through</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">the cache loads the miss</text>
+  <text class="dg-mono dg-muted-text" x="420" y="56" text-anchor="middle">APP</text>
+  <line class="dg-lifeline" x1="420" y1="64" x2="420" y2="262"/>
+  <text class="dg-mono dg-muted-text" x="540" y="56" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="540" y1="64" x2="540" y2="262"/>
+  <text class="dg-mono dg-muted-text" x="660" y="56" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="660" y1="64" x2="660" y2="262"/>
+  <text class="dg-mono dg-muted-text" x="480.0" y="84" text-anchor="middle">GET 42</text>
+  <path class="dg-arrow" d="M420 92 H532" marker-end="url(#aside-vs-through-head)"/>
+  <text class="dg-mono dg-accent-text" x="600.0" y="116" text-anchor="middle">LOAD 42</text>
+  <path class="dg-arrow dg-message" d="M540 124 H652" marker-end="url(#aside-vs-through-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="600.0" y="148" text-anchor="middle">ROWS</text>
+  <path class="dg-arrow dg-message" d="M660 156 H548" marker-end="url(#aside-vs-through-head-accent)"/>
+  <rect class="dg-box" x="502.0" y="172" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="188.0" text-anchor="middle">store</text>
+  <text class="dg-mono dg-muted-text" x="480.0" y="212" text-anchor="middle">VALUE</text>
+  <path class="dg-arrow" d="M540 220 H428" marker-end="url(#aside-vs-through-head)"/>
+  </g>
+</svg>

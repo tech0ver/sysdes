@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 250" role="img" aria-labelledby="local-cache-title local-cache-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="local-cache-title">Local copies of a hot key</title>
+  <desc id="local-cache-desc">Readers send 50,000 reads per second of article 42 to 50 app servers. Each server keeps the article in its local cache for 5 seconds and loads it once at a time, so once the local caches are warm it asks the remote cache only on a local miss, once per 5 seconds: about 10 reads per second in all.</desc>
+  <defs>
+    <marker id="local-cache-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="local-cache-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="96" width="120" height="58" rx="6"/>
+  <text class="dg-name" x="76.0" y="123.0" text-anchor="middle">Readers</text>
+  <text class="dg-sub" x="76.0" y="139.0" text-anchor="middle">50,000/s</text>
+  <rect class="dg-box" x="232" y="20" width="176" height="44" rx="6"/>
+  <text class="dg-name" x="282" y="47" text-anchor="middle">App 1</text>
+  <rect class="dg-box-accent" x="334" y="30" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="364.0" y="46.0" text-anchor="middle">42</text>
+  <path class="dg-arrow" d="M136 111 H176 V42 H224" marker-end="url(#local-cache-head)"/>
+  <path class="dg-arrow" d="M408 42 H478 V111 H524" marker-end="url(#local-cache-head)"/>
+  <rect class="dg-box" x="232" y="76" width="176" height="44" rx="6"/>
+  <text class="dg-name" x="282" y="103" text-anchor="middle">App 2</text>
+  <rect class="dg-box-accent" x="334" y="86" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="364.0" y="102.0" text-anchor="middle">42</text>
+  <path class="dg-arrow" d="M136 119 H186 V98 H224" marker-end="url(#local-cache-head)"/>
+  <path class="dg-arrow" d="M408 98 H468 V119 H524" marker-end="url(#local-cache-head)"/>
+  <rect class="dg-box" x="232" y="132" width="176" height="44" rx="6"/>
+  <text class="dg-name" x="282" y="159" text-anchor="middle">App 3</text>
+  <rect class="dg-box-accent" x="334" y="142" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="364.0" y="158.0" text-anchor="middle">42</text>
+  <path class="dg-arrow" d="M136 131 H206 V154 H224" marker-end="url(#local-cache-head)"/>
+  <path class="dg-arrow" d="M408 154 H468 V131 H524" marker-end="url(#local-cache-head)"/>
+  <rect class="dg-box" x="232" y="196" width="176" height="44" rx="6"/>
+  <text class="dg-name" x="282" y="223" text-anchor="middle">App 50</text>
+  <rect class="dg-box-accent" x="334" y="206" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="364.0" y="222.0" text-anchor="middle">42</text>
+  <path class="dg-arrow" d="M136 139 H196 V218 H224" marker-end="url(#local-cache-head)"/>
+  <path class="dg-arrow" d="M408 218 H478 V139 H524" marker-end="url(#local-cache-head)"/>
+  <text class="dg-mono dg-muted-text" x="282" y="186" text-anchor="middle">…</text>
+  <text class="dg-mono dg-accent-text" x="364" y="16" text-anchor="middle">LOCAL, TTL 5 S</text>
+  <rect class="dg-box" x="532" y="96" width="172" height="58" rx="6"/>
+  <text class="dg-name" x="618.0" y="123.0" text-anchor="middle">Remote cache</text>
+  <text class="dg-sub" x="618.0" y="139.0" text-anchor="middle">~10 reads/s when warm</text>
+  <text class="dg-mono dg-muted-text" x="496" y="236" text-anchor="middle">LOCAL MISS ONLY</text>
+</svg>
