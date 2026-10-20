@@ -37,7 +37,7 @@ Write `plan.md` before any prose:
 - **Scope.** What is in, what is out and why, and which article in ARTICLES.md gets each boundary topic.
 - **Open questions** from step 2.
 
-Show the plan to the author and wait for approval. Add new planned articles to ARTICLES.md.
+Show the plan to the author and wait for approval. If the scope sends topics to articles that are not in ARTICLES.md yet, propose those articles in the plan and add the ones the author agrees to. For each new one, ask separately whether to show it on the site as planned (see WRITING.md, "Adding a page").
 
 ## 4. Write block by block
 
@@ -68,7 +68,8 @@ Show the plan to the author and wait for approval. Add new planned articles to A
 - Find markers that point to this article and turn them into relative links: `grep -rn "link: <this-article-path>" src/content/docs`.
 - Link from this article to existing articles instead of leaving markers for them.
 - Point `readMore` of the terms this article explains to its sections.
-- Mark the article as written in ARTICLES.md.
+- Mark the article as written in ARTICLES.md, and remove its label from the planned topics in the sidebar (`plannedByGroup` in `src/components/SidebarSublist.astro`).
+- Ask the author which planned articles that follow from this one to show on the site as planned. Being in ARTICLES.md does not put a topic on the site.
 
 ## 8. Hand over
 

@@ -84,7 +84,7 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 - Put the link on the words that already name the idea in the sentence: "for the same reason that [servers stay stateless](../networking/#servers-with-state)". When no words fit, end the sentence with `(more on [<the idea>](<link>))`, for example "(more on [composite indexes](../storage-engines/#searching-by-other-columns))". The link text names the idea in lowercase words, not the title of the target section.
 - When the idea is a single glossary term whose `readMore` already points to the article that explains it, use the term by its short name and add no link: the tooltip carries it ("It uses the WAL for this").
 - If that article does not exist yet, put a hidden marker where the link should go: `<!-- link: patterns/real-time -->`. When the article is written, its markers are replaced with links (see ARTICLES.md).
-- When you add or plan an article, update ARTICLES.md.
+- When you add or plan an article, update ARTICLES.md. A planned article shows on the site only when the author asks for it (see [Adding a page](#adding-a-page)).
 
 ## Glossary
 
@@ -121,4 +121,5 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 1. Create the Markdown file. Frontmatter needs `title` and `description`.
 2. Add the page to `sidebar` in `astro.config.mjs`, in the right group, and to ARTICLES.md.
-3. Run `bun run build` and check the page in `bun run dev`.
+3. If its topic was shown on the site as planned, remove its label from `plannedByGroup` in `src/components/SidebarSublist.astro`. That list holds the planned topics shown in the sidebar. Add a label to it only after the author agrees to show the topic. Discuss which new articles that follow from this one to show.
+4. Run `bun run build` and check the page in `bun run dev`.

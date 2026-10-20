@@ -12,11 +12,14 @@ interface Props {
 	planned?: string[];
 }
 
-const { sublist, nested, planned = [] } = Astro.props;
+const { sublist, nested, planned: plannedLabels = [] } = Astro.props;
+// A written page never shows as planned, even if its label is still in the list.
+const planned = plannedLabels.filter((label) => !sublist.some((entry) => entry.label === label));
 
-// Menu labels only: these topics have no published routes.
+// Menu labels only: these topics have no published routes. Remove a label when its page is written;
+// add one only after the author agrees to show the topic as planned.
 const plannedByGroup: Record<string, string[]> = {
-	Fundamentals: ['Consistency', 'Caching', 'Observability'],
+	Fundamentals: ['Observability'],
 	Patterns: ['Resilience', 'Rate Limiting'],
 	Technologies: ['PostgreSQL', 'Kafka'],
 	'Framework': ['Functional Requirements'],
