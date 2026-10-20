@@ -391,7 +391,7 @@ The step after which the saga only moves forward is its **pivot**. Steps after i
 
 ::diagram{name="saga-steps"}
 
-A saga finishes only if its recovery works. Store the saga's state and a stable ID for each step. When the result of a step is unknown, ask the other system or retry with the same ID. Write a local change and the message that starts the next step in one transaction. <!-- link: patterns/messaging --> If retries cannot settle the outcome, reconcile the records of both systems, such as the wallet's and the provider's.
+A saga finishes only if its recovery works. Store the saga's state and a stable ID for each step. When the result of a step is unknown, ask the other system or retry with the same ID. Write a local change and the message that starts the next step in one transaction. <!-- link: patterns/async-processing --> If retries cannot settle the outcome, reconcile the records of both systems, such as the wallet's and the provider's.
 
 A saga has no isolation across its steps, though each local transaction keeps its own. Between steps, other requests see the middle state, such as a charge whose credit has not landed yet. The usual defense is a **semantic lock**: mark records as pending until the saga ends, and make other operations check the mark, so pending money cannot be spent. In **try, confirm, cancel**, the first step only holds the money, and a later step moves it or releases the hold. <!-- link: patterns/reservations -->
 

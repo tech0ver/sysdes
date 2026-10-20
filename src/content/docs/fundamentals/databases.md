@@ -367,7 +367,7 @@ Each derived copy needs two promises. The first is how far behind the owner it m
 
 The simplest way to update copies is to have the app write to each store in turn: first the main store, then the search engine. These **dual writes** break in two ways. One write can fail while the other succeeds. And two concurrent updates of the same post can reach the two stores in different orders, so the stores keep different versions, with no error anywhere.
 
-Instead, derived copies follow the owner's committed changes. **Change data capture** (CDC) reads the changes from the owner's log after they commit. An **outbox** writes each change as an event into a table in the same transaction as the change itself, and a separate process delivers the events. Either way, the changes of one record must be applied in the order they were made, and a retry may deliver a change twice, so applying it twice must have no extra effect. <!-- link: patterns/messaging --> <!-- link: fundamentals/async -->
+Instead, derived copies follow the owner's committed changes. **Change data capture** (CDC) reads the changes from the owner's log after they commit. An **outbox** writes each change as an event into a table in the same transaction as the change itself, and a separate process delivers the events. Either way, the changes of one record must be applied in the order they were made, and a retry may deliver a change twice, so applying it twice must have no extra effect. <!-- link: patterns/async-processing --> <!-- link: fundamentals/messaging -->
 
 ::diagram{name="dual-writes-vs-cdc"}
 
