@@ -38,10 +38,6 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: 'Framework',
-					items: [],
-				},
-				{
 					label: 'Fundamentals',
 					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching'],
 				},

@@ -14,7 +14,7 @@ interface Props {
 
 const { sublist, nested, planned: plannedLabels = [] } = Astro.props;
 // A written page never shows as planned, even if its label is still in the list.
-const planned = plannedLabels.filter((label) => !sublist.some((entry) => entry.label === label));
+const unwritten = (labels: string[]) => labels.filter((label) => !sublist.some((entry) => entry.label === label));
 
 // Menu labels only: these topics have no published routes. Remove a label when its page is written;
 // add one only after the author agrees to show the topic as planned.
@@ -22,12 +22,23 @@ const plannedByGroup: Record<string, string[]> = {
 	Fundamentals: ['Messaging', 'Observability'],
 	Patterns: ['Resilience', 'Rate Limiting', 'Distributed Locks', 'Async Processing'],
 	Technologies: ['PostgreSQL', 'Kafka', 'Redis'],
-	'Framework': ['Functional Requirements'],
 	Systems: ['URL Shortener'],
 };
+// Planned single pages that sit at the top level, outside the groups, like the glossary.
+const plannedTopLevel = ['Framework'];
+const planned = unwritten(plannedLabels);
+const plannedFirst = nested ? [] : unwritten(plannedTopLevel);
 ---
 
 <ul class:list={{ 'top-level': !nested }}>
+	{plannedFirst.map((label) => (
+		<li>
+			<span class="planned-topic" aria-disabled="true">
+				<span class="large">{label}</span>
+				<span class="planned-badge">Planned</span>
+			</span>
+		</li>
+	))}
 	{
 		sublist.map((entry) => (
 			<li>
@@ -187,6 +198,9 @@ const plannedByGroup: Record<string, string[]> = {
   }
   .planned-topic > span:first-child {
     overflow-wrap: normal;
+  }
+  .planned-topic > .large {
+    color: inherit;
   }
   .planned-badge {
     flex-shrink: 0;

@@ -5,8 +5,8 @@ What an article on this site must look like. Read it before you add or change a 
 ## Reader and goal
 
 - The reader is an engineer who knows the topic but forgot it or never went deep. Do not teach from zero.
-- The goal is to help the reader make design decisions fast, as in a one-hour interview.
-- Keep a detail only if it changes a design decision. The internals of one technology go to its own article (see [Other articles](#other-articles)).
+- The goal is to help the reader make and defend design decisions, in a one-hour interview and at work, and see where each problem comes from.
+- Keep a detail if it changes a design decision or explains where a problem comes from. The internals of one technology go to its own article (see [Other articles](#other-articles)).
 
 ## Article shape
 
