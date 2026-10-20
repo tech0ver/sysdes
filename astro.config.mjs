@@ -43,7 +43,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Fundamentals',
-					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency'],
+					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching'],
 				},
 				{
 					label: 'Patterns',

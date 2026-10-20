@@ -1,0 +1,28 @@
+<svg class="diagram-svg" viewBox="0 0 720 230" role="img" aria-labelledby="cache-layers-title cache-layers-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="cache-layers-title">The higher the hit, the more it saves</title>
+  <desc id="cache-layers-desc">A request passes the browser, a CDN, an app server, the remote cache, and the database. A hit in the browser saves the whole request. A hit in the CDN saves the trip to the servers. A hit in the remote cache saves only the database work.</desc>
+  <defs>
+    <marker id="cache-layers-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="cache-layers-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="24" width="116" height="48" rx="6"/>
+  <text class="dg-name" x="74.0" y="53.0" text-anchor="middle">Browser</text>
+  <rect class="dg-box" x="159" y="24" width="116" height="48" rx="6"/>
+  <text class="dg-name" x="217.0" y="53.0" text-anchor="middle">CDN</text>
+  <rect class="dg-box" x="302" y="24" width="116" height="48" rx="6"/>
+  <text class="dg-name" x="360.0" y="53.0" text-anchor="middle">App server</text>
+  <rect class="dg-box" x="445" y="24" width="116" height="48" rx="6"/>
+  <text class="dg-name" x="503.0" y="53.0" text-anchor="middle">Remote cache</text>
+  <rect class="dg-box" x="588" y="24" width="116" height="48" rx="6"/>
+  <text class="dg-name" x="646.0" y="53.0" text-anchor="middle">Database</text>
+  <path class="dg-arrow" d="M132 48 H151" marker-end="url(#cache-layers-head)"/>
+  <path class="dg-arrow" d="M275 48 H294" marker-end="url(#cache-layers-head)"/>
+  <path class="dg-arrow" d="M418 48 H437" marker-end="url(#cache-layers-head)"/>
+  <path class="dg-arrow" d="M561 48 H580" marker-end="url(#cache-layers-head)"/>
+  <path class="dg-bracket-accent" d="M159 110 V116 H704 V110"/>
+  <text class="dg-mono dg-accent-text" x="704" y="134" text-anchor="end">A BROWSER HIT SAVES THE REQUEST</text>
+  <path class="dg-bracket-accent" d="M302 152 V158 H704 V152"/>
+  <text class="dg-mono dg-accent-text" x="704" y="176" text-anchor="end">A CDN HIT SAVES THE TRIP TO THE SERVERS</text>
+  <path class="dg-bracket-accent" d="M588 194 V200 H704 V194"/>
+  <text class="dg-mono dg-accent-text" x="704" y="218" text-anchor="end">A REMOTE CACHE HIT SAVES THE DATABASE WORK</text>
+</svg>

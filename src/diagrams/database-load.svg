@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 572 300" role="img" aria-labelledby="database-load-title database-load-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="database-load-title">Database load without and with a cache</title>
+  <desc id="database-load-desc">Left, no cache: 3,000 page views per second reach the database, which runs 15,000 queries per second. Right, a cache that answers 95% of requests: it answers 2,850 views, and 150 page builds per second reach the database, 750 queries per second.</desc>
+  <defs>
+    <marker id="database-load-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="database-load-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-74 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="292"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">No cache</text>
+  <rect class="dg-box" x="90" y="44" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="180.0" y="64.0" text-anchor="middle">Readers</text>
+  <text class="dg-sub" x="180.0" y="80.0" text-anchor="middle">3,000 views/s</text>
+  <rect class="dg-box-failed" x="90" y="128" width="180" height="44" rx="6"/>
+  <text class="dg-sub" x="180" y="155" text-anchor="middle">no cache</text>
+  <path class="dg-arrow" d="M180 88 V120" marker-end="url(#database-load-head)"/>
+  <text class="dg-mono dg-muted-text" x="188" y="112.0" text-anchor="start">3,000/S</text>
+  <path class="dg-arrow" d="M180 172 V212" marker-end="url(#database-load-head)"/>
+  <text class="dg-mono dg-muted-text" x="188" y="200.0" text-anchor="start">3,000/S</text>
+  <rect class="dg-box" x="90" y="220" width="180" height="50" rx="6"/>
+  <text class="dg-name" x="180.0" y="243.0" text-anchor="middle">Database</text>
+  <text class="dg-sub" x="180.0" y="259.0" text-anchor="middle">15,000 queries/s</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Cache, H = 95%</text>
+  <rect class="dg-box" x="450" y="44" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="540.0" y="64.0" text-anchor="middle">Readers</text>
+  <text class="dg-sub" x="540.0" y="80.0" text-anchor="middle">3,000 views/s</text>
+  <rect class="dg-box" x="450" y="128" width="180" height="44" rx="6"/>
+  <text class="dg-name" x="540.0" y="148.0" text-anchor="middle">Cache</text>
+  <text class="dg-sub" x="540.0" y="164.0" text-anchor="middle">answers 2,850/s</text>
+  <path class="dg-arrow" d="M540 88 V120" marker-end="url(#database-load-head)"/>
+  <text class="dg-mono dg-muted-text" x="548" y="112.0" text-anchor="start">3,000/S</text>
+  <path class="dg-arrow dg-message" d="M540 172 V212" marker-end="url(#database-load-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="548" y="200.0" text-anchor="start">150/S</text>
+  <rect class="dg-box-accent" x="450" y="220" width="180" height="50" rx="6"/>
+  <text class="dg-name" x="540.0" y="243.0" text-anchor="middle">Database</text>
+  <text class="dg-sub" x="540.0" y="259.0" text-anchor="middle">750 queries/s</text>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="key-copies-title key-copies-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="key-copies-title">Copies of a hot key on several nodes</title>
+  <desc id="key-copies-desc">Article 42 is stored as eight copies, 42#1 to 42#8, on eight cache nodes. Each read picks one copy at random. A write deletes all eight copies.</desc>
+  <defs>
+    <marker id="key-copies-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="key-copies-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="16" width="688" height="40" rx="6"/>
+  <text class="dg-name" x="360" y="41" text-anchor="middle">Readers: each read picks one copy</text>
+  <rect class="dg-box" x="16" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="53.5" y="122" text-anchor="middle">Node 1</text>
+  <text class="dg-code" x="53.5" y="140" text-anchor="middle">42#1</text>
+  <path class="dg-arrow dg-message" d="M53.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="103" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="140.5" y="122" text-anchor="middle">Node 2</text>
+  <text class="dg-code" x="140.5" y="140" text-anchor="middle">42#2</text>
+  <path class="dg-arrow" d="M140.5 56 V96" marker-end="url(#key-copies-head)"/>
+  <path class="dg-arrow dg-message" d="M140.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="190" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="227.5" y="122" text-anchor="middle">Node 3</text>
+  <text class="dg-code" x="227.5" y="140" text-anchor="middle">42#3</text>
+  <path class="dg-arrow dg-message" d="M227.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="277" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="314.5" y="122" text-anchor="middle">Node 4</text>
+  <text class="dg-code" x="314.5" y="140" text-anchor="middle">42#4</text>
+  <path class="dg-arrow dg-message" d="M314.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="364" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="401.5" y="122" text-anchor="middle">Node 5</text>
+  <text class="dg-code" x="401.5" y="140" text-anchor="middle">42#5</text>
+  <path class="dg-arrow" d="M401.5 56 V96" marker-end="url(#key-copies-head)"/>
+  <path class="dg-arrow dg-message" d="M401.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="451" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="488.5" y="122" text-anchor="middle">Node 6</text>
+  <text class="dg-code" x="488.5" y="140" text-anchor="middle">42#6</text>
+  <path class="dg-arrow dg-message" d="M488.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="538" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="575.5" y="122" text-anchor="middle">Node 7</text>
+  <text class="dg-code" x="575.5" y="140" text-anchor="middle">42#7</text>
+  <path class="dg-arrow" d="M575.5 56 V96" marker-end="url(#key-copies-head)"/>
+  <path class="dg-arrow dg-message" d="M575.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box" x="625" y="104" width="75" height="44" rx="6"/>
+  <text class="dg-name" x="662.5" y="122" text-anchor="middle">Node 8</text>
+  <text class="dg-code" x="662.5" y="140" text-anchor="middle">42#8</text>
+  <path class="dg-arrow dg-message" d="M662.5 196 V156" marker-end="url(#key-copies-head-accent)"/>
+  <rect class="dg-box-accent" x="16" y="196" width="688" height="40" rx="6"/>
+  <text class="dg-name" x="360" y="221" text-anchor="middle">Writer: deletes each copy, one by one</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg class="diagram-svg" viewBox="0 0 662 280" role="img" aria-labelledby="scan-admission-title scan-admission-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="scan-admission-title">A scan with and without admission</title>
+  <desc id="scan-admission-desc">The cache holds the hot articles 41 to 46. A crawler reads the old articles 7 to 12, once each. Left, LRU: each crawler read pushes out a hot article, and the cache ends with 7 to 12. Right, LRU with an admission policy: the crawler's articles are read less often than the hot ones, so they are not admitted, and the cache keeps 41 to 46.</desc>
+  <defs>
+    <marker id="scan-admission-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="scan-admission-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-29 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="272"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">LRU</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">LRU with admission</text>
+  <text class="dg-mono dg-muted-text" x="180" y="62" text-anchor="middle">CACHE BEFORE</text>
+  <rect class="dg-chip" x="45" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="65.0" y="89.0" text-anchor="middle">41</text>
+  <rect class="dg-chip" x="91" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="111.0" y="89.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="137" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="157.0" y="89.0" text-anchor="middle">43</text>
+  <rect class="dg-chip" x="183" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="203.0" y="89.0" text-anchor="middle">44</text>
+  <rect class="dg-chip" x="229" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="249.0" y="89.0" text-anchor="middle">45</text>
+  <rect class="dg-chip" x="275" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="295.0" y="89.0" text-anchor="middle">46</text>
+  <text class="dg-mono dg-muted-text" x="180" y="126" text-anchor="middle">CRAWLER READS</text>
+  <rect class="dg-chip" x="45" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="65.0" y="153.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="91" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="111.0" y="153.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="137" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="157.0" y="153.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="183" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="203.0" y="153.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="229" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="153.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="275" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="295.0" y="153.0" text-anchor="middle">12</text>
+  <text class="dg-mono dg-muted-text" x="180" y="190" text-anchor="middle">CACHE AFTER</text>
+  <rect class="dg-box-accent" x="45" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="65.0" y="217.0" text-anchor="middle">7</text>
+  <rect class="dg-box-accent" x="91" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="111.0" y="217.0" text-anchor="middle">8</text>
+  <rect class="dg-box-accent" x="137" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="157.0" y="217.0" text-anchor="middle">9</text>
+  <rect class="dg-box-accent" x="183" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="203.0" y="217.0" text-anchor="middle">10</text>
+  <rect class="dg-box-accent" x="229" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="249.0" y="217.0" text-anchor="middle">11</text>
+  <rect class="dg-box-accent" x="275" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="295.0" y="217.0" text-anchor="middle">12</text>
+  <text class="dg-result" x="180" y="262" text-anchor="middle">Hot articles pushed out</text>
+  <text class="dg-mono dg-muted-text" x="540" y="62" text-anchor="middle">CACHE BEFORE</text>
+  <rect class="dg-chip" x="405" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="425.0" y="89.0" text-anchor="middle">41</text>
+  <rect class="dg-chip" x="451" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="471.0" y="89.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="497" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="517.0" y="89.0" text-anchor="middle">43</text>
+  <rect class="dg-chip" x="543" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="563.0" y="89.0" text-anchor="middle">44</text>
+  <rect class="dg-chip" x="589" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="609.0" y="89.0" text-anchor="middle">45</text>
+  <rect class="dg-chip" x="635" y="72" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="655.0" y="89.0" text-anchor="middle">46</text>
+  <text class="dg-mono dg-muted-text" x="540" y="126" text-anchor="middle">CRAWLER READS</text>
+  <rect class="dg-chip" x="405" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="425.0" y="153.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="451" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="471.0" y="153.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="497" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="517.0" y="153.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="543" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="563.0" y="153.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="589" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="609.0" y="153.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="635" y="136" width="40" height="26" rx="4"/>
+  <text class="dg-code-muted" x="655.0" y="153.0" text-anchor="middle">12</text>
+  <text class="dg-mono dg-muted-text" x="540" y="190" text-anchor="middle">CACHE AFTER</text>
+  <rect class="dg-box-accent" x="405" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="425.0" y="217.0" text-anchor="middle">41</text>
+  <rect class="dg-box-accent" x="451" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="471.0" y="217.0" text-anchor="middle">42</text>
+  <rect class="dg-box-accent" x="497" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="517.0" y="217.0" text-anchor="middle">43</text>
+  <rect class="dg-box-accent" x="543" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="563.0" y="217.0" text-anchor="middle">44</text>
+  <rect class="dg-box-accent" x="589" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="609.0" y="217.0" text-anchor="middle">45</text>
+  <rect class="dg-box-accent" x="635" y="200" width="40" height="26" rx="4"/>
+  <text class="dg-code" x="655.0" y="217.0" text-anchor="middle">46</text>
+  <text class="dg-result" x="540" y="262" text-anchor="middle">The scan stays out</text>
+  </g>
+</svg>

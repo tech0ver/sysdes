@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 712 236" role="img" aria-labelledby="vary-language-title vary-language-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="vary-language-title">One URL in two languages, with and without Vary</title>
+  <desc id="vary-language-desc">One URL returns English or German by the Accept-Language header. Left, without Vary: the CDN keeps one copy under the URL, so a German reader after an English one gets the English page. Right, with Vary: Accept-Language: the CDN keeps a copy per language, and the German reader gets the German page.</desc>
+  <defs>
+    <marker id="vary-language-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="vary-language-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-4 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="228"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">No Vary</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Vary: Accept-Language</text>
+  <rect class="dg-chip" x="20" y="52" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="85.0" y="71.0" text-anchor="middle">reader 1: en</text>
+  <path class="dg-arrow" d="M150 67 H202" marker-end="url(#vary-language-head)"/>
+  <rect class="dg-box" x="210" y="52" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="275.0" y="71.0" text-anchor="middle">gets en page</text>
+  <rect class="dg-chip" x="20" y="98" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="85.0" y="117.0" text-anchor="middle">reader 2: de</text>
+  <path class="dg-arrow" d="M150 113 H202" marker-end="url(#vary-language-head)"/>
+  <rect class="dg-box-accent" x="210" y="98" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="275.0" y="117.0" text-anchor="middle">gets en page</text>
+  <text class="dg-mono dg-muted-text" x="20" y="166" text-anchor="start">CDN KEYS</text>
+  <rect class="dg-chip" x="20" y="176" width="160" height="28" rx="4"/>
+  <text class="dg-code" x="100.0" y="194.0" text-anchor="middle">/articles/42</text>
+  <rect class="dg-chip" x="380" y="52" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="445.0" y="71.0" text-anchor="middle">reader 1: en</text>
+  <path class="dg-arrow" d="M510 67 H562" marker-end="url(#vary-language-head)"/>
+  <rect class="dg-box" x="570" y="52" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="635.0" y="71.0" text-anchor="middle">gets en page</text>
+  <rect class="dg-chip" x="380" y="98" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="445.0" y="117.0" text-anchor="middle">reader 2: de</text>
+  <path class="dg-arrow" d="M510 113 H562" marker-end="url(#vary-language-head)"/>
+  <rect class="dg-box" x="570" y="98" width="130" height="30" rx="4"/>
+  <text class="dg-code" x="635.0" y="117.0" text-anchor="middle">gets de page</text>
+  <text class="dg-mono dg-muted-text" x="380" y="166" text-anchor="start">CDN KEYS</text>
+  <rect class="dg-chip" x="380" y="176" width="152" height="28" rx="4"/>
+  <text class="dg-code" x="456.0" y="194.0" text-anchor="middle">/articles/42 + en</text>
+  <rect class="dg-chip" x="542" y="176" width="152" height="28" rx="4"/>
+  <text class="dg-code" x="618.0" y="194.0" text-anchor="middle">/articles/42 + de</text>
+  </g>
+</svg>

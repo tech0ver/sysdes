@@ -52,6 +52,11 @@ const consistency = (anchor, section) => ({
 	label: `Consistency: ${section}`,
 });
 
+const caching = (anchor, section) => ({
+	href: `fundamentals/caching/#${anchor}`,
+	label: `Caching: ${section}`,
+});
+
 export const glossarySkip = ['SQL Server', 'commit the layout'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
@@ -124,7 +129,7 @@ export const glossary = [
 		short: 'How long a piece of data stays valid before it must be refreshed or dropped.',
 		explanation:
 			'Caches and DNS answers use a TTL to limit how long stored data can be reused. A short TTL means fresher data but more refreshes. A long TTL means fewer refreshes, but changes spread more slowly.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Time_to_live', label: 'Wikipedia: Time to live' },
+		readMore: caching('putting-a-cache-in-front-of-the-database', 'Putting a cache in front of the database'),
 	},
 	{
 		id: 'osi',
@@ -2058,6 +2063,7 @@ export const glossary = [
 		explanation:
 			'When the holder stops renewing it, the lease runs out and another holder can take over. A lease that guards outside work needs a fencing token or work that is safe to repeat, since a paused holder may still act.',
 		readMore: consistency('committing-through-a-majority', 'Committing through a majority'),
+		explainedIn: ['fundamentals/caching'],
 	},
 	{
 		id: 'fencing-token',
@@ -2358,6 +2364,7 @@ export const glossary = [
 		explanation:
 			'Even when keys spread evenly, some key values carry far more data or requests, such as one large tenant. The busiest shard runs out of capacity first, while others sit idle.',
 		readMore: sharding('one-tenant-bigger-than-the-rest', 'One tenant bigger than the rest'),
+		explainedIn: ['fundamentals/caching'],
 	},
 	{
 		id: 'hot-shard',
@@ -2529,5 +2536,222 @@ export const glossary = [
 		explanation:
 			'It cuts tail latency for a small share of extra load, because the second copy goes out only after a short wait.',
 		readMore: { href: 'https://www.barroso.org/publications/TheTailAtScale.pdf', label: 'Dean, Barroso: The Tail at Scale' },
+	},
+	{
+		id: 'cache',
+		term: 'Cache',
+		aliases: ['cache', 'caches', 'Cache', 'Caches'],
+		short: 'A copy of data or results that is faster to read than the original and can be rebuilt from it.',
+		explanation:
+			'It cuts latency and load on the source while it answers most reads. Losing it makes a system slower but not wrong.',
+		readMore: caching('when-a-cache-pays-off', 'When a cache pays off'),
+	},
+	{
+		id: 'hit-ratio',
+		term: 'Hit ratio',
+		aliases: ['hit ratio', 'Hit ratio', 'hit rate', 'Hit rate'],
+		short: 'The share of requests a cache answers without going to the source.',
+		explanation:
+			'It sets how much load and latency a cache removes. It depends on the number of keys, the memory, and how often values change.',
+		readMore: caching('when-a-cache-pays-off', 'When a cache pays off'),
+	},
+	{
+		id: 'five-minute-rule',
+		term: 'Five-minute rule',
+		aliases: ['five-minute rule', 'Five-minute rule'],
+		short: 'A cost rule: data read again within a break-even interval is cheaper to keep in memory than on disk.',
+		explanation:
+			'The interval comes from the price of RAM and the price of disk reads. A 2019 study found about five minutes for 4 KB pages in front of SATA SSDs.',
+		readMore: caching('when-a-cache-pays-off', 'When a cache pays off'),
+	},
+	{
+		id: 'remote-cache',
+		term: 'Remote cache',
+		aliases: ['remote cache', 'remote caches', 'Remote cache'],
+		short: 'A cache on its own servers that all app servers use over the network.',
+		explanation:
+			'The app servers share one copy of each value and can delete it in one place. Each read costs a network round trip.',
+		readMore: caching('putting-a-cache-in-front-of-the-database', 'Putting a cache in front of the database'),
+	},
+	{
+		id: 'cache-aside',
+		term: 'Cache-aside',
+		aliases: ['cache-aside', 'Cache-aside'],
+		short: 'A caching pattern where the app reads the cache, loads a miss from the source, and stores it.',
+		explanation:
+			'Only values that are read get cached, and the app can bypass a failed cache if it limits the load on the source. Every read path must handle the miss.',
+		readMore: caching('putting-a-cache-in-front-of-the-database', 'Putting a cache in front of the database'),
+	},
+	{
+		id: 'read-through',
+		term: 'Read-through',
+		aliases: ['read-through', 'Read-through'],
+		short: 'A caching pattern where the cache itself loads a missing value from the source.',
+		explanation:
+			'The miss logic lives in one place. The cache must know the source, and the app needs a planned way to the data when the cache is down.',
+		readMore: caching('putting-a-cache-in-front-of-the-database', 'Putting a cache in front of the database'),
+	},
+	{
+		id: 'cache-invalidation',
+		term: 'Invalidation',
+		aliases: ['invalidation', 'Invalidation', 'cache invalidation', 'Cache invalidation'],
+		short: 'Removing a cached copy because the original changed.',
+		explanation:
+			'The usual way is to delete the key after the write commits, so the next read loads the new value. Keep a TTL as well, since a delete can lose a race.',
+		readMore: caching('updating-the-cache-when-data-changes', 'Updating the cache when data changes'),
+	},
+	{
+		id: 'write-through',
+		term: 'Write-through',
+		aliases: ['write-through', 'Write-through'],
+		short: 'A caching pattern where each write updates the source and the cache before it returns.',
+		explanation:
+			'A read right after a write is likely to hit. Every write pays a second step, the cache fills with values that may never be read, and failed or reordered updates still need a TTL.',
+		readMore: caching('updating-the-cache-when-data-changes', 'Updating the cache when data changes'),
+	},
+	{
+		id: 'write-around',
+		term: 'Write-around',
+		aliases: ['write-around', 'Write-around'],
+		short: 'A caching pattern where writes go only to the source and the cache fills on the next miss.',
+		explanation:
+			'It keeps unread values out of the cache. Pair it with a delete of the key, or readers see the old value until its TTL ends.',
+		readMore: caching('updating-the-cache-when-data-changes', 'Updating the cache when data changes'),
+	},
+	{
+		id: 'working-set',
+		term: 'Working set',
+		aliases: ['working set', 'Working set', 'working sets'],
+		short: 'The data a system reads within a period, often a small part of all its data.',
+		explanation: 'Size a cache for the working set, not for the whole data. When it does not fit, the hit ratio falls.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'eviction',
+		term: 'Eviction',
+		aliases: ['eviction', 'evictions', 'Eviction', 'evict', 'evicted'],
+		short: 'Dropping a value from a full cache to make room for another.',
+		explanation:
+			'A policy such as LRU or LFU picks the value, whether or not the source changed. The next read of it misses.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'lru',
+		term: 'LRU',
+		expansion: 'Least Recently Used',
+		short: 'An eviction policy that drops the value read longest ago.',
+		explanation: 'It is the usual default for caches. A single pass over cold data can push out the hot values.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'lfu',
+		term: 'LFU',
+		expansion: 'Least Frequently Used',
+		short: 'An eviction policy that drops the value read least often.',
+		explanation: 'It keeps steady favorites through a scan. Its counts must decay, or values popular yesterday stay too long.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'fifo',
+		term: 'FIFO',
+		expansion: 'First In, First Out',
+		short: 'An order where the item that came first leaves first; as an eviction policy, it drops the value stored first.',
+		explanation: 'It needs less bookkeeping per read than LRU. In trace simulations it often missed about as often as LRU.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'clock-eviction',
+		term: 'CLOCK',
+		aliases: ['CLOCK'],
+		short: 'An eviction policy that goes around the values in a circle and spares a value read since its last visit.',
+		explanation: 'It behaves close to LRU with less bookkeeping per read. Databases often use it for their page caches.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'tinylfu',
+		term: 'TinyLFU',
+		aliases: ['TinyLFU', 'W-TinyLFU'],
+		short: 'A cache admission policy that lets a new value in only if it is read more often than the value it would replace.',
+		explanation: 'It keeps an approximate count of recent reads per key. One-off reads, such as a scan, mostly stay out.',
+		readMore: caching('choosing-what-to-drop-when-memory-is-full', 'Choosing what to drop when memory is full'),
+	},
+	{
+		id: 'write-behind',
+		term: 'Write-behind',
+		aliases: ['write-behind', 'Write-behind', 'write-back', 'Write-back'],
+		short: 'A caching pattern where writes go to the cache and reach the source later, in batches.',
+		explanation:
+			'It turns many small writes into a few large ones. Writes not yet flushed are lost if the cache fails, so the cache becomes a store.',
+		readMore: caching('too-many-small-writes', 'Too many small writes'),
+	},
+	{
+		id: 'private-cache',
+		term: 'Private cache',
+		aliases: ['private cache', 'private caches', 'Private cache'],
+		short: 'An HTTP cache that serves one user, such as a browser.',
+		explanation: 'It may keep personal responses. The server cannot remove a response from it before its lifetime ends.',
+		readMore: caching('caching-responses-outside-your-servers', 'Caching responses outside your servers'),
+	},
+	{
+		id: 'shared-cache',
+		term: 'Shared cache',
+		aliases: ['shared cache', 'shared caches', 'Shared cache'],
+		short: 'An HTTP cache that serves many users, such as a CDN or a reverse proxy.',
+		explanation:
+			'One stored response answers many readers. It must never store a personal response, so mark those private.',
+		readMore: caching('caching-responses-outside-your-servers', 'Caching responses outside your servers'),
+	},
+	{
+		id: 'revalidation',
+		term: 'Revalidation',
+		aliases: ['revalidation', 'Revalidation', 'revalidate', 'revalidates'],
+		short: 'Asking the server whether a stored response is still current instead of downloading it again.',
+		explanation:
+			'The cache sends the ETag or Last-Modified value back. If nothing changed, the server answers 304 Not Modified with no body.',
+		readMore: caching('checking-whether-a-copy-is-still-current', 'Checking whether a copy is still current'),
+	},
+	{
+		id: 'local-cache',
+		term: 'Local cache',
+		aliases: ['local cache', 'local caches', 'Local cache', 'in-process cache'],
+		short: 'A cache in the memory of each app server.',
+		explanation:
+			'Reads skip the network, which takes load off a hot key. Each server holds its own copy; the TTL limits local reuse, and the remote copy may already be old.',
+		readMore: caching('one-key-too-hot-for-one-cache-node', 'One key too hot for one cache node'),
+	},
+	{
+		id: 'cache-stampede',
+		term: 'Cache stampede',
+		aliases: ['cache stampede', 'cache stampedes', 'Cache stampede'],
+		short: 'Many requests missing on the same key at once and all loading it from the source.',
+		explanation:
+			'It happens when a hot key expires or is deleted. Allow one load per key and serve the old value while it runs.',
+		readMore: caching('many-misses-at-once', 'Many misses at once'),
+	},
+	{
+		id: 'request-coalescing',
+		term: 'Request coalescing',
+		aliases: ['request coalescing', 'Request coalescing', 'single flight'],
+		short: 'Letting one request load a missing value while others asking for it wait for the result.',
+		explanation: 'It turns many identical loads into one. Done per server, it leaves one load per server.',
+		readMore: caching('many-misses-at-once', 'Many misses at once'),
+	},
+	{
+		id: 'probabilistic-early-refresh',
+		term: 'Probabilistic early refresh',
+		aliases: ['probabilistic early refresh', 'Probabilistic early refresh', 'probabilistic early expiration'],
+		short: 'Refreshing a cached value before it expires, with a chance that grows near the expiry.',
+		explanation:
+			'Reads rarely refresh at the same moment, so a stampede shrinks to a few loads without a lock. It does not help after a delete.',
+		readMore: caching('many-misses-at-once', 'Many misses at once'),
+	},
+	{
+		id: 'negative-caching',
+		term: 'Negative caching',
+		aliases: ['negative caching', 'Negative caching'],
+		short: 'Caching the fact that a value does not exist, or that a call failed.',
+		explanation:
+			'Repeated requests for missing data or a failing call stop reaching the source. Give such entries a short TTL, and never share an error that depends on the user.',
+		readMore: caching('requests-for-data-that-does-not-exist', 'Requests for data that does not exist'),
 	},
 ];

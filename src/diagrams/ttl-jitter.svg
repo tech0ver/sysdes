@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 692 304" role="img" aria-labelledby="ttl-jitter-title ttl-jitter-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ttl-jitter-title">One TTL for all keys versus a random TTL</title>
+  <desc id="ttl-jitter-desc">Ten thousand keys stored at the same moment, counted per 10 seconds of expiry time on one scale. Left, the same TTL of 600 seconds: all 10,000 expire at once. Right, a TTL picked between 540 and 600 seconds: about 1,670 expire in each 10 seconds, about 170 per second.</desc>
+  <defs>
+    <marker id="ttl-jitter-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ttl-jitter-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-14 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="296"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">TTL = 600 s</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">for every key</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">TTL from 540 to 600 s</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">picked at random</text>
+  <line class="dg-line" x1="30" y1="214" x2="330" y2="214"/>
+  <line class="dg-line" x1="90.0" y1="214" x2="90.0" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="90.0" y="232" text-anchor="middle">540 S</text>
+  <line class="dg-line" x1="270.0" y1="214" x2="270.0" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="270.0" y="232" text-anchor="middle">600 S</text>
+  <rect class="dg-bar" x="241.0" y="84" width="28.0" height="130" rx="1"/>
+  <text class="dg-code" x="255.0" y="74" text-anchor="middle">10,000</text>
+  <text class="dg-result" x="180" y="288" text-anchor="middle">All 10,000 expire at once</text>
+  <text class="dg-mono dg-muted-text" x="180" y="256" text-anchor="middle">KEYS EXPIRING PER 10 S</text>
+  <line class="dg-line" x1="390" y1="214" x2="690" y2="214"/>
+  <line class="dg-line" x1="450.0" y1="214" x2="450.0" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="450.0" y="232" text-anchor="middle">540 S</text>
+  <line class="dg-line" x1="630.0" y1="214" x2="630.0" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="630.0" y="232" text-anchor="middle">600 S</text>
+  <rect class="dg-bar" x="451.0" y="192.3" width="28.0" height="21.7" rx="1"/>
+  <rect class="dg-bar" x="481.0" y="192.3" width="28.0" height="21.7" rx="1"/>
+  <rect class="dg-bar" x="511.0" y="192.3" width="28.0" height="21.7" rx="1"/>
+  <rect class="dg-bar" x="541.0" y="192.3" width="28.0" height="21.7" rx="1"/>
+  <rect class="dg-bar" x="571.0" y="192.3" width="28.0" height="21.7" rx="1"/>
+  <rect class="dg-bar" x="601.0" y="192.3" width="28.0" height="21.7" rx="1"/>
+  <text class="dg-code" x="540" y="182.3" text-anchor="middle">~1,670 each</text>
+  <text class="dg-result" x="540" y="288" text-anchor="middle">About 170 expire per second</text>
+  <text class="dg-mono dg-muted-text" x="540" y="256" text-anchor="middle">KEYS EXPIRING PER 10 S</text>
+  </g>
+</svg>

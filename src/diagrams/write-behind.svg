@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 720 170" role="img" aria-labelledby="write-behind-title write-behind-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="write-behind-title">Counting views in the cache</title>
+  <desc id="write-behind-desc">Readers send 3,000 view counts per second. Each adds one to a counter in the cache that holds the views since the last flush, such as 42: 9,120. Every 5 seconds a flush adds these sums to the database: with about 300 articles read in that time, about 300 updates instead of 15,000 single writes.</desc>
+  <defs>
+    <marker id="write-behind-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="write-behind-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="50" width="140" height="64" rx="6"/>
+  <text class="dg-name" x="86.0" y="80.0" text-anchor="middle">Readers</text>
+  <text class="dg-sub" x="86.0" y="96.0" text-anchor="middle">3,000 views/s</text>
+  <path class="dg-arrow" d="M156 82 H242" marker-end="url(#write-behind-head)"/>
+  <text class="dg-mono dg-muted-text" x="203.0" y="74" text-anchor="middle">+1 EACH</text>
+  <rect class="dg-box" x="250" y="24" width="200" height="118" rx="6"/>
+  <text class="dg-name" x="350" y="42" text-anchor="middle">Cache</text>
+  <text class="dg-sub" x="350" y="58" text-anchor="middle">views since the last flush</text>
+  <rect class="dg-chip" x="280" y="66" width="140" height="20" rx="4"/>
+  <text class="dg-code" x="350.0" y="80.0" text-anchor="middle">42: 9,120</text>
+  <rect class="dg-chip" x="280" y="90" width="140" height="20" rx="4"/>
+  <text class="dg-code" x="350.0" y="104.0" text-anchor="middle">17: 3,404</text>
+  <rect class="dg-chip" x="280" y="114" width="140" height="20" rx="4"/>
+  <text class="dg-code" x="350.0" y="128.0" text-anchor="middle">9: 1,288</text>
+  <path class="dg-arrow dg-message" d="M450 82 H548" marker-end="url(#write-behind-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="503.0" y="74" text-anchor="middle">SUMS EVERY 5 S</text>
+  <rect class="dg-box" x="556" y="50" width="148" height="64" rx="6"/>
+  <text class="dg-name" x="630.0" y="80.0" text-anchor="middle">Database</text>
+  <text class="dg-sub" x="630.0" y="96.0" text-anchor="middle">~300 updates/flush</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg class="diagram-svg" viewBox="0 0 720 350" role="img" aria-labelledby="region-delete-order-title region-delete-order-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="region-delete-order-title">Deleting before and after the follower has the write</title>
+  <desc id="region-delete-order-desc">A region's cache fills from the region's follower. Left: the delete arrives from the leader's region before the follower has applied version 2; a reader misses, reads version 1 from the follower, and stores it. Right: the delete comes from the follower's own change log after it has applied version 2, so the next miss loads version 2.</desc>
+  <defs>
+    <marker id="region-delete-order-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="region-delete-order-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="342"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Delete from the leader's log</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">arrives before the follower has v2</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Delete from the follower's log</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">sent after the follower has v2</text>
+  <text class="dg-mono dg-muted-text" x="60" y="56" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="60" y1="64" x2="60" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="180" y="56" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="180" y1="64" x2="180" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="300" y="56" text-anchor="middle">READER</text>
+  <line class="dg-lifeline" x1="300" y1="64" x2="300" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="112" y="82" text-anchor="middle">DELETE 42, LEADER'S LOG</text>
+  <path class="dg-arrow" d="M8 90 H172" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="240.0" y="114" text-anchor="middle">GET 42</text>
+  <path class="dg-arrow" d="M300 122 H188" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="240.0" y="142" text-anchor="middle">MISS</text>
+  <path class="dg-arrow" d="M180 150 H292" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="240" y="170" text-anchor="middle">READ 42</text>
+  <path class="dg-arrow" d="M300 178 H68" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-accent-text" x="240" y="198" text-anchor="middle">v1</text>
+  <path class="dg-arrow dg-message" d="M60 206 H292" marker-end="url(#region-delete-order-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="240.0" y="226" text-anchor="middle">SET v1</text>
+  <path class="dg-arrow dg-message" d="M300 234 H188" marker-end="url(#region-delete-order-head-accent)"/>
+  <rect class="dg-box" x="12.0" y="250" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="60.0" y="266.0" text-anchor="middle">applies v2</text>
+  <text class="dg-result" x="180" y="334" text-anchor="middle">The cache gets v1</text>
+  <text class="dg-mono dg-muted-text" x="420" y="56" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="420" y1="64" x2="420" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="540" y="56" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="540" y1="64" x2="540" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="660" y="56" text-anchor="middle">READER</text>
+  <line class="dg-lifeline" x1="660" y1="64" x2="660" y2="300"/>
+  <rect class="dg-box" x="372.0" y="76" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="420.0" y="92.0" text-anchor="middle">applies v2</text>
+  <text class="dg-mono dg-muted-text" x="480.0" y="114" text-anchor="middle">DELETE 42</text>
+  <path class="dg-arrow" d="M420 122 H532" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="600.0" y="142" text-anchor="middle">GET 42</text>
+  <path class="dg-arrow" d="M660 150 H548" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="600.0" y="170" text-anchor="middle">MISS</text>
+  <path class="dg-arrow" d="M540 178 H652" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="600" y="198" text-anchor="middle">READ 42</text>
+  <path class="dg-arrow" d="M660 206 H428" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="600" y="226" text-anchor="middle">v2</text>
+  <path class="dg-arrow" d="M420 234 H652" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-mono dg-muted-text" x="600.0" y="254" text-anchor="middle">SET v2</text>
+  <path class="dg-arrow" d="M660 262 H548" marker-end="url(#region-delete-order-head)"/>
+  <text class="dg-result" x="540" y="334" text-anchor="middle">The cache gets v2</text>
+</svg>

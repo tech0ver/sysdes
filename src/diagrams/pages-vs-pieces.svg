@@ -1,0 +1,64 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="pages-vs-pieces-title pages-vs-pieces-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pages-vs-pieces-title">Caching whole pages versus pieces</title>
+  <desc id="pages-vs-pieces-desc">Left, whole pages: article 42 appears in four cached pages, the article page, the home page, the World page, and the author page, so a headline edit must delete four keys. Right, pieces: the home, World, and author lists hold only article IDs, and the article itself is one key, article:42, so the edit deletes one key.</desc>
+  <defs>
+    <marker id="pages-vs-pieces-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="pages-vs-pieces-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="292"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Whole pages</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">each page holds the articles it shows</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Pieces</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">lists hold IDs; each article is one key</text>
+  <rect class="dg-box-accent" x="16" y="60" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="30" y="83">page:article/42</text>
+  <rect class="dg-chip" x="180" y="67" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="201.0" y="82.0" text-anchor="middle">a42</text>
+  <rect class="dg-box-accent" x="16" y="106" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="30" y="129">page:home</text>
+  <rect class="dg-chip" x="180" y="113" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="201.0" y="128.0" text-anchor="middle">a42</text>
+  <rect class="dg-chip" x="230" y="113" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="251.0" y="128.0" text-anchor="middle">a17</text>
+  <rect class="dg-chip" x="280" y="113" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="301.0" y="128.0" text-anchor="middle">a9</text>
+  <rect class="dg-box-accent" x="16" y="152" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="30" y="175">page:world</text>
+  <rect class="dg-chip" x="180" y="159" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="201.0" y="174.0" text-anchor="middle">a42</text>
+  <rect class="dg-chip" x="230" y="159" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="251.0" y="174.0" text-anchor="middle">a8</text>
+  <rect class="dg-box-accent" x="16" y="198" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="30" y="221">page:author/7</text>
+  <rect class="dg-chip" x="180" y="205" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="201.0" y="220.0" text-anchor="middle">a42</text>
+  <rect class="dg-chip" x="230" y="205" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="251.0" y="220.0" text-anchor="middle">a3</text>
+  <text class="dg-result" x="180" y="262" text-anchor="middle">A headline edit deletes 4 keys</text>
+  <rect class="dg-box-accent" x="376" y="60" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="390" y="83">article:42</text>
+  <rect class="dg-chip" x="540" y="67" width="42" height="22" rx="4"/>
+  <text class="dg-code" x="561.0" y="82.0" text-anchor="middle">a42</text>
+  <rect class="dg-box" x="376" y="106" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="390" y="129">list:home</text>
+  <rect class="dg-chip" x="540" y="113" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="561.0" y="128.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="590" y="113" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="611.0" y="128.0" text-anchor="middle">17</text>
+  <rect class="dg-chip" x="640" y="113" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="661.0" y="128.0" text-anchor="middle">9</text>
+  <rect class="dg-box" x="376" y="152" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="390" y="175">list:world</text>
+  <rect class="dg-chip" x="540" y="159" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="561.0" y="174.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="590" y="159" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="611.0" y="174.0" text-anchor="middle">8</text>
+  <rect class="dg-box" x="376" y="198" width="328" height="36" rx="6"/>
+  <text class="dg-code" x="390" y="221">list:author/7</text>
+  <rect class="dg-chip" x="540" y="205" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="561.0" y="220.0" text-anchor="middle">42</text>
+  <rect class="dg-chip" x="590" y="205" width="42" height="22" rx="4"/>
+  <text class="dg-code-muted" x="611.0" y="220.0" text-anchor="middle">3</text>
+  <text class="dg-result" x="540" y="262" text-anchor="middle">A headline edit deletes 1 key</text>
+  <text class="dg-sub" x="360" y="290" text-anchor="middle">a42: the article itself; 42: only its ID</text>
+</svg>

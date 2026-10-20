@@ -1,0 +1,26 @@
+<svg class="diagram-svg" viewBox="0 0 720 214" role="img" aria-labelledby="personal-split-title personal-split-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="personal-split-title">A shared article and a private block</title>
+  <desc id="personal-split-desc">The article page has two parts. The article, the same for everyone, comes from the CDN as a public response; the CDN gets it from the app servers only on a miss. The personal block comes straight from the app servers as a private response to a separate request.</desc>
+  <defs>
+    <marker id="personal-split-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="personal-split-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="20" width="240" height="176" rx="6"/>
+  <text class="dg-name" x="136" y="42" text-anchor="middle">Article page</text>
+  <rect class="dg-box" x="32" y="58" width="208" height="56" rx="6"/>
+  <text class="dg-name" x="136.0" y="84.0" text-anchor="middle">Article 42</text>
+  <text class="dg-sub" x="136.0" y="100.0" text-anchor="middle">the same for everyone</text>
+  <rect class="dg-box-accent" x="32" y="128" width="208" height="52" rx="6"/>
+  <text class="dg-name" x="136.0" y="152.0" text-anchor="middle">For you</text>
+  <text class="dg-sub" x="136.0" y="168.0" text-anchor="middle">saved articles</text>
+  <rect class="dg-box" x="352" y="62" width="120" height="48" rx="6"/>
+  <text class="dg-name" x="412.0" y="91.0" text-anchor="middle">CDN</text>
+  <path class="dg-arrow" d="M352 86 H248" marker-end="url(#personal-split-head)"/>
+  <text class="dg-mono dg-muted-text" x="296.0" y="78" text-anchor="middle">PUBLIC</text>
+  <rect class="dg-box" x="568" y="62" width="136" height="120" rx="6"/>
+  <text class="dg-name" x="636.0" y="127.0" text-anchor="middle">App servers</text>
+  <path class="dg-arrow dg-empty" d="M568 80 H480" marker-end="url(#personal-split-head)"/>
+  <text class="dg-mono dg-muted-text" x="520.0" y="72" text-anchor="middle">ON A MISS</text>
+  <path class="dg-arrow dg-message" d="M568 154 H248" marker-end="url(#personal-split-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="404.0" y="146" text-anchor="middle">PRIVATE</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 642 350" role="img" aria-labelledby="fill-token-title fill-token-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fill-token-title">A fill token rejects the late fill</title>
+  <desc id="fill-token-desc">The same race with fill tokens. On the miss, the cache gives the reader token t1. The editor commits version 2 and deletes the key, which cancels t1. The reader tries to store version 1 with t1, and the cache rejects it. The key stays empty, and the next read loads version 2.</desc>
+  <defs>
+    <marker id="fill-token-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="fill-token-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-44 0)">
+  <text class="dg-mono dg-muted-text" x="80" y="20" text-anchor="middle">READER</text>
+  <line class="dg-lifeline" x1="80" y1="34" x2="80" y2="342"/>
+  <text class="dg-mono dg-muted-text" x="270" y="20" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="270" y1="34" x2="270" y2="342"/>
+  <text class="dg-mono dg-muted-text" x="470" y="20" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="470" y1="34" x2="470" y2="342"/>
+  <text class="dg-mono dg-muted-text" x="650" y="20" text-anchor="middle">EDITOR</text>
+  <line class="dg-lifeline" x1="650" y1="34" x2="650" y2="342"/>
+  <text class="dg-mono dg-muted-text" x="175.0" y="56" text-anchor="middle">GET 42</text>
+  <path class="dg-arrow" d="M80 64 H262" marker-end="url(#fill-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="175.0" y="86" text-anchor="middle">MISS, TOKEN t1</text>
+  <path class="dg-arrow" d="M270 94 H88" marker-end="url(#fill-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="175" y="116" text-anchor="middle">READ 42</text>
+  <path class="dg-arrow" d="M80 124 H462" marker-end="url(#fill-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="175" y="146" text-anchor="middle">v1</text>
+  <path class="dg-arrow" d="M470 154 H88" marker-end="url(#fill-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="176" text-anchor="middle">COMMIT v2</text>
+  <path class="dg-arrow" d="M650 184 H478" marker-end="url(#fill-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="560" y="206" text-anchor="middle">DELETE 42</text>
+  <path class="dg-arrow" d="M650 214 H278" marker-end="url(#fill-token-head)"/>
+  <rect class="dg-box" x="215.0" y="226" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="242.0" text-anchor="middle">t1 cancelled</text>
+  <text class="dg-mono dg-muted-text" x="175.0" y="266" text-anchor="middle">SET v1 WITH t1</text>
+  <path class="dg-arrow" d="M80 274 H262" marker-end="url(#fill-token-head)"/>
+  <text class="dg-mono dg-accent-text" x="175.0" y="296" text-anchor="middle">REJECTED</text>
+  <path class="dg-arrow dg-message" d="M270 304 H88" marker-end="url(#fill-token-head-accent)"/>
+  <rect class="dg-box-accent" x="195.0" y="318" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="334.0" text-anchor="middle">42 empty</text>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 642 296" role="img" aria-labelledby="stale-fill-race-title stale-fill-race-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stale-fill-race-title">A late fill puts the old value back</title>
+  <desc id="stale-fill-race-desc">A reader misses on article 42 and reads version 1 from the database. Then the editor commits version 2 and deletes the key, which is not in the cache. Then the reader stores version 1 in the cache, where it stays until its TTL ends.</desc>
+  <defs>
+    <marker id="stale-fill-race-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stale-fill-race-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-44 0)">
+  <text class="dg-mono dg-muted-text" x="80" y="20" text-anchor="middle">READER</text>
+  <line class="dg-lifeline" x1="80" y1="34" x2="80" y2="288"/>
+  <text class="dg-mono dg-muted-text" x="270" y="20" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="270" y1="34" x2="270" y2="288"/>
+  <text class="dg-mono dg-muted-text" x="470" y="20" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="470" y1="34" x2="470" y2="288"/>
+  <text class="dg-mono dg-muted-text" x="650" y="20" text-anchor="middle">EDITOR</text>
+  <line class="dg-lifeline" x1="650" y1="34" x2="650" y2="288"/>
+  <text class="dg-mono dg-muted-text" x="175.0" y="56" text-anchor="middle">GET 42</text>
+  <path class="dg-arrow" d="M80 64 H262" marker-end="url(#stale-fill-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="175.0" y="86" text-anchor="middle">MISS</text>
+  <path class="dg-arrow" d="M270 94 H88" marker-end="url(#stale-fill-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="175" y="116" text-anchor="middle">READ 42</text>
+  <path class="dg-arrow" d="M80 124 H462" marker-end="url(#stale-fill-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="175" y="146" text-anchor="middle">v1</text>
+  <path class="dg-arrow" d="M470 154 H88" marker-end="url(#stale-fill-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="560.0" y="176" text-anchor="middle">COMMIT v2</text>
+  <path class="dg-arrow" d="M650 184 H478" marker-end="url(#stale-fill-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="560" y="206" text-anchor="middle">DELETE 42</text>
+  <path class="dg-arrow" d="M650 214 H278" marker-end="url(#stale-fill-race-head)"/>
+  <text class="dg-mono dg-accent-text" x="175.0" y="236" text-anchor="middle">SET v1</text>
+  <path class="dg-arrow dg-message" d="M80 244 H262" marker-end="url(#stale-fill-race-head-accent)"/>
+  <rect class="dg-box-accent" x="195.0" y="258" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="274.0" text-anchor="middle">42 = v1 until TTL</text>
+  <rect class="dg-box" x="420.0" y="258" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="470.0" y="274.0" text-anchor="middle">42 = v2</text>
+  </g>
+</svg>

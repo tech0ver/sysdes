@@ -1,0 +1,26 @@
+<svg class="diagram-svg" viewBox="0 0 562 236" role="img" aria-labelledby="ttl-window-title ttl-window-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ttl-window-title">A copy that lives until its TTL ends</title>
+  <desc id="ttl-window-desc">The cache stores version 1 with a TTL of 60 seconds. At 20 seconds the database gets version 2. A read at 30 seconds still gets version 1 from the cache. At 60 seconds the cache drops the value, and the next read misses and loads version 2.</desc>
+  <defs>
+    <marker id="ttl-window-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ttl-window-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-79 0)">
+  <text class="dg-mono dg-muted-text" x="195.0" y="24" text-anchor="middle">CACHE</text>
+  <text class="dg-mono dg-muted-text" x="525.0" y="24" text-anchor="middle">DATABASE</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="24" text-anchor="middle">TIME</text>
+  <line class="dg-lifeline" x1="195.0" y1="32" x2="195.0" y2="228"/>
+  <line class="dg-lifeline" x1="525.0" y1="32" x2="525.0" y2="228"/>
+  <path class="dg-arrow" d="M360.0 32 V228" marker-end="url(#ttl-window-head)"/>
+  <rect class="dg-box" x="95.0" y="42" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="195.0" y="59" text-anchor="middle">0 s: store v1, TTL 60 s</text>
+  <rect class="dg-box" x="425.0" y="78" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="525.0" y="95" text-anchor="middle">20 s: write v2</text>
+  <rect class="dg-box-accent" x="95.0" y="114" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="195.0" y="131" text-anchor="middle">30 s: read gets v1</text>
+  <rect class="dg-box" x="95.0" y="150" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="195.0" y="167" text-anchor="middle">60 s: v1 dropped</text>
+  <rect class="dg-box" x="95.0" y="186" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="195.0" y="203" text-anchor="middle">61 s: miss, load v2</text>
+  </g>
+</svg>

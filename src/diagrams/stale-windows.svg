@@ -1,0 +1,26 @@
+<svg class="diagram-svg" viewBox="0 0 720 196" role="img" aria-labelledby="stale-windows-title stale-windows-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stale-windows-title">Windows for old copies after the lifetime ends</title>
+  <desc id="stale-windows-desc">With max-age=60, a copy is fresh for 60 seconds. With stale-while-revalidate=30, from 60 to 90 seconds a cache may serve the old copy while it fetches a new one. With stale-if-error=600, from 60 to 660 seconds it may serve the old copy when the server fails.</desc>
+  <defs>
+    <marker id="stale-windows-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stale-windows-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-code" x="16" y="40">max-age=60</text>
+  <rect class="dg-box" x="220.0" y="20" width="43.199999999999996" height="30" rx="4"/>
+  <text class="dg-sub" x="273.2" y="40">fresh</text>
+  <text class="dg-code" x="16" y="84">stale-while-revalidate=30</text>
+  <rect class="dg-box-accent" x="263.2" y="64" width="21.599999999999998" height="30" rx="4"/>
+  <text class="dg-sub" x="294.8" y="84">old copy, refresh in the background</text>
+  <text class="dg-code" x="16" y="128">stale-if-error=600</text>
+  <rect class="dg-box-accent" x="263.2" y="108" width="432.0" height="30" rx="4"/>
+  <text class="dg-sub" x="275.2" y="128">old copy if the server fails</text>
+  <line class="dg-line" x1="220" y1="156" x2="695.2" y2="156"/>
+  <line class="dg-line" x1="220.0" y1="156" x2="220.0" y2="162"/>
+  <text class="dg-mono dg-muted-text" x="220.0" y="174" text-anchor="middle">0 S</text>
+  <line class="dg-line" x1="263.2" y1="156" x2="263.2" y2="162"/>
+  <text class="dg-mono dg-muted-text" x="263.2" y="174" text-anchor="middle">60 S</text>
+  <line class="dg-line" x1="695.2" y1="156" x2="695.2" y2="162"/>
+  <text class="dg-mono dg-muted-text" x="695.2" y="174" text-anchor="middle">660 S</text>
+  <line class="dg-line" x1="284.8" y1="156" x2="284.8" y2="176"/>
+  <text class="dg-mono dg-muted-text" x="284.8" y="188" text-anchor="middle">90 S</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 587 330" role="img" aria-labelledby="revalidation-title revalidation-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="revalidation-title">Revalidation with an ETag</title>
+  <desc id="revalidation-desc">The browser gets the page with its body and ETag v7. When its lifetime ends, the browser asks again with If-None-Match v7, and the server answers 304 Not Modified with no body. After an edit, the same question gets a full 200 answer with the new body and ETag v8.</desc>
+  <defs>
+    <marker id="revalidation-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="revalidation-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-59 0)">
+  <text class="dg-mono dg-muted-text" x="140" y="20" text-anchor="middle">BROWSER</text>
+  <line class="dg-lifeline" x1="140" y1="34" x2="140" y2="318"/>
+  <text class="dg-mono dg-muted-text" x="580" y="20" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="580" y1="34" x2="580" y2="318"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="56" text-anchor="middle">GET /articles/42</text>
+  <path class="dg-arrow" d="M140 64 H572" marker-end="url(#revalidation-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="88" text-anchor="middle">200, BODY, ETAG "v7"</text>
+  <path class="dg-arrow" d="M580 96 H148" marker-end="url(#revalidation-head)"/>
+  <rect class="dg-box-failed" x="75.0" y="110" width="130" height="24" rx="4"/>
+  <text class="dg-code-muted" x="140.0" y="126.0" text-anchor="middle">lifetime ends</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="158" text-anchor="middle">GET, IF-NONE-MATCH: "v7"</text>
+  <path class="dg-arrow" d="M140 166 H572" marker-end="url(#revalidation-head)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="190" text-anchor="middle">304 NOT MODIFIED, NO BODY</text>
+  <path class="dg-arrow dg-message" d="M580 198 H148" marker-end="url(#revalidation-head-accent)"/>
+  <rect class="dg-box" x="530.0" y="212" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="580.0" y="228.0" text-anchor="middle">edit: v8</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="258" text-anchor="middle">GET, IF-NONE-MATCH: "v7"</text>
+  <path class="dg-arrow" d="M140 266 H572" marker-end="url(#revalidation-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="290" text-anchor="middle">200, BODY, ETAG "v8"</text>
+  <path class="dg-arrow" d="M580 298 H148" marker-end="url(#revalidation-head)"/>
+  </g>
+</svg>

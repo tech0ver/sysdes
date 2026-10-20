@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 720 250" role="img" aria-labelledby="missing-ids-title missing-ids-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="missing-ids-title">Filtering IDs that cannot exist</title>
+  <desc id="missing-ids-desc">Requests pass an ID check with a Bloom filter of existing IDs. An ID that is surely absent gets a 404 without a lookup. The rest go to the cache, which holds articles and "not found" entries for missing IDs, and only misses reach the database. A recent ID that the filter may not have yet goes to the database even when the filter says no.</desc>
+  <defs>
+    <marker id="missing-ids-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="missing-ids-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="40" width="112" height="64" rx="6"/>
+  <text class="dg-name" x="72.0" y="70.0" text-anchor="middle">Requests</text>
+  <text class="dg-sub" x="72.0" y="86.0" text-anchor="middle">any ID</text>
+  <path class="dg-arrow" d="M128 72 H188" marker-end="url(#missing-ids-head)"/>
+  <text class="dg-mono dg-muted-text" x="162.0" y="64" text-anchor="middle">ALL</text>
+  <rect class="dg-box" x="196" y="40" width="140" height="64" rx="6"/>
+  <text class="dg-name" x="266.0" y="70.0" text-anchor="middle">ID check</text>
+  <text class="dg-sub" x="266.0" y="86.0" text-anchor="middle">format, Bloom filter</text>
+  <path class="dg-arrow" d="M336 72 H396" marker-end="url(#missing-ids-head)"/>
+  <text class="dg-mono dg-muted-text" x="370.0" y="64" text-anchor="middle">MAY EXIST</text>
+  <rect class="dg-box" x="404" y="24" width="164" height="96" rx="6"/>
+  <text class="dg-name" x="486" y="46" text-anchor="middle">Cache</text>
+  <rect class="dg-chip" x="418" y="58" width="136" height="22" rx="4"/>
+  <text class="dg-code" x="486.0" y="73.0" text-anchor="middle">42: article</text>
+  <rect class="dg-box-accent" x="418" y="86" width="136" height="22" rx="4"/>
+  <text class="dg-code" x="486.0" y="101.0" text-anchor="middle">9999998: none</text>
+  <path class="dg-arrow" d="M568 72 H608" marker-end="url(#missing-ids-head)"/>
+  <text class="dg-mono dg-muted-text" x="592.0" y="64" text-anchor="middle">MISS</text>
+  <rect class="dg-box" x="616" y="40" width="88" height="64" rx="6"/>
+  <text class="dg-name" x="660.0" y="77.0" text-anchor="middle">Database</text>
+  <path class="dg-arrow" d="M236 104 V178" marker-end="url(#missing-ids-head)"/>
+  <text class="dg-mono dg-muted-text" x="226" y="149.0" text-anchor="end">SURELY ABSENT</text>
+  <rect class="dg-box" x="166" y="186" width="140" height="40" rx="4"/>
+  <text class="dg-code" x="236.0" y="210.0" text-anchor="middle">404, no lookup</text>
+  <path class="dg-arrow dg-empty" d="M296 104 V160 H660 V112" marker-end="url(#missing-ids-head)"/>
+  <text class="dg-mono dg-muted-text" x="478" y="152" text-anchor="middle">RECENT ID, FILTER MAY LAG</text>
+</svg>

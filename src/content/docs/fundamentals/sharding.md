@@ -12,7 +12,7 @@ A task tracker for companies runs on one database. Each company has a workspace 
 As the number of companies grows, two things grow that followers cannot take over: the writes, because every follower repeats them, and the data, because every follower stores all of it. At peak hours the leader runs out of CPU and disk I/O, and its disk keeps filling. Before splitting the data, try the cheaper steps:
 
 1. **Vertical scaling**: move the leader to a bigger machine. The code does not change, and one machine goes a long way today. But the largest machine is a hard ceiling, and work on one huge database gets slow: backups, restores, new indexes, and cleanup of old row versions can take hours.
-2. Serve more reads from followers and a cache, so the leader spends its capacity on writes. <!-- link: fundamentals/caching -->
+2. Serve more reads from followers and a [cache](../caching/#when-a-cache-pays-off), so the leader spends its capacity on writes.
 3. Keep less data on the leader: move old rows, such as activity older than a year, to cheaper storage.
 4. **Functional partitioning**: move whole features to their own databases. Billing and notifications each get a database, files go to [object storage](../databases/#storing-files), and full-text search goes to a search engine. Each database is smaller and can be tuned for its load. The price is that joins and transactions no longer cross these databases.
 
@@ -322,7 +322,7 @@ For writes, split the hot key into many keys. **Salting** adds a suffix to the k
 
 ::diagram{name="salting"}
 
-For reads, salting does not help, since every read would ask all the suffixes. Put a cache in front of the hot key, or add followers to its shard, so that many copies share the reads. <!-- link: fundamentals/caching -->
+For reads, salting does not help, since every read would ask all the suffixes. Put a cache in front of the hot key, or add followers to its shard, so that many copies share the reads (more on [one key too hot for one cache node](../caching/#one-key-too-hot-for-one-cache-node)).
 
 :::distinguish
 A hot shard carries more load than the rest, but each of its keys fits one shard, so moving keys away or splitting the shard helps. A hot key alone needs more than one shard can give: only a finer key or more copies of it help.
