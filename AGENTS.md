@@ -4,7 +4,14 @@ Context for coding agents. How to install and run the project: see [README.md](R
 
 ## Project
 
-A personal system design knowledge base: articles for interview preparation, published as a static site.
+A system design knowledge base, published as a static site. It covers the field in breadth and depth: how systems work, from one machine to many regions; reusable solutions; specific technologies, hands-on; and the engineering practices of building, changing, and running systems, such as testing, code review, and releases. People management is out of scope.
+
+The site serves two focuses:
+
+- Interview: design a system in about an hour and defend the choices.
+- Engineering: build, change, and run real systems.
+
+For now, write every topic in full breadth and depth. A reader skips what their focus does not need. How the site will let each focus pick its depth is decided later.
 
 - Stack: Astro + Starlight, package manager Bun.
 - Language: everything in English — content, code, comments, commit messages. Use simple English that non-native readers can follow.
@@ -16,7 +23,7 @@ A personal system design knowledge base: articles for interview preparation, pub
 - `src/content/docs/` — pages (Markdown/MDX). File path = URL. `index.mdx` is the home page.
 - `src/styles/theme.css` — color theme (based on Skeleton's "Wintry"). Change colors here only, through Starlight `--sl-*` variables.
 - `src/styles/ui.css` — reading styles, navigation, and controls for the redesigned UI. Layout component overrides live in `src/components/`; keep palette changes in `theme.css`.
-- `src/components/SidebarSublist.astro` — the sidebar list; `plannedByGroup` holds the planned topics the site shows without links. It is separate from ARTICLES.md: only topics the author chose to show are there.
+- `src/components/SidebarSublist.astro` — the sidebar list; `plannedByGroup` holds the planned topics the site shows without links, and `plannedTopLevel` the planned single pages outside the groups (Framework). They are separate from ARTICLES.md: only topics the author chose to show are there.
 - `src/components/ThemeToggle.astro` — replaces Starlight's `ThemeSelect`. Two-way dark/light toggle; with no saved choice the site follows `prefers-color-scheme`.
 - `src/data/glossary.mjs` — the site glossary, one entry per term. Rules for entries are in WRITING.md.
 - `src/plugins/glossary.mjs` — Markdown plugin that adds a tooltip to the first mention of each glossary term on a page. Astro 7 renders Markdown with Sätteri, so this is a Sätteri hast plugin (set in `markdown.processor` in `astro.config.mjs`), not a remark plugin.
