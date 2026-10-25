@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 703 190" role="img" aria-labelledby="work-mem-total-title work-mem-total-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="work-mem-total-title">How work_mem adds up</title>
+  <desc id="work-mem-total-desc">One query with a sort and a hash step, run by a leader and two parallel workers. Each sort may take work_mem, 4 MB by default, and each hash twice that, 8 MB: 36 MB for the query. One hundred such queries at once may take 3.6 GB.</desc>
+  <defs>
+    <marker id="work-mem-total-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="work-mem-total-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="170" y="30" text-anchor="middle">SORT</text>
+  <text class="dg-mono dg-muted-text" x="260" y="30" text-anchor="middle">HASH</text>
+  <text class="dg-code" x="16" y="62">leader</text>
+  <rect class="dg-box" x="130" y="42" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="170.0" y="61.0" text-anchor="middle">4 MB</text>
+  <rect class="dg-box" x="220" y="42" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="260.0" y="61.0" text-anchor="middle">8 MB</text>
+  <text class="dg-code" x="16" y="102">worker 1</text>
+  <rect class="dg-box" x="130" y="82" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="170.0" y="101.0" text-anchor="middle">4 MB</text>
+  <rect class="dg-box" x="220" y="82" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="260.0" y="101.0" text-anchor="middle">8 MB</text>
+  <text class="dg-code" x="16" y="142">worker 2</text>
+  <rect class="dg-box" x="130" y="122" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="170.0" y="141.0" text-anchor="middle">4 MB</text>
+  <rect class="dg-box" x="220" y="122" width="80" height="30" rx="4"/>
+  <text class="dg-code" x="260.0" y="141.0" text-anchor="middle">8 MB</text>
+  <path class="dg-bracket-accent" d="M310 42 H316 V152 H310" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="324" y="101.0" text-anchor="start">36 MB PER QUERY</text>
+  <path class="dg-arrow" d="M470 97 H522" marker-end="url(#work-mem-total-head)"/>
+  <rect class="dg-box-accent" x="530" y="72" width="156" height="50" rx="6"/>
+  <text class="dg-name" x="608.0" y="95.0" text-anchor="middle">3.6 GB</text>
+  <text class="dg-sub" x="608.0" y="111.0" text-anchor="middle">100 such queries</text>
+  </g>
+</svg>

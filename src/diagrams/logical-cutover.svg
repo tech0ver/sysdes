@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 690 300" role="img" aria-labelledby="logical-cutover-title logical-cutover-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="logical-cutover-title">Switching to the new server with logical replication</title>
+  <desc id="logical-cutover-desc">The pooler pauses, and jobs that bypass it stop, so no writer reaches the old server. The new server applies the last changes from the old one. Sequences are moved forward on the new server, the pooler is pointed at it, and it resumes. Writes wait from the pause to the resume, usually seconds.</desc>
+  <defs>
+    <marker id="logical-cutover-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="logical-cutover-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-27 0)">
+  <text class="dg-mono dg-muted-text" x="200" y="24" text-anchor="middle">POOLER</text>
+  <line class="dg-lifeline" x1="200" y1="34" x2="200" y2="288"/>
+  <text class="dg-mono dg-muted-text" x="420" y="24" text-anchor="middle">OLD, 14</text>
+  <line class="dg-lifeline" x1="420" y1="34" x2="420" y2="288"/>
+  <text class="dg-mono dg-muted-text" x="620" y="24" text-anchor="middle">NEW, 18</text>
+  <line class="dg-lifeline" x1="620" y1="34" x2="620" y2="288"/>
+  <rect class="dg-box" x="145.0" y="50" width="110" height="28" rx="4"/>
+  <text class="dg-code" x="200.0" y="68.0" text-anchor="middle">PAUSE</text>
+  <text class="dg-mono dg-muted-text" x="520.0" y="96" text-anchor="middle">LAST CHANGES</text>
+  <path class="dg-arrow" d="M420 104 H612" marker-end="url(#logical-cutover-head)"/>
+  <rect class="dg-box" x="540.0" y="116" width="160" height="28" rx="4"/>
+  <text class="dg-code" x="620.0" y="134.0" text-anchor="middle">applies the rest</text>
+  <rect class="dg-box" x="540.0" y="160" width="160" height="28" rx="4"/>
+  <text class="dg-code" x="620.0" y="178.0" text-anchor="middle">move sequences</text>
+  <text class="dg-mono dg-muted-text" x="310.0" y="214" text-anchor="middle">POINT TO NEW</text>
+  <path class="dg-arrow" d="M200 222 H612" marker-end="url(#logical-cutover-head)"/>
+  <rect class="dg-box" x="145.0" y="236" width="110" height="28" rx="4"/>
+  <text class="dg-code" x="200.0" y="254.0" text-anchor="middle">RESUME</text>
+  <path class="dg-bracket-accent" d="M130 64 H124 V250 H130" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="116" y="160" text-anchor="end">WRITES WAIT</text>
+  </g>
+</svg>

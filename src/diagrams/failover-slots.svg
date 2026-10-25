@@ -1,0 +1,40 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="failover-slots-title failover-slots-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="failover-slots-title">A logical slot that survives failover</title>
+  <desc id="failover-slots-desc">Left, before failover: the primary has the WAL up to 0/5200 and a logical slot for the search consumer; the standby has flushed the WAL up to 0/5100 and keeps a synced copy of the slot. The consumer gets changes only up to 0/5100, what the standby already has. Right, after failover: the old primary is gone, the standby is promoted with the slot, and the consumer goes on from 0/5100.</desc>
+  <defs>
+    <marker id="failover-slots-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="failover-slots-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="312"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Before failover</text>
+  <rect class="dg-box" x="20" y="50" width="200" height="60" rx="6"/>
+  <text class="dg-name" x="120.0" y="78.0" text-anchor="middle">Primary</text>
+  <text class="dg-sub" x="120.0" y="94.0" text-anchor="middle">WAL to 0/5200</text>
+  <rect class="dg-box" x="20" y="210" width="200" height="60" rx="6"/>
+  <text class="dg-name" x="120.0" y="238.0" text-anchor="middle">Standby</text>
+  <text class="dg-sub" x="120.0" y="254.0" text-anchor="middle">WAL to 0/5100</text>
+  <text class="dg-code" x="120" y="290" text-anchor="middle">slot search_sub</text>
+  <text class="dg-code" x="120" y="130" text-anchor="middle">slot search_sub</text>
+  <path class="dg-arrow" d="M120 140 V202" marker-end="url(#failover-slots-head)"/>
+  <text class="dg-mono dg-muted-text" x="128" y="179.0" text-anchor="start">WAL</text>
+  <rect class="dg-box" x="250" y="130" width="96" height="60" rx="6"/>
+  <text class="dg-name" x="298.0" y="158.0" text-anchor="middle">Search</text>
+  <text class="dg-sub" x="298.0" y="174.0" text-anchor="middle">consumer</text>
+  <path class="dg-arrow dg-message" d="M220 80 H298 V122" marker-end="url(#failover-slots-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="230" y="72">UP TO 0/5100</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">After failover</text>
+  <rect class="dg-box-failed" x="380" y="50" width="200" height="60" rx="6"/>
+  <text class="dg-name-muted" x="480.0" y="78.0" text-anchor="middle">Old primary</text>
+  <text class="dg-sub" x="480.0" y="94.0" text-anchor="middle">WAL to 0/5200</text>
+  <rect class="dg-box" x="380" y="210" width="200" height="60" rx="6"/>
+  <text class="dg-name" x="480.0" y="238.0" text-anchor="middle">New primary</text>
+  <text class="dg-sub" x="480.0" y="254.0" text-anchor="middle">WAL to 0/5100</text>
+  <text class="dg-code" x="480" y="290" text-anchor="middle">slot search_sub</text>
+  <line class="dg-cross" x1="473" y1="129" x2="487" y2="143"/>
+  <line class="dg-cross" x1="473" y1="143" x2="487" y2="129"/>
+  <rect class="dg-box" x="610" y="130" width="96" height="60" rx="6"/>
+  <text class="dg-name" x="658.0" y="158.0" text-anchor="middle">Search</text>
+  <text class="dg-sub" x="658.0" y="174.0" text-anchor="middle">consumer</text>
+  <path class="dg-arrow dg-message" d="M580 240 H658 V198" marker-end="url(#failover-slots-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="590" y="258">FROM 0/5100</text>
+</svg>

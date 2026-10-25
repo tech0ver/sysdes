@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 331 300" role="img" aria-labelledby="skip-locked-title skip-locked-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="skip-locked-title">Three workers claim jobs with SKIP LOCKED</title>
+  <desc id="skip-locked-desc">Nine jobs in run_at order. Worker A claims the first three and locks them. Worker B reads from the top, skips the three locked jobs, and claims the next three. Worker C skips six and claims the last three. No worker waits for another.</desc>
+  <defs>
+    <marker id="skip-locked-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="skip-locked-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-220 0)">
+  <text class="dg-mono dg-muted-text" x="380.0" y="26" text-anchor="middle">JOBS, BY RUN_AT</text>
+  <rect class="dg-box" x="300" y="36" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="52.0" text-anchor="middle">88121 · email</text>
+  <rect class="dg-box" x="300" y="64" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="80.0" text-anchor="middle">88122 · resize</text>
+  <rect class="dg-box" x="300" y="92" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="108.0" text-anchor="middle">88123 · email</text>
+  <rect class="dg-box" x="300" y="120" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="136.0" text-anchor="middle">88124 · email</text>
+  <rect class="dg-box" x="300" y="148" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="164.0" text-anchor="middle">88125 · resize</text>
+  <rect class="dg-box" x="300" y="176" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="192.0" text-anchor="middle">88126 · email</text>
+  <rect class="dg-box" x="300" y="204" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="220.0" text-anchor="middle">88127 · resize</text>
+  <rect class="dg-box" x="300" y="232" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="248.0" text-anchor="middle">88128 · email</text>
+  <rect class="dg-box" x="300" y="260" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="380.0" y="276.0" text-anchor="middle">88129 · email</text>
+  <path class="dg-line" d="M468 36 H474 V116 H468" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="482" y="80.0" text-anchor="start">WORKER A</text>
+  <path class="dg-line" d="M468 120 H474 V200 H468" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="482" y="164.0" text-anchor="start">WORKER B</text>
+  <path class="dg-line" d="M468 204 H474 V284 H468" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="482" y="248.0" text-anchor="start">WORKER C</text>
+  <path class="dg-arrow dg-message" d="M270 40 V132 H292" marker-end="url(#skip-locked-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="270" y="30" text-anchor="middle">B</text>
+  <path class="dg-arrow dg-message" d="M240 40 V216 H292" marker-end="url(#skip-locked-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="240" y="30" text-anchor="middle">C</text>
+  </g>
+</svg>

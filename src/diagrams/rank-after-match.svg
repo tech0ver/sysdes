@@ -1,0 +1,40 @@
+<svg class="diagram-svg" viewBox="0 0 703 220" role="img" aria-labelledby="rank-after-match-title rank-after-match-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="rank-after-match-title">Ranking reads the tsvector of every match</title>
+  <desc id="rank-after-match-desc">Top: the GIN index finds 100,000 homes that match beach, flat, and quiet, and ts_rank reads the tsvector of each of them from the table to pick the top 20. Bottom: with city = Lisbon in the same query, 800 homes match, and ranking reads 800 tsvectors.</desc>
+  <defs>
+    <marker id="rank-after-match-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="rank-after-match-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="28">SEARCH WORDS ONLY</text>
+  <rect class="dg-box" x="16" y="38" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="81.0" y="61.0" text-anchor="middle">GIN index</text>
+  <text class="dg-sub" x="81.0" y="77.0" text-anchor="middle">beach, flat, quiet</text>
+  <rect class="dg-box" x="196" y="38" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="261.0" y="61.0" text-anchor="middle">Matches</text>
+  <text class="dg-sub" x="261.0" y="77.0" text-anchor="middle">100,000 rows</text>
+  <rect class="dg-box-accent" x="376" y="38" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="441.0" y="61.0" text-anchor="middle">ts_rank</text>
+  <text class="dg-sub" x="441.0" y="77.0" text-anchor="middle">reads 100,000</text>
+  <rect class="dg-box" x="556" y="38" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="621.0" y="68.0" text-anchor="middle">Top 20</text>
+  <path class="dg-arrow" d="M146 63 H188" marker-end="url(#rank-after-match-head)"/>
+  <path class="dg-arrow" d="M326 63 H368" marker-end="url(#rank-after-match-head)"/>
+  <path class="dg-arrow" d="M506 63 H548" marker-end="url(#rank-after-match-head)"/>
+  <text class="dg-mono dg-muted-text" x="16" y="128">WITH city = 'Lisbon'</text>
+  <rect class="dg-box" x="16" y="138" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="81.0" y="161.0" text-anchor="middle">GIN index</text>
+  <text class="dg-sub" x="81.0" y="177.0" text-anchor="middle">+ city filter</text>
+  <rect class="dg-box" x="196" y="138" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="261.0" y="161.0" text-anchor="middle">Matches</text>
+  <text class="dg-sub" x="261.0" y="177.0" text-anchor="middle">800 rows</text>
+  <rect class="dg-box" x="376" y="138" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="441.0" y="161.0" text-anchor="middle">ts_rank</text>
+  <text class="dg-sub" x="441.0" y="177.0" text-anchor="middle">reads 800</text>
+  <rect class="dg-box" x="556" y="138" width="130" height="50" rx="6"/>
+  <text class="dg-name" x="621.0" y="168.0" text-anchor="middle">Top 20</text>
+  <path class="dg-arrow" d="M146 163 H188" marker-end="url(#rank-after-match-head)"/>
+  <path class="dg-arrow" d="M326 163 H368" marker-end="url(#rank-after-match-head)"/>
+  <path class="dg-arrow" d="M506 163 H548" marker-end="url(#rank-after-match-head)"/>
+  </g>
+</svg>

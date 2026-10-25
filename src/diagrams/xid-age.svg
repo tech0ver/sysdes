@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 694 150" role="img" aria-labelledby="xid-age-title xid-age-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="xid-age-title">What happens as the oldest unfrozen XID ages</title>
+  <desc id="xid-age-desc">The age of the oldest unfrozen XID in a database, not to scale. Up to 200 million, normal vacuuming freezes rows. From 200 million, an anti-wraparound vacuum runs and does not yield. With 40 million IDs left before the limit of about 2.1 billion, PostgreSQL writes warnings. With 3 million left, it refuses new writing transactions; reads still work.</desc>
+  <defs>
+    <marker id="xid-age-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="xid-age-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-13 0)">
+  <text class="dg-mono dg-muted-text" x="30" y="24">AGE OF THE OLDEST UNFROZEN XID, NOT TO SCALE</text>
+  <rect class="dg-chip" x="30" y="36" width="170" height="26" rx="0"/>
+  <text class="dg-sub" x="115.0" y="116" text-anchor="middle">normal vacuuming</text>
+  <text class="dg-sub" x="115.0" y="132" text-anchor="middle">freezes rows</text>
+  <rect class="dg-chip" x="200" y="36" width="230" height="26" rx="0"/>
+  <text class="dg-sub" x="315.0" y="116" text-anchor="middle">anti-wraparound vacuum</text>
+  <text class="dg-sub" x="315.0" y="132" text-anchor="middle">runs and does not yield</text>
+  <rect class="dg-chip" x="430" y="36" width="150" height="26" rx="0"/>
+  <text class="dg-sub" x="505.0" y="116" text-anchor="middle">warnings</text>
+  <text class="dg-sub" x="505.0" y="132" text-anchor="middle">in the log</text>
+  <rect class="dg-box-accent" x="580" y="36" width="110" height="26" rx="0"/>
+  <text class="dg-sub" x="635.0" y="116" text-anchor="middle">no new writes</text>
+  <text class="dg-sub" x="635.0" y="132" text-anchor="middle">reads still work</text>
+  <line class="dg-line" x1="30" y1="62" x2="30" y2="70"/>
+  <text class="dg-mono dg-muted-text" x="30" y="86" text-anchor="start">0</text>
+  <line class="dg-line" x1="200" y1="62" x2="200" y2="70"/>
+  <text class="dg-mono dg-muted-text" x="200" y="86" text-anchor="middle">200 M</text>
+  <line class="dg-line" x1="430" y1="62" x2="430" y2="70"/>
+  <text class="dg-mono dg-muted-text" x="430" y="86" text-anchor="middle">LIMIT − 40 M</text>
+  <line class="dg-line" x1="580" y1="62" x2="580" y2="70"/>
+  <text class="dg-mono dg-accent-text" x="580" y="86" text-anchor="middle">LIMIT − 3 M</text>
+  <line class="dg-line" x1="690" y1="62" x2="690" y2="70"/>
+  <text class="dg-mono dg-muted-text" x="690" y="86" text-anchor="end">2.1 B</text>
+  </g>
+</svg>

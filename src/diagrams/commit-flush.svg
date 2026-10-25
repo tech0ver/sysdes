@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 655 330" role="img" aria-labelledby="commit-flush-title commit-flush-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="commit-flush-title">One WAL flush returns several commits</title>
+  <desc id="commit-flush-desc">Transactions T1, T2, and T3 each append a commit record to the WAL. One fsync writes all three records to the WAL file, and then all three COMMITs return. The changed data pages reach the data files later, at a checkpoint.</desc>
+  <defs>
+    <marker id="commit-flush-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="commit-flush-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-47 0)">
+  <text class="dg-mono dg-muted-text" x="70" y="24" text-anchor="middle">T1</text>
+  <line class="dg-lifeline" x1="70" y1="34" x2="70" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="170" y="24" text-anchor="middle">T2</text>
+  <line class="dg-lifeline" x1="170" y1="34" x2="170" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="270" y="24" text-anchor="middle">T3</text>
+  <line class="dg-lifeline" x1="270" y1="34" x2="270" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="460" y="24" text-anchor="middle">WAL FILE</text>
+  <line class="dg-lifeline" x1="460" y1="34" x2="460" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="610" y="24" text-anchor="middle">DATA FILES</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="314"/>
+  <path class="dg-arrow" d="M70 66 H452" marker-end="url(#commit-flush-head)"/>
+  <text class="dg-mono dg-muted-text" x="366" y="60" text-anchor="middle">T1 COMMIT</text>
+  <path class="dg-arrow" d="M170 94 H452" marker-end="url(#commit-flush-head)"/>
+  <text class="dg-mono dg-muted-text" x="366" y="88" text-anchor="middle">T2 COMMIT</text>
+  <path class="dg-arrow" d="M270 122 H452" marker-end="url(#commit-flush-head)"/>
+  <text class="dg-mono dg-muted-text" x="366" y="116" text-anchor="middle">T3 COMMIT</text>
+  <rect class="dg-box-accent" x="410.0" y="142" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="460.0" y="160.0" text-anchor="middle">one fsync</text>
+  <path class="dg-arrow" d="M460 196 H78" marker-end="url(#commit-flush-head)"/>
+  <text class="dg-mono dg-muted-text" x="366" y="190" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M460 224 H178" marker-end="url(#commit-flush-head)"/>
+  <text class="dg-mono dg-muted-text" x="366" y="218" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M460 252 H278" marker-end="url(#commit-flush-head)"/>
+  <text class="dg-mono dg-muted-text" x="366" y="246" text-anchor="middle">OK</text>
+  <text class="dg-mono dg-muted-text" x="610" y="264" text-anchor="middle">AT A CHECKPOINT</text>
+  <rect class="dg-box" x="535.0" y="274" width="150" height="28" rx="4"/>
+  <text class="dg-code" x="610.0" y="292.0" text-anchor="middle">pages 7, 12, 31</text>
+  </g>
+</svg>

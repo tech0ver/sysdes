@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 268" role="img" aria-labelledby="page-lookup-title page-lookup-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="page-lookup-title">Where a backend finds a page</title>
+  <desc id="page-lookup-desc">A backend reads three pages of a table. Page 7 is in shared buffers, so no file is read. Page 12 is missing from shared buffers but sits in the OS page cache, so the file read takes no disk access. Page 31 is in neither and is read from the disk. Page 7 is held in both shared buffers and the OS page cache, so it takes memory twice.</desc>
+  <defs>
+    <marker id="page-lookup-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="page-lookup-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="240" y="8" width="420" height="32" rx="6"/>
+  <text class="dg-name" x="450.0" y="29.0" text-anchor="middle">Backend</text>
+  <text class="dg-name" x="16" y="94" text-anchor="start">Shared buffers</text>
+  <text class="dg-sub" x="16" y="110" text-anchor="start">PostgreSQL memory</text>
+  <text class="dg-name" x="16" y="164" text-anchor="start">OS page cache</text>
+  <text class="dg-sub" x="16" y="180" text-anchor="start">kernel memory</text>
+  <text class="dg-name" x="16" y="234" text-anchor="start">Data file</text>
+  <text class="dg-sub" x="16" y="250" text-anchor="start">disk</text>
+  <line class="dg-rule" x1="16" y1="131" x2="704" y2="131"/>
+  <line class="dg-rule" x1="16" y1="201" x2="704" y2="201"/>
+  <rect class="dg-box-accent" x="262.0" y="83" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="300.0" y="99.0" text-anchor="middle">page 7</text>
+  <rect class="dg-box-accent" x="262.0" y="153" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="300.0" y="169.0" text-anchor="middle">page 7</text>
+  <rect class="dg-box" x="412.0" y="153" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="169.0" text-anchor="middle">page 12</text>
+  <rect class="dg-box" x="262.0" y="223" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="300.0" y="239.0" text-anchor="middle">page 7</text>
+  <rect class="dg-box" x="412.0" y="223" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="239.0" text-anchor="middle">page 12</text>
+  <rect class="dg-box" x="562.0" y="223" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="239.0" text-anchor="middle">page 31</text>
+  <path class="dg-arrow" d="M300 40 V81" marker-end="url(#page-lookup-head)"/>
+  <path class="dg-arrow" d="M450 40 V151" marker-end="url(#page-lookup-head)"/>
+  <text class="dg-mono dg-muted-text" x="460" y="100">MISS</text>
+  <path class="dg-arrow" d="M600 40 V221" marker-end="url(#page-lookup-head)"/>
+  <text class="dg-mono dg-muted-text" x="610" y="100">MISS</text>
+  <text class="dg-mono dg-muted-text" x="610" y="170">MISS</text>
+</svg>

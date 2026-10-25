@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 676 330" role="img" aria-labelledby="xid-circle-title xid-circle-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="xid-circle-title">The same row as the current XID moves on</title>
+  <desc id="xid-circle-desc">XIDs are compared on a circle: about 2 billion IDs behind the current one count as the past, and about 2 billion ahead as the future. A row written by XID 100 million is shown twice. Left, the current XID is 1.5 billion: the row is 1.4 billion behind, in the past, and visible. Right, the current XID has moved on to 2.3 billion: the row is 2.2 billion behind, past the half of the circle, so it looks like the future and disappears, unless vacuuming froze it before.</desc>
+  <defs>
+    <marker id="xid-circle-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="xid-circle-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-22 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <path class="dg-open-line" d="M180.0 68.0 A92 92 0 0 0 180.0 252.0" fill="none"/>
+  <path class="dg-open-line dg-empty" d="M180.0 68.0 A92 92 0 0 1 180.0 252.0" fill="none"/>
+  <circle class="dg-dot-muted" cx="180.0" cy="68.0" r="5"/>
+  <text class="dg-mono dg-muted-text" x="180" y="54.0" text-anchor="middle">CURRENT XID 1.5 B</text>
+  <text class="dg-mono dg-muted-text" x="78" y="164" text-anchor="end">PAST</text>
+  <text class="dg-mono dg-muted-text" x="282" y="164" text-anchor="start">FUTURE</text>
+  <circle class="dg-dot-muted" cx="98.3" cy="202.3" r="6"/>
+  <text class="dg-mono dg-muted-text" x="112.3" y="206.3">ROW, XID 100 M</text>
+  <text class="dg-result" x="180" y="316" text-anchor="middle">row visible</text>
+  <path class="dg-open-line" d="M540.0 68.0 A92 92 0 0 0 540.0 252.0" fill="none"/>
+  <path class="dg-open-line dg-empty" d="M540.0 68.0 A92 92 0 0 1 540.0 252.0" fill="none"/>
+  <circle class="dg-dot-muted" cx="540.0" cy="68.0" r="5"/>
+  <text class="dg-mono dg-muted-text" x="540" y="54.0" text-anchor="middle">CURRENT XID 2.3 B</text>
+  <text class="dg-mono dg-muted-text" x="438" y="164" text-anchor="end">PAST</text>
+  <text class="dg-mono dg-muted-text" x="642" y="164" text-anchor="start">FUTURE</text>
+  <circle class="dg-dot" cx="547.1" cy="251.7" r="6"/>
+  <text class="dg-mono dg-accent-text" x="559.1" y="271.7">ROW, XID 100 M</text>
+  <text class="dg-result" x="540" y="316" text-anchor="middle">row hidden</text>
+  </g>
+</svg>

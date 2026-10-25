@@ -1,0 +1,22 @@
+<svg class="diagram-svg" viewBox="0 0 709 200" role="img" aria-labelledby="upgrade-paths-title upgrade-paths-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="upgrade-paths-title">How long writes stop on each upgrade path</title>
+  <desc id="upgrade-paths-desc">Dump and restore: writes stop for hours. pg_upgrade with --link: writes stop for minutes. Logical replication: the new server copies the data and catches up while the service runs, and writes stop only for seconds at the switch.</desc>
+  <defs>
+    <marker id="upgrade-paths-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="upgrade-paths-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="250" y="24" text-anchor="start">WRITES STOPPED</text>
+  <text class="dg-name" x="16" y="63" text-anchor="start">Dump and restore</text>
+  <rect class="dg-bar" x="250" y="44" width="400" height="28" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="660" y="62">HOURS</text>
+  <text class="dg-name" x="16" y="113" text-anchor="start">pg_upgrade --link</text>
+  <rect class="dg-bar" x="250" y="94" width="70" height="28" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="330" y="112">MINUTES</text>
+  <text class="dg-name" x="16" y="163" text-anchor="start">Logical replication</text>
+  <rect class="dg-box-failed" x="250" y="144" width="300" height="28" rx="4"/>
+  <text class="dg-code-muted" x="400.0" y="162.0" text-anchor="middle">copy, catch up: service runs</text>
+  <rect class="dg-bar" x="554" y="144" width="6" height="28" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="570" y="162">SECONDS</text>
+  </g>
+</svg>

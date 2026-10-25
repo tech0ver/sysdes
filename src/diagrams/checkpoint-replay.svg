@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 678 150" role="img" aria-labelledby="checkpoint-replay-title checkpoint-replay-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="checkpoint-replay-title">Which WAL a crash recovery replays</title>
+  <desc id="checkpoint-replay-desc">The WAL as a row of segments, oldest on the left. Checkpoints started at 10:00 and at 10:05, and the 10:05 checkpoint completed. The server crashed at 10:08. Recovery replays the WAL from the start of the 10:05 checkpoint to the crash; the WAL before it is no longer needed and can be reused.</desc>
+  <defs>
+    <marker id="checkpoint-replay-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="checkpoint-replay-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-13 0)">
+  <rect class="dg-chip" x="30" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="96" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="162" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="228" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="294" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="360" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="426" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="492" y="56" width="62" height="30" rx="4"/>
+  <rect class="dg-chip" x="558" y="56" width="62" height="30" rx="4"/>
+  <line class="dg-line" x1="94" y1="38" x2="94" y2="96"/>
+  <text class="dg-mono dg-muted-text" x="94" y="30" text-anchor="middle">CHECKPOINT 10:00</text>
+  <line class="dg-line" x1="358" y1="38" x2="358" y2="96"/>
+  <text class="dg-mono dg-muted-text" x="358" y="30" text-anchor="middle">CHECKPOINT 10:05</text>
+  <line class="dg-cross" x1="630" y1="63" x2="646" y2="79"/>
+  <line class="dg-cross" x1="630" y1="79" x2="646" y2="63"/>
+  <text class="dg-mono dg-muted-text" x="638" y="30" text-anchor="middle">CRASH 10:08</text>
+  <path class="dg-line" d="M30 100 V106 H354 V100" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="192.0" y="122" text-anchor="middle">NOT NEEDED, REUSED</text>
+  <path class="dg-bracket-accent" d="M362 100 V106 H638 V100" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="500.0" y="122" text-anchor="middle">REPLAYED</text>
+  </g>
+</svg>

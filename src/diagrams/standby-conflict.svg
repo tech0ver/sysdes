@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="standby-conflict-title standby-conflict-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="standby-conflict-title">A query on a standby and vacuuming on the primary</title>
+  <desc id="standby-conflict-desc">Both panels: a long query on the standby reads row version v1. Left, hot_standby_feedback off: vacuuming on the primary removes v1, the standby delays replaying that change for up to 30 seconds, and then cancels the query. Right, feedback on: the standby tells the primary it still needs v1, vacuuming keeps it, and the query finishes; the dead row stays on the primary until then.</desc>
+  <defs>
+    <marker id="standby-conflict-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="standby-conflict-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="312"/>
+  <text class="dg-code" x="180" y="22" text-anchor="middle">hot_standby_feedback = off</text>
+  <text class="dg-mono dg-muted-text" x="80" y="50" text-anchor="middle">PRIMARY</text>
+  <line class="dg-lifeline" x1="80" y1="60" x2="80" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="280" y="50" text-anchor="middle">STANDBY</text>
+  <line class="dg-lifeline" x1="280" y1="60" x2="280" y2="270"/>
+  <rect class="dg-box" x="225.0" y="70" width="110" height="160" rx="4"/>
+  <text class="dg-code" x="280" y="87" text-anchor="middle">query on v1</text>
+  <rect class="dg-box" x="15.0" y="92" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="80.0" y="110.0" text-anchor="middle">vacuum: drop v1</text>
+  <text class="dg-mono dg-muted-text" x="130" y="132" text-anchor="middle">REPLAY</text>
+  <path class="dg-arrow" d="M80 140 H217" marker-end="url(#standby-conflict-head)"/>
+  <path class="dg-bracket-accent" d="M242 144 H236 V224 H242" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="248" y="180">REPLAY</text>
+  <text class="dg-mono dg-accent-text" x="248" y="194">WAITS 30 S</text>
+  <line class="dg-cross" x1="273" y1="237" x2="287" y2="251"/>
+  <line class="dg-cross" x1="273" y1="251" x2="287" y2="237"/>
+  <text class="dg-result" x="180" y="304" text-anchor="middle">query cancelled</text>
+  <text class="dg-code" x="540" y="22" text-anchor="middle">hot_standby_feedback = on</text>
+  <text class="dg-mono dg-muted-text" x="440" y="50" text-anchor="middle">PRIMARY</text>
+  <line class="dg-lifeline" x1="440" y1="60" x2="440" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="640" y="50" text-anchor="middle">STANDBY</text>
+  <line class="dg-lifeline" x1="640" y1="60" x2="640" y2="270"/>
+  <rect class="dg-box" x="585.0" y="70" width="110" height="180" rx="4"/>
+  <text class="dg-code" x="640" y="87" text-anchor="middle">query on v1</text>
+  <text class="dg-mono dg-accent-text" x="490" y="92" text-anchor="middle">NEED V1</text>
+  <path class="dg-arrow dg-message" d="M585 100 H448" marker-end="url(#standby-conflict-head-accent)"/>
+  <rect class="dg-box" x="375.0" y="120" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="440.0" y="138.0" text-anchor="middle">vacuum keeps v1</text>
+  <text class="dg-result" x="540" y="304" text-anchor="middle">query finishes</text>
+</svg>

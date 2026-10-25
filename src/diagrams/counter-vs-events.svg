@@ -1,0 +1,53 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="counter-vs-events-title counter-vs-events-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="counter-vs-events-title">One counter row and appended event rows</title>
+  <desc id="counter-vs-events-desc">Left: every view updates one row, so the workers wait for its lock one after another. Right: every view inserts a row of its own, the inserts do not wait for each other, and a job adds them into the counter. In a test with 100 workers, the single row took 3.10 s and the separate rows 2.13 s.</desc>
+  <defs>
+    <marker id="counter-vs-events-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="counter-vs-events-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="312"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">One row</text>
+  <rect class="dg-box" x="20" y="50" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="75.0" y="71.0" text-anchor="middle">worker 1</text>
+  <rect class="dg-box" x="20" y="96" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="75.0" y="117.0" text-anchor="middle">worker 2</text>
+  <rect class="dg-box" x="20" y="142" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="75.0" y="163.0" text-anchor="middle">worker 3</text>
+  <rect class="dg-box" x="20" y="188" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="75.0" y="209.0" text-anchor="middle">worker 100</text>
+  <path class="dg-arrow" d="M130 67 H184 V128 H202" marker-end="url(#counter-vs-events-head)"/>
+  <path class="dg-arrow dg-message dg-empty" d="M130 113 H168 V136 H202" marker-end="url(#counter-vs-events-head-accent)"/>
+  <path class="dg-arrow dg-message dg-empty" d="M130 159 H168 V144 H202" marker-end="url(#counter-vs-events-head-accent)"/>
+  <path class="dg-arrow dg-message dg-empty" d="M130 205 H184 V152 H202" marker-end="url(#counter-vs-events-head-accent)"/>
+  <rect class="dg-box" x="210" y="116" width="130" height="44" rx="6"/>
+  <text class="dg-code" x="275.0" y="142.0" text-anchor="middle">views = 41</text>
+  <text class="dg-mono dg-accent-text" x="275" y="106" text-anchor="middle">ONE LOCK</text>
+  <text class="dg-result" x="180" y="306" text-anchor="middle">3.10 s</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">A row per view</text>
+  <rect class="dg-box" x="380" y="50" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="435.0" y="71.0" text-anchor="middle">worker 1</text>
+  <rect class="dg-box" x="380" y="96" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="435.0" y="117.0" text-anchor="middle">worker 2</text>
+  <rect class="dg-box" x="380" y="142" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="435.0" y="163.0" text-anchor="middle">worker 3</text>
+  <rect class="dg-box" x="380" y="188" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="435.0" y="209.0" text-anchor="middle">worker 100</text>
+  <path class="dg-arrow" d="M490 67 H552" marker-end="url(#counter-vs-events-head)"/>
+  <rect class="dg-chip" x="560" y="54" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="615.0" y="71.0" text-anchor="middle">1042 · +1</text>
+  <path class="dg-arrow" d="M490 113 H552" marker-end="url(#counter-vs-events-head)"/>
+  <rect class="dg-chip" x="560" y="100" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="615.0" y="117.0" text-anchor="middle">1042 · +1</text>
+  <path class="dg-arrow" d="M490 159 H552" marker-end="url(#counter-vs-events-head)"/>
+  <rect class="dg-chip" x="560" y="146" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="615.0" y="163.0" text-anchor="middle">1042 · +1</text>
+  <path class="dg-arrow" d="M490 205 H552" marker-end="url(#counter-vs-events-head)"/>
+  <rect class="dg-chip" x="560" y="192" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="615.0" y="209.0" text-anchor="middle">1042 · +1</text>
+  <path class="dg-line" d="M674 54 H680 V216 H674" fill="none"/>
+  <path class="dg-arrow" d="M686 135 H704 V253 H678" marker-end="url(#counter-vs-events-head)"/>
+  <rect class="dg-box" x="560" y="236" width="110" height="34" rx="6"/>
+  <text class="dg-code" x="615.0" y="257.0" text-anchor="middle">views = 45</text>
+  <text class="dg-mono dg-muted-text" x="698" y="228" text-anchor="end">JOB</text>
+  <text class="dg-result" x="540" y="306" text-anchor="middle">2.13 s</text>
+</svg>

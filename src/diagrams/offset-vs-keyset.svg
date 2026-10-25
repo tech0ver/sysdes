@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 648 290" role="img" aria-labelledby="offset-vs-keyset-title offset-vs-keyset-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="offset-vs-keyset-title">A deep page with OFFSET and with a condition on the last key</title>
+  <desc id="offset-vs-keyset-desc">The same index on id over 10 million rows in both panels. Left, OFFSET 5000000 LIMIT 50 reads the first 5 million entries, throws them away, and returns the next 50: 117,289 pages read. Right, WHERE id &gt; the last seen id goes straight to that place in the index and reads 50 entries: 2 pages.</desc>
+  <defs>
+    <marker id="offset-vs-keyset-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="offset-vs-keyset-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-36 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="282"/>
+  <text class="dg-code" x="180" y="24" text-anchor="middle">OFFSET 5000000 LIMIT 50</text>
+  <text class="dg-mono dg-muted-text" x="138" y="52" text-anchor="end">ID 1</text>
+  <text class="dg-mono dg-muted-text" x="138" y="244" text-anchor="end">ID 10,000,000</text>
+  <rect class="dg-box" x="150" y="44" width="60" height="200" rx="4"/>
+  <rect class="dg-bar" x="154" y="48" width="52" height="92" rx="3"/>
+  <path class="dg-line" d="M216 48 H222 V140 H216" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="230" y="98.0" text-anchor="start">READ, THROWN AWAY</text>
+  <rect class="dg-box-accent" x="154" y="142" width="52" height="8" rx="2"/>
+  <text class="dg-mono dg-accent-text" x="222" y="150">RETURNED: 50</text>
+  <text class="dg-result" x="180" y="276" text-anchor="middle">117,289 pages read</text>
+  <text class="dg-code" x="540" y="24" text-anchor="middle">WHERE id &gt; $1 LIMIT 50</text>
+  <text class="dg-mono dg-muted-text" x="498" y="52" text-anchor="end">ID 1</text>
+  <text class="dg-mono dg-muted-text" x="498" y="244" text-anchor="end">ID 10,000,000</text>
+  <rect class="dg-box" x="510" y="44" width="60" height="200" rx="4"/>
+  <path class="dg-arrow dg-message" d="M440 100 H480 V146 H508" marker-end="url(#offset-vs-keyset-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="440" y="92" text-anchor="start">SEEK</text>
+  <rect class="dg-box-accent" x="514" y="142" width="52" height="8" rx="2"/>
+  <text class="dg-mono dg-accent-text" x="582" y="150">RETURNED: 50</text>
+  <text class="dg-result" x="540" y="276" text-anchor="middle">2 pages read</text>
+  </g>
+</svg>

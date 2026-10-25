@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 710 300" role="img" aria-labelledby="async-commit-title async-commit-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="async-commit-title">synchronous_commit on and off, with the same crash</title>
+  <desc id="async-commit-desc">Left, synchronous_commit on: the client sends COMMIT, the server flushes the WAL, and only then answers OK; a crash after that keeps the booking. Right, off: the server answers OK at once and would flush within 0.6 seconds, but it crashes before the flush, and the acknowledged commit is lost, as if it had rolled back.</desc>
+  <defs>
+    <marker id="async-commit-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="async-commit-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-5 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="292"/>
+  <text class="dg-code" x="180" y="22" text-anchor="middle">synchronous_commit = on</text>
+  <text class="dg-mono dg-muted-text" x="70" y="50" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="70" y1="60" x2="70" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="290" y="50" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="290" y1="60" x2="290" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="125" y="76" text-anchor="middle">COMMIT</text>
+  <path class="dg-arrow" d="M70 84 H282" marker-end="url(#async-commit-head)"/>
+  <rect class="dg-box" x="242.0" y="100" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="290.0" y="116.0" text-anchor="middle">flush WAL</text>
+  <text class="dg-mono dg-muted-text" x="125" y="142" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M290 150 H78" marker-end="url(#async-commit-head)"/>
+  <line class="dg-cross" x1="283" y1="173" x2="297" y2="187"/>
+  <line class="dg-cross" x1="283" y1="187" x2="297" y2="173"/>
+  <text class="dg-mono dg-muted-text" x="276" y="184" text-anchor="end">CRASH</text>
+  <text class="dg-result" x="180" y="272" text-anchor="middle">booking kept</text>
+  <text class="dg-code" x="540" y="22" text-anchor="middle">synchronous_commit = off</text>
+  <text class="dg-mono dg-muted-text" x="430" y="50" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="430" y1="60" x2="430" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="650" y="50" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="650" y1="60" x2="650" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="485" y="76" text-anchor="middle">COMMIT</text>
+  <path class="dg-arrow" d="M430 84 H642" marker-end="url(#async-commit-head)"/>
+  <text class="dg-mono dg-accent-text" x="485" y="104" text-anchor="middle">OK</text>
+  <path class="dg-arrow dg-message" d="M650 112 H438" marker-end="url(#async-commit-head-accent)"/>
+  <rect class="dg-box-failed" x="602.0" y="204" width="96" height="24" rx="4"/>
+  <text class="dg-code-muted" x="650.0" y="220.0" text-anchor="middle">flush</text>
+  <line class="dg-cross" x1="643" y1="173" x2="657" y2="187"/>
+  <line class="dg-cross" x1="643" y1="187" x2="657" y2="173"/>
+  <text class="dg-mono dg-muted-text" x="636" y="184" text-anchor="end">CRASH</text>
+  <text class="dg-result" x="540" y="272" text-anchor="middle">booking lost</text>
+  </g>
+</svg>

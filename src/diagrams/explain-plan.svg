@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 684 196" role="img" aria-labelledby="explain-plan-title explain-plan-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="explain-plan-title">Estimated and actual rows in a plan</title>
+  <desc id="explain-plan-desc">A nested loop over two index scans. The planner estimated 5 homes in Lisbon, but the scan found 4,800: this is the first step where the estimate is wrong by orders of magnitude. The inner index scan on bookings returned 10 rows per run and ran 4,800 times, 48,000 rows in all, so the nested loop, estimated at 50 rows, returned 48,000.</desc>
+  <defs>
+    <marker id="explain-plan-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="explain-plan-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="24">PLAN STEP</text>
+  <text class="dg-mono dg-muted-text" x="470" y="24" text-anchor="middle">ESTIMATED</text>
+  <text class="dg-mono dg-muted-text" x="560" y="24" text-anchor="middle">ACTUAL</text>
+  <text class="dg-mono dg-muted-text" x="650" y="24" text-anchor="middle">LOOPS</text>
+  <rect class="dg-box" x="16" y="38" width="380" height="42" rx="6"/>
+  <text class="dg-code" x="30" y="64">Nested Loop</text>
+  <text class="dg-code" x="470" y="64" text-anchor="middle">50</text>
+  <text class="dg-code" x="560" y="64" text-anchor="middle">48,000</text>
+  <text class="dg-code" x="650" y="64" text-anchor="middle">1</text>
+  <rect class="dg-box-accent" x="56" y="90" width="340" height="42" rx="6"/>
+  <text class="dg-code" x="70" y="108">Index Scan on homes</text>
+  <text class="dg-sub" x="70" y="124">city = 'Lisbon'</text>
+  <rect class="dg-box-accent" x="434" y="99" width="72" height="24" rx="4"/>
+  <text class="dg-code" x="470.0" y="115.0" text-anchor="middle">5</text>
+  <rect class="dg-box-accent" x="524" y="99" width="72" height="24" rx="4"/>
+  <text class="dg-code" x="560.0" y="115.0" text-anchor="middle">4,800</text>
+  <text class="dg-code" x="650" y="116" text-anchor="middle">1</text>
+  <rect class="dg-box" x="56" y="142" width="340" height="42" rx="6"/>
+  <text class="dg-code" x="70" y="160">Index Scan on bookings</text>
+  <text class="dg-sub" x="70" y="176">home_id = homes.id</text>
+  <text class="dg-code" x="470" y="168" text-anchor="middle">10</text>
+  <text class="dg-code" x="560" y="168" text-anchor="middle">10</text>
+  <text class="dg-code" x="650" y="168" text-anchor="middle">4,800</text>
+  <path class="dg-line" d="M32 80 V163 H56 M32 111 H56" fill="none"/>
+  </g>
+</svg>

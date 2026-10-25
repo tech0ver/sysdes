@@ -1,0 +1,81 @@
+<svg class="diagram-svg" viewBox="0 0 694 330" role="img" aria-labelledby="composite-index-title composite-index-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="composite-index-title">What an index on (city, price) reads for two queries</title>
+  <desc id="composite-index-desc">The same eight entries of an index on city and price, in index order, in both panels. Left, city = Lisbon: the four Lisbon entries lie together, already sorted by price, and the scan reads only them. Right, price &lt; 100: the matching entries, Faro 80, Lisbon 60, Lisbon 95, and Porto 70, are spread across the cities, so the scan reads the whole index.</desc>
+  <defs>
+    <marker id="composite-index-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="composite-index-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-13 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <text class="dg-code" x="180" y="24" text-anchor="middle">WHERE city = 'Lisbon'</text>
+  <rect class="dg-box" x="70" y="44" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="60.0" text-anchor="middle">Faro</text>
+  <rect class="dg-box" x="174" y="44" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="60.0" text-anchor="middle">80</text>
+  <rect class="dg-box" x="70" y="76" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="92.0" text-anchor="middle">Faro</text>
+  <rect class="dg-box" x="174" y="76" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="92.0" text-anchor="middle">140</text>
+  <rect class="dg-box-accent" x="70" y="108" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="124.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box-accent" x="174" y="108" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="124.0" text-anchor="middle">60</text>
+  <rect class="dg-box-accent" x="70" y="140" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="156.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box-accent" x="174" y="140" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="156.0" text-anchor="middle">95</text>
+  <rect class="dg-box-accent" x="70" y="172" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="188.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box-accent" x="174" y="172" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="188.0" text-anchor="middle">120</text>
+  <rect class="dg-box-accent" x="70" y="204" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="220.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box-accent" x="174" y="204" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="220.0" text-anchor="middle">210</text>
+  <rect class="dg-box" x="70" y="236" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="252.0" text-anchor="middle">Porto</text>
+  <rect class="dg-box" x="174" y="236" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="252.0" text-anchor="middle">70</text>
+  <rect class="dg-box" x="70" y="268" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="284.0" text-anchor="middle">Porto</text>
+  <rect class="dg-box" x="174" y="268" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="204.0" y="284.0" text-anchor="middle">150</text>
+  <path class="dg-bracket-accent" d="M244 108 H250 V228 H244" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="258" y="172.0" text-anchor="start">READS 4</text>
+  <text class="dg-code" x="540" y="24" text-anchor="middle">WHERE price &lt; 100</text>
+  <rect class="dg-box-accent" x="430" y="44" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="60.0" text-anchor="middle">Faro</text>
+  <rect class="dg-box-accent" x="534" y="44" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="60.0" text-anchor="middle">80</text>
+  <rect class="dg-box" x="430" y="76" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="92.0" text-anchor="middle">Faro</text>
+  <rect class="dg-box" x="534" y="76" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="92.0" text-anchor="middle">140</text>
+  <rect class="dg-box-accent" x="430" y="108" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="124.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box-accent" x="534" y="108" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="124.0" text-anchor="middle">60</text>
+  <rect class="dg-box-accent" x="430" y="140" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="156.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box-accent" x="534" y="140" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="156.0" text-anchor="middle">95</text>
+  <rect class="dg-box" x="430" y="172" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="188.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box" x="534" y="172" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="188.0" text-anchor="middle">120</text>
+  <rect class="dg-box" x="430" y="204" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="220.0" text-anchor="middle">Lisbon</text>
+  <rect class="dg-box" x="534" y="204" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="220.0" text-anchor="middle">210</text>
+  <rect class="dg-box-accent" x="430" y="236" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="252.0" text-anchor="middle">Porto</text>
+  <rect class="dg-box-accent" x="534" y="236" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="252.0" text-anchor="middle">70</text>
+  <rect class="dg-box" x="430" y="268" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="284.0" text-anchor="middle">Porto</text>
+  <rect class="dg-box" x="534" y="268" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="564.0" y="284.0" text-anchor="middle">150</text>
+  <path class="dg-line" d="M604 44 H610 V292 H604" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="618" y="172.0" text-anchor="start">READS ALL 8</text>
+  </g>
+</svg>
