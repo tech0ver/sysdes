@@ -10,8 +10,6 @@
   <text class="dg-sub" x="180" y="40" text-anchor="middle">the balance was 100</text>
   <text class="dg-mono dg-muted-text" x="95" y="64" text-anchor="middle">ANNA</text>
   <text class="dg-mono dg-muted-text" x="265" y="64" text-anchor="middle">BEN</text>
-  <text class="dg-mono dg-muted-text" x="180" y="64" text-anchor="middle">TIME</text>
-  <path class="dg-arrow" d="M180 72 V226" marker-end="url(#sequential-vs-linearizable-head)"/>
   <rect class="dg-box" x="30" y="82" width="130" height="28" rx="4"/>
   <text class="dg-code" x="95.0" y="100.0" text-anchor="middle">write 150</text>
   <rect class="dg-box-accent" x="200" y="130" width="130" height="28" rx="4"/>

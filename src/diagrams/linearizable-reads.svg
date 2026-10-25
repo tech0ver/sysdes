@@ -11,8 +11,6 @@
   <text class="dg-sub" x="180" y="294" text-anchor="middle">each box runs from the request to the answer</text>
   <text class="dg-mono dg-muted-text" x="95" y="66" text-anchor="middle">WRITE</text>
   <text class="dg-mono dg-muted-text" x="265" y="66" text-anchor="middle">READS</text>
-  <text class="dg-mono dg-muted-text" x="180" y="66" text-anchor="middle">TIME</text>
-  <path class="dg-arrow" d="M180 74 V246" marker-end="url(#linearizable-reads-head)"/>
   <rect class="dg-box" x="30" y="84" width="130" height="112" rx="4"/>
   <text class="dg-code" x="95" y="144" text-anchor="middle">write 150</text>
   <rect class="dg-box" x="200" y="92" width="130" height="28" rx="4"/>
@@ -27,8 +25,6 @@
   <text class="dg-sub" x="540" y="294" text-anchor="middle">each box runs from the request to the answer</text>
   <text class="dg-mono dg-muted-text" x="455" y="66" text-anchor="middle">WRITE</text>
   <text class="dg-mono dg-muted-text" x="625" y="66" text-anchor="middle">READS</text>
-  <text class="dg-mono dg-muted-text" x="540" y="66" text-anchor="middle">TIME</text>
-  <path class="dg-arrow" d="M540 74 V246" marker-end="url(#linearizable-reads-head)"/>
   <rect class="dg-box" x="390" y="84" width="130" height="112" rx="4"/>
   <text class="dg-code" x="455" y="144" text-anchor="middle">write 150</text>
   <rect class="dg-box" x="560" y="92" width="130" height="28" rx="4"/>

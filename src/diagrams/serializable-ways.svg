@@ -1,12 +1,11 @@
-<svg class="diagram-svg" viewBox="0 0 600 270" role="img" aria-labelledby="serializable-ways-title serializable-ways-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="diagram-svg" viewBox="0 0 600 234" role="img" aria-labelledby="serializable-ways-title serializable-ways-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="serializable-ways-title">The same two conflicting transactions under three ways to get serializable</title>
   <desc id="serializable-ways-desc">Time runs left to right. One thread: T2 starts only after T1 ends. Two-phase locking: T2 starts, needs a row that T1 has locked, and waits until T1 ends. SSI: T1 and T2 run at the same time on snapshots; at commit, the database aborts T2, and T2 runs again.</desc>
   <defs>
     <marker id="serializable-ways-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
     <marker id="serializable-ways-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
   </defs>
-  <text class="dg-mono dg-muted-text" x="196" y="30">TIME</text>
-  <path class="dg-arrow" d="M236 26 H584" marker-end="url(#serializable-ways-head)"/>
+  <g transform="translate(0 -36)">
   <text class="dg-name" x="16" y="78" text-anchor="start">One thread</text>
   <text class="dg-mono dg-muted-text" x="196" y="69">T1</text>
   <rect class="dg-box" x="226" y="52" width="150" height="24" rx="4"/>
@@ -34,4 +33,5 @@
   <text class="dg-code" x="341.0" y="252" text-anchor="middle">conflict: aborted</text>
   <rect class="dg-box" x="422" y="236" width="150" height="24" rx="4"/>
   <text class="dg-code" x="497.0" y="252" text-anchor="middle">runs again</text>
+  </g>
 </svg>
