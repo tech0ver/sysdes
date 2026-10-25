@@ -1,31 +1,27 @@
-<svg class="diagram-svg" viewBox="0 0 720 232" role="img" aria-labelledby="two-clocks-title two-clocks-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="diagram-svg" viewBox="0 0 720 208" role="img" aria-labelledby="two-clocks-title two-clocks-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="two-clocks-title">Measuring a duration across a leap second with each clock</title>
   <desc id="two-clocks-desc">A request starts and its answer comes 0.3 seconds later; a leap second falls between them. The time-of-day clock reads 23:59:59.800 at the start, steps back one second, and reads 23:59:59.100 at the answer, so the duration comes out as -0.7 seconds. The monotonic clock reads 5000.8 and 5001.1 seconds, so the duration is 0.3 seconds.</desc>
   <defs>
     <marker id="two-clocks-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
     <marker id="two-clocks-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
   </defs>
-  <line class="dg-rule" x1="360" y1="8" x2="360" y2="224"/>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="200"/>
   <text class="dg-name" x="180" y="22" text-anchor="middle">Time-of-day clock</text>
-  <text class="dg-mono dg-muted-text" x="40" y="52" text-anchor="middle">TIME</text>
-  <path class="dg-arrow" d="M40 60 V196" marker-end="url(#two-clocks-head)"/>
-  <text class="dg-sub" x="64" y="88">start</text>
-  <rect class="dg-box" x="140" y="70" width="180" height="28" rx="4"/>
-  <text class="dg-code" x="230.0" y="88.0" text-anchor="middle">23:59:59.800</text>
-  <text class="dg-sub" x="64" y="168">answer</text>
-  <rect class="dg-box" x="140" y="150" width="180" height="28" rx="4"/>
-  <text class="dg-code" x="230.0" y="168.0" text-anchor="middle">23:59:59.100</text>
-  <text class="dg-mono dg-accent-text" x="230" y="128" text-anchor="middle">LEAP SECOND: STEPS BACK 1 S</text>
-  <text class="dg-result" x="180" y="220" text-anchor="middle">Duration: −0.7 s</text>
+  <text class="dg-sub" x="52" y="64">start</text>
+  <rect class="dg-box" x="128" y="46" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="218" y="64" text-anchor="middle">23:59:59.800</text>
+  <text class="dg-sub" x="52" y="144">answer</text>
+  <rect class="dg-box" x="128" y="126" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="218" y="144" text-anchor="middle">23:59:59.100</text>
+  <text class="dg-mono dg-accent-text" x="218" y="104" text-anchor="middle">LEAP SECOND: STEPS BACK 1 S</text>
+  <text class="dg-result" x="180" y="196" text-anchor="middle">Duration: −0.7 s</text>
   <text class="dg-name" x="540" y="22" text-anchor="middle">Monotonic clock</text>
-  <text class="dg-mono dg-muted-text" x="400" y="52" text-anchor="middle">TIME</text>
-  <path class="dg-arrow" d="M400 60 V196" marker-end="url(#two-clocks-head)"/>
-  <text class="dg-sub" x="424" y="88">start</text>
-  <rect class="dg-box" x="500" y="70" width="180" height="28" rx="4"/>
-  <text class="dg-code" x="590.0" y="88.0" text-anchor="middle">5000.8 s</text>
-  <text class="dg-sub" x="424" y="168">answer</text>
-  <rect class="dg-box" x="500" y="150" width="180" height="28" rx="4"/>
-  <text class="dg-code" x="590.0" y="168.0" text-anchor="middle">5001.1 s</text>
-  <text class="dg-mono dg-muted-text" x="590" y="128" text-anchor="middle">KEEPS COUNTING</text>
-  <text class="dg-result" x="540" y="220" text-anchor="middle">Duration: 0.3 s</text>
+  <text class="dg-sub" x="412" y="64">start</text>
+  <rect class="dg-box" x="488" y="46" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="578" y="64" text-anchor="middle">5000.8 s</text>
+  <text class="dg-sub" x="412" y="144">answer</text>
+  <rect class="dg-box" x="488" y="126" width="180" height="28" rx="4"/>
+  <text class="dg-code" x="578" y="144" text-anchor="middle">5001.1 s</text>
+  <text class="dg-mono dg-muted-text" x="578" y="104" text-anchor="middle">KEEPS COUNTING</text>
+  <text class="dg-result" x="540" y="196" text-anchor="middle">Duration: 0.3 s</text>
 </svg>

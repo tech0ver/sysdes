@@ -192,7 +192,7 @@ ROW = 36
 
 
 def timeline(d, x0, steps, cols=('A', 'B'), w=328, top=58, rows=None, result=None, boxw=140):
-    """Two actors side by side, with the TIME axis between them; returns the bottom y.
+    """Two actors side by side, time running down with no axis; returns the bottom y.
 
     steps: (col, text, kind) per row; col is 0 or 1, or None for an empty row; kind is a key of STEP.
     """
@@ -202,10 +202,8 @@ def timeline(d, x0, steps, cols=('A', 'B'), w=328, top=58, rows=None, result=Non
     end = top + 24 + n * ROW
     d.mono(ca, top, cols[0], 'middle')
     d.mono(cb, top, cols[1], 'middle')
-    d.mono(ax, top, 'TIME', 'middle')
     d.line(ca, top + 8, ca, end, 'dg-lifeline')
     d.line(cb, top + 8, cb, end, 'dg-lifeline')
-    d.arrow(f'M{ax} {top + 8} V{end}')
     for i, (col, text, kind) in enumerate(steps):
         if col is None:
             continue

@@ -8,10 +8,8 @@
   <g transform="translate(-79 0)">
   <text class="dg-mono dg-muted-text" x="195.0" y="24" text-anchor="middle">CACHE</text>
   <text class="dg-mono dg-muted-text" x="525.0" y="24" text-anchor="middle">DATABASE</text>
-  <text class="dg-mono dg-muted-text" x="360.0" y="24" text-anchor="middle">TIME</text>
   <line class="dg-lifeline" x1="195.0" y1="32" x2="195.0" y2="228"/>
   <line class="dg-lifeline" x1="525.0" y1="32" x2="525.0" y2="228"/>
-  <path class="dg-arrow" d="M360.0 32 V228" marker-end="url(#ttl-window-head)"/>
   <rect class="dg-box" x="95.0" y="42" width="200" height="26" rx="4"/>
   <text class="dg-code" x="195.0" y="59" text-anchor="middle">0 s: store v1, TTL 60 s</text>
   <rect class="dg-box" x="425.0" y="78" width="200" height="26" rx="4"/>
