@@ -1,0 +1,67 @@
+<svg class="diagram-svg" viewBox="0 0 654 220" role="img" aria-labelledby="slot-retention-title slot-retention-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="slot-retention-title">A replication slot holds WAL for a stopped standby</title>
+  <desc id="slot-retention-desc">Twelve WAL segments on the primary. Top: standby s2 stopped at segment 3, and its slot keeps segments 3 to 12 on disk. Bottom: the WAL kept for the slot grew past max_slot_wal_keep_size, so at a checkpoint the slot is invalidated, segments 3 to 6 are removed, and s2 must catch up from the archive or start from a new copy.</desc>
+  <defs>
+    <marker id="slot-retention-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="slot-retention-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-23 0)">
+  <text class="dg-mono dg-muted-text" x="40" y="30">SLOT OF STOPPED STANDBY S2</text>
+  <rect class="dg-box-failed" x="40" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="64.0" y="58.0" text-anchor="middle">1</text>
+  <rect class="dg-box-failed" x="92" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="116.0" y="58.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="144" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="168.0" y="58.0" text-anchor="middle">3</text>
+  <rect class="dg-chip" x="196" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="220.0" y="58.0" text-anchor="middle">4</text>
+  <rect class="dg-chip" x="248" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="272.0" y="58.0" text-anchor="middle">5</text>
+  <rect class="dg-chip" x="300" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="324.0" y="58.0" text-anchor="middle">6</text>
+  <rect class="dg-chip" x="352" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="376.0" y="58.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="404" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="428.0" y="58.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="456" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="480.0" y="58.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="508" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="532.0" y="58.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="560" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="584.0" y="58.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="612" y="40" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="636.0" y="58.0" text-anchor="middle">12</text>
+  <text class="dg-mono dg-muted-text" x="40" y="130">AT A CHECKPOINT</text>
+  <rect class="dg-box-failed" x="40" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="64.0" y="158.0" text-anchor="middle">1</text>
+  <rect class="dg-box-failed" x="92" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="116.0" y="158.0" text-anchor="middle">2</text>
+  <rect class="dg-box-failed" x="144" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="168.0" y="158.0" text-anchor="middle">3</text>
+  <rect class="dg-box-failed" x="196" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="220.0" y="158.0" text-anchor="middle">4</text>
+  <rect class="dg-box-failed" x="248" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="272.0" y="158.0" text-anchor="middle">5</text>
+  <rect class="dg-box-failed" x="300" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code-muted" x="324.0" y="158.0" text-anchor="middle">6</text>
+  <rect class="dg-chip" x="352" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="376.0" y="158.0" text-anchor="middle">7</text>
+  <rect class="dg-chip" x="404" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="428.0" y="158.0" text-anchor="middle">8</text>
+  <rect class="dg-chip" x="456" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="480.0" y="158.0" text-anchor="middle">9</text>
+  <rect class="dg-chip" x="508" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="532.0" y="158.0" text-anchor="middle">10</text>
+  <rect class="dg-chip" x="560" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="584.0" y="158.0" text-anchor="middle">11</text>
+  <rect class="dg-chip" x="612" y="140" width="48" height="28" rx="4"/>
+  <text class="dg-code" x="636.0" y="158.0" text-anchor="middle">12</text>
+  <path class="dg-bracket-accent" d="M144 74 V80 H660 V74" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="402.0" y="96" text-anchor="middle">KEPT FOR SLOT S2</text>
+  <path class="dg-line" d="M352 174 V180 H660 V174" fill="none"/>
+  <text class="dg-code" x="506.0" y="196" text-anchor="middle">max_slot_wal_keep_size</text>
+  <line class="dg-cross" x1="162.0" y1="180" x2="174.0" y2="192"/>
+  <line class="dg-cross" x1="162.0" y1="192" x2="174.0" y2="180"/>
+  <text class="dg-mono dg-accent-text" x="180.0" y="190">S2 INVALIDATED</text>
+  </g>
+</svg>

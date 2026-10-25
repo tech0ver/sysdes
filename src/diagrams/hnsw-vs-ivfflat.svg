@@ -1,0 +1,94 @@
+<svg class="diagram-svg" viewBox="0 0 654 290" role="img" aria-labelledby="hnsw-vs-ivfflat-title hnsw-vs-ivfflat-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="hnsw-vs-ivfflat-title">How HNSW and IVFFlat find the nearest vectors</title>
+  <desc id="hnsw-vs-ivfflat-desc">The same sixteen vectors and the same query in both panels. Left, HNSW: a graph of neighbors; the search walks from an entry point along the edges toward the query and finds the nearest vector. Right, IVFFlat: the vectors are split into four clusters; with probes = 1 the search reads only the cluster whose center is closest to the query and misses the nearest vector, which lies in the next cluster.</desc>
+  <defs>
+    <marker id="hnsw-vs-ivfflat-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="hnsw-vs-ivfflat-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-33 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="282"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">HNSW</text>
+  <line class="dg-line" x1="110" y1="79" x2="150" y2="84"/>
+  <line class="dg-line" x1="150" y1="84" x2="148" y2="106"/>
+  <line class="dg-line" x1="148" y1="106" x2="120" y2="119"/>
+  <line class="dg-line" x1="120" y1="119" x2="110" y2="79"/>
+  <line class="dg-line" x1="250" y1="59" x2="295" y2="74"/>
+  <line class="dg-line" x1="295" y1="74" x2="300" y2="109"/>
+  <line class="dg-line" x1="300" y1="109" x2="260" y2="114"/>
+  <line class="dg-line" x1="260" y1="114" x2="250" y2="59"/>
+  <line class="dg-line" x1="85" y1="174" x2="100" y2="219"/>
+  <line class="dg-line" x1="100" y1="219" x2="145" y2="214"/>
+  <line class="dg-line" x1="145" y1="214" x2="168" y2="156"/>
+  <line class="dg-line" x1="168" y1="156" x2="85" y2="174"/>
+  <line class="dg-line" x1="245" y1="174" x2="290" y2="184"/>
+  <line class="dg-line" x1="290" y1="184" x2="305" y2="216"/>
+  <line class="dg-line" x1="305" y1="216" x2="265" y2="224"/>
+  <line class="dg-line" x1="265" y1="224" x2="245" y2="174"/>
+  <line class="dg-line" x1="150" y1="84" x2="250" y2="59"/>
+  <line class="dg-line" x1="148" y1="106" x2="168" y2="156"/>
+  <line class="dg-line" x1="168" y1="156" x2="245" y2="174"/>
+  <line class="dg-line" x1="260" y1="114" x2="245" y2="174"/>
+  <line class="dg-line" x1="120" y1="119" x2="85" y2="174"/>
+  <path class="dg-arrow dg-message" d="M295 74 L260 114 L168 156"/>
+  <text class="dg-mono dg-muted-text" x="305" y="64">ENTRY</text>
+  <circle class="dg-dot-muted" cx="110" cy="79" r="4.5"/>
+  <circle class="dg-dot-muted" cx="150" cy="84" r="4.5"/>
+  <circle class="dg-dot-muted" cx="120" cy="119" r="4.5"/>
+  <circle class="dg-dot-muted" cx="148" cy="106" r="4.5"/>
+  <circle class="dg-dot-muted" cx="250" cy="59" r="4.5"/>
+  <circle class="dg-dot-muted" cx="295" cy="74" r="4.5"/>
+  <circle class="dg-dot-muted" cx="260" cy="114" r="4.5"/>
+  <circle class="dg-dot-muted" cx="300" cy="109" r="4.5"/>
+  <circle class="dg-dot-muted" cx="85" cy="174" r="4.5"/>
+  <circle class="dg-dot" cx="168" cy="156" r="4.5"/>
+  <circle class="dg-dot-muted" cx="100" cy="219" r="4.5"/>
+  <circle class="dg-dot-muted" cx="145" cy="214" r="4.5"/>
+  <circle class="dg-dot-muted" cx="245" cy="174" r="4.5"/>
+  <circle class="dg-dot-muted" cx="290" cy="184" r="4.5"/>
+  <circle class="dg-dot-muted" cx="265" cy="224" r="4.5"/>
+  <circle class="dg-dot-muted" cx="305" cy="216" r="4.5"/>
+  <rect class="dg-bracket-accent" x="179" y="128" width="12" height="12" transform="rotate(45 185 134)"/>
+  <text class="dg-mono dg-accent-text" x="185" y="120" text-anchor="middle">QUERY</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">IVFFlat, probes = 1</text>
+  <line class="dg-message" x1="492.0" y1="97.0" x2="470" y2="79"/>
+  <line class="dg-message" x1="492.0" y1="97.0" x2="510" y2="84"/>
+  <line class="dg-message" x1="492.0" y1="97.0" x2="480" y2="119"/>
+  <line class="dg-message" x1="492.0" y1="97.0" x2="508" y2="106"/>
+  <rect class="dg-box-accent" x="486.0" y="91.0" width="12" height="12" rx="2"/>
+  <line class="dg-line" x1="636.25" y1="89.0" x2="610" y2="59"/>
+  <line class="dg-line" x1="636.25" y1="89.0" x2="655" y2="74"/>
+  <line class="dg-line" x1="636.25" y1="89.0" x2="620" y2="114"/>
+  <line class="dg-line" x1="636.25" y1="89.0" x2="660" y2="109"/>
+  <rect class="dg-box" x="630.25" y="83.0" width="12" height="12" rx="2"/>
+  <line class="dg-line" x1="484.5" y1="190.75" x2="445" y2="174"/>
+  <line class="dg-line" x1="484.5" y1="190.75" x2="528" y2="156"/>
+  <line class="dg-line" x1="484.5" y1="190.75" x2="460" y2="219"/>
+  <line class="dg-line" x1="484.5" y1="190.75" x2="505" y2="214"/>
+  <rect class="dg-box" x="478.5" y="184.75" width="12" height="12" rx="2"/>
+  <line class="dg-line" x1="636.25" y1="199.5" x2="605" y2="174"/>
+  <line class="dg-line" x1="636.25" y1="199.5" x2="650" y2="184"/>
+  <line class="dg-line" x1="636.25" y1="199.5" x2="625" y2="224"/>
+  <line class="dg-line" x1="636.25" y1="199.5" x2="665" y2="216"/>
+  <rect class="dg-box" x="630.25" y="193.5" width="12" height="12" rx="2"/>
+  <text class="dg-mono dg-muted-text" x="538" y="160">NEAREST, NOT READ</text>
+  <text class="dg-mono dg-accent-text" x="478.0" y="57.0" text-anchor="middle">READ</text>
+  <circle class="dg-dot-muted" cx="470" cy="79" r="4.5"/>
+  <circle class="dg-dot-muted" cx="510" cy="84" r="4.5"/>
+  <circle class="dg-dot-muted" cx="480" cy="119" r="4.5"/>
+  <circle class="dg-dot" cx="508" cy="106" r="4.5"/>
+  <circle class="dg-dot-muted" cx="610" cy="59" r="4.5"/>
+  <circle class="dg-dot-muted" cx="655" cy="74" r="4.5"/>
+  <circle class="dg-dot-muted" cx="620" cy="114" r="4.5"/>
+  <circle class="dg-dot-muted" cx="660" cy="109" r="4.5"/>
+  <circle class="dg-dot-muted" cx="445" cy="174" r="4.5"/>
+  <circle class="dg-dot-muted" cx="528" cy="156" r="4.5"/>
+  <circle class="dg-dot-muted" cx="460" cy="219" r="4.5"/>
+  <circle class="dg-dot-muted" cx="505" cy="214" r="4.5"/>
+  <circle class="dg-dot-muted" cx="605" cy="174" r="4.5"/>
+  <circle class="dg-dot-muted" cx="650" cy="184" r="4.5"/>
+  <circle class="dg-dot-muted" cx="625" cy="224" r="4.5"/>
+  <circle class="dg-dot-muted" cx="665" cy="216" r="4.5"/>
+  <rect class="dg-bracket-accent" x="539" y="128" width="12" height="12" transform="rotate(45 545 134)"/>
+  <text class="dg-mono dg-accent-text" x="545" y="120" text-anchor="middle">QUERY</text>
+  </g>
+</svg>

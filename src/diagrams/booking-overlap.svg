@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 705 200" role="img" aria-labelledby="booking-overlap-title booking-overlap-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="booking-overlap-title">The exclusion constraint on one home's calendar</title>
+  <desc id="booking-overlap-desc">Nights of 11 to 17 May for home 7. A stored booking covers 12 to 15 May: the nights of the 12th, 13th, and 14th. A booking for 14 to 16 May overlaps it on the night of the 14th and is rejected. A booking for 15 to 17 May starts on the check-out day of the first one, does not overlap, and is stored.</desc>
+  <defs>
+    <marker id="booking-overlap-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="booking-overlap-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="34">HOME 7, NIGHTS OF MAY</text>
+  <text class="dg-mono dg-muted-text" x="221.0" y="34" text-anchor="middle">11</text>
+  <line class="dg-rule" x1="190" y1="42" x2="190" y2="184"/>
+  <text class="dg-mono dg-muted-text" x="283.0" y="34" text-anchor="middle">12</text>
+  <line class="dg-rule" x1="252" y1="42" x2="252" y2="184"/>
+  <text class="dg-mono dg-muted-text" x="345.0" y="34" text-anchor="middle">13</text>
+  <line class="dg-rule" x1="314" y1="42" x2="314" y2="184"/>
+  <text class="dg-mono dg-muted-text" x="407.0" y="34" text-anchor="middle">14</text>
+  <line class="dg-guide" x1="376" y1="42" x2="376" y2="184"/>
+  <text class="dg-mono dg-muted-text" x="469.0" y="34" text-anchor="middle">15</text>
+  <line class="dg-guide" x1="438" y1="42" x2="438" y2="184"/>
+  <text class="dg-mono dg-muted-text" x="531.0" y="34" text-anchor="middle">16</text>
+  <line class="dg-rule" x1="500" y1="42" x2="500" y2="184"/>
+  <text class="dg-mono dg-muted-text" x="593.0" y="34" text-anchor="middle">17</text>
+  <line class="dg-rule" x1="562" y1="42" x2="562" y2="184"/>
+  <line class="dg-rule" x1="624" y1="42" x2="624" y2="184"/>
+  <text class="dg-code" x="16" y="75">[12 May, 15 May)</text>
+  <rect class="dg-box" x="255" y="56" width="56" height="28" rx="4"/>
+  <rect class="dg-box" x="317" y="56" width="56" height="28" rx="4"/>
+  <rect class="dg-box" x="379" y="56" width="56" height="28" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="636" y="74">STORED</text>
+  <text class="dg-code" x="16" y="119">[14 May, 16 May)</text>
+  <rect class="dg-box-accent" x="379" y="100" width="56" height="28" rx="4"/>
+  <rect class="dg-box-failed" x="441" y="100" width="56" height="28" rx="4"/>
+  <text class="dg-mono dg-accent-text" x="636" y="118">REJECTED</text>
+  <text class="dg-code" x="16" y="163">[15 May, 17 May)</text>
+  <rect class="dg-box" x="441" y="144" width="56" height="28" rx="4"/>
+  <rect class="dg-box" x="503" y="144" width="56" height="28" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="636" y="162">STORED</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="citus-title citus-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="citus-title">Citus splits tables by host across workers</title>
+  <desc id="citus-desc">The app sends queries to the Citus coordinator, which routes them by host_id. Three workers each hold one range of hosts, with both the homes and the bookings of those hosts, so a join of homes and bookings of one host runs on one worker.</desc>
+  <defs>
+    <marker id="citus-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="citus-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="290" y="16" width="140" height="40" rx="6"/>
+  <text class="dg-name" x="360.0" y="41.0" text-anchor="middle">App</text>
+  <path class="dg-arrow" d="M360 56 V84" marker-end="url(#citus-head)"/>
+  <rect class="dg-box" x="220" y="84" width="280" height="48" rx="6"/>
+  <text class="dg-name" x="360.0" y="106.0" text-anchor="middle">Coordinator</text>
+  <text class="dg-sub" x="360.0" y="122.0" text-anchor="middle">routes by host_id</text>
+  <line class="dg-line" x1="360" y1="132" x2="360" y2="152"/>
+  <line class="dg-line" x1="126" y1="152" x2="594" y2="152"/>
+  <path class="dg-arrow" d="M126 152 V184" marker-end="url(#citus-head)"/>
+  <rect class="dg-zone" x="16" y="184" width="220" height="130" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="204">WORKER 1: HOSTS 1–100</text>
+  <rect class="dg-chip" x="36" y="214" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="104.0" y="233.0" text-anchor="middle">homes</text>
+  <rect class="dg-chip" x="36" y="262" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="104.0" y="281.0" text-anchor="middle">bookings</text>
+  <path class="dg-bracket-accent" d="M178 229 H186 V277 H178" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="192" y="257">JOIN</text>
+  <path class="dg-arrow" d="M360 152 V184" marker-end="url(#citus-head)"/>
+  <rect class="dg-zone" x="250" y="184" width="220" height="130" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="265" y="204">WORKER 2: HOSTS 101–200</text>
+  <rect class="dg-chip" x="270" y="214" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="338.0" y="233.0" text-anchor="middle">homes</text>
+  <rect class="dg-chip" x="270" y="262" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="338.0" y="281.0" text-anchor="middle">bookings</text>
+  <path class="dg-bracket-accent" d="M412 229 H420 V277 H412" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="426" y="257">JOIN</text>
+  <path class="dg-arrow" d="M594 152 V184" marker-end="url(#citus-head)"/>
+  <rect class="dg-zone" x="484" y="184" width="220" height="130" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="499" y="204">WORKER 3: HOSTS 201–300</text>
+  <rect class="dg-chip" x="504" y="214" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="572.0" y="233.0" text-anchor="middle">homes</text>
+  <rect class="dg-chip" x="504" y="262" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="572.0" y="281.0" text-anchor="middle">bookings</text>
+  <path class="dg-bracket-accent" d="M646 229 H654 V277 H646" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="660" y="257">JOIN</text>
+</svg>

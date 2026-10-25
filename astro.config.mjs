@@ -47,7 +47,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Technologies',
-					items: [],
+					items: ['technologies/postgresql'],
 				},
 				{
 					label: 'Systems',

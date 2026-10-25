@@ -1,0 +1,59 @@
+<svg class="diagram-svg" viewBox="0 0 720 360" role="img" aria-labelledby="heap-vs-clustered-title heap-vs-clustered-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="heap-vs-clustered-title">PostgreSQL heap with TIDs and the InnoDB primary key tree</title>
+  <desc id="heap-vs-clustered-desc">The same three homes in both panels. Left, PostgreSQL: the rows lie in heap pages in no order; both the index on city and the primary key index store TIDs, the page and slot of each row, so any index leads to the row in one step. Right, MySQL InnoDB: the table is a tree ordered by the primary key, and the index on city stores primary keys, so a lookup by city goes through the primary key tree.</desc>
+  <defs>
+    <marker id="heap-vs-clustered-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="heap-vs-clustered-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="352"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">PostgreSQL</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">MySQL InnoDB</text>
+  <rect class="dg-box" x="16" y="44" width="156" height="128" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="94.0" y="64" text-anchor="middle">INDEX ON CITY</text>
+  <text class="dg-code" x="30" y="92">Lisbon</text>
+  <text class="dg-code" x="158" y="92" text-anchor="end">(0,2)</text>
+  <text class="dg-code" x="30" y="118">Lisbon</text>
+  <text class="dg-code" x="158" y="118" text-anchor="end">(1,1)</text>
+  <text class="dg-code" x="30" y="144">Porto</text>
+  <text class="dg-code" x="158" y="144" text-anchor="end">(0,1)</text>
+  <rect class="dg-box" x="188" y="44" width="156" height="128" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="266.0" y="64" text-anchor="middle">PRIMARY KEY</text>
+  <text class="dg-code" x="202" y="92">1042</text>
+  <text class="dg-code" x="330" y="92" text-anchor="end">(0,2)</text>
+  <text class="dg-code" x="202" y="118">2210</text>
+  <text class="dg-code" x="330" y="118" text-anchor="end">(0,1)</text>
+  <text class="dg-code" x="202" y="144">3317</text>
+  <text class="dg-code" x="330" y="144" text-anchor="end">(1,1)</text>
+  <rect class="dg-box" x="376" y="44" width="156" height="128" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="454.0" y="64" text-anchor="middle">INDEX ON CITY</text>
+  <text class="dg-code" x="390" y="92">Lisbon</text>
+  <text class="dg-code" x="518" y="92" text-anchor="end">1042</text>
+  <text class="dg-code" x="390" y="118">Lisbon</text>
+  <text class="dg-code" x="518" y="118" text-anchor="end">3317</text>
+  <text class="dg-code" x="390" y="144">Porto</text>
+  <text class="dg-code" x="518" y="144" text-anchor="end">2210</text>
+  <rect class="dg-box" x="16" y="220" width="328" height="120" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="30" y="240">HEAP</text>
+  <text class="dg-mono dg-muted-text" x="32" y="262">PAGE 0</text>
+  <rect class="dg-chip" x="28" y="272" width="146" height="24" rx="4"/>
+  <text class="dg-code" x="101.0" y="288.0" text-anchor="middle">1 · 2210 Porto</text>
+  <rect class="dg-chip" x="28" y="302" width="146" height="24" rx="4"/>
+  <text class="dg-code" x="101.0" y="318.0" text-anchor="middle">2 · 1042 Lisbon</text>
+  <text class="dg-mono dg-muted-text" x="190" y="262">PAGE 1</text>
+  <rect class="dg-chip" x="186" y="272" width="146" height="24" rx="4"/>
+  <text class="dg-code" x="259.0" y="288.0" text-anchor="middle">1 · 3317 Lisbon</text>
+  <path class="dg-arrow dg-message" d="M94 172 V212" marker-end="url(#heap-vs-clustered-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="102" y="196">TID</text>
+  <path class="dg-arrow dg-message" d="M266 172 V212" marker-end="url(#heap-vs-clustered-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="274" y="196">TID</text>
+  <rect class="dg-box" x="376" y="220" width="328" height="120" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="390" y="240">TABLE = PRIMARY KEY TREE</text>
+  <rect class="dg-chip" x="390" y="252" width="300" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="268.0" text-anchor="middle">1042 · Lisbon</text>
+  <rect class="dg-chip" x="390" y="280" width="300" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="296.0" text-anchor="middle">2210 · Porto</text>
+  <rect class="dg-chip" x="390" y="308" width="300" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="324.0" text-anchor="middle">3317 · Lisbon</text>
+  <path class="dg-arrow dg-message" d="M454 172 V212" marker-end="url(#heap-vs-clustered-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="462" y="196">PRIMARY KEY</text>
+</svg>

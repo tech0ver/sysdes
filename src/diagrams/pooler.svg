@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 720 268" role="img" aria-labelledby="pooler-title pooler-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pooler-title">Many client connections, few server connections</title>
+  <desc id="pooler-desc">40 app servers with 20 connections each open 800 client connections to PgBouncer. PgBouncer passes their transactions to 20 server connections to PostgreSQL.</desc>
+  <defs>
+    <marker id="pooler-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="pooler-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="36" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="76.0" y="61.0" text-anchor="middle">App server 1</text>
+  <line class="dg-line" x1="136" y1="44" x2="300" y2="44"/>
+  <line class="dg-line" x1="136" y1="50" x2="300" y2="50"/>
+  <line class="dg-line" x1="136" y1="56" x2="300" y2="56"/>
+  <line class="dg-line" x1="136" y1="62" x2="300" y2="62"/>
+  <line class="dg-line" x1="136" y1="68" x2="300" y2="68"/>
+  <rect class="dg-box" x="16" y="92" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="76.0" y="117.0" text-anchor="middle">App server 2</text>
+  <line class="dg-line" x1="136" y1="100" x2="300" y2="100"/>
+  <line class="dg-line" x1="136" y1="106" x2="300" y2="106"/>
+  <line class="dg-line" x1="136" y1="112" x2="300" y2="112"/>
+  <line class="dg-line" x1="136" y1="118" x2="300" y2="118"/>
+  <line class="dg-line" x1="136" y1="124" x2="300" y2="124"/>
+  <rect class="dg-box" x="16" y="148" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="76.0" y="173.0" text-anchor="middle">App server 3</text>
+  <line class="dg-line" x1="136" y1="156" x2="300" y2="156"/>
+  <line class="dg-line" x1="136" y1="162" x2="300" y2="162"/>
+  <line class="dg-line" x1="136" y1="168" x2="300" y2="168"/>
+  <line class="dg-line" x1="136" y1="174" x2="300" y2="174"/>
+  <line class="dg-line" x1="136" y1="180" x2="300" y2="180"/>
+  <rect class="dg-box" x="16" y="204" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="76.0" y="229.0" text-anchor="middle">App server 40</text>
+  <line class="dg-line" x1="136" y1="212" x2="300" y2="212"/>
+  <line class="dg-line" x1="136" y1="218" x2="300" y2="218"/>
+  <line class="dg-line" x1="136" y1="224" x2="300" y2="224"/>
+  <line class="dg-line" x1="136" y1="230" x2="300" y2="230"/>
+  <line class="dg-line" x1="136" y1="236" x2="300" y2="236"/>
+  <text class="dg-mono dg-muted-text" x="218" y="24" text-anchor="middle">800 CLIENT CONNECTIONS</text>
+  <rect class="dg-box" x="300" y="36" width="140" height="208" rx="6"/>
+  <text class="dg-name" x="370.0" y="138.0" text-anchor="middle">PgBouncer</text>
+  <text class="dg-sub" x="370.0" y="154.0" text-anchor="middle">transaction mode</text>
+  <line class="dg-message" x1="440" y1="116" x2="574" y2="116"/>
+  <line class="dg-message" x1="440" y1="128" x2="574" y2="128"/>
+  <line class="dg-message" x1="440" y1="140" x2="574" y2="140"/>
+  <line class="dg-message" x1="440" y1="152" x2="574" y2="152"/>
+  <text class="dg-mono dg-accent-text" x="507" y="88" text-anchor="middle">20 SERVER</text>
+  <text class="dg-mono dg-accent-text" x="507" y="102" text-anchor="middle">CONNECTIONS</text>
+  <rect class="dg-box" x="574" y="90" width="130" height="90" rx="6"/>
+  <text class="dg-name" x="639.0" y="133.0" text-anchor="middle">PostgreSQL</text>
+  <text class="dg-sub" x="639.0" y="149.0" text-anchor="middle">20 backends</text>
+</svg>

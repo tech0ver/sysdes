@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 666 290" role="img" aria-labelledby="transaction-mode-title transaction-mode-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="transaction-mode-title">A session setting behind a pooler in transaction mode</title>
+  <desc id="transaction-mode-desc">Two clients share two server connections, one transaction at a time. Client A runs SET statement_timeout = 1s on server connection 1, and the setting stays on that connection. B's next transaction gets connection 1 and runs with A's timeout, while A's next transaction gets connection 2 and runs without it.</desc>
+  <defs>
+    <marker id="transaction-mode-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="transaction-mode-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-27 0)">
+  <text class="dg-mono dg-muted-text" x="70" y="24" text-anchor="middle">CLIENT A</text>
+  <line class="dg-lifeline" x1="70" y1="34" x2="70" y2="278"/>
+  <text class="dg-mono dg-muted-text" x="270" y="24" text-anchor="middle">SERVER CONNECTION 1</text>
+  <line class="dg-lifeline" x1="270" y1="34" x2="270" y2="278"/>
+  <text class="dg-mono dg-muted-text" x="450" y="24" text-anchor="middle">SERVER CONNECTION 2</text>
+  <line class="dg-lifeline" x1="450" y1="34" x2="450" y2="278"/>
+  <text class="dg-mono dg-muted-text" x="650" y="24" text-anchor="middle">CLIENT B</text>
+  <line class="dg-lifeline" x1="650" y1="34" x2="650" y2="278"/>
+  <text class="dg-mono dg-accent-text" x="170.0" y="62" text-anchor="middle">SET statement_timeout = '1s'</text>
+  <path class="dg-arrow dg-message" d="M70 70 H262" marker-end="url(#transaction-mode-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="550.0" y="62" text-anchor="middle">TRANSACTION</text>
+  <path class="dg-arrow" d="M650 70 H458" marker-end="url(#transaction-mode-head)"/>
+  <rect class="dg-box-accent" x="210.0" y="84" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="100.0" text-anchor="middle">timeout = 1s</text>
+  <path class="dg-guide" d="M270 108 V168" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="280" y="142">STAYS</text>
+  <text class="dg-mono dg-muted-text" x="550.0" y="172" text-anchor="middle">TRANSACTION</text>
+  <path class="dg-arrow" d="M650 180 H278" marker-end="url(#transaction-mode-head)"/>
+  <rect class="dg-box-accent" x="210.0" y="192" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="208.0" text-anchor="middle">B: timeout 1s</text>
+  <text class="dg-mono dg-muted-text" x="170.0" y="228" text-anchor="middle">TRANSACTION</text>
+  <path class="dg-arrow" d="M70 236 H442" marker-end="url(#transaction-mode-head)"/>
+  <rect class="dg-box" x="390.0" y="248" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="264.0" text-anchor="middle">A: no timeout</text>
+  </g>
+</svg>

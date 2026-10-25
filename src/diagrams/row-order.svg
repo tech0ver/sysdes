@@ -1,0 +1,153 @@
+<svg class="diagram-svg" viewBox="0 0 710 250" role="img" aria-labelledby="row-order-title row-order-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="row-order-title">Rows of one home stored in order and spread over the table</title>
+  <desc id="row-order-desc">The same eight heap pages and six bookings of home 1042 in both panels. Left, the bookings sit together, and the index lookup reads one page. Right, they are spread, and it reads six pages. In a test, 9,999 rows stored in order took 85 pages, and spread at random about 8,000.</desc>
+  <defs>
+    <marker id="row-order-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="row-order-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-5 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="242"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Stored in order</text>
+  <rect class="dg-box" x="90" y="40" width="180" height="36" rx="6"/>
+  <text class="dg-code" x="180.0" y="62.0" text-anchor="middle">home_id = 1042</text>
+  <line class="dg-message" x1="180" y1="76" x2="180" y2="96"/>
+  <path class="dg-arrow dg-message" d="M180 96 H119 V114" marker-end="url(#row-order-head-accent)"/>
+  <rect class="dg-box" x="22" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="27" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="27" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="27" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="27" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="27" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="27" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="62" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="67" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="67" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="67" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="67" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="67" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="67" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box-accent" x="102" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="107" y="130" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="119" cy="133" r="3.5"/>
+  <rect class="dg-bar" x="107" y="141" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="119" cy="144" r="3.5"/>
+  <rect class="dg-bar" x="107" y="152" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="119" cy="155" r="3.5"/>
+  <rect class="dg-bar" x="107" y="163" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="119" cy="166" r="3.5"/>
+  <rect class="dg-bar" x="107" y="174" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="119" cy="177" r="3.5"/>
+  <rect class="dg-bar" x="107" y="185" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="119" cy="188" r="3.5"/>
+  <rect class="dg-box" x="142" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="147" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="147" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="147" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="147" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="147" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="147" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="182" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="187" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="187" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="187" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="187" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="187" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="187" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="222" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="227" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="227" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="227" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="227" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="227" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="227" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="262" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="267" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="267" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="267" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="267" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="267" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="267" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="302" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="307" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="307" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="307" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="307" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="307" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="307" y="185" width="24" height="6" rx="2"/>
+  <text class="dg-result" x="180" y="230" text-anchor="middle">9,999 rows: 85 pages</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Spread over the table</text>
+  <rect class="dg-box" x="450" y="40" width="180" height="36" rx="6"/>
+  <text class="dg-code" x="540.0" y="62.0" text-anchor="middle">home_id = 1042</text>
+  <line class="dg-message" x1="399" y1="96" x2="679" y2="96"/>
+  <line class="dg-message" x1="540" y1="76" x2="540" y2="96"/>
+  <path class="dg-arrow dg-message" d="M399 96 V114" marker-end="url(#row-order-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M439 96 V114" marker-end="url(#row-order-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M519 96 V114" marker-end="url(#row-order-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M559 96 V114" marker-end="url(#row-order-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M599 96 V114" marker-end="url(#row-order-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M679 96 V114" marker-end="url(#row-order-head-accent)"/>
+  <rect class="dg-box-accent" x="382" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="387" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="387" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="387" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="387" y="163" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="399" cy="166" r="3.5"/>
+  <rect class="dg-bar" x="387" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="387" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box-accent" x="422" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="427" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="427" y="141" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="439" cy="144" r="3.5"/>
+  <rect class="dg-bar" x="427" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="427" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="427" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="427" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="462" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="467" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="467" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="467" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="467" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="467" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="467" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box-accent" x="502" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="507" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="507" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="507" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="507" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="507" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="507" y="185" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="519" cy="188" r="3.5"/>
+  <rect class="dg-box-accent" x="542" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="547" y="130" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="559" cy="133" r="3.5"/>
+  <rect class="dg-bar" x="547" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="547" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="547" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="547" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="547" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box-accent" x="582" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="587" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="587" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="587" y="152" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="599" cy="155" r="3.5"/>
+  <rect class="dg-bar" x="587" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="587" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="587" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box" x="622" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="627" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="627" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="627" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="627" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="627" y="174" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="627" y="185" width="24" height="6" rx="2"/>
+  <rect class="dg-box-accent" x="662" y="122" width="34" height="76" rx="4"/>
+  <rect class="dg-bar" x="667" y="130" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="667" y="141" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="667" y="152" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="667" y="163" width="24" height="6" rx="2"/>
+  <rect class="dg-bar" x="667" y="174" width="24" height="6" rx="2"/>
+  <circle class="dg-dot" cx="679" cy="177" r="3.5"/>
+  <rect class="dg-bar" x="667" y="185" width="24" height="6" rx="2"/>
+  <text class="dg-result" x="540" y="230" text-anchor="middle">9,999 rows: about 8,000 pages</text>
+  </g>
+</svg>

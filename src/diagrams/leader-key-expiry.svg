@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 643 330" role="img" aria-labelledby="leader-key-expiry-title leader-key-expiry-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="leader-key-expiry-title">The leader key expires after the primary stops</title>
+  <desc id="leader-key-expiry-desc">Node 1 renews the leader key at 0, 10, and 20 seconds. At 25 seconds it stops. The key lives 30 seconds from the last renewal and expires at 50 seconds. Node 2, a standby close enough to the old primary in WAL, takes the key and promotes itself.</desc>
+  <defs>
+    <marker id="leader-key-expiry-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="leader-key-expiry-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-24 0)">
+  <text class="dg-mono dg-muted-text" x="150" y="24" text-anchor="middle">NODE 1</text>
+  <line class="dg-lifeline" x1="150" y1="34" x2="150" y2="318"/>
+  <text class="dg-mono dg-muted-text" x="390" y="24" text-anchor="middle">ETCD</text>
+  <line class="dg-lifeline" x1="390" y1="34" x2="390" y2="318"/>
+  <text class="dg-mono dg-muted-text" x="600" y="24" text-anchor="middle">NODE 2</text>
+  <line class="dg-lifeline" x1="600" y1="34" x2="600" y2="318"/>
+  <text class="dg-mono dg-muted-text" x="270.0" y="52" text-anchor="middle">RENEW</text>
+  <path class="dg-arrow" d="M150 60 H382" marker-end="url(#leader-key-expiry-head)"/>
+  <text class="dg-mono dg-muted-text" x="40" y="64">0 S</text>
+  <text class="dg-mono dg-muted-text" x="270.0" y="92" text-anchor="middle">RENEW</text>
+  <path class="dg-arrow" d="M150 100 H382" marker-end="url(#leader-key-expiry-head)"/>
+  <text class="dg-mono dg-muted-text" x="40" y="104">10 S</text>
+  <text class="dg-mono dg-muted-text" x="270.0" y="132" text-anchor="middle">RENEW</text>
+  <path class="dg-arrow" d="M150 140 H382" marker-end="url(#leader-key-expiry-head)"/>
+  <text class="dg-mono dg-muted-text" x="40" y="144">20 S</text>
+  <line class="dg-cross" x1="143" y1="153" x2="157" y2="167"/>
+  <line class="dg-cross" x1="143" y1="167" x2="157" y2="153"/>
+  <text class="dg-mono dg-muted-text" x="40" y="164">25 S</text>
+  <text class="dg-mono dg-muted-text" x="164" y="164">STOPS</text>
+  <path class="dg-bracket-accent" d="M398 140 H404 V260 H398" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="412" y="204.0">TTL 30 S</text>
+  <text class="dg-mono dg-muted-text" x="40" y="264">50 S</text>
+  <text class="dg-mono dg-muted-text" x="380" y="264" text-anchor="end">EXPIRED</text>
+  <text class="dg-mono dg-accent-text" x="495.0" y="260" text-anchor="middle">TAKE KEY</text>
+  <path class="dg-arrow dg-message" d="M600 268 H398" marker-end="url(#leader-key-expiry-head-accent)"/>
+  <rect class="dg-box-accent" x="550.0" y="280" width="100" height="28" rx="4"/>
+  <text class="dg-code" x="600.0" y="298.0" text-anchor="middle">promote</text>
+  </g>
+</svg>

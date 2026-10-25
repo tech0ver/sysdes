@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 260" role="img" aria-labelledby="logical-decoding-title logical-decoding-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="logical-decoding-title">From the WAL to row changes and their consumers</title>
+  <desc id="logical-decoding-desc">Logical decoding reads the WAL through a slot and turns it into row changes grouped by transaction: insert booking 51077, update home 1042, commit. A subscription on another PostgreSQL server applies them, and Debezium publishes them to Kafka, from which the search engine and the warehouse read.</desc>
+  <defs>
+    <marker id="logical-decoding-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="logical-decoding-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="80" width="100" height="50" rx="6"/>
+  <text class="dg-name" x="66.0" y="110.0" text-anchor="middle">WAL</text>
+  <path class="dg-arrow" d="M116 105 H142" marker-end="url(#logical-decoding-head)"/>
+  <rect class="dg-box" x="150" y="70" width="140" height="70" rx="6"/>
+  <text class="dg-name" x="220.0" y="103.0" text-anchor="middle">Decoding</text>
+  <text class="dg-sub" x="220.0" y="119.0" text-anchor="middle">through a slot</text>
+  <path class="dg-arrow" d="M290 105 H316" marker-end="url(#logical-decoding-head)"/>
+  <rect class="dg-box-accent" x="324" y="20" width="186" height="170" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="417" y="42" text-anchor="middle">ROW CHANGES</text>
+  <rect class="dg-chip" x="334" y="56" width="166" height="26" rx="4"/>
+  <text class="dg-code" x="417.0" y="73.0" text-anchor="middle">INSERT booking 51077</text>
+  <rect class="dg-chip" x="334" y="88" width="166" height="26" rx="4"/>
+  <text class="dg-code" x="417.0" y="105.0" text-anchor="middle">UPDATE home 1042</text>
+  <rect class="dg-chip" x="334" y="120" width="166" height="26" rx="4"/>
+  <text class="dg-code" x="417.0" y="137.0" text-anchor="middle">COMMIT</text>
+  <text class="dg-mono dg-muted-text" x="417" y="170" text-anchor="middle">IN COMMIT ORDER</text>
+  <path class="dg-arrow" d="M510 52 H552" marker-end="url(#logical-decoding-head)"/>
+  <rect class="dg-box" x="560" y="30" width="144" height="44" rx="6"/>
+  <text class="dg-name" x="632.0" y="50.0" text-anchor="middle">Subscriber</text>
+  <text class="dg-sub" x="632.0" y="66.0" text-anchor="middle">another PostgreSQL</text>
+  <path class="dg-arrow" d="M510 156 H552" marker-end="url(#logical-decoding-head)"/>
+  <rect class="dg-box" x="560" y="134" width="144" height="44" rx="6"/>
+  <text class="dg-name" x="632.0" y="154.0" text-anchor="middle">Debezium</text>
+  <text class="dg-sub" x="632.0" y="170.0" text-anchor="middle">to Kafka</text>
+  <path class="dg-arrow" d="M632 178 V210" marker-end="url(#logical-decoding-head)"/>
+  <rect class="dg-box" x="560" y="210" width="144" height="44" rx="6"/>
+  <text class="dg-name" x="632.0" y="230.0" text-anchor="middle">Search engine</text>
+  <text class="dg-sub" x="632.0" y="246.0" text-anchor="middle">and warehouse</text>
+</svg>

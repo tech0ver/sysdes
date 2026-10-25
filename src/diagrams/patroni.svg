@@ -1,0 +1,48 @@
+<svg class="diagram-svg" viewBox="0 0 720 370" role="img" aria-labelledby="patroni-title patroni-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="patroni-title">Patroni on three servers with etcd</title>
+  <desc id="patroni-desc">Three nodes, each with Patroni, a watchdog, and PostgreSQL. The leader key in etcd names node 1 and has a time to live of 30 seconds. Patroni on node 1 renews it every 10 seconds, and node 1 runs the primary; Patroni on nodes 2 and 3 watches the key, and they run standbys. The app lists all hosts with target_session_attrs=read-write and connects to the primary.</desc>
+  <defs>
+    <marker id="patroni-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="patroni-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="100" y="16" width="520" height="48" rx="6"/>
+  <text class="dg-name" x="360.0" y="38.0" text-anchor="middle">etcd</text>
+  <text class="dg-sub" x="360.0" y="54.0" text-anchor="middle">leader key = node 1, TTL 30 s</text>
+  <rect class="dg-zone" x="16" y="106" width="220" height="166" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="126">NODE 1</text>
+  <rect class="dg-box" x="30" y="138" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="90.0" y="161.0" text-anchor="middle">Patroni</text>
+  <rect class="dg-chip" x="158" y="138" width="64" height="36" rx="4"/>
+  <text class="dg-code" x="190.0" y="160.0" text-anchor="middle">watchdog</text>
+  <rect class="dg-box-accent" x="30" y="196" width="192" height="54" rx="6"/>
+  <text class="dg-name" x="126.0" y="221.0" text-anchor="middle">PostgreSQL</text>
+  <text class="dg-sub" x="126.0" y="237.0" text-anchor="middle">primary</text>
+  <path class="dg-arrow dg-message" d="M90 138 V72" marker-end="url(#patroni-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="98" y="100">RENEW EVERY 10 S</text>
+  <rect class="dg-zone" x="250" y="106" width="220" height="166" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="265" y="126">NODE 2</text>
+  <rect class="dg-box" x="264" y="138" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="324.0" y="161.0" text-anchor="middle">Patroni</text>
+  <rect class="dg-chip" x="392" y="138" width="64" height="36" rx="4"/>
+  <text class="dg-code" x="424.0" y="160.0" text-anchor="middle">watchdog</text>
+  <rect class="dg-box" x="264" y="196" width="192" height="54" rx="6"/>
+  <text class="dg-name" x="360.0" y="221.0" text-anchor="middle">PostgreSQL</text>
+  <text class="dg-sub" x="360.0" y="237.0" text-anchor="middle">standby</text>
+  <path class="dg-arrow" d="M324 138 V72" marker-end="url(#patroni-head)"/>
+  <text class="dg-mono dg-muted-text" x="332" y="100">WATCH</text>
+  <rect class="dg-zone" x="484" y="106" width="220" height="166" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="499" y="126">NODE 3</text>
+  <rect class="dg-box" x="498" y="138" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="558.0" y="161.0" text-anchor="middle">Patroni</text>
+  <rect class="dg-chip" x="626" y="138" width="64" height="36" rx="4"/>
+  <text class="dg-code" x="658.0" y="160.0" text-anchor="middle">watchdog</text>
+  <rect class="dg-box" x="498" y="196" width="192" height="54" rx="6"/>
+  <text class="dg-name" x="594.0" y="221.0" text-anchor="middle">PostgreSQL</text>
+  <text class="dg-sub" x="594.0" y="237.0" text-anchor="middle">standby</text>
+  <path class="dg-arrow" d="M558 138 V72" marker-end="url(#patroni-head)"/>
+  <text class="dg-mono dg-muted-text" x="566" y="100">WATCH</text>
+  <rect class="dg-box" x="16" y="312" width="220" height="44" rx="6"/>
+  <text class="dg-name" x="126.0" y="332.0" text-anchor="middle">App</text>
+  <text class="dg-sub" x="126.0" y="348.0" text-anchor="middle">target_session_attrs=read-write</text>
+  <path class="dg-arrow dg-message" d="M110 312 V258" marker-end="url(#patroni-head-accent)"/>
+</svg>
