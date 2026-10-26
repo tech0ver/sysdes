@@ -41,7 +41,7 @@ A cloud region has several separate failure areas called **availability zones**,
 
 ::diagram{name="semi-sync-zones"}
 
-Products differ in what "the follower has it" means: received, saved to disk, or applied and visible to reads. In PostgreSQL, once synchronous followers are configured, [`synchronous_commit`](https://www.postgresql.org/docs/current/runtime-config-wal.html) chooses which of these to wait for, even per transaction. <!-- link: technologies/postgresql -->
+Products differ in what "the follower has it" means: received, saved to disk, or applied and visible to reads. In PostgreSQL, once synchronous followers are configured, `synchronous_commit` [chooses which of these to wait for](../../technologies/postgresql/#copies-on-other-servers), even per transaction.
 
 :::avoid
 Do not assume that a semi-synchronous write is always on two nodes. MySQL waits for one follower for [10 seconds by default](https://dev.mysql.com/doc/refman/8.4/en/replication-options-source.html), then [falls back to asynchronous replication](https://dev.mysql.com/doc/refman/8.4/en/replication-semisync.html) without telling the client, until a follower catches up. Monitor this state. <!-- link: technologies/mysql -->

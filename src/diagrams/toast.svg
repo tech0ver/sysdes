@@ -1,0 +1,40 @@
+<svg class="diagram-svg" viewBox="0 0 717 236" role="img" aria-labelledby="toast-title toast-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="toast-title">How TOAST stores a long value</title>
+  <desc id="toast-desc">A row of home 1042 with id, title, price, and an 18 KB description. The description is compressed and moved in chunks of about 2 KB to the TOAST table. The stored row keeps only a pointer in its place, so the row stays small.</desc>
+  <defs>
+    <marker id="toast-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="toast-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-name" x="16" y="50" text-anchor="start">Row as written</text>
+  <text class="dg-name" x="16" y="130" text-anchor="start">Row as stored</text>
+  <text class="dg-name" x="16" y="210" text-anchor="start">TOAST table</text>
+  <rect class="dg-box" x="150" y="30" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="46.0" text-anchor="middle">1042</text>
+  <rect class="dg-box" x="150" y="110" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="126.0" text-anchor="middle">1042</text>
+  <rect class="dg-box" x="214" y="30" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="279.0" y="46.0" text-anchor="middle">Sea view villa</text>
+  <rect class="dg-box" x="214" y="110" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="279.0" y="126.0" text-anchor="middle">Sea view villa</text>
+  <rect class="dg-box" x="348" y="30" width="50" height="24" rx="4"/>
+  <text class="dg-code" x="373.0" y="46.0" text-anchor="middle">120</text>
+  <rect class="dg-box" x="348" y="110" width="50" height="24" rx="4"/>
+  <text class="dg-code" x="373.0" y="126.0" text-anchor="middle">120</text>
+  <rect class="dg-box" x="402" y="30" width="250" height="24" rx="4"/>
+  <text class="dg-code" x="527.0" y="46.0" text-anchor="middle">description: 18 KB</text>
+  <rect class="dg-box-accent" x="402" y="110" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="447.0" y="126.0" text-anchor="middle">pointer</text>
+  <path class="dg-arrow" d="M447 60 V102" marker-end="url(#toast-head)"/>
+  <text class="dg-mono dg-muted-text" x="455" y="86">COMPRESS, MOVE</text>
+  <rect class="dg-chip" x="402" y="190" width="70" height="30" rx="4"/>
+  <text class="dg-code" x="437.0" y="209.0" text-anchor="middle">chunk 0</text>
+  <rect class="dg-chip" x="478" y="190" width="70" height="30" rx="4"/>
+  <text class="dg-code" x="513.0" y="209.0" text-anchor="middle">chunk 1</text>
+  <rect class="dg-chip" x="554" y="190" width="70" height="30" rx="4"/>
+  <text class="dg-code" x="589.0" y="209.0" text-anchor="middle">chunk 2</text>
+  <rect class="dg-chip" x="630" y="190" width="70" height="30" rx="4"/>
+  <text class="dg-code" x="665.0" y="209.0" text-anchor="middle">chunk 3</text>
+  <path class="dg-arrow dg-message" d="M447 140 V182" marker-end="url(#toast-head-accent)"/>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg class="diagram-svg" viewBox="0 0 706 250" role="img" aria-labelledby="delete-vs-drop-title delete-vs-drop-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="delete-vs-drop-title">Removing an old month with DELETE and with DROP</title>
+  <desc id="delete-vs-drop-desc">The same four months of rows in both panels. Left, one table: DELETE marks the February rows as dead, and vacuuming must clean them later; deleting 1.2 million rows took 65.9 s. Right, a table partitioned by month: dropping the February partition removes its file at once; it took 43 ms.</desc>
+  <defs>
+    <marker id="delete-vs-drop-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="delete-vs-drop-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-7 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="242"/>
+  <text class="dg-code" x="180" y="22" text-anchor="middle">DELETE from one table</text>
+  <rect class="dg-box" x="24" y="40" width="312" height="150" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="67" y="64" text-anchor="middle">FEB</text>
+  <rect class="dg-box-failed" x="42" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-box-failed" x="42" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-box-failed" x="42" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-box-failed" x="42" y="152" width="50" height="14" rx="2"/>
+  <text class="dg-mono dg-muted-text" x="141" y="64" text-anchor="middle">MAR</text>
+  <rect class="dg-bar" x="116" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="116" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="116" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="116" y="152" width="50" height="14" rx="2"/>
+  <text class="dg-mono dg-muted-text" x="215" y="64" text-anchor="middle">APR</text>
+  <rect class="dg-bar" x="190" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="190" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="190" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="190" y="152" width="50" height="14" rx="2"/>
+  <text class="dg-mono dg-muted-text" x="289" y="64" text-anchor="middle">MAY</text>
+  <rect class="dg-bar" x="264" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="264" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="264" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="264" y="152" width="50" height="14" rx="2"/>
+  <path class="dg-bracket-accent" d="M36 196 V202 H98 V196" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="67.0" y="218" text-anchor="middle">DEAD ROWS</text>
+  <text class="dg-result" x="180" y="238" text-anchor="middle">65.9 s, dead rows left</text>
+  <text class="dg-code" x="540" y="22" text-anchor="middle">DROP the old partition</text>
+  <rect class="dg-box-failed" x="392" y="40" width="70" height="150" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="427" y="64" text-anchor="middle">FEB</text>
+  <rect class="dg-box" x="466" y="40" width="70" height="150" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="501" y="64" text-anchor="middle">MAR</text>
+  <rect class="dg-bar" x="476" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="476" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="476" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="476" y="152" width="50" height="14" rx="2"/>
+  <rect class="dg-box" x="540" y="40" width="70" height="150" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="575" y="64" text-anchor="middle">APR</text>
+  <rect class="dg-bar" x="550" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="550" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="550" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="550" y="152" width="50" height="14" rx="2"/>
+  <rect class="dg-box" x="614" y="40" width="70" height="150" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="649" y="64" text-anchor="middle">MAY</text>
+  <rect class="dg-bar" x="624" y="80" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="624" y="104" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="624" y="128" width="50" height="14" rx="2"/>
+  <rect class="dg-bar" x="624" y="152" width="50" height="14" rx="2"/>
+  <line class="dg-cross" x1="414" y1="121" x2="432" y2="139"/>
+  <line class="dg-cross" x1="414" y1="139" x2="432" y2="121"/>
+  <path class="dg-bracket-accent" d="M396 196 V202 H458 V196" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="427.0" y="218" text-anchor="middle">REMOVED</text>
+  <text class="dg-result" x="540" y="238" text-anchor="middle">43 ms, nothing left</text>
+  </g>
+</svg>

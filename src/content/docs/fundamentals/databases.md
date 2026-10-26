@@ -37,7 +37,7 @@ The primary key on the pair rejects a second like from the same user and finds a
 
 **Constraints** make the database enforce the rules, so a bug in one service cannot break them. The primary key on `likes` blocks the second like, a foreign key blocks a like for a post that does not exist, and `ON DELETE CASCADE` removes an account's likes with it. A change that touches several rows at once, such as deleting a post with its comments, relies on transactions.
 
-PostgreSQL and MySQL are the usual choices here. <!-- link: technologies/postgresql --> <!-- link: technologies/mysql -->
+[PostgreSQL](../../technologies/postgresql/) and MySQL are the usual choices here. <!-- link: technologies/mysql -->
 
 :::do
 Keep the core entities in a relational store, normalized. Give each many-to-many relation its own table with a unique key on the pair and an index for each direction. Let constraints enforce the rules that must always hold.

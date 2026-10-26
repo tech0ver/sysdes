@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 701 230" role="img" aria-labelledby="index-only-scan-title index-only-scan-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="index-only-scan-title">An index-only scan and the visibility map</title>
+  <desc id="index-only-scan-desc">A covering index on city and price that includes the title has four Lisbon entries, on heap pages 0, 0, 1, and 2. The visibility map says pages 0 and 1 hold only rows that every transaction sees, so the scan answers from the index alone. Page 2 is not marked, so the scan reads heap page 2.</desc>
+  <defs>
+    <marker id="index-only-scan-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="index-only-scan-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <rect class="dg-box" x="16" y="30" width="276" height="180" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="154" y="50" text-anchor="middle">(CITY, PRICE) INCLUDE (TITLE)</text>
+  <text class="dg-code" x="30" y="80">Lisbon 60</text>
+  <text class="dg-code" x="130" y="80">Loft in Alfama</text>
+  <text class="dg-code" x="280" y="80" text-anchor="end">p0</text>
+  <text class="dg-code" x="30" y="114">Lisbon 95</text>
+  <text class="dg-code" x="130" y="114">Flat in Graça</text>
+  <text class="dg-code" x="280" y="114" text-anchor="end">p0</text>
+  <text class="dg-code" x="30" y="148">Lisbon 120</text>
+  <text class="dg-code" x="130" y="148">Studio by Rossio</text>
+  <text class="dg-code" x="280" y="148" text-anchor="end">p1</text>
+  <text class="dg-code" x="30" y="182">Lisbon 210</text>
+  <text class="dg-code" x="130" y="182">Villa in Belém</text>
+  <text class="dg-code" x="280" y="182" text-anchor="end">p2</text>
+  <path class="dg-arrow" d="M292 120 H336" marker-end="url(#index-only-scan-head)"/>
+  <text class="dg-mono dg-muted-text" x="318.0" y="112" text-anchor="middle">CHECK</text>
+  <rect class="dg-box" x="344" y="30" width="160" height="180" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="424" y="50" text-anchor="middle">VISIBILITY MAP</text>
+  <text class="dg-code" x="358" y="84">p0</text>
+  <text class="dg-code" x="490" y="84" text-anchor="end">all visible</text>
+  <text class="dg-code" x="358" y="128">p1</text>
+  <text class="dg-code" x="490" y="128" text-anchor="end">all visible</text>
+  <text class="dg-code" x="358" y="172">p2</text>
+  <text class="dg-code" x="490" y="172" text-anchor="end">not marked</text>
+  <text class="dg-mono dg-muted-text" x="632" y="50" text-anchor="middle">HEAP</text>
+  <rect class="dg-box-failed" x="580" y="64" width="104" height="32" rx="4"/>
+  <text class="dg-code-muted" x="632.0" y="84.0" text-anchor="middle">page 0</text>
+  <text class="dg-mono dg-muted-text" x="542" y="84" text-anchor="middle">SKIP</text>
+  <rect class="dg-box-failed" x="580" y="108" width="104" height="32" rx="4"/>
+  <text class="dg-code-muted" x="632.0" y="128.0" text-anchor="middle">page 1</text>
+  <text class="dg-mono dg-muted-text" x="542" y="128" text-anchor="middle">SKIP</text>
+  <rect class="dg-box-accent" x="580" y="152" width="104" height="32" rx="4"/>
+  <text class="dg-code" x="632.0" y="172.0" text-anchor="middle">page 2</text>
+  <path class="dg-arrow dg-message" d="M504 168 H572" marker-end="url(#index-only-scan-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="542.0" y="160" text-anchor="middle">READ</text>
+  </g>
+</svg>

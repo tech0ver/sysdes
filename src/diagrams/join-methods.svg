@@ -1,0 +1,64 @@
+<svg class="diagram-svg" viewBox="0 0 714 236" role="img" aria-labelledby="join-methods-title join-methods-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="join-methods-title">Three ways to join homes and bookings</title>
+  <desc id="join-methods-desc">The same homes 1, 2, 3 and bookings 11, 12, 13 for homes 1, 3, and 3 in each panel. Nested loop: for each home, a lookup in the bookings index. Hash join: a hash table built from the homes, probed with each booking. Merge join: both inputs sorted by home, walked together.</desc>
+  <defs>
+    <marker id="join-methods-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="join-methods-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-3 0)">
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="228"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="228"/>
+  <text class="dg-name" x="120.0" y="22" text-anchor="middle">Nested loop</text>
+  <text class="dg-mono dg-muted-text" x="60" y="62" text-anchor="middle">OUTER</text>
+  <text class="dg-mono dg-muted-text" x="180" y="62" text-anchor="middle">INNER</text>
+  <rect class="dg-box" x="20.0" y="74" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="60.0" y="90.0" text-anchor="middle">home 1</text>
+  <path class="dg-arrow dg-message" d="M100 86 H132" marker-end="url(#join-methods-head-accent)"/>
+  <rect class="dg-box" x="20.0" y="118" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="60.0" y="134.0" text-anchor="middle">home 2</text>
+  <path class="dg-arrow dg-message" d="M100 130 H132" marker-end="url(#join-methods-head-accent)"/>
+  <rect class="dg-box" x="20.0" y="162" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="60.0" y="178.0" text-anchor="middle">home 3</text>
+  <path class="dg-arrow dg-message" d="M100 174 H132" marker-end="url(#join-methods-head-accent)"/>
+  <rect class="dg-box" x="140" y="74" width="80" height="112" rx="6"/>
+  <text class="dg-code" x="180" y="126" text-anchor="middle">bookings</text>
+  <text class="dg-code" x="180" y="142" text-anchor="middle">index</text>
+  <text class="dg-name" x="360.0" y="22" text-anchor="middle">Hash join</text>
+  <text class="dg-mono dg-muted-text" x="290" y="62" text-anchor="middle">PROBE</text>
+  <text class="dg-mono dg-muted-text" x="430" y="62" text-anchor="middle">HASH OF HOMES</text>
+  <rect class="dg-box" x="388" y="74" width="84" height="112" rx="6"/>
+  <text class="dg-code" x="430" y="90" text-anchor="middle">1</text>
+  <line class="dg-rule" x1="396" y1="105" x2="464" y2="105"/>
+  <text class="dg-code" x="430" y="128" text-anchor="middle">2</text>
+  <line class="dg-rule" x1="396" y1="143" x2="464" y2="143"/>
+  <text class="dg-code" x="430" y="166" text-anchor="middle">3</text>
+  <rect class="dg-box" x="252.0" y="74" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="290.0" y="90.0" text-anchor="middle">b11 · 1</text>
+  <path class="dg-arrow dg-message" d="M328 86 H352 V86 H380" marker-end="url(#join-methods-head-accent)"/>
+  <rect class="dg-box" x="252.0" y="118" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="290.0" y="134.0" text-anchor="middle">b12 · 3</text>
+  <path class="dg-arrow dg-message" d="M328 130 H352 V156 H380" marker-end="url(#join-methods-head-accent)"/>
+  <rect class="dg-box" x="252.0" y="162" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="290.0" y="178.0" text-anchor="middle">b13 · 3</text>
+  <path class="dg-arrow dg-message" d="M328 174 H352 V168 H380" marker-end="url(#join-methods-head-accent)"/>
+  <text class="dg-name" x="600.0" y="22" text-anchor="middle">Merge join</text>
+  <text class="dg-mono dg-muted-text" x="540" y="62" text-anchor="middle">HOMES</text>
+  <text class="dg-mono dg-muted-text" x="660" y="62" text-anchor="middle">BOOKINGS</text>
+  <rect class="dg-box" x="500.0" y="74" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="90.0" text-anchor="middle">home 1</text>
+  <rect class="dg-box" x="500.0" y="118" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="134.0" text-anchor="middle">home 2</text>
+  <rect class="dg-box" x="500.0" y="162" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="178.0" text-anchor="middle">home 3</text>
+  <rect class="dg-box" x="620.0" y="74" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="660.0" y="90.0" text-anchor="middle">b11 · 1</text>
+  <rect class="dg-box" x="620.0" y="118" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="660.0" y="134.0" text-anchor="middle">b12 · 3</text>
+  <rect class="dg-box" x="620.0" y="162" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="660.0" y="178.0" text-anchor="middle">b13 · 3</text>
+  <path class="dg-arrow dg-message" d="M580 86 H600 V86 H620"/>
+  <path class="dg-arrow dg-message" d="M580 166 H600 V130 H620"/>
+  <path class="dg-arrow dg-message" d="M580 174 H600 V174 H620"/>
+  <text class="dg-mono dg-muted-text" x="600" y="214" text-anchor="middle">BOTH SORTED BY HOME</text>
+  </g>
+</svg>

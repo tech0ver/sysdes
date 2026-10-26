@@ -1,19 +1,17 @@
-<svg class="diagram-svg" viewBox="0 0 666 324" role="img" aria-labelledby="redis-client-tracking-title redis-client-tracking-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="diagram-svg" viewBox="0 0 643 324" role="img" aria-labelledby="redis-client-tracking-title redis-client-tracking-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="redis-client-tracking-title">Client-side caching with invalidation</title>
   <desc id="redis-client-tracking-desc">Time runs down. App server 1 turns on tracking and reads channel:42:info; Redis remembers that it did, and the app keeps a local copy that serves later reads without a request. App server 2 changes the title. Redis sends app server 1 an invalidation for channel:42:info, and app server 1 drops its copy; its next read goes to Redis.</desc>
   <defs>
     <marker id="redis-client-tracking-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
     <marker id="redis-client-tracking-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
   </defs>
-  <g transform="translate(0 0)">
+  <g transform="translate(-23 0)">
   <text class="dg-mono dg-muted-text" x="110" y="24" text-anchor="middle">APP SERVER 1</text>
   <line class="dg-lifeline" x1="110" y1="36" x2="110" y2="308"/>
   <text class="dg-mono dg-muted-text" x="360" y="24" text-anchor="middle">REDIS</text>
   <line class="dg-lifeline" x1="360" y1="36" x2="360" y2="308"/>
   <text class="dg-mono dg-muted-text" x="610" y="24" text-anchor="middle">APP SERVER 2</text>
   <line class="dg-lifeline" x1="610" y1="36" x2="610" y2="308"/>
-  <path class="dg-arrow" d="M14 46 V288" marker-end="url(#redis-client-tracking-head)"/>
-  <text class="dg-mono dg-muted-text" x="14" y="302" text-anchor="middle">TIME</text>
   <text class="dg-mono dg-muted-text" x="235.0" y="54" text-anchor="middle">CLIENT TRACKING ON</text>
   <path class="dg-arrow" d="M110 62 H352" marker-end="url(#redis-client-tracking-head)"/>
   <text class="dg-mono dg-muted-text" x="235.0" y="88" text-anchor="middle">HGETALL channel:42:info</text>

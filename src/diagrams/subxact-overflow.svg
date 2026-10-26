@@ -1,0 +1,88 @@
+<svg class="diagram-svg" viewBox="0 0 639 290" role="img" aria-labelledby="subxact-overflow-title subxact-overflow-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="subxact-overflow-title">More than 64 subtransactions</title>
+  <desc id="subxact-overflow-desc">A backend's cache holds the IDs of up to 64 subtransactions that wrote something. The 65th does not fit. Other sessions that check rows written by this transaction can no longer trust the cache and look the IDs up on pg_subtrans pages instead.</desc>
+  <defs>
+    <marker id="subxact-overflow-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="subxact-overflow-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-43 0)">
+  <rect class="dg-box" x="160" y="16" width="400" height="132" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="360" y="36" text-anchor="middle">BACKEND: CACHE OF 64 SUBTRANSACTIONS</text>
+  <rect class="dg-chip" x="184" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="206" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="228" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="250" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="272" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="294" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="316" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="338" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="360" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="382" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="404" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="426" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="448" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="470" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="492" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="514" y="50" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="184" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="206" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="228" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="250" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="272" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="294" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="316" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="338" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="360" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="382" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="404" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="426" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="448" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="470" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="492" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="514" y="72" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="184" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="206" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="228" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="250" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="272" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="294" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="316" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="338" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="360" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="382" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="404" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="426" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="448" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="470" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="492" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="514" y="94" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="184" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="206" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="228" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="250" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="272" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="294" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="316" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="338" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="360" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="382" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="404" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="426" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="448" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="470" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="492" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-chip" x="514" y="116" width="18" height="16" rx="3"/>
+  <rect class="dg-box-accent" x="594.0" y="70" width="64" height="30" rx="4"/>
+  <text class="dg-code" x="626.0" y="89.0" text-anchor="middle">65th</text>
+  <text class="dg-mono dg-accent-text" x="626" y="60" text-anchor="middle">DOES NOT FIT</text>
+  <rect class="dg-box" x="60" y="216" width="200" height="50" rx="6"/>
+  <text class="dg-name" x="160.0" y="246.0" text-anchor="middle">Other sessions</text>
+  <rect class="dg-box" x="460" y="216" width="200" height="50" rx="6"/>
+  <text class="dg-name" x="560.0" y="239.0" text-anchor="middle">pg_subtrans</text>
+  <text class="dg-sub" x="560.0" y="255.0" text-anchor="middle">pages, read from disk</text>
+  <path class="dg-arrow dg-empty" d="M200 216 V156" marker-end="url(#subxact-overflow-head)"/>
+  <text class="dg-mono dg-muted-text" x="208" y="192">CACHE INCOMPLETE</text>
+  <path class="dg-arrow dg-message" d="M260 241 H452" marker-end="url(#subxact-overflow-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="233" text-anchor="middle">LOOK UP EACH ID</text>
+  </g>
+</svg>

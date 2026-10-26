@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 714 300" role="img" aria-labelledby="not-valid-validate-title not-valid-validate-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="not-valid-validate-title">Adding a check constraint in one step and in two</title>
+  <desc id="not-valid-validate-desc">Left, ADD CONSTRAINT with a check scans the whole table under an exclusive lock, and reads and writes wait for the whole scan. Right, ADD CONSTRAINT ... NOT VALID takes the lock only for a moment, and VALIDATE CONSTRAINT then scans the table while reads and writes go on.</desc>
+  <defs>
+    <marker id="not-valid-validate-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="not-valid-validate-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-3 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="292"/>
+  <text class="dg-code" x="180" y="22" text-anchor="middle">ADD CONSTRAINT</text>
+  <text class="dg-mono dg-muted-text" x="68" y="50" text-anchor="middle">MIGRATION</text>
+  <line class="dg-lifeline" x1="68" y1="60" x2="68" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="176" y="50" text-anchor="middle">READS</text>
+  <line class="dg-lifeline" x1="176" y1="60" x2="176" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="284" y="50" text-anchor="middle">WRITES</text>
+  <line class="dg-lifeline" x1="284" y1="60" x2="284" y2="260"/>
+  <text class="dg-code" x="540" y="22" text-anchor="middle">NOT VALID, then VALIDATE</text>
+  <text class="dg-mono dg-muted-text" x="436" y="50" text-anchor="middle">MIGRATION</text>
+  <line class="dg-lifeline" x1="436" y1="60" x2="436" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="544" y="50" text-anchor="middle">READS</text>
+  <line class="dg-lifeline" x1="544" y1="60" x2="544" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="652" y="50" text-anchor="middle">WRITES</text>
+  <line class="dg-lifeline" x1="652" y1="60" x2="652" y2="260"/>
+  <rect class="dg-box" x="20.0" y="70" width="96" height="150" rx="4"/>
+  <text class="dg-code" x="68" y="87" text-anchor="middle">scan</text>
+  <rect class="dg-box-accent dg-empty" x="128.0" y="76" width="96" height="144" rx="4"/>
+  <text class="dg-code" x="176" y="93" text-anchor="middle">wait</text>
+  <rect class="dg-box" x="128.0" y="226" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="176" y="242.0" text-anchor="middle">run</text>
+  <rect class="dg-box-accent dg-empty" x="236.0" y="76" width="96" height="144" rx="4"/>
+  <text class="dg-code" x="284" y="93" text-anchor="middle">wait</text>
+  <rect class="dg-box" x="236.0" y="226" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="284" y="242.0" text-anchor="middle">run</text>
+  <rect class="dg-box" x="388.0" y="70" width="96" height="22" rx="4"/>
+  <text class="dg-code" x="436" y="85.0" text-anchor="middle">NOT VALID</text>
+  <rect class="dg-box" x="388.0" y="110" width="96" height="110" rx="4"/>
+  <text class="dg-code" x="436" y="127" text-anchor="middle">VALIDATE</text>
+  <rect class="dg-box-accent dg-empty" x="496.0" y="76" width="96" height="16" rx="4"/>
+  <rect class="dg-box" x="496.0" y="110" width="96" height="140" rx="4"/>
+  <text class="dg-code" x="544" y="127" text-anchor="middle">run</text>
+  <rect class="dg-box-accent dg-empty" x="604.0" y="76" width="96" height="16" rx="4"/>
+  <rect class="dg-box" x="604.0" y="110" width="96" height="140" rx="4"/>
+  <text class="dg-code" x="652" y="127" text-anchor="middle">run</text>
+  </g>
+</svg>

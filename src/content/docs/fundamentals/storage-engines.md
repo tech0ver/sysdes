@@ -203,7 +203,7 @@ Links are read on every redirect and rarely change. Clicks are written all the t
 | Space amplification | Partly empty pages | Compresses well, but keeps old versions until compaction |
 | Latency | Steadier | Spikes when compaction falls behind |
 
-For the shortener, links go to a B-tree. Most relational databases, such as PostgreSQL and MySQL, keep their indexes in B-trees, and MySQL also keeps the rows themselves in the tree of the primary key. <!-- link: technologies/postgresql --> <!-- link: technologies/mysql --> Clicks can live in the same store while their rate is modest. When clicks arrive faster than the B-tree can keep up, they move to an LSM-tree, the engine of Cassandra and RocksDB. <!-- link: technologies/cassandra --> <!-- link: technologies/rocksdb -->
+For the shortener, links go to a B-tree. Most relational databases, such as [PostgreSQL](../../technologies/postgresql/#storing-rows-and-pointing-to-them) and MySQL, keep their indexes in B-trees, and MySQL also keeps the rows themselves in the tree of the primary key. <!-- link: technologies/mysql --> Clicks can live in the same store while their rate is modest. When clicks arrive faster than the B-tree can keep up, they move to an LSM-tree, the engine of Cassandra and RocksDB. <!-- link: technologies/cassandra --> <!-- link: technologies/rocksdb -->
 
 :::interview
 When asked to pick a storage engine, start from the access pattern. Reads by key and by range with a mix of writes: a B-tree, the safe default. A sustained heavy load of writes: an LSM-tree, and name its price, slower reads and compaction. Present both as tendencies that depend on the workload, and offer to confirm the choice with a load test of your own reads and writes.

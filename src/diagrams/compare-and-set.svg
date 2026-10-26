@@ -7,10 +7,8 @@
   </defs>
   <text class="dg-mono dg-muted-text" x="108.0" y="20" text-anchor="middle">A</text>
   <text class="dg-mono dg-muted-text" x="292.0" y="20" text-anchor="middle">B</text>
-  <text class="dg-mono dg-muted-text" x="200.0" y="20" text-anchor="middle">TIME</text>
   <line class="dg-lifeline" x1="108.0" y1="28" x2="108.0" y2="296"/>
   <line class="dg-lifeline" x1="292.0" y1="28" x2="292.0" y2="296"/>
-  <path class="dg-arrow" d="M200.0 28 V296" marker-end="url(#compare-and-set-head)"/>
   <rect class="dg-box" x="26.0" y="38" width="164" height="26" rx="4"/>
   <text class="dg-code" x="108.0" y="55" text-anchor="middle">read → 10</text>
   <rect class="dg-box" x="210.0" y="74" width="164" height="26" rx="4"/>

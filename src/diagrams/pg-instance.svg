@@ -1,0 +1,73 @@
+<svg class="diagram-svg" viewBox="0 0 720 432" role="img" aria-labelledby="pg-instance-title pg-instance-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pg-instance-title">What runs inside one PostgreSQL instance</title>
+  <desc id="pg-instance-desc">Three app servers each open a connection, and the postmaster starts one backend process for each. The backends and six background processes share one area of memory with shared buffers, WAL buffers, and locks. The WAL writer writes the WAL file, the checkpointer and the background writer write the data files, autovacuum cleans tables, WAL senders stream the WAL to standbys, and the archiver copies it to backup storage.</desc>
+  <defs>
+    <marker id="pg-instance-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="pg-instance-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="220" y="16" width="130" height="36" rx="6"/>
+  <text class="dg-name" x="285.0" y="39.0" text-anchor="middle">App server</text>
+  <rect class="dg-box" x="370" y="16" width="130" height="36" rx="6"/>
+  <text class="dg-name" x="435.0" y="39.0" text-anchor="middle">App server</text>
+  <rect class="dg-box" x="520" y="16" width="130" height="36" rx="6"/>
+  <text class="dg-name" x="585.0" y="39.0" text-anchor="middle">App server</text>
+  <rect class="dg-zone" x="16" y="76" width="688" height="244" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="96">INSTANCE</text>
+  <rect class="dg-box" x="36" y="108" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="96.0" y="131.0" text-anchor="middle">postmaster</text>
+  <path class="dg-arrow dg-empty" d="M156 126 H212" marker-end="url(#pg-instance-head)"/>
+  <text class="dg-mono dg-muted-text" x="188.0" y="118" text-anchor="middle">STARTS</text>
+  <path class="dg-arrow dg-message" d="M285 52 V100" marker-end="url(#pg-instance-head-accent)"/>
+  <rect class="dg-box" x="220" y="108" width="130" height="36" rx="6"/>
+  <text class="dg-name" x="285.0" y="131.0" text-anchor="middle">backend</text>
+  <line class="dg-line" x1="285" y1="144" x2="285" y2="174"/>
+  <path class="dg-arrow dg-message" d="M435 52 V100" marker-end="url(#pg-instance-head-accent)"/>
+  <rect class="dg-box" x="370" y="108" width="130" height="36" rx="6"/>
+  <text class="dg-name" x="435.0" y="131.0" text-anchor="middle">backend</text>
+  <line class="dg-line" x1="435" y1="144" x2="435" y2="174"/>
+  <path class="dg-arrow dg-message" d="M585 52 V100" marker-end="url(#pg-instance-head-accent)"/>
+  <rect class="dg-box" x="520" y="108" width="130" height="36" rx="6"/>
+  <text class="dg-name" x="585.0" y="131.0" text-anchor="middle">backend</text>
+  <line class="dg-line" x1="585" y1="144" x2="585" y2="174"/>
+  <rect class="dg-box" x="36" y="174" width="648" height="60" rx="6"/>
+  <text class="dg-name" x="56" y="209" text-anchor="start">Shared memory</text>
+  <rect class="dg-chip" x="200" y="186" width="300" height="36" rx="4"/>
+  <text class="dg-code" x="350.0" y="208.0" text-anchor="middle">shared buffers: 8 KB pages</text>
+  <rect class="dg-chip" x="510" y="186" width="90" height="36" rx="4"/>
+  <text class="dg-code" x="555.0" y="208.0" text-anchor="middle">WAL buffers</text>
+  <rect class="dg-chip" x="610" y="186" width="62" height="36" rx="4"/>
+  <text class="dg-code" x="641.0" y="208.0" text-anchor="middle">locks</text>
+  <line class="dg-line" x1="85" y1="234" x2="85" y2="264"/>
+  <rect class="dg-box" x="33" y="264" width="104" height="36" rx="6"/>
+  <text class="dg-code" x="85.0" y="286.0" text-anchor="middle">WAL writer</text>
+  <line class="dg-line" x1="195" y1="234" x2="195" y2="264"/>
+  <rect class="dg-box" x="143" y="264" width="104" height="36" rx="6"/>
+  <text class="dg-code" x="195.0" y="286.0" text-anchor="middle">checkpointer</text>
+  <line class="dg-line" x1="305" y1="234" x2="305" y2="264"/>
+  <rect class="dg-box" x="253" y="264" width="104" height="36" rx="6"/>
+  <text class="dg-code" x="305.0" y="286.0" text-anchor="middle">bgwriter</text>
+  <line class="dg-line" x1="415" y1="234" x2="415" y2="264"/>
+  <rect class="dg-box" x="363" y="264" width="104" height="36" rx="6"/>
+  <text class="dg-code" x="415.0" y="286.0" text-anchor="middle">autovacuum</text>
+  <line class="dg-line" x1="525" y1="234" x2="525" y2="264"/>
+  <rect class="dg-box" x="473" y="264" width="104" height="36" rx="6"/>
+  <text class="dg-code" x="525.0" y="286.0" text-anchor="middle">WAL sender</text>
+  <line class="dg-line" x1="635" y1="234" x2="635" y2="264"/>
+  <rect class="dg-box" x="583" y="264" width="104" height="36" rx="6"/>
+  <text class="dg-code" x="635.0" y="286.0" text-anchor="middle">archiver</text>
+  <rect class="dg-zone" x="20" y="344" width="350" height="74" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="35" y="364">DISK</text>
+  <rect class="dg-box" x="33" y="372" width="104" height="36" rx="6"/>
+  <text class="dg-name" x="85.0" y="395.0" text-anchor="middle">WAL</text>
+  <rect class="dg-box" x="143" y="372" width="214" height="36" rx="6"/>
+  <text class="dg-name" x="250.0" y="395.0" text-anchor="middle">Data files</text>
+  <rect class="dg-box" x="473" y="372" width="104" height="36" rx="6"/>
+  <text class="dg-name" x="525.0" y="395.0" text-anchor="middle">Standbys</text>
+  <rect class="dg-box" x="583" y="372" width="104" height="36" rx="6"/>
+  <text class="dg-name" x="635.0" y="395.0" text-anchor="middle">Backups</text>
+  <path class="dg-arrow" d="M85 300 V364" marker-end="url(#pg-instance-head)"/>
+  <path class="dg-arrow" d="M195 300 V336 H220 V364" marker-end="url(#pg-instance-head)"/>
+  <path class="dg-arrow" d="M305 300 V336 H280 V364" marker-end="url(#pg-instance-head)"/>
+  <path class="dg-arrow" d="M525 300 V364" marker-end="url(#pg-instance-head)"/>
+  <path class="dg-arrow" d="M635 300 V364" marker-end="url(#pg-instance-head)"/>
+</svg>

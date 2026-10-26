@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 720 196" role="img" aria-labelledby="full-page-writes-title full-page-writes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="full-page-writes-title">A torn page and the full page copy in the WAL</title>
+  <desc id="full-page-writes-desc">Top: page 7 is 8 KB, written as two 4 KB blocks. A crash after the first block leaves the page half new and half old. Bottom: after a checkpoint, the first change to page 7 puts the whole 8 KB page into the WAL, and the next change to it only a small record. The same happens for page 12.</desc>
+  <defs>
+    <marker id="full-page-writes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="full-page-writes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="16" y="46" text-anchor="start">Page 7 on disk</text>
+  <text class="dg-sub" x="16" y="62" text-anchor="start">8 KB</text>
+  <rect class="dg-box" x="192" y="34" width="150" height="36" rx="4"/>
+  <text class="dg-code" x="267.0" y="56.0" text-anchor="middle">4 KB: new</text>
+  <rect class="dg-box-failed" x="342" y="34" width="150" height="36" rx="4"/>
+  <text class="dg-code-muted" x="417.0" y="56.0" text-anchor="middle">4 KB: old</text>
+  <line class="dg-cross" x1="335" y1="45" x2="349" y2="59"/>
+  <line class="dg-cross" x1="335" y1="59" x2="349" y2="45"/>
+  <text class="dg-mono dg-muted-text" x="508" y="56">CRASH MID-WRITE</text>
+  <line class="dg-rule" x1="16" y1="96" x2="704" y2="96"/>
+  <text class="dg-name" x="16" y="150" text-anchor="start">WAL</text>
+  <line class="dg-line" x1="180" y1="116" x2="180" y2="178"/>
+  <text class="dg-mono dg-muted-text" x="180" y="112" text-anchor="middle">CHECKPOINT</text>
+  <rect class="dg-box-accent" x="192" y="132" width="136" height="30" rx="4"/>
+  <text class="dg-code" x="260.0" y="151.0" text-anchor="middle">page 7: full 8 KB</text>
+  <rect class="dg-box" x="334" y="132" width="100" height="30" rx="4"/>
+  <text class="dg-code" x="384.0" y="151.0" text-anchor="middle">page 7: 60 B</text>
+  <rect class="dg-box-accent" x="440" y="132" width="144" height="30" rx="4"/>
+  <text class="dg-code" x="512.0" y="151.0" text-anchor="middle">page 12: full 8 KB</text>
+  <rect class="dg-box" x="590" y="132" width="100" height="30" rx="4"/>
+  <text class="dg-code" x="640.0" y="151.0" text-anchor="middle">page 7: 60 B</text>
+</svg>

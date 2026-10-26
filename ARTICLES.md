@@ -125,7 +125,7 @@ The word means different things in different articles. Each article says which o
 - `technologies/load-balancers` — Forward and reverse proxies, balancing algorithms in depth, sticky sessions, hash routing, connection draining, running out of ports and the connection backlog, global load balancing; NGINX, Envoy, HAProxy.
 - `technologies/cdn` — How a CDN works, anycast routing to a nearby edge, what to cache on it, invalidation.
 - `technologies/webrtc` — How WebRTC connects peers: NAT, STUN, TURN, signaling.
-- `technologies/postgresql` — PostgreSQL: B-tree storage, index types, EXPLAIN and query plans, a process per connection and connection pools, PostGIS, when to pick it.
+- `technologies/postgresql` **(written)** — PostgreSQL: processes and memory, durable commits, constraints and types, JSONB, heap storage and index types, query plans, connection pooling, MVCC and vacuuming, transaction ID wraparound, locks, schema changes under load, a job queue, search by words, place, and meaning, caches and time series, replication, failover, backups, logical replication, major upgrades, partitioning, and growing past one primary.
 - `technologies/kafka` — Kafka: topics and partitions, consumer groups, retention, and replay, copying topics to another region.
 - `technologies/rabbitmq` — RabbitMQ: a queue broker, exchanges and routing, acknowledgments, dead-lettering; when a queue fits better than a log.
 - `technologies/flink` — Flink: stream processing with event time, windows, watermarks, state, and checkpoints.

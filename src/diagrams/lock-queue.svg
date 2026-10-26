@@ -1,0 +1,48 @@
+<svg class="diagram-svg" viewBox="0 0 714 330" role="img" aria-labelledby="lock-queue-title lock-queue-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lock-queue-title">An ALTER TABLE waiting for its lock, without and with lock_timeout</title>
+  <desc id="lock-queue-desc">Both panels: a long report reads the table, and a migration runs ALTER TABLE, which needs an exclusive lock. Left, without lock_timeout: the ALTER waits for the report, and new reads queue behind the ALTER until the report ends. Right, with lock_timeout = 3s: the ALTER gives up after 3 seconds, the queued reads run, and the ALTER is retried after the report ends.</desc>
+  <defs>
+    <marker id="lock-queue-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lock-queue-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-3 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <text class="dg-code" x="180" y="22" text-anchor="middle">no lock_timeout</text>
+  <text class="dg-mono dg-muted-text" x="68" y="50" text-anchor="middle">REPORT</text>
+  <line class="dg-lifeline" x1="68" y1="60" x2="68" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="176" y="50" text-anchor="middle">ALTER</text>
+  <line class="dg-lifeline" x1="176" y1="60" x2="176" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="284" y="50" text-anchor="middle">NEW READS</text>
+  <line class="dg-lifeline" x1="284" y1="60" x2="284" y2="290"/>
+  <text class="dg-code" x="540" y="22" text-anchor="middle">lock_timeout = '3s'</text>
+  <text class="dg-mono dg-muted-text" x="436" y="50" text-anchor="middle">REPORT</text>
+  <line class="dg-lifeline" x1="436" y1="60" x2="436" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="544" y="50" text-anchor="middle">ALTER</text>
+  <line class="dg-lifeline" x1="544" y1="60" x2="544" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="652" y="50" text-anchor="middle">NEW READS</text>
+  <line class="dg-lifeline" x1="652" y1="60" x2="652" y2="290"/>
+  <rect class="dg-box" x="20.0" y="70" width="96" height="150" rx="4"/>
+  <text class="dg-code" x="68" y="87" text-anchor="middle">SELECT</text>
+  <rect class="dg-box" x="388.0" y="70" width="96" height="150" rx="4"/>
+  <text class="dg-code" x="436" y="87" text-anchor="middle">SELECT</text>
+  <rect class="dg-box-accent dg-empty" x="128.0" y="96" width="96" height="124" rx="4"/>
+  <text class="dg-code" x="176" y="113" text-anchor="middle">waits</text>
+  <rect class="dg-box" x="128.0" y="226" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="176" y="242.0" text-anchor="middle">ALTER</text>
+  <rect class="dg-box-accent dg-empty" x="236.0" y="122" width="96" height="128" rx="4"/>
+  <text class="dg-code" x="284" y="139" text-anchor="middle">queued</text>
+  <rect class="dg-box" x="236.0" y="256" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="284" y="272.0" text-anchor="middle">run</text>
+  <rect class="dg-box-failed" x="496.0" y="96" width="96" height="54" rx="4"/>
+  <text class="dg-code-muted" x="544" y="113" text-anchor="middle">waits 3 s</text>
+  <line class="dg-cross" x1="538" y1="154" x2="550" y2="166"/>
+  <line class="dg-cross" x1="538" y1="166" x2="550" y2="154"/>
+  <rect class="dg-box" x="496.0" y="226" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="544" y="242.0" text-anchor="middle">ALTER</text>
+  <rect class="dg-box-accent dg-empty" x="604.0" y="122" width="96" height="28" rx="4"/>
+  <rect class="dg-box" x="604.0" y="172" width="96" height="48" rx="4"/>
+  <text class="dg-code" x="652" y="189" text-anchor="middle">run</text>
+  <text class="dg-result" x="180" y="316" text-anchor="middle">reads blocked until the report ends</text>
+  <text class="dg-result" x="540" y="316" text-anchor="middle">reads wait at most 3 s</text>
+  </g>
+</svg>

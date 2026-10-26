@@ -46,6 +46,11 @@ const sharding = (anchor, section) => ({
 	label: `Sharding: ${section}`,
 });
 
+const postgresql = (anchor, section) => ({
+	href: `technologies/postgresql/#${anchor}`,
+	label: `PostgreSQL: ${section}`,
+});
+
 /** Phrases that contain a term but are not that term, such as product names. They never get a tooltip. */
 const consistency = (anchor, section) => ({
 	href: `fundamentals/consistency/#${anchor}`,
@@ -62,7 +67,7 @@ const redis = (anchor, section) => ({
 	label: `Redis: ${section}`,
 });
 
-export const glossarySkip = ['SQL Server', 'commit the layout'];
+export const glossarySkip = ['SQL Server', 'commit the layout', 'Recall.ai'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
 export const glossary = [
@@ -533,6 +538,7 @@ export const glossary = [
 		explanation:
 			'The writer stores it next to the data, and the reader computes it again. A mismatch means the data is incomplete or damaged.',
 		readMore: { href: 'https://en.wikipedia.org/wiki/Checksum', label: 'Wikipedia: Checksum' },
+		explainedIn: ['technologies/postgresql'],
 	},
 	{
 		id: 'page-cache',
@@ -720,7 +726,7 @@ export const glossary = [
 		aliases: ['query plan', 'query plans', 'Query plan'],
 		short: 'The steps a database chooses to run a query, such as which index to use.',
 		explanation: 'Databases show it on request (EXPLAIN in SQL). Check it to see whether a query really uses the index you added.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/Query_plan', label: 'Wikipedia: Query plan' },
+		readMore: postgresql('finding-why-a-query-is-slow', 'Finding why a query is slow'),
 	},
 	{
 		id: 'row-storage',
@@ -1402,17 +1408,17 @@ export const glossary = [
 		short: 'An approximate vector index built as a layered graph of nearby vectors.',
 		explanation:
 			'It is fast with good recall, but takes memory and time to build.',
-		readMore: { href: 'https://github.com/pgvector/pgvector#hnsw', label: 'pgvector: HNSW' },
+		readMore: postgresql('searching-by-meaning', 'Searching by meaning'),
 	},
 	{
 		id: 'ivf',
 		term: 'IVF',
-		aliases: ['IVF'],
+		aliases: ['IVF', 'IVFFlat'],
 		expansion: 'Inverted file index',
 		short: 'An approximate vector index that groups vectors into clusters and searches only the nearest clusters.',
 		explanation:
 			'It builds faster and uses less memory than HNSW, with lower speed or recall.',
-		readMore: { href: 'https://github.com/pgvector/pgvector#ivfflat', label: 'pgvector: IVFFlat' },
+		readMore: postgresql('searching-by-meaning', 'Searching by meaning'),
 	},
 	{
 		id: 'system-of-record',
@@ -2914,5 +2920,434 @@ export const glossary = [
 		explanation:
 			'It takes reads of hot keys off the server. The client must drop its copies when it loses the connection.',
 		readMore: redis('one-key-hotter-than-the-rest', 'One key hotter than the rest'),
+	},
+	{
+		id: 'postmaster',
+		term: 'Postmaster',
+		aliases: ['postmaster', 'Postmaster'],
+		short: 'The main PostgreSQL process that accepts connections and starts a process for each one.',
+		explanation:
+			'When a backend crashes, it ends the other backends and recovers the database from its log, which interrupts every client.',
+		readMore: postgresql('serving-many-clients-from-one-server', 'Serving many clients from one server'),
+	},
+	{
+		id: 'pg-backend',
+		term: 'Backend (PostgreSQL)',
+		aliases: ['backend process', 'backend processes'],
+		short: 'A PostgreSQL server process that serves one client connection.',
+		explanation:
+			'Each connection costs a whole process, which is why apps reuse connections through pools.',
+		readMore: postgresql('serving-many-clients-from-one-server', 'Serving many clients from one server'),
+	},
+	{
+		id: 'shared-buffers',
+		term: 'Shared buffers',
+		aliases: ['shared buffers', 'Shared buffers', 'shared_buffers'],
+		short: 'The page cache that all PostgreSQL processes share in memory.',
+		explanation:
+			'Pages are read and changed here and written to the data files later. A common start is a quarter of RAM; the OS page cache holds more.',
+		readMore: postgresql('serving-many-clients-from-one-server', 'Serving many clients from one server'),
+	},
+	{
+		id: 'pg-instance',
+		term: 'Instance (PostgreSQL)',
+		aliases: ['PostgreSQL instance', 'database cluster'],
+		short: 'One PostgreSQL server: a main process with its memory and data directory, holding one or more databases.',
+		explanation:
+			'Its databases share memory, processes, and one WAL, so standbys and physical backups copy all of them together.',
+		readMore: postgresql('serving-many-clients-from-one-server', 'Serving many clients from one server'),
+	},
+	{
+		id: 'torn-page',
+		term: 'Torn page',
+		aliases: ['torn page', 'torn pages', 'Torn page'],
+		short: 'A page that a crash left half old and half new, because the disk wrote only part of it.',
+		explanation:
+			'PostgreSQL writes a full copy of each page to the WAL on its first change after a checkpoint, so recovery can repair a torn page.',
+		readMore: postgresql('deciding-when-a-commit-is-durable', 'Deciding when a commit is durable'),
+	},
+	{
+		id: 'asynchronous-commit',
+		term: 'Asynchronous commit',
+		aliases: ['asynchronous commit', 'Asynchronous commit'],
+		short: 'A commit that returns before its log record is flushed to disk.',
+		explanation:
+			'It cuts commit latency; a crash can lose the most recent acknowledged commits, within the WAL writer\'s flush window, but leaves the data consistent.',
+		readMore: postgresql('deciding-when-a-commit-is-durable', 'Deciding when a commit is durable'),
+	},
+	{
+		id: 'data-checksums',
+		term: 'Data checksums',
+		aliases: ['data checksums', 'Data checksums'],
+		short: 'A checksum stored in every data page so that the database detects a damaged page when it reads it.',
+		explanation:
+			'They catch corruption from disks or memory instead of returning wrong data. PostgreSQL 18 turns them on by default for new instances.',
+		readMore: postgresql('deciding-when-a-commit-is-durable', 'Deciding when a commit is durable'),
+	},
+	{
+		id: 'range-type',
+		term: 'Range type',
+		aliases: ['range type', 'range types', 'Range type'],
+		short: 'A column type that holds a period or interval, such as a range of dates, as one value.',
+		explanation:
+			'The database can then compare ranges directly, for example check whether two bookings overlap.',
+		readMore: postgresql('keeping-data-valid-inside-the-database', 'Keeping data valid inside the database'),
+	},
+	{
+		id: 'exclusion-constraint',
+		term: 'Exclusion constraint',
+		aliases: ['exclusion constraint', 'exclusion constraints', 'Exclusion constraint'],
+		short: 'A table rule that rejects a row conflicting with an existing row under chosen operators, such as overlapping dates for the same item.',
+		explanation:
+			'It stops double bookings inside the database, without races between app servers.',
+		readMore: postgresql('keeping-data-valid-inside-the-database', 'Keeping data valid inside the database'),
+	},
+	{
+		id: 'db-sequence',
+		term: 'Sequence (database)',
+		aliases: ['database sequence'],
+		short: 'A database object that generates a series of numbers, commonly for IDs.',
+		explanation:
+			'A rollback does not return a number, so gaps are normal; uniqueness comes from a key, not from the sequence.',
+		readMore: postgresql('keeping-data-valid-inside-the-database', 'Keeping data valid inside the database'),
+	},
+	{
+		id: 'jsonb',
+		term: 'JSONB',
+		aliases: ['JSONB'],
+		short: 'A PostgreSQL column type that stores JSON in a parsed binary form that can be queried and indexed.',
+		explanation:
+			'It suits attributes that differ from record to record, next to typed columns for the core fields.',
+		readMore: postgresql('storing-attributes-that-differ-per-record', 'Storing attributes that differ per record'),
+	},
+	{
+		id: 'generated-column',
+		term: 'Generated column',
+		aliases: ['generated column', 'generated columns'],
+		short: 'A column whose value the database computes from other columns of the same row.',
+		explanation:
+			'A stored one is computed on every insert and update and kept like a normal column, so it can be indexed and constrained.',
+		readMore: postgresql('storing-attributes-that-differ-per-record', 'Storing attributes that differ per record'),
+	},
+	{
+		id: 'gin',
+		term: 'GIN',
+		aliases: ['GIN'],
+		expansion: 'Generalized inverted index',
+		short: 'An index that maps each element of a value, such as a word or a JSON key, to the rows that contain it.',
+		explanation:
+			'It answers "contains" queries on documents, arrays, and text, and makes writes slower.',
+		readMore: postgresql('storing-attributes-that-differ-per-record', 'Storing attributes that differ per record'),
+	},
+	{
+		id: 'gist',
+		term: 'GiST',
+		aliases: ['GiST'],
+		expansion: 'Generalized search tree',
+		short: 'A PostgreSQL index for values that overlap or lie near each other, such as ranges, shapes, and points.',
+		explanation:
+			'It answers "overlaps" and "nearest" queries and enforces exclusion constraints.',
+		readMore: postgresql('choosing-an-index-for-a-query', 'Choosing an index for a query'),
+	},
+	{
+		id: 'brin',
+		term: 'BRIN',
+		aliases: ['BRIN'],
+		expansion: 'Block range index',
+		short: 'A tiny index that stores a summary of each range of table pages, such as the lowest and highest value.',
+		explanation:
+			'It fits huge tables whose rows are stored in the order of the indexed value, such as time.',
+		readMore: postgresql('choosing-an-index-for-a-query', 'Choosing an index for a query'),
+	},
+	{
+		id: 'heap-table',
+		term: 'Heap (table)',
+		aliases: ['heap table', 'heap tables'],
+		short: 'A table stored as pages of rows in no particular order.',
+		explanation:
+			'PostgreSQL B-tree indexes point to a row\'s place in the heap, so an update that is not HOT needs new index entries.',
+		readMore: postgresql('storing-rows-and-pointing-to-them', 'Storing rows and pointing to them'),
+	},
+	{
+		id: 'tid',
+		term: 'TID',
+		aliases: ['TID', 'TIDs'],
+		expansion: 'Tuple identifier',
+		short: 'The address of a row in a PostgreSQL table: a page number and a slot on that page.',
+		explanation:
+			'B-tree indexes map their keys to TIDs. A TID changes when the row is updated, so it is not an ID for the app.',
+		readMore: postgresql('storing-rows-and-pointing-to-them', 'Storing rows and pointing to them'),
+	},
+	{
+		id: 'toast',
+		term: 'TOAST',
+		aliases: ['TOAST'],
+		expansion: 'The oversized-attribute storage technique',
+		short: 'The way PostgreSQL compresses long values of a wide row and may move them to a separate table.',
+		explanation:
+			'It starts when a row is wider than about 2 KB. A query that does not ask for a moved value never fetches it.',
+		readMore: postgresql('storing-rows-and-pointing-to-them', 'Storing rows and pointing to them'),
+	},
+	{
+		id: 'partial-index',
+		term: 'Partial index',
+		aliases: ['partial index', 'partial indexes', 'Partial index'],
+		short: 'An index over only the rows that match a condition.',
+		explanation:
+			'It is smaller and cheaper to update. The planner uses it only when it can prove from the query that the rows match its condition.',
+		readMore: postgresql('choosing-an-index-for-a-query', 'Choosing an index for a query'),
+	},
+	{
+		id: 'expression-index',
+		term: 'Expression index',
+		aliases: ['expression index', 'expression indexes', 'Expression index'],
+		short: 'An index on the result of a function or expression over columns, such as lower(email).',
+		explanation:
+			'A query uses it only when it contains the same expression.',
+		readMore: postgresql('choosing-an-index-for-a-query', 'Choosing an index for a query'),
+	},
+	{
+		id: 'index-only-scan',
+		term: 'Index-only scan',
+		aliases: ['index-only scan', 'index-only scans', 'Index-only scan'],
+		short: 'A read that answers a query from an index, visiting the table only for pages not known to be visible to everyone.',
+		explanation:
+			'It needs every requested column in the index; vacuuming keeps the map of all-visible pages current.',
+		readMore: postgresql('choosing-an-index-for-a-query', 'Choosing an index for a query'),
+	},
+	{
+		id: 'pg-stat-statements',
+		term: 'pg_stat_statements',
+		aliases: ['pg_stat_statements'],
+		short: 'A PostgreSQL extension that counts calls, total time, and pages read for each kind of query.',
+		explanation:
+			'Sorting by total time shows which queries cost the database the most.',
+		readMore: postgresql('finding-why-a-query-is-slow', 'Finding why a query is slow'),
+	},
+	{
+		id: 'query-planner',
+		term: 'Query planner',
+		aliases: ['query planner', 'Query planner', 'planner'],
+		short: 'The part of a database that chooses how to run a query by its estimated cost.',
+		explanation:
+			'Its estimates come from statistics about the data, so a wrong estimate can lead to a slow plan.',
+		readMore: postgresql('finding-why-a-query-is-slow', 'Finding why a query is slow'),
+	},
+	{
+		id: 'nested-loop',
+		term: 'Nested loop',
+		aliases: ['nested loop', 'Nested loop'],
+		short: 'A join that runs its inner side once for each row of its outer side.',
+		explanation:
+			'It is often fast when the outer side is small and the inner side is an index lookup.',
+		readMore: postgresql('finding-why-a-query-is-slow', 'Finding why a query is slow'),
+	},
+	{
+		id: 'hash-join',
+		term: 'Hash join',
+		aliases: ['hash join', 'hash joins', 'Hash join'],
+		short: 'A join that builds a hash table from one input in memory and probes it with the other.',
+		explanation:
+			'It is often useful for large inputs joined by equality.',
+		readMore: postgresql('finding-why-a-query-is-slow', 'Finding why a query is slow'),
+	},
+	{
+		id: 'merge-join',
+		term: 'Merge join',
+		aliases: ['merge join', 'Merge join'],
+		short: 'A join that walks two inputs sorted by the join key side by side.',
+		explanation:
+			'It is often useful when both inputs already come sorted.',
+		readMore: postgresql('finding-why-a-query-is-slow', 'Finding why a query is slow'),
+	},
+	{
+		id: 'connection-pooler',
+		term: 'Connection pooler',
+		aliases: ['connection pooler', 'connection poolers', 'pooler', 'Connection pooler'],
+		short: 'A proxy between apps and a database that shares a few database connections among many clients.',
+		explanation:
+			'PgBouncer is the common one for PostgreSQL. It keeps the number of server connections small while apps open as many as they like.',
+		readMore: postgresql('serving-thousands-of-app-connections', 'Serving thousands of app connections'),
+	},
+	{
+		id: 'transaction-mode',
+		term: 'Transaction mode',
+		aliases: ['transaction mode', 'Transaction mode'],
+		short: 'A pooler mode that lends a client a server connection only for one transaction.',
+		explanation:
+			'A few dozen server connections can serve thousands of clients, but session state such as SET or LISTEN does not survive between transactions.',
+		readMore: postgresql('serving-thousands-of-app-connections', 'Serving thousands of app connections'),
+	},
+	{
+		id: 'hot-update',
+		term: 'HOT update',
+		aliases: ['HOT update', 'HOT updates'],
+		expansion: 'Heap-only tuple update',
+		short: 'A PostgreSQL update that adds no entries to indexes that point to rows: no column they use changes, and the new version fits on the same page.',
+		explanation:
+			'Keeping updates HOT saves index writes and WAL. Since PostgreSQL 16, a BRIN index does not prevent it.',
+		readMore: postgresql('an-update-writes-a-new-row', 'An update writes a new row'),
+	},
+	{
+		id: 'vacuum',
+		term: 'VACUUM',
+		aliases: ['VACUUM', 'vacuuming', 'Vacuuming'],
+		short: 'The PostgreSQL process that removes row versions no transaction can see and makes their space reusable.',
+		explanation:
+			'It runs next to normal work and rarely shrinks files. It also freezes old rows against transaction ID wraparound.',
+		readMore: postgresql('dead-rows-pile-up', 'Dead rows pile up'),
+	},
+	{
+		id: 'autovacuum',
+		term: 'Autovacuum',
+		aliases: ['autovacuum', 'Autovacuum'],
+		short: 'The PostgreSQL background workers that vacuum and analyze tables when enough rows change.',
+		explanation:
+			'Its defaults wait too long for large tables, so busy tables need lower thresholds.',
+		readMore: postgresql('dead-rows-pile-up', 'Dead rows pile up'),
+	},
+	{
+		id: 'bloat',
+		term: 'Bloat',
+		aliases: ['bloat', 'Bloat'],
+		short: 'Space in tables and indexes taken by dead rows or left empty after they were removed.',
+		explanation:
+			'Some is normal. Growing bloat makes queries read more pages; fix what blocks cleanup, and rebuild when the waste stays large.',
+		readMore: postgresql('dead-rows-pile-up', 'Dead rows pile up'),
+	},
+	{
+		id: 'transaction-id',
+		term: 'Transaction ID',
+		aliases: ['transaction ID', 'transaction IDs', 'Transaction ID', 'XID', 'XIDs'],
+		short: 'A number a database gives each transaction that writes, in increasing order.',
+		explanation:
+			'In PostgreSQL it has 32 bits and wraps around, so vacuuming must freeze old rows before it runs out.',
+		readMore: postgresql('running-out-of-transaction-ids', 'Running out of transaction IDs'),
+	},
+	{
+		id: 'freezing',
+		term: 'Freezing',
+		aliases: ['freezing', 'Freezing'],
+		short: 'Marking old rows as visible to every transaction, so their transaction IDs can be used again.',
+		explanation:
+			'PostgreSQL vacuuming does it; if it falls behind, the database stops taking writes.',
+		readMore: postgresql('running-out-of-transaction-ids', 'Running out of transaction IDs'),
+	},
+	{
+		id: 'advisory-lock',
+		term: 'Advisory lock',
+		aliases: ['advisory lock', 'advisory locks', 'Advisory lock'],
+		short: 'A lock on a number the app chooses, which the database does not tie to any row.',
+		explanation:
+			'Only code that asks for the same lock respects it, so it suits jobs such as "one worker per home".',
+		readMore: postgresql('concurrent-writes-the-postgresql-way', 'Concurrent writes the PostgreSQL way'),
+	},
+	{
+		id: 'postgis',
+		term: 'PostGIS',
+		aliases: ['PostGIS'],
+		short: 'A PostgreSQL extension for places and shapes: types, distance functions, and spatial indexes.',
+		explanation:
+			'It answers queries such as "homes within 5 km" through a GiST index.',
+		readMore: postgresql('searching-by-place', 'Searching by place'),
+	},
+	{
+		id: 'unlogged-table',
+		term: 'Unlogged table',
+		aliases: ['unlogged table', 'unlogged tables', 'Unlogged table'],
+		short: 'A PostgreSQL table whose writes skip the WAL.',
+		explanation:
+			'Writes are much cheaper, but the table is empty after a crash and is not copied to standbys, which suits caches.',
+		readMore: postgresql('caches-counters-and-time-series-inside-postgresql', 'Caches, counters, and time series inside PostgreSQL'),
+	},
+	{
+		id: 'materialized-view',
+		term: 'Materialized view',
+		aliases: ['materialized view', 'materialized views', 'Materialized view'],
+		short: 'A query result stored as a table and refreshed on demand.',
+		explanation:
+			'Reads are cheap, but the data is as old as the last refresh, and a refresh runs the whole query again.',
+		readMore: postgresql('caches-counters-and-time-series-inside-postgresql', 'Caches, counters, and time series inside PostgreSQL'),
+	},
+	{
+		id: 'standby',
+		term: 'Standby',
+		aliases: ['standbys', 'standby server', 'standby servers'],
+		short: 'A PostgreSQL server that replays the WAL of the primary and keeps a copy of its data.',
+		explanation:
+			'It serves reads and can take over when the primary fails. In general terms it is a follower.',
+		readMore: postgresql('copies-on-other-servers', 'Copies on other servers'),
+	},
+	{
+		id: 'streaming-replication',
+		term: 'Streaming replication',
+		aliases: ['streaming replication', 'Streaming replication'],
+		short: 'PostgreSQL replication that sends WAL records to standbys over a connection as they are written.',
+		explanation:
+			'Each standby is an exact copy of the whole instance on the same major version.',
+		readMore: postgresql('copies-on-other-servers', 'Copies on other servers'),
+	},
+	{
+		id: 'replication-slot',
+		term: 'Replication slot',
+		aliases: ['replication slot', 'replication slots', 'Replication slot'],
+		short: 'A record on the primary that makes it keep the WAL a consumer still needs.',
+		explanation:
+			'A stopped consumer makes WAL pile up. A retention budget checked at checkpoints can invalidate the slot; monitor the WAL each slot holds and the free disk.',
+		readMore: postgresql('copies-on-other-servers', 'Copies on other servers'),
+	},
+	{
+		id: 'patroni',
+		term: 'Patroni',
+		aliases: ['Patroni'],
+		short: 'A tool that runs PostgreSQL failover by keeping a leader key in a coordination service such as etcd.',
+		explanation:
+			'The server that holds the key is the primary; others promote themselves only after the key expires.',
+		readMore: postgresql('replacing-a-failed-primary', 'Replacing a failed primary'),
+	},
+	{
+		id: 'logical-decoding',
+		term: 'Logical decoding',
+		aliases: ['logical decoding', 'Logical decoding'],
+		short: 'Turning the WAL of PostgreSQL into a stream of row changes in commit order.',
+		explanation:
+			'Logical replication and CDC tools read changes this way.',
+		readMore: postgresql('copying-changes-row-by-row', 'Copying changes row by row'),
+	},
+	{
+		id: 'table-partitioning',
+		term: 'Table partitioning',
+		aliases: ['table partitioning', 'Table partitioning'],
+		short: 'Splitting one table into several tables on the same server, by ranges, lists, or hashes of a column.',
+		explanation:
+			'Old data leaves by dropping a partition, and queries skip partitions that cannot match. It adds no capacity.',
+		readMore: postgresql('one-table-too-big', 'One table too big'),
+	},
+	{
+		id: 'citus',
+		term: 'Citus',
+		aliases: ['Citus'],
+		short: 'A PostgreSQL extension that splits tables across several servers by a distribution column.',
+		explanation:
+			'A coordinator routes each query to the servers that hold its rows.',
+		readMore: postgresql('when-one-primary-is-not-enough', 'When one primary is not enough'),
+	},
+	{
+		id: 'pg-primary',
+		term: 'Primary (PostgreSQL)',
+		aliases: ['PostgreSQL primary'],
+		short: 'The PostgreSQL server that takes writes and streams its WAL to standbys.',
+		explanation:
+			'In general terms it is the leader. A cluster has one primary at a time; failover promotes a standby in its place.',
+		readMore: postgresql('copies-on-other-servers', 'Copies on other servers'),
+	},
+	{
+		id: 'tsvector',
+		term: 'tsvector',
+		aliases: ['tsvector'],
+		short: 'A PostgreSQL value that holds the searchable words of a text, called lexemes, optionally with positions and weights.',
+		explanation:
+			'A GIN index over it finds the rows that contain the words of a query.',
+		readMore: postgresql('searching-by-words', 'Searching by words'),
 	},
 ];

@@ -1,0 +1,112 @@
+<svg class="diagram-svg" viewBox="0 0 720 290" role="img" aria-labelledby="vacuum-vs-full-title vacuum-vs-full-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="vacuum-vs-full-title">VACUUM and VACUUM FULL on the same table</title>
+  <desc id="vacuum-vs-full-desc">The same table of six pages with live and dead rows in both panels. Left, VACUUM: the dead rows become free space inside the same six pages, and the file keeps its size. Right, VACUUM FULL: the live rows are copied into a new file of three pages, under a lock that blocks all access.</desc>
+  <defs>
+    <marker id="vacuum-vs-full-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="vacuum-vs-full-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="282"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">VACUUM</text>
+  <text class="dg-mono dg-muted-text" x="16" y="58">BEFORE</text>
+  <rect class="dg-box" x="33" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="39" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="39" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="39" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="39" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="83" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-box-failed" x="89" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="89" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="89" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="89" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="133" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="139" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="139" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="139" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="139" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="183" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-box-failed" x="189" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="189" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="189" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="189" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="233" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="239" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="239" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="239" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="239" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="283" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-box-failed" x="289" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="289" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="289" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="289" y="113" width="32" height="8" rx="2"/>
+  <path class="dg-arrow" d="M180 140 V168" marker-end="url(#vacuum-vs-full-head)"/>
+  <text class="dg-mono dg-muted-text" x="16" y="176">AFTER</text>
+  <rect class="dg-box" x="33" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="39" y="192" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="39" y="218" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="83" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="89" y="218" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="89" y="231" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="133" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="139" y="192" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="139" y="231" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="183" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="189" y="205" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="233" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="239" y="192" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="239" y="205" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="283" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="289" y="205" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="289" y="218" width="32" height="8" rx="2"/>
+  <path class="dg-bracket-accent" d="M33 256 V262 H327 V256" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="180.0" y="278" text-anchor="middle">6 PAGES, FREE SPACE INSIDE</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">VACUUM FULL</text>
+  <text class="dg-mono dg-muted-text" x="376" y="58">BEFORE</text>
+  <rect class="dg-box" x="393" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="399" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="399" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="399" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="399" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="443" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-box-failed" x="449" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="449" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="449" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="449" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="493" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="499" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="499" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="499" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="499" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="543" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-box-failed" x="549" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="549" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="549" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="549" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="593" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="599" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="599" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="599" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="599" y="113" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="643" y="66" width="44" height="64" rx="4"/>
+  <rect class="dg-box-failed" x="649" y="74" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="649" y="87" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="649" y="100" width="32" height="8" rx="2"/>
+  <rect class="dg-box-failed" x="649" y="113" width="32" height="8" rx="2"/>
+  <path class="dg-arrow" d="M540 140 V168" marker-end="url(#vacuum-vs-full-head)"/>
+  <text class="dg-mono dg-muted-text" x="376" y="176">AFTER</text>
+  <rect class="dg-box" x="393" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="399" y="192" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="399" y="205" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="399" y="218" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="399" y="231" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="443" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="449" y="192" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="449" y="205" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="449" y="218" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="449" y="231" width="32" height="8" rx="2"/>
+  <rect class="dg-box" x="493" y="184" width="44" height="64" rx="4"/>
+  <rect class="dg-bar" x="499" y="192" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="499" y="205" width="32" height="8" rx="2"/>
+  <rect class="dg-bar" x="499" y="218" width="32" height="8" rx="2"/>
+  <path class="dg-bracket-accent" d="M393 256 V262 H537 V256" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="465.0" y="278" text-anchor="middle">3 PAGES, NEW FILE</text>
+</svg>

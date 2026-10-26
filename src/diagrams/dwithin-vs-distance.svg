@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 684 330" role="img" aria-labelledby="dwithin-vs-distance-title dwithin-vs-distance-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="dwithin-vs-distance-title">ST_DWithin and ST_Distance on the same homes</title>
+  <desc id="dwithin-vs-distance-desc">The same homes and the same circle in both panels. Left, ST_DWithin: the GiST index finds the index boxes that touch the circle, and only the homes in them are checked. Right, ST_Distance(...) &lt;= 5000 computes the distance to every home. In a test, the first took 1.1 ms and the second 488 ms.</desc>
+  <defs>
+    <marker id="dwithin-vs-distance-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="dwithin-vs-distance-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-18 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <text class="dg-code" x="180" y="22" text-anchor="middle">ST_DWithin</text>
+  <rect class="dg-box-failed" x="50" y="66" width="90" height="40" rx="4"/>
+  <rect class="dg-box-failed" x="160" y="121" width="75" height="85" rx="4"/>
+  <rect class="dg-box-failed" x="260" y="86" width="60" height="90" rx="4"/>
+  <rect class="dg-box-failed" x="70" y="226" width="90" height="60" rx="4"/>
+  <rect class="dg-box-failed" x="250" y="216" width="80" height="60" rx="4"/>
+  <circle class="dg-open-line" cx="200" cy="166" r="46" fill="none"/>
+  <circle class="dg-dot-muted" cx="60" cy="76" r="5"/>
+  <circle class="dg-dot-muted" cx="90" cy="96" r="5"/>
+  <circle class="dg-dot-muted" cx="80" cy="146" r="5"/>
+  <circle class="dg-dot-muted" cx="130" cy="86" r="5"/>
+  <circle class="dg-dot" cx="170" cy="131" r="5"/>
+  <circle class="dg-dot" cx="195" cy="156" r="5"/>
+  <circle class="dg-dot" cx="225" cy="141" r="5"/>
+  <circle class="dg-dot" cx="210" cy="196" r="5"/>
+  <circle class="dg-dot-muted" cx="270" cy="96" r="5"/>
+  <circle class="dg-dot-muted" cx="310" cy="116" r="5"/>
+  <circle class="dg-dot-muted" cx="290" cy="166" r="5"/>
+  <circle class="dg-dot-muted" cx="320" cy="226" r="5"/>
+  <circle class="dg-dot-muted" cx="110" cy="236" r="5"/>
+  <circle class="dg-dot-muted" cx="150" cy="266" r="5"/>
+  <circle class="dg-dot-muted" cx="80" cy="276" r="5"/>
+  <circle class="dg-dot-muted" cx="260" cy="266" r="5"/>
+  <text class="dg-result" x="180" y="316" text-anchor="middle">1.1 ms</text>
+  <text class="dg-code" x="540" y="22" text-anchor="middle">ST_Distance(...) &lt;= 5000</text>
+  <circle class="dg-open-line" cx="560" cy="166" r="46" fill="none"/>
+  <circle class="dg-dot" cx="420" cy="76" r="5"/>
+  <circle class="dg-dot" cx="450" cy="96" r="5"/>
+  <circle class="dg-dot" cx="440" cy="146" r="5"/>
+  <circle class="dg-dot" cx="490" cy="86" r="5"/>
+  <circle class="dg-dot" cx="530" cy="131" r="5"/>
+  <circle class="dg-dot" cx="555" cy="156" r="5"/>
+  <circle class="dg-dot" cx="585" cy="141" r="5"/>
+  <circle class="dg-dot" cx="570" cy="196" r="5"/>
+  <circle class="dg-dot" cx="630" cy="96" r="5"/>
+  <circle class="dg-dot" cx="670" cy="116" r="5"/>
+  <circle class="dg-dot" cx="650" cy="166" r="5"/>
+  <circle class="dg-dot" cx="680" cy="226" r="5"/>
+  <circle class="dg-dot" cx="470" cy="236" r="5"/>
+  <circle class="dg-dot" cx="510" cy="266" r="5"/>
+  <circle class="dg-dot" cx="440" cy="276" r="5"/>
+  <circle class="dg-dot" cx="620" cy="266" r="5"/>
+  <text class="dg-result" x="540" y="316" text-anchor="middle">488 ms</text>
+  </g>
+</svg>

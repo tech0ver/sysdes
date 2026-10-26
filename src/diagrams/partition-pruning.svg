@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 682 230" role="img" aria-labelledby="partition-pruning-title partition-pruning-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="partition-pruning-title">A query that reads one partition</title>
+  <desc id="partition-pruning-desc">The table search_events is split into monthly partitions for February to May 2026. A query with created_at from 1 May reads only the May partition and skips the other three.</desc>
+  <defs>
+    <marker id="partition-pruning-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="partition-pruning-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-19 0)">
+  <text class="dg-code" x="360" y="22" text-anchor="middle">WHERE created_at &gt;= '2026-05-01'</text>
+  <rect class="dg-box" x="230" y="38" width="260" height="44" rx="6"/>
+  <text class="dg-code" x="360.0" y="58.0" text-anchor="middle">search_events</text>
+  <text class="dg-sub" x="360.0" y="74.0" text-anchor="middle">parent table</text>
+  <line class="dg-line" x1="360" y1="82" x2="360" y2="112"/>
+  <line class="dg-line" x1="111" y1="112" x2="609" y2="112"/>
+  <path class="dg-arrow dg-empty" d="M111 112 V150" marker-end="url(#partition-pruning-head)"/>
+  <rect class="dg-box-failed" x="36" y="150" width="150" height="44" rx="4"/>
+  <text class="dg-code-muted" x="111.0" y="176.0" text-anchor="middle">…_2026_02</text>
+  <text class="dg-mono dg-muted-text" x="111" y="214" text-anchor="middle">SKIPPED</text>
+  <path class="dg-arrow dg-empty" d="M277 112 V150" marker-end="url(#partition-pruning-head)"/>
+  <rect class="dg-box-failed" x="202" y="150" width="150" height="44" rx="4"/>
+  <text class="dg-code-muted" x="277.0" y="176.0" text-anchor="middle">…_2026_03</text>
+  <text class="dg-mono dg-muted-text" x="277" y="214" text-anchor="middle">SKIPPED</text>
+  <path class="dg-arrow dg-empty" d="M443 112 V150" marker-end="url(#partition-pruning-head)"/>
+  <rect class="dg-box-failed" x="368" y="150" width="150" height="44" rx="4"/>
+  <text class="dg-code-muted" x="443.0" y="176.0" text-anchor="middle">…_2026_04</text>
+  <text class="dg-mono dg-muted-text" x="443" y="214" text-anchor="middle">SKIPPED</text>
+  <path class="dg-arrow dg-message" d="M609 112 V150" marker-end="url(#partition-pruning-head-accent)"/>
+  <rect class="dg-box-accent" x="534" y="150" width="150" height="44" rx="4"/>
+  <text class="dg-code" x="609.0" y="176.0" text-anchor="middle">…_2026_05</text>
+  <text class="dg-mono dg-accent-text" x="609" y="214" text-anchor="middle">READ</text>
+  </g>
+</svg>

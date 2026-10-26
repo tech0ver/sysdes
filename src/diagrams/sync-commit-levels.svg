@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 690 200" role="img" aria-labelledby="sync-commit-levels-title sync-commit-levels-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sync-commit-levels-title">Where a commit returns for each synchronous_commit level</title>
+  <desc id="sync-commit-levels-desc">The WAL of a commit goes through five steps: flushed on the primary, sent, written to the operating system on the synchronous standby, flushed there, and replayed there. off returns before the first step, local after the flush on the primary, remote_write after the write on the standby, on (the default) after the flush on the standby, and remote_apply after the replay.</desc>
+  <defs>
+    <marker id="sync-commit-levels-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sync-commit-levels-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-19 0)">
+  <text class="dg-mono dg-muted-text" x="125.0" y="30" text-anchor="middle">PRIMARY</text>
+  <text class="dg-mono dg-muted-text" x="253.0" y="30" text-anchor="middle">NETWORK</text>
+  <text class="dg-mono dg-muted-text" x="509.0" y="30" text-anchor="middle">SYNCHRONOUS STANDBY</text>
+  <rect class="dg-box" x="70" y="42" width="110" height="44" rx="6"/>
+  <text class="dg-code" x="125.0" y="68.0" text-anchor="middle">flushed</text>
+  <path class="dg-arrow" d="M180 64 H190" marker-end="url(#sync-commit-levels-head)"/>
+  <rect class="dg-box" x="198" y="42" width="110" height="44" rx="6"/>
+  <text class="dg-code" x="253.0" y="68.0" text-anchor="middle">sent</text>
+  <path class="dg-arrow" d="M308 64 H318" marker-end="url(#sync-commit-levels-head)"/>
+  <rect class="dg-box" x="326" y="42" width="110" height="44" rx="6"/>
+  <text class="dg-code" x="381.0" y="68.0" text-anchor="middle">written to OS</text>
+  <path class="dg-arrow" d="M436 64 H446" marker-end="url(#sync-commit-levels-head)"/>
+  <rect class="dg-box" x="454" y="42" width="110" height="44" rx="6"/>
+  <text class="dg-code" x="509.0" y="68.0" text-anchor="middle">flushed</text>
+  <path class="dg-arrow" d="M564 64 H574" marker-end="url(#sync-commit-levels-head)"/>
+  <rect class="dg-box" x="582" y="42" width="110" height="44" rx="6"/>
+  <text class="dg-code" x="637.0" y="68.0" text-anchor="middle">replayed</text>
+  <line class="dg-line" x1="46" y1="50" x2="46" y2="130"/>
+  <circle class="dg-dot-muted" cx="46" cy="130" r="4"/>
+  <text class="dg-code" x="46" y="154" text-anchor="middle">off</text>
+  <line class="dg-line" x1="125.0" y1="92" x2="125.0" y2="130"/>
+  <circle class="dg-dot-muted" cx="125.0" cy="130" r="4"/>
+  <text class="dg-code" x="125.0" y="154" text-anchor="middle">local</text>
+  <line class="dg-line" x1="381.0" y1="92" x2="381.0" y2="130"/>
+  <circle class="dg-dot-muted" cx="381.0" cy="130" r="4"/>
+  <text class="dg-code" x="381.0" y="154" text-anchor="middle">remote_write</text>
+  <line class="dg-message" x1="509.0" y1="92" x2="509.0" y2="130"/>
+  <circle class="dg-dot" cx="509.0" cy="130" r="4"/>
+  <text class="dg-code" x="509.0" y="154" text-anchor="middle">on</text>
+  <text class="dg-mono dg-accent-text" x="509.0" y="174" text-anchor="middle">DEFAULT</text>
+  <line class="dg-line" x1="637.0" y1="92" x2="637.0" y2="130"/>
+  <circle class="dg-dot-muted" cx="637.0" cy="130" r="4"/>
+  <text class="dg-code" x="637.0" y="154" text-anchor="middle">remote_apply</text>
+  </g>
+</svg>

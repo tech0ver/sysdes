@@ -7,10 +7,8 @@
   </defs>
   <text class="dg-mono dg-muted-text" x="330" y="22" text-anchor="middle">SHARD A</text>
   <text class="dg-sub" x="330" y="40" text-anchor="middle">workspace 42</text>
-  <text class="dg-mono dg-muted-text" x="460" y="22" text-anchor="middle">TIME</text>
   <text class="dg-mono dg-muted-text" x="590" y="22" text-anchor="middle">SHARD B</text>
   <text class="dg-sub" x="590" y="40" text-anchor="middle">workspace 58</text>
-  <path class="dg-arrow" d="M460 56 V300" marker-end="url(#project-move-head)"/>
   <text class="dg-code" x="20" y="80">before</text>
   <rect class="dg-box-accent" x="240" y="62" width="180" height="28" rx="4"/>
   <text class="dg-code" x="330.0" y="80.0" text-anchor="middle">project 12</text>

@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 637 330" role="img" aria-labelledby="pitr-timeline-title pitr-timeline-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pitr-timeline-title">Point-in-time recovery and a new timeline</title>
+  <desc id="pitr-timeline-desc">Timeline 1: a base backup on Sunday at 02:00, then WAL archived continuously. On Tuesday at 14:02 a bad release deletes calendars. Recovery restores the base backup on another server and replays the archived WAL up to 14:01:59. The recovered server then takes writes on a new timeline 2.</desc>
+  <defs>
+    <marker id="pitr-timeline-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="pitr-timeline-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-4 0)">
+  <text class="dg-mono dg-muted-text" x="100" y="64" text-anchor="end">SUN 02:00</text>
+  <text class="dg-mono dg-muted-text" x="100" y="234" text-anchor="end">TUE 14:01:59</text>
+  <text class="dg-mono dg-muted-text" x="100" y="252" text-anchor="end">TUE 14:02</text>
+  <text class="dg-mono dg-muted-text" x="200" y="28" text-anchor="middle">TIMELINE 1</text>
+  <line class="dg-open-line" x1="200" y1="40" x2="200" y2="304"/>
+  <rect class="dg-box" x="135.0" y="46" width="130" height="28" rx="4"/>
+  <text class="dg-code" x="200.0" y="64.0" text-anchor="middle">base backup</text>
+  <rect class="dg-chip" x="214" y="92" width="70" height="18" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="105.0" text-anchor="middle">WAL</text>
+  <rect class="dg-chip" x="214" y="114" width="70" height="18" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="127.0" text-anchor="middle">WAL</text>
+  <rect class="dg-chip" x="214" y="136" width="70" height="18" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="149.0" text-anchor="middle">WAL</text>
+  <rect class="dg-chip" x="214" y="158" width="70" height="18" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="171.0" text-anchor="middle">WAL</text>
+  <rect class="dg-chip" x="214" y="180" width="70" height="18" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="193.0" text-anchor="middle">WAL</text>
+  <rect class="dg-chip" x="214" y="202" width="70" height="18" rx="4"/>
+  <text class="dg-code-muted" x="249.0" y="215.0" text-anchor="middle">WAL</text>
+  <text class="dg-mono dg-muted-text" x="292" y="160">ARCHIVE</text>
+  <line class="dg-cross" x1="193" y1="241" x2="207" y2="255"/>
+  <line class="dg-cross" x1="193" y1="255" x2="207" y2="241"/>
+  <text class="dg-mono dg-muted-text" x="214" y="252">BAD RELEASE</text>
+  <path class="dg-guide" d="M110 230 H590" fill="none"/>
+  <rect class="dg-box-accent" x="390.0" y="46" width="160" height="28" rx="4"/>
+  <text class="dg-code" x="470.0" y="64.0" text-anchor="middle">restored copy</text>
+  <path class="dg-arrow dg-message" d="M265 60 H382" marker-end="url(#pitr-timeline-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="355.0" y="52" text-anchor="middle">RESTORE</text>
+  <line class="dg-message" x1="470" y1="74" x2="470" y2="230"/>
+  <text class="dg-mono dg-accent-text" x="480" y="150">REPLAY WAL</text>
+  <line class="dg-open-line" x1="470" y1="230" x2="470" y2="304"/>
+  <circle class="dg-dot" cx="470" cy="230" r="5"/>
+  <text class="dg-mono dg-muted-text" x="480" y="282">TIMELINE 2: NEW WRITES</text>
+  </g>
+</svg>
