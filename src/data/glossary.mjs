@@ -2855,7 +2855,7 @@ export const glossary = [
 		short: 'An append-only log of entries stored under one Redis key.',
 		explanation:
 			'Consumer groups share its entries among workers with acknowledgments and redelivery. It lives on one server and in its memory.',
-		readMore: redis('handing-out-work-that-must-not-be-lost', 'Handing out work that must not be lost'),
+		readMore: redis('handing-out-work-that-survives-a-worker-crash', 'Handing out work that survives a worker crash'),
 	},
 	{
 		id: 'consumer-group',
@@ -2864,12 +2864,13 @@ export const glossary = [
 		short: 'A set of workers that share the entries of a log, each entry going to one of them.',
 		explanation:
 			'The group keeps its position in the log. In Redis it also keeps the entries delivered but not yet confirmed, so the work of a failed worker can go to another.',
-		readMore: redis('handing-out-work-that-must-not-be-lost', 'Handing out work that must not be lost'),
+		readMore: redis('handing-out-work-that-survives-a-worker-crash', 'Handing out work that survives a worker crash'),
 	},
 	{
 		id: 'rdb-snapshot',
 		term: 'RDB snapshot',
 		aliases: ['RDB snapshot', 'RDB snapshots'],
+		expansion: 'Redis Database snapshot',
 		short: 'A Redis file with the whole dataset at one moment.',
 		explanation:
 			'BGSAVE writes it from a forked child process, SAVE in the main process, which blocks clients. It is compact and loads fast, a good backup; a crash loses everything written since the last one.',

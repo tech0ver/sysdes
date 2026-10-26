@@ -20,8 +20,8 @@
   <text class="dg-code" x="306" y="108">title: TEXT</text>
   <text class="dg-code" x="306" y="128">game: TAG</text>
   <text class="dg-code" x="306" y="148">viewers: NUMERIC</text>
-  <path class="dg-arrow" d="M230 112 H282" marker-end="url(#redis-search-index-head)"/>
-  <text class="dg-mono dg-muted-text" x="256" y="102" text-anchor="middle">HSET</text>
+  <path class="dg-arrow" d="M244 112 H282" marker-end="url(#redis-search-index-head)"/>
+  <text class="dg-mono dg-muted-text" x="263" y="102" text-anchor="middle">HSET</text>
   <rect class="dg-box-accent" x="510" y="60" width="194" height="56" rx="4"/>
   <text class="dg-code" x="607" y="82" text-anchor="middle">FT.SEARCH idx:channels</text>
   <text class="dg-code" x="607" y="102" text-anchor="middle">@game:{chess} finals</text>

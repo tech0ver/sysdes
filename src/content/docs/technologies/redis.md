@@ -21,7 +21,7 @@ Here Redis does not replace the database: accounts and payments stay in PostgreS
 
 ::diagram{name="redis-beside-db"}
 
-Since 2024 there are two servers with this core. Redis moved from the BSD license to source-available licenses with version 7.4. In response, the Linux Foundation started **Valkey** ([Linux Foundation](https://www.linuxfoundation.org/press/linux-foundation-launches-open-source-valkey-community)), a fork of the last BSD release, Redis 7.2.4, and it stays under BSD ([Valkey](https://valkey.io/topics/migration/)). Redis 8 added the open-source AGPLv3 as a third license option ([Redis](https://redis.io/legal/licenses/)). Both support the same core protocol, data structures, persistence, replication, and sharding, and most client libraries work with both. Since the fork, each adds features on its own, sometimes the same feature under different command names, and Valkey cannot load the data files of Redis 7.4 and later (more on [Redis and Valkey](#choosing-the-server-and-running-it)).
+Since 2024 there are two servers with this core. Redis moved from the BSD license to source-available licenses with version 7.4. In response, the Linux Foundation started **Valkey** ([Linux Foundation](https://www.linuxfoundation.org/press/linux-foundation-launches-open-source-valkey-community)), a fork of Redis 7.2.4, released under BSD, and it stays under BSD ([Valkey](https://valkey.io/topics/migration/)). Redis 8 added the open-source AGPLv3 as a third license option ([Redis](https://redis.io/legal/licenses/)). Both support the same core protocol, data structures, persistence, replication, and sharding, and most client libraries work with both. Since the fork, each adds features on its own, sometimes the same feature under different command names, and Valkey cannot load the data files of Redis 7.4 and later (more on [Redis and Valkey](#choosing-the-server-and-running-it)).
 
 <!-- demo: redis-benchmark with and without pipelining next to pgbench on a one-row counter; redis-cli --latency inside one host and across hosts. -->
 
@@ -39,10 +39,12 @@ A key is a string, and Redis has no tables or namespaces: the naming scheme take
 |---|---|---|---|
 | String | Bytes, up to [512 MB](https://redis.io/docs/latest/develop/data-types/strings/) | `GET`, `SET`, `INCR`: O(1) | A rendered page, the viewer count |
 | Hash | Fields with string values | `HGET`, `HSET`, `HINCRBY`: O(1) | `channel:42:info` with title and game |
-| List | Strings in insertion order | Push and pop at either end: O(1); by position: O(N) | The last 100 chat messages |
-| Set | Unique strings | `SADD`, `SISMEMBER`: O(1); intersections | The moderators of a channel |
-| Sorted set | Unique strings, each with a number (score) | Add, rank: O(log N); a range: O(log N + M) | Live channels by viewer count |
-| Stream | An append-only log of entries | `XADD`: O(1); reads by ID range | "Went live" events |
+| List | Strings in insertion order | `LPUSH`, `RPOP`: O(1); `LINDEX`: O(N) | The last 100 chat messages |
+| Set | Unique strings | `SADD`, `SISMEMBER`: O(1); `SINTER`: grows with the smallest set | The moderators of a channel |
+| Sorted set | Unique strings, each with a number (score) | `ZADD`, `ZRANK`: O(log N); `ZRANGE`: O(log N + M) | Live channels by viewer count |
+| Stream | An append-only log of entries | `XADD`: O(1); `XRANGE`: grows with the entries returned | "Went live" events |
+
+The costs are for one element: a command with several fields or members pays for each. N is the size of the collection, and M the number of elements returned.
 
 ::diagram{name="redis-channel-keys"}
 
@@ -72,7 +74,7 @@ Small collections use much less memory: a hash or a sorted set below a size limi
 
 ::diagram{name="redis-compact-encoding"}
 
-This allows a trick for many small values. Instead of one key per channel, put up to a few hundred channels into one hash: `channel:42017` becomes field `17` of key `channels:420`. In Carlson's test, 370,000 city records took 44 MB in one big hash and 12 MB in hashes split this way. The app maps IDs to buckets itself, and before Redis 7.4 the fields could not have their own TTL. For yes-or-no facts about users with dense numeric IDs, a bitmap stores one bit per user: 100 million users take 12 MB ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/)).
+This allows a trick for many small values. Instead of one key per channel, put up to a few hundred channels into one hash: `channel:42017` becomes field `17` of key `channels:420`. In one test, 370,000 city records took 44 MB in one big hash and 12 MB in hashes split this way ([Carlson](https://www.manning.com/books/redis-in-action)). The app maps IDs to buckets itself, and before Redis 7.4 the fields could not have their own TTL. For yes-or-no facts about users with dense numeric IDs, a bitmap stores one bit per user: 100 million users take 12 MB ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/)).
 
 ::diagram{name="redis-hash-buckets"}
 
@@ -82,7 +84,7 @@ Size the server above the data itself:
 - Replication buffers and buffers for slow clients hold memory outside the data (more on [copies](#keeping-a-copy-on-another-server)).
 - Memory freed by deleted keys often stays with the process, so size for the peak, not for the average ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/)).
 
-Carlson suggested keeping the data at 50–65% of the server's RAM to leave room for the save and the buffers. Treat it as a starting point and check the peak under load. Valkey 9.1 cut the overhead of each key further, by up to 44% of the overhead of small strings ([Valkey](https://valkey.io/blog/9.1-memory-efficiency/)).
+One book suggests keeping the data at 50–65% of the server's RAM to leave room for the save and the buffers ([Carlson](https://www.manning.com/books/redis-in-action)). Treat it as a starting point and check the peak under load. Valkey 9.1 cut the overhead of each key further, by up to 44% of the overhead of small strings ([Valkey](https://valkey.io/blog/9.1-memory-efficiency/)).
 
 ::diagram{name="redis-memory-headroom"}
 
@@ -98,13 +100,13 @@ A moderator tool lists all viewers of a big channel with `SMEMBERS` on a set of 
 
 Redis runs commands on one thread, one after another. So no command of another client runs in the middle of an `INCR`, and many app servers can update one counter without any coordination of their own. It also means that a command which touches N elements holds up everyone for the time it takes. The usual culprits are `KEYS`, which walks the whole key space, full reads of big collections, set operations on big sets, and `DEL` of a big key, which frees its memory before it returns ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/)). A long Lua script, a program that runs inside the server, blocks it the same way (more on [scripts](#changing-several-values-as-one-step)).
 
-::diagram{name="redis-slow-command"}
-
 The fixes:
 
 - Iterate with `SCAN`, `SSCAN`, `HSCAN`, and `ZSCAN`. Each call does a bounded amount of work and returns a cursor and some elements; `COUNT` is a hint, not a page size, and a call may return none. Continue until the cursor is 0. A full pass returns every element that existed for the whole pass, and may return some of them twice ([Redis](https://redis.io/docs/latest/commands/scan/)).
 - Delete big keys with `UNLINK`, which frees the memory in a background thread.
 - Keep collections bounded, and run slow reads that can be a moment old on a replica, a copy of the server (more on [copies](#keeping-a-copy-on-another-server)).
+
+::diagram{name="redis-slow-command"}
 
 To find slow commands, read `SLOWLOG`: by default it keeps the last 128 commands that took longer than 10 ms ([Redis](https://github.com/redis/redis/blob/8.10/redis.conf)). One core at 100% while the request rate is normal is another sign.
 
@@ -128,7 +130,7 @@ A small command takes far less time on the server than its reply takes to cross 
 
 Three ways to pay fewer round trips, in order of preference ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/)):
 
-1. One command for many values: `MGET` reads the 50 counters at once, and `MSET`, `HMGET`, and `SADD` with several members do the same for writes.
+1. One command for many values: `MGET` reads the 50 counters at once, and `HMGET` reads several fields of one hash. For writes, `MSET`, `HSET` with several fields, and `SADD` with several members do the same.
 2. **Pipelining**: the client sends many commands without waiting, then reads all the replies. It also saves the server a system call per command, so throughput can grow up to about ten times ([Redis](https://redis.io/docs/latest/develop/using-commands/pipelining/)). The server keeps the replies in memory until the client reads them, so send large jobs in batches, for example of 10,000 commands.
 3. A script, when a command needs the result of the one before it (more on [scripts](#changing-several-values-as-one-step)).
 
@@ -158,11 +160,11 @@ The chat lets a viewer send at most 5 messages in 10 seconds. The check reads a 
 
 A **Lua script** runs on the server as one command: it can read, decide, and write, and nothing else runs until it ends. One script checks the chat limit and adds one in a single round trip. Like a transaction, it has no rollback: if it fails after a write, that write stays, so check inputs and key types before changing anything. Uber caches database rows in Redis and writes them with a script that compares the row's timestamp with the cached one, so that an older row never replaces a newer one ([Uber](https://www.uber.com/us/en/blog/how-uber-serves-over-40-million-reads-per-second-using-an-integrated-cache/), 2024). The rules for scripts:
 
-::diagram{name="redis-check-race"}
-
 - A script blocks the server like a slow command. After 5 seconds by default, Redis answers other clients with a busy error. A script that has not written yet can be killed; one that has written can only be stopped by shutting down without saving ([Redis](https://redis.io/docs/latest/develop/programmability/eval-intro/)).
 - Pass the names of all keys the script touches in its list of keys, separately from its other arguments. Redis needs them to route the script in a cluster (more on [many servers](#spreading-data-over-many-servers)).
 - Redis caches scripts sent with `EVAL`, but the cache can lose them at any time: on a restart, a failover, `SCRIPT FLUSH`, or, since Redis 7.4, when it evicts old scripts. A client that calls a script by its hash must send the script again when Redis answers `NOSCRIPT`. **Redis functions**, since Redis 7.0, are named scripts that Redis stores and copies with the data ([Redis](https://redis.io/docs/latest/develop/programmability/functions-intro/)).
+
+::diagram{name="redis-check-race"}
 
 Many such scripts are now single commands. `SET` with `NX` writes only if the key is absent, and with `IFEQ` only if the current value matches, which is a compare-and-set without a script (Redis 8.4, [Valkey 8.1](https://valkey.io/blog/valkey-8-1-0-ga/)) ([Redis](https://redis.io/docs/latest/commands/set/)). Redis 8.8 added `INCREX`, which adds to a counter with an upper bound and an expiry in one command, the core of a rate limit ([Redis](https://redis.io/docs/latest/commands/increx/)). The limit algorithms themselves are a topic of their own. <!-- link: patterns/rate-limiting --> A change that fits one hash, such as `HSET` of several fields, is already atomic, so keeping values that change together in one key avoids transactions altogether.
 
@@ -200,7 +202,7 @@ Give every copy and every short-lived value a TTL, and set it again or keep it w
 
 A big tournament doubles the number of live channels, and the cache grows with them until Redis reaches the memory of its server.
 
-By default Redis has no memory limit: it grows until the operating system starts swapping its pages to disk, which makes every command slow, or kills the process. Set `maxmemory` below the RAM, leaving room for saving to disk and for buffers (more on [fitting in memory](#fitting-the-data-in-memory)). The buffers that hold writes for replicas and for the AOF are not counted in `maxmemory`, and the process can use more memory than the limit, so this room is needed even with the limit set; `mem_not_counted_for_evict` in `INFO memory` shows those buffers ([Redis](https://redis.io/docs/latest/develop/reference/eviction/)).
+By default Redis has no memory limit: it grows until the operating system starts swapping its pages to disk, which makes every command slow, or kills the process. Set `maxmemory` below the RAM, leaving room for saving to disk and for buffers (more on [fitting in memory](#fitting-the-data-in-memory)). The buffers that hold writes for replicas and for the log on disk are not counted in `maxmemory`, and the process can use more memory than the limit, so this room is needed even with the limit set; `mem_not_counted_for_evict` in `INFO memory` shows those buffers ([Redis](https://redis.io/docs/latest/develop/reference/eviction/)).
 
 At the limit, the eviction policy decides what happens to a write that needs more memory:
 
@@ -239,7 +241,7 @@ The channel page shows how many viewers watch right now, the broadcast summary s
 
 ::diagram{name="redis-set-vs-hll"}
 
-A sorted set keeps members ordered by score, so it is a ranking: `ZINCRBY` changes a channel's score, `ZREVRANGE live 0 9` returns the top ten, and `ZREVRANK` the position of one channel, each in O(log N) time. Members with equal scores are ordered by their bytes. Keep the set bounded, for example with `ZREMRANGEBYRANK`, and remove channels that went offline.
+A sorted set keeps members ordered by score, so it is a ranking: `ZINCRBY` changes a channel's score, `ZREVRANGE live 0 9` returns the top ten, and `ZREVRANK` the position of one channel, each in O(log N) time plus the members it returns. Members with equal scores are ordered by their bytes. Keep the set bounded, for example with `ZREMRANGEBYRANK`, and remove channels that went offline.
 
 ::diagram{name="redis-ranking"}
 
@@ -255,7 +257,7 @@ Use `INCR` for exact counters, a sorted set of heartbeats for "online now", Hype
 
 Viewers' chat connections are spread over 200 app servers. A message sent to a channel must reach every server that holds a viewer of that channel, at once.
 
-**Pub/Sub** delivers each message to the clients subscribed to its channel at that moment. Each app server subscribes to the channels its viewers watch, over one connection per Redis server, not one per chat channel, and `PUBLISH` sends a message to all of them; `PSUBSCRIBE` subscribes to a pattern of names. Redis stores nothing: delivery is at most once, and a server that was disconnected for a second has lost that second's messages for good ([Redis](https://redis.io/docs/latest/develop/pubsub/)). After a reconnect, it reloads the recent history from a list or a stream (more on [work that must not be lost](#handing-out-work-that-must-not-be-lost)).
+**Pub/Sub** delivers each message to the clients subscribed to its channel at that moment. Each app server subscribes to the channels its viewers watch, over one connection per Redis server, not one per chat channel, and `PUBLISH` sends a message to all of them; `PSUBSCRIBE` subscribes to a pattern of names. Redis stores nothing: delivery is at most once, and a server that was disconnected for a second has lost that second's messages for good ([Redis](https://redis.io/docs/latest/develop/pubsub/)). After a reconnect, it reloads the recent history from a list or a stream (more on [work that survives a worker crash](#handing-out-work-that-survives-a-worker-crash)).
 
 ::diagram{name="redis-pubsub-fanout"}
 
@@ -279,11 +281,15 @@ A list is the simplest queue: the app pushes jobs with `LPUSH`, and workers wait
 
 ::diagram{name="redis-list-queues"}
 
-A **Redis stream** is an append-only log in one key. `XADD` appends an entry, and Redis gives it an ID made of the time in milliseconds and a sequence number. A **consumer group** shares the entries among its workers: `XREADGROUP` hands each new entry to one worker and keeps it in the group's list of pending entries until the worker confirms it with `XACK`. Entries of a worker that went silent stay pending; `XAUTOCLAIM` reassigns those idle longer than a set time to another worker. Each entry counts its deliveries, so an entry that has failed many times can be moved to a separate stream for people to look at ([Redis](https://redis.io/docs/latest/develop/data-types/streams/)). This is at-least-once delivery: a job can run twice, so the handler must be safe to repeat. <!-- link: fundamentals/messaging --> Several groups can read the same stream, each getting every entry: the notifier and the analytics job each keep their own position.
+A **Redis stream** is an append-only log in one key. `XADD` appends an entry, and Redis gives it an ID made of the time in milliseconds and a sequence number. A **consumer group** shares the entries among its workers: `XREADGROUP` hands each new entry to one worker and keeps it in the group's list of pending entries until the worker confirms it with `XACK`. Entries of a worker that went silent stay pending; `XAUTOCLAIM` reassigns those idle longer than a set time to another worker. Each entry counts its deliveries, so an entry that has failed many times can be moved to a separate stream for people to look at ([Redis](https://redis.io/docs/latest/develop/data-types/streams/)). This is at-least-once delivery: a job can run twice, so the handler must be safe to repeat. <!-- link: fundamentals/messaging -->
 
 ::diagram{name="redis-consumer-group"}
 
-A stream holds its entries until they are trimmed, by length with `XADD ... MAXLEN ~ 1000000`, where `~` lets Redis cut whole internal blocks cheaply, or by ID with `MINID`. To keep a time window, turn the cutoff time into an ID: IDs start with the time. Trimming does not wait for the groups: it can delete entries that no worker has processed yet, and a pending entry then has no data to retry. Keep enough history for the slowest group and watch its lag, or, since Redis 8.2, trim with `ACKED` to delete only entries that every group has acknowledged; then a stuck group stops the trimming. Since Redis 8.6, `XADD` can drop an entry that a producer sends twice after a retry, when the producer passes `IDMP` or `IDMPAUTO` with a stable producer ID ([Redis](https://redis.io/docs/latest/develop/data-types/streams/idempotency/)); the handlers on the other side still run at least once.
+Several groups can read the same stream, each getting every entry: the notifier and the analytics job each keep their own position.
+
+::diagram{name="redis-stream-groups"}
+
+A stream holds its entries until they are trimmed, by length with `XADD ... MAXLEN ~ 1000000`, where `~` lets Redis cut whole internal blocks cheaply, or by ID with `MINID`. To keep a time window, turn the cutoff time into an ID: IDs start with the time. Trimming does not wait for the groups: it can delete entries that no worker has processed yet, and a pending entry then has no data to retry. Keep enough history for the slowest group and watch its lag, or, since Redis 8.2, trim with `ACKED` to delete only entries that every group has acknowledged; then a stuck group stops the trimming. Since Redis 8.6, `XADD` can drop an entry that a producer sends twice after a retry. The producer passes a stable producer ID and, with `IDMP`, the same message ID on every retry; with `IDMPAUTO`, Redis derives the message ID from the content. Redis remembers these IDs only for a set time, 100 seconds by default, and a set number per producer, so size both for the longest retry ([Redis](https://redis.io/docs/latest/develop/data-types/streams/idempotency/)). The handlers on the other side still run at least once.
 
 A stream is not a distributed log. It is one key on one server, so its throughput and size are limited by that server and its memory: to spread the load, split it into several streams, for example by viewer ID. It is only as safe as Redis's saving and copying: a failover can lose entries that were acknowledged (more on [losing writes in a failover](#replacing-a-failed-primary)). In a test on a slow machine of its time, 99.9% of entries reached a consumer within 2 ms, and `XADD` with pipelining reaches half a million to a million entries per second ([Redis](https://redis.io/docs/latest/develop/data-types/streams/)). Use a log or a broker built for it when the history to keep does not fit in RAM, partitions must scale on their own, or the work must survive a failover of Redis. <!-- link: technologies/kafka --> <!-- link: technologies/rabbitmq --> Jobs that must be created in the same transaction as the business data fit a job table in the database better (more on [jobs in PostgreSQL](../postgresql/#running-background-jobs-without-a-broker)).
 
@@ -347,8 +353,8 @@ Redis restarts after a kernel update. Sessions and the live ranking should come 
 
 Redis has two ways to keep data on disk, and they map to the general choices of an in-memory store (more on [keeping data in memory](../../fundamentals/storage-engines/#back-to-memory)):
 
-- An **RDB snapshot** is a file with the whole dataset at one moment. Redis forks, and the child process writes the file while the parent goes on serving. By default it saves after an hour with one change, after 5 minutes with 100 changes, or after a minute with 10,000 changes ([Redis](https://github.com/redis/redis/blob/8.10/redis.conf)). A crash loses everything written since the last snapshot, usually minutes. The file is compact, loads fast, and is the natural backup.
-- The **AOF** appends every write command to a log. With `appendfsync everysec`, a background thread flushes it about once a second, so a crash of the machine usually loses about the last second; a crash of the Redis process alone loses nothing that reached the operating system. With `always`, Redis flushes before it replies, grouping the writes of many clients into one flush. With `no`, the operating system flushes when it likes, on Linux about every 30 seconds ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/)). The log is compacted in the background by a rewrite, which forks too.
+- An **RDB snapshot** (Redis Database file) holds the whole dataset at one moment. Redis forks, and the child process writes the file while the parent goes on serving. By default it saves after an hour with one change, after 5 minutes with 100 changes, or after a minute with 10,000 changes ([Redis](https://github.com/redis/redis/blob/8.10/redis.conf)). A crash loses everything written since the last snapshot, usually minutes. The file is compact, loads fast, and is the natural backup.
+- The **AOF** (append-only file) is a log of every write command. With `appendfsync everysec`, a background thread flushes it about once a second, so a crash of the machine usually loses about the last second; a crash of the Redis process alone loses nothing that reached the operating system. With `always`, Redis flushes before it replies, grouping the writes of many clients into one flush. With `no`, the operating system flushes when it likes, on Linux about every 30 seconds ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/)). The log is compacted in the background by a rewrite, which forks too.
 
 The AOF is off by default, so a default Redis can lose minutes of writes. On a laptop benchmark with pipelining, `everysec` handled 118,483 `SET` commands per second with a p99 of 41 ms, and `always` handled 15,340 with a p99 of 65 ms ([Fugaro and Ortensi](https://www.packtpub.com/en-us/product/redis-stack-for-application-modernization-9781837638185)). Redis's own advice is to turn on both for a safety close to PostgreSQL's, or to use snapshots alone if a few minutes of loss is acceptable; on restart, Redis loads the AOF, the more complete of the two.
 
@@ -393,7 +399,7 @@ A primary without persistence that restarts automatically. It comes back empty, 
 
 The primary's machine dies during a big broadcast. A replica has almost all the data, but the app servers still send writes to the dead address.
 
-**Sentinel** runs failover for a primary and its replicas. It is a separate process; run at least three on machines that fail independently, such as in different zones. When a set number of Sentinels, the quorum, cannot reach the primary, they mark it as down. Then a Sentinel needs votes from a majority of all Sentinels, or from the quorum if it is larger, before it promotes a replica, so a Sentinel cut off with a minority never fails over. It picks the replica by priority and by how many of the primary's writes it received, points the other replicas at it, and tells clients the new address: clients ask the Sentinels where the primary is ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/)). The time to detect a failure is a setting, `down-after-milliseconds`; the example configuration uses 60 seconds.
+**Sentinel** runs failover for a primary and its replicas. It is a separate process; run at least three on machines that fail independently, such as in different zones. When a set number of Sentinels, the quorum, cannot reach the primary, they mark it as down. Then a Sentinel needs votes from a majority of all Sentinels, or from the quorum if it is larger, before it promotes a replica, so a Sentinel cut off with a minority never fails over. It picks the replica by priority and by how many of the primary's writes it received, points the other replicas at it, and tells clients the new address: clients ask the Sentinels where the primary is ([Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/)). The time to detect a failure is a setting, `down-after-milliseconds`, 30 seconds by default ([Redis](https://github.com/redis/redis/blob/8.10/sentinel.conf)).
 
 ::diagram{name="redis-sentinel"}
 
@@ -403,7 +409,7 @@ An unplanned failover can lose writes. Writes that the old primary confirmed but
 
 So keep data that must not lose a confirmed write in the database, and treat what lives only in Redis as data that can lose its last seconds. Stores that keep the Redis interface but add a replicated log exist as managed services: Amazon MemoryDB confirms a write only after it is stored in a log across several zones ([AWS](https://docs.aws.amazon.com/memorydb/latest/devguide/consistency.html)). A Raft-based module for Redis itself was tested in 2020 ([Jepsen](https://jepsen.io/analyses/redis-raft-1b3fbf6)) and is still marked as not ready for production ([RedisRaft](https://github.com/RedisLabs/redisraft)).
 
-A planned switch, for an upgrade, can avoid the loss when it waits for the replica to catch up. The `FAILOVER` command (Redis 6.2) pauses writes on the primary, waits until the replica has all of them, and only then swaps the roles ([Redis](https://redis.io/docs/latest/commands/failover/)), and `CLUSTER FAILOVER` does the same inside a cluster. `SENTINEL FAILOVER` does not wait: it promotes a replica as if the primary had failed. Test unplanned failovers too, with the real client library, since every client must follow the Sentinels and drop connections to the old primary.
+A planned switch, for an upgrade, can avoid the loss when it waits for the replica to catch up. Without Sentinel, the `FAILOVER` command (Redis 6.2) pauses writes on the primary, waits until the replica has all of them, and only then swaps the roles ([Redis](https://redis.io/docs/latest/commands/failover/)), and `CLUSTER FAILOVER` does the same inside a cluster. With Sentinel, make the switch through Sentinel, which has no such wait: `SENTINEL FAILOVER` promotes a replica as if the primary had failed. Pause the app's writes and check that a replica has caught up before you call it. Test unplanned failovers too, with the real client library, since every client must follow the Sentinels and drop connections to the old primary.
 
 <!-- demo: a primary, two replicas, three Sentinels; kill the primary under writes and count lost writes; partition the old primary with one client (iptables) with and without min-replicas-to-write. -->
 
@@ -419,7 +425,7 @@ The data grows to 300 GB, and during big events the main thread of the primary s
 
 ::diagram{name="redis-moved-ask"}
 
-Commands on several keys, transactions, and scripts work only when all their keys are in one slot. A **hash tag** puts keys in the same slot: only the part in braces is hashed, so `{channel:42}:info` and `{channel:42}:chat` land together and one script can update both. Use tags only for keys that change together: all keys with one tag sit on one server, and a popular tag becomes a hot spot (more on [a hot key](#one-key-hotter-than-the-rest)). A cluster also has only database 0, while Valkey 9.0 added numbered databases in cluster mode ([Valkey](https://valkey.io/blog/introducing-valkey-9/)). Moving an existing app to a cluster means rewriting every multi-key command whose keys do not share a tag.
+Commands on several keys, transactions, and scripts work only when all their keys are in one slot. A **hash tag** puts keys in the same slot: only the part in braces is hashed, so `{channel:42}:info` and `{channel:42}:chat` land together and one script can update both. Use tags only for keys that change together: all keys with one tag sit on one server, and a popular tag becomes a hot spot (more on [a hot key](#one-key-hotter-than-the-rest)). One Redis server can hold several separate key spaces, numbered databases chosen with `SELECT`, but a cluster has only database 0, so an app that separates its data that way must switch to key prefixes. Valkey 9.0 added numbered databases to cluster mode ([Valkey](https://valkey.io/blog/introducing-valkey-9/)). Moving an existing app to a cluster means rewriting every multi-key command whose keys do not share a tag.
 
 ::diagram{name="redis-hash-slots"}
 
@@ -460,7 +466,7 @@ Measure which keys are hot before an event that will make them hot. Cache hot re
 
 ## Choosing the server and running it
 
-The team now decides what to run in production: Redis or Valkey, a managed service or its own servers, and one Redis for everything or several.
+The team now decides what to run in production: Redis or Valkey, and a managed service or its own servers. It also picks how to run Redis, and whether one Redis serves everything.
 
 Redis and Valkey share the same core, and a client that uses the commands of Redis 7.2 works with both. They differ in the rest:
 
@@ -468,13 +474,17 @@ Redis and Valkey share the same core, and a client that uses the commands of Red
 
 | | Redis | Valkey |
 |---|---|---|
-| Owner and license | Redis Ltd.; RSALv2, SSPLv1, or AGPLv3 since 8.0 | Linux Foundation; BSD |
+| Owner and license | Redis Ltd.; RSALv2 or SSPLv1 since 7.4, AGPLv3 added in 8.0 | Linux Foundation; BSD |
 | Built in | Search, JSON, time series, probabilistic types, vector sets | Core only; JSON, Bloom, and search as modules in a bundle |
 | Only here | `INCREX`, idempotent `XADD`, `HOTKEYS`, `BACKUP` | Numbered databases in a cluster, access rules per database, clusters of 2,000 nodes |
 | Same feature, other name | `DELEX` | `DELIFEQ` |
 | Data files | Redis 7.4 and later cannot be loaded by Valkey | Reads files of Redis up to 7.2 |
 
 When it added Valkey to ElastiCache in 2024, AWS priced it up to 20% lower than its other engines for servers and 33% lower for serverless ([AWS](https://aws.amazon.com/blogs/database/get-started-with-amazon-elasticache-for-valkey)). Pick by license and by the features the design needs, and check each feature added after the fork: some work in both, some have other names, and some exist in only one ([Valkey](https://valkey.io/topics/migration/)). For a pure cache of strings, Memcached is a simpler option: it has no persistence, no replication, and no structures, but it uses all cores in one process. <!-- link: technologies/memcached --> A managed service runs failover, patches, and backups, and keeps the limits of the data model. Check how each one confirms writes and fails over: most keep asynchronous copies, while MemoryDB writes to a durable log across zones before it confirms.
+
+Redis itself offers three ways to run it. A single primary holds all the keys and may have replicas. When it fails, an operator promotes a replica, or, without replicas, restarts it, restores a backup, or rebuilds the data. Sentinel keeps the same shape and adds automatic failover: three or more Sentinels watch the primary and promote a replica (more on [Sentinel](#replacing-a-failed-primary)). A cluster splits the keys over three or more primaries, each with its own replicas, and its nodes fail over by themselves, so it needs no Sentinel (more on [the cluster](#spreading-data-over-many-servers)). One deployment uses one of these ways, but a system can run several: for example, a cluster for the large cache and a primary with Sentinel for sessions and queues. Start with one primary and Sentinel, or a managed service that fails over for you, and move to a cluster when the data or the write load outgrows one server.
+
+::diagram{name="redis-deployments"}
 
 Run separate servers for separate roles. A cache needs `allkeys-lru` and little or no persistence; data kept only in Redis needs `noeviction` and the AOF; queues and pub/sub load the server in their own way. Separate servers keep these settings apart and limit how far one problem spreads: after its incident, Figma split its Redis usage over several clusters ([Figma](https://www.figma.com/blog/postmortem-service-disruptions-on-june-6-and-7-2022/), 2022).
 
@@ -487,7 +497,7 @@ A few checks keep a server healthy: no swap, transparent huge pages off, `vm.ove
 <!-- demo: the same app against Redis 8 and Valkey 9 in containers; ACL users for the cache and the queue; TLS-only port. -->
 
 :::do
-Choose Redis or Valkey by license and needed features, and avoid commands that exist in only one when you want to keep the choice open. Give each role its own server with its own settings, keep Redis in a private network with ACL users, and test failover and restores.
+Choose Redis or Valkey by license and needed features, and avoid commands that exist in only one when you want to keep the choice open. Run one primary with Sentinel, or a managed service, until one server is not enough, then a cluster. Give each role its own server with its own settings, keep Redis in a private network with ACL users, and test failover and restores.
 :::
 
 ## Cheat sheet
@@ -510,7 +520,7 @@ Choose Redis or Valkey by license and needed features, and avoid commands that e
 - Failover: Sentinel needs three or more processes and a majority; an unplanned failover can lose confirmed writes, so durable business records stay in the database.
 - Many servers: Redis Cluster uses 16,384 slots and client-side routing; multi-key work needs one slot via hash tags; failover and slot moves are built in.
 - A hot key: find it with `HOTKEYS` and slot stats; cache reads in the app with invalidation, spread writes over several keys, keep keys small.
-- Choosing and running: Redis and Valkey share the core and differ in license and newer features; one server per role; private network, ACL users, tested failover and restores.
+- Choosing and running: Redis and Valkey share the core and differ in license and newer features; one primary with Sentinel or a managed service until one server is not enough, then a cluster; one server per role; private network, ACL users, tested failover and restores.
 
 ## Sources
 

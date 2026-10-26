@@ -7,26 +7,26 @@
   </defs>
   <rect class="dg-zone" x="16" y="16" width="216" height="140" rx="8"/>
   <text class="dg-mono dg-muted-text" x="31" y="36">ZONE A</text>
-  <rect class="dg-box-accent" x="32" y="44" width="150" height="40" rx="6"/>
-  <text class="dg-name" x="107.0" y="69.0" text-anchor="middle">Primary</text>
-  <rect class="dg-box" x="32" y="100" width="150" height="40" rx="6"/>
-  <text class="dg-name" x="107.0" y="125.0" text-anchor="middle">Sentinel</text>
+  <rect class="dg-box-accent" x="32" y="44" width="184" height="40" rx="6"/>
+  <text class="dg-name" x="124.0" y="69.0" text-anchor="middle">Primary</text>
+  <rect class="dg-box" x="32" y="100" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="92.0" y="125.0" text-anchor="middle">Sentinel</text>
   <rect class="dg-zone" x="252" y="16" width="216" height="140" rx="8"/>
   <text class="dg-mono dg-muted-text" x="267" y="36">ZONE B</text>
-  <rect class="dg-box" x="268" y="44" width="150" height="40" rx="6"/>
-  <text class="dg-name" x="343.0" y="69.0" text-anchor="middle">Replica</text>
-  <rect class="dg-box" x="268" y="100" width="150" height="40" rx="6"/>
-  <text class="dg-name" x="343.0" y="125.0" text-anchor="middle">Sentinel</text>
+  <rect class="dg-box" x="268" y="44" width="184" height="40" rx="6"/>
+  <text class="dg-name" x="360.0" y="69.0" text-anchor="middle">Replica</text>
+  <rect class="dg-box" x="268" y="100" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="328.0" y="125.0" text-anchor="middle">Sentinel</text>
   <rect class="dg-zone" x="488" y="16" width="216" height="140" rx="8"/>
   <text class="dg-mono dg-muted-text" x="503" y="36">ZONE C</text>
-  <rect class="dg-box" x="504" y="44" width="150" height="40" rx="6"/>
-  <text class="dg-name" x="579.0" y="69.0" text-anchor="middle">Replica</text>
-  <rect class="dg-box" x="504" y="100" width="150" height="40" rx="6"/>
-  <text class="dg-name" x="579.0" y="125.0" text-anchor="middle">Sentinel</text>
-  <rect class="dg-box" x="252" y="194" width="216" height="44" rx="6"/>
+  <rect class="dg-box" x="504" y="44" width="184" height="40" rx="6"/>
+  <text class="dg-name" x="596.0" y="69.0" text-anchor="middle">Replica</text>
+  <rect class="dg-box" x="504" y="100" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="564.0" y="125.0" text-anchor="middle">Sentinel</text>
+  <rect class="dg-box" x="150" y="194" width="420" height="44" rx="6"/>
   <text class="dg-name" x="360.0" y="221.0" text-anchor="middle">App servers</text>
-  <path class="dg-arrow dg-message" d="M330 194 V148" marker-end="url(#redis-sentinel-head-accent)"/>
-  <text class="dg-mono dg-accent-text" x="338" y="178" text-anchor="start">WHERE IS THE PRIMARY?</text>
-  <path class="dg-arrow" d="M252 216 H200 V64 H174" marker-end="url(#redis-sentinel-head)"/>
-  <text class="dg-mono dg-muted-text" x="196" y="232" text-anchor="middle">THEN CONNECT</text>
+  <path class="dg-arrow dg-message" d="M326 194 V144" marker-end="url(#redis-sentinel-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="334" y="178" text-anchor="start">WHERE IS THE PRIMARY?</text>
+  <path class="dg-arrow" d="M184 194 V88" marker-end="url(#redis-sentinel-head)"/>
+  <text class="dg-mono dg-muted-text" x="192" y="178" text-anchor="start">THEN CONNECT</text>
 </svg>
