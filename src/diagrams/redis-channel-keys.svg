@@ -1,0 +1,51 @@
+<svg class="diagram-svg" viewBox="0 0 689 258" role="img" aria-labelledby="redis-channel-keys-title redis-channel-keys-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-channel-keys-title">The channel page as Redis keys</title>
+  <desc id="redis-channel-keys-desc">Five keys serve the channel page. channel:42:info is a hash with the title, game, and start time. channel:42:viewers is a string holding the count 18342. channel:42:chat is a list of the latest messages, newest first, kept at 100. channel:42:mods is a set of user IDs. live is a sorted set of channels scored by viewers: channel 42 with 18342, channel 7 with 9120, channel 15 with 4410.</desc>
+  <defs>
+    <marker id="redis-channel-keys-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-channel-keys-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="18">KEY</text>
+  <text class="dg-mono dg-muted-text" x="196" y="18">TYPE</text>
+  <text class="dg-mono dg-muted-text" x="290" y="18">VALUE</text>
+  <text class="dg-code" x="16" y="47">channel:42:info</text>
+  <text class="dg-mono dg-muted-text" x="196" y="46">HASH</text>
+  <rect class="dg-box" x="290" y="30" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="365.0" y="46.0" text-anchor="middle">title: Finals day 2</text>
+  <rect class="dg-box" x="446" y="30" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="496.0" y="46.0" text-anchor="middle">game: chess</text>
+  <rect class="dg-box" x="552" y="30" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="612.0" y="46.0" text-anchor="middle">started: 18:00</text>
+  <text class="dg-code" x="16" y="91">channel:42:viewers</text>
+  <text class="dg-mono dg-muted-text" x="196" y="90">STRING</text>
+  <rect class="dg-box" x="290" y="74" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="325.0" y="90.0" text-anchor="middle">18342</text>
+  <text class="dg-code" x="16" y="135">channel:42:chat</text>
+  <text class="dg-mono dg-muted-text" x="196" y="134">LIST</text>
+  <rect class="dg-box" x="290" y="118" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="330.0" y="134.0" text-anchor="middle">msg 9031</text>
+  <rect class="dg-box" x="376" y="118" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="416.0" y="134.0" text-anchor="middle">msg 9030</text>
+  <rect class="dg-box" x="462" y="118" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="502.0" y="134.0" text-anchor="middle">msg 9029</text>
+  <text class="dg-code-muted" x="554" y="135">… 97 more</text>
+  <text class="dg-code" x="16" y="179">channel:42:mods</text>
+  <text class="dg-mono dg-muted-text" x="196" y="178">SET</text>
+  <rect class="dg-box" x="290" y="162" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="328.0" y="178.0" text-anchor="middle">user:17</text>
+  <rect class="dg-box" x="372" y="162" width="84" height="24" rx="4"/>
+  <text class="dg-code" x="414.0" y="178.0" text-anchor="middle">user:203</text>
+  <rect class="dg-box" x="462" y="162" width="76" height="24" rx="4"/>
+  <text class="dg-code" x="500.0" y="178.0" text-anchor="middle">user:88</text>
+  <text class="dg-code" x="16" y="223">live</text>
+  <text class="dg-mono dg-muted-text" x="196" y="222">SORTED SET</text>
+  <rect class="dg-box" x="290" y="206" width="92" height="24" rx="4"/>
+  <text class="dg-code" x="336.0" y="222.0" text-anchor="middle">42: 18342</text>
+  <rect class="dg-box" x="388" y="206" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="428.0" y="222.0" text-anchor="middle">7: 9120</text>
+  <rect class="dg-box" x="474" y="206" width="84" height="24" rx="4"/>
+  <text class="dg-code" x="516.0" y="222.0" text-anchor="middle">15: 4410</text>
+  <text class="dg-code-muted" x="570" y="223">…</text>
+  </g>
+</svg>

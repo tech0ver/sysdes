@@ -1,0 +1,28 @@
+<svg class="diagram-svg" viewBox="0 0 720 214" role="img" aria-labelledby="redis-expire-cycle-title redis-expire-cycle-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-expire-cycle-title">How Redis deletes expired keys in the background</title>
+  <desc id="redis-expire-cycle-desc">About ten times a second, Redis samples keys that have a TTL and deletes the expired ones. While many keys in the samples are expired and the cycle still has time left, it samples again; otherwise it stops until the next cycle. When a million keys expire in the same second, most samples are expired, and the cycle keeps running up to its time budget, taking CPU from commands.</desc>
+  <defs>
+    <marker id="redis-expire-cycle-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-expire-cycle-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="56" width="120" height="48" rx="6"/>
+  <text class="dg-name" x="76.0" y="78.0" text-anchor="middle">Each cycle</text>
+  <text class="dg-sub" x="76.0" y="94.0" text-anchor="middle">about every 100 ms</text>
+  <rect class="dg-box" x="176" y="56" width="150" height="48" rx="6"/>
+  <text class="dg-name" x="251.0" y="78.0" text-anchor="middle">Sample keys</text>
+  <text class="dg-sub" x="251.0" y="94.0" text-anchor="middle">that have a TTL</text>
+  <rect class="dg-box" x="366" y="56" width="140" height="48" rx="6"/>
+  <text class="dg-name" x="436.0" y="78.0" text-anchor="middle">Delete</text>
+  <text class="dg-sub" x="436.0" y="94.0" text-anchor="middle">the expired ones</text>
+  <rect class="dg-box" x="546" y="56" width="158" height="48" rx="6"/>
+  <text class="dg-name" x="625.0" y="78.0" text-anchor="middle">Many expired</text>
+  <text class="dg-sub" x="625.0" y="94.0" text-anchor="middle">and time left?</text>
+  <path class="dg-arrow" d="M136 80 H168" marker-end="url(#redis-expire-cycle-head)"/>
+  <path class="dg-arrow" d="M326 80 H358" marker-end="url(#redis-expire-cycle-head)"/>
+  <path class="dg-arrow" d="M506 80 H538" marker-end="url(#redis-expire-cycle-head)"/>
+  <path class="dg-arrow dg-message" d="M625 56 V30 H251 V48" marker-end="url(#redis-expire-cycle-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="438" y="22" text-anchor="middle">YES: SAMPLE AGAIN</text>
+  <path class="dg-arrow" d="M625 104 V140 H76 V112" marker-end="url(#redis-expire-cycle-head)"/>
+  <text class="dg-mono dg-muted-text" x="350" y="156" text-anchor="middle">NO: STOP UNTIL THE NEXT CYCLE</text>
+  <text class="dg-result" x="360" y="196" text-anchor="middle">Many keys with one expiry time keep the cycle busy up to its time budget</text>
+</svg>

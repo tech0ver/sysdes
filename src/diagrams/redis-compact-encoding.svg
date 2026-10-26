@@ -1,0 +1,55 @@
+<svg class="diagram-svg" viewBox="0 0 718 250" role="img" aria-labelledby="redis-compact-encoding-title redis-compact-encoding-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-compact-encoding-title">A compact hash and a hash table</title>
+  <desc id="redis-compact-encoding-desc">Left: a small hash with three fields is stored as one compact array of fields and values, with little overhead, and a lookup scans the array. Right: past the size limit, the hash becomes a table of buckets that point to separate entries, each with its own pointers; a lookup is fast, but every entry costs extra memory.</desc>
+  <defs>
+    <marker id="redis-compact-encoding-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-compact-encoding-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-1 0)">
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Small hash</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">one compact array</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Large hash</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">a table of entries</text>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="242"/>
+  <rect class="dg-box-accent" x="24" y="110" width="52" height="30" rx="4"/>
+  <text class="dg-code" x="50.0" y="129.0" text-anchor="middle">title</text>
+  <rect class="dg-box-accent" x="76" y="110" width="52" height="30" rx="4"/>
+  <text class="dg-code" x="102.0" y="129.0" text-anchor="middle">Finals</text>
+  <rect class="dg-box" x="128" y="110" width="52" height="30" rx="4"/>
+  <text class="dg-code" x="154.0" y="129.0" text-anchor="middle">game</text>
+  <rect class="dg-box" x="180" y="110" width="52" height="30" rx="4"/>
+  <text class="dg-code" x="206.0" y="129.0" text-anchor="middle">chess</text>
+  <rect class="dg-box" x="232" y="110" width="52" height="30" rx="4"/>
+  <text class="dg-code" x="258.0" y="129.0" text-anchor="middle">start</text>
+  <rect class="dg-box" x="284" y="110" width="52" height="30" rx="4"/>
+  <text class="dg-code" x="310.0" y="129.0" text-anchor="middle">18:00</text>
+  <text class="dg-sub" x="180" y="206" text-anchor="middle">up to 512 fields, values up to 64 B</text>
+  <text class="dg-result" x="180" y="234" text-anchor="middle">Little overhead, lookups scan</text>
+  <text class="dg-mono dg-muted-text" x="410" y="66" text-anchor="middle">BUCKETS</text>
+  <rect class="dg-chip" x="390" y="74" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="410.0" y="92.0" text-anchor="middle">0</text>
+  <rect class="dg-chip" x="390" y="102" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="410.0" y="120.0" text-anchor="middle">1</text>
+  <rect class="dg-chip" x="390" y="130" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="410.0" y="148.0" text-anchor="middle">2</text>
+  <rect class="dg-chip" x="390" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="410.0" y="176.0" text-anchor="middle">3</text>
+  <rect class="dg-box" x="470" y="76" width="46" height="24" rx="4"/>
+  <text class="dg-code" x="493.0" y="92.0" text-anchor="middle">title</text>
+  <rect class="dg-box" x="516" y="76" width="56" height="24" rx="4"/>
+  <text class="dg-code" x="544.0" y="92.0" text-anchor="middle">Finals</text>
+  <rect class="dg-box" x="470" y="132" width="46" height="24" rx="4"/>
+  <text class="dg-code" x="493.0" y="148.0" text-anchor="middle">game</text>
+  <rect class="dg-box" x="516" y="132" width="56" height="24" rx="4"/>
+  <text class="dg-code" x="544.0" y="148.0" text-anchor="middle">chess</text>
+  <rect class="dg-box" x="600" y="132" width="46" height="24" rx="4"/>
+  <text class="dg-code" x="623.0" y="148.0" text-anchor="middle">start</text>
+  <rect class="dg-box" x="646" y="132" width="56" height="24" rx="4"/>
+  <text class="dg-code" x="674.0" y="148.0" text-anchor="middle">18:00</text>
+  <path class="dg-arrow" d="M430 88 H462" marker-end="url(#redis-compact-encoding-head)"/>
+  <path class="dg-arrow" d="M430 144 H462" marker-end="url(#redis-compact-encoding-head)"/>
+  <path class="dg-arrow" d="M572 144 H592" marker-end="url(#redis-compact-encoding-head)"/>
+  <text class="dg-sub" x="540" y="206" text-anchor="middle">each entry: key, value, pointers</text>
+  <text class="dg-result" x="540" y="234" text-anchor="middle">Fast lookups, more memory</text>
+  </g>
+</svg>

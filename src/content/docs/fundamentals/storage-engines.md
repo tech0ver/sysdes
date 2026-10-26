@@ -96,7 +96,7 @@ RAM costs much more than disk, and the data needs more of it than its raw size, 
 | Log flushed once a second | About a second of writes, more if flushing falls behind | A main store, if that loss is acceptable |
 | Log flushed on every write | Nothing that was confirmed | A main store |
 
-A cache holds only copies of data kept elsewhere. Redis offers all of these settings, so it works as a main store or as a cache. <!-- link: technologies/redis --> Memcached writes nothing to disk and is always a cache. <!-- link: technologies/memcached --> [How to put a cache in front of the main store](../caching/#putting-a-cache-in-front-of-the-database) is a topic of its own.
+A cache holds only copies of data kept elsewhere. Redis offers all of these settings, so it works as a main store or as a cache (more on [saving Redis data to disk](../../technologies/redis/#writing-data-to-disk)). Memcached writes nothing to disk and is always a cache. <!-- link: technologies/memcached --> [How to put a cache in front of the main store](../caching/#putting-a-cache-in-front-of-the-database) is a topic of its own.
 
 :::do
 Start with a disk store and let its cache hold the hot data. Keep all data in memory when the latency target needs it, and the data, its growth, and the restart time fit the RAM budget.

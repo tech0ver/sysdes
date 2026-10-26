@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 680 236" role="img" aria-labelledby="redis-hash-buckets-title redis-hash-buckets-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-hash-buckets-title">Grouping small values into hashes</title>
+  <desc id="redis-hash-buckets-desc">Left: one key per channel, so each channel costs a key entry and an object of its own. Right: the app puts channels into hashes by their ID: channel 42017 becomes field 17 of the hash channels:420, next to channels 42018 and 42019, so one key holds a hundred channels in a compact array.</desc>
+  <defs>
+    <marker id="redis-hash-buckets-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-hash-buckets-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-20 0)">
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">One key per channel</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">A hash per 100 channels</text>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="228"/>
+  <text class="dg-code" x="36" y="69">channel:42017</text>
+  <rect class="dg-box" x="160" y="52" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="195.0" y="68.0" text-anchor="middle">object</text>
+  <rect class="dg-box" x="236" y="52" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="281.0" y="68.0" text-anchor="middle">{title…}</text>
+  <text class="dg-code" x="36" y="109">channel:42018</text>
+  <rect class="dg-box" x="160" y="92" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="195.0" y="108.0" text-anchor="middle">object</text>
+  <rect class="dg-box" x="236" y="92" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="281.0" y="108.0" text-anchor="middle">{title…}</text>
+  <text class="dg-code" x="36" y="149">channel:42019</text>
+  <rect class="dg-box" x="160" y="132" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="195.0" y="148.0" text-anchor="middle">object</text>
+  <rect class="dg-box" x="236" y="132" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="281.0" y="148.0" text-anchor="middle">{title…}</text>
+  <text class="dg-code-muted" x="36" y="186">… one key each</text>
+  <text class="dg-code" x="390" y="69">channels:420</text>
+  <rect class="dg-box-accent" x="500" y="52" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="68.0" text-anchor="middle">17</text>
+  <rect class="dg-box-accent" x="540" y="52" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="68.0" text-anchor="middle">{title…}</text>
+  <rect class="dg-box" x="500" y="92" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="108.0" text-anchor="middle">18</text>
+  <rect class="dg-box" x="540" y="92" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="108.0" text-anchor="middle">{title…}</text>
+  <rect class="dg-box" x="500" y="132" width="40" height="24" rx="4"/>
+  <text class="dg-code" x="520.0" y="148.0" text-anchor="middle">19</text>
+  <rect class="dg-box" x="540" y="132" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="148.0" text-anchor="middle">{title…}</text>
+  <text class="dg-code-muted" x="500" y="186">… 100 fields</text>
+  <text class="dg-result" x="180" y="220" text-anchor="middle">Overhead per channel</text>
+  <text class="dg-result" x="540" y="220" text-anchor="middle">Overhead per 100 channels</text>
+  </g>
+</svg>

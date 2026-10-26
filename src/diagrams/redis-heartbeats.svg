@@ -1,0 +1,42 @@
+<svg class="diagram-svg" viewBox="0 0 720 222" role="img" aria-labelledby="redis-heartbeats-title redis-heartbeats-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-heartbeats-title">Counting viewers who are watching now</title>
+  <desc id="redis-heartbeats-desc">The sorted set watching:42 holds one member per viewer, scored by the Unix time of the last heartbeat. At time 1761307230, ZREMRANGEBYSCORE removes members with scores up to 1761307170, a minute ago: user:88 and user:9. ZCARD then returns 3.</desc>
+  <defs>
+    <marker id="redis-heartbeats-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-heartbeats-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-code" x="16" y="22">watching:42</text>
+  <text class="dg-mono dg-muted-text" x="16" y="50">MEMBER</text>
+  <text class="dg-mono dg-muted-text" x="124" y="50">LAST HEARTBEAT, UNIX TIME</text>
+  <rect class="dg-box" x="16" y="60" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="64.0" y="76.0" text-anchor="middle">user:17</text>
+  <rect class="dg-box" x="124" y="60" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="76.0" text-anchor="middle">1761307228</text>
+  <rect class="dg-box" x="16" y="90" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="64.0" y="106.0" text-anchor="middle">user:203</text>
+  <rect class="dg-box" x="124" y="90" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="106.0" text-anchor="middle">1761307225</text>
+  <rect class="dg-box" x="16" y="120" width="96" height="24" rx="4"/>
+  <text class="dg-code" x="64.0" y="136.0" text-anchor="middle">user:51</text>
+  <rect class="dg-box" x="124" y="120" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="179.0" y="136.0" text-anchor="middle">1761307201</text>
+  <rect class="dg-box-failed" x="16" y="150" width="96" height="24" rx="4"/>
+  <text class="dg-code-muted" x="64.0" y="166.0" text-anchor="middle">user:88</text>
+  <rect class="dg-box-failed" x="124" y="150" width="110" height="24" rx="4"/>
+  <text class="dg-code-muted" x="179.0" y="166.0" text-anchor="middle">1761307170</text>
+  <rect class="dg-box-failed" x="16" y="180" width="96" height="24" rx="4"/>
+  <text class="dg-code-muted" x="64.0" y="196.0" text-anchor="middle">user:9</text>
+  <rect class="dg-box-failed" x="124" y="180" width="110" height="24" rx="4"/>
+  <text class="dg-code-muted" x="179.0" y="196.0" text-anchor="middle">1761307140</text>
+  <path class="dg-bracket-accent" d="M240 150 H246 V206 H240" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="254" y="182.0" text-anchor="start">A MINUTE OLD</text>
+  <rect class="dg-box" x="348" y="60" width="356" height="24" rx="4"/>
+  <text class="dg-code" x="526.0" y="76.0" text-anchor="middle">ZADD watching:42 1761307228 user:17</text>
+  <text class="dg-sub" x="360" y="100">each heartbeat</text>
+  <rect class="dg-box-accent" x="348" y="112" width="356" height="24" rx="4"/>
+  <text class="dg-code" x="526.0" y="128.0" text-anchor="middle">ZREMRANGEBYSCORE watching:42 -inf 1761307170</text>
+  <text class="dg-sub" x="360" y="152">at 1761307230: removes 2</text>
+  <rect class="dg-box" x="348" y="164" width="356" height="24" rx="4"/>
+  <text class="dg-code" x="526.0" y="180.0" text-anchor="middle">ZCARD watching:42</text>
+  <text class="dg-sub" x="360" y="204">returns 3</text>
+</svg>

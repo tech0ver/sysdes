@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 506 330" role="img" aria-labelledby="redis-watch-retry-title redis-watch-retry-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-watch-retry-title">WATCH aborts a transaction and the client retries</title>
+  <desc id="redis-watch-retry-desc">Time runs down. Client A watches the key limit:17 and reads 4. Client B adds one to the key. A sends MULTI, INCR, and EXEC; because the watched key changed, EXEC returns nil and nothing runs. A watches again, reads 5, sees the limit is reached, and does not add.</desc>
+  <defs>
+    <marker id="redis-watch-retry-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-watch-retry-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-107 0)">
+  <text class="dg-mono dg-muted-text" x="150" y="24" text-anchor="middle">CLIENT A</text>
+  <line class="dg-lifeline" x1="150" y1="36" x2="150" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="360" y="24" text-anchor="middle">REDIS</text>
+  <line class="dg-lifeline" x1="360" y1="36" x2="360" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="570" y="24" text-anchor="middle">CLIENT B</text>
+  <line class="dg-lifeline" x1="570" y1="36" x2="570" y2="314"/>
+  <text class="dg-mono dg-muted-text" x="255.0" y="54" text-anchor="middle">WATCH limit:17</text>
+  <path class="dg-arrow" d="M150 62 H352" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-muted-text" x="255.0" y="84" text-anchor="middle">GET limit:17</text>
+  <path class="dg-arrow" d="M150 92 H352" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-muted-text" x="255.0" y="114" text-anchor="middle">4</text>
+  <path class="dg-arrow" d="M360 122 H158" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-muted-text" x="465.0" y="144" text-anchor="middle">INCR limit:17</text>
+  <path class="dg-arrow" d="M570 152 H368" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-muted-text" x="465.0" y="174" text-anchor="middle">5</text>
+  <path class="dg-arrow" d="M360 182 H562" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-muted-text" x="255.0" y="204" text-anchor="middle">MULTI, INCR, EXEC</text>
+  <path class="dg-arrow" d="M150 212 H352" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-accent-text" x="255.0" y="234" text-anchor="middle">NIL: KEY CHANGED</text>
+  <path class="dg-arrow dg-message" d="M360 242 H158" marker-end="url(#redis-watch-retry-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="255.0" y="264" text-anchor="middle">WATCH, GET</text>
+  <path class="dg-arrow" d="M150 272 H352" marker-end="url(#redis-watch-retry-head)"/>
+  <text class="dg-mono dg-muted-text" x="255.0" y="294" text-anchor="middle">5: LIMIT REACHED</text>
+  <path class="dg-arrow" d="M360 302 H158" marker-end="url(#redis-watch-retry-head)"/>
+  </g>
+</svg>

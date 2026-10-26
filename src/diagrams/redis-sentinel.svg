@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 256" role="img" aria-labelledby="redis-sentinel-title redis-sentinel-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-sentinel-title">Sentinel on three machines</title>
+  <desc id="redis-sentinel-desc">Three machines in three zones. Each runs a Redis server and a Sentinel: the primary in zone A and replicas in zones B and C. The Sentinels watch the primary; with a quorum of 2 they mark it down, and a majority of them must agree to promote a replica. App servers ask the Sentinels where the primary is and then connect to it.</desc>
+  <defs>
+    <marker id="redis-sentinel-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-sentinel-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="16" y="16" width="216" height="140" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="36">ZONE A</text>
+  <rect class="dg-box-accent" x="32" y="44" width="184" height="40" rx="6"/>
+  <text class="dg-name" x="124.0" y="69.0" text-anchor="middle">Primary</text>
+  <rect class="dg-box" x="32" y="100" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="92.0" y="125.0" text-anchor="middle">Sentinel</text>
+  <rect class="dg-zone" x="252" y="16" width="216" height="140" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="267" y="36">ZONE B</text>
+  <rect class="dg-box" x="268" y="44" width="184" height="40" rx="6"/>
+  <text class="dg-name" x="360.0" y="69.0" text-anchor="middle">Replica</text>
+  <rect class="dg-box" x="268" y="100" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="328.0" y="125.0" text-anchor="middle">Sentinel</text>
+  <rect class="dg-zone" x="488" y="16" width="216" height="140" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="503" y="36">ZONE C</text>
+  <rect class="dg-box" x="504" y="44" width="184" height="40" rx="6"/>
+  <text class="dg-name" x="596.0" y="69.0" text-anchor="middle">Replica</text>
+  <rect class="dg-box" x="504" y="100" width="120" height="40" rx="6"/>
+  <text class="dg-name" x="564.0" y="125.0" text-anchor="middle">Sentinel</text>
+  <rect class="dg-box" x="150" y="194" width="420" height="44" rx="6"/>
+  <text class="dg-name" x="360.0" y="221.0" text-anchor="middle">App servers</text>
+  <path class="dg-arrow dg-message" d="M326 194 V144" marker-end="url(#redis-sentinel-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="334" y="178" text-anchor="start">WHERE IS THE PRIMARY?</text>
+  <path class="dg-arrow" d="M184 194 V88" marker-end="url(#redis-sentinel-head)"/>
+  <text class="dg-mono dg-muted-text" x="192" y="178" text-anchor="start">THEN CONNECT</text>
+</svg>

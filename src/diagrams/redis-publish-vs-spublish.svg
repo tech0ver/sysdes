@@ -1,0 +1,42 @@
+<svg class="diagram-svg" viewBox="0 0 714 254" role="img" aria-labelledby="redis-publish-vs-spublish-title redis-publish-vs-spublish-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-publish-vs-spublish-title">PUBLISH and SPUBLISH in a cluster</title>
+  <desc id="redis-publish-vs-spublish-desc">A cluster of three shards, A, B, and C, each a primary with replicas. Left: PUBLISH to chat:42 reaches shard A, which forwards it to every other shard over the cluster bus, whether or not they have subscribers. Right: SPUBLISH goes to shard B, which owns the slot of chat:42, and stays inside it; subscribers of chat:42 connect to its primary or its replicas.</desc>
+  <defs>
+    <marker id="redis-publish-vs-spublish-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-publish-vs-spublish-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-3 0)">
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">PUBLISH</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">every shard gets every message</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">SPUBLISH</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">only the shard that owns the slot</text>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="246"/>
+  <rect class="dg-box" x="20" y="120" width="100" height="52" rx="6"/>
+  <text class="dg-name" x="70.0" y="144.0" text-anchor="middle">Shard A</text>
+  <text class="dg-sub" x="70.0" y="160.0" text-anchor="middle">with replicas</text>
+  <rect class="dg-box" x="130" y="120" width="100" height="52" rx="6"/>
+  <text class="dg-name" x="180.0" y="144.0" text-anchor="middle">Shard B</text>
+  <text class="dg-sub" x="180.0" y="160.0" text-anchor="middle">with replicas</text>
+  <rect class="dg-box" x="240" y="120" width="100" height="52" rx="6"/>
+  <text class="dg-name" x="290.0" y="144.0" text-anchor="middle">Shard C</text>
+  <text class="dg-sub" x="290.0" y="160.0" text-anchor="middle">with replicas</text>
+  <path class="dg-arrow dg-message" d="M70 72 V112" marker-end="url(#redis-publish-vs-spublish-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="78" y="92">PUBLISH</text>
+  <path class="dg-arrow dg-message" d="M70 172 V196 H290 V180" marker-end="url(#redis-publish-vs-spublish-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M180 196 V180" marker-end="url(#redis-publish-vs-spublish-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="180" y="212" text-anchor="middle">CLUSTER BUS</text>
+  <rect class="dg-box-failed" x="380" y="120" width="100" height="52" rx="6"/>
+  <text class="dg-name-muted" x="430.0" y="144.0" text-anchor="middle">Shard A</text>
+  <text class="dg-sub" x="430.0" y="160.0" text-anchor="middle">with replicas</text>
+  <rect class="dg-box-accent" x="490" y="120" width="100" height="52" rx="6"/>
+  <text class="dg-name" x="540.0" y="144.0" text-anchor="middle">Shard B</text>
+  <text class="dg-sub" x="540.0" y="160.0" text-anchor="middle">with replicas</text>
+  <rect class="dg-box-failed" x="600" y="120" width="100" height="52" rx="6"/>
+  <text class="dg-name-muted" x="650.0" y="144.0" text-anchor="middle">Shard C</text>
+  <text class="dg-sub" x="650.0" y="160.0" text-anchor="middle">with replicas</text>
+  <path class="dg-arrow dg-message" d="M540 72 V112" marker-end="url(#redis-publish-vs-spublish-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="548" y="92">SPUBLISH</text>
+  <text class="dg-result" x="180" y="240" text-anchor="middle">Load grows with shards</text>
+  <text class="dg-result" x="540" y="240" text-anchor="middle">Load stays in one shard</text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="redis-search-index-title redis-search-index-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-search-index-title">A search index over hashes</title>
+  <desc id="redis-search-index-desc">Hashes with keys starting with channel: hold a title, a game, and a viewer count. The index idx:channels covers them: the title as TEXT, the game as TAG, the viewers as NUMERIC. Each HSET to an indexed key updates the index. FT.SEARCH for chess channels with "finals" in the title reads the index and returns channel:42.</desc>
+  <defs>
+    <marker id="redis-search-index-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-search-index-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="18">HASHES</text>
+  <text class="dg-code" x="16" y="42">channel:42</text>
+  <rect class="dg-box-accent" x="16" y="50" width="214" height="24" rx="4"/>
+  <text class="dg-code" x="123.0" y="66.0" text-anchor="middle">Finals day 2 · chess</text>
+  <text class="dg-code" x="16" y="100">channel:7</text>
+  <rect class="dg-box" x="16" y="108" width="214" height="24" rx="4"/>
+  <text class="dg-code" x="123.0" y="124.0" text-anchor="middle">Speedrun · minecraft</text>
+  <text class="dg-code" x="16" y="158">channel:15</text>
+  <rect class="dg-box" x="16" y="166" width="214" height="24" rx="4"/>
+  <text class="dg-code" x="123.0" y="182.0" text-anchor="middle">Openings · chess</text>
+  <rect class="dg-box" x="290" y="60" width="170" height="116" rx="6"/>
+  <text class="dg-name" x="375" y="86" text-anchor="middle">idx:channels</text>
+  <text class="dg-code" x="306" y="108">title: TEXT</text>
+  <text class="dg-code" x="306" y="128">game: TAG</text>
+  <text class="dg-code" x="306" y="148">viewers: NUMERIC</text>
+  <path class="dg-arrow" d="M244 112 H282" marker-end="url(#redis-search-index-head)"/>
+  <text class="dg-mono dg-muted-text" x="263" y="102" text-anchor="middle">HSET</text>
+  <rect class="dg-box-accent" x="510" y="60" width="194" height="56" rx="4"/>
+  <text class="dg-code" x="607" y="82" text-anchor="middle">FT.SEARCH idx:channels</text>
+  <text class="dg-code" x="607" y="102" text-anchor="middle">@game:{chess} finals</text>
+  <path class="dg-arrow dg-message" d="M510 88 H468" marker-end="url(#redis-search-index-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M607 116 V160" marker-end="url(#redis-search-index-head-accent)"/>
+  <rect class="dg-box-accent" x="540" y="168" width="134" height="24" rx="4"/>
+  <text class="dg-code" x="607.0" y="184.0" text-anchor="middle">channel:42</text>
+  <text class="dg-result" x="360" y="224" text-anchor="middle">Each write to an indexed key also updates the index</text>
+</svg>

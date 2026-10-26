@@ -1,0 +1,22 @@
+<svg class="diagram-svg" viewBox="0 0 656 132" role="img" aria-labelledby="redis-time-split-title redis-time-split-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-time-split-title">Where the time of one command goes</title>
+  <desc id="redis-time-split-desc">A GET inside one data center takes about 200 microseconds: about 100 to reach the server, less than one microsecond of work in the server, and about 100 for the reply to come back. The work in the server is a thin line on this scale.</desc>
+  <defs>
+    <marker id="redis-time-split-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-time-split-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-40 0)">
+  <rect class="dg-bar" x="60" y="52" width="297.0" height="28" rx="3"/>
+  <rect class="dg-bar" x="363.0" y="52" width="297.0" height="28" rx="3"/>
+  <rect class="dg-box-accent" x="358.0" y="46" width="4" height="40" rx="1"/>
+  <text class="dg-mono dg-muted-text" x="210.0" y="42" text-anchor="middle">REQUEST ON THE NETWORK</text>
+  <text class="dg-mono dg-muted-text" x="510.0" y="42" text-anchor="middle">REPLY ON THE NETWORK</text>
+  <text class="dg-mono dg-accent-text" x="360.0" y="34" text-anchor="middle">COMMAND &lt; 1 µS</text>
+  <line class="dg-line" x1="60" y1="92" x2="60" y2="98"/>
+  <text class="dg-mono dg-muted-text" x="60" y="110" text-anchor="middle">0</text>
+  <line class="dg-line" x1="360.0" y1="92" x2="360.0" y2="98"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="110" text-anchor="middle">100 µS</text>
+  <line class="dg-line" x1="660" y1="92" x2="660" y2="98"/>
+  <text class="dg-mono dg-muted-text" x="660" y="110" text-anchor="middle">200 µS</text>
+  </g>
+</svg>

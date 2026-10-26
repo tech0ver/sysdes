@@ -1,0 +1,55 @@
+<svg class="diagram-svg" viewBox="0 0 616 300" role="img" aria-labelledby="redis-geosearch-title redis-geosearch-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-geosearch-title">How GEOSEARCH finds members within a radius</title>
+  <desc id="redis-geosearch-desc">A grid of geohash areas. To find members within the radius of a point, Redis reads the nine areas around the point and gets every member in them as a candidate. Then it checks the exact distance: members inside the circle are returned, members in the areas but outside the circle are dropped, and members in other areas are not read at all.</desc>
+  <defs>
+    <marker id="redis-geosearch-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-geosearch-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-23 0)">
+  <rect class="dg-box" x="40" y="20" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="40" y="72" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="40" y="124" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="40" y="176" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="40" y="228" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="92" y="20" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="92" y="72" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="92" y="124" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="92" y="176" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="92" y="228" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="144" y="20" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="144" y="72" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="144" y="124" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="144" y="176" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="144" y="228" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="196" y="20" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="196" y="72" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="196" y="124" width="50" height="50" rx="2"/>
+  <rect class="dg-chip" x="196" y="176" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="196" y="228" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="248" y="20" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="248" y="72" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="248" y="124" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="248" y="176" width="50" height="50" rx="2"/>
+  <rect class="dg-box" x="248" y="228" width="50" height="50" rx="2"/>
+  <circle class="dg-arrow dg-message" cx="169.0" cy="149.0" r="66" fill="none"/>
+  <rect class="dg-box-accent" x="163.0" y="143.0" width="12" height="12" rx="2"/>
+  <circle class="dg-dot" cx="139.0" cy="127.0" r="5"/>
+  <circle class="dg-dot" cx="195.0" cy="179.0" r="5"/>
+  <circle class="dg-dot" cx="209.0" cy="119.0" r="5"/>
+  <circle class="dg-dot" cx="157.0" cy="193.0" r="5"/>
+  <circle class="dg-dot-muted" cx="102.4" cy="79.8" r="5"/>
+  <circle class="dg-dot-muted" cx="237.6" cy="215.0" r="5"/>
+  <circle class="dg-dot-muted" cx="240.20000000000002" cy="82.4" r="5"/>
+  <circle class="dg-dot-muted" cx="60.8" cy="243.6" r="5"/>
+  <circle class="dg-dot-muted" cx="274.0" cy="46.0" r="5"/>
+  <circle class="dg-dot-muted" cx="268.8" cy="155.20000000000002" r="5"/>
+  <rect class="dg-chip" x="360" y="46" width="22" height="22" rx="2"/>
+  <text class="dg-sub" x="394" y="62">areas around the point: read</text>
+  <circle class="dg-dot" cx="371" cy="112" r="5"/>
+  <text class="dg-sub" x="394" y="116">inside the radius: returned</text>
+  <circle class="dg-dot-muted" cx="371" cy="152" r="5"/>
+  <text class="dg-sub" x="394" y="156">in the areas, outside the radius: dropped</text>
+  <rect class="dg-box" x="360" y="184" width="22" height="22" rx="2"/>
+  <text class="dg-sub" x="394" y="200">other areas: not read</text>
+  </g>
+</svg>

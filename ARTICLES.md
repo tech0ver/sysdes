@@ -136,7 +136,7 @@ The word means different things in different articles. Each article says which o
 - `technologies/dynamodb` — DynamoDB: partition and sort keys, single-table design, secondary indexes.
 - `technologies/cassandra` — Cassandra: LSM-tree storage, partition and clustering keys, write-heavy workloads.
 - `technologies/rocksdb` — RocksDB: an embedded LSM-tree engine used inside other databases.
-- `technologies/redis` — Redis: an in-memory store, its data structures, persistence settings, use as a cache or as the main store.
+- `technologies/redis` **(written)** — Redis: an in-memory store, its data structures, persistence settings, use as a cache or as the main store.
 - `technologies/memcached` — Memcached: a cache-only in-memory store.
 - `technologies/elasticsearch` — Elasticsearch: full-text search with an inverted index.
 - `technologies/neo4j` — Neo4j: a graph database, Cypher, when a graph store pays off.

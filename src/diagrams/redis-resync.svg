@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 703 220" role="img" aria-labelledby="redis-resync-title redis-resync-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-resync-title">Partial and full resync after a break</title>
+  <desc id="redis-resync-desc">The primary has written up to offset 5,000 MB of its replication stream and keeps the last 1 MB, from 4,999 to 5,000, in its backlog. Replica 1 broke off at 4,999.5 MB, inside the backlog, and gets only the missing part. Replica 2 broke off at 4,990 MB, before the backlog starts, so the primary forks and sends a full snapshot.</desc>
+  <defs>
+    <marker id="redis-resync-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-resync-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-name" x="16" y="56" text-anchor="start">Stream</text>
+  <text class="dg-sub" x="16" y="72" text-anchor="start">of the primary</text>
+  <rect class="dg-bar" x="120" y="48" width="540" height="24" rx="3"/>
+  <rect class="dg-box-accent" x="615.0" y="44" width="45.0" height="32" rx="3"/>
+  <text class="dg-mono dg-accent-text" x="637.5" y="36" text-anchor="middle">BACKLOG: 1 MB</text>
+  <line class="dg-line" x1="120.0" y1="80" x2="120.0" y2="86"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="98" text-anchor="middle">4,988 MB</text>
+  <line class="dg-line" x1="210.0" y1="80" x2="210.0" y2="86"/>
+  <text class="dg-mono dg-muted-text" x="210.0" y="98" text-anchor="middle">4,990 MB</text>
+  <line class="dg-line" x1="435.0" y1="80" x2="435.0" y2="86"/>
+  <text class="dg-mono dg-muted-text" x="435.0" y="98" text-anchor="middle">4,995 MB</text>
+  <line class="dg-line" x1="660.0" y1="80" x2="660.0" y2="86"/>
+  <text class="dg-mono dg-muted-text" x="660.0" y="98" text-anchor="middle">5,000 MB</text>
+  <text class="dg-name" x="16" y="148" text-anchor="start">Replica 1</text>
+  <path class="dg-arrow dg-empty" d="M637.5 134 V108"/>
+  <circle class="dg-dot" cx="637.5" cy="142" r="5"/>
+  <text class="dg-sub" x="625.5" y="146" text-anchor="end">partial: only the missing writes</text>
+  <text class="dg-name" x="16" y="192" text-anchor="start">Replica 2</text>
+  <path class="dg-arrow dg-empty" d="M210.0 178 V108"/>
+  <circle class="dg-dot-muted" cx="210.0" cy="186" r="5"/>
+  <text class="dg-sub" x="222.0" y="190" text-anchor="start">full: fork and send a snapshot</text>
+  </g>
+</svg>

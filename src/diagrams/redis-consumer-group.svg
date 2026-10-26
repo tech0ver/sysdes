@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 697 268" role="img" aria-labelledby="redis-consumer-group-title redis-consumer-group-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-consumer-group-title">A consumer group hands each entry to one worker</title>
+  <desc id="redis-consumer-group-desc">The group notifier reads the stream notify. 101-0 went to worker 1, which acknowledged it with XACK, so it left the pending list. 102-0 went to worker 1, which then died; it stayed pending, and XAUTOCLAIM gave it to worker 3 once it was idle too long. 103-0 and 104-0 went to worker 2 and are pending until it acknowledges them. 105-0 has not been delivered yet.</desc>
+  <defs>
+    <marker id="redis-consumer-group-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-consumer-group-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="18">ENTRY</text>
+  <text class="dg-mono dg-muted-text" x="140" y="18">GIVEN TO</text>
+  <text class="dg-mono dg-muted-text" x="290" y="18">STATE IN THE GROUP</text>
+  <rect class="dg-box" x="16" y="28" width="80" height="28" rx="4"/>
+  <text class="dg-code" x="56.0" y="46.0" text-anchor="middle">101-0</text>
+  <path class="dg-arrow" d="M96 42 H132" marker-end="url(#redis-consumer-group-head)"/>
+  <rect class="dg-box" x="140" y="28" width="110" height="28" rx="4"/>
+  <text class="dg-code" x="195.0" y="46.0" text-anchor="middle">Worker 1</text>
+  <text class="dg-code-muted" x="290" y="47">acknowledged: XACK</text>
+  <rect class="dg-box" x="16" y="70" width="80" height="28" rx="4"/>
+  <text class="dg-code" x="56.0" y="88.0" text-anchor="middle">102-0</text>
+  <path class="dg-arrow" d="M96 84 H132" marker-end="url(#redis-consumer-group-head)"/>
+  <rect class="dg-box-failed" x="140" y="70" width="110" height="28" rx="4"/>
+  <text class="dg-code-muted" x="195.0" y="88.0" text-anchor="middle">Worker 1</text>
+  <line class="dg-cross" x1="244" y1="64" x2="256" y2="76"/>
+  <line class="dg-cross" x1="244" y1="76" x2="256" y2="64"/>
+  <text class="dg-code" x="290" y="89">pending, idle too long</text>
+  <rect class="dg-box" x="16" y="112" width="80" height="28" rx="4"/>
+  <text class="dg-code" x="56.0" y="130.0" text-anchor="middle">103-0</text>
+  <path class="dg-arrow" d="M96 126 H132" marker-end="url(#redis-consumer-group-head)"/>
+  <rect class="dg-box" x="140" y="112" width="110" height="28" rx="4"/>
+  <text class="dg-code" x="195.0" y="130.0" text-anchor="middle">Worker 2</text>
+  <text class="dg-code" x="290" y="131">pending until XACK</text>
+  <rect class="dg-box" x="16" y="154" width="80" height="28" rx="4"/>
+  <text class="dg-code" x="56.0" y="172.0" text-anchor="middle">104-0</text>
+  <path class="dg-arrow" d="M96 168 H132" marker-end="url(#redis-consumer-group-head)"/>
+  <rect class="dg-box" x="140" y="154" width="110" height="28" rx="4"/>
+  <text class="dg-code" x="195.0" y="172.0" text-anchor="middle">Worker 2</text>
+  <text class="dg-code" x="290" y="173">pending until XACK</text>
+  <rect class="dg-box" x="16" y="196" width="80" height="28" rx="4"/>
+  <text class="dg-code" x="56.0" y="214.0" text-anchor="middle">105-0</text>
+  <text class="dg-code-muted" x="290" y="215">not delivered yet</text>
+  <path class="dg-arrow dg-message" d="M476 84 H562" marker-end="url(#redis-consumer-group-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="519" y="76" text-anchor="middle">XAUTOCLAIM</text>
+  <rect class="dg-box-accent" x="570" y="70" width="110" height="28" rx="4"/>
+  <text class="dg-code" x="625.0" y="88.0" text-anchor="middle">Worker 3</text>
+  <text class="dg-result" x="360" y="256" text-anchor="middle">Each entry goes to one worker and stays pending until XACK</text>
+  </g>
+</svg>

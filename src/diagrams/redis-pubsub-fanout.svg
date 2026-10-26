@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 236" role="img" aria-labelledby="redis-pubsub-fanout-title redis-pubsub-fanout-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-pubsub-fanout-title">One PUBLISH reaches the subscribed servers</title>
+  <desc id="redis-pubsub-fanout-desc">App server 1 publishes a message to the channel chat:42. Redis sends it at once to app servers 2 and 3, which are subscribed to chat:42. App server 4 is subscribed too, but its connection dropped a moment ago, so it never gets the message. Redis keeps no copy.</desc>
+  <defs>
+    <marker id="redis-pubsub-fanout-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-pubsub-fanout-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="92" width="140" height="52" rx="6"/>
+  <text class="dg-name" x="86.0" y="116.0" text-anchor="middle">App server 1</text>
+  <text class="dg-sub" x="86.0" y="132.0" text-anchor="middle">PUBLISH chat:42</text>
+  <rect class="dg-box" x="270" y="92" width="150" height="52" rx="6"/>
+  <text class="dg-name" x="345.0" y="116.0" text-anchor="middle">Redis</text>
+  <text class="dg-sub" x="345.0" y="132.0" text-anchor="middle">stores nothing</text>
+  <path class="dg-arrow dg-message" d="M156 118 H262" marker-end="url(#redis-pubsub-fanout-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="213.0" y="110" text-anchor="middle">MESSAGE</text>
+  <rect class="dg-box" x="560" y="20" width="144" height="48" rx="6"/>
+  <text class="dg-name" x="632.0" y="42.0" text-anchor="middle">App server 2</text>
+  <text class="dg-sub" x="632.0" y="58.0" text-anchor="middle">subscribed</text>
+  <path class="dg-arrow dg-message" d="M420 118 H480 V44 H552" marker-end="url(#redis-pubsub-fanout-head-accent)"/>
+  <rect class="dg-box" x="560" y="96" width="144" height="48" rx="6"/>
+  <text class="dg-name" x="632.0" y="118.0" text-anchor="middle">App server 3</text>
+  <text class="dg-sub" x="632.0" y="134.0" text-anchor="middle">subscribed</text>
+  <path class="dg-arrow dg-message" d="M420 118 H480 V120 H552" marker-end="url(#redis-pubsub-fanout-head-accent)"/>
+  <rect class="dg-box-failed" x="560" y="172" width="144" height="48" rx="6"/>
+  <text class="dg-name-muted" x="632.0" y="194.0" text-anchor="middle">App server 4</text>
+  <text class="dg-sub" x="632.0" y="210.0" text-anchor="middle">reconnecting</text>
+  <path class="dg-arrow dg-empty" d="M480 118 V196 H520"/>
+  <line class="dg-cross" x1="525" y1="189" x2="539" y2="203"/>
+  <line class="dg-cross" x1="525" y1="203" x2="539" y2="189"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 643 324" role="img" aria-labelledby="redis-client-tracking-title redis-client-tracking-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-client-tracking-title">Client-side caching with invalidation</title>
+  <desc id="redis-client-tracking-desc">Time runs down. App server 1 turns on tracking and reads channel:42:info; Redis remembers that it did, and the app keeps a local copy that serves later reads without a request. App server 2 changes the title. Redis sends app server 1 an invalidation for channel:42:info, and app server 1 drops its copy; its next read goes to Redis.</desc>
+  <defs>
+    <marker id="redis-client-tracking-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-client-tracking-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-23 0)">
+  <text class="dg-mono dg-muted-text" x="110" y="24" text-anchor="middle">APP SERVER 1</text>
+  <line class="dg-lifeline" x1="110" y1="36" x2="110" y2="308"/>
+  <text class="dg-mono dg-muted-text" x="360" y="24" text-anchor="middle">REDIS</text>
+  <line class="dg-lifeline" x1="360" y1="36" x2="360" y2="308"/>
+  <text class="dg-mono dg-muted-text" x="610" y="24" text-anchor="middle">APP SERVER 2</text>
+  <line class="dg-lifeline" x1="610" y1="36" x2="610" y2="308"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="54" text-anchor="middle">CLIENT TRACKING ON</text>
+  <path class="dg-arrow" d="M110 62 H352" marker-end="url(#redis-client-tracking-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="88" text-anchor="middle">HGETALL channel:42:info</text>
+  <path class="dg-arrow" d="M110 96 H352" marker-end="url(#redis-client-tracking-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="116" text-anchor="middle">VALUE</text>
+  <path class="dg-arrow" d="M360 124 H118" marker-end="url(#redis-client-tracking-head)"/>
+  <rect class="dg-box" x="265.0" y="136" width="190" height="26" rx="4"/>
+  <text class="dg-code" x="360.0" y="153.0" text-anchor="middle">remembers: app 1 read it</text>
+  <rect class="dg-box-accent" x="40.0" y="140" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="110.0" y="157.0" text-anchor="middle">local copy</text>
+  <text class="dg-mono dg-muted-text" x="118" y="184">READS SERVED LOCALLY</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="206" text-anchor="middle">HSET … title "Semis"</text>
+  <path class="dg-arrow" d="M610 214 H368" marker-end="url(#redis-client-tracking-head)"/>
+  <text class="dg-mono dg-accent-text" x="235.0" y="240" text-anchor="middle">INVALIDATE channel:42:info</text>
+  <path class="dg-arrow dg-message" d="M360 248 H118" marker-end="url(#redis-client-tracking-head-accent)"/>
+  <rect class="dg-box-failed" x="40.0" y="264" width="140" height="26" rx="4"/>
+  <text class="dg-code-muted" x="110.0" y="281.0" text-anchor="middle">copy dropped</text>
+  </g>
+</svg>

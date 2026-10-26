@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 214" role="img" aria-labelledby="redis-io-threads-title redis-io-threads-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-io-threads-title">I/O threads and the main thread</title>
+  <desc id="redis-io-threads-desc">Clients connect to Redis. I/O threads read requests from the sockets, parse them, and write the replies back. One main thread runs every command, one at a time, on the data in memory.</desc>
+  <defs>
+    <marker id="redis-io-threads-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-io-threads-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="40" width="110" height="36" rx="6"/>
+  <text class="dg-name" x="71.0" y="63.0" text-anchor="middle">Client 1</text>
+  <rect class="dg-box" x="16" y="92" width="110" height="36" rx="6"/>
+  <text class="dg-name" x="71.0" y="115.0" text-anchor="middle">Client 2</text>
+  <rect class="dg-box" x="16" y="144" width="110" height="36" rx="6"/>
+  <text class="dg-name" x="71.0" y="167.0" text-anchor="middle">Client 3</text>
+  <rect class="dg-zone" x="170" y="16" width="534" height="182" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="185" y="36">REDIS SERVER</text>
+  <rect class="dg-box" x="196" y="40" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="266.0" y="56.0" text-anchor="middle">I/O thread</text>
+  <text class="dg-sub" x="266.0" y="72.0" text-anchor="middle">read, parse, write</text>
+  <path class="dg-arrow" d="M126 58 H188" marker-end="url(#redis-io-threads-head)"/>
+  <rect class="dg-box" x="196" y="92" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="266.0" y="108.0" text-anchor="middle">I/O thread</text>
+  <text class="dg-sub" x="266.0" y="124.0" text-anchor="middle">read, parse, write</text>
+  <path class="dg-arrow" d="M126 110 H188" marker-end="url(#redis-io-threads-head)"/>
+  <rect class="dg-box" x="196" y="144" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="266.0" y="160.0" text-anchor="middle">I/O thread</text>
+  <text class="dg-sub" x="266.0" y="176.0" text-anchor="middle">read, parse, write</text>
+  <path class="dg-arrow" d="M126 162 H188" marker-end="url(#redis-io-threads-head)"/>
+  <rect class="dg-box-accent" x="384" y="72" width="164" height="60" rx="6"/>
+  <text class="dg-name" x="466.0" y="100.0" text-anchor="middle">Main thread</text>
+  <text class="dg-sub" x="466.0" y="116.0" text-anchor="middle">one command at a time</text>
+  <path class="dg-arrow" d="M336 58 H360 V86 H376" marker-end="url(#redis-io-threads-head)"/>
+  <path class="dg-arrow" d="M336 110 H360 V102 H376" marker-end="url(#redis-io-threads-head)"/>
+  <path class="dg-arrow" d="M336 162 H360 V118 H376" marker-end="url(#redis-io-threads-head)"/>
+  <rect class="dg-box" x="592" y="72" width="96" height="60" rx="6"/>
+  <text class="dg-name" x="640.0" y="100.0" text-anchor="middle">Data</text>
+  <text class="dg-sub" x="640.0" y="116.0" text-anchor="middle">in memory</text>
+  <path class="dg-arrow" d="M548 102 H584" marker-end="url(#redis-io-threads-head)"/>
+</svg>
