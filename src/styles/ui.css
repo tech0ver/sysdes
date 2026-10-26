@@ -6,7 +6,7 @@
   --sl-text-h3: 1.2rem;
   --sl-content-width: 43rem;
   --sl-sidebar-width: 17rem;
-  --site-left-sidebar-width: 200px;
+  --site-left-sidebar-width: 375px;
   --sl-line-height: 1.7;
   --site-article-font-size: 1.05rem;
   --site-article-line-height: 1.78;
@@ -410,6 +410,10 @@ site-search dialog {
 }
 :root .sidebar-content ul a:hover { background: transparent; color: var(--sl-color-text-accent); }
 :root .sidebar-content a[aria-current='page'] { background: transparent; color: var(--sl-color-text-accent); font-weight: 600; }
+:root :is(starlight-toc, mobile-starlight-toc) a[aria-current='true'] {
+  color: var(--sl-color-text-accent);
+  font-weight: 600;
+}
 :root .site-pagination a { border: 0; padding: 0.5rem 0; }
 :root .site-search-start a {
   -webkit-tap-highlight-color: transparent;

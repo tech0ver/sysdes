@@ -1,0 +1,20 @@
+---
+const home = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<title>Redirecting to SystemDesign0ver</title>
+		<script is:inline define:vars={{ home }}>
+			window.location.replace(home);
+		</script>
+		<meta http-equiv="refresh" content={`0;url=${home}`} />
+	</head>
+	<body>
+		<a href={home}>Go to the home page</a>
+	</body>
+</html>
