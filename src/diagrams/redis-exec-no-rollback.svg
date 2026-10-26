@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 639 180" role="img" aria-labelledby="redis-exec-no-rollback-title redis-exec-no-rollback-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-exec-no-rollback-title">A failed command inside a transaction</title>
+  <desc id="redis-exec-no-rollback-desc">A transaction queues three commands: SET title, SADD on the same key, and INCR viewers. At EXEC, the SET runs, the SADD fails because title holds a string, not a set, and the INCR still runs. Nothing is rolled back.</desc>
+  <defs>
+    <marker id="redis-exec-no-rollback-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-exec-no-rollback-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-13 0)">
+  <text class="dg-mono dg-muted-text" x="130" y="22" text-anchor="middle">QUEUED AFTER MULTI</text>
+  <text class="dg-mono dg-muted-text" x="470" y="22" text-anchor="middle">RESULT AT EXEC</text>
+  <rect class="dg-box" x="30" y="34" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="50.0" text-anchor="middle">SET title "Finals"</text>
+  <path class="dg-arrow" d="M230 46 H392" marker-end="url(#redis-exec-no-rollback-head)"/>
+  <rect class="dg-box" x="400" y="34" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="470.0" y="50.0" text-anchor="middle">OK</text>
+  <text class="dg-mono dg-accent-text" x="556" y="50">APPLIED</text>
+  <rect class="dg-box" x="30" y="68" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="84.0" text-anchor="middle">SADD title x</text>
+  <path class="dg-arrow" d="M230 80 H392" marker-end="url(#redis-exec-no-rollback-head)"/>
+  <rect class="dg-box-failed" x="400" y="68" width="140" height="24" rx="4"/>
+  <text class="dg-code-muted" x="470.0" y="84.0" text-anchor="middle">WRONGTYPE error</text>
+  <text class="dg-mono dg-muted-text" x="556" y="84">FAILED ALONE</text>
+  <rect class="dg-box" x="30" y="102" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="130.0" y="118.0" text-anchor="middle">INCR viewers</text>
+  <path class="dg-arrow" d="M230 114 H392" marker-end="url(#redis-exec-no-rollback-head)"/>
+  <rect class="dg-box" x="400" y="102" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="470.0" y="118.0" text-anchor="middle">18343</text>
+  <text class="dg-mono dg-accent-text" x="556" y="118">APPLIED</text>
+  <text class="dg-result" x="360" y="164" text-anchor="middle">No rollback: the other two stay applied</text>
+  </g>
+</svg>

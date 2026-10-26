@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 657 186" role="img" aria-labelledby="redis-ttl-reset-title redis-ttl-reset-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-ttl-reset-title">Which commands keep a TTL</title>
+  <desc id="redis-ttl-reset-desc">Commands on one key in time order. SET with EX 60 gives it a TTL of 60 seconds. INCR changes the value in place and keeps the TTL. SET with KEEPTTL keeps it too. A plain SET replaces the value and removes the TTL, so the key never expires.</desc>
+  <defs>
+    <marker id="redis-ttl-reset-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-ttl-reset-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="40" y="20">COMMAND</text>
+  <text class="dg-mono dg-muted-text" x="440" y="20">AFTER IT</text>
+  <rect class="dg-box" x="40" y="32" width="250" height="24" rx="4"/>
+  <text class="dg-code" x="165.0" y="48.0" text-anchor="middle">SET viewers:42 0 EX 60</text>
+  <path class="dg-arrow" d="M290 44 H432" marker-end="url(#redis-ttl-reset-head)"/>
+  <rect class="dg-box" x="440" y="32" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="48.0" text-anchor="middle">TTL 60 s</text>
+  <rect class="dg-box" x="40" y="68" width="250" height="24" rx="4"/>
+  <text class="dg-code" x="165.0" y="84.0" text-anchor="middle">INCR viewers:42</text>
+  <path class="dg-arrow" d="M290 80 H432" marker-end="url(#redis-ttl-reset-head)"/>
+  <rect class="dg-box" x="440" y="68" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="84.0" text-anchor="middle">TTL 55 s, kept</text>
+  <rect class="dg-box" x="40" y="104" width="250" height="24" rx="4"/>
+  <text class="dg-code" x="165.0" y="120.0" text-anchor="middle">SET viewers:42 7 KEEPTTL</text>
+  <path class="dg-arrow" d="M290 116 H432" marker-end="url(#redis-ttl-reset-head)"/>
+  <rect class="dg-box" x="440" y="104" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="120.0" text-anchor="middle">TTL 50 s, kept</text>
+  <rect class="dg-box" x="40" y="140" width="250" height="24" rx="4"/>
+  <text class="dg-code" x="165.0" y="156.0" text-anchor="middle">SET viewers:42 9</text>
+  <path class="dg-arrow" d="M290 152 H432" marker-end="url(#redis-ttl-reset-head)"/>
+  <rect class="dg-box-accent" x="440" y="140" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="156.0" text-anchor="middle">no TTL: kept forever</text>
+  <text class="dg-mono dg-muted-text" x="18" y="30" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M18 40 V174" marker-end="url(#redis-ttl-reset-head)"/>
+  </g>
+</svg>

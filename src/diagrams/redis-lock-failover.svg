@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 683 300" role="img" aria-labelledby="redis-lock-failover-title redis-lock-failover-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-lock-failover-title">A failover gives the same lock to two workers</title>
+  <desc id="redis-lock-failover-desc">Time runs down. Worker A takes the lock on the primary, which answers OK and dies before sending the key to the replica. The replica is promoted. Worker B asks the new primary for the same lock, the key is not there, and B gets it too. Both workers now hold the lock.</desc>
+  <defs>
+    <marker id="redis-lock-failover-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-lock-failover-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="80" y="24" text-anchor="middle">WORKER A</text>
+  <line class="dg-lifeline" x1="80" y1="36" x2="80" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="260" y="24" text-anchor="middle">PRIMARY</text>
+  <line class="dg-lifeline" x1="260" y1="36" x2="260" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="460" y="24" text-anchor="middle">REPLICA</text>
+  <line class="dg-lifeline" x1="460" y1="36" x2="460" y2="260"/>
+  <text class="dg-mono dg-muted-text" x="640" y="24" text-anchor="middle">WORKER B</text>
+  <line class="dg-lifeline" x1="640" y1="36" x2="640" y2="260"/>
+  <path class="dg-arrow" d="M24 46 V240" marker-end="url(#redis-lock-failover-head)"/>
+  <text class="dg-mono dg-muted-text" x="24" y="254" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="170.0" y="54" text-anchor="middle">SET lock … NX</text>
+  <path class="dg-arrow" d="M80 62 H252" marker-end="url(#redis-lock-failover-head)"/>
+  <text class="dg-mono dg-muted-text" x="170.0" y="82" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M260 90 H88" marker-end="url(#redis-lock-failover-head)"/>
+  <path class="dg-arrow dg-empty" d="M260 118 H360"/>
+  <line class="dg-cross" x1="361" y1="111" x2="375" y2="125"/>
+  <line class="dg-cross" x1="361" y1="125" x2="375" y2="111"/>
+  <text class="dg-mono dg-muted-text" x="306" y="108" text-anchor="middle">NEVER SENT</text>
+  <line class="dg-cross" x1="251" y1="141" x2="269" y2="159"/>
+  <line class="dg-cross" x1="251" y1="159" x2="269" y2="141"/>
+  <text class="dg-mono dg-muted-text" x="272" y="154">CRASH</text>
+  <rect class="dg-box-accent" x="400.0" y="176" width="120" height="26" rx="4"/>
+  <text class="dg-code" x="460.0" y="193.0" text-anchor="middle">promoted</text>
+  <text class="dg-mono dg-muted-text" x="550.0" y="222" text-anchor="middle">SET lock … NX</text>
+  <path class="dg-arrow" d="M640 230 H468" marker-end="url(#redis-lock-failover-head)"/>
+  <text class="dg-mono dg-accent-text" x="550.0" y="246" text-anchor="middle">OK</text>
+  <path class="dg-arrow dg-message" d="M460 254 H632" marker-end="url(#redis-lock-failover-head-accent)"/>
+  <text class="dg-result" x="360" y="288" text-anchor="middle">A and B both hold the lock</text>
+  </g>
+</svg>

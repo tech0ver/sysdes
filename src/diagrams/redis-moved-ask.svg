@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="redis-moved-ask-title redis-moved-ask-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-moved-ask-title">MOVED and ASK redirects</title>
+  <desc id="redis-moved-ask-desc">Time runs down. Left: the client's map is out of date and it sends GET to node A; A answers MOVED with node B, the client updates its map and sends GET to B, which returns the value. Right: slot 9152 is moving from A to B and the key has already moved; A answers ASK with node B, and the client sends ASKING and GET to B for this one request without changing its map.</desc>
+  <defs>
+    <marker id="redis-moved-ask-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-moved-ask-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">MOVED</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">the slot now lives on B</text>
+  <text class="dg-mono dg-muted-text" x="50" y="72" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="50" y1="82" x2="50" y2="292"/>
+  <text class="dg-mono dg-muted-text" x="180" y="72" text-anchor="middle">NODE A</text>
+  <line class="dg-lifeline" x1="180" y1="82" x2="180" y2="292"/>
+  <text class="dg-mono dg-muted-text" x="310" y="72" text-anchor="middle">NODE B</text>
+  <line class="dg-lifeline" x1="310" y1="82" x2="310" y2="292"/>
+  <path class="dg-arrow" d="M14 92 V272" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-mono dg-muted-text" x="14" y="286" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="115.0" y="100" text-anchor="middle">GET KEY</text>
+  <path class="dg-arrow" d="M50 108 H172" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-mono dg-accent-text" x="115.0" y="134" text-anchor="middle">MOVED 9152 B</text>
+  <path class="dg-arrow dg-message" d="M180 142 H58" marker-end="url(#redis-moved-ask-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="168" text-anchor="middle">GET KEY</text>
+  <path class="dg-arrow" d="M50 176 H302" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="202" text-anchor="middle">VALUE</text>
+  <path class="dg-arrow" d="M310 210 H58" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-sub" x="180" y="316" text-anchor="middle">the client updates its map</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">ASK</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">the slot is moving to B</text>
+  <text class="dg-mono dg-muted-text" x="410" y="72" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="410" y1="82" x2="410" y2="292"/>
+  <text class="dg-mono dg-muted-text" x="540" y="72" text-anchor="middle">NODE A</text>
+  <line class="dg-lifeline" x1="540" y1="82" x2="540" y2="292"/>
+  <text class="dg-mono dg-muted-text" x="670" y="72" text-anchor="middle">NODE B</text>
+  <line class="dg-lifeline" x1="670" y1="82" x2="670" y2="292"/>
+  <path class="dg-arrow" d="M374 92 V272" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-mono dg-muted-text" x="374" y="286" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="475.0" y="100" text-anchor="middle">GET KEY</text>
+  <path class="dg-arrow" d="M410 108 H532" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-mono dg-accent-text" x="475.0" y="134" text-anchor="middle">ASK 9152 B</text>
+  <path class="dg-arrow dg-message" d="M540 142 H418" marker-end="url(#redis-moved-ask-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="168" text-anchor="middle">ASKING, GET KEY</text>
+  <path class="dg-arrow" d="M410 176 H662" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="202" text-anchor="middle">VALUE</text>
+  <path class="dg-arrow" d="M670 210 H418" marker-end="url(#redis-moved-ask-head)"/>
+  <text class="dg-sub" x="540" y="316" text-anchor="middle">the map stays as it is</text>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+</svg>

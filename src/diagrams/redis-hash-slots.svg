@@ -1,0 +1,60 @@
+<svg class="diagram-svg" viewBox="0 0 693 292" role="img" aria-labelledby="redis-hash-slots-title redis-hash-slots-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-hash-slots-title">Keys, hash slots, and primaries</title>
+  <desc id="redis-hash-slots-desc">Each key maps to one of 16,384 slots by the CRC16 of the part in braces. {channel:42}:info and {channel:42}:chat share the tag channel:42 and land in slot 3599 on primary A. {channel:7}:info goes to slot 9152 on primary B, and {channel:23}:info to slot 13448 on primary C. Primary A owns slots 0 to 5460, B 5461 to 10922, and C 10923 to 16383.</desc>
+  <defs>
+    <marker id="redis-hash-slots-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-hash-slots-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="18">KEY</text>
+  <text class="dg-mono dg-muted-text" x="330" y="18">SLOT</text>
+  <text class="dg-mono dg-muted-text" x="269" y="18" text-anchor="middle">CRC16 MOD 16384</text>
+  <text class="dg-mono dg-muted-text" x="470" y="18">PRIMARY</text>
+  <rect class="dg-box-accent" x="16" y="28" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="116.0" y="44.0" text-anchor="middle">{channel:42}:info</text>
+  <path class="dg-arrow" d="M216 40 H322" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box-accent" x="330" y="28" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="370.0" y="44.0" text-anchor="middle">3599</text>
+  <path class="dg-arrow" d="M410 40 H462" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box-accent" x="470" y="28" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="500.0" y="44.0" text-anchor="middle">A</text>
+  <rect class="dg-box-accent" x="16" y="62" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="116.0" y="78.0" text-anchor="middle">{channel:42}:chat</text>
+  <path class="dg-arrow" d="M216 74 H322" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box-accent" x="330" y="62" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="370.0" y="78.0" text-anchor="middle">3599</text>
+  <path class="dg-arrow" d="M410 74 H462" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box-accent" x="470" y="62" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="500.0" y="78.0" text-anchor="middle">A</text>
+  <rect class="dg-box" x="16" y="96" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="116.0" y="112.0" text-anchor="middle">{channel:7}:info</text>
+  <path class="dg-arrow" d="M216 108 H322" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box" x="330" y="96" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="370.0" y="112.0" text-anchor="middle">9152</text>
+  <path class="dg-arrow" d="M410 108 H462" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box" x="470" y="96" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="500.0" y="112.0" text-anchor="middle">B</text>
+  <rect class="dg-box" x="16" y="130" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="116.0" y="146.0" text-anchor="middle">{channel:23}:info</text>
+  <path class="dg-arrow" d="M216 142 H322" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box" x="330" y="130" width="80" height="24" rx="4"/>
+  <text class="dg-code" x="370.0" y="146.0" text-anchor="middle">13448</text>
+  <path class="dg-arrow" d="M410 142 H462" marker-end="url(#redis-hash-slots-head)"/>
+  <rect class="dg-box" x="470" y="130" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="500.0" y="146.0" text-anchor="middle">C</text>
+  <rect class="dg-box" x="61.0" y="214" width="197.98779296875" height="22" rx="3"/>
+  <text class="dg-code" x="159.993896484375" y="258" text-anchor="middle">primary A: 0–5460</text>
+  <rect class="dg-box" x="260.98779296875" y="214" width="198.0244140625" height="22" rx="3"/>
+  <text class="dg-code" x="360.0" y="258" text-anchor="middle">primary B: 5461–10922</text>
+  <rect class="dg-box" x="461.01220703125" y="214" width="197.98779296875" height="22" rx="3"/>
+  <text class="dg-code" x="560.006103515625" y="258" text-anchor="middle">primary C: 10923–16383</text>
+  <line class="dg-message" x1="191.79931640625" y1="206" x2="191.79931640625" y2="244"/>
+  <text class="dg-mono dg-accent-text" x="191.79931640625" y="200" text-anchor="middle">3599</text>
+  <line class="dg-line" x1="395.15625" y1="206" x2="395.15625" y2="244"/>
+  <text class="dg-mono dg-muted-text" x="395.15625" y="200" text-anchor="middle">9152</text>
+  <line class="dg-line" x1="552.48046875" y1="206" x2="552.48046875" y2="244"/>
+  <text class="dg-mono dg-muted-text" x="552.48046875" y="200" text-anchor="middle">13448</text>
+  <text class="dg-mono dg-muted-text" x="60" y="280" text-anchor="middle">0</text>
+  <text class="dg-mono dg-muted-text" x="660" y="280" text-anchor="middle">16383</text>
+  </g>
+</svg>

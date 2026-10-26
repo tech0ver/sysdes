@@ -47,7 +47,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Technologies',
-					items: [],
+					items: ['technologies/redis'],
 				},
 				{
 					label: 'Systems',

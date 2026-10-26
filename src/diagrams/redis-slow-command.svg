@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="redis-slow-command-title redis-slow-command-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-slow-command-title">One slow command blocks the other clients</title>
+  <desc id="redis-slow-command-desc">Time runs down. Left: client A runs SMEMBERS on a set of 500,000 members, one long command, and the GET of client C and the INCR of client D wait until it ends. Right: client A reads the same set with SSCAN in batches of 100, and the commands of C and D run between the batches.</desc>
+  <defs>
+    <marker id="redis-slow-command-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-slow-command-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">One big read</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">SMEMBERS on 500,000 members</text>
+  <text class="dg-mono dg-muted-text" x="150" y="64" text-anchor="middle">MAIN THREAD</text>
+  <rect class="dg-box" x="65.0" y="74" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="150" y="91.0" text-anchor="middle">GET</text>
+  <text class="dg-mono dg-muted-text" x="55.0" y="91.0" text-anchor="end">B</text>
+  <rect class="dg-box-accent" x="65.0" y="104" width="170" height="150" rx="4"/>
+  <text class="dg-code" x="150" y="183.0" text-anchor="middle">SMEMBERS viewers:42</text>
+  <text class="dg-mono dg-muted-text" x="55.0" y="183.0" text-anchor="end">A</text>
+  <rect class="dg-box" x="65.0" y="258" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="150" y="275.0" text-anchor="middle">GET</text>
+  <text class="dg-mono dg-muted-text" x="55.0" y="275.0" text-anchor="end">C</text>
+  <rect class="dg-box" x="65.0" y="288" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="150" y="305.0" text-anchor="middle">INCR</text>
+  <text class="dg-mono dg-muted-text" x="55.0" y="305.0" text-anchor="end">D</text>
+  <path class="dg-bracket-accent" d="M244 104 H250 V254 H244" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="258" y="183.0" text-anchor="start">C, D WAIT</text>
+  <text class="dg-mono dg-muted-text" x="338" y="64" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M338 74 V300" marker-end="url(#redis-slow-command-head)"/>
+  <text class="dg-mono dg-muted-text" x="698" y="64" text-anchor="middle">TIME</text>
+  <path class="dg-arrow" d="M698 74 V300" marker-end="url(#redis-slow-command-head)"/>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Batches</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">SSCAN with a cursor</text>
+  <text class="dg-mono dg-muted-text" x="510" y="64" text-anchor="middle">MAIN THREAD</text>
+  <rect class="dg-box" x="425.0" y="74" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="91.0" text-anchor="middle">GET</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="91.0" text-anchor="end">B</text>
+  <rect class="dg-box-accent" x="425.0" y="104" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="121.0" text-anchor="middle">SSCAN viewers:42</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="121.0" text-anchor="end">A</text>
+  <rect class="dg-box" x="425.0" y="134" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="151.0" text-anchor="middle">GET</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="151.0" text-anchor="end">C</text>
+  <rect class="dg-box-accent" x="425.0" y="164" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="181.0" text-anchor="middle">SSCAN viewers:42</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="181.0" text-anchor="end">A</text>
+  <rect class="dg-box" x="425.0" y="194" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="211.0" text-anchor="middle">INCR</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="211.0" text-anchor="end">D</text>
+  <rect class="dg-box-accent" x="425.0" y="224" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="241.0" text-anchor="middle">SSCAN viewers:42</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="241.0" text-anchor="end">A</text>
+  <rect class="dg-box-accent" x="425.0" y="254" width="170" height="26" rx="4"/>
+  <text class="dg-code" x="510" y="271.0" text-anchor="middle">…</text>
+  <text class="dg-mono dg-muted-text" x="415.0" y="271.0" text-anchor="end">A</text>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+</svg>

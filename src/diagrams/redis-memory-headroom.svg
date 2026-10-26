@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 671 150" role="img" aria-labelledby="redis-memory-headroom-title redis-memory-headroom-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-memory-headroom-title">Memory on a Redis server besides the data</title>
+  <desc id="redis-memory-headroom-desc">The RAM of one server as a bar. The data takes a little over half. The rest is room for pages copied during a save to disk, for the buffers of replicas and slow clients, and for memory freed by deleted keys that the process still holds, with some free space left.</desc>
+  <defs>
+    <marker id="redis-memory-headroom-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-memory-headroom-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-23 0)">
+  <rect class="dg-bar" x="40" y="56" width="329.8" height="32" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="206.4" y="46" text-anchor="middle">DATA</text>
+  <rect class="dg-box" x="372.8" y="56" width="125.0" height="32" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="436.8" y="46" text-anchor="middle">FORK COPIES</text>
+  <rect class="dg-box" x="500.8" y="56" width="73.8" height="32" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="539.2" y="46" text-anchor="middle">BUFFERS</text>
+  <rect class="dg-box" x="577.6" y="56" width="48.2" height="32" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="603.2" y="46" text-anchor="middle">FREED</text>
+  <rect class="dg-chip" x="628.8000000000001" y="56" width="48.2" height="32" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="654.4000000000001" y="46" text-anchor="middle">FREE</text>
+  <path class="dg-line" d="M40 94 V100 H369.8 V94" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="204.9" y="116" text-anchor="middle">ABOUT 50–65% OF RAM</text>
+  <path class="dg-bracket-accent" d="M372.8 94 V100 H677 V94" fill="none"/>
+  <text class="dg-mono dg-accent-text" x="524.9" y="116" text-anchor="middle">HEADROOM</text>
+  </g>
+</svg>

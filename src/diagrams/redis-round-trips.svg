@@ -1,0 +1,62 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="redis-round-trips-title redis-round-trips-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-round-trips-title">Three reads one by one, in a pipeline, and as one command</title>
+  <desc id="redis-round-trips-desc">Time runs down. Left: the client sends GET a, waits for the reply, then GET b, then GET c: three round trips. Middle: a pipeline sends the three GETs without waiting and then reads three replies: one round trip. Right: one MGET of a, b, and c and one reply: one round trip and one command.</desc>
+  <defs>
+    <marker id="redis-round-trips-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-round-trips-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="120.0" y="22" text-anchor="middle">One by one</text>
+  <text class="dg-sub" x="120.0" y="40" text-anchor="middle">3 round trips</text>
+  <text class="dg-name" x="360.0" y="22" text-anchor="middle">Pipeline</text>
+  <text class="dg-sub" x="360.0" y="40" text-anchor="middle">1 round trip</text>
+  <text class="dg-name" x="600.0" y="22" text-anchor="middle">MGET</text>
+  <text class="dg-sub" x="600.0" y="40" text-anchor="middle">1 round trip, 1 command</text>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="292"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="292"/>
+  <text class="dg-mono dg-muted-text" x="50" y="66" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="50" y1="76" x2="50" y2="286"/>
+  <text class="dg-mono dg-muted-text" x="190" y="66" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="190" y1="76" x2="190" y2="286"/>
+  <path class="dg-arrow" d="M14 86 V266" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="14" y="280" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="290" y="66" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="290" y1="76" x2="290" y2="286"/>
+  <text class="dg-mono dg-muted-text" x="430" y="66" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="430" y1="76" x2="430" y2="286"/>
+  <path class="dg-arrow" d="M254 86 V266" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="254" y="280" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="530" y="66" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="530" y1="76" x2="530" y2="286"/>
+  <text class="dg-mono dg-muted-text" x="670" y="66" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="670" y1="76" x2="670" y2="286"/>
+  <path class="dg-arrow" d="M494 86 V266" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="494" y="280" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="120.0" y="88" text-anchor="middle">GET a</text>
+  <path class="dg-arrow" d="M50 96 H182" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="118" text-anchor="middle">REPLY</text>
+  <path class="dg-arrow" d="M190 126 H58" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="152" text-anchor="middle">GET b</text>
+  <path class="dg-arrow" d="M50 160 H182" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="182" text-anchor="middle">REPLY</text>
+  <path class="dg-arrow" d="M190 190 H58" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="216" text-anchor="middle">GET c</text>
+  <path class="dg-arrow" d="M50 224 H182" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="120.0" y="246" text-anchor="middle">REPLY</text>
+  <path class="dg-arrow" d="M190 254 H58" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="88" text-anchor="middle">GET a</text>
+  <path class="dg-arrow dg-message" d="M290 96 H422" marker-end="url(#redis-round-trips-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="112" text-anchor="middle">GET b</text>
+  <path class="dg-arrow dg-message" d="M290 120 H422" marker-end="url(#redis-round-trips-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="136" text-anchor="middle">GET c</text>
+  <path class="dg-arrow dg-message" d="M290 144 H422" marker-end="url(#redis-round-trips-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="178" text-anchor="middle">REPLY</text>
+  <path class="dg-arrow" d="M430 186 H298" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="202" text-anchor="middle">REPLY</text>
+  <path class="dg-arrow" d="M430 210 H298" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="226" text-anchor="middle">REPLY</text>
+  <path class="dg-arrow" d="M430 234 H298" marker-end="url(#redis-round-trips-head)"/>
+  <text class="dg-mono dg-accent-text" x="600.0" y="88" text-anchor="middle">MGET a b c</text>
+  <path class="dg-arrow dg-message" d="M530 96 H662" marker-end="url(#redis-round-trips-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="600.0" y="118" text-anchor="middle">3 VALUES</text>
+  <path class="dg-arrow" d="M670 126 H538" marker-end="url(#redis-round-trips-head)"/>
+</svg>

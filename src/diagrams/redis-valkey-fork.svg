@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 707 210" role="img" aria-labelledby="redis-valkey-fork-title redis-valkey-fork-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-valkey-fork-title">Redis and Valkey releases since 2023</title>
+  <desc id="redis-valkey-fork-desc">Two timelines from 2023 to 2026. Redis: 7.2 under BSD in 2023, 7.4 under RSALv2 and SSPLv1 in July 2024, 8.0 with AGPLv3 added in May 2025, and 8.10 in 2026. Valkey forks from Redis 7.2.4 in March 2024 under BSD: 7.2.5 in April 2024, 8.0 in September 2024, 9.0 in October 2025, and 9.1 in May 2026.</desc>
+  <defs>
+    <marker id="redis-valkey-fork-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-valkey-fork-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-name" x="16" y="71" text-anchor="start">Redis</text>
+  <line class="dg-line" x1="120" y1="66" x2="690" y2="66"/>
+  <circle class="dg-dot-muted" cx="133.90243902439025" cy="66" r="5"/>
+  <text class="dg-code" x="133.90243902439025" y="54" text-anchor="middle">7.2</text>
+  <text class="dg-mono dg-muted-text" x="133.90243902439025" y="86" text-anchor="middle">BSD</text>
+  <circle class="dg-dot-muted" cx="286.8292682926829" cy="66" r="5"/>
+  <text class="dg-code" x="286.8292682926829" y="54" text-anchor="middle">7.4</text>
+  <text class="dg-mono dg-muted-text" x="286.8292682926829" y="86" text-anchor="middle">RSAL, SSPL</text>
+  <circle class="dg-dot-muted" cx="425.8536585365854" cy="66" r="5"/>
+  <text class="dg-code" x="425.8536585365854" y="54" text-anchor="middle">8.0</text>
+  <text class="dg-mono dg-muted-text" x="425.8536585365854" y="86" text-anchor="middle">+ AGPL</text>
+  <circle class="dg-dot-muted" cx="648.2926829268293" cy="66" r="5"/>
+  <text class="dg-code" x="648.2926829268293" y="54" text-anchor="middle">8.10</text>
+  <text class="dg-name" x="16" y="155" text-anchor="start">Valkey</text>
+  <line class="dg-line" x1="245.1219512195122" y1="150" x2="690" y2="150"/>
+  <circle class="dg-dot" cx="245.1219512195122" cy="150" r="5"/>
+  <text class="dg-code" x="245.1219512195122" y="138" text-anchor="middle">7.2.5</text>
+  <text class="dg-mono dg-muted-text" x="245.1219512195122" y="170" text-anchor="middle">BSD</text>
+  <circle class="dg-dot-muted" cx="314.6341463414634" cy="150" r="5"/>
+  <text class="dg-code" x="314.6341463414634" y="138" text-anchor="middle">8.0</text>
+  <circle class="dg-dot-muted" cx="495.3658536585366" cy="150" r="5"/>
+  <text class="dg-code" x="495.3658536585366" y="138" text-anchor="middle">9.0</text>
+  <circle class="dg-dot-muted" cx="592.6829268292684" cy="150" r="5"/>
+  <text class="dg-code" x="592.6829268292684" y="138" text-anchor="middle">9.1</text>
+  <circle class="dg-dot-muted" cx="203.41463414634146" cy="66" r="4"/>
+  <path class="dg-arrow dg-message" d="M203.41463414634146 72 V150 H237.1219512195122" marker-end="url(#redis-valkey-fork-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="195.41463414634146" y="112" text-anchor="end">FORK OF 7.2.4</text>
+  <line class="dg-line" x1="203.41463414634146" y1="186" x2="203.41463414634146" y2="192"/>
+  <text class="dg-mono dg-muted-text" x="203.41463414634146" y="204" text-anchor="middle">2024</text>
+  <line class="dg-line" x1="370.2439024390244" y1="186" x2="370.2439024390244" y2="192"/>
+  <text class="dg-mono dg-muted-text" x="370.2439024390244" y="204" text-anchor="middle">2025</text>
+  <line class="dg-line" x1="537.0731707317073" y1="186" x2="537.0731707317073" y2="192"/>
+  <text class="dg-mono dg-muted-text" x="537.0731707317073" y="204" text-anchor="middle">2026</text>
+  </g>
+</svg>

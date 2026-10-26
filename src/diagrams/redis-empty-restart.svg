@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 652 290" role="img" aria-labelledby="redis-empty-restart-title redis-empty-restart-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-empty-restart-title">A primary without persistence restarts empty</title>
+  <desc id="redis-empty-restart-desc">Time runs down. The primary holds 20 GB with persistence off, and two replicas copy it. The primary crashes and restarts at once with no data. The replicas reconnect, and the primary sends each of them its empty dataset as a full snapshot, which replaces their own data. All three now hold nothing.</desc>
+  <defs>
+    <marker id="redis-empty-restart-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-empty-restart-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-10 0)">
+  <text class="dg-mono dg-muted-text" x="150" y="24" text-anchor="middle">PRIMARY</text>
+  <line class="dg-lifeline" x1="150" y1="36" x2="150" y2="250"/>
+  <text class="dg-mono dg-muted-text" x="390" y="24" text-anchor="middle">REPLICA 1</text>
+  <line class="dg-lifeline" x1="390" y1="36" x2="390" y2="250"/>
+  <text class="dg-mono dg-muted-text" x="590" y="24" text-anchor="middle">REPLICA 2</text>
+  <line class="dg-lifeline" x1="590" y1="36" x2="590" y2="250"/>
+  <path class="dg-arrow" d="M40 46 V230" marker-end="url(#redis-empty-restart-head)"/>
+  <text class="dg-mono dg-muted-text" x="40" y="244" text-anchor="middle">TIME</text>
+  <rect class="dg-box" x="95.0" y="48" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="150.0" y="65.0" text-anchor="middle">20 GB</text>
+  <rect class="dg-box" x="335.0" y="48" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="390.0" y="65.0" text-anchor="middle">20 GB</text>
+  <rect class="dg-box" x="535.0" y="48" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="590.0" y="65.0" text-anchor="middle">20 GB</text>
+  <line class="dg-cross" x1="141" y1="97" x2="159" y2="115"/>
+  <line class="dg-cross" x1="141" y1="115" x2="159" y2="97"/>
+  <text class="dg-mono dg-muted-text" x="164" y="110">CRASH</text>
+  <rect class="dg-box-accent" x="80.0" y="130" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="150.0" y="147.0" text-anchor="middle">restart: 0 keys</text>
+  <text class="dg-mono dg-accent-text" x="270" y="174" text-anchor="middle">EMPTY SNAPSHOT</text>
+  <path class="dg-arrow dg-message" d="M150 182 H382" marker-end="url(#redis-empty-restart-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="270" y="206" text-anchor="middle">EMPTY SNAPSHOT</text>
+  <path class="dg-arrow dg-message" d="M150 214 H582" marker-end="url(#redis-empty-restart-head-accent)"/>
+  <rect class="dg-box-accent" x="335.0" y="232" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="390.0" y="249.0" text-anchor="middle">0 keys</text>
+  <rect class="dg-box-accent" x="535.0" y="232" width="110" height="26" rx="4"/>
+  <text class="dg-code" x="590.0" y="249.0" text-anchor="middle">0 keys</text>
+  <text class="dg-result" x="360" y="278" text-anchor="middle">Every copy is gone</text>
+  </g>
+</svg>

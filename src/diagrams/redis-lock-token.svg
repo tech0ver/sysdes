@@ -1,0 +1,63 @@
+<svg class="diagram-svg" viewBox="0 0 720 396" role="img" aria-labelledby="redis-lock-token-title redis-lock-token-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-lock-token-title">Releasing a lock with DEL and with a token check</title>
+  <desc id="redis-lock-token-desc">Time runs down. Worker A takes the lock with token a1 and pauses longer than the TTL. The key expires, and worker B takes the lock with token b7. Left: A wakes up and sends DEL, which deletes B's lock. Right: A sends DELEX with IFEQ a1; the key holds b7, so nothing is deleted.</desc>
+  <defs>
+    <marker id="redis-lock-token-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-lock-token-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">DEL</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">deletes any value</text>
+  <text class="dg-mono dg-muted-text" x="50" y="72" text-anchor="middle">WORKER A</text>
+  <line class="dg-lifeline" x1="50" y1="82" x2="50" y2="360"/>
+  <text class="dg-mono dg-muted-text" x="180" y="72" text-anchor="middle">REDIS</text>
+  <line class="dg-lifeline" x1="180" y1="82" x2="180" y2="360"/>
+  <text class="dg-mono dg-muted-text" x="310" y="72" text-anchor="middle">WORKER B</text>
+  <line class="dg-lifeline" x1="310" y1="82" x2="310" y2="360"/>
+  <path class="dg-arrow" d="M14 92 V330" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="14" y="344" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="115.0" y="94" text-anchor="middle">SET … a1 NX PX</text>
+  <path class="dg-arrow" d="M50 102 H172" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="118" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M180 126 H58" marker-end="url(#redis-lock-token-head)"/>
+  <line class="dg-arrow dg-wait" x1="50" y1="140" x2="50" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="58" y="214">PAUSE</text>
+  <rect class="dg-box" x="120.0" y="162" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="178.0" text-anchor="middle">TTL ends</text>
+  <text class="dg-mono dg-muted-text" x="245.0" y="206" text-anchor="middle">SET … b7 NX PX</text>
+  <path class="dg-arrow" d="M310 214 H188" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="245.0" y="230" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M180 238 H302" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-accent-text" x="115.0" y="300" text-anchor="middle">DEL</text>
+  <path class="dg-arrow dg-message" d="M50 308 H172" marker-end="url(#redis-lock-token-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="115.0" y="324" text-anchor="middle">DELETES B'S LOCK</text>
+  <path class="dg-arrow" d="M180 332 H58" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">DELEX … IFEQ a1</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">deletes only token a1</text>
+  <text class="dg-mono dg-muted-text" x="410" y="72" text-anchor="middle">WORKER A</text>
+  <line class="dg-lifeline" x1="410" y1="82" x2="410" y2="360"/>
+  <text class="dg-mono dg-muted-text" x="540" y="72" text-anchor="middle">REDIS</text>
+  <line class="dg-lifeline" x1="540" y1="82" x2="540" y2="360"/>
+  <text class="dg-mono dg-muted-text" x="670" y="72" text-anchor="middle">WORKER B</text>
+  <line class="dg-lifeline" x1="670" y1="82" x2="670" y2="360"/>
+  <path class="dg-arrow" d="M374 92 V330" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="374" y="344" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="475.0" y="94" text-anchor="middle">SET … a1 NX PX</text>
+  <path class="dg-arrow" d="M410 102 H532" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="118" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M540 126 H418" marker-end="url(#redis-lock-token-head)"/>
+  <line class="dg-arrow dg-wait" x1="410" y1="140" x2="410" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="418" y="214">PAUSE</text>
+  <rect class="dg-box" x="480.0" y="162" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="178.0" text-anchor="middle">TTL ends</text>
+  <text class="dg-mono dg-muted-text" x="605.0" y="206" text-anchor="middle">SET … b7 NX PX</text>
+  <path class="dg-arrow" d="M670 214 H548" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="605.0" y="230" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M540 238 H662" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-muted-text" x="475.0" y="300" text-anchor="middle">DELEX … IFEQ a1</text>
+  <path class="dg-arrow" d="M410 308 H532" marker-end="url(#redis-lock-token-head)"/>
+  <text class="dg-mono dg-accent-text" x="475.0" y="324" text-anchor="middle">0: NOT YOURS</text>
+  <path class="dg-arrow dg-message" d="M540 332 H418" marker-end="url(#redis-lock-token-head-accent)"/>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="388"/>
+  <text class="dg-result" x="180" y="382" text-anchor="middle">B now works without a lock</text>
+  <text class="dg-result" x="540" y="382" text-anchor="middle">B's lock stays</text>
+</svg>

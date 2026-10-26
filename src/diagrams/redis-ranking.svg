@@ -1,0 +1,61 @@
+<svg class="diagram-svg" viewBox="0 0 697 258" role="img" aria-labelledby="redis-ranking-title redis-ranking-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-ranking-title">A live ranking in a sorted set</title>
+  <desc id="redis-ranking-desc">The sorted set live holds channels scored by viewers. ZINCRBY adds 6000 to channel 15, which moves from third to second place. ZREVRANGE live 0 2 returns the top three: 42, 15, and 7. ZREVRANK of channel 15 returns 1, its position counted from 0.</desc>
+  <defs>
+    <marker id="redis-ranking-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-ranking-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-23 0)">
+  <text class="dg-name" x="140" y="22" text-anchor="middle">Before</text>
+  <text class="dg-mono dg-muted-text" x="40" y="50">CHANNEL</text>
+  <text class="dg-mono dg-muted-text" x="140" y="50">SCORE</text>
+  <rect class="dg-box" x="40" y="60" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="84.0" y="76.0" text-anchor="middle">42</text>
+  <rect class="dg-box" x="140" y="60" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="190.0" y="76.0" text-anchor="middle">18,342</text>
+  <rect class="dg-box" x="40" y="90" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="84.0" y="106.0" text-anchor="middle">7</text>
+  <rect class="dg-box" x="140" y="90" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="190.0" y="106.0" text-anchor="middle">9,120</text>
+  <rect class="dg-box-accent" x="40" y="120" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="84.0" y="136.0" text-anchor="middle">15</text>
+  <rect class="dg-box-accent" x="140" y="120" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="190.0" y="136.0" text-anchor="middle">4,410</text>
+  <rect class="dg-box" x="40" y="150" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="84.0" y="166.0" text-anchor="middle">23</text>
+  <rect class="dg-box" x="140" y="150" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="190.0" y="166.0" text-anchor="middle">3,980</text>
+  <rect class="dg-box" x="40" y="180" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="84.0" y="196.0" text-anchor="middle">9</text>
+  <rect class="dg-box" x="140" y="180" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="190.0" y="196.0" text-anchor="middle">1,200</text>
+  <text class="dg-name" x="560" y="22" text-anchor="middle">After</text>
+  <text class="dg-mono dg-muted-text" x="460" y="50">CHANNEL</text>
+  <text class="dg-mono dg-muted-text" x="560" y="50">SCORE</text>
+  <rect class="dg-box" x="460" y="60" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="504.0" y="76.0" text-anchor="middle">42</text>
+  <rect class="dg-box" x="560" y="60" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="76.0" text-anchor="middle">18,342</text>
+  <rect class="dg-box-accent" x="460" y="90" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="504.0" y="106.0" text-anchor="middle">15</text>
+  <rect class="dg-box-accent" x="560" y="90" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="106.0" text-anchor="middle">10,410</text>
+  <rect class="dg-box" x="460" y="120" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="504.0" y="136.0" text-anchor="middle">7</text>
+  <rect class="dg-box" x="560" y="120" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="136.0" text-anchor="middle">9,120</text>
+  <rect class="dg-box" x="460" y="150" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="504.0" y="166.0" text-anchor="middle">23</text>
+  <rect class="dg-box" x="560" y="150" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="166.0" text-anchor="middle">3,980</text>
+  <rect class="dg-box" x="460" y="180" width="88" height="24" rx="4"/>
+  <text class="dg-code" x="504.0" y="196.0" text-anchor="middle">9</text>
+  <rect class="dg-box" x="560" y="180" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="196.0" text-anchor="middle">1,200</text>
+  <rect class="dg-box-accent" x="270" y="100" width="160" height="24" rx="4"/>
+  <text class="dg-code" x="350.0" y="116.0" text-anchor="middle">ZINCRBY live 6000 15</text>
+  <path class="dg-line" d="M666 60 H672 V146 H666" fill="none"/>
+  <text class="dg-mono dg-muted-text" x="680" y="107.0" text-anchor="start">TOP 3</text>
+  <text class="dg-result" x="360" y="244" text-anchor="middle">ZREVRANGE live 0 2 → 42, 15, 7; ZREVRANK live 15 → 1</text>
+  </g>
+</svg>

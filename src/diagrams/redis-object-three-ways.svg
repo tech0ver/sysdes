@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 714 236" role="img" aria-labelledby="redis-object-three-ways-title redis-object-three-ways-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-object-three-ways-title">One object stored three ways</title>
+  <desc id="redis-object-three-ways-desc">The same channel info, with a title, a game, and two moderators, stored as a string, a hash, and JSON. To change the title, a string is read and written whole; a hash writes one field, but the moderators must be packed into one string; JSON writes one path and keeps the list of moderators as a list.</desc>
+  <defs>
+    <marker id="redis-object-three-ways-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-object-three-ways-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-3 0)">
+  <text class="dg-name" x="120.0" y="22" text-anchor="middle">String</text>
+  <text class="dg-sub" x="120.0" y="40" text-anchor="middle">one serialized blob</text>
+  <text class="dg-name" x="360.0" y="22" text-anchor="middle">Hash</text>
+  <text class="dg-sub" x="360.0" y="40" text-anchor="middle">flat fields</text>
+  <text class="dg-name" x="600.0" y="22" text-anchor="middle">JSON</text>
+  <text class="dg-sub" x="600.0" y="40" text-anchor="middle">nested document</text>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="228"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="228"/>
+  <rect class="dg-box-accent" x="20" y="58" width="200" height="84" rx="6"/>
+  <text class="dg-code" x="32" y="82">{"title":"Finals",</text>
+  <text class="dg-code" x="32" y="102"> "game":"chess",</text>
+  <text class="dg-code" x="32" y="122"> "mods":[17,203]}</text>
+  <rect class="dg-box-accent" x="260" y="58" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="295.0" y="74.0" text-anchor="middle">title</text>
+  <rect class="dg-box-accent" x="336" y="58" width="124" height="24" rx="4"/>
+  <text class="dg-code" x="398.0" y="74.0" text-anchor="middle">Finals</text>
+  <rect class="dg-box" x="260" y="88" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="295.0" y="104.0" text-anchor="middle">game</text>
+  <rect class="dg-box" x="336" y="88" width="124" height="24" rx="4"/>
+  <text class="dg-code" x="398.0" y="104.0" text-anchor="middle">chess</text>
+  <rect class="dg-box" x="260" y="118" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="295.0" y="134.0" text-anchor="middle">mods</text>
+  <rect class="dg-box" x="336" y="118" width="124" height="24" rx="4"/>
+  <text class="dg-code" x="398.0" y="134.0" text-anchor="middle">"17,203"</text>
+  <rect class="dg-box-accent" x="500" y="58" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="74.0" text-anchor="middle">$.title: "Finals"</text>
+  <rect class="dg-box" x="500" y="88" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="104.0" text-anchor="middle">$.game: "chess"</text>
+  <rect class="dg-box" x="500" y="118" width="200" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="134.0" text-anchor="middle">$.mods: [17, 203]</text>
+  <text class="dg-mono dg-muted-text" x="120.0" y="170" text-anchor="middle">CHANGE THE TITLE</text>
+  <text class="dg-code" x="120.0" y="190" text-anchor="middle">GET, then SET all</text>
+  <text class="dg-result" x="120.0" y="222" text-anchor="middle">Reads and writes it all</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="170" text-anchor="middle">CHANGE THE TITLE</text>
+  <text class="dg-code" x="360.0" y="190" text-anchor="middle">HSET … title</text>
+  <text class="dg-result" x="360.0" y="222" text-anchor="middle">Writes one field</text>
+  <text class="dg-mono dg-muted-text" x="600.0" y="170" text-anchor="middle">CHANGE THE TITLE</text>
+  <text class="dg-code" x="600.0" y="190" text-anchor="middle">JSON.SET … $.title</text>
+  <text class="dg-result" x="600.0" y="222" text-anchor="middle">Writes one path</text>
+  </g>
+</svg>

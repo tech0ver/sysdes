@@ -57,6 +57,11 @@ const caching = (anchor, section) => ({
 	label: `Caching: ${section}`,
 });
 
+const redis = (anchor, section) => ({
+	href: `technologies/redis/#${anchor}`,
+	label: `Redis: ${section}`,
+});
+
 export const glossarySkip = ['SQL Server', 'commit the layout'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
@@ -957,6 +962,7 @@ export const glossary = [
 		explanation:
 			'A write takes an exclusive lock on its row until the transaction ends, and readers can share a shared lock. Locks prevent conflicting writes but cause waits and deadlocks.',
 		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
+		explainedIn: ['technologies/redis'],
 	},
 	{
 		id: 'read-skew',
@@ -1790,6 +1796,7 @@ export const glossary = [
 		explanation:
 			'With N replicas, W write answers, and R read answers, W + R > N makes the read and write sets overlap, so a read usually reaches the latest confirmed write. It is not a strong guarantee.',
 		readMore: replication('writing-without-a-leader', 'Writing without a leader'),
+		explainedIn: ['technologies/redis'],
 	},
 	{
 		id: 'read-repair',
@@ -2753,5 +2760,159 @@ export const glossary = [
 		explanation:
 			'Repeated requests for missing data or a failing call stop reaching the source. Give such entries a short TTL, and never share an error that depends on the user.',
 		readMore: caching('requests-for-data-that-does-not-exist', 'Requests for data that does not exist'),
+	},
+	{
+		id: 'redis',
+		term: 'Redis',
+		aliases: ['Redis'],
+		short: 'An in-memory server that stores data structures under keys and runs commands on them.',
+		explanation:
+			'A small command takes far less time than the network round trip, so it often sits next to a database for caches, sessions, counters, and queues. Its copies are asynchronous, so a crash or failover can lose recent writes.',
+		readMore: redis('taking-hot-data-off-the-database', 'Taking hot data off the database'),
+	},
+	{
+		id: 'valkey',
+		term: 'Valkey',
+		aliases: ['Valkey'],
+		short: 'An open-source fork of Redis 7.2.4, run by the Linux Foundation under the BSD license.',
+		explanation:
+			'It keeps the protocol and core features of Redis, so most clients work with both. Newer features of the two differ.',
+		readMore: redis('taking-hot-data-off-the-database', 'Taking hot data off the database'),
+	},
+	{
+		id: 'pipelining',
+		term: 'Pipelining',
+		aliases: ['Pipelining', 'pipelining'],
+		short: 'Sending many commands without waiting for each reply, then reading all replies together.',
+		explanation:
+			'It pays one network round trip for many commands and saves system calls on the server. It is not a transaction: other clients\' commands can run in between.',
+		readMore: redis('paying-for-round-trips', 'Paying for round trips'),
+	},
+	{
+		id: 'multi-exec',
+		term: 'MULTI and EXEC',
+		aliases: ['MULTI and EXEC'],
+		short: 'Redis commands that queue a group of commands and run them in a row, with no other client in between.',
+		explanation:
+			'There is no rollback: a command that fails at run time fails alone. The client gets the results only after EXEC, so it cannot use one to decide what to queue next.',
+		readMore: redis('changing-several-values-as-one-step', 'Changing several values as one step'),
+	},
+	{
+		id: 'lua-script',
+		term: 'Lua script',
+		aliases: ['Lua script', 'Lua scripts'],
+		short: 'A small program that Redis runs on the server as one command, with no other command in between.',
+		explanation:
+			'It can read, decide, and write in one round trip. While it runs, every other client waits, and an error does not undo the writes it already made.',
+		readMore: redis('changing-several-values-as-one-step', 'Changing several values as one step'),
+	},
+	{
+		id: 'redis-function',
+		term: 'Redis function',
+		aliases: ['Redis functions', 'Redis function'],
+		short: 'A named script that Redis stores and copies to replicas together with the data.',
+		explanation:
+			'Unlike scripts sent with EVAL, functions survive restarts and failovers, so clients do not have to load them again.',
+		readMore: redis('changing-several-values-as-one-step', 'Changing several values as one step'),
+	},
+	{
+		id: 'hyperloglog',
+		term: 'HyperLogLog',
+		aliases: ['HyperLogLog'],
+		short: 'A structure that estimates how many distinct items it has seen, in a small fixed amount of memory.',
+		explanation:
+			'In Redis it takes at most 12 KB per key with a standard error of 0.81%. Estimates of several periods can be merged without counting a repeat visitor twice.',
+		readMore: redis('counting-and-ranking', 'Counting and ranking'),
+	},
+	{
+		id: 'pub-sub',
+		term: 'Pub/Sub',
+		aliases: ['Pub/Sub', 'pub/sub'],
+		short: 'Messaging where a sender publishes to a channel and every subscriber of the channel receives the message.',
+		explanation:
+			'Some systems keep the messages for subscribers that are away. Redis Pub/Sub keeps nothing, so a subscriber that is away or too slow loses them.',
+		readMore: redis('pushing-events-to-connected-servers', 'Pushing events to connected servers'),
+	},
+	{
+		id: 'sharded-pub-sub',
+		term: 'Sharded Pub/Sub',
+		aliases: ['Sharded Pub/Sub', 'sharded Pub/Sub'],
+		short: 'Pub/Sub in Redis Cluster where each channel belongs to one shard, like a key.',
+		explanation:
+			'Messages stay inside one shard instead of going to every node, so more shards mean more capacity.',
+		readMore: redis('pushing-events-to-connected-servers', 'Pushing events to connected servers'),
+	},
+	{
+		id: 'redis-stream',
+		term: 'Redis stream',
+		aliases: ['Redis stream', 'Redis streams'],
+		short: 'An append-only log of entries stored under one Redis key.',
+		explanation:
+			'Consumer groups share its entries among workers with acknowledgments and redelivery. It lives on one server and in its memory.',
+		readMore: redis('handing-out-work-that-must-not-be-lost', 'Handing out work that must not be lost'),
+	},
+	{
+		id: 'consumer-group',
+		term: 'Consumer group',
+		aliases: ['consumer group', 'consumer groups', 'Consumer group', 'Consumer groups'],
+		short: 'A set of workers that share the entries of a log, each entry going to one of them.',
+		explanation:
+			'The group keeps its position in the log. In Redis it also keeps the entries delivered but not yet confirmed, so the work of a failed worker can go to another.',
+		readMore: redis('handing-out-work-that-must-not-be-lost', 'Handing out work that must not be lost'),
+	},
+	{
+		id: 'rdb-snapshot',
+		term: 'RDB snapshot',
+		aliases: ['RDB snapshot', 'RDB snapshots'],
+		short: 'A Redis file with the whole dataset at one moment.',
+		explanation:
+			'BGSAVE writes it from a forked child process, SAVE in the main process, which blocks clients. It is compact and loads fast, a good backup; a crash loses everything written since the last one.',
+		readMore: redis('writing-data-to-disk', 'Writing data to disk'),
+	},
+	{
+		id: 'aof',
+		term: 'AOF',
+		aliases: ['AOF'],
+		expansion: 'Append-only file',
+		short: 'Redis\'s log of write commands, replayed on restart.',
+		explanation:
+			'Flushed once a second, it loses about a second of writes in a crash; flushed on every write, it loses none but is much slower. It is off by default.',
+		readMore: redis('writing-data-to-disk', 'Writing data to disk'),
+	},
+	{
+		id: 'sentinel',
+		term: 'Redis Sentinel',
+		aliases: ['Sentinel', 'Sentinels'],
+		short: 'Processes that watch a Redis primary and promote a replica when it fails.',
+		explanation:
+			'Run at least three on separate machines. A failover needs a majority of them and can still lose recent writes.',
+		readMore: redis('replacing-a-failed-primary', 'Replacing a failed primary'),
+	},
+	{
+		id: 'redis-cluster',
+		term: 'Redis Cluster',
+		aliases: ['Redis Cluster'],
+		short: 'Redis\'s built-in sharding: keys map to 16,384 hash slots spread over several primaries.',
+		explanation:
+			'Clients send each command straight to the owner of the key\'s slot. Commands on several keys work only within one slot.',
+		readMore: redis('spreading-data-over-many-servers', 'Spreading data over many servers'),
+	},
+	{
+		id: 'hash-tag',
+		term: 'Hash tag',
+		aliases: ['hash tag', 'hash tags', 'Hash tag'],
+		short: 'The part of a Redis key in braces that alone decides the key\'s hash slot.',
+		explanation:
+			'Keys with the same tag land on the same server, so one command or script can use them together. A busy tag becomes a hot spot.',
+		readMore: redis('spreading-data-over-many-servers', 'Spreading data over many servers'),
+	},
+	{
+		id: 'client-side-caching',
+		term: 'Client-side caching',
+		aliases: ['client-side caching', 'Client-side caching'],
+		short: 'Keeping copies of server data in the client\'s memory, with the server telling the client when a copy changes.',
+		explanation:
+			'It takes reads of hot keys off the server. The client must drop its copies when it loses the connection.',
+		readMore: redis('one-key-hotter-than-the-rest', 'One key hotter than the rest'),
 	},
 ];

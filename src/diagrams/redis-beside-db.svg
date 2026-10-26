@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 674 262" role="img" aria-labelledby="redis-beside-db-title redis-beside-db-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="redis-beside-db-title">Redis next to the database</title>
+  <desc id="redis-beside-db-desc">The app servers send every page view to Redis, which holds the page cache, sessions, viewer counts, and the live ranking in memory and can lose its latest writes. Writes of record go to PostgreSQL, which holds accounts, channels, follows, and payments. PostgreSQL is the source of truth, and Redis holds copies of some of its data.</desc>
+  <defs>
+    <marker id="redis-beside-db-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="redis-beside-db-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-23 0)">
+  <rect class="dg-box" x="190" y="16" width="340" height="44" rx="6"/>
+  <text class="dg-name" x="360.0" y="36.0" text-anchor="middle">App servers</text>
+  <text class="dg-sub" x="360.0" y="52.0" text-anchor="middle">200 servers</text>
+  <path class="dg-arrow dg-message" d="M260 60 V122" marker-end="url(#redis-beside-db-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="252" y="96" text-anchor="end">EVERY PAGE VIEW</text>
+  <path class="dg-arrow" d="M460 60 V122" marker-end="url(#redis-beside-db-head)"/>
+  <text class="dg-mono dg-muted-text" x="468" y="96" text-anchor="start">WRITES OF RECORD</text>
+  <rect class="dg-box-accent" x="40" y="130" width="290" height="116" rx="6"/>
+  <text class="dg-name" x="185" y="154" text-anchor="middle">Redis</text>
+  <text class="dg-sub" x="185" y="171" text-anchor="middle">in RAM, can lose recent writes</text>
+  <rect class="dg-chip" x="56" y="184" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="118.5" y="200.0" text-anchor="middle">page cache</text>
+  <rect class="dg-chip" x="189" y="184" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="251.5" y="200.0" text-anchor="middle">sessions</text>
+  <rect class="dg-chip" x="56" y="214" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="118.5" y="230.0" text-anchor="middle">viewer counts</text>
+  <rect class="dg-chip" x="189" y="214" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="251.5" y="230.0" text-anchor="middle">live ranking</text>
+  <rect class="dg-box" x="390" y="130" width="290" height="116" rx="6"/>
+  <text class="dg-name" x="535" y="154" text-anchor="middle">PostgreSQL</text>
+  <text class="dg-sub" x="535" y="171" text-anchor="middle">on disk, source of truth</text>
+  <rect class="dg-chip" x="406" y="184" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="468.5" y="200.0" text-anchor="middle">accounts</text>
+  <rect class="dg-chip" x="539" y="184" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="601.5" y="200.0" text-anchor="middle">channels</text>
+  <rect class="dg-chip" x="406" y="214" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="468.5" y="230.0" text-anchor="middle">follows</text>
+  <rect class="dg-chip" x="539" y="214" width="125" height="24" rx="4"/>
+  <text class="dg-code" x="601.5" y="230.0" text-anchor="middle">payments</text>
+  <path class="dg-arrow dg-empty" d="M390 145 H338" marker-end="url(#redis-beside-db-head)"/>
+  <text class="dg-mono dg-muted-text" x="360" y="128" text-anchor="middle">COPIES</text>
+  </g>
+</svg>

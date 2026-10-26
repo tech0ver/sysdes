@@ -145,7 +145,7 @@ A policy can also refuse to admit a value. TinyLFU keeps an approximate count of
 
 When two workloads share one cache, one can push out the other's values. A stream of keys that are read once and replaced by new ones pushes out keys that are read steadily for days. When measurements show such interference, give each workload its own cache, sized for it.
 
-Watch the hit ratio and the eviction count together. Many evictions with a low hit ratio mean the cache is smaller than the working set, or the policy keeps the wrong values. Most cache products let you pick the policy. <!-- link: technologies/redis -->
+Watch the hit ratio and the eviction count together. Many evictions with a low hit ratio mean the cache is smaller than the working set, or the policy keeps the wrong values. Most cache products let you pick the policy (more on [the policies of Redis](../../technologies/redis/#when-memory-runs-out)).
 
 :::distinguish
 Invalidation drops a copy because the data changed. Eviction drops a copy to free memory, whether the data changed or not.
