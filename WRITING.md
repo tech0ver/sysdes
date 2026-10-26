@@ -56,7 +56,7 @@ A callout states a rule the reader can apply to any system, in the technical ter
 
 ## Diagrams
 
-Add a diagram where a picture explains faster than text: messages in time (who sends what, when), components in space (where things run), two options side by side, or an evolution. Do not draw what a sentence or a table already says well.
+Diagrams let the reader see the material on the running example, and grasp it faster than from text. Almost every block has at least one diagram; a dense block has one after almost every paragraph. Draw what the text cannot show at a glance: messages in time (who sends what, when), components in space (where things run), two options side by side, an evolution, or data changing step by step. For each diagram, ask what it shows that the text does not. If it only repeats a sentence or a table, cut it.
 
 - One idea per diagram. Put it right after the paragraph it illustrates, before that block's callouts.
 - Use the words of the text. No term before its block, same as in prose.
@@ -71,7 +71,7 @@ Add a diagram where a picture explains faster than text: messages in time (who s
 - Use the primary accent only for selected text, arrows, lines, and shape outlines. Never use it as a box fill or background: an accented box or badge has a neutral fill (`dg-box-accent`). An accented arrow, line, or dot and its label may use the accent. Keep the accent on the idea the diagram teaches (for example, that one database became many), not on an element that only happens to be there.
 - Ordinary labels, including text inside accented boxes and badges, use the same theme-aware text color (`--sl-color-gray-3` through the `dg-*` classes). Do not leave white text after removing an accent fill. Check text contrast against the neutral background in both themes.
 - Text: names in the sans font (`dg-name`), notes in `dg-sub`, arrow labels in uppercase mono (`dg-mono`). Technical values (domains, IP addresses, paths) keep their case.
-- Draw on a grid 720 units wide. When the content is narrower, trim the `viewBox` to the content: the plugin then gives the diagram a matching share of the column, so text keeps the same size in every diagram.
+- Draw on a grid 720 units wide. When the content is narrower, trim the `viewBox` to the content: the plugin then gives the diagram a matching share of the column, so text keeps the same size in every diagram. Trim empty space on the left as well as on the right, and keep a margin of about 16 units. Trim a two-panel diagram by the same amount on both sides, so it stays symmetric.
 - Every SVG has `role="img"`, `aria-labelledby`, a `<title>`, and a `<desc>` that says what the diagram shows (it is the alt text). Prefix all IDs with the diagram name.
 - Before showing a diagram, check it in both themes and at phone width.
 

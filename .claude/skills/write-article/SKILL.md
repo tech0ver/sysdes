@@ -9,7 +9,7 @@ This skill is the process. [WRITING.md](../../../WRITING.md) is the standard the
 
 The article is written together with the author, block by block. The author's feedback on each block is the main source of quality: expect several rounds and keep every rule they give you.
 
-Keep working notes in `.agents/<article-slug>/` (git-ignored): `sources.md`, `plan.md`, review files, and backups of replaced files. They let a later session continue the work. Log decisions and progress in `plan.md` as you go.
+Keep working notes in `.agents/<article-slug>/` (git-ignored): `sources.md`, `plan.md`, review files, and backups of replaced files. They let a later session continue the work. Log decisions and progress in `plan.md` as you go, after each round with the author, not only at the end. Keep a short `continuation.md` next to it: which files to read first, and the next action.
 
 ## 1. Agree on the scope
 
@@ -58,7 +58,7 @@ Show the plan to the author and wait for approval. If the scope sends topics to 
 
 ## 6. Diagrams
 
-1. Read the whole article and propose where diagrams help: what each one shows (a difference, an evolution, or how something works) and why. Agree on the list with the author.
+1. Read the whole article and propose the diagrams: at least one per block, and one after almost every paragraph of a dense block (WRITING.md, "Diagrams"). For each one, say what it shows that the text does not (a difference, an evolution, or how something works). Agree on the list with the author.
 2. Draw one diagram as a style sample and get the author's approval before drawing the rest. The result must follow WRITING.md, "Diagrams": an SVG in `src/diagrams/` with `dg-*` classes, not a standalone HTML file. Write the diagrams with a generator in `.agents/<article-slug>/diagrams_gen.py` built on [scripts/svg.py](scripts/svg.py) (its docstring shows how), so a fix to one diagram is a quick rerun. The `diagram-design` skill can help with layout ideas.
 3. Check every diagram in both themes and at phone width with [scripts/shot.py](scripts/shot.py), which screenshots the diagrams of a page on the dev server. Look at each screenshot for overlaps, cut-off labels, and uneven spacing before you show the set to the author.
 4. Before showing the set, check that all diagrams follow the same rules, especially the accent.
