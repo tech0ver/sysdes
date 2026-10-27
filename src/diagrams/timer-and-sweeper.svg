@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 660 220" role="img" aria-labelledby="timer-and-sweeper-title timer-and-sweeper-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="timer-and-sweeper-title">A timer returns units at once, the sweeper catches lost timers, an old timer does nothing</title>
+  <desc id="timer-and-sweeper-desc">Time runs down. A hold expires at 10:10:00, and the sweeper runs at 10:10:03. With a timer, the units come back right at 10:10:00. When the timer's message is lost, the sweeper returns them at 10:10:03. When the hold was extended to 10:15, the old timer fires at 10:10:00, its update reads the stored expiry, changes no rows, and the hold stays.</desc>
+  <defs>
+    <marker id="timer-and-sweeper-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="timer-and-sweeper-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="68">EXPIRES 10:10:00</text>
+  <line class="dg-rule" x1="140" y1="64" x2="644" y2="64"/>
+  <text class="dg-mono dg-muted-text" x="16" y="140">SWEEP, 10:10:03</text>
+  <line class="dg-rule" x1="140" y1="136" x2="644" y2="136"/>
+  <text class="dg-name" x="230" y="24" text-anchor="middle">Timer fires</text>
+  <line class="dg-wait" x1="230" y1="64" x2="230" y2="67.6"/>
+  <circle class="dg-dot" cx="230" cy="67.6" r="5"/>
+  <text class="dg-mono dg-accent-text" x="230" y="91.6" text-anchor="middle">UNITS BACK</text>
+  <text class="dg-mono dg-accent-text" x="230" y="105.6" text-anchor="middle">AT ONCE</text>
+  <text class="dg-name" x="400" y="24" text-anchor="middle">Timer lost</text>
+  <line class="dg-wait" x1="400" y1="64" x2="400" y2="136"/>
+  <circle class="dg-dot" cx="400" cy="136" r="5"/>
+  <text class="dg-mono dg-accent-text" x="400" y="160" text-anchor="middle">SWEEPER</text>
+  <text class="dg-mono dg-accent-text" x="400" y="174" text-anchor="middle">RETURNS THEM</text>
+  <text class="dg-name" x="570" y="24" text-anchor="middle">Hold extended</text>
+  <circle class="dg-dot-muted" cx="570" cy="64" r="5"/>
+  <text class="dg-mono dg-muted-text" x="570" y="88" text-anchor="middle">OLD TIMER: 0 ROWS</text>
+  <rect class="dg-box" x="500" y="104" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="570.0" y="121.0" text-anchor="middle">held until 10:15</text>
+</svg>

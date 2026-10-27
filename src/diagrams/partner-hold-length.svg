@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 640 356" role="img" aria-labelledby="partner-hold-length-title partner-hold-length-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="partner-hold-length-title">The partner's hold must outlast the site's hold and the payment</title>
+  <desc id="partner-hold-length-desc">Time runs down from 10:00 to 10:30. The site holds the room from 10:00, extends the hold when the payment starts at 10:08, and decides at 10:11. A car held by the partner for 30 minutes is still held at 10:11 and can be confirmed. A car held for only 10 minutes runs out at 10:10, before the decision.</desc>
+  <defs>
+    <marker id="partner-hold-length-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="partner-hold-length-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="225" y="24" text-anchor="middle">Site's hold</text>
+  <text class="dg-name" x="385" y="24" text-anchor="middle">Car, 30 min</text>
+  <text class="dg-name" x="545" y="24" text-anchor="middle">Car, 10 min</text>
+  <text class="dg-mono dg-muted-text" x="16" y="64">10:00</text>
+  <line class="dg-rule" x1="140" y1="60" x2="624" y2="60"/>
+  <text class="dg-mono dg-accent-text" x="16" y="163">10:11 DECISION</text>
+  <line class="dg-guide" x1="140" y1="159" x2="624" y2="159"/>
+  <text class="dg-mono dg-muted-text" x="16" y="334">10:30</text>
+  <line class="dg-rule" x1="140" y1="330" x2="624" y2="330"/>
+  <rect class="dg-box" x="150" y="62" width="150" height="131" rx="4"/>
+  <text class="dg-code" x="225.0" y="131.5" text-anchor="middle">held, extended</text>
+  <rect class="dg-box-accent" x="310" y="62" width="150" height="268" rx="4"/>
+  <text class="dg-code" x="385.0" y="200.0" text-anchor="middle">held by the partner</text>
+  <rect class="dg-box-failed" x="470" y="62" width="150" height="86" rx="4"/>
+  <text class="dg-code-muted" x="545.0" y="109.0" text-anchor="middle">held</text>
+  <text class="dg-mono dg-muted-text" x="545" y="181" text-anchor="middle">RUNS OUT FIRST</text>
+</svg>

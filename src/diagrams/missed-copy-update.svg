@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 708 260" role="img" aria-labelledby="missed-copy-update-title missed-copy-update-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="missed-copy-update-title">A cache update sent by the app can be lost; a change stream still delivers it</title>
+  <desc id="missed-copy-update-desc">An expired hold returns a room on the leader, so June 10 has 1 room left, and the app crashes before it updates the cache. Left: the app was the only path, so the cache still says 0 left and the room stays hidden from search. Right: a process reads the leader's change stream and updates the cache to 1 left, so the room shows again; a short TTL repairs the cache in the same way, a little later.</desc>
+  <defs>
+    <marker id="missed-copy-update-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="missed-copy-update-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-6 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="252"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">App updates the cache</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">after each commit</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="74" text-anchor="middle">APP</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="74" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="98.0" y1="82" x2="98.0" y2="206"/>
+  <line class="dg-lifeline" x1="262.0" y1="82" x2="262.0" y2="206"/>
+  <rect class="dg-box" x="23.0" y="92" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="109" text-anchor="middle">commit: 1 left</text>
+  <rect class="dg-box-failed" x="23.0" y="128" width="150" height="26" rx="4"/>
+  <text class="dg-code-muted" x="98.0" y="145" text-anchor="middle">app crashes</text>
+  <rect class="dg-box-accent" x="187.0" y="164" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="181" text-anchor="middle">still 0 left</text>
+  <text class="dg-result" x="180.0" y="232" text-anchor="middle">The room stays hidden</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Change stream</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">or a short TTL</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="74" text-anchor="middle">APP</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="74" text-anchor="middle">CACHE</text>
+  <line class="dg-lifeline" x1="458.0" y1="82" x2="458.0" y2="206"/>
+  <line class="dg-lifeline" x1="622.0" y1="82" x2="622.0" y2="206"/>
+  <rect class="dg-box" x="383.0" y="92" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="109" text-anchor="middle">commit: 1 left</text>
+  <rect class="dg-box-failed" x="383.0" y="128" width="150" height="26" rx="4"/>
+  <text class="dg-code-muted" x="458.0" y="145" text-anchor="middle">app crashes</text>
+  <rect class="dg-box-accent" x="547.0" y="164" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="181" text-anchor="middle">stream: 1 left</text>
+  <text class="dg-result" x="540.0" y="232" text-anchor="middle">The room shows again</text>
+  </g>
+</svg>

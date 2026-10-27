@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 222" role="img" aria-labelledby="ride-offer-title ride-offer-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ride-offer-title">A ride offer holds the ride and the driver together</title>
+  <desc id="ride-offer-desc">One transaction offers ride 88 to driver 5 and holds driver 5 for that offer. If the driver accepts in time, the ride is accepted and the driver is on trip 88. If the driver declines or the deadline passes, the ride goes to the next driver and driver 5 is free for other offers.</desc>
+  <defs>
+    <marker id="ride-offer-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ride-offer-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="104" y="26" text-anchor="middle">OFFER</text>
+  <rect class="dg-box" x="16" y="40" width="176" height="52" rx="6"/>
+  <text class="dg-name" x="104.0" y="64.0" text-anchor="middle">Ride 88</text>
+  <text class="dg-sub" x="104.0" y="80.0" text-anchor="middle">offered to driver 5</text>
+  <rect class="dg-box-accent" x="16" y="110" width="176" height="52" rx="6"/>
+  <text class="dg-name" x="104.0" y="134.0" text-anchor="middle">Driver 5</text>
+  <text class="dg-sub" x="104.0" y="150.0" text-anchor="middle">holds the offer</text>
+  <text class="dg-mono dg-muted-text" x="360" y="26" text-anchor="middle">ACCEPTED IN TIME</text>
+  <rect class="dg-box" x="272" y="40" width="176" height="52" rx="6"/>
+  <text class="dg-name" x="360.0" y="64.0" text-anchor="middle">Ride 88</text>
+  <text class="dg-sub" x="360.0" y="80.0" text-anchor="middle">accepted</text>
+  <rect class="dg-box" x="272" y="110" width="176" height="52" rx="6"/>
+  <text class="dg-name" x="360.0" y="134.0" text-anchor="middle">Driver 5</text>
+  <text class="dg-sub" x="360.0" y="150.0" text-anchor="middle">on trip 88</text>
+  <text class="dg-mono dg-muted-text" x="616" y="26" text-anchor="middle">DECLINED OR EXPIRED</text>
+  <rect class="dg-box" x="528" y="40" width="176" height="52" rx="6"/>
+  <text class="dg-name" x="616.0" y="64.0" text-anchor="middle">Ride 88</text>
+  <text class="dg-sub" x="616.0" y="80.0" text-anchor="middle">to the next driver</text>
+  <rect class="dg-box" x="528" y="110" width="176" height="52" rx="6"/>
+  <text class="dg-name" x="616.0" y="134.0" text-anchor="middle">Driver 5</text>
+  <text class="dg-sub" x="616.0" y="150.0" text-anchor="middle">free for other offers</text>
+  <path class="dg-arrow" d="M192 101 H264" marker-end="url(#ride-offer-head)"/>
+  <text class="dg-mono dg-muted-text" x="228" y="93" text-anchor="middle">ACCEPT</text>
+  <path class="dg-arrow" d="M104 162 V204 H616 V170" marker-end="url(#ride-offer-head)"/>
+  <text class="dg-mono dg-muted-text" x="360" y="196" text-anchor="middle">DECLINE OR DEADLINE</text>
+</svg>

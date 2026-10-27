@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="tcc-steps-title tcc-steps-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="tcc-steps-title">Try, confirm, cancel: hold in each system, decide, then confirm each hold</title>
+  <desc id="tcc-steps-desc">The site holds a room in its database and a car at the partner. When both holds succeed, it takes the payment, then records its decision to confirm in its database. Then it confirms the room and confirms the car, retrying until the partner answers.</desc>
+  <defs>
+    <marker id="tcc-steps-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="tcc-steps-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="90" y="30" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="90" y1="40" x2="90" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="270" y="30" text-anchor="middle">SITE</text>
+  <line class="dg-lifeline" x1="270" y1="40" x2="270" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="460" y="30" text-anchor="middle">PARTNER</text>
+  <line class="dg-lifeline" x1="460" y1="40" x2="460" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="640" y="30" text-anchor="middle">PAYMENTS</text>
+  <line class="dg-lifeline" x1="640" y1="40" x2="640" y2="290"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="64" text-anchor="middle">HOLD ROOM</text>
+  <path class="dg-arrow" d="M270 72 H98" marker-end="url(#tcc-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="365.0" y="100" text-anchor="middle">HOLD CAR</text>
+  <path class="dg-arrow" d="M270 108 H452" marker-end="url(#tcc-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="550" y="136" text-anchor="middle">PAY</text>
+  <path class="dg-arrow" d="M270 144 H632" marker-end="url(#tcc-steps-head)"/>
+  <text class="dg-mono dg-accent-text" x="180.0" y="178" text-anchor="middle">DECISION: CONFIRM</text>
+  <path class="dg-arrow dg-message" d="M270 186 H98" marker-end="url(#tcc-steps-head-accent)"/>
+  <line class="dg-guide" x1="16" y1="206" x2="704" y2="206"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="232" text-anchor="middle">CONFIRM ROOM</text>
+  <path class="dg-arrow" d="M270 240 H98" marker-end="url(#tcc-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="365.0" y="268" text-anchor="middle">CONFIRM CAR, RETRIED</text>
+  <path class="dg-arrow" d="M270 276 H452" marker-end="url(#tcc-steps-head)"/>
+</svg>

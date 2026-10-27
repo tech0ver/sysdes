@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 720 352" role="img" aria-labelledby="hold-escrow-title hold-escrow-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="hold-escrow-title">The count moves at once; its row stays locked only for milliseconds</title>
+  <desc id="hold-escrow-desc">Time runs down from 10:00 to 10:10. Booking b-7f3a is held from 10:00 and confirmed at 10:06. The count for June 10 goes from 17 to 18 taken at 10:00, when the hold is created, and stays at 18 when the booking is confirmed. The row of the count is locked only for the milliseconds of the transaction that creates the hold; the confirmation does not lock it again. The hold would expire at 10:10.</desc>
+  <defs>
+    <marker id="hold-escrow-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="hold-escrow-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="235" y="24" text-anchor="middle">Booking b-7f3a</text>
+  <text class="dg-name" x="425" y="24" text-anchor="middle">Count for June 10</text>
+  <text class="dg-name" x="615" y="24" text-anchor="middle">Lock on the count</text>
+  <text class="dg-mono dg-muted-text" x="16" y="100">10:00</text>
+  <line class="dg-rule" x1="150" y1="96" x2="704" y2="96"/>
+  <text class="dg-mono dg-muted-text" x="16" y="244">10:06 CONFIRM</text>
+  <line class="dg-rule" x1="150" y1="240" x2="704" y2="240"/>
+  <text class="dg-mono dg-muted-text" x="16" y="340">10:10 EXPIRY</text>
+  <line class="dg-rule" x1="150" y1="336" x2="704" y2="336"/>
+  <rect class="dg-box" x="150" y="98" width="170" height="140" rx="4"/>
+  <text class="dg-code" x="235.0" y="172.0" text-anchor="middle">held</text>
+  <rect class="dg-box" x="150" y="242" width="170" height="94" rx="4"/>
+  <text class="dg-code" x="235.0" y="293.0" text-anchor="middle">confirmed</text>
+  <rect class="dg-chip" x="340" y="48" width="170" height="30" rx="4"/>
+  <text class="dg-code-muted" x="425.0" y="67.0" text-anchor="middle">taken 17</text>
+  <rect class="dg-box" x="340" y="98" width="170" height="238" rx="4"/>
+  <text class="dg-code" x="425.0" y="221.0" text-anchor="middle">taken 18</text>
+  <rect class="dg-box-accent" x="530" y="94" width="170" height="4" rx="1"/>
+  <text class="dg-mono dg-accent-text" x="615" y="118" text-anchor="middle">LOCKED FOR</text>
+  <text class="dg-mono dg-accent-text" x="615" y="132" text-anchor="middle">MILLISECONDS</text>
+  <text class="dg-mono dg-muted-text" x="615" y="262" text-anchor="middle">NOT LOCKED AGAIN</text>
+</svg>

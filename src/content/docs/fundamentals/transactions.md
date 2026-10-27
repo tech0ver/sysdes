@@ -394,7 +394,7 @@ If fewer than two rows change, the hold has expired or another buyer has taken a
 
 A hold is pessimistic locking at the scale of a business transaction: it claims the seats before the buyer starts to pay. The optimistic variant keeps no hold. It remembers the versions of the rows the buyer saw and checks them in the final transaction, so the buyer may learn at the very end that the seats are gone. Holds fit when conflicts are likely and a late failure is costly, as with popular seats and a payment form. A version check fits when conflicts are rare. The hold can also live outside the database, as a key with a time limit in a key-value store. It is fast, but the store and the database do not share a transaction, so the final write in the database must still check the seats.
 
-How long a hold lasts, how expired holds leave the seat map, the exact timing of expiry checks, and what to do when a payment outlives its hold are parts of the reservation pattern. <!-- link: patterns/reservations -->
+How long a hold lasts, how expired holds leave the seat map, the exact timing of expiry checks, and what to do when a payment outlives its hold are parts of [the reservation pattern](../../patterns/reservations/).
 
 :::do
 Never keep a database transaction open while a user decides. Store the claim in the data as a state with an expiry, set and check it in short transactions, and check it again in the transaction that completes the operation.

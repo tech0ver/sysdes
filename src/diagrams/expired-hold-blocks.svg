@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 638 256" role="img" aria-labelledby="expired-hold-blocks-title expired-hold-blocks-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="expired-hold-blocks-title">An expired seat frees itself; an expired hold of a count does not</title>
+  <desc id="expired-hold-blocks-desc">Both holds expired at 10:10, and a new guest comes at 10:12. Left: seat 14 has its hold in its own row; the take treats an expired hold as free and changes one row. Right: hold b-7f3a still has its unit in the count for June 10, which says 20 of 20 taken; the take changes no rows, and the guest is refused while a room stands empty.</desc>
+  <defs>
+    <marker id="expired-hold-blocks-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="expired-hold-blocks-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-41 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="248"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">A seat in its own row</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">expired at 10:10</text>
+  <rect class="dg-box" x="60" y="64" width="240" height="28" rx="4"/>
+  <text class="dg-code" x="180.0" y="82.0" text-anchor="middle">seat 14: held until 10:10</text>
+  <rect class="dg-box" x="105" y="170" width="150" height="40" rx="6"/>
+  <text class="dg-name" x="180.0" y="195.0" text-anchor="middle">Guest at 10:12</text>
+  <path class="dg-arrow" d="M180 170 V100" marker-end="url(#expired-hold-blocks-head)"/>
+  <text class="dg-mono dg-muted-text" x="192" y="135.0">TAKE: 1 ROW</text>
+  <text class="dg-result" x="180" y="240" text-anchor="middle">The expired hold counts as free</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">A hold of a count</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">expired at 10:10</text>
+  <rect class="dg-box-failed" x="420" y="64" width="240" height="28" rx="4"/>
+  <text class="dg-code-muted" x="540.0" y="82.0" text-anchor="middle">b-7f3a: held until 10:10</text>
+  <rect class="dg-box-accent" x="420" y="104" width="240" height="28" rx="4"/>
+  <text class="dg-code" x="540.0" y="122.0" text-anchor="middle">June 10: 20 of 20 taken</text>
+  <rect class="dg-box" x="465" y="170" width="150" height="40" rx="6"/>
+  <text class="dg-name" x="540.0" y="195.0" text-anchor="middle">Guest at 10:12</text>
+  <path class="dg-arrow dg-message" d="M540 170 V140" marker-end="url(#expired-hold-blocks-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="552" y="155.0">TAKE: 0 ROWS</text>
+  <text class="dg-result" x="540" y="240" text-anchor="middle">Refused, though a room is empty</text>
+  </g>
+</svg>

@@ -44,7 +44,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Patterns',
-					items: [],
+					items: ['patterns/reservations'],
 				},
 				{
 					label: 'Technologies',

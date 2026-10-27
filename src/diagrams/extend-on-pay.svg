@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 470 378" role="img" aria-labelledby="extend-on-pay-title extend-on-pay-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="extend-on-pay-title">One extension when the payment starts keeps the hold through the bank's check</title>
+  <desc id="extend-on-pay-desc">Time runs down from 10:00 to 10:15. The hold runs from 10:00 to 10:10. The guest presses Pay at 10:08, and the server extends the hold once, to 10:15. The bank's check runs from 10:08 to 10:11, past the old expiry at 10:10, and ends while the hold is still valid.</desc>
+  <defs>
+    <marker id="extend-on-pay-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="extend-on-pay-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-name" x="205" y="24" text-anchor="middle">Hold</text>
+  <text class="dg-name" x="375" y="24" text-anchor="middle">Bank's check</text>
+  <text class="dg-mono dg-muted-text" x="16" y="60">10:00</text>
+  <line class="dg-rule" x1="120" y1="56" x2="454" y2="56"/>
+  <text class="dg-mono dg-muted-text" x="16" y="220">10:08 PAY</text>
+  <line class="dg-rule" x1="120" y1="216" x2="454" y2="216"/>
+  <text class="dg-mono dg-muted-text" x="16" y="260">10:10</text>
+  <line class="dg-rule" x1="120" y1="256" x2="454" y2="256"/>
+  <text class="dg-mono dg-muted-text" x="16" y="360">10:15</text>
+  <line class="dg-rule" x1="120" y1="356" x2="454" y2="356"/>
+  <rect class="dg-box" x="130" y="58" width="150" height="196" rx="4"/>
+  <text class="dg-code" x="205.0" y="160.0" text-anchor="middle">held until 10:10</text>
+  <rect class="dg-box-accent" x="130" y="258" width="150" height="96" rx="4"/>
+  <text class="dg-code" x="205.0" y="310.0" text-anchor="middle">+5 min</text>
+  <rect class="dg-chip" x="300" y="218" width="150" height="56" rx="4"/>
+  <text class="dg-code" x="375.0" y="250.0" text-anchor="middle">check</text>
+</svg>

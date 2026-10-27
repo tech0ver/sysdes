@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 694 258" role="img" aria-labelledby="remaining-seconds-title remaining-seconds-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="remaining-seconds-title">A time of day depends on the client's clock; remaining seconds do not</title>
+  <desc id="remaining-seconds-desc">Left: the server answers that the hold expires at 10:10:00, and the app's clock is 40 seconds behind, so its timer shows 10 minutes 40 seconds and runs past the hold. Right: the server answers that 600 seconds are left, the app counts them from the moment it sent the request, so the second the answer spent on the way is already used, and its timer ends with the hold or just before.</desc>
+  <defs>
+    <marker id="remaining-seconds-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="remaining-seconds-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-13 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="250"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">A time of day</text>
+  <text class="dg-mono dg-muted-text" x="120" y="64" text-anchor="middle">APP</text>
+  <line class="dg-lifeline" x1="120" y1="72" x2="120" y2="214"/>
+  <text class="dg-mono dg-muted-text" x="304" y="64" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="304" y1="72" x2="304" y2="214"/>
+  <text class="dg-mono dg-muted-text" x="212.0" y="92" text-anchor="middle">HOLD</text>
+  <path class="dg-arrow" d="M120 100 H296" marker-end="url(#remaining-seconds-head)"/>
+  <text class="dg-mono dg-muted-text" x="212.0" y="128" text-anchor="middle">EXPIRES 10:10:00</text>
+  <path class="dg-arrow" d="M304 136 H128" marker-end="url(#remaining-seconds-head)"/>
+  <rect class="dg-box-accent" x="30" y="158" width="180" height="48" rx="6"/>
+  <text class="dg-name" x="120.0" y="180.0" text-anchor="middle">Clock 40 s behind</text>
+  <text class="dg-sub" x="120.0" y="196.0" text-anchor="middle">shows 10:40 left</text>
+  <text class="dg-result" x="180" y="240" text-anchor="middle">The timer runs 40 s past the hold</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Seconds that remain</text>
+  <text class="dg-mono dg-muted-text" x="480" y="64" text-anchor="middle">APP</text>
+  <line class="dg-lifeline" x1="480" y1="72" x2="480" y2="214"/>
+  <text class="dg-mono dg-muted-text" x="664" y="64" text-anchor="middle">SERVER</text>
+  <line class="dg-lifeline" x1="664" y1="72" x2="664" y2="214"/>
+  <text class="dg-mono dg-muted-text" x="572.0" y="92" text-anchor="middle">HOLD</text>
+  <path class="dg-arrow" d="M480 100 H656" marker-end="url(#remaining-seconds-head)"/>
+  <text class="dg-mono dg-muted-text" x="572.0" y="128" text-anchor="middle">600 S LEFT</text>
+  <path class="dg-arrow" d="M664 136 H488" marker-end="url(#remaining-seconds-head)"/>
+  <rect class="dg-box-accent" x="390" y="158" width="180" height="48" rx="6"/>
+  <text class="dg-name" x="480.0" y="180.0" text-anchor="middle">From the request</text>
+  <text class="dg-sub" x="480.0" y="196.0" text-anchor="middle">shows 9:59 left</text>
+  <text class="dg-result" x="540" y="240" text-anchor="middle">The timer ends with the hold or before</text>
+  </g>
+</svg>

@@ -1,0 +1,66 @@
+<svg class="diagram-svg" viewBox="0 0 720 276" role="img" aria-labelledby="split-count-title split-count-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="split-count-title">Three ways to split one hot count of 100 rooms</title>
+  <desc id="split-count-desc">The same 100 rooms for June 10, 70 sold and 30 left, and three takes of one room each. Buckets: ten rows with 30 rooms left between them, and the three takes each pick a different row, so they run at once. Unit rows: a row per room; of the first ten rows, six are sold, takes 1, 2, and 3 have each locked one with SKIP LOCKED, and one is free. Quotas: region EU and region US each have 15 of their 50 rooms left, with no shared row between them.</desc>
+  <defs>
+    <marker id="split-count-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="split-count-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="268"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="268"/>
+  <text class="dg-name" x="128" y="26" text-anchor="middle">Buckets</text>
+  <text class="dg-sub" x="128" y="44" text-anchor="middle">ten rows of ten</text>
+  <rect class="dg-box" x="22" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="40.0" y="89.0" text-anchor="middle">3</text>
+  <rect class="dg-box-accent" x="64" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="82.0" y="89.0" text-anchor="middle">4</text>
+  <rect class="dg-box" x="106" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="124.0" y="89.0" text-anchor="middle">2</text>
+  <rect class="dg-box" x="148" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="166.0" y="89.0" text-anchor="middle">3</text>
+  <rect class="dg-box" x="190" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="208.0" y="89.0" text-anchor="middle">5</text>
+  <rect class="dg-box-accent" x="22" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="40.0" y="133.0" text-anchor="middle">2</text>
+  <rect class="dg-box" x="64" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="82.0" y="133.0" text-anchor="middle">3</text>
+  <rect class="dg-box" x="106" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="124.0" y="133.0" text-anchor="middle">4</text>
+  <rect class="dg-box-accent" x="148" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="166.0" y="133.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="190" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="208.0" y="133.0" text-anchor="middle">3</text>
+  <text class="dg-mono dg-muted-text" x="128" y="176" text-anchor="middle">ROOMS LEFT PER ROW</text>
+  <text class="dg-mono dg-muted-text" x="128" y="192" text-anchor="middle">30 IN ALL</text>
+  <text class="dg-result" x="128" y="232" text-anchor="middle">Ten takes run at once</text>
+  <text class="dg-sub" x="128" y="254" text-anchor="middle">near the end: tries on empty rows</text>
+  <text class="dg-name" x="360" y="26" text-anchor="middle">Unit rows</text>
+  <text class="dg-sub" x="360" y="44" text-anchor="middle">a row per room, SKIP LOCKED</text>
+  <rect class="dg-bar" x="262" y="70" width="36" height="30" rx="4"/>
+  <rect class="dg-box-accent" x="304" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="322.0" y="89.0" text-anchor="middle">1</text>
+  <rect class="dg-bar" x="346" y="70" width="36" height="30" rx="4"/>
+  <rect class="dg-bar" x="388" y="70" width="36" height="30" rx="4"/>
+  <rect class="dg-box-accent" x="430" y="70" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="448.0" y="89.0" text-anchor="middle">2</text>
+  <rect class="dg-bar" x="262" y="114" width="36" height="30" rx="4"/>
+  <rect class="dg-bar" x="304" y="114" width="36" height="30" rx="4"/>
+  <rect class="dg-box-accent" x="346" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-code" x="364.0" y="133.0" text-anchor="middle">3</text>
+  <rect class="dg-bar" x="388" y="114" width="36" height="30" rx="4"/>
+  <rect class="dg-box" x="430" y="114" width="36" height="30" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="360" y="176" text-anchor="middle">FIRST 10 OF 100 ROWS</text>
+  <text class="dg-mono dg-muted-text" x="360" y="192" text-anchor="middle">FILLED: SOLD · N: TAKE N</text>
+  <text class="dg-result" x="360" y="232" text-anchor="middle">No take waits</text>
+  <text class="dg-sub" x="360" y="254" text-anchor="middle">a row per unit, a job to refill</text>
+  <text class="dg-name" x="592" y="26" text-anchor="middle">Quotas</text>
+  <text class="dg-sub" x="592" y="44" text-anchor="middle">a share per region</text>
+  <rect class="dg-box-accent" x="492" y="70" width="100" height="74" rx="6"/>
+  <text class="dg-name" x="542.0" y="105.0" text-anchor="middle">Region EU</text>
+  <text class="dg-sub" x="542.0" y="121.0" text-anchor="middle">15 of 50 left</text>
+  <rect class="dg-box-accent" x="600" y="70" width="100" height="74" rx="6"/>
+  <text class="dg-name" x="650.0" y="105.0" text-anchor="middle">Region US</text>
+  <text class="dg-sub" x="650.0" y="121.0" text-anchor="middle">15 of 50 left</text>
+  <text class="dg-mono dg-muted-text" x="592" y="176" text-anchor="middle">NO SHARED ROW</text>
+  <text class="dg-result" x="592" y="232" text-anchor="middle">Sells without the other</text>
+  <text class="dg-sub" x="592" y="254" text-anchor="middle">units stranded in one region</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="one-vs-many-title one-vs-many-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="one-vs-many-title">One person at a time waits out each silence; several at once is fast</title>
+  <desc id="one-vs-many-desc">Time runs down over 45 seconds. Left: driver 1 and driver 2 stay silent for a full 15-second deadline each, and driver 3 accepts at 32 seconds. Right: all three drivers get the offer at once, driver 3 accepts at 2 seconds, and drivers 1 and 2 learn the ride is gone.</desc>
+  <defs>
+    <marker id="one-vs-many-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="one-vs-many-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="360" y="64" text-anchor="middle">TIME</text>
+  <text class="dg-mono dg-muted-text" x="360" y="88.0" text-anchor="middle">0 S</text>
+  <text class="dg-mono dg-muted-text" x="360" y="160.0" text-anchor="middle">15 S</text>
+  <text class="dg-mono dg-muted-text" x="360" y="232.0" text-anchor="middle">30 S</text>
+  <text class="dg-mono dg-muted-text" x="360" y="304.0" text-anchor="middle">45 S</text>
+  <text class="dg-name" x="172" y="22" text-anchor="middle">One at a time</text>
+  <text class="dg-mono dg-muted-text" x="68" y="64" text-anchor="middle">DRIVER 1</text>
+  <rect class="dg-box-failed" x="28" y="85.0" width="80" height="70.0" rx="4"/>
+  <text class="dg-code-muted" x="68.0" y="124.0" text-anchor="middle">silent</text>
+  <text class="dg-mono dg-muted-text" x="172" y="64" text-anchor="middle">DRIVER 2</text>
+  <rect class="dg-box-failed" x="132" y="157.0" width="80" height="70.0" rx="4"/>
+  <text class="dg-code-muted" x="172.0" y="196.0" text-anchor="middle">silent</text>
+  <text class="dg-mono dg-muted-text" x="276" y="64" text-anchor="middle">DRIVER 3</text>
+  <rect class="dg-box-accent" x="236" y="229.0" width="80" height="7.599999999999994" rx="4"/>
+  <text class="dg-mono dg-accent-text" x="276" y="255.6" text-anchor="middle">ACCEPTS</text>
+  <text class="dg-result" x="172" y="316" text-anchor="middle">Ride taken at 32 s</text>
+  <text class="dg-name" x="548" y="22" text-anchor="middle">Several at once</text>
+  <text class="dg-mono dg-muted-text" x="444" y="64" text-anchor="middle">DRIVER 1</text>
+  <rect class="dg-box" x="404" y="85.0" width="80" height="7.599999999999994" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="444" y="111.6" text-anchor="middle">GONE</text>
+  <text class="dg-mono dg-muted-text" x="548" y="64" text-anchor="middle">DRIVER 2</text>
+  <rect class="dg-box" x="508" y="85.0" width="80" height="7.599999999999994" rx="4"/>
+  <text class="dg-mono dg-muted-text" x="548" y="111.6" text-anchor="middle">GONE</text>
+  <text class="dg-mono dg-muted-text" x="652" y="64" text-anchor="middle">DRIVER 3</text>
+  <rect class="dg-box-accent" x="612" y="85.0" width="80" height="7.599999999999994" rx="4"/>
+  <text class="dg-mono dg-accent-text" x="652" y="111.6" text-anchor="middle">ACCEPTS</text>
+  <text class="dg-result" x="548" y="316" text-anchor="middle">Ride taken at 2 s</text>
+  <line class="dg-rule" x1="16" y1="84.0" x2="336" y2="84.0"/>
+  <line class="dg-rule" x1="384" y1="84.0" x2="704" y2="84.0"/>
+  <line class="dg-rule" x1="16" y1="156.0" x2="336" y2="156.0"/>
+  <line class="dg-rule" x1="384" y1="156.0" x2="704" y2="156.0"/>
+  <line class="dg-rule" x1="16" y1="228.0" x2="336" y2="228.0"/>
+  <line class="dg-rule" x1="384" y1="228.0" x2="704" y2="228.0"/>
+  <line class="dg-rule" x1="16" y1="300.0" x2="336" y2="300.0"/>
+  <line class="dg-rule" x1="384" y1="300.0" x2="704" y2="300.0"/>
+</svg>
