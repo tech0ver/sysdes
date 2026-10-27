@@ -50,6 +50,7 @@ const plannedFirst = nested ? [] : unwritten(plannedTopLevel);
 						{...entry.attrs}
 					>
 						<span>{entry.label}</span>
+						{nested && <span class="reading-status" data-reading-status hidden></span>}
 						{entry.badge && (
 							<Badge
 								variant={entry.badge.variant}
@@ -209,6 +210,19 @@ const plannedFirst = nested ? [] : unwritten(plannedTopLevel);
     border-radius: 0.3rem;
     font-size: 0.65rem;
     line-height: 1.4;
+  }
+  .reading-status {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    color: var(--sl-color-gray-3);
+    font-size: 0.65rem;
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+  a:has(.reading-status:not([hidden])) {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
   }
   @media (width < 50rem) {
     .planned-topic {

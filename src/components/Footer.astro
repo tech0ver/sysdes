@@ -1,13 +1,32 @@
 ---
 import Default from '@astrojs/starlight/components/Footer.astro';
+const { id } = Astro.locals.starlightRoute;
+const isArticle = /^(fundamentals|patterns|technologies|systems)\//.test(id);
 ---
 
+{isArticle && (
+  <div class="reading-control print:hidden" data-article-id={id}>
+    <button type="button" hidden aria-pressed="false">Mark as read</button>
+  </div>
+)}
 <Default />
 <p class="site-license">
   © 2026 <a href="https://alexengrig.github.io">Grig Alex</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>
 </p>
 
 <style>
+  .reading-control { margin-top: 2rem; }
+  .reading-control button {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.4rem;
+    background: transparent;
+    color: var(--sl-color-text);
+    font: inherit;
+    cursor: pointer;
+  }
+  .reading-control button:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
+  .reading-control button:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 2px; }
   .site-license {
     margin-top: 1.5rem;
     font-size: var(--sl-text-xs);

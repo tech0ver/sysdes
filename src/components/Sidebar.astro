@@ -17,6 +17,68 @@ import SiteTitle from 'virtual:starlight/components/SiteTitle';
   <MobileMenuFooter />
 </div>
 
+<script>
+  // One versioned map, keyed by article route (without the site's base path).
+  const storageKey = 'sysdes:reading-status:v1';
+  type Status = 'seen' | 'read';
+  type Statuses = Record<string, Status>;
+
+  function load(): Statuses {
+    const value = JSON.parse(localStorage.getItem(storageKey) || '{}');
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+    return Object.fromEntries(Object.entries(value).filter(([, status]) => status === 'seen' || status === 'read')) as Statuses;
+  }
+
+  const control = document.querySelector<HTMLElement>('[data-article-id]');
+  const button = control?.querySelector<HTMLButtonElement>('button');
+  const articleId = control?.dataset.articleId;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+  function render(statuses: Statuses) {
+    document.querySelectorAll<HTMLElement>('[data-reading-status]').forEach((label) => {
+      const link = label.closest('a');
+      if (!link) return;
+      const path = new URL(link.href).pathname;
+      const id = decodeURIComponent(path.slice(base.length).replace(/^\/+|\/+$/g, ''));
+      label.textContent = statuses[id] || 'new';
+      label.hidden = false;
+    });
+    if (button && articleId) {
+      const read = statuses[articleId] === 'read';
+      button.textContent = read ? 'Mark as unread' : 'Mark as read';
+      button.setAttribute('aria-pressed', String(read));
+      button.hidden = false;
+    }
+  }
+
+  try {
+    const statuses = load();
+    if (articleId && !statuses[articleId]) {
+      statuses[articleId] = 'seen';
+      localStorage.setItem(storageKey, JSON.stringify(statuses));
+    }
+    render(statuses);
+    button?.addEventListener('click', () => {
+      try {
+        const current = load();
+        if (!articleId) return;
+        current[articleId] = current[articleId] === 'read' ? 'seen' : 'read';
+        localStorage.setItem(storageKey, JSON.stringify(current));
+        render(current);
+      } catch {
+        button.hidden = true;
+      }
+    });
+    window.addEventListener('storage', (event) => {
+      if (event.key === storageKey || event.key === null) {
+        try { render(load()); } catch {}
+      }
+    });
+  } catch {
+    // Storage can be blocked by the browser; leave the controls hidden.
+  }
+</script>
+
 <style>
   /* Full sidebar width and the header's height, so its bottom line continues
      the header line without gaps. */
