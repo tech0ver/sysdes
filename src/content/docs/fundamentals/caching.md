@@ -291,7 +291,7 @@ Many keys can also expire at once: after the cache was filled in one go, or afte
 
 ::diagram{name="ttl-jitter"}
 
-:::interview
+:::explain
 Name the problem and the fix together: a hot key that expires sends every reader to the database, so allow one load per key and serve the old value while it runs. Some prep materials call this cache breakdown, and call many keys expiring at once a cache avalanche.
 :::
 

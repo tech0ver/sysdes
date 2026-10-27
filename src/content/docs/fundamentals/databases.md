@@ -195,7 +195,7 @@ Stores without joins or flexible indexes commit the layout to the queries instea
 
 ::diagram{name="table-per-query"}
 
-:::interview
+:::explain
 Name the queries before the store. List them with their rates and correctness needs, then pick a model that serves all of them, and say which query each table or index is for.
 :::
 

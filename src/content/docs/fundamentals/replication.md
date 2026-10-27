@@ -316,7 +316,7 @@ Most designs need a single leader: followers in other zones and regions, asynchr
 
 During a network break, a system either refuses some requests or lets copies disagree. A single leader refuses writes on the side without it; multi-leader and a sloppy quorum keep writing and let copies disagree. This choice is what CAP describes.
 
-:::interview
+:::explain
 When asked how data is replicated, answer three questions: who accepts writes, when a write counts as done, and what a read may see. Then say what a failover loses, and which reads must go to the leader.
 :::
 

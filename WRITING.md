@@ -42,13 +42,13 @@ What an article on this site must look like. Read it before you add or change a 
 
 ## Callouts
 
-Callouts are container directives (`src/plugins/blocks.mjs`). Use them sparingly, where the point arises:
+Callouts are container directives (provided by `@tech0ver/starlight`). Use them sparingly, where the point arises:
 
 | Directive | Label | Use for |
 |---|---|---|
 | `:::do` | What to do | The recommended choice and when to switch |
 | `:::tradeoff` | Trade-off | What you win and what you pay |
-| `:::interview` | In the interview | What to say when the interviewer asks about it |
+| `:::explain` | In the interview | What to say when the interviewer asks about it |
 | `:::avoid` | Avoid | A common mistake |
 | `:::distinguish` | Do not confuse | Two things that share a name or look alike, such as the meanings of "consistency" |
 
@@ -60,8 +60,8 @@ Diagrams let the reader see the material on the running example, and grasp it fa
 
 - One idea per diagram. Put it right after the paragraph it illustrates, before that block's callouts.
 - Use the words of the text. No term before its block, same as in prose.
-- Write the diagram as an SVG file in `src/diagrams/<name>.svg` and insert it with `::diagram{name="<name>"}` on its own line (`src/plugins/diagrams.mjs`). The SVG is inlined into the page.
-- Color only through the `dg-*` classes in `src/styles/article.css`, never with hard-coded colors, so the diagram follows the light and dark themes.
+- Write the diagram as an SVG file in `src/diagrams/<name>.svg` and insert it with `::diagram{name="<name>"}` on its own line (provided by `@tech0ver/starlight`). The SVG is inlined into the page.
+- Color only through the `dg-*` classes in `@tech0ver/starlight/styles/article.css`, never with hard-coded colors, so the diagram follows the light and dark themes.
 - Comparisons use equal panels side by side with the same data on one grid: the same rows, values, and order in each panel, aligned across the panels, with a vertical rule between them. Keep the halves symmetric and the strokes the same weight.
 - Show concrete rows and values (workspace 42, order 501) rather than abstract boxes.
 - Do not add caption lines that restate the paragraph next to the diagram. A label names what the reader sees; when panels count different things (keys in one, shards in the other), a short legend says what a cell stands for.
@@ -122,5 +122,5 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 1. Create the Markdown file. Frontmatter needs `title` and `description`.
 2. Add the page to `sidebar` in `astro.config.mjs`, in the right group, and to ARTICLES.md.
-3. If its topic was shown on the site as planned, remove its label from `plannedByGroup` in `src/components/SidebarSublist.astro`. That list holds the planned topics shown in the sidebar. Add a label to it only after the author agrees to show the topic. Discuss which new articles that follow from this one to show.
+3. If its topic was shown on the site as planned, remove its label from `plannedTopics` or `plannedTopLevel` in `astro.config.mjs`. That list holds the planned topics shown in the sidebar. Add a label to it only after the author agrees to show the topic. Discuss which new articles that follow from this one to show.
 4. Run `bun run build` and check the page in `bun run dev`.

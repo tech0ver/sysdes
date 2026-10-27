@@ -1,61 +1,73 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
-import { satteri } from '@astrojs/markdown-satteri';
+import { defineTech0verConfig } from '@tech0ver/starlight';
 import { glossary, glossarySkip } from './src/data/glossary.mjs';
-import { glossaryPlugin } from './src/plugins/glossary.mjs';
-import { blocksPlugin } from './src/plugins/blocks.mjs';
-import { diagramsPlugin } from './src/plugins/diagrams.mjs';
 
-const base = '/sysdes';
-
-export default defineConfig({
+export default defineTech0verConfig({
 	site: 'https://tech0ver.github.io',
-	base,
-	markdown: {
-		processor: satteri({ mdastPlugins: [blocksPlugin(), diagramsPlugin()], hastPlugins: [glossaryPlugin({ entries: glossary, skip: glossarySkip, base })] }),
+	base: '/sysdes',
+	brand: { name: 'SystemDesign', suffix: '0ver' },
+	sidebarWidth: 256,
+	plannedTopLevel: ['Framework'],
+	plannedTopics: {
+		Fundamentals: ['Messaging', 'Observability'],
+		Patterns: ['Resilience', 'Rate Limiting', 'Distributed Locks', 'Async Processing', 'Sagas', 'Job Scheduling'],
+		Technologies: ['Kafka'],
+		Systems: ['URL Shortener'],
 	},
-	integrations: [
-		starlight({
-			title: 'SystemDesign0ver',
-			disable404Route: true,
-			favicon: '/favicon.png',
-			routeMiddleware: './src/routeData.ts',
-			customCss: ['./src/styles/theme.css', './src/styles/ui.css', './src/styles/glossary.css', './src/styles/article.css'],
-			components: {
-				Head: './src/components/Head.astro',
-				ThemeSelect: './src/components/ThemeToggle.astro',
-				SiteTitle: './src/components/SiteTitle.astro',
-				PageFrame: './src/components/PageFrame.astro',
-				MobileMenuToggle: './src/components/MenuToggle.astro',
-				TwoColumnContent: './src/components/TwoColumnContent.astro',
-				PageSidebar: './src/components/PageSidebar.astro',
-				Sidebar: './src/components/Sidebar.astro',
-				PageTitle: './src/components/PageTitle.astro',
-				Pagination: './src/components/Pagination.astro',
-				Search: './src/components/Search.astro',
-				Hero: './src/components/Hero.astro',
-				Footer: './src/components/Footer.astro',
-			},
-			sidebar: [
-				{
-					label: 'Fundamentals',
-					items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching'],
-				},
-				{
-					label: 'Patterns',
-					items: ['patterns/reservations'],
-				},
-				{
-					label: 'Technologies',
-					items: ['technologies/postgresql', 'technologies/redis'],
-				},
-				{
-					label: 'Systems',
-					items: [],
-				},
-				'glossary',
-			],
-		}),
+	searchSuggestions: [
+		{
+			href: 'fundamentals/networking/',
+			label: 'Networking',
+			description: 'How components communicate over a network, from a single request to many servers around the world.',
+		},
+		{
+			href: 'fundamentals/databases/',
+			label: 'Databases',
+			description: 'What shape to give data and where to keep it, from relational tables to documents, wide-column, graph, search, and vector stores.',
+		},
+		{
+			href: 'fundamentals/transactions/',
+			label: 'Transactions',
+			description: 'How a database keeps data correct under concurrent access and crashes on one node, from atomic writes to isolation levels, locks, and retries.',
+		},
 	],
+	callouts: { explain: 'In the interview' },
+	glossary: { entries: glossary, skip: glossarySkip },
+	diagrams: { directory: new URL('./src/diagrams/', import.meta.url) },
+	socialImage: 'social-preview.png',
+	socialImageAlt: 'SystemDesign0ver — system design materials for interview preparation.',
+	tutor: {
+		enabled: true,
+		title: 'Concise article — AI can help',
+		intro: 'Help me study this article for practical system design.',
+	},
+	rawMarkdown: { enabled: true },
+	starlight: {
+		title: 'SystemDesign0ver',
+		disable404Route: true,
+		components: {
+			Head: './src/components/Head.astro',
+			Hero: './src/components/Hero.astro',
+			Footer: './src/components/Footer.astro',
+		},
+		sidebar: [
+			{
+				label: 'Fundamentals',
+				items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching'],
+			},
+			{
+				label: 'Patterns',
+				items: ['patterns/reservations'],
+			},
+			{
+				label: 'Technologies',
+				items: ['technologies/postgresql', 'technologies/redis'],
+			},
+			{
+				label: 'Systems',
+				items: [],
+			},
+			'glossary',
+		],
+	},
 });
