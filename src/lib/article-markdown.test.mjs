@@ -6,8 +6,8 @@ import { glossary } from '../data/glossary.mjs';
 const options = {
   title: 'Networking',
   description: 'How systems communicate.',
-  articleUrl: new URL('https://example.com/sysdis/fundamentals/networking/'),
-  siteRoot: new URL('https://example.com/sysdis/'),
+  articleUrl: new URL('https://example.com/sysdes/fundamentals/networking/'),
+  siteRoot: new URL('https://example.com/sysdes/'),
 };
 
 test('exports article metadata, callouts, links, and visible glossary notes without diagrams', () => {
@@ -18,7 +18,7 @@ test('exports article metadata, callouts, links, and visible glossary notes with
     renderedHtml: `<span id="term-tip-${term.id}"></span>`,
   });
   assert.ok(markdown.startsWith('# Networking\n\nHow systems communicate.\n\nIntro'));
-  assert.ok(markdown.includes('[link](https://example.com/sysdis/fundamentals/storage/#crash)'));
+  assert.ok(markdown.includes('[link](https://example.com/sysdes/fundamentals/storage/#crash)'));
   assert.ok(markdown.includes('> **What to do**\n>\n> Keep the data.'));
   assert.ok(!markdown.includes('Diagram:'));
   assert.ok(markdown.includes(`## Glossary notes\n\n**${term.term}`));
@@ -33,7 +33,7 @@ test('keeps fenced examples and inline code unchanged, including Markdown-like c
   const markdown = articleMarkdown({ ...options, body: `${example}\n\n${inline}\n\n[real](#section)` });
   assert.ok(markdown.includes(example));
   assert.ok(markdown.includes(inline));
-  assert.ok(markdown.includes('[real](https://example.com/sysdis/fundamentals/networking/#section)'));
+  assert.ok(markdown.includes('[real](https://example.com/sysdes/fundamentals/networking/#section)'));
 });
 
 test('keeps nested callouts readable while omitting diagrams between paragraphs', () => {

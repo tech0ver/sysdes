@@ -15,7 +15,7 @@ For now, write every topic in full breadth and depth. A reader skips what their 
 
 - Stack: Astro + Starlight, package manager Bun.
 - Language: everything in English — content, code, comments, commit messages. Use simple English that non-native readers can follow.
-- Site URL: `https://tech0ver.github.io/sysdis/` (`base: '/sysdis'`). Every push to `main` builds and deploys the site to GitHub Pages (`.github/workflows/deploy.yml`).
+- Site URL: `https://tech0ver.github.io/sysdes/` (`base: '/sysdes'`). Every push to `main` builds and deploys the site to GitHub Pages (`.github/workflows/deploy.yml`).
 
 ## Layout
 

@@ -12,7 +12,7 @@ const FULL_WIDTH = 720;
 
 export function diagramsPlugin() {
 	return {
-		name: 'sysdis-diagrams',
+		name: 'sysdes-diagrams',
 		leafDirective(node, ctx) {
 			if (node.name !== 'diagram') return;
 			const name = node.attributes?.name;
