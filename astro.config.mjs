@@ -36,7 +36,11 @@ export default defineTech0verConfig({
 	diagrams: { directory: new URL('./src/diagrams/', import.meta.url) },
 	socialImage: 'social-preview.png',
 	socialImageAlt: 'SystemDesign0ver — system design materials for interview preparation.',
-	tutor: { enabled: true, intro: 'Help me study this article for practical system design.' },
+	tutor: {
+		enabled: true,
+		title: 'Concise article — AI can help',
+		intro: 'Help me study this article for practical system design.',
+	},
 	rawMarkdown: { enabled: true },
 	starlight: {
 		title: 'SystemDesign0ver',
