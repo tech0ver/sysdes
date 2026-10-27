@@ -30,7 +30,7 @@ Background processes do the rest of the work:
 
 One postmaster with its memory and data directory is an **instance**; PostgreSQL itself calls it a database cluster, even though it runs on one machine. An instance can hold several databases, but they share memory, processes, and one log of changes. A heavy database slows down its neighbors, and standbys and physical backups always copy the whole instance.
 
-:::interview
+:::explain
 Say that every write goes to one PostgreSQL server, so plan its CPU, memory, and disk for the peak write load. Put a connection pool between the app servers and the database, and size memory so that the data most queries read fits in RAM.
 :::
 
@@ -215,7 +215,7 @@ Building an index on a live table blocks writes to it until the build ends. `CRE
 
 <!-- demo: the same queries with no index, a B-tree, a composite, a partial, and a covering index; compare EXPLAIN (ANALYZE, BUFFERS). -->
 
-:::interview
+:::explain
 Given an index on `(a, b)`, say which queries use it well: a filter on `a`, on `a` and `b` in any order of conditions, and on `a` sorted by `b`. A filter on `b` alone has to read most of the index, unless `a` has few values and the database can skip through them. Put first the column that most queries filter by with `=`.
 :::
 
@@ -286,7 +286,7 @@ Timeouts keep one bad client from holding connections forever: `statement_timeou
 
 <!-- demo: pgbench with 50, 500, and 2,000 clients, directly and through PgBouncer in transaction mode; compare throughput and latency. -->
 
-:::interview
+:::explain
 Draw the app servers, then PgBouncer in transaction mode, then PostgreSQL. Say that a few dozen server connections serve thousands of clients, and that session features such as `SET` or session advisory locks do not work through it.
 :::
 
@@ -774,7 +774,7 @@ Sharding by hand makes the app send each query to the right shard, and gives up 
 
 Shards can live in different regions, each taking writes for its own users. Leave PostgreSQL for this part of the data when the same rows need writes accepted locally in several regions, with availability or coordination that one primary per shard cannot give, or when the write rate needs automatic resharding that you do not want to build. Distributed SQL databases such as CockroachDB and YugabyteDB speak the PostgreSQL protocol, but they are different systems: extensions, isolation, and performance differ, so test what the app relies on. <!-- link: technologies/distributed-sql --> For very high write rates of simple records read by key, a wide-column store such as Cassandra fits. <!-- link: technologies/cassandra -->
 
-:::interview
+:::explain
 Start on one PostgreSQL primary with standbys, and say what would make you change that: the write load of the primary, the size of the largest tables, or the same data needing local writes in several regions. Then name the steps and what each one fixes: tune and scale up, move reads to standbys and caches, move independent groups of tables to their own servers, and shard a dominant data set by a key such as the host or the tenant.
 :::
 

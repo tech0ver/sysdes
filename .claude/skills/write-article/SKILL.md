@@ -68,7 +68,7 @@ Show the plan to the author and wait for approval. If the scope sends topics to 
 - Find markers that point to this article and turn them into relative links: `grep -rn "link: <this-article-path>" src/content/docs`.
 - Link from this article to existing articles instead of leaving markers for them.
 - Point `readMore` of the terms this article explains to its sections.
-- Mark the article as written in ARTICLES.md, and remove its label from the planned topics in the sidebar (`plannedByGroup` in `src/components/SidebarSublist.astro`).
+- Mark the article as written in ARTICLES.md, and remove its label from the planned topics in the sidebar (`plannedTopics` or `plannedTopLevel` in `astro.config.mjs`).
 - Ask the author which planned articles that follow from this one to show on the site as planned. Being in ARTICLES.md does not put a topic on the site.
 
 ## 8. Hand over

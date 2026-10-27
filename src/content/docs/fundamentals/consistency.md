@@ -428,7 +428,7 @@ The wallet now runs in two regions, with sharded accounts, the majority of each 
 | Card top-up | saga | a pending record, the charge as the pivot, the credit retried | kept pending on the side without the majority |
 | Nightly payout job | each payout once, even if two runners overlap | a lock with a lease and a fencing token from a coordination service; a payout ID that the bank processes once | no new lock grants on the side without the service's majority |
 
-:::interview
+:::explain
 For each operation in a design, name the guarantee it needs and why. Then say what it costs without failures, in latency, and during a network partition, in refused requests. "The system is strongly consistent" is not an answer: say which reads and writes are linearizable, which checks are atomic, and which reads may be stale.
 :::
 

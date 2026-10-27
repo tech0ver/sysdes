@@ -20,7 +20,7 @@ As the number of companies grows, two things grow that followers cannot take ove
 
 Figma started in 2020 on one PostgreSQL database on the largest instance AWS offered. By the end of 2022 it had added caching, read replicas, and about a dozen databases split by function, and some tables had still grown to several terabytes and billions of rows ([Figma blog, 2024](https://www.figma.com/blog/how-figmas-databases-team-lived-to-tell-the-scale/)).
 
-:::interview
+:::explain
 Name the three ways to scale from the [AKF scale cube](https://akfpartners.com/growth-blog/scale-cube): clone the whole system (X axis: more copies behind a load balancer, or followers), split it by function (Y axis: separate services and databases), and split it by a key such as the customer (Z axis: each copy holds part of the data). X and Y are cheaper, so they come first. <!-- link: patterns/scaling -->
 :::
 
@@ -199,7 +199,7 @@ Consistent hashing fits where no central map exists and clients compute placemen
 "Consistent" in consistent hashing means only that few keys move when the nodes change. It has nothing to do with the consistency of replicas or transactions.
 :::
 
-:::interview
+:::explain
 Asked how to add nodes, name consistent hashing with virtual nodes for a cache or a leaderless store. For a database, name fixed logical shards with a map, and mention the ring as the scheme many interviewers expect to hear.
 :::
 
@@ -422,7 +422,7 @@ For a multi-tenant app the default combines them: shard by tenant ID, hash it in
 
 Who builds the sharding is a separate choice. Many databases shard on their own: DynamoDB, Cassandra, MongoDB, distributed SQL databases, and Vitess or Citus on top of MySQL or PostgreSQL. Let one of them do it by default, with the tenant ID as its shard key; each runs its own form of the scheme. Shard in the app, as Notion and Figma did, when you need full control over the split or cannot risk moving off the database service you run today. Then the routing, the moves, and the map are yours to build ([Notion blog, 2021](https://www.notion.com/blog/sharding-postgres-at-notion), [Figma blog, 2024](https://www.figma.com/blog/how-figmas-databases-team-lived-to-tell-the-scale/)).
 
-:::interview
+:::explain
 When asked how to shard, answer in order: why one node is not enough, with numbers; the shard key, from the main queries and atomic writes; how keys map to shards and how nodes are added; and what happens to big tenants, hot keys, and queries without the key.
 :::
 

@@ -413,7 +413,7 @@ A planned switch, for an upgrade, can avoid the loss when it waits for the repli
 
 <!-- demo: a primary, two replicas, three Sentinels; kill the primary under writes and count lost writes; partition the old primary with one client (iptables) with and without min-replicas-to-write. -->
 
-:::interview
+:::explain
 Say that Redis replication is asynchronous, so a failover can lose the last confirmed writes. Keep durable business records in the database, use Redis for copies and for data whose recent loss is acceptable, and name `WAIT` and `min-replicas-to-write` as ways to narrow the window, not to close it.
 :::
 

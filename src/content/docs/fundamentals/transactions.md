@@ -67,7 +67,7 @@ A few stores keep no log for this: they write changed pages to new places and, a
 
 The promise that a committed transaction survives a crash is **durability**. It holds only while the database says "ok" after the commit record is flushed. A database set to answer earlier can lose the last commits, even though the app was told they succeeded (more on [when a write is durable](../storage-engines/#surviving-a-crash)).
 
-:::interview
+:::explain
 If asked what a crash does to a transaction in progress, say that a transaction is committed once its commit record is flushed to the log. Recovery keeps every transaction with a commit record and removes the rest, so each transaction is either fully applied or not applied at all.
 :::
 
@@ -352,7 +352,7 @@ Pick a level for each job, not one for the whole app:
 - Snapshot isolation in a read-only transaction for reports and other reads that must agree with each other.
 - Serializable when the rules are many or complex enough that guarding each one by hand is risky, and a retry is cheap. Watch the share of aborted transactions: when it grows, conflicts are frequent, and explicit locks may cost less.
 
-:::interview
+:::explain
 If asked which isolation level to use, name the rule that can break, the anomaly that breaks it, and the cheapest guard against it. Add that the same level name means different things in different databases, so you would check the actual behavior.
 :::
 
@@ -474,7 +474,7 @@ Most such stores still make a write to one record atomic: a write to one row, do
 
 Where such stores offer transactions across records, they come with limits: a cap on the number of records, a higher cost per write, and conflicts that may cancel a transaction instead of making it wait.
 
-:::interview
+:::explain
 If asked about ACID versus BASE, say that ACID names guarantees of transactions, and its isolation is often weaker than serializable by default. BASE names stores that put availability first, often with atomicity for one record only, and let copies disagree for a while. Then say which rule of the design needs more than one record and how you would guard it.
 :::
 

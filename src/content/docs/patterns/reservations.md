@@ -137,7 +137,7 @@ A hold fits when a slow human step sits between the choice and the confirmation,
 Store a hold of a quantity as its own record, and move its units out of the shared count in the same transaction. Make every change of its status a conditional update from the status it leaves, so a confirmation and an expiry cannot both win. Let the client create the hold's ID, and cap active holds per account.
 :::
 
-:::interview
+:::explain
 When asked to design a booking system, say where the hold lives, how the count of free units reflects it, and which update decides the race between a payment and an expiry.
 :::
 
@@ -360,7 +360,7 @@ Being let in does not promise a room. Say so on the waiting page, and keep the t
 Put a waiting room in front of a sale that draws far more buyers than the system can serve. Limit buyers inside and new buyers per minute below capacity, and check the admission token on the server. For a sale that opens at a set time, shuffle the buyers who came before the opening. Pause admission while no units are free, and close the queue only when the sale ends.
 :::
 
-:::interview
+:::explain
 When asked to design a flash sale, separate three problems: a count that every take writes, a load that the whole site cannot serve, and fairness among buyers. Give each its own fix, and keep the database as the owner of the count.
 :::
 
@@ -390,7 +390,7 @@ Offering to one person at a time is slow when many people do not answer: each si
 Treat an offer as a hold with a deadline on the unit, and on the person when they may get only one offer at a time. Keep the deadline in the data with a timer that survives restarts. Check the deadline in the acceptance and in the expiry, act on a timer only when its conditional update wins and record the next step in the same transaction, and decide in advance what an expired offer returns.
 :::
 
-:::interview
+:::explain
 When asked how a ride reaches one driver, name both rules: a ride is offered to one driver at a time, and a driver has at most one open offer. Then say what happens on a refusal, on silence, and on an acceptance that comes after the deadline.
 :::
 

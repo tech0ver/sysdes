@@ -95,7 +95,7 @@ A **load balancer** fixes this. Clients connect to its single address, and it fo
 
 ::diagram{name="load-balancer"}
 
-:::interview
+:::explain
 If asked whether the balancer is a new single point of failure: run several. In active-passive, a standby takes over the address when the main balancer fails. In active-active, DNS spreads clients across the balancers, and health checks remove a failed one from the answers.
 :::
 

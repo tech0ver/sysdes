@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-const fontfile = fileURLToPath(new URL('../src/assets/fonts/site-wordmark.ttf', import.meta.url));
+const fontfile = fileURLToPath(import.meta.resolve('@tech0ver/starlight/font/site-wordmark.ttf'));
 const diagramSource = await readFile(new URL('../src/components/LearningPyramid.astro', import.meta.url), 'utf8');
 const diagramSvg = diagramSource.match(/<svg\b[\s\S]*?<\/svg>/)?.[0];
 if (!diagramSvg) throw new Error('The home page learning diagram SVG was not found.');

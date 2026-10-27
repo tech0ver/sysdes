@@ -1,6 +1,6 @@
 """Drawing helpers for article diagrams: SVG files in src/diagrams/ that use the dg-* classes.
 
-Rules for the result: WRITING.md, "Diagrams". Classes: src/styles/article.css.
+Rules for the result: WRITING.md, "Diagrams". Classes: @tech0ver/starlight/styles/article.css.
 
 Keep one generator per article in the git-ignored task workspace, for example
 .agents/<article-slug>/diagrams_gen.py:
