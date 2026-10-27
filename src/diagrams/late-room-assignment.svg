@@ -1,0 +1,67 @@
+<svg class="diagram-svg" viewBox="0 0 698 252" role="img" aria-labelledby="late-room-assignment-title late-room-assignment-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="late-room-assignment-title">Fixed rooms leave gaps; counts let rooms be handed out at check-in</title>
+  <desc id="late-room-assignment-desc">Two double rooms, 301 and 302, on the nights of June 10, 11, and 12. Guest A stays on June 10, guest B on June 11, guest C on June 12. Left: each booking got a fixed room, A and C in 301 and B in 302. Every night has one free room, but it is 302, then 301, then 302, so a new three-night stay is refused. Right: the site only counts, 1 of 2 taken on each night, so it accepts the new stay. At check-in, A, B, and C get room 301 in turn, and the new stay gets 302 for all three nights.</desc>
+  <defs>
+    <marker id="late-room-assignment-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="late-room-assignment-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-11 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="244"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">A room fixed at booking</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">room per booking</text>
+  <text class="dg-mono dg-muted-text" x="124" y="74" text-anchor="middle">JUNE 10</text>
+  <text class="dg-mono dg-muted-text" x="200" y="74" text-anchor="middle">JUNE 11</text>
+  <text class="dg-mono dg-muted-text" x="276" y="74" text-anchor="middle">JUNE 12</text>
+  <text class="dg-mono dg-muted-text" x="28" y="104">301</text>
+  <rect class="dg-box" x="90" y="86" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="124.0" y="103.0" text-anchor="middle">guest A</text>
+  <rect class="dg-box-failed" x="166" y="86" width="68" height="26" rx="4"/>
+  <text class="dg-code-muted" x="200.0" y="103.0" text-anchor="middle">free</text>
+  <rect class="dg-box" x="242" y="86" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="276.0" y="103.0" text-anchor="middle">guest C</text>
+  <text class="dg-mono dg-muted-text" x="28" y="144">302</text>
+  <rect class="dg-box-failed" x="90" y="126" width="68" height="26" rx="4"/>
+  <text class="dg-code-muted" x="124.0" y="143.0" text-anchor="middle">free</text>
+  <rect class="dg-box" x="166" y="126" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="200.0" y="143.0" text-anchor="middle">guest B</text>
+  <rect class="dg-box-failed" x="242" y="126" width="68" height="26" rx="4"/>
+  <text class="dg-code-muted" x="276.0" y="143.0" text-anchor="middle">free</text>
+  <text class="dg-mono dg-muted-text" x="28" y="196">FREE</text>
+  <rect class="dg-box-accent" x="90" y="178" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="124.0" y="195.0" text-anchor="middle">302</text>
+  <rect class="dg-box-accent" x="166" y="178" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="200.0" y="195.0" text-anchor="middle">301</text>
+  <rect class="dg-box-accent" x="242" y="178" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="276.0" y="195.0" text-anchor="middle">302</text>
+  <line class="dg-rule" x1="28" y1="172" x2="332" y2="172"/>
+  <text class="dg-result" x="180" y="232" text-anchor="middle">Refused: no room is free all 3 nights</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Rooms handed out at check-in</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">a count per night</text>
+  <text class="dg-mono dg-muted-text" x="484" y="74" text-anchor="middle">JUNE 10</text>
+  <text class="dg-mono dg-muted-text" x="560" y="74" text-anchor="middle">JUNE 11</text>
+  <text class="dg-mono dg-muted-text" x="636" y="74" text-anchor="middle">JUNE 12</text>
+  <text class="dg-mono dg-muted-text" x="388" y="104">301</text>
+  <rect class="dg-box" x="450" y="86" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="484.0" y="103.0" text-anchor="middle">guest A</text>
+  <rect class="dg-box" x="526" y="86" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="560.0" y="103.0" text-anchor="middle">guest B</text>
+  <rect class="dg-box" x="602" y="86" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="636.0" y="103.0" text-anchor="middle">guest C</text>
+  <text class="dg-mono dg-muted-text" x="388" y="144">302</text>
+  <rect class="dg-box-accent" x="450" y="126" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="484.0" y="143.0" text-anchor="middle">new stay</text>
+  <rect class="dg-box-accent" x="526" y="126" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="560.0" y="143.0" text-anchor="middle">new stay</text>
+  <rect class="dg-box-accent" x="602" y="126" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="636.0" y="143.0" text-anchor="middle">new stay</text>
+  <text class="dg-mono dg-muted-text" x="388" y="196">TAKEN</text>
+  <rect class="dg-box" x="450" y="178" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="484.0" y="195.0" text-anchor="middle">2 of 2</text>
+  <rect class="dg-box" x="526" y="178" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="560.0" y="195.0" text-anchor="middle">2 of 2</text>
+  <rect class="dg-box" x="602" y="178" width="68" height="26" rx="4"/>
+  <text class="dg-code" x="636.0" y="195.0" text-anchor="middle">2 of 2</text>
+  <line class="dg-rule" x1="388" y1="172" x2="692" y2="172"/>
+  <text class="dg-result" x="540" y="232" text-anchor="middle">Accepted: 302 for the whole stay</text>
+  </g>
+</svg>

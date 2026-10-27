@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 708 250" role="img" aria-labelledby="late-confirm-title late-confirm-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="late-confirm-title">After the deadline, the first update to reach the booking wins</title>
+  <desc id="late-confirm-desc">The hold's deadline was 10:10, and both steps run after it. Left: the payment comes first; its confirmation changes one row, because the booking is still held, and the sweeper's expiry then changes nothing. Right: the sweeper comes first and marks the booking expired, giving its units back; the confirmation then changes no rows.</desc>
+  <defs>
+    <marker id="late-confirm-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="late-confirm-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-6 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="242"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Payment first</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">both after the 10:10 deadline</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="74" text-anchor="middle">PAYMENT</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="74" text-anchor="middle">SWEEPER</text>
+  <line class="dg-lifeline" x1="98.0" y1="82" x2="98.0" y2="206"/>
+  <line class="dg-lifeline" x1="262.0" y1="82" x2="262.0" y2="206"/>
+  <rect class="dg-box-accent" x="23.0" y="92" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="109" text-anchor="middle">confirm: 1 row</text>
+  <rect class="dg-box" x="187.0" y="128" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="145" text-anchor="middle">expire: 0 rows</text>
+  <text class="dg-result" x="180.0" y="232" text-anchor="middle">Confirmed: its units were still counted</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Sweeper first</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">both after the 10:10 deadline</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="74" text-anchor="middle">PAYMENT</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="74" text-anchor="middle">SWEEPER</text>
+  <line class="dg-lifeline" x1="458.0" y1="82" x2="458.0" y2="206"/>
+  <line class="dg-lifeline" x1="622.0" y1="82" x2="622.0" y2="206"/>
+  <rect class="dg-box" x="547.0" y="92" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="109" text-anchor="middle">expire: 1 row</text>
+  <rect class="dg-box-accent" x="383.0" y="128" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="145" text-anchor="middle">confirm: 0 rows</text>
+  <text class="dg-result" x="540.0" y="232" text-anchor="middle">Lost: the units are back on sale</text>
+  </g>
+</svg>

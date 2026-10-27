@@ -1,0 +1,60 @@
+<svg class="diagram-svg" viewBox="0 0 711 352" role="img" aria-labelledby="range-guards-title range-guards-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="range-guards-title">Three ways to stop two overlapping bookings of one apartment</title>
+  <desc id="range-guards-desc">Booking A wants apartment 7 for June 10 to 13, booking B for June 11 to 14. Lock the unit's row: A locks apartment 7, B waits for the lock, A inserts and commits, then B finds A's booking and stops. Exclusion constraint: A inserts, B's insert waits for A, A commits, and the database rejects B. Row per night: A takes its three nights, B waits on the shared nights, A commits, and B changes only one row of three, so it rolls back.</desc>
+  <defs>
+    <marker id="range-guards-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="range-guards-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">APARTMENT 7 · A: JUNE 10–13 · B: JUNE 11–14</text>
+  <line class="dg-rule" x1="240" y1="36" x2="240" y2="344"/>
+  <line class="dg-rule" x1="472" y1="36" x2="472" y2="344"/>
+  <text class="dg-name" x="124" y="54" text-anchor="middle">Lock the unit's row</text>
+  <text class="dg-sub" x="124" y="72" text-anchor="middle">FOR UPDATE on apartment 7</text>
+  <text class="dg-mono dg-muted-text" x="70.0" y="102" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="178.0" y="102" text-anchor="middle">B</text>
+  <line class="dg-lifeline" x1="70.0" y1="110" x2="70.0" y2="306"/>
+  <line class="dg-lifeline" x1="178.0" y1="110" x2="178.0" y2="306"/>
+  <rect class="dg-box" x="18.0" y="120" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="70.0" y="137" text-anchor="middle">lock apt 7</text>
+  <rect class="dg-box-failed" x="126.0" y="156" width="104" height="26" rx="4"/>
+  <text class="dg-code-muted" x="178.0" y="173" text-anchor="middle">lock: waits</text>
+  <rect class="dg-box" x="18.0" y="192" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="70.0" y="209" text-anchor="middle">check, insert</text>
+  <rect class="dg-box" x="18.0" y="228" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="70.0" y="245" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="126.0" y="264" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="178.0" y="281" text-anchor="middle">finds A: stop</text>
+  <text class="dg-result" x="124.0" y="332" text-anchor="middle">B finds A and stops</text>
+  <text class="dg-name" x="356" y="54" text-anchor="middle">Exclusion constraint</text>
+  <text class="dg-sub" x="356" y="72" text-anchor="middle">on apartment and dates</text>
+  <text class="dg-mono dg-muted-text" x="302.0" y="102" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="410.0" y="102" text-anchor="middle">B</text>
+  <line class="dg-lifeline" x1="302.0" y1="110" x2="302.0" y2="306"/>
+  <line class="dg-lifeline" x1="410.0" y1="110" x2="410.0" y2="306"/>
+  <rect class="dg-box" x="250.0" y="120" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="302.0" y="137" text-anchor="middle">insert</text>
+  <rect class="dg-box-failed" x="358.0" y="156" width="104" height="26" rx="4"/>
+  <text class="dg-code-muted" x="410.0" y="173" text-anchor="middle">insert: waits</text>
+  <rect class="dg-box" x="250.0" y="192" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="302.0" y="209" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="358.0" y="228" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="410.0" y="245" text-anchor="middle">rejected</text>
+  <text class="dg-result" x="356.0" y="332" text-anchor="middle">The database rejects B</text>
+  <text class="dg-name" x="588" y="54" text-anchor="middle">Row per night</text>
+  <text class="dg-sub" x="588" y="72" text-anchor="middle">total 1 on each night</text>
+  <text class="dg-mono dg-muted-text" x="534.0" y="102" text-anchor="middle">A</text>
+  <text class="dg-mono dg-muted-text" x="642.0" y="102" text-anchor="middle">B</text>
+  <line class="dg-lifeline" x1="534.0" y1="110" x2="534.0" y2="306"/>
+  <line class="dg-lifeline" x1="642.0" y1="110" x2="642.0" y2="306"/>
+  <rect class="dg-box" x="482.0" y="120" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="534.0" y="137" text-anchor="middle">take 3 nights</text>
+  <rect class="dg-box-failed" x="590.0" y="156" width="104" height="26" rx="4"/>
+  <text class="dg-code-muted" x="642.0" y="173" text-anchor="middle">take: waits</text>
+  <rect class="dg-box" x="482.0" y="192" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="534.0" y="209" text-anchor="middle">COMMIT</text>
+  <rect class="dg-box-accent" x="590.0" y="228" width="104" height="26" rx="4"/>
+  <text class="dg-code" x="642.0" y="245" text-anchor="middle">1 row of 3</text>
+  <text class="dg-result" x="588.0" y="332" text-anchor="middle">B rolls back</text>
+  </g>
+</svg>

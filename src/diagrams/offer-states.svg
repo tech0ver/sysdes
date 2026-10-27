@@ -1,0 +1,28 @@
+<svg class="diagram-svg" viewBox="0 0 572 268" role="img" aria-labelledby="offer-states-title offer-states-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="offer-states-title">An offer ends with an acceptance, a refusal, or its deadline</title>
+  <desc id="offer-states-desc">An offered unit can move to accepted only before the deadline, to declined, or to expired only after the deadline. Each move passes only while the offer is offered. An acceptance that comes after the offer expired changes no rows.</desc>
+  <defs>
+    <marker id="offer-states-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="offer-states-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="96.0" width="160" height="56" rx="6"/>
+  <text class="dg-name" x="96.0" y="122.0" text-anchor="middle">offered</text>
+  <text class="dg-sub" x="96.0" y="138.0" text-anchor="middle">one person asked</text>
+  <rect class="dg-box" x="376" y="20" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="466.0" y="46.0" text-anchor="middle">accepted</text>
+  <text class="dg-sub" x="466.0" y="62.0" text-anchor="middle">before the deadline</text>
+  <path class="dg-arrow dg-message" d="M176 112.0 H260 V48.0 H368" marker-end="url(#offer-states-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="318.0" y="40.0" text-anchor="middle">ACCEPT IN TIME</text>
+  <rect class="dg-box" x="376" y="96" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="466.0" y="122.0" text-anchor="middle">declined</text>
+  <text class="dg-sub" x="466.0" y="138.0" text-anchor="middle">the person says no</text>
+  <path class="dg-arrow" d="M176 124.0 H368" marker-end="url(#offer-states-head)"/>
+  <text class="dg-mono dg-muted-text" x="318.0" y="116.0" text-anchor="middle">DECLINE</text>
+  <rect class="dg-box" x="376" y="172" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="466.0" y="198.0" text-anchor="middle">expired</text>
+  <text class="dg-sub" x="466.0" y="214.0" text-anchor="middle">after the deadline</text>
+  <path class="dg-arrow dg-message" d="M176 136.0 H260 V200.0 H368" marker-end="url(#offer-states-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="318.0" y="192.0" text-anchor="middle">DEADLINE PASSED</text>
+  <path class="dg-arrow dg-empty" d="M420 258 V224" marker-end="url(#offer-states-head)"/>
+  <text class="dg-mono dg-muted-text" x="432" y="254">LATE ACCEPT: 0 ROWS</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 520 330" role="img" aria-labelledby="sweep-delay-title sweep-delay-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sweep-delay-title">A dead hold keeps its units until the next sweep, longer with a backlog</title>
+  <desc id="sweep-delay-desc">Time runs down. A hold expires at 10:10:00, and the sweeper runs every 5 seconds, at 10:10:03 and 10:10:08. When the sweeper keeps up, the units come back at 10:10:03. When it is behind by 5 seconds, the units come back at 10:10:08.</desc>
+  <defs>
+    <marker id="sweep-delay-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sweep-delay-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="16" y="68">EXPIRES 10:10:00</text>
+  <line class="dg-rule" x1="140" y1="64" x2="504" y2="64"/>
+  <text class="dg-mono dg-muted-text" x="16" y="140">SWEEP, 10:10:03</text>
+  <line class="dg-rule" x1="140" y1="136" x2="504" y2="136"/>
+  <text class="dg-mono dg-muted-text" x="16" y="260">SWEEP, 10:10:08</text>
+  <line class="dg-rule" x1="140" y1="256" x2="504" y2="256"/>
+  <text class="dg-name" x="250" y="24" text-anchor="middle">Sweeper keeps up</text>
+  <line class="dg-wait" x1="250" y1="64" x2="250" y2="136"/>
+  <circle class="dg-dot" cx="250" cy="136" r="5"/>
+  <text class="dg-mono dg-accent-text" x="250" y="160" text-anchor="middle">UNITS BACK</text>
+  <text class="dg-mono dg-accent-text" x="250" y="174" text-anchor="middle">AFTER 3 S</text>
+  <text class="dg-name" x="420" y="24" text-anchor="middle">Sweeper behind</text>
+  <line class="dg-wait" x1="420" y1="64" x2="420" y2="256"/>
+  <circle class="dg-dot" cx="420" cy="256" r="5"/>
+  <text class="dg-mono dg-accent-text" x="420" y="280" text-anchor="middle">UNITS BACK</text>
+  <text class="dg-mono dg-accent-text" x="420" y="294" text-anchor="middle">AFTER 8 S</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 713 196" role="img" aria-labelledby="take-expires-blockers-title take-expires-blockers-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="take-expires-blockers-title">A new booking expires the hold that blocks it, in its own transaction</title>
+  <desc id="take-expires-blockers-desc">Bookings of apartment 7. Before: b-11 is held for June 10 to 13 and expired at 10:10. At 10:12, one transaction marks b-11 expired and inserts b-12, held for June 11 to 14. The exclusion constraint compares only bookings in held or confirmed, so b-12 no longer conflicts with b-11.</desc>
+  <defs>
+    <marker id="take-expires-blockers-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="take-expires-blockers-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(0 0)">
+  <text class="dg-mono dg-muted-text" x="16" y="30">BEFORE, 10:12</text>
+  <rect class="dg-box" x="16" y="44" width="220" height="28" rx="4"/>
+  <text class="dg-code" x="126.0" y="62.0" text-anchor="middle">b-11 · held · 10–13</text>
+  <text class="dg-sub" x="126" y="90" text-anchor="middle">expired at 10:10</text>
+  <rect class="dg-zone" x="268" y="20" width="184" height="112" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="283" y="40">ONE TRANSACTION</text>
+  <text class="dg-code" x="284" y="70">1. mark b-11 expired</text>
+  <text class="dg-code" x="284" y="100">2. insert b-12</text>
+  <path class="dg-arrow" d="M236 58 H260" marker-end="url(#take-expires-blockers-head)"/>
+  <path class="dg-arrow" d="M452 58 H476" marker-end="url(#take-expires-blockers-head)"/>
+  <text class="dg-mono dg-muted-text" x="484" y="30">AFTER</text>
+  <rect class="dg-box-failed" x="484" y="44" width="212" height="28" rx="4"/>
+  <text class="dg-code-muted" x="590.0" y="62.0" text-anchor="middle">b-11 · expired · 10–13</text>
+  <rect class="dg-box-accent" x="484" y="84" width="212" height="28" rx="4"/>
+  <text class="dg-code" x="590.0" y="102.0" text-anchor="middle">b-12 · held · 11–14</text>
+  <text class="dg-mono dg-muted-text" x="360" y="166" text-anchor="middle">CONSTRAINT</text>
+  <text class="dg-code" x="360" y="186" text-anchor="middle">WHERE status IN ('held', 'confirmed')</text>
+  </g>
+</svg>

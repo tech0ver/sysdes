@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 708 270" role="img" aria-labelledby="quota-handoff-title quota-handoff-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="quota-handoff-title">A quota moves only after its old owner gives it up</title>
+  <desc id="quota-handoff-desc">Region EU has sold all 50 of its rooms; region US still has rooms in its quota of 50. Left: EU asks for 10 rooms, US records that it gave 10 up, and only then EU gets them and sells. Right: US cannot be reached, so EU gets nothing more, and US keeps its whole quota until it answers.</desc>
+  <defs>
+    <marker id="quota-handoff-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="quota-handoff-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-6 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">US answers</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="62" text-anchor="middle">REGION EU</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="62" text-anchor="middle">REGION US</text>
+  <line class="dg-lifeline" x1="98.0" y1="70" x2="98.0" y2="230"/>
+  <line class="dg-lifeline" x1="262.0" y1="70" x2="262.0" y2="230"/>
+  <rect class="dg-box" x="23.0" y="80" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="97" text-anchor="middle">50 of 50 sold</text>
+  <rect class="dg-box" x="23.0" y="116" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="133" text-anchor="middle">asks for 10</text>
+  <rect class="dg-box-accent" x="187.0" y="152" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="169" text-anchor="middle">records: gave 10</text>
+  <rect class="dg-box" x="23.0" y="188" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="205" text-anchor="middle">gets 10, sells</text>
+  <text class="dg-result" x="180.0" y="256" text-anchor="middle">US gave the rooms up first</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">US cannot be reached</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="62" text-anchor="middle">REGION EU</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="62" text-anchor="middle">REGION US</text>
+  <line class="dg-lifeline" x1="458.0" y1="70" x2="458.0" y2="230"/>
+  <line class="dg-lifeline" x1="622.0" y1="70" x2="622.0" y2="230"/>
+  <rect class="dg-box" x="383.0" y="80" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="97" text-anchor="middle">50 of 50 sold</text>
+  <rect class="dg-box" x="383.0" y="116" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="133" text-anchor="middle">asks for 10</text>
+  <rect class="dg-box-failed" x="547.0" y="152" width="150" height="26" rx="4"/>
+  <text class="dg-code-muted" x="622.0" y="169" text-anchor="middle">no answer</text>
+  <rect class="dg-box-accent" x="383.0" y="188" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="205" text-anchor="middle">sells nothing more</text>
+  <text class="dg-result" x="540.0" y="256" text-anchor="middle">US keeps its 50 rooms</text>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+<svg class="diagram-svg" viewBox="0 0 696 268" role="img" aria-labelledby="night-counts-title night-counts-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="night-counts-title">A three-night stay takes a room on every night, or on none</title>
+  <desc id="night-counts-desc">Inventory rows of double rooms in hotel 12, as taken of total. A stay from June 10 to June 13 needs the nights of June 10, 11, and 12; June 13 is the check-out day and is not taken. Left: every night has a free room, so all three rows go up by one, from 17, 19, and 18 to 18, 20, and 19 of 20, and the transaction commits. Right: June 11 is already full at 20 of 20, so only two rows could change, the transaction rolls back, and no night is taken.</desc>
+  <defs>
+    <marker id="night-counts-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="night-counts-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-12 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="260"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Every night has a room</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">taken &lt; total on 3 nights</text>
+  <text class="dg-mono dg-muted-text" x="28" y="74">NIGHT</text>
+  <text class="dg-mono dg-muted-text" x="98" y="74">TAKEN OF TOTAL</text>
+  <text class="dg-mono dg-muted-text" x="28" y="104">JUNE 10</text>
+  <rect class="dg-box-accent" x="98" y="86" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="173.0" y="103.0" text-anchor="middle">17 → 18 of 20</text>
+  <text class="dg-mono dg-accent-text" x="260" y="104">+1</text>
+  <text class="dg-mono dg-muted-text" x="28" y="140">JUNE 11</text>
+  <rect class="dg-box-accent" x="98" y="122" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="173.0" y="139.0" text-anchor="middle">19 → 20 of 20</text>
+  <text class="dg-mono dg-accent-text" x="260" y="140">+1</text>
+  <text class="dg-mono dg-muted-text" x="28" y="176">JUNE 12</text>
+  <rect class="dg-box-accent" x="98" y="158" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="173.0" y="175.0" text-anchor="middle">18 → 19 of 20</text>
+  <text class="dg-mono dg-accent-text" x="260" y="176">+1</text>
+  <text class="dg-mono dg-muted-text" x="28" y="212">JUNE 13</text>
+  <rect class="dg-box-failed" x="98" y="194" width="150" height="26" rx="4"/>
+  <text class="dg-code-muted" x="173.0" y="211.0" text-anchor="middle">12 of 20</text>
+  <text class="dg-mono dg-muted-text" x="260" y="212">CHECK-OUT</text>
+  <text class="dg-result" x="180" y="250" text-anchor="middle">3 rows of 3: commit</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">One night is full</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">taken &lt; total on 2 nights</text>
+  <text class="dg-mono dg-muted-text" x="388" y="74">NIGHT</text>
+  <text class="dg-mono dg-muted-text" x="458" y="74">TAKEN OF TOTAL</text>
+  <text class="dg-mono dg-muted-text" x="388" y="104">JUNE 10</text>
+  <rect class="dg-box" x="458" y="86" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="533.0" y="103.0" text-anchor="middle">17 of 20</text>
+  <text class="dg-mono dg-muted-text" x="388" y="140">JUNE 11</text>
+  <rect class="dg-box-accent" x="458" y="122" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="533.0" y="139.0" text-anchor="middle">20 of 20</text>
+  <text class="dg-mono dg-accent-text" x="620" y="140">FULL</text>
+  <text class="dg-mono dg-muted-text" x="388" y="176">JUNE 12</text>
+  <rect class="dg-box" x="458" y="158" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="533.0" y="175.0" text-anchor="middle">18 of 20</text>
+  <text class="dg-mono dg-muted-text" x="388" y="212">JUNE 13</text>
+  <rect class="dg-box-failed" x="458" y="194" width="150" height="26" rx="4"/>
+  <text class="dg-code-muted" x="533.0" y="211.0" text-anchor="middle">12 of 20</text>
+  <text class="dg-mono dg-muted-text" x="620" y="212">CHECK-OUT</text>
+  <text class="dg-result" x="540" y="250" text-anchor="middle">2 rows of 3: rollback</text>
+  </g>
+</svg>

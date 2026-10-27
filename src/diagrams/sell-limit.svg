@@ -1,0 +1,64 @@
+<svg class="diagram-svg" viewBox="0 0 672 236" role="img" aria-labelledby="sell-limit-title sell-limit-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sell-limit-title">Twenty rooms sold twenty-two times</title>
+  <desc id="sell-limit-desc">Hotel 12 has 20 double rooms for a June night, with a sell limit of 22, and 22 bookings. Left: three guests do not come, so 19 guests fill 19 rooms and one room stays empty. Right: everyone comes, 20 guests fill the 20 rooms, and two guests are walked to a hotel nearby.</desc>
+  <defs>
+    <marker id="sell-limit-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sell-limit-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-24 0)">
+  <line class="dg-rule" x1="360" y1="36" x2="360" y2="196"/>
+  <text class="dg-code" x="360" y="20" text-anchor="middle">total 20 · sell_limit 22 · taken 22</text>
+  <text class="dg-name" x="180" y="56" text-anchor="middle">Three guests do not come</text>
+  <rect class="dg-bar" x="45" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="73" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="101" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="129" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="157" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="185" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="213" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="241" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="269" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="297" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="45" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="73" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="101" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="129" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="157" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="185" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="213" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="241" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="269" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-box-failed" x="297" y="100" width="22" height="22" rx="3"/>
+  <text class="dg-mono dg-muted-text" x="308" y="140" text-anchor="middle">EMPTY</text>
+  <text class="dg-result" x="180" y="192" text-anchor="middle">19 guests, 1 room empty</text>
+  <text class="dg-name" x="540" y="56" text-anchor="middle">Everyone comes</text>
+  <rect class="dg-bar" x="405" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="433" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="461" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="489" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="517" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="545" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="573" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="601" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="629" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="657" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="405" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="433" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="461" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="489" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="517" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="545" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="573" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="601" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="629" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="657" y="100" width="22" height="22" rx="3"/>
+  <rect class="dg-box-accent" x="405" y="142" width="22" height="22" rx="3"/>
+  <rect class="dg-box-accent" x="433" y="142" width="22" height="22" rx="3"/>
+  <text class="dg-mono dg-accent-text" x="467" y="157">WALKED TO A HOTEL NEARBY</text>
+  <text class="dg-result" x="540" y="192" text-anchor="middle">20 guests, 2 walked</text>
+  <rect class="dg-bar" x="244" y="212" width="14" height="14" rx="2"/>
+  <text class="dg-mono dg-muted-text" x="264" y="223">ROOM WITH A GUEST</text>
+  <rect class="dg-box-failed" x="400" y="212" width="14" height="14" rx="2"/>
+  <text class="dg-mono dg-muted-text" x="420" y="223">EMPTY ROOM</text>
+  </g>
+</svg>

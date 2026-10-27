@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 708 292" role="img" aria-labelledby="cancel-before-hold-title cancel-before-hold-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="cancel-before-hold-title">A cancel that arrives before its hold</title>
+  <desc id="cancel-before-hold-desc">The site sends a hold for booking b-7f3a to the partner, then a cancel; the cancel arrives first. Left: the partner has nothing to cancel, and when the late hold arrives, it holds a car nobody will confirm. Right: the partner remembers that b-7f3a was cancelled, and refuses the late hold.</desc>
+  <defs>
+    <marker id="cancel-before-hold-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="cancel-before-hold-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-6 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="284"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Partner forgets</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">booking b-7f3a</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="80" text-anchor="middle">SITE</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="80" text-anchor="middle">PARTNER</text>
+  <line class="dg-lifeline" x1="98.0" y1="88" x2="98.0" y2="248"/>
+  <line class="dg-lifeline" x1="262.0" y1="88" x2="262.0" y2="248"/>
+  <rect class="dg-box" x="23.0" y="98" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="115" text-anchor="middle">send hold</text>
+  <rect class="dg-box" x="23.0" y="134" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="151" text-anchor="middle">send cancel</text>
+  <rect class="dg-box" x="187.0" y="170" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="187" text-anchor="middle">cancel: nothing</text>
+  <rect class="dg-box-accent" x="187.0" y="206" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="223" text-anchor="middle">late hold: held</text>
+  <text class="dg-result" x="180.0" y="274" text-anchor="middle">A car nobody will confirm</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Partner remembers</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">booking b-7f3a</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="80" text-anchor="middle">SITE</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="80" text-anchor="middle">PARTNER</text>
+  <line class="dg-lifeline" x1="458.0" y1="88" x2="458.0" y2="248"/>
+  <line class="dg-lifeline" x1="622.0" y1="88" x2="622.0" y2="248"/>
+  <rect class="dg-box" x="383.0" y="98" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="115" text-anchor="middle">send hold</text>
+  <rect class="dg-box" x="383.0" y="134" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="151" text-anchor="middle">send cancel</text>
+  <rect class="dg-box" x="547.0" y="170" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="187" text-anchor="middle">cancel: remember</text>
+  <rect class="dg-box-accent" x="547.0" y="206" width="150" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="223" text-anchor="middle">late hold: refused</text>
+  <text class="dg-result" x="540.0" y="274" text-anchor="middle">The late hold is refused</text>
+  </g>
+</svg>

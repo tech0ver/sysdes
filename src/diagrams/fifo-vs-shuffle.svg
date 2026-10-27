@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 710 270" role="img" aria-labelledby="fifo-vs-shuffle-title fifo-vs-shuffle-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fifo-vs-shuffle-title">First in, first out rewards the fastest arrival; a shuffle at the opening does not</title>
+  <desc id="fifo-vs-shuffle-desc">The same queue and the same four buyers in both panels: the queue collects from 09:30, and the sale opens at 10:00. A bot came at 09:31, A at 09:52, B at 09:58, and D at 10:03, after the opening. Left: first in, first out, so the bot is first. Right: the three buyers who came before 10:00 are shuffled at the opening, so the bot gets a random place among them; D, who came later, goes to the end.</desc>
+  <defs>
+    <marker id="fifo-vs-shuffle-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="fifo-vs-shuffle-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-5 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">First in, first out</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">queue from 09:30, sale at 10:00</text>
+  <text class="dg-mono dg-muted-text" x="36" y="86" text-anchor="middle">1</text>
+  <rect class="dg-box-accent" x="52" y="68" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="159.0" y="85.0" text-anchor="middle">bot · came at 09:31</text>
+  <text class="dg-mono dg-muted-text" x="36" y="124" text-anchor="middle">2</text>
+  <rect class="dg-box" x="52" y="106" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="159.0" y="123.0" text-anchor="middle">A · came at 09:52</text>
+  <text class="dg-mono dg-muted-text" x="36" y="162" text-anchor="middle">3</text>
+  <rect class="dg-box" x="52" y="144" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="159.0" y="161.0" text-anchor="middle">B · came at 09:58</text>
+  <text class="dg-mono dg-muted-text" x="36" y="212" text-anchor="middle">4</text>
+  <rect class="dg-box" x="52" y="194" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="159.0" y="211.0" text-anchor="middle">D · came at 10:03</text>
+  <text class="dg-result" x="180" y="250" text-anchor="middle">The bot is first</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Shuffle at the opening</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">queue from 09:30, sale at 10:00</text>
+  <text class="dg-mono dg-muted-text" x="396" y="86" text-anchor="middle">1</text>
+  <rect class="dg-box" x="412" y="68" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="519.0" y="85.0" text-anchor="middle">B · came at 09:58</text>
+  <text class="dg-mono dg-muted-text" x="396" y="124" text-anchor="middle">2</text>
+  <rect class="dg-box" x="412" y="106" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="519.0" y="123.0" text-anchor="middle">A · came at 09:52</text>
+  <text class="dg-mono dg-muted-text" x="396" y="162" text-anchor="middle">3</text>
+  <rect class="dg-box" x="412" y="144" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="519.0" y="161.0" text-anchor="middle">bot · came at 09:31</text>
+  <text class="dg-mono dg-muted-text" x="396" y="212" text-anchor="middle">4</text>
+  <rect class="dg-box" x="412" y="194" width="214" height="26" rx="4"/>
+  <text class="dg-code" x="519.0" y="211.0" text-anchor="middle">D · came at 10:03</text>
+  <path class="dg-bracket-accent" d="M632 70 H638 V176 H632"/>
+  <text class="dg-mono dg-accent-text" x="646" y="127">SHUFFLED</text>
+  <text class="dg-result" x="540" y="250" text-anchor="middle">The bot gets a random place</text>
+  </g>
+</svg>

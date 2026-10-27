@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 318" role="img" aria-labelledby="pay-steps-title pay-steps-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="pay-steps-title">Authorize, confirm in the database, then capture</title>
+  <desc id="pay-steps-desc">The site talks to its database and to the payment provider. 1: it extends the hold and records a payment attempt. 2: it authorizes the amount, and the provider answers authorized. 3: in one transaction, it confirms the booking and records that a capture is due; this is the decision. Before it, every step is undone by cancelling the authorization. 4: after it, the site captures the amount and retries the capture until the provider answers captured.</desc>
+  <defs>
+    <marker id="pay-steps-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="pay-steps-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="260" y="30" text-anchor="middle">DATABASE</text>
+  <line class="dg-lifeline" x1="260" y1="40" x2="260" y2="308"/>
+  <text class="dg-mono dg-muted-text" x="450" y="30" text-anchor="middle">SITE</text>
+  <line class="dg-lifeline" x1="450" y1="40" x2="450" y2="308"/>
+  <text class="dg-mono dg-muted-text" x="640" y="30" text-anchor="middle">PROVIDER</text>
+  <line class="dg-lifeline" x1="640" y1="40" x2="640" y2="308"/>
+  <text class="dg-mono dg-muted-text" x="355.0" y="66" text-anchor="middle">1 EXTEND HOLD, ATTEMPT</text>
+  <path class="dg-arrow" d="M450 74 H268" marker-end="url(#pay-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="545.0" y="106" text-anchor="middle">2 AUTHORIZE</text>
+  <path class="dg-arrow" d="M450 114 H632" marker-end="url(#pay-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="545.0" y="142" text-anchor="middle">AUTHORIZED</text>
+  <path class="dg-arrow" d="M640 150 H458" marker-end="url(#pay-steps-head)"/>
+  <text class="dg-mono dg-accent-text" x="355.0" y="186" text-anchor="middle">3 CONFIRM, CAPTURE DUE</text>
+  <path class="dg-arrow dg-message" d="M450 194 H268" marker-end="url(#pay-steps-head-accent)"/>
+  <line class="dg-guide" x1="16" y1="214" x2="704" y2="214"/>
+  <text class="dg-mono dg-muted-text" x="545.0" y="246" text-anchor="middle">4 CAPTURE</text>
+  <path class="dg-arrow" d="M450 254 H632" marker-end="url(#pay-steps-head)"/>
+  <text class="dg-mono dg-muted-text" x="545.0" y="282" text-anchor="middle">CAPTURED</text>
+  <path class="dg-arrow" d="M640 290 H458" marker-end="url(#pay-steps-head)"/>
+  <text class="dg-name" x="16" y="74" text-anchor="start">Before the decision</text>
+  <text class="dg-sub" x="16" y="92" text-anchor="start">undo: cancel the</text>
+  <text class="dg-sub" x="16" y="108" text-anchor="start">authorization</text>
+  <text class="dg-name" x="16" y="246" text-anchor="start">After the decision</text>
+  <text class="dg-sub" x="16" y="264" text-anchor="start">retry the capture</text>
+</svg>

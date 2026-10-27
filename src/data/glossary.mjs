@@ -67,6 +67,11 @@ const redis = (anchor, section) => ({
 	label: `Redis: ${section}`,
 });
 
+const reservations = (anchor, section) => ({
+	href: `patterns/reservations/#${anchor}`,
+	label: `Reservations: ${section}`,
+});
+
 export const glossarySkip = ['SQL Server', 'commit the layout', 'Recall.ai'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
@@ -453,6 +458,7 @@ export const glossary = [
 		short: 'The latest time by which a whole request must finish.',
 		explanation: 'Each service passes the remaining time to the services it calls, so they can stop work that is no longer needed.',
 		readMore: networking('when-a-call-fails', 'When a call fails'),
+		explainedIn: ['patterns/reservations'],
 	},
 	{
 		id: 'exponential-backoff',
@@ -3350,5 +3356,86 @@ export const glossary = [
 		explanation:
 			'A GIN index over it finds the rows that contain the words of a query.',
 		readMore: postgresql('searching-by-words', 'Searching by words'),
+	},
+	{
+		id: 'inventory',
+		term: 'Inventory',
+		aliases: ['inventory', 'Inventory'],
+		short: 'The count of units of one type that exist and that are taken, per period, which a sale checks and changes.',
+		explanation:
+			'One row per unit type and period, such as a room type and a night, holds both numbers. A sale raises the taken count with an atomic update that keeps it within the total.',
+		readMore: reservations('counting-interchangeable-units-per-period', 'Counting interchangeable units per period'),
+	},
+	{
+		id: 'escrow',
+		term: 'Escrow',
+		aliases: ['escrow', 'Escrow'],
+		short: 'Taking a quantity out of a shared count at once and keeping it in the holder\'s own record until it is confirmed or returned.',
+		explanation:
+			'The count always shows the worst case, so nothing is sold twice even if every hold ends in a sale. The count\'s row stays locked only for a short transaction, while the hold lasts minutes.',
+		readMore: reservations('holding-units-while-a-buyer-decides', 'Holding units while a buyer decides'),
+	},
+	{
+		id: 'sweeper',
+		term: 'Sweeper',
+		aliases: ['sweeper', 'sweepers', 'Sweeper'],
+		short: 'A background job that finds expired holds and returns their units.',
+		explanation:
+			'It reads an index on the expiry in small batches and uses a conditional update, so it is safe to run twice or next to a confirmation. Its interval, plus any backlog, is how long a dead hold keeps units out of sale.',
+		readMore: reservations('returning-expired-holds', 'Returning expired holds'),
+	},
+	{
+		id: 'authorization-capture',
+		term: 'Authorization and capture',
+		aliases: ['authorization', 'authorizations', 'Authorization', 'capture', 'Capture'],
+		short: 'A card payment in two steps: the authorization reserves the amount without moving money, and the capture takes it later.',
+		explanation:
+			'Cancelling an authorization moves no money, so a system can authorize first and capture only after its own records confirm the purchase. An authorization that nobody captures runs out after some days.',
+		readMore: reservations('paying-for-a-hold', 'Paying for a hold'),
+	},
+	{
+		id: 'no-show',
+		term: 'No-show',
+		aliases: ['no-show', 'no-shows', 'No-show', 'No-shows'],
+		short: 'A customer with a booking who neither arrives nor cancels.',
+		explanation:
+			'The unit stays unused, though another buyer would have paid for it. The share of no-shows and its spread decide how far a business may overbook.',
+		readMore: reservations('selling-more-than-you-have', 'Selling more than you have'),
+	},
+	{
+		id: 'overbooking',
+		term: 'Overbooking',
+		aliases: ['overbooking', 'Overbooking', 'overbook'],
+		short: 'Selling more units than exist, on purpose, because some buyers do not come.',
+		explanation:
+			'It fills units that no-shows would leave empty, at the cost of compensating the buyers who find no unit. It fits units with a near equivalent and a bounded cost per broken promise.',
+		readMore: reservations('selling-more-than-you-have', 'Selling more than you have'),
+	},
+	{
+		id: 'quota',
+		term: 'Quota',
+		aliases: ['quota', 'quotas', 'Quota', 'Quotas'],
+		short: 'A share of a limited stock that one server or region may sell without asking the others.',
+		explanation:
+			'Sales need no shared row, but units get stranded: one place turns buyers away while another still has stock. A quota moves only after its old owner records that it gave it up.',
+		readMore: reservations('selling-a-unit-everyone-wants', 'Selling a unit everyone wants'),
+	},
+	{
+		id: 'waiting-room',
+		term: 'Waiting room',
+		aliases: ['waiting room', 'waiting rooms', 'Waiting room'],
+		short: 'A queue in front of a site that lets visitors in at a pace the system can serve.',
+		explanation:
+			'It limits visitors inside and new visitors per minute, and the server checks a token that each admitted visitor gets. Admission does not promise a unit of stock.',
+		readMore: reservations('letting-buyers-in-at-a-pace', 'Letting buyers in at a pace'),
+	},
+	{
+		id: 'offer-with-a-deadline',
+		term: 'Offer with a deadline',
+		aliases: ['offer with a deadline', 'offers with a deadline', 'Offer with a deadline'],
+		short: 'A hold that waits for one chosen person\'s answer until a deadline.',
+		explanation:
+			'The acceptance and the expiry are conditional updates that both check the deadline, so a late acceptance loses. A timer that survives restarts acts on the deadline, and the business decides what an expired offer returns.',
+		readMore: reservations('offering-to-one-person-at-a-time', 'Offering to one person at a time'),
 	},
 ];

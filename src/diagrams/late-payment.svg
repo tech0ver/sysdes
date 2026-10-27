@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 290" role="img" aria-labelledby="late-payment-title late-payment-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="late-payment-title">A late authorization confirms a held booking, or takes its units again in one transaction</title>
+  <desc id="late-payment-desc">An authorization for booking b-7f3a succeeds after the deadline. If the booking is still held, the confirmation changes one row and the booking is confirmed, because its units were still counted. If it is expired, one transaction moves it from expired to confirmed with a conditional update and takes every night again. If every night is free, the transaction commits and the booking is confirmed. If a night is full, the transaction rolls back, the booking stays expired, and the site cancels the authorization.</desc>
+  <defs>
+    <marker id="late-payment-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="late-payment-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="130" width="134" height="52" rx="6"/>
+  <text class="dg-name" x="83.0" y="154.0" text-anchor="middle">Authorized late</text>
+  <text class="dg-sub" x="83.0" y="170.0" text-anchor="middle">payment for b-7f3a</text>
+  <rect class="dg-box" x="230" y="30" width="230" height="52" rx="6"/>
+  <text class="dg-name" x="345.0" y="54.0" text-anchor="middle">still held</text>
+  <text class="dg-sub" x="345.0" y="70.0" text-anchor="middle">confirm: 1 row</text>
+  <rect class="dg-zone" x="220" y="112" width="250" height="160" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="235" y="132">ONE TRANSACTION</text>
+  <rect class="dg-box-accent" x="236" y="144" width="218" height="30" rx="4"/>
+  <text class="dg-code" x="345.0" y="163.0" text-anchor="middle">expired → confirmed: 1 row</text>
+  <path class="dg-arrow" d="M345 174 V198" marker-end="url(#late-payment-head)"/>
+  <rect class="dg-box" x="236" y="206" width="218" height="30" rx="4"/>
+  <text class="dg-code" x="345.0" y="225.0" text-anchor="middle">take every night again</text>
+  <path class="dg-arrow" d="M150 150 H190 V56 H222" marker-end="url(#late-payment-head)"/>
+  <path class="dg-arrow" d="M150 162 H190 V192 H212" marker-end="url(#late-payment-head)"/>
+  <rect class="dg-box" x="548" y="30" width="156" height="52" rx="6"/>
+  <text class="dg-name" x="626.0" y="54.0" text-anchor="middle">confirmed</text>
+  <text class="dg-sub" x="626.0" y="70.0" text-anchor="middle">units still counted</text>
+  <path class="dg-arrow" d="M460 56 H540" marker-end="url(#late-payment-head)"/>
+  <rect class="dg-box" x="548" y="130" width="156" height="52" rx="6"/>
+  <text class="dg-name" x="626.0" y="154.0" text-anchor="middle">confirmed</text>
+  <text class="dg-sub" x="626.0" y="170.0" text-anchor="middle">committed</text>
+  <rect class="dg-box" x="548" y="214" width="156" height="52" rx="6"/>
+  <text class="dg-name" x="626.0" y="238.0" text-anchor="middle">rolled back</text>
+  <text class="dg-sub" x="626.0" y="254.0" text-anchor="middle">authorization cancelled</text>
+  <path class="dg-arrow" d="M470 184 H505 V156 H540" marker-end="url(#late-payment-head)"/>
+  <path class="dg-arrow" d="M470 200 H505 V240 H540" marker-end="url(#late-payment-head)"/>
+  <text class="dg-mono dg-muted-text" x="525" y="148" text-anchor="middle">FREE</text>
+  <text class="dg-mono dg-muted-text" x="525" y="232" text-anchor="middle">FULL</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 637 300" role="img" aria-labelledby="overbooking-threshold-title overbooking-threshold-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="overbooking-threshold-title">Take one more booking while the chance of a full house stays below V / (V + C)</title>
+  <desc id="overbooking-threshold-desc">A model: 20 rooms, each guest fails to come with a chance of 10% on their own, a room brings V = €200, and turning a guest away costs C = €300, so the line is at 200 / 500 = 0.4. For each number of bookings already made, the bar is the chance P that they fill all 20 rooms: 0.12 with 20 booked, 0.36 with 21, 0.62 with 22, and 0.81 with 23. With 20 or 21 booked, P is below the line, so the hotel takes one more booking; with 22 booked, it stops, so the sell limit is 22.</desc>
+  <defs>
+    <marker id="overbooking-threshold-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="overbooking-threshold-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-72 0)">
+  <text class="dg-mono dg-muted-text" x="120" y="24">P: THE BOOKINGS ALREADY MADE FILL ALL 20 ROOMS</text>
+  <text class="dg-mono dg-muted-text" x="120" y="44">MODEL: 10% OF GUESTS DO NOT COME, EACH ON THEIR OWN · V = €200 · C = €300</text>
+  <text class="dg-mono dg-muted-text" x="108" y="90" text-anchor="end">1.0</text>
+  <text class="dg-mono dg-muted-text" x="108" y="240" text-anchor="end">0</text>
+  <line class="dg-line" x1="120" y1="236" x2="572" y2="236"/>
+  <rect class="dg-box-accent" x="142" y="217.76350181141459" width="80" height="18.236498188585415" rx="3"/>
+  <text class="dg-code" x="182" y="209.76350181141459" text-anchor="middle">0.12</text>
+  <text class="dg-mono dg-muted-text" x="182" y="256" text-anchor="middle">20 BOOKED</text>
+  <text class="dg-mono dg-accent-text" x="182" y="272" text-anchor="middle">TAKE ONE MORE</text>
+  <rect class="dg-box-accent" x="252" y="181.2905054342438" width="80" height="54.70949456575619" rx="3"/>
+  <text class="dg-code" x="292" y="173.2905054342438" text-anchor="middle">0.36</text>
+  <text class="dg-mono dg-muted-text" x="292" y="256" text-anchor="middle">21 BOOKED</text>
+  <text class="dg-mono dg-accent-text" x="292" y="272" text-anchor="middle">TAKE ONE MORE</text>
+  <rect class="dg-bar" x="362" y="142.99385923821447" width="80" height="93.00614076178553" rx="3"/>
+  <text class="dg-code" x="402" y="134.99385923821447" text-anchor="middle">0.62</text>
+  <text class="dg-mono dg-muted-text" x="402" y="256" text-anchor="middle">22 BOOKED</text>
+  <text class="dg-mono dg-muted-text" x="402" y="272" text-anchor="middle">STOP</text>
+  <rect class="dg-bar" x="472" y="114.90965202779296" width="80" height="121.09034797220704" rx="3"/>
+  <text class="dg-code" x="512" y="106.90965202779296" text-anchor="middle">0.81</text>
+  <text class="dg-mono dg-muted-text" x="512" y="256" text-anchor="middle">23 BOOKED</text>
+  <text class="dg-mono dg-muted-text" x="512" y="272" text-anchor="middle">STOP</text>
+  <line class="dg-message" x1="120" y1="176.0" x2="572" y2="176.0"/>
+  <text class="dg-mono dg-accent-text" x="580" y="180.0">V / (V + C) = 0.4</text>
+  </g>
+</svg>

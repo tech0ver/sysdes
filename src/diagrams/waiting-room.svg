@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 720 218" role="img" aria-labelledby="waiting-room-title waiting-room-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="waiting-room-title">A waiting room lets buyers in at a pace the sale can serve</title>
+  <desc id="waiting-room-desc">100,000 buyers open the promotion. The waiting room holds them in a queue and lets in 500 per minute, with at most 2,000 inside, each with a signed token. The booking API checks the token on every request, so a direct call without a token is refused.</desc>
+  <defs>
+    <marker id="waiting-room-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="waiting-room-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="16" y="58" width="128" height="56" rx="6"/>
+  <text class="dg-name" x="80.0" y="84.0" text-anchor="middle">Buyers</text>
+  <text class="dg-sub" x="80.0" y="100.0" text-anchor="middle">100,000</text>
+  <rect class="dg-zone" x="196" y="32" width="200" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="211" y="52">WAITING ROOM</text>
+  <rect class="dg-bar" x="212" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="240" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="268" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="296" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="324" y="72" width="22" height="22" rx="3"/>
+  <rect class="dg-bar" x="352" y="72" width="22" height="22" rx="3"/>
+  <text class="dg-sub" x="212" y="120" text-anchor="start">a queue</text>
+  <path class="dg-arrow" d="M144 86 H188" marker-end="url(#waiting-room-head)"/>
+  <rect class="dg-zone" x="476" y="32" width="228" height="108" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="491" y="52">SALE, AT MOST 2,000 INSIDE</text>
+  <rect class="dg-box-accent" x="492" y="60" width="196" height="56" rx="6"/>
+  <text class="dg-name" x="590.0" y="86.0" text-anchor="middle">Booking API</text>
+  <text class="dg-sub" x="590.0" y="102.0" text-anchor="middle">checks the token</text>
+  <path class="dg-arrow dg-message" d="M396 86 H484" marker-end="url(#waiting-room-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="436" y="78" text-anchor="middle">500 / MIN</text>
+  <text class="dg-mono dg-accent-text" x="436" y="104" text-anchor="middle">TOKEN</text>
+  <path class="dg-arrow dg-empty" d="M80 114 V196 H580 V124" marker-end="url(#waiting-room-head)"/>
+  <text class="dg-mono dg-muted-text" x="330" y="188" text-anchor="middle">DIRECT CALL, NO TOKEN</text>
+  <line class="dg-cross" x1="574" y1="152" x2="586" y2="164"/>
+  <line class="dg-cross" x1="574" y1="164" x2="586" y2="152"/>
+  <text class="dg-mono dg-muted-text" x="592" y="162">REFUSED</text>
+</svg>
