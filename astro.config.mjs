@@ -7,7 +7,7 @@ import { glossaryPlugin } from './src/plugins/glossary.mjs';
 import { blocksPlugin } from './src/plugins/blocks.mjs';
 import { diagramsPlugin } from './src/plugins/diagrams.mjs';
 
-const base = '/sysdis';
+const base = '/sysdes';
 
 export default defineConfig({
 	site: 'https://tech0ver.github.io',

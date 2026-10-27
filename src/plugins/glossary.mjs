@@ -75,7 +75,7 @@ export function glossaryPlugin({ entries, skip = [], base = '/' }) {
 		);
 
 		return {
-			name: 'sysdis-glossary',
+			name: 'sysdes-glossary',
 			text(node, ctx) {
 				for (let p = ctx.parent(node); p; p = ctx.parent(p)) {
 					if (p.type === 'element' && SKIP_TAGS.has(p.tagName)) return;

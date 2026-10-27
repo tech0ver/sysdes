@@ -7,7 +7,7 @@ Start the dev server first (`bun run dev`), then run:
 
 With no names it shoots every diagram on the page. Screenshots go to .agents/<article-slug>/diagram-shots/
 as <name>-<view>.png. Environment:
-    BASE_URL  the site root, default http://localhost:4321/sysdis/
+    BASE_URL  the site root, default http://localhost:4321/sysdes/
     VIEWS     which views to take, default "light dark light-phone"
     CHROME    path to a Chrome binary; default: /usr/bin/google-chrome if it exists, else Playwright's Chromium
 """
@@ -26,7 +26,7 @@ def main():
         sys.exit(__doc__)
     page_path = sys.argv[1].strip('/')
     names = sys.argv[2:]
-    url = os.environ.get('BASE_URL', 'http://localhost:4321/sysdis/').rstrip('/') + f'/{page_path}/'
+    url = os.environ.get('BASE_URL', 'http://localhost:4321/sysdes/').rstrip('/') + f'/{page_path}/'
     views = os.environ.get('VIEWS', 'light dark light-phone').split()
     out = ROOT / '.agents' / page_path.split('/')[-1] / 'diagram-shots'
     out.mkdir(parents=True, exist_ok=True)

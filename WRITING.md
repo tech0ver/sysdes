@@ -88,7 +88,7 @@ Diagrams let the reader see the material on the running example, and grasp it fa
 
 ## Glossary
 
-The glossary (`src/data/glossary.mjs`) is the one place where terms are defined. The site shows each entry on the [Glossary](https://tech0ver.github.io/sysdis/glossary/) page, and the first mention of a term on a page gets a tooltip with the whole entry and its `readMore` link.
+The glossary (`src/data/glossary.mjs`) is the one place where terms are defined. The site shows each entry on the [Glossary](https://tech0ver.github.io/sysdes/glossary/) page, and the first mention of a term on a page gets a tooltip with the whole entry and its `readMore` link.
 
 - Add every term or abbreviation that a reader may not know and the page does not explain: protocols, patterns, jargon.
 - Only the first mention of a term on a page gets a tooltip. A page that a term's `readMore` points to explains the term in its own text, so it gets no tooltip for that term. Set `readMore` to the section (`page/#anchor`) that explains the term, and keep `short` and `explanation` in line with that text.

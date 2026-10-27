@@ -12,7 +12,7 @@ const BLOCKS = new Set(['do', 'tradeoff', 'interview', 'avoid', 'distinguish']);
 
 export function blocksPlugin() {
 	return {
-		name: 'sysdis-blocks',
+		name: 'sysdes-blocks',
 		containerDirective(node, ctx) {
 			if (!BLOCKS.has(node.name)) return;
 			ctx.setProperty(node, 'data', {
