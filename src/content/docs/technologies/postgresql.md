@@ -826,3 +826,5 @@ Push one primary as far as tuning, a larger machine, standbys, and caches take i
 - Hans-Jürgen Schönig. [Mastering PostgreSQL 17](https://www.packtpub.com/en-us/product/mastering-postgresql-17-9781836205968), 6th edition. Packt, 2024. Chapters 2, 3, 5, 6, 9, and 10.
 - Shaun Thomas. [PostgreSQL 12 High Availability Cookbook](https://www.packtpub.com/en-us/product/postgresql-12-high-availability-cookbook-9781838984854), 3rd edition. Packt, 2020. Chapters 4, 7, 8, 10, and 15.
 - Bohan Zhang. [Scaling PostgreSQL to power 800 million ChatGPT users](https://openai.com/index/scaling-postgresql/). OpenAI, 2026.
+
+::mark-as-read

@@ -217,3 +217,5 @@ When a dependency keeps failing, retries only make it worse. A **circuit breaker
 - Ilya Grigorik. [High Performance Browser Networking](https://hpbn.co/). O'Reilly, 2013. Chapters 3 and 16–18.
 - Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 9.
 - Michael T. Nygard. [Release It!](https://pragprog.com/titles/mnee2/release-it-second-edition/), 2nd edition. The Pragmatic Bookshelf, 2018. Chapter 5.
+
+::mark-as-read

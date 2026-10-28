@@ -353,3 +353,5 @@ When asked how data is replicated, answer three questions: who accepts writes, w
 - Roberto Vitillo. [Understanding Distributed Systems](https://understandingdistributed.systems/), 2nd edition. 2022. Chapters 11 and 19.
 - Douglas B. Terry, Alan J. Demers, Karin Petersen, Mike J. Spreitzer, Marvin M. Theimer, Brent B. Welch. [Session Guarantees for Weakly Consistent Replicated Data](https://doi.org/10.1109/PDIS.1994.331722). PDIS, 1994.
 - Werner Vogels. [Eventually Consistent – Revisited](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html). All Things Distributed, 2008.
+
+::mark-as-read

@@ -430,3 +430,5 @@ Each fact still has one owner. The feeds, counters, search index, vectors, and r
 - Alex Xu, Sahn Lam. [System Design Interview: An Insider's Guide, Volume 2](https://www.amazon.com/dp/1736049119). ByteByteGo, 2022. Chapters 5, 6, and 9.
 - Apache Cassandra. [Data Modeling](https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html). Cassandra documentation.
 - MongoDB. [Embedding vs. references](https://www.mongodb.com/docs/manual/data-modeling/concepts/embedding-vs-references/). MongoDB Manual.
+
+::mark-as-read

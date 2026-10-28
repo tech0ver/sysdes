@@ -422,3 +422,5 @@ When asked how a ride reaches one driver, name both rules: a ride is offered to 
 - Pat Helland, Dave Campbell. [Building on Quicksand](https://www.cidrdb.org/cidr2009/Paper_133.pdf). CIDR, 2009.
 - Emilie Noel. [We replaced Redis with MySQL for inventory reservations, and it scaled](https://shopify.engineering/scaling-inventory-reservations). Shopify Engineering, 2026.
 - Patrick E. O'Neil. [The Escrow Transactional Method](https://doi.org/10.1145/7239.7265). ACM Transactions on Database Systems, 1986.
+
+::mark-as-read

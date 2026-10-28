@@ -20,7 +20,7 @@ What an article on this site must look like. Read it before you add or change a 
    - says what each solution costs and when to pick it; when each solution fixes a weakness of the previous one, show them as an evolution;
    - ends with one short standalone sentence that names the next problem, but only when this block's solution causes it ("the file keeps growing"). When the next block starts from a new feature or requirement, end without a bridge: the next block opens with it. The last block never bridges to another article.
 4. **Callouts, tables, and diagrams** go where the point comes up, not in a fixed order (see below).
-5. **Mark as read.** Put `::mark-as-read` after the last block and before the cheat sheet. Do not add it to the framework page.
+5. **Mark as read.** Put `::mark-as-read` after the last block and before the cheat sheet, and again at the very end of the article, after the sources. Do not add it to the framework page.
 6. **Cheat sheet.** The last section: one line per block, for a quick review before an interview. Keep the conditions from the text; a cheat sheet line must never state a stricter or broader rule than the block it comes from.
 
 ## Style

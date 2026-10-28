@@ -288,3 +288,5 @@ Keep the app's records in row storage. Move analytics to a column store when que
 - James Smith. [Build Your Own Database From Scratch](https://build-your-own.org/database/). Chapters 1 and 2.
 - Markus Winand. [Use The Index, Luke](https://use-the-index-luke.com/).
 - Justin Sheehy, David Smith. [Bitcask: A Log-Structured Hash Table for Fast Key/Value Data](https://riak.com/assets/bitcask-intro.pdf). Basho Technologies, 2010.
+
+::mark-as-read

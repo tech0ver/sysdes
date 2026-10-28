@@ -390,3 +390,5 @@ Start with cache-aside, a TTL on every value, and a delete after each commit. Ca
 - Jas Chhabra. [Caching challenges and strategies](https://aws.amazon.com/builders-library/caching-challenges-and-strategies/). Amazon Builders' Library.
 - MDN. [HTTP caching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching).
 - Mark Nottingham. [HTTP Cache-Control Extensions for Stale Content](https://www.rfc-editor.org/rfc/rfc5861). RFC 5861, 2010.
+
+::mark-as-read
