@@ -9,10 +9,18 @@ export default defineTech0verConfig({
 	sidebarWidth: 256,
 	plannedTopLevel: ['Framework'],
 	plannedTopics: {
-		Fundamentals: ['Messaging', 'Observability'],
-		Patterns: ['Resilience', 'Rate Limiting', 'Distributed Locks', 'Async Processing', 'Sagas', 'Job Scheduling'],
-		Technologies: ['Kafka'],
-		Systems: ['URL Shortener'],
+		Fundamentals: ['Messaging', 'Observability', 'Encoding', 'Data processing', 'Failures', 'Security', 'Requirements'],
+		Patterns: [
+			'Resilience', 'Rate limiting', 'Distributed locks', 'Async processing', 'Sagas', 'Job scheduling',
+			'Scaling', 'Real-time', 'API gateway', 'Service discovery', 'Proximity search', 'Data migration',
+			'News feed', 'CQRS', 'Counting', 'Search', 'Large files', 'Ledger', 'Offline sync',
+		],
+		Technologies: [
+			'Kafka', 'API styles', 'Load balancers', 'CDN', 'RabbitMQ', 'Flink', 'Spark', 'Temporal', 'Cassandra',
+			'Memcached', 'Elasticsearch', 'Object storage', 'ClickHouse', 'etcd and ZooKeeper', 'Kubernetes',
+			'OpenTelemetry', 'Time-series databases',
+		],
+		Systems: ['URL shortener'],
 	},
 	searchSuggestions: [
 		{
