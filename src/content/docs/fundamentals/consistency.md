@@ -464,3 +464,5 @@ For each operation in a design, name the guarantee it needs and why. Then say wh
 - Alex Xu, Sahn Lam. [System Design Interview: An Insider's Guide, Volume 2](https://www.amazon.com/dp/1736049119). ByteByteGo, 2022. Chapters 11 and 12.
 - Hector Garcia-Molina, Kenneth Salem. [Sagas](https://dl.acm.org/doi/10.1145/38713.38742). SIGMOD, 1987.
 - Diego Ongaro, John Ousterhout. [In Search of an Understandable Consensus Algorithm](https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro). USENIX ATC, 2014.
+
+::mark-as-read

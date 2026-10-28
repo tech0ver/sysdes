@@ -513,3 +513,5 @@ If asked about ACID versus BASE, say that ACID names guarantees of transactions,
 - Brandur Leach. [Implementing Stripe-like Idempotency Keys in Postgres](https://brandur.org/idempotency-keys). 2017.
 - MySQL. [Using SKIP LOCKED and NOWAIT to handle hot rows](https://dev.mysql.com/blog-archive/mysql-8-0-1-using-skip-locked-and-nowait-to-handle-hot-rows/). MySQL Server Blog, 2017.
 - PostgreSQL. [Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html) and [Serialization Failure Handling](https://www.postgresql.org/docs/current/mvcc-serialization-failure-handling.html). PostgreSQL documentation.
+
+::mark-as-read

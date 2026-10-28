@@ -461,3 +461,5 @@ When asked how to shard, answer in order: why one node is not enough, with numbe
 - Amazon Web Services. [Reducing the Scope of Impact with Cell-Based Architecture](https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/reducing-scope-of-impact-with-cell-based-architecture.html). AWS whitepaper, 2023.
 - Amazon Web Services. [SaaS Storage Strategies](https://docs.aws.amazon.com/whitepapers/latest/multi-tenant-saas-storage-strategies/multi-tenant-saas-storage-strategies.html). AWS whitepaper, 2021.
 - John Lamping, Eric Veach. [A Fast, Minimal Memory, Consistent Hash Algorithm](https://arxiv.org/abs/1406.2294). arXiv, 2014.
+
+::mark-as-read

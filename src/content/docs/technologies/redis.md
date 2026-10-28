@@ -528,3 +528,5 @@ Choose Redis or Valkey by license and needed features, and avoid commands that e
 
 - Josiah L. Carlson. [Redis in Action](https://www.manning.com/books/redis-in-action). Manning, 2013. Chapters 2–6 and 9–11.
 - Luigi Fugaro, Mirko Ortensi. [Redis Stack for Application Modernization](https://www.packtpub.com/en-us/product/redis-stack-for-application-modernization-9781837638185). Packt, 2023. Chapters 2, 5, 6, 8, 9, 11, and 12.
+
+::mark-as-read

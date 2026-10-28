@@ -479,3 +479,5 @@ Ask what the IDs must do before you pick a generator: fit in 64 bits, follow cre
 - Flickr. [Ticket Servers: Distributed Unique Primary Keys on the Cheap](https://code.flickr.net/2010/02/08/ticket-servers-distributed-unique-primary-keys-on-the-cheap/). Flickr Code blog, 2010.
 - Instagram Engineering. [Sharding & IDs at Instagram](https://web.archive.org/web/20121221135907/http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagram). Instagram Engineering blog, 2011 (archived copy).
 - Twitter. [Snowflake](https://github.com/twitter-archive/snowflake/tree/snowflake-2010), README of the 2010 version. GitHub, 2010.
+
+::mark-as-read
