@@ -124,5 +124,5 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 
 1. Create the Markdown file. Frontmatter needs `title` and `description`.
 2. Add the page to `sidebar` in `astro.config.mjs`, in the right group, and to ARTICLES.md.
-3. If its topic was shown on the site as planned, remove its label from `plannedTopics` or `plannedTopLevel` in `astro.config.mjs`. That list holds the planned topics shown in the sidebar. Add a label to it only after the author agrees to show the topic. Discuss which new articles that follow from this one to show.
+3. If its topic was shown on the site as planned, remove its label from `plannedTopics` or `plannedTopLevel` in `astro.config.mjs`. That list holds the planned topics shown in the sidebar. Add a topic to it only after the author agrees to show it, as `{ label, slug }` with the planned page title and the page path from ARTICLES.md. Discuss which new articles that follow from this one to show.
 4. Run `bun run build` and check the page in `bun run dev`.
