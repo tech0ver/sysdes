@@ -426,6 +426,8 @@ Who builds the sharding is a separate choice. Many databases shard on their own:
 When asked how to shard, answer in order: why one node is not enough, with numbers; the shard key, from the main queries and atomic writes; how keys map to shards and how nodes are added; and what happens to big tenants, hot keys, and queries without the key.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - Shard only when an estimate shows that the writes or the data will outgrow the largest node you are willing to run. First try a bigger machine, reads from followers and a cache, archiving old data, and moving whole features to their own databases.

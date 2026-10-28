@@ -500,6 +500,8 @@ A few checks keep a server healthy: no swap, transparent huge pages off, `vm.ove
 Choose Redis or Valkey by license and needed features, and avoid commands that exist in only one when you want to keep the choice open. Run one primary with Sentinel, or a managed service, until one server is not enough, then a cluster. Give each role its own server with its own settings, keep Redis in a private network with ACL users, and test failover and restores.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - Hot data off the database: Redis keeps all data in RAM and runs commands on one thread; a small command takes far less time than the network round trip. Use it for copies and short-lived data, and keep durable business records in the database.
