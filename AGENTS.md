@@ -19,7 +19,7 @@ For now, write every topic in full breadth and depth. A reader skips what their 
 
 ## Layout
 
-- `astro.config.mjs` — site config and explicit sidebar pages, plus `sidebarWidth`, `plannedTopLevel`, `plannedTopics`, search suggestions, callout labels, and glossary/diagram settings. Planned topics are the author's chosen visible labels, separate from ARTICLES.md.
+- `astro.config.mjs` — site config and explicit sidebar pages, plus `sidebarWidth`, `plannedTopLevel`, `plannedTopics`, search suggestions, callout labels, and glossary/diagram settings. Planned topics are the author's chosen visible topics, separate from ARTICLES.md. Each one is `{ label, slug }`: the label is the future page title, and the slug is the page path from ARTICLES.md, so the published page replaces it even if its title changes.
 - `src/content/docs/` — pages (Markdown/MDX). File path = URL. `index.mdx` is the home page.
 - `@tech0ver/starlight` — shared layout, styles, navigation controls, Markdown processors, glossary rendering, reading position, and raw Markdown endpoints. Configure these through its public `defineTech0verConfig` API; put shared visual changes in the package repository.
 - `src/components/Head.astro` — extends the shared head with production analytics.
