@@ -1,0 +1,46 @@
+<svg class="diagram-svg" viewBox="0 0 706 268" role="img" aria-labelledby="shard-in-id-title shard-in-id-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="shard-in-id-title">The router reads the logical shard from the ID</title>
+  <desc id="shard-in-id-desc">The ID 240806736691243125 holds the top bit 0, 41 bits of milliseconds, 12 bits with logical shard 42, and 10 bits with sequence value 117. The router computes (id &gt;&gt; 10) &amp; 4095 = 42 and looks it up in the map from logical shards to servers: shards 0 to 1023 live on server 1, so the request goes there.</desc>
+  <defs>
+    <marker id="shard-in-id-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="shard-in-id-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-7 0)">
+  <text class="dg-code" x="360" y="24" text-anchor="middle">ID 240806736691243125</text>
+  <rect class="dg-box-failed" x="24" y="52" width="40" height="30" rx="0"/>
+  <text class="dg-code-muted" x="44.0" y="71.0" text-anchor="middle">0</text>
+  <text class="dg-mono dg-muted-text" x="44.0" y="100" text-anchor="middle">SIGN</text>
+  <text class="dg-sub" x="44.0" y="44" text-anchor="middle">1</text>
+  <rect class="dg-box" x="64" y="52" width="376" height="30" rx="0"/>
+  <text class="dg-code" x="252.0" y="71.0" text-anchor="middle">57412800000 ms</text>
+  <text class="dg-mono dg-muted-text" x="252.0" y="100" text-anchor="middle">TIME</text>
+  <text class="dg-sub" x="252.0" y="44" text-anchor="middle">41 bits</text>
+  <text class="dg-mono dg-muted-text" x="504.0" y="100" text-anchor="middle">LOGICAL SHARD</text>
+  <text class="dg-sub" x="504.0" y="44" text-anchor="middle">12 bits</text>
+  <rect class="dg-box" x="568" y="52" width="128" height="30" rx="0"/>
+  <text class="dg-code" x="632.0" y="71.0" text-anchor="middle">117</text>
+  <text class="dg-mono dg-muted-text" x="632.0" y="100" text-anchor="middle">SEQUENCE</text>
+  <text class="dg-sub" x="632.0" y="44" text-anchor="middle">10 bits</text>
+  <text class="dg-mono dg-accent-text" x="540" y="150">(ID &gt;&gt; 10) &amp; 4095</text>
+  <text class="dg-mono dg-muted-text" x="232" y="166" text-anchor="middle">SHARD MAP</text>
+  <rect class="dg-box" x="104" y="198" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="168.0" y="213.0" text-anchor="middle">1024–2047</text>
+  <rect class="dg-box" x="232" y="198" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="296.0" y="213.0" text-anchor="middle">server 2</text>
+  <rect class="dg-box" x="104" y="220" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="168.0" y="235.0" text-anchor="middle">2048–3071</text>
+  <rect class="dg-box" x="232" y="220" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="296.0" y="235.0" text-anchor="middle">server 3</text>
+  <rect class="dg-box" x="104" y="242" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="168.0" y="257.0" text-anchor="middle">3072–4095</text>
+  <rect class="dg-box" x="232" y="242" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="296.0" y="257.0" text-anchor="middle">server 4</text>
+  <path class="dg-arrow dg-message" d="M528 110 V187 H368" marker-end="url(#shard-in-id-head-accent)"/>
+  <rect class="dg-box-accent" x="440" y="52" width="128" height="30" rx="0"/>
+  <text class="dg-code" x="504.0" y="71.0" text-anchor="middle">42</text>
+  <rect class="dg-box-accent" x="104" y="176" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="168.0" y="191.0" text-anchor="middle">0–1023</text>
+  <rect class="dg-box-accent" x="232" y="176" width="128" height="22" rx="0"/>
+  <text class="dg-code" x="296.0" y="191.0" text-anchor="middle">server 1</text>
+  </g>
+</svg>

@@ -72,6 +72,11 @@ const reservations = (anchor, section) => ({
 	label: `Reservations: ${section}`,
 });
 
+const uniqueIds = (anchor, section) => ({
+	href: `patterns/unique-ids/#${anchor}`,
+	label: `Unique IDs: ${section}`,
+});
+
 export const glossarySkip = ['SQL Server', 'commit the layout', 'Recall.ai'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
@@ -2929,6 +2934,15 @@ export const glossary = [
 		readMore: redis('one-key-hotter-than-the-rest', 'One key hotter than the rest'),
 	},
 	{
+		id: 'postgresql',
+		term: 'PostgreSQL',
+		aliases: ['PostgreSQL', 'Postgres'],
+		short: 'An open-source relational database with SQL, transactions, constraints, and extensions.',
+		explanation:
+			'Many systems keep their data, their rules, and often their queue, search, and cache in it. One server goes far, and copies on other servers serve reads and take over when the primary fails.',
+		readMore: postgresql('serving-many-clients-from-one-server', 'Serving many clients from one server'),
+	},
+	{
 		id: 'postmaster',
 		term: 'Postmaster',
 		aliases: ['postmaster', 'Postmaster'],
@@ -3015,8 +3029,8 @@ export const glossary = [
 		aliases: ['database sequence'],
 		short: 'A database object that generates a series of numbers, commonly for IDs.',
 		explanation:
-			'A rollback does not return a number, so gaps are normal; uniqueness comes from a key, not from the sequence.',
-		readMore: postgresql('keeping-data-valid-inside-the-database', 'Keeping data valid inside the database'),
+			'A rollback does not return a number, so gaps are normal, and numbers can commit out of order; uniqueness comes from a key, not from the sequence.',
+		readMore: uniqueIds('numbering-records-in-one-database', 'Numbering records in one database'),
 	},
 	{
 		id: 'jsonb',
@@ -3437,5 +3451,124 @@ export const glossary = [
 		explanation:
 			'The acceptance and the expiry are conditional updates that both check the deadline, so a late acceptance loses. A timer that survives restarts acts on the deadline, and the business decides what an expired offer returns.',
 		readMore: reservations('offering-to-one-person-at-a-time', 'Offering to one person at a time'),
+	},
+	{
+		id: 'counter-row',
+		term: 'Counter row',
+		aliases: ['counter row', 'counter rows', 'Counter row'],
+		short: 'A table row with a number that transactions change in place, such as a count or the last number given out.',
+		explanation:
+			'Its row lock makes writers take turns, and a rollback undoes the change, so it can give numbers without gaps or in commit order. The price is that the writers sharing it wait for each other.',
+		readMore: uniqueIds('reading-new-records-in-id-order', 'Reading new records in ID order'),
+	},
+	{
+		id: 'public-id',
+		term: 'Public ID',
+		aliases: ['public ID', 'public IDs', 'Public ID'],
+		short: 'A random ID shown to outsiders in place of the internal key.',
+		explanation:
+			'It hides how many records exist and is hard to guess, while joins keep using a compact internal key. It needs its own unique constraint, and it does not replace access checks.',
+		readMore: uniqueIds('ids-that-outsiders-see', 'IDs that outsiders see'),
+	},
+	{
+		id: 'ticket-server',
+		term: 'Ticket server',
+		aliases: ['ticket server', 'ticket servers', 'Ticket server'],
+		short: 'A small service whose only job is to hand out the next number from a central counter.',
+		explanation:
+			'It gives one series across many databases, but every new record costs a round trip to it, and when it is down nothing can be created.',
+		readMore: uniqueIds('several-databases-handing-out-numbers', 'Several databases handing out numbers'),
+	},
+	{
+		id: 'id-block',
+		term: 'Block of IDs',
+		aliases: ['block of IDs', 'blocks of IDs', 'Block of IDs', 'Blocks of IDs'],
+		short: 'A range of numbers that a server takes from a central counter at once and hands out from memory.',
+		explanation:
+			'The counter sees one request per block instead of one per ID. A restart loses the rest of the block, and IDs from different servers interleave.',
+		readMore: uniqueIds('several-databases-handing-out-numbers', 'Several databases handing out numbers'),
+	},
+	{
+		id: 'uuid',
+		term: 'UUID',
+		aliases: ['UUID', 'UUIDs'],
+		expansion: 'Universally Unique Identifier',
+		short: 'A 128-bit ID in a standard format that any process can create without asking anyone.',
+		explanation:
+			'Versions differ in what fills the bits: version 4 is random, version 7 starts with the time. Store it as 16 bytes, not as 36 characters of text.',
+		readMore: uniqueIds('ids-made-anywhere-without-asking', 'IDs made anywhere without asking'),
+	},
+	{
+		id: 'uuidv4',
+		term: 'UUIDv4',
+		aliases: ['UUIDv4'],
+		short: 'A UUID with 122 random bits.',
+		explanation:
+			'It reveals nothing and clashes only by chance, which is negligible with a good random source. New keys land on random pages of a B-tree index, which slows inserts into large tables.',
+		readMore: uniqueIds('ids-made-anywhere-without-asking', 'IDs made anywhere without asking'),
+	},
+	{
+		id: 'snowflake-id',
+		term: 'Snowflake ID',
+		aliases: ['Snowflake ID', 'Snowflake IDs', 'Snowflake-style ID'],
+		short: 'A 64-bit ID made of a timestamp, a generator\'s node number, and a sequence.',
+		explanation:
+			'IDs grow over time and need no central counter, but every generator needs a unique node number and a clock that does not go back. They sort only as well as the clocks agree.',
+		readMore: uniqueIds('ids-ordered-by-creation-time', 'IDs ordered by creation time'),
+	},
+	{
+		id: 'node-number',
+		term: 'Node number',
+		aliases: ['node number', 'node numbers', 'Node number'],
+		short: 'The number that sets an ID generator apart from all others running at the same time.',
+		explanation:
+			'Two generators with the same number make the same IDs. Take it from a store that guarantees uniqueness, under a lease or new at every start.',
+		readMore: uniqueIds('giving-each-generator-its-own-number', 'Giving each generator its own number'),
+	},
+	{
+		id: 'uuidv7',
+		term: 'UUIDv7',
+		aliases: ['UUIDv7'],
+		short: 'A UUID that starts with the time in milliseconds, followed by random bits.',
+		explanation:
+			'IDs sort roughly by creation time and need no node numbers, so new keys land near the end of an index. Anyone who sees the ID can read when it was made.',
+		readMore: uniqueIds('time-ordered-ids-without-node-numbers', 'Time-ordered IDs without node numbers'),
+	},
+	{
+		id: 'ulid',
+		term: 'ULID',
+		aliases: ['ULID', 'ULIDs'],
+		expansion: 'Universally Unique Lexicographically Sortable Identifier',
+		short: 'A 128-bit ID of 48 bits of milliseconds and 80 random bits, written as 26 characters.',
+		explanation:
+			'It sorts by creation time as text. It predates UUIDv7, which follows the same idea in the UUID format.',
+		readMore: uniqueIds('time-ordered-ids-without-node-numbers', 'Time-ordered IDs without node numbers'),
+	},
+	{
+		id: 'bit-reversed-sequence',
+		term: 'Bit-reversed sequence',
+		aliases: ['bit-reversed sequence', 'bit-reversed sequences', 'Bit-reversed sequence'],
+		short: 'A counter whose numbers have their bits reversed, so consecutive numbers land far apart.',
+		explanation:
+			'Numbers stay unique but no longer grow, so a store split by key ranges spreads inserts over all ranges instead of the last one.',
+		readMore: uniqueIds('ordered-keys-in-a-store-split-by-key-ranges', 'Ordered keys in a store split by key ranges'),
+	},
+	{
+		id: 'short-code',
+		term: 'Short code',
+		aliases: ['short code', 'short codes', 'Short code', 'Short codes'],
+		short: 'A short ID made for people to type and share, such as the end of a short link.',
+		explanation:
+			'A large alphabet keeps it short. It is made from a scrambled number or picked at random with a unique check, so that codes cannot be listed by counting.',
+		readMore: uniqueIds('short-codes-people-type-and-share', 'Short codes people type and share'),
+	},
+	{
+		id: 'base62',
+		term: 'Base62',
+		aliases: ['base62', 'Base62'],
+		short: 'Writing a number with the 10 digits and 52 lower- and uppercase letters.',
+		explanation:
+			'It needs no escaping in a URL, so it suits short codes: 7 characters give about 3.5 trillion values.',
+		readMore: uniqueIds('short-codes-people-type-and-share', 'Short codes people type and share'),
 	},
 ];

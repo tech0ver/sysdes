@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 706 176" role="img" aria-labelledby="snowflake-bits-title snowflake-bits-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="snowflake-bits-title">The 64 bits of a Snowflake ID</title>
+  <desc id="snowflake-bits-desc">The ID 240806736691351557 split into its parts: the top bit 0, 41 bits with 57412800000 milliseconds since 2025-01-01 (October 27, 2026, at noon UTC), 10 bits with node number 37, and 12 bits with sequence 5. 41 bits last 69 years, 10 bits allow 1,024 generators, and 12 bits allow 4,096 IDs per millisecond each.</desc>
+  <defs>
+    <marker id="snowflake-bits-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="snowflake-bits-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-7 0)">
+  <text class="dg-code" x="360" y="24" text-anchor="middle">ID 240806736691351557</text>
+  <rect class="dg-box-failed" x="24" y="52" width="40" height="30" rx="0"/>
+  <text class="dg-code-muted" x="44.0" y="71.0" text-anchor="middle">0</text>
+  <text class="dg-mono dg-muted-text" x="44.0" y="100" text-anchor="middle">SIGN</text>
+  <text class="dg-sub" x="44.0" y="44" text-anchor="middle">1</text>
+  <text class="dg-mono dg-muted-text" x="252.0" y="100" text-anchor="middle">TIME SINCE 2025-01-01</text>
+  <text class="dg-sub" x="252.0" y="44" text-anchor="middle">41 bits</text>
+  <rect class="dg-box" x="440" y="52" width="112" height="30" rx="0"/>
+  <text class="dg-code" x="496.0" y="71.0" text-anchor="middle">37</text>
+  <text class="dg-mono dg-muted-text" x="496.0" y="100" text-anchor="middle">NODE</text>
+  <text class="dg-sub" x="496.0" y="44" text-anchor="middle">10 bits</text>
+  <rect class="dg-box" x="552" y="52" width="144" height="30" rx="0"/>
+  <text class="dg-code" x="624.0" y="71.0" text-anchor="middle">5</text>
+  <text class="dg-mono dg-muted-text" x="624.0" y="100" text-anchor="middle">SEQUENCE</text>
+  <text class="dg-sub" x="624.0" y="44" text-anchor="middle">12 bits</text>
+  <text class="dg-sub" x="252" y="132" text-anchor="middle">69 years</text>
+  <text class="dg-sub" x="496" y="132" text-anchor="middle">1,024 nodes</text>
+  <text class="dg-sub" x="624" y="132" text-anchor="middle">4,096 per ms</text>
+  <rect class="dg-box-accent" x="64" y="52" width="376" height="30" rx="0"/>
+  <text class="dg-code" x="252.0" y="71.0" text-anchor="middle">57412800000 ms</text>
+  </g>
+</svg>

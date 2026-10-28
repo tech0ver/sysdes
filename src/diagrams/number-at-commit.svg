@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 494 374" role="img" aria-labelledby="number-at-commit-title number-at-commit-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="number-at-commit-title">A counter row taken at the end makes numbers visible in order</title>
+  <desc id="number-at-commit-desc">Transactions A and B insert orders 1044 and 1045. B finishes first: as its last step it updates the counter row and gets seq 501. A tries to update the counter row and waits for B. B commits, A gets seq 502 and commits. The reader that pages by seq sees 501 before 502.</desc>
+  <defs>
+    <marker id="number-at-commit-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="number-at-commit-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-113 0)">
+  <text class="dg-mono dg-muted-text" x="230.0" y="24" text-anchor="middle">TRANSACTION A</text>
+  <text class="dg-mono dg-muted-text" x="490.0" y="24" text-anchor="middle">TRANSACTION B</text>
+  <line class="dg-lifeline" x1="230.0" y1="32" x2="230.0" y2="300"/>
+  <line class="dg-lifeline" x1="490.0" y1="32" x2="490.0" y2="300"/>
+  <rect class="dg-box" x="130.0" y="42" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="230.0" y="59" text-anchor="middle">insert order 1044</text>
+  <rect class="dg-box" x="390.0" y="78" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="490.0" y="95" text-anchor="middle">insert order 1045</text>
+  <rect class="dg-box-accent" x="390.0" y="114" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="490.0" y="131" text-anchor="middle">counter: seq 501</text>
+  <rect class="dg-box-accent dg-empty" x="130.0" y="150" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="230.0" y="167" text-anchor="middle">counter: waits for B</text>
+  <rect class="dg-box" x="390.0" y="186" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="490.0" y="203" text-anchor="middle">commit</text>
+  <rect class="dg-box-accent" x="130.0" y="222" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="230.0" y="239" text-anchor="middle">counter: seq 502</text>
+  <rect class="dg-box" x="130.0" y="258" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="230.0" y="275" text-anchor="middle">commit</text>
+  <text class="dg-result" x="360.0" y="326" text-anchor="middle">seq 501 becomes visible before seq 502</text>
+  </g>
+</svg>

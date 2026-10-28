@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 513 236" role="img" aria-labelledby="bit-budgets-title bit-budgets-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="bit-budgets-title">Three ways to split 64 bits</title>
+  <desc id="bit-budgets-desc">Bars on one scale, 6 units per bit. Snowflake: sign, 41 bits of milliseconds, 10 bits of node, 12 bits of sequence: 69 years, 1,024 nodes, 4,096 IDs per millisecond. Sonyflake: sign, 39 bits of 10 ms units, 8 bits of sequence, 16 bits of machine: 174 years, 65,536 machines, 256 IDs per 10 ms. Discord: 42 bits of milliseconds since 2015, 5 bits of worker, 5 of process, 12 of increment: 139 years.</desc>
+  <defs>
+    <marker id="bit-budgets-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="bit-budgets-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-8 0)">
+  <text class="dg-mono dg-muted-text" x="24" y="44">SNOWFLAKE</text>
+  <rect class="dg-box-failed" x="120" y="24" width="6" height="30" rx="0"/>
+  <rect class="dg-box" x="372" y="24" width="60" height="30" rx="0"/>
+  <text class="dg-code" x="402.0" y="43.0" text-anchor="middle">10 node</text>
+  <rect class="dg-box" x="432" y="24" width="72" height="30" rx="0"/>
+  <text class="dg-code" x="468.0" y="43.0" text-anchor="middle">12 seq</text>
+  <text class="dg-sub" x="120" y="72">69 years · 4,096 per ms</text>
+  <text class="dg-mono dg-muted-text" x="24" y="108">SONYFLAKE</text>
+  <rect class="dg-box-failed" x="120" y="88" width="6" height="30" rx="0"/>
+  <rect class="dg-box" x="360" y="88" width="48" height="30" rx="0"/>
+  <text class="dg-code" x="384.0" y="107.0" text-anchor="middle">8 seq</text>
+  <rect class="dg-box" x="408" y="88" width="96" height="30" rx="0"/>
+  <text class="dg-code" x="456.0" y="107.0" text-anchor="middle">16 machine</text>
+  <text class="dg-sub" x="120" y="136">174 years · 256 per 10 ms</text>
+  <text class="dg-mono dg-muted-text" x="24" y="172">DISCORD</text>
+  <rect class="dg-box" x="372" y="152" width="30" height="30" rx="0"/>
+  <text class="dg-code" x="387.0" y="171.0" text-anchor="middle">5</text>
+  <rect class="dg-box" x="402" y="152" width="30" height="30" rx="0"/>
+  <text class="dg-code" x="417.0" y="171.0" text-anchor="middle">5</text>
+  <rect class="dg-box" x="432" y="152" width="72" height="30" rx="0"/>
+  <text class="dg-code" x="468.0" y="171.0" text-anchor="middle">12 seq</text>
+  <text class="dg-sub" x="120" y="200">139 years · 4,096 per ms</text>
+  <text class="dg-mono dg-muted-text" x="432" y="200" text-anchor="middle">WORKER · PROCESS</text>
+  <rect class="dg-box-accent" x="126" y="24" width="246" height="30" rx="0"/>
+  <text class="dg-code" x="249.0" y="43.0" text-anchor="middle">41 bits · ms</text>
+  <rect class="dg-box-accent" x="126" y="88" width="234" height="30" rx="0"/>
+  <text class="dg-code" x="243.0" y="107.0" text-anchor="middle">39 bits · 10 ms</text>
+  <rect class="dg-box-accent" x="120" y="152" width="252" height="30" rx="0"/>
+  <text class="dg-code" x="246.0" y="171.0" text-anchor="middle">42 bits · ms</text>
+  </g>
+</svg>

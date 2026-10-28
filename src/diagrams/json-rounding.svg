@@ -1,0 +1,27 @@
+<svg class="diagram-svg" viewBox="0 0 706 212" role="img" aria-labelledby="json-rounding-title json-rounding-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="json-rounding-title">A 64-bit ID as a JSON number loses its last digits in JavaScript</title>
+  <desc id="json-rounding-desc">The ID 240806736691351557 sent as a JSON number arrives in a browser as 240806736691351550, a different ID. Sent as a JSON string, it arrives unchanged.</desc>
+  <defs>
+    <marker id="json-rounding-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="json-rounding-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-7 0)">
+  <text class="dg-mono dg-muted-text" x="24" y="28">IN THE DATABASE</text>
+  <rect class="dg-box" x="24" y="40" width="264" height="30" rx="4"/>
+  <text class="dg-code" x="156.0" y="59.0" text-anchor="middle">240806736691351557</text>
+  <text class="dg-mono dg-muted-text" x="24" y="98">AS A JSON NUMBER</text>
+  <rect class="dg-box" x="24" y="108" width="264" height="30" rx="4"/>
+  <text class="dg-code" x="156.0" y="127.0" text-anchor="middle">"id": 240806736691351557</text>
+  <path class="dg-arrow" d="M288 123 H392" marker-end="url(#json-rounding-head)"/>
+  <text class="dg-mono dg-muted-text" x="340" y="115" text-anchor="middle">BROWSER</text>
+  <rect class="dg-box-accent" x="400" y="108" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="548.0" y="127.0" text-anchor="middle">240806736691351550</text>
+  <text class="dg-mono dg-muted-text" x="24" y="166">AS A JSON STRING</text>
+  <rect class="dg-box" x="24" y="176" width="264" height="30" rx="4"/>
+  <text class="dg-code" x="156.0" y="195.0" text-anchor="middle">"id": "240806736691351557"</text>
+  <path class="dg-arrow" d="M288 191 H392" marker-end="url(#json-rounding-head)"/>
+  <text class="dg-mono dg-muted-text" x="340" y="183" text-anchor="middle">BROWSER</text>
+  <rect class="dg-box" x="400" y="176" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="548.0" y="195.0" text-anchor="middle">"240806736691351557"</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 372" role="img" aria-labelledby="block-given-twice-title block-given-twice-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="block-given-twice-title">A promoted replica hands out a block again</title>
+  <desc id="block-given-twice-desc">Server A sends INCRBY orders 1000 to the Redis primary, which answers 54000, so A owns 53001 to 54000. The primary fails before the change reaches the replica. The replica becomes the new primary with the counter still at 53000. Server C sends the same command, also gets 54000, and also owns 53001 to 54000, so two servers hand out the same IDs.</desc>
+  <defs>
+    <marker id="block-given-twice-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="block-given-twice-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="80" y="30" text-anchor="middle">SERVER A</text>
+  <line class="dg-lifeline" x1="80" y1="40" x2="80" y2="338"/>
+  <text class="dg-mono dg-muted-text" x="460" y="30" text-anchor="middle">REPLICA</text>
+  <line class="dg-lifeline" x1="460" y1="40" x2="460" y2="338"/>
+  <text class="dg-mono dg-muted-text" x="640" y="30" text-anchor="middle">SERVER C</text>
+  <line class="dg-lifeline" x1="640" y1="40" x2="640" y2="338"/>
+  <text class="dg-mono dg-muted-text" x="280" y="30" text-anchor="middle">PRIMARY</text>
+  <line class="dg-lifeline" x1="280" y1="40" x2="280" y2="196"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="68" text-anchor="middle">INCRBY ORDERS 1000</text>
+  <path class="dg-arrow" d="M80 76 H272" marker-end="url(#block-given-twice-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="98" text-anchor="middle">54000</text>
+  <path class="dg-arrow" d="M280 106 H88" marker-end="url(#block-given-twice-head)"/>
+  <rect class="dg-box-accent" x="16" y="120" width="128" height="26" rx="4"/>
+  <text class="dg-code" x="80.0" y="137.0" text-anchor="middle">owns 53001–54000</text>
+  <path class="dg-arrow dg-empty" d="M280 170 H392"/>
+  <line class="dg-cross" x1="398" y1="164" x2="410" y2="176"/>
+  <line class="dg-cross" x1="398" y1="176" x2="410" y2="164"/>
+  <text class="dg-mono dg-muted-text" x="336" y="162" text-anchor="middle">COPY</text>
+  <line class="dg-cross" x1="272" y1="196" x2="288" y2="212"/>
+  <line class="dg-cross" x1="272" y1="212" x2="288" y2="196"/>
+  <text class="dg-mono dg-muted-text" x="296" y="208">FAILS</text>
+  <rect class="dg-box" x="356" y="222" width="208" height="26" rx="4"/>
+  <text class="dg-code" x="460.0" y="239.0" text-anchor="middle">new primary: 53000</text>
+  <text class="dg-mono dg-muted-text" x="550.0" y="268" text-anchor="middle">INCRBY ORDERS 1000</text>
+  <path class="dg-arrow" d="M640 276 H468" marker-end="url(#block-given-twice-head)"/>
+  <text class="dg-mono dg-muted-text" x="550.0" y="298" text-anchor="middle">54000</text>
+  <path class="dg-arrow" d="M460 306 H632" marker-end="url(#block-given-twice-head)"/>
+  <rect class="dg-box-accent" x="576" y="316" width="128" height="26" rx="4"/>
+  <text class="dg-code" x="640.0" y="333.0" text-anchor="middle">owns 53001–54000</text>
+  <text class="dg-result" x="360" y="364" text-anchor="middle">A and C hand out the same IDs</text>
+</svg>

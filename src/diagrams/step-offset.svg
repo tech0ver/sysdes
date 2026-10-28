@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 658 254" role="img" aria-labelledby="step-offset-title step-offset-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="step-offset-title">Step and offset keep IDs apart, but not in time order</title>
+  <desc id="step-offset-desc">Four databases share a step of 16 and start at 1, 2, 3, and 4, so their first IDs are 1, 17, 33; 2, 18, 34; 3, 19, 35; and 4, 20, 36, and no ID repeats. A year later the busy database 1 is at 9,000,001 and the quiet database 2 at 2,000,002, so a new row on database 2 gets a smaller ID than an old row on database 1.</desc>
+  <defs>
+    <marker id="step-offset-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="step-offset-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-8 0)">
+  <text class="dg-mono dg-muted-text" x="24" y="28">DATABASE</text>
+  <text class="dg-mono dg-muted-text" x="152" y="28">FIRST IDS: START K, STEP 16</text>
+  <text class="dg-mono dg-muted-text" x="504" y="28">NEWEST ID A YEAR LATER</text>
+  <text class="dg-mono dg-muted-text" x="24" y="62">DATABASE 1</text>
+  <rect class="dg-box" x="152" y="44" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="196.0" y="62.0" text-anchor="middle">1</text>
+  <rect class="dg-box" x="252" y="44" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="296.0" y="62.0" text-anchor="middle">17</text>
+  <rect class="dg-box" x="352" y="44" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="396.0" y="62.0" text-anchor="middle">33</text>
+  <text class="dg-code-muted" x="452" y="63" text-anchor="middle">…</text>
+  <rect class="dg-box-accent" x="504" y="44" width="136" height="28" rx="4"/>
+  <text class="dg-code" x="572.0" y="62.0" text-anchor="middle">9,000,001</text>
+  <text class="dg-mono dg-muted-text" x="24" y="102">DATABASE 2</text>
+  <rect class="dg-box" x="152" y="84" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="196.0" y="102.0" text-anchor="middle">2</text>
+  <rect class="dg-box" x="252" y="84" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="296.0" y="102.0" text-anchor="middle">18</text>
+  <rect class="dg-box" x="352" y="84" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="396.0" y="102.0" text-anchor="middle">34</text>
+  <text class="dg-code-muted" x="452" y="103" text-anchor="middle">…</text>
+  <rect class="dg-box-accent" x="504" y="84" width="136" height="28" rx="4"/>
+  <text class="dg-code" x="572.0" y="102.0" text-anchor="middle">2,000,002</text>
+  <text class="dg-mono dg-muted-text" x="24" y="142">DATABASE 3</text>
+  <rect class="dg-box" x="152" y="124" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="196.0" y="142.0" text-anchor="middle">3</text>
+  <rect class="dg-box" x="252" y="124" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="296.0" y="142.0" text-anchor="middle">19</text>
+  <rect class="dg-box" x="352" y="124" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="396.0" y="142.0" text-anchor="middle">35</text>
+  <text class="dg-code-muted" x="452" y="143" text-anchor="middle">…</text>
+  <rect class="dg-box" x="504" y="124" width="136" height="28" rx="4"/>
+  <text class="dg-code" x="572.0" y="142.0" text-anchor="middle">5,000,003</text>
+  <text class="dg-mono dg-muted-text" x="24" y="182">DATABASE 4</text>
+  <rect class="dg-box" x="152" y="164" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="196.0" y="182.0" text-anchor="middle">4</text>
+  <rect class="dg-box" x="252" y="164" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="296.0" y="182.0" text-anchor="middle">20</text>
+  <rect class="dg-box" x="352" y="164" width="88" height="28" rx="4"/>
+  <text class="dg-code" x="396.0" y="182.0" text-anchor="middle">36</text>
+  <text class="dg-code-muted" x="452" y="183" text-anchor="middle">…</text>
+  <rect class="dg-box" x="504" y="164" width="136" height="28" rx="4"/>
+  <text class="dg-code" x="572.0" y="182.0" text-anchor="middle">3,000,004</text>
+  <text class="dg-result" x="360" y="228" text-anchor="middle">A new row on database 2 gets a smaller ID than an old one on database 1</text>
+  </g>
+</svg>

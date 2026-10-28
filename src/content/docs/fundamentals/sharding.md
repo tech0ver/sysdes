@@ -371,7 +371,7 @@ A secondary index over sharded data comes in two kinds:
 
 Login fits a global index: a table from email to user ID, sharded by a hash of the email, and a table of each user's workspaces. Uniqueness works the same way: the index shard that owns an email is the one place that can say whether it is taken, so a new user claims the email there first. The tables of users and logins do not have to share the tenant key at all: they can form their own group with a key of their own.
 
-IDs follow the same rule. An auto-increment counter on each shard repeats the numbers of the others, so IDs that must be unique everywhere need a generator that works across shards. <!-- link: patterns/unique-ids -->
+IDs follow the same rule. An auto-increment counter on each shard repeats the numbers of the others, so IDs that must be unique everywhere need a [generator that works across shards](../../patterns/unique-ids/#several-databases-handing-out-numbers).
 
 :::tradeoff
 A local index costs one shard on a write and every shard on a read without the shard key. A global index costs one index shard on a read, but every write touches a second shard, and the index either slows writes or lags behind them.

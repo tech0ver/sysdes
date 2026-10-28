@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="sequence-batches-title sequence-batches-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="sequence-batches-title">Batches per connection mix the order of IDs and lose the rest of a batch</title>
+  <desc id="sequence-batches-desc">Two connections, A and B, insert four rows in turns. Left, with CACHE 1, every call goes to the shared counter, and the rows get 1, 2, 3, and 4 in the order they are written. Right, with CACHE 20, A takes 1 to 20 and B takes 21 to 40 at their first inserts. The rows get 1, 21, 2, and 22 in the order they are written, and when B closes, 23 to 40 are never used.</desc>
+  <defs>
+    <marker id="sequence-batches-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="sequence-batches-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="312"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">CACHE 1</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">one number per call</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="74" text-anchor="middle">CONNECTION A</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="74" text-anchor="middle">CONNECTION B</text>
+  <line class="dg-lifeline" x1="98.0" y1="82" x2="98.0" y2="278"/>
+  <line class="dg-lifeline" x1="262.0" y1="82" x2="262.0" y2="278"/>
+  <rect class="dg-box" x="20.0" y="92" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="109" text-anchor="middle">insert: 1</text>
+  <rect class="dg-box" x="184.0" y="128" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="145" text-anchor="middle">insert: 2</text>
+  <rect class="dg-box" x="20.0" y="164" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="181" text-anchor="middle">insert: 3</text>
+  <rect class="dg-box" x="184.0" y="200" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="217" text-anchor="middle">insert: 4</text>
+  <text class="dg-result" x="180.0" y="304" text-anchor="middle">Written in order: 1, 2, 3, 4</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">CACHE 20</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">a batch of 20 per connection</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="74" text-anchor="middle">CONNECTION A</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="74" text-anchor="middle">CONNECTION B</text>
+  <line class="dg-lifeline" x1="458.0" y1="82" x2="458.0" y2="278"/>
+  <line class="dg-lifeline" x1="622.0" y1="82" x2="622.0" y2="278"/>
+  <rect class="dg-box" x="380.0" y="92" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="109" text-anchor="middle">insert: 1 of 1–20</text>
+  <rect class="dg-box-accent" x="544.0" y="128" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="145" text-anchor="middle">insert: 21 of 21–40</text>
+  <rect class="dg-box-accent" x="380.0" y="164" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="181" text-anchor="middle">insert: 2</text>
+  <rect class="dg-box" x="544.0" y="200" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="217" text-anchor="middle">insert: 22</text>
+  <rect class="dg-box-failed" x="544.0" y="236" width="156" height="26" rx="4"/>
+  <text class="dg-code-muted" x="622.0" y="253" text-anchor="middle">closes: 23–40 lost</text>
+  <text class="dg-result" x="540.0" y="304" text-anchor="middle">Written in order: 1, 21, 2, 22</text>
+</svg>

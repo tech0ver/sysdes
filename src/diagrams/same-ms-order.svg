@@ -1,0 +1,57 @@
+<svg class="diagram-svg" viewBox="0 0 690 270" role="img" aria-labelledby="same-ms-order-title same-ms-order-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="same-ms-order-title">Within one millisecond, random bits sort at random and a counter keeps order</title>
+  <desc id="same-ms-order-desc">Three IDs are made one after another in millisecond 10:00:00.120. Left, with random bits after the time, they end in 7a3, 1f0, and c42, so sorting puts the second one first. Right, with a counter after the time, they end in 001, 002, and 003, and sorting keeps the order they were made in.</desc>
+  <defs>
+    <marker id="same-ms-order-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="same-ms-order-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-15 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Random bits</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">no counter</text>
+  <text class="dg-mono dg-muted-text" x="32" y="76">MADE</text>
+  <text class="dg-mono dg-muted-text" x="188" y="76">SORTED</text>
+  <text class="dg-mono dg-muted-text" x="32" y="106">1ST</text>
+  <rect class="dg-box" x="68" y="88" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="120.0" y="106.0" text-anchor="middle">…120-7a3…</text>
+  <text class="dg-mono dg-accent-text" x="188" y="106">2ND</text>
+  <rect class="dg-box-accent" x="224" y="88" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="276.0" y="106.0" text-anchor="middle">…120-1f0…</text>
+  <text class="dg-mono dg-muted-text" x="32" y="146">2ND</text>
+  <rect class="dg-box" x="68" y="128" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="120.0" y="146.0" text-anchor="middle">…120-1f0…</text>
+  <text class="dg-mono dg-accent-text" x="188" y="146">1ST</text>
+  <rect class="dg-box-accent" x="224" y="128" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="276.0" y="146.0" text-anchor="middle">…120-7a3…</text>
+  <text class="dg-mono dg-muted-text" x="32" y="186">3RD</text>
+  <rect class="dg-box" x="68" y="168" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="120.0" y="186.0" text-anchor="middle">…120-c42…</text>
+  <text class="dg-mono dg-muted-text" x="188" y="186">3RD</text>
+  <rect class="dg-box" x="224" y="168" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="276.0" y="186.0" text-anchor="middle">…120-c42…</text>
+  <text class="dg-result" x="180" y="236" text-anchor="middle">Order within the ms lost</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">A counter</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">in the first random bits</text>
+  <text class="dg-mono dg-muted-text" x="392" y="76">MADE</text>
+  <text class="dg-mono dg-muted-text" x="548" y="76">SORTED</text>
+  <text class="dg-mono dg-muted-text" x="392" y="106">1ST</text>
+  <rect class="dg-box" x="428" y="88" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="480.0" y="106.0" text-anchor="middle">…120-001…</text>
+  <text class="dg-mono dg-muted-text" x="548" y="106">1ST</text>
+  <rect class="dg-box" x="584" y="88" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="636.0" y="106.0" text-anchor="middle">…120-001…</text>
+  <text class="dg-mono dg-muted-text" x="392" y="146">2ND</text>
+  <rect class="dg-box" x="428" y="128" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="480.0" y="146.0" text-anchor="middle">…120-002…</text>
+  <text class="dg-mono dg-muted-text" x="548" y="146">2ND</text>
+  <rect class="dg-box" x="584" y="128" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="636.0" y="146.0" text-anchor="middle">…120-002…</text>
+  <text class="dg-mono dg-muted-text" x="392" y="186">3RD</text>
+  <rect class="dg-box" x="428" y="168" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="480.0" y="186.0" text-anchor="middle">…120-003…</text>
+  <text class="dg-mono dg-muted-text" x="548" y="186">3RD</text>
+  <rect class="dg-box" x="584" y="168" width="104" height="28" rx="4"/>
+  <text class="dg-code" x="636.0" y="186.0" text-anchor="middle">…120-003…</text>
+  <text class="dg-result" x="540" y="236" text-anchor="middle">Order within the ms kept</text>
+  </g>
+</svg>

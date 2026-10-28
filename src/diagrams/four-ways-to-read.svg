@@ -1,0 +1,66 @@
+<svg class="diagram-svg" viewBox="0 0 720 468" role="img" aria-labelledby="four-ways-to-read-title four-ways-to-read-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="four-ways-to-read-title">Four ways to read every row, shown on orders 1044 and 1045</title>
+  <desc id="four-ways-to-read-desc">The same two orders in four panels: A takes 1044 and commits after B, which takes 1045. Behind a margin: the rows started at 10:00:00 and 10:00:01; a read between the commits gets nothing, since both are newer than 30 seconds, and a read 30 seconds later gets 1044 and 1045. Up to the oldest open transaction: the rows carry transaction IDs 900 and 901; between the commits A, 900, still runs, so the read gets nothing; after A commits it gets both. Numbered at commit: 1045 commits first and gets seq 501, 1044 gets 502; the read between the commits gets 1045, the next one 1044. The database's log: 1045 is logged first and read between the commits, 1044 is read after A commits.</desc>
+  <defs>
+    <marker id="four-ways-to-read-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="four-ways-to-read-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="460"/>
+  <line class="dg-rule" x1="16" y1="234" x2="704" y2="234"/>
+  <text class="dg-name" x="180" y="26" text-anchor="middle">Behind a margin</text>
+  <text class="dg-sub" x="180" y="44" text-anchor="middle">cursor (created_at, id), 30 s back</text>
+  <text class="dg-mono dg-muted-text" x="20" y="82">ROWS</text>
+  <rect class="dg-box" x="144" y="64" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="244.0" y="81.0" text-anchor="middle">1044 started 10:00:00</text>
+  <rect class="dg-box" x="144" y="96" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="244.0" y="113.0" text-anchor="middle">1045 started 10:00:01</text>
+  <text class="dg-mono dg-muted-text" x="20" y="152">BETWEEN THE COMMITS</text>
+  <rect class="dg-box-failed" x="184" y="134" width="160" height="26" rx="4"/>
+  <text class="dg-code-muted" x="264.0" y="151.0" text-anchor="middle">nothing: too new</text>
+  <text class="dg-mono dg-muted-text" x="20" y="186">30 SECONDS LATER</text>
+  <rect class="dg-box-accent" x="184" y="168" width="160" height="26" rx="4"/>
+  <text class="dg-code" x="264.0" y="185.0" text-anchor="middle">1044, 1045</text>
+  <text class="dg-result" x="180" y="220" text-anchor="middle">Both read, 30 s late</text>
+  <text class="dg-name" x="540" y="26" text-anchor="middle">Up to the oldest open transaction</text>
+  <text class="dg-sub" x="540" y="44" text-anchor="middle">cursor (transaction ID, id)</text>
+  <text class="dg-mono dg-muted-text" x="380" y="82">ROWS</text>
+  <rect class="dg-box" x="504" y="64" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="604.0" y="81.0" text-anchor="middle">1044 transaction 900</text>
+  <rect class="dg-box" x="504" y="96" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="604.0" y="113.0" text-anchor="middle">1045 transaction 901</text>
+  <text class="dg-mono dg-muted-text" x="380" y="152">BETWEEN THE COMMITS</text>
+  <rect class="dg-box-failed" x="544" y="134" width="160" height="26" rx="4"/>
+  <text class="dg-code-muted" x="624.0" y="151.0" text-anchor="middle">nothing: 900 runs</text>
+  <text class="dg-mono dg-muted-text" x="380" y="186">AFTER A COMMITS</text>
+  <rect class="dg-box-accent" x="544" y="168" width="160" height="26" rx="4"/>
+  <text class="dg-code" x="624.0" y="185.0" text-anchor="middle">1044, 1045</text>
+  <text class="dg-result" x="540" y="220" text-anchor="middle">Both read once A ends</text>
+  <text class="dg-name" x="180" y="260" text-anchor="middle">Numbered at commit</text>
+  <text class="dg-sub" x="180" y="278" text-anchor="middle">cursor seq</text>
+  <text class="dg-mono dg-muted-text" x="20" y="316">ROWS</text>
+  <rect class="dg-box" x="144" y="298" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="244.0" y="315.0" text-anchor="middle">1044 seq 502</text>
+  <rect class="dg-box" x="144" y="330" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="244.0" y="347.0" text-anchor="middle">1045 seq 501</text>
+  <text class="dg-mono dg-muted-text" x="20" y="386">BETWEEN THE COMMITS</text>
+  <rect class="dg-box" x="184" y="368" width="160" height="26" rx="4"/>
+  <text class="dg-code" x="264.0" y="385.0" text-anchor="middle">1045</text>
+  <text class="dg-mono dg-muted-text" x="20" y="420">AFTER A COMMITS</text>
+  <rect class="dg-box-accent" x="184" y="402" width="160" height="26" rx="4"/>
+  <text class="dg-code" x="264.0" y="419.0" text-anchor="middle">1044</text>
+  <text class="dg-result" x="180" y="454" text-anchor="middle">Both read, in commit order</text>
+  <text class="dg-name" x="540" y="260" text-anchor="middle">The database's log</text>
+  <text class="dg-sub" x="540" y="278" text-anchor="middle">position in the log</text>
+  <text class="dg-mono dg-muted-text" x="380" y="316">ROWS</text>
+  <rect class="dg-box" x="504" y="298" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="604.0" y="315.0" text-anchor="middle">1044 logged second</text>
+  <rect class="dg-box" x="504" y="330" width="200" height="26" rx="4"/>
+  <text class="dg-code" x="604.0" y="347.0" text-anchor="middle">1045 logged first</text>
+  <text class="dg-mono dg-muted-text" x="380" y="386">BETWEEN THE COMMITS</text>
+  <rect class="dg-box" x="544" y="368" width="160" height="26" rx="4"/>
+  <text class="dg-code" x="624.0" y="385.0" text-anchor="middle">1045</text>
+  <text class="dg-mono dg-muted-text" x="380" y="420">AFTER A COMMITS</text>
+  <rect class="dg-box-accent" x="544" y="402" width="160" height="26" rx="4"/>
+  <text class="dg-code" x="624.0" y="419.0" text-anchor="middle">1044</text>
+  <text class="dg-result" x="540" y="454" text-anchor="middle">Both read, in commit order</text>
+</svg>

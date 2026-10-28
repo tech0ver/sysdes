@@ -106,7 +106,7 @@ The word means different things in different articles. Each article says which o
 - `patterns/service-discovery` — Service registry, internal DNS, client-side load balancing, service mesh.
 - `patterns/proximity-search` — Finding things near a point: why a regular index fails in two dimensions, geohash, quadtree, R-tree, H3 and S2 cells, moving objects that report their position every few seconds and an in-memory index for them.
 - `patterns/data-migration` — Moving live data without downtime: copying a snapshot and streaming changes, double writes, backfills, comparing reads, cutover and rollback; used for moving tenants between shards, resharding, schema changes in steps (expand and contract), and switching stores.
-- `patterns/unique-ids` — Generating unique IDs across many nodes: database sequences and ranges per node, UUIDs, time-ordered IDs (Snowflake-style, ULID, UUIDv7), IDs that carry the shard.
+- `patterns/unique-ids` **(written)** — Generating unique IDs across many nodes: database sequences and ranges per node, UUIDs, time-ordered IDs (Snowflake-style, ULID, UUIDv7), IDs that carry the shard.
 - `patterns/async-processing` — Queues in a design: 202 Accepted and background work, transactional outbox, change data capture (CDC), fan-out, webhooks (delivering events to outside systems with retries, backoff, signatures, and replay).
 - `patterns/news-feed` — Building a home feed: fan-out on write, on read, and the hybrid for accounts with many followers.
 - `patterns/cqrs` — Separate models for writes and reads (CQRS), read views kept up to date from a stream, and event sourcing as a separate choice.

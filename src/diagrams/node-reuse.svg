@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 698 364" role="img" aria-labelledby="node-reuse-title node-reuse-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="node-reuse-title">A freed node number is safe only after its old owner's last millisecond</title>
+  <desc id="node-reuse-desc">Generator 1 makes IDs with node 37 up to millisecond 120 by its clock and stops. Generator 2 takes node 37; its clock is 5 ms behind and reads 115. Left: it starts at once and makes IDs at milliseconds 116 to 120 again, the same IDs. Right: it waits until its clock passes 120 and starts at 121.</desc>
+  <defs>
+    <marker id="node-reuse-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="node-reuse-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-11 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="356"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Taken at once</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">node 37 given out again</text>
+  <text class="dg-mono dg-muted-text" x="98.0" y="74" text-anchor="middle">GENERATOR 1</text>
+  <text class="dg-mono dg-muted-text" x="262.0" y="74" text-anchor="middle">GENERATOR 2</text>
+  <line class="dg-lifeline" x1="98.0" y1="82" x2="98.0" y2="314"/>
+  <line class="dg-lifeline" x1="262.0" y1="82" x2="262.0" y2="314"/>
+  <rect class="dg-box" x="28.0" y="92" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="109" text-anchor="middle">node 37: ms 118</text>
+  <rect class="dg-box" x="28.0" y="128" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="98.0" y="145" text-anchor="middle">node 37: ms 120</text>
+  <rect class="dg-box-failed" x="28.0" y="164" width="140" height="26" rx="4"/>
+  <text class="dg-code-muted" x="98.0" y="181" text-anchor="middle">stops</text>
+  <rect class="dg-box" x="192.0" y="200" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="217" text-anchor="middle">node 37, clock 115</text>
+  <rect class="dg-box-accent" x="192.0" y="236" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="253" text-anchor="middle">ms 118: same IDs</text>
+  <rect class="dg-box-accent" x="192.0" y="272" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="262.0" y="289" text-anchor="middle">ms 120: same IDs</text>
+  <text class="dg-result" x="180.0" y="340" text-anchor="middle">IDs made twice</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Taken after ms 120</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">node 37 given out again</text>
+  <text class="dg-mono dg-muted-text" x="458.0" y="74" text-anchor="middle">GENERATOR 1</text>
+  <text class="dg-mono dg-muted-text" x="622.0" y="74" text-anchor="middle">GENERATOR 2</text>
+  <line class="dg-lifeline" x1="458.0" y1="82" x2="458.0" y2="314"/>
+  <line class="dg-lifeline" x1="622.0" y1="82" x2="622.0" y2="314"/>
+  <rect class="dg-box" x="388.0" y="92" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="109" text-anchor="middle">node 37: ms 118</text>
+  <rect class="dg-box" x="388.0" y="128" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="458.0" y="145" text-anchor="middle">node 37: ms 120</text>
+  <rect class="dg-box-failed" x="388.0" y="164" width="140" height="26" rx="4"/>
+  <text class="dg-code-muted" x="458.0" y="181" text-anchor="middle">stops</text>
+  <rect class="dg-box" x="552.0" y="200" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="217" text-anchor="middle">node 37, clock 115</text>
+  <rect class="dg-box-accent dg-empty" x="552.0" y="236" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="253" text-anchor="middle">waits past 120</text>
+  <rect class="dg-box-accent" x="552.0" y="272" width="140" height="26" rx="4"/>
+  <text class="dg-code" x="622.0" y="289" text-anchor="middle">first ID: ms 121</text>
+  <text class="dg-result" x="540.0" y="340" text-anchor="middle">No ID made twice</text>
+  </g>
+</svg>
