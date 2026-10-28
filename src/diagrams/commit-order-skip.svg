@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 698 382" role="img" aria-labelledby="commit-order-skip-title commit-order-skip-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="commit-order-skip-title">A row that commits after a larger ID is never read</title>
+  <desc id="commit-order-skip-desc">Transaction A takes order ID 1044 and keeps writing the order. Transaction B takes 1045 and commits. The warehouse reads orders with an ID above 1043, gets 1045, and moves its cursor to 1045. Then A commits. The next read asks for IDs above 1045 and gets nothing, so order 1044 is never read.</desc>
+  <defs>
+    <marker id="commit-order-skip-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="commit-order-skip-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-11 0)">
+  <text class="dg-mono dg-muted-text" x="120" y="24" text-anchor="middle">TRANSACTION A</text>
+  <line class="dg-lifeline" x1="120" y1="32" x2="120" y2="336"/>
+  <text class="dg-mono dg-muted-text" x="360" y="24" text-anchor="middle">TRANSACTION B</text>
+  <line class="dg-lifeline" x1="360" y1="32" x2="360" y2="336"/>
+  <text class="dg-mono dg-muted-text" x="600" y="24" text-anchor="middle">WAREHOUSE</text>
+  <line class="dg-lifeline" x1="600" y1="32" x2="600" y2="336"/>
+  <rect class="dg-box" x="28.0" y="42" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="120" y="59" text-anchor="middle">takes ID 1044</text>
+  <rect class="dg-box" x="268.0" y="78" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="360" y="95" text-anchor="middle">takes ID 1045</text>
+  <rect class="dg-box" x="28.0" y="114" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="120" y="131" text-anchor="middle">writes the items</text>
+  <rect class="dg-box" x="268.0" y="150" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="360" y="167" text-anchor="middle">commit</text>
+  <rect class="dg-box" x="508.0" y="186" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="600" y="203" text-anchor="middle">id &gt; 1043: gets 1045</text>
+  <rect class="dg-box-accent" x="508.0" y="222" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="600" y="239" text-anchor="middle">cursor = 1045</text>
+  <rect class="dg-box" x="28.0" y="258" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="120" y="275" text-anchor="middle">commit</text>
+  <rect class="dg-box-failed" x="508.0" y="294" width="184" height="26" rx="4"/>
+  <text class="dg-code-muted" x="600" y="311" text-anchor="middle">id &gt; 1045: nothing</text>
+  <text class="dg-result" x="360" y="362" text-anchor="middle">Order 1044 is never read</text>
+  </g>
+</svg>

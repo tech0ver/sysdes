@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 680 270" role="img" aria-labelledby="gapless-vs-sequence-title gapless-vs-sequence-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="gapless-vs-sequence-title">A rollback leaves a gap in a sequence, but not in a counter row</title>
+  <desc id="gapless-vs-sequence-desc">Three invoices of seller 7; the second one rolls back. Left, with a sequence, the invoices take 417, 418, and 419, and 418 is lost with the rollback, so the series reads 417, 419. Right, with a counter row, the rollback also undoes the counter, so the third invoice takes 418 and the series reads 417, 418.</desc>
+  <defs>
+    <marker id="gapless-vs-sequence-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="gapless-vs-sequence-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-20 0)">
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Number from a sequence</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">its use survives a rollback</text>
+  <text class="dg-mono dg-muted-text" x="36" y="76">INVOICE</text>
+  <text class="dg-mono dg-muted-text" x="136" y="76">NUMBER</text>
+  <text class="dg-mono dg-muted-text" x="252" y="76">RESULT</text>
+  <text class="dg-mono dg-muted-text" x="36" y="106">1ST</text>
+  <rect class="dg-box" x="136" y="88" width="96" height="28" rx="4"/>
+  <text class="dg-code" x="184.0" y="106.0" text-anchor="middle">417</text>
+  <text class="dg-mono dg-muted-text" x="252" y="106">COMMIT</text>
+  <text class="dg-mono dg-muted-text" x="36" y="146">2ND</text>
+  <rect class="dg-box-failed" x="136" y="128" width="96" height="28" rx="4"/>
+  <text class="dg-code-muted" x="184.0" y="146.0" text-anchor="middle">418</text>
+  <text class="dg-mono dg-accent-text" x="252" y="146">ROLLBACK</text>
+  <text class="dg-mono dg-muted-text" x="36" y="186">3RD</text>
+  <rect class="dg-box-accent" x="136" y="168" width="96" height="28" rx="4"/>
+  <text class="dg-code" x="184.0" y="186.0" text-anchor="middle">419</text>
+  <text class="dg-mono dg-muted-text" x="252" y="186">COMMIT</text>
+  <text class="dg-result" x="180" y="236" text-anchor="middle">Series: 417, 419</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Number from a counter row</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">rolls back with the invoice</text>
+  <text class="dg-mono dg-muted-text" x="396" y="76">INVOICE</text>
+  <text class="dg-mono dg-muted-text" x="496" y="76">NUMBER</text>
+  <text class="dg-mono dg-muted-text" x="612" y="76">RESULT</text>
+  <text class="dg-mono dg-muted-text" x="396" y="106">1ST</text>
+  <rect class="dg-box" x="496" y="88" width="96" height="28" rx="4"/>
+  <text class="dg-code" x="544.0" y="106.0" text-anchor="middle">417</text>
+  <text class="dg-mono dg-muted-text" x="612" y="106">COMMIT</text>
+  <text class="dg-mono dg-muted-text" x="396" y="146">2ND</text>
+  <rect class="dg-box-failed" x="496" y="128" width="96" height="28" rx="4"/>
+  <text class="dg-code-muted" x="544.0" y="146.0" text-anchor="middle">418</text>
+  <text class="dg-mono dg-accent-text" x="612" y="146">ROLLBACK</text>
+  <text class="dg-mono dg-muted-text" x="396" y="186">3RD</text>
+  <rect class="dg-box-accent" x="496" y="168" width="96" height="28" rx="4"/>
+  <text class="dg-code" x="544.0" y="186.0" text-anchor="middle">418</text>
+  <text class="dg-mono dg-muted-text" x="612" y="186">COMMIT</text>
+  <text class="dg-result" x="540" y="236" text-anchor="middle">Series: 417, 418</text>
+  </g>
+</svg>

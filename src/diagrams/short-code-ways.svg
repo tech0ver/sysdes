@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 720 336" role="img" aria-labelledby="short-code-ways-title short-code-ways-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="short-code-ways-title">Three ways to make a short code</title>
+  <desc id="short-code-ways-desc">Left: ID 1043 goes through a permutation keyed by a secret and becomes 2,918,337,400,216, written in base62 as pNUkK40. Middle: a random code 7Fk2Q9a is already taken, so the insert fails and a new random code Xp3mQ2c goes in. Right: the link is not in the index of links yet; the first 7 base62 characters of its hash give aZ81kQ0, which another link already has, so the link is hashed again with a salt and gets Qm4Tz8w. A repeated link is found through the index of links.</desc>
+  <defs>
+    <marker id="short-code-ways-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="short-code-ways-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="328"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="328"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">Encode a number</text>
+  <rect class="dg-box" x="16" y="48" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="120.0" y="67.0" text-anchor="middle">ID 1043</text>
+  <path class="dg-arrow" d="M120 78 V100" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box" x="16" y="108" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="120.0" y="127.0" text-anchor="middle">secret permutation</text>
+  <path class="dg-arrow" d="M120 138 V160" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box" x="16" y="168" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="120.0" y="187.0" text-anchor="middle">2,918,337,400,216</text>
+  <path class="dg-arrow" d="M120 198 V220" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box-accent" x="16" y="228" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="120.0" y="247.0" text-anchor="middle">base62: pNUkK40</text>
+  <text class="dg-result" x="120" y="306" text-anchor="middle">Never clashes</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Pick a random code</text>
+  <rect class="dg-box" x="256" y="48" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="360.0" y="67.0" text-anchor="middle">random: 7Fk2Q9a</text>
+  <path class="dg-arrow" d="M360 78 V100" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box-failed" x="256" y="108" width="208" height="30" rx="4"/>
+  <text class="dg-code-muted" x="360.0" y="127.0" text-anchor="middle">INSERT: taken</text>
+  <path class="dg-arrow" d="M360 138 V160" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box" x="256" y="168" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="360.0" y="187.0" text-anchor="middle">random: Xp3mQ2c</text>
+  <path class="dg-arrow" d="M360 198 V220" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box-accent" x="256" y="228" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="360.0" y="247.0" text-anchor="middle">INSERT: done</text>
+  <text class="dg-result" x="360" y="306" text-anchor="middle">A retry per clash</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Hash the link</text>
+  <rect class="dg-box" x="496" y="48" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="600.0" y="67.0" text-anchor="middle">link index: not found</text>
+  <path class="dg-arrow" d="M600 78 V100" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box" x="496" y="108" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="600.0" y="127.0" text-anchor="middle">hash → aZ81kQ0</text>
+  <path class="dg-arrow" d="M600 138 V160" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box-failed" x="496" y="168" width="208" height="30" rx="4"/>
+  <text class="dg-code-muted" x="600.0" y="187.0" text-anchor="middle">taken: other link</text>
+  <path class="dg-arrow" d="M600 198 V220" marker-end="url(#short-code-ways-head)"/>
+  <rect class="dg-box-accent" x="496" y="228" width="208" height="30" rx="4"/>
+  <text class="dg-code" x="600.0" y="247.0" text-anchor="middle">salted hash → Qm4Tz8w</text>
+  <text class="dg-result" x="600" y="306" text-anchor="middle">Index finds repeats</text>
+</svg>

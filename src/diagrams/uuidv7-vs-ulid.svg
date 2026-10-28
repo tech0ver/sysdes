@@ -1,0 +1,42 @@
+<svg class="diagram-svg" viewBox="0 0 706 260" role="img" aria-labelledby="uuidv7-vs-ulid-title uuidv7-vs-ulid-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="uuidv7-vs-ulid-title">UUIDv7 and ULID: 48 bits of milliseconds, then randomness</title>
+  <desc id="uuidv7-vs-ulid-desc">Two 128-bit layouts drawn as a schematic, not to scale, with the same time in both. UUIDv7 019a2b3c-4d5e-7f60-8a1b-2c3d4e5f6a7b: 48 bits of Unix milliseconds, 4 version bits holding 7, 12 bits that are random or keep order, 2 variant bits, and 62 random bits. ULID 01K8NKRKAY5Z7XQ4T9B6R3N8VC: the same 48 bits of milliseconds in 10 characters and 80 random bits in 16.</desc>
+  <defs>
+    <marker id="uuidv7-vs-ulid-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="uuidv7-vs-ulid-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-7 0)">
+  <text class="dg-mono dg-muted-text" x="24" y="24">UUIDV7</text>
+  <text class="dg-code" x="696" y="24" text-anchor="end">019a2b3c-4d5e-7f60-8a1b-2c3d4e5f6a7b</text>
+  <text class="dg-mono dg-muted-text" x="144.0" y="104" text-anchor="middle">MILLISECONDS</text>
+  <text class="dg-sub" x="144.0" y="48" text-anchor="middle">48 bits</text>
+  <rect class="dg-box-failed" x="264" y="56" width="48" height="30" rx="0"/>
+  <text class="dg-code-muted" x="288.0" y="75.0" text-anchor="middle">7</text>
+  <text class="dg-mono dg-muted-text" x="288.0" y="104" text-anchor="middle">VER</text>
+  <text class="dg-sub" x="288.0" y="48" text-anchor="middle">4</text>
+  <rect class="dg-box" x="312" y="56" width="124" height="30" rx="0"/>
+  <text class="dg-code" x="374.0" y="75.0" text-anchor="middle">f60</text>
+  <text class="dg-mono dg-muted-text" x="374.0" y="104" text-anchor="middle">RANDOM/ORDER</text>
+  <text class="dg-sub" x="374.0" y="48" text-anchor="middle">12</text>
+  <rect class="dg-box-failed" x="436" y="56" width="48" height="30" rx="0"/>
+  <text class="dg-code-muted" x="460.0" y="75.0" text-anchor="middle">10</text>
+  <text class="dg-mono dg-muted-text" x="460.0" y="104" text-anchor="middle">VAR</text>
+  <text class="dg-sub" x="460.0" y="48" text-anchor="middle">2</text>
+  <rect class="dg-box" x="484" y="56" width="212" height="30" rx="0"/>
+  <text class="dg-code" x="590.0" y="75.0" text-anchor="middle">…a1b-2c3d4e5f6a7b</text>
+  <text class="dg-mono dg-muted-text" x="590.0" y="104" text-anchor="middle">RANDOM</text>
+  <text class="dg-sub" x="590.0" y="48" text-anchor="middle">62 bits</text>
+  <text class="dg-mono dg-muted-text" x="24" y="154">ULID</text>
+  <text class="dg-code" x="696" y="154" text-anchor="end">01K8NKRKAY5Z7XQ4T9B6R3N8VC</text>
+  <text class="dg-mono dg-muted-text" x="144.0" y="234" text-anchor="middle">MILLISECONDS</text>
+  <text class="dg-sub" x="144.0" y="178" text-anchor="middle">48 bits</text>
+  <rect class="dg-box" x="264" y="186" width="432" height="30" rx="0"/>
+  <text class="dg-code" x="480.0" y="205.0" text-anchor="middle">5Z7XQ4T9B6R3N8VC</text>
+  <text class="dg-mono dg-muted-text" x="480.0" y="234" text-anchor="middle">RANDOM</text>
+  <text class="dg-sub" x="480.0" y="178" text-anchor="middle">80 bits</text>
+  <rect class="dg-box-accent" x="24" y="56" width="240" height="30" rx="0"/>
+  <text class="dg-code" x="144.0" y="75.0" text-anchor="middle">019a2b3c-4d5e</text>
+  <rect class="dg-box-accent" x="24" y="186" width="240" height="30" rx="0"/>
+  <text class="dg-code" x="144.0" y="205.0" text-anchor="middle">01K8NKRKAY</text>
+  </g>
+</svg>

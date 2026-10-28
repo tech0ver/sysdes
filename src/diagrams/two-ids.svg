@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 216" role="img" aria-labelledby="two-ids-title two-ids-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="two-ids-title">One row, two IDs: a compact key inside and a public ID outside</title>
+  <desc id="two-ids-desc">An orders row has id 1043 and public_id izkpm55j334u. Inside the system, order items and payments point to id 1043 through foreign keys. Outside, the order page URL and the API use izkpm55j334u, and the API looks the row up by it.</desc>
+  <defs>
+    <marker id="two-ids-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="two-ids-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="16" y="16" width="200" height="184" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="36">INSIDE</text>
+  <rect class="dg-zone" x="520" y="16" width="184" height="184" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="535" y="36">OUTSIDE</text>
+  <rect class="dg-box" x="32" y="78" width="168" height="44" rx="6"/>
+  <text class="dg-name" x="116.0" y="98.0" text-anchor="middle">order_items</text>
+  <text class="dg-sub" x="116.0" y="114.0" text-anchor="middle">order_id = 1043</text>
+  <rect class="dg-box" x="32" y="126" width="168" height="44" rx="6"/>
+  <text class="dg-name" x="116.0" y="146.0" text-anchor="middle">payments</text>
+  <text class="dg-sub" x="116.0" y="162.0" text-anchor="middle">order_id = 1043</text>
+  <text class="dg-mono dg-muted-text" x="372" y="52" text-anchor="middle">ORDERS</text>
+  <text class="dg-mono dg-muted-text" x="294" y="74" text-anchor="middle">ID</text>
+  <text class="dg-mono dg-muted-text" x="418" y="74" text-anchor="middle">PUBLIC_ID</text>
+  <rect class="dg-box" x="248" y="84" width="92" height="80" rx="4"/>
+  <text class="dg-code" x="294.0" y="128.0" text-anchor="middle">1043</text>
+  <rect class="dg-box-accent" x="340" y="84" width="156" height="80" rx="4"/>
+  <text class="dg-code" x="418.0" y="128.0" text-anchor="middle">izkpm55j334u</text>
+  <path class="dg-arrow" d="M200 100 H240" marker-end="url(#two-ids-head)"/>
+  <path class="dg-arrow" d="M200 148 H240" marker-end="url(#two-ids-head)"/>
+  <rect class="dg-box" x="536" y="78" width="152" height="44" rx="6"/>
+  <text class="dg-name" x="612.0" y="98.0" text-anchor="middle">Order page</text>
+  <text class="dg-sub" x="612.0" y="114.0" text-anchor="middle">/orders/izkpm55j…</text>
+  <rect class="dg-box" x="536" y="126" width="152" height="44" rx="6"/>
+  <text class="dg-name" x="612.0" y="146.0" text-anchor="middle">API</text>
+  <text class="dg-sub" x="612.0" y="162.0" text-anchor="middle">GET by public ID</text>
+  <path class="dg-arrow dg-message" d="M536 100 H504" marker-end="url(#two-ids-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M536 148 H504" marker-end="url(#two-ids-head-accent)"/>
+</svg>

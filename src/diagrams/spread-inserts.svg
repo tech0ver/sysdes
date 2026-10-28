@@ -1,0 +1,79 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="spread-inserts-title spread-inserts-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="spread-inserts-title">Where four new rows land in a store split into four key ranges</title>
+  <desc id="spread-inserts-desc">Each panel has four ranges on four nodes and four new rows. Left, a sequence gives 201 to 204, and all four land in the last range, 192 to 255. Middle, the same keys with their 8 bits reversed become 147, 83, 211, and 51, one row per range. Right, the same rows keyed by seller first, sellers 12, 7, 18, and 3, spread over ranges of sellers.</desc>
+  <defs>
+    <marker id="spread-inserts-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="spread-inserts-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="322"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="322"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">Sequence</text>
+  <text class="dg-sub" x="120" y="40" text-anchor="middle">keys 201, 202, 203, 204</text>
+  <rect class="dg-box" x="16" y="64" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="26" y="82">NODE 1</text>
+  <text class="dg-code-muted" x="26" y="98">0–63</text>
+  <rect class="dg-box" x="16" y="120" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="26" y="138">NODE 2</text>
+  <text class="dg-code-muted" x="26" y="154">64–127</text>
+  <rect class="dg-box" x="16" y="176" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="26" y="194">NODE 3</text>
+  <text class="dg-code-muted" x="26" y="210">128–191</text>
+  <rect class="dg-box-accent" x="16" y="232" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="26" y="250">NODE 4</text>
+  <text class="dg-code-muted" x="26" y="266">192–255</text>
+  <rect class="dg-chip" x="128" y="236" width="42" height="16" rx="4"/>
+  <text class="dg-code" x="149.0" y="248.0" text-anchor="middle">201</text>
+  <rect class="dg-chip" x="174" y="236" width="42" height="16" rx="4"/>
+  <text class="dg-code" x="195.0" y="248.0" text-anchor="middle">202</text>
+  <rect class="dg-chip" x="128" y="254" width="42" height="16" rx="4"/>
+  <text class="dg-code" x="149.0" y="266.0" text-anchor="middle">203</text>
+  <rect class="dg-chip" x="174" y="254" width="42" height="16" rx="4"/>
+  <text class="dg-code" x="195.0" y="266.0" text-anchor="middle">204</text>
+  <text class="dg-result" x="120" y="306" text-anchor="middle">One node takes all</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Bit-reversed</text>
+  <text class="dg-sub" x="360" y="40" text-anchor="middle">the same keys, 8 bits reversed</text>
+  <rect class="dg-box" x="256" y="64" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="266" y="82">NODE 1</text>
+  <text class="dg-code-muted" x="266" y="98">0–63</text>
+  <rect class="dg-chip" x="368" y="73" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="412.0" y="90.0" text-anchor="middle">51</text>
+  <rect class="dg-box" x="256" y="120" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="266" y="138">NODE 2</text>
+  <text class="dg-code-muted" x="266" y="154">64–127</text>
+  <rect class="dg-chip" x="368" y="129" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="412.0" y="146.0" text-anchor="middle">83</text>
+  <rect class="dg-box" x="256" y="176" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="266" y="194">NODE 3</text>
+  <text class="dg-code-muted" x="266" y="210">128–191</text>
+  <rect class="dg-chip" x="368" y="185" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="412.0" y="202.0" text-anchor="middle">147</text>
+  <rect class="dg-box" x="256" y="232" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="266" y="250">NODE 4</text>
+  <text class="dg-code-muted" x="266" y="266">192–255</text>
+  <rect class="dg-chip" x="368" y="241" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="412.0" y="258.0" text-anchor="middle">211</text>
+  <text class="dg-result" x="360" y="306" text-anchor="middle">Spread over all nodes</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Seller first</text>
+  <text class="dg-sub" x="600" y="40" text-anchor="middle">the same rows, seller first</text>
+  <rect class="dg-box" x="496" y="64" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="506" y="82">NODE 1</text>
+  <text class="dg-code-muted" x="506" y="98">sellers 1–5</text>
+  <rect class="dg-chip" x="608" y="73" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="652.0" y="90.0" text-anchor="middle">(3, 204)</text>
+  <rect class="dg-box" x="496" y="120" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="506" y="138">NODE 2</text>
+  <text class="dg-code-muted" x="506" y="154">sellers 6–10</text>
+  <rect class="dg-chip" x="608" y="129" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="652.0" y="146.0" text-anchor="middle">(7, 202)</text>
+  <rect class="dg-box" x="496" y="176" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="506" y="194">NODE 3</text>
+  <text class="dg-code-muted" x="506" y="210">sellers 11–15</text>
+  <rect class="dg-chip" x="608" y="185" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="652.0" y="202.0" text-anchor="middle">(12, 201)</text>
+  <rect class="dg-box" x="496" y="232" width="208" height="44" rx="6"/>
+  <text class="dg-mono dg-muted-text" x="506" y="250">NODE 4</text>
+  <text class="dg-code-muted" x="506" y="266">sellers 16–20</text>
+  <rect class="dg-chip" x="608" y="241" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="652.0" y="258.0" text-anchor="middle">(18, 203)</text>
+  <text class="dg-result" x="600" y="306" text-anchor="middle">Spread over all nodes</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 698 342" role="img" aria-labelledby="series-lock-title series-lock-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="series-lock-title">The invoices of one series take turns; other series do not wait</title>
+  <desc id="series-lock-desc">Transactions A and B issue invoices of seller 7, transaction C an invoice of seller 9. A takes number 418 from the counter of seller 7, C takes 52 from the counter of seller 9. B waits for A. A commits, then B takes 419. C commits without waiting.</desc>
+  <defs>
+    <marker id="series-lock-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="series-lock-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-11 0)">
+  <text class="dg-mono dg-muted-text" x="120" y="24" text-anchor="middle">A: SELLER 7</text>
+  <line class="dg-lifeline" x1="120" y1="32" x2="120" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="360" y="24" text-anchor="middle">B: SELLER 7</text>
+  <line class="dg-lifeline" x1="360" y1="32" x2="360" y2="300"/>
+  <text class="dg-mono dg-muted-text" x="600" y="24" text-anchor="middle">C: SELLER 9</text>
+  <line class="dg-lifeline" x1="600" y1="32" x2="600" y2="300"/>
+  <rect class="dg-box-accent" x="28.0" y="42" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="120" y="59" text-anchor="middle">counter 7: 418</text>
+  <rect class="dg-box" x="508.0" y="78" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="600" y="95" text-anchor="middle">counter 9: 52</text>
+  <rect class="dg-box-accent dg-empty" x="268.0" y="114" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="360" y="131" text-anchor="middle">counter 7: waits</text>
+  <rect class="dg-box" x="508.0" y="150" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="600" y="167" text-anchor="middle">commit</text>
+  <rect class="dg-box" x="28.0" y="186" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="120" y="203" text-anchor="middle">commit</text>
+  <rect class="dg-box-accent" x="268.0" y="222" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="360" y="239" text-anchor="middle">counter 7: 419</text>
+  <rect class="dg-box" x="268.0" y="258" width="184" height="26" rx="4"/>
+  <text class="dg-code" x="360" y="275" text-anchor="middle">commit</text>
+  <text class="dg-result" x="360" y="326" text-anchor="middle">Seller 7 numbers one at a time; seller 9 does not wait</text>
+  </g>
+</svg>

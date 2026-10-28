@@ -1,0 +1,88 @@
+<svg class="diagram-svg" viewBox="0 0 720 400" role="img" aria-labelledby="clock-back-options-title clock-back-options-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="clock-back-options-title">A clock that steps back: no check, wait, or borrow from the future</title>
+  <desc id="clock-back-options-desc">The same clock readings in three panels: 116, 117, 120, 120, then NTP sets the clock back 5 ms, then 116, 117, and 121. Before the step, the generator made IDs at 116, 117, and 120. Without a check, it makes 116 · 0 and 117 · 0 again, IDs it has already given out. Waiting, it refuses until the clock passes 120 and then uses 121. Borrowing, it keeps the last time, 120, and uses its next sequence numbers.</desc>
+  <defs>
+    <marker id="clock-back-options-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="clock-back-options-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="392"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="392"/>
+  <text class="dg-name" x="120" y="22" text-anchor="middle">No check</text>
+  <text class="dg-mono dg-muted-text" x="24" y="56">CLOCK</text>
+  <text class="dg-mono dg-muted-text" x="136" y="56">ID TIME · SEQ</text>
+  <text class="dg-code-muted" x="24" y="85">clock 116</text>
+  <rect class="dg-box" x="136" y="68" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="85.0" text-anchor="middle">116 · 0</text>
+  <text class="dg-code-muted" x="24" y="121">clock 117</text>
+  <rect class="dg-box" x="136" y="104" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="121.0" text-anchor="middle">117 · 0</text>
+  <text class="dg-code-muted" x="24" y="157">clock 120</text>
+  <rect class="dg-box" x="136" y="140" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="157.0" text-anchor="middle">120 · 0</text>
+  <text class="dg-code-muted" x="24" y="193">clock 120</text>
+  <rect class="dg-box" x="136" y="176" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="193.0" text-anchor="middle">120 · 1</text>
+  <text class="dg-mono dg-accent-text" x="120" y="229" text-anchor="middle">NTP: back 5 ms</text>
+  <text class="dg-code-muted" x="24" y="265">clock 116</text>
+  <rect class="dg-box-accent" x="136" y="248" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="265.0" text-anchor="middle">116 · 0</text>
+  <text class="dg-code-muted" x="24" y="301">clock 117</text>
+  <rect class="dg-box-accent" x="136" y="284" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="301.0" text-anchor="middle">117 · 0</text>
+  <text class="dg-code-muted" x="24" y="337">clock 121</text>
+  <rect class="dg-box" x="136" y="320" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="337.0" text-anchor="middle">121 · 0</text>
+  <text class="dg-result" x="120" y="376" text-anchor="middle">Repeats 116 · 0 and 117 · 0</text>
+  <text class="dg-name" x="360" y="22" text-anchor="middle">Wait</text>
+  <text class="dg-mono dg-muted-text" x="264" y="56">CLOCK</text>
+  <text class="dg-mono dg-muted-text" x="376" y="56">ID TIME · SEQ</text>
+  <text class="dg-code-muted" x="264" y="85">clock 116</text>
+  <rect class="dg-box" x="376" y="68" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="85.0" text-anchor="middle">116 · 0</text>
+  <text class="dg-code-muted" x="264" y="121">clock 117</text>
+  <rect class="dg-box" x="376" y="104" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="121.0" text-anchor="middle">117 · 0</text>
+  <text class="dg-code-muted" x="264" y="157">clock 120</text>
+  <rect class="dg-box" x="376" y="140" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="157.0" text-anchor="middle">120 · 0</text>
+  <text class="dg-code-muted" x="264" y="193">clock 120</text>
+  <rect class="dg-box" x="376" y="176" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="193.0" text-anchor="middle">120 · 1</text>
+  <text class="dg-mono dg-accent-text" x="360" y="229" text-anchor="middle">NTP: back 5 ms</text>
+  <text class="dg-code-muted" x="264" y="265">clock 116</text>
+  <rect class="dg-box-accent dg-empty" x="376" y="248" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="265.0" text-anchor="middle">waits</text>
+  <text class="dg-code-muted" x="264" y="301">clock 117</text>
+  <rect class="dg-box-accent dg-empty" x="376" y="284" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="301.0" text-anchor="middle">waits</text>
+  <text class="dg-code-muted" x="264" y="337">clock 121</text>
+  <rect class="dg-box" x="376" y="320" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="420.0" y="337.0" text-anchor="middle">121 · 0</text>
+  <text class="dg-result" x="360" y="376" text-anchor="middle">Stalls for 5 ms</text>
+  <text class="dg-name" x="600" y="22" text-anchor="middle">Borrow</text>
+  <text class="dg-mono dg-muted-text" x="504" y="56">CLOCK</text>
+  <text class="dg-mono dg-muted-text" x="616" y="56">ID TIME · SEQ</text>
+  <text class="dg-code-muted" x="504" y="85">clock 116</text>
+  <rect class="dg-box" x="616" y="68" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="85.0" text-anchor="middle">116 · 0</text>
+  <text class="dg-code-muted" x="504" y="121">clock 117</text>
+  <rect class="dg-box" x="616" y="104" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="121.0" text-anchor="middle">117 · 0</text>
+  <text class="dg-code-muted" x="504" y="157">clock 120</text>
+  <rect class="dg-box" x="616" y="140" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="157.0" text-anchor="middle">120 · 0</text>
+  <text class="dg-code-muted" x="504" y="193">clock 120</text>
+  <rect class="dg-box" x="616" y="176" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="193.0" text-anchor="middle">120 · 1</text>
+  <text class="dg-mono dg-accent-text" x="600" y="229" text-anchor="middle">NTP: back 5 ms</text>
+  <text class="dg-code-muted" x="504" y="265">clock 116</text>
+  <rect class="dg-box-accent" x="616" y="248" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="265.0" text-anchor="middle">120 · 2</text>
+  <text class="dg-code-muted" x="504" y="301">clock 117</text>
+  <rect class="dg-box-accent" x="616" y="284" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="301.0" text-anchor="middle">120 · 3</text>
+  <text class="dg-code-muted" x="504" y="337">clock 121</text>
+  <rect class="dg-box" x="616" y="320" width="88" height="26" rx="4"/>
+  <text class="dg-code" x="660.0" y="337.0" text-anchor="middle">121 · 0</text>
+  <text class="dg-result" x="600" y="376" text-anchor="middle">Runs on, ahead of the clock</text>
+</svg>

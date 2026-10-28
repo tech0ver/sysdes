@@ -107,6 +107,8 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 ## Sources
 
 - The author names the sources for each article: study notes, books, sites, or their own experience.
+- Back every claim with a primary source: a specification, official documentation, a paper, an engineering post about a real system, or a book that goes deep. Interview prep books, such as Alex Xu's, are often shallow: they show what interviews ask, but they are never the proof of a claim.
+- Prefer current material. When a topic changed in recent years (a new standard, a new database feature, a new practice), say what is current, not only the classic cases.
 - The article ends with a `## Sources` section after the cheat sheet: one list of the books, papers, and articles whose ideas made it into the text. Books come first, then papers and articles; each group is sorted by the first author's last name. The text has no footnotes.
 - A book entry gives the authors, the title as a link, the edition, the publisher, the year, and the chapters used: "Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 7." Link the edition you used, on the publisher's site, or on the book's own site or a store when the publisher has no page. A paper or an article gives the authors or the company, the title as a link, where it appeared, and the year.
 - List only English books and articles. When we read a translation or another language's edition, cite the English edition; when there is none, leave the source out. Personal notes are never a source: cite the book or article they summarize.

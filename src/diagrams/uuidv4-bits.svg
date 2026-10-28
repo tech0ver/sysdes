@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 706 176" role="img" aria-labelledby="uuidv4-bits-title uuidv4-bits-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="uuidv4-bits-title">A UUIDv4 is 122 random bits and 6 bits that name the format</title>
+  <desc id="uuidv4-bits-desc">The UUID 7c9e6679-7425-40de-944b-e07fc1f90ae7 split into its 128 bits: 48 random bits, 4 version bits that hold 4, 12 random bits, 2 variant bits, and 62 random bits. The digit 9 is 1001 in bits: its first two bits, 10, are the variant, and the other two are random. 122 bits are random.</desc>
+  <defs>
+    <marker id="uuidv4-bits-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="uuidv4-bits-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <g transform="translate(-7 0)">
+  <text class="dg-code" x="360" y="24" text-anchor="middle">7c9e6679-7425-40de-944b-e07fc1f90ae7</text>
+  <rect class="dg-box" x="24" y="52" width="216" height="30" rx="0"/>
+  <text class="dg-code" x="132.0" y="71.0" text-anchor="middle">7c9e6679-7425</text>
+  <text class="dg-mono dg-muted-text" x="132.0" y="100" text-anchor="middle">RANDOM</text>
+  <text class="dg-sub" x="132.0" y="44" text-anchor="middle">48 bits</text>
+  <rect class="dg-box-failed" x="240" y="52" width="48" height="30" rx="0"/>
+  <text class="dg-code-muted" x="264.0" y="71.0" text-anchor="middle">4</text>
+  <text class="dg-mono dg-muted-text" x="264.0" y="100" text-anchor="middle">VER</text>
+  <text class="dg-sub" x="264.0" y="44" text-anchor="middle">4</text>
+  <rect class="dg-box" x="288" y="52" width="84" height="30" rx="0"/>
+  <text class="dg-code" x="330.0" y="71.0" text-anchor="middle">0de</text>
+  <text class="dg-mono dg-muted-text" x="330.0" y="100" text-anchor="middle">RANDOM</text>
+  <text class="dg-sub" x="330.0" y="44" text-anchor="middle">12 bits</text>
+  <rect class="dg-box-failed" x="372" y="52" width="40" height="30" rx="0"/>
+  <text class="dg-code-muted" x="392.0" y="71.0" text-anchor="middle">10</text>
+  <text class="dg-mono dg-muted-text" x="392.0" y="100" text-anchor="middle">VAR</text>
+  <text class="dg-sub" x="392.0" y="44" text-anchor="middle">2</text>
+  <rect class="dg-box" x="412" y="52" width="284" height="30" rx="0"/>
+  <text class="dg-code" x="554.0" y="71.0" text-anchor="middle">…44b-e07fc1f90ae7</text>
+  <text class="dg-mono dg-muted-text" x="554.0" y="100" text-anchor="middle">RANDOM</text>
+  <text class="dg-sub" x="554.0" y="44" text-anchor="middle">62 bits</text>
+  <text class="dg-sub" x="360" y="132" text-anchor="middle">The digit 9 is 1001 in bits: 10 is the variant, 01 is random</text>
+  <text class="dg-result" x="360" y="162" text-anchor="middle">122 random bits</text>
+  </g>
+</svg>

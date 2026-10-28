@@ -1,0 +1,56 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="node-number-ways-title node-number-ways-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="node-number-ways-title">Seven ways to assign a node number, and how two generators get the same one</title>
+  <desc id="node-number-ways-desc">Seven cells, one per way. A setting per server: servers 12 and 31 both have node 7 from a copied config. A lease: a generator paused past its lease and a new one both have node 7. A new number at every start: starts 41 and 42 get nodes 41 and 42, never the same, until the bits run out. Cluster membership: two members that join on both sides of a split both get 13. Pod ordinal: a force-deleted pod still runs next to its replacement, both with 3. IP address bits: 10.1.0.7 and 10.2.0.7 in two networks both give 7. Random bits: two generators pick 731, which happens for 38 generators with a 50% chance.</desc>
+  <defs>
+    <marker id="node-number-ways-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="node-number-ways-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="180" y1="8" x2="180" y2="136"/>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="136"/>
+  <line class="dg-rule" x1="540" y1="8" x2="540" y2="136"/>
+  <line class="dg-rule" x1="270" y1="160" x2="270" y2="292"/>
+  <line class="dg-rule" x1="450" y1="160" x2="450" y2="292"/>
+  <line class="dg-rule" x1="16" y1="148" x2="704" y2="148"/>
+  <text class="dg-name" x="90" y="26" text-anchor="middle">Setting per server</text>
+  <rect class="dg-box-accent" x="12" y="40" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="90.0" y="57.0" text-anchor="middle">server 12: node 7</text>
+  <rect class="dg-box-accent" x="12" y="72" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="90.0" y="89.0" text-anchor="middle">server 31: node 7</text>
+  <text class="dg-sub" x="90" y="124" text-anchor="middle">a copied config</text>
+  <text class="dg-name" x="270" y="26" text-anchor="middle">Lease</text>
+  <rect class="dg-box-accent" x="192" y="40" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="270.0" y="57.0" text-anchor="middle">paused: node 7</text>
+  <rect class="dg-box-accent" x="192" y="72" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="270.0" y="89.0" text-anchor="middle">new: node 7</text>
+  <text class="dg-sub" x="270" y="124" text-anchor="middle">lease ended in a pause</text>
+  <text class="dg-name" x="450" y="26" text-anchor="middle">Number per start</text>
+  <rect class="dg-box" x="372" y="40" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="450.0" y="57.0" text-anchor="middle">start 41: node 41</text>
+  <rect class="dg-box" x="372" y="72" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="450.0" y="89.0" text-anchor="middle">start 42: node 42</text>
+  <text class="dg-sub" x="450" y="124" text-anchor="middle">never the same</text>
+  <text class="dg-name" x="630" y="26" text-anchor="middle">Membership</text>
+  <rect class="dg-box-accent" x="552" y="40" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="630.0" y="57.0" text-anchor="middle">side 1: node 13</text>
+  <rect class="dg-box-accent" x="552" y="72" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="630.0" y="89.0" text-anchor="middle">side 2: node 13</text>
+  <text class="dg-sub" x="630" y="124" text-anchor="middle">two joins in a split</text>
+  <text class="dg-name" x="180" y="178" text-anchor="middle">Pod ordinal</text>
+  <rect class="dg-box-accent" x="102" y="192" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="209.0" text-anchor="middle">old pod: node 3</text>
+  <rect class="dg-box-accent" x="102" y="224" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="241.0" text-anchor="middle">new pod: node 3</text>
+  <text class="dg-sub" x="180" y="276" text-anchor="middle">old pod force-deleted</text>
+  <text class="dg-name" x="360" y="178" text-anchor="middle">IP address bits</text>
+  <rect class="dg-box-accent" x="282" y="192" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="360.0" y="209.0" text-anchor="middle">10.1.0.7: node 7</text>
+  <rect class="dg-box-accent" x="282" y="224" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="360.0" y="241.0" text-anchor="middle">10.2.0.7: node 7</text>
+  <text class="dg-sub" x="360" y="276" text-anchor="middle">two networks</text>
+  <text class="dg-name" x="540" y="178" text-anchor="middle">Random bits</text>
+  <rect class="dg-box-accent" x="462" y="192" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="209.0" text-anchor="middle">gen A: node 731</text>
+  <rect class="dg-box-accent" x="462" y="224" width="156" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="241.0" text-anchor="middle">gen B: node 731</text>
+  <text class="dg-sub" x="540" y="276" text-anchor="middle">50% for 38 generators</text>
+</svg>

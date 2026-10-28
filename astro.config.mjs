@@ -57,7 +57,7 @@ export default defineTech0verConfig({
 			},
 			{
 				label: 'Patterns',
-				items: ['patterns/reservations'],
+				items: ['patterns/reservations', 'patterns/unique-ids'],
 			},
 			{
 				label: 'Technologies',
