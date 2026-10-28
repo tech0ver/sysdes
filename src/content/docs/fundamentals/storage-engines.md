@@ -263,6 +263,8 @@ The two workloads have names. **OLTP** (online transaction processing) is the ap
 Keep the app's records in row storage. Move analytics to a column store when queries scan large parts of the data and reports can tolerate the loading delay.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - Keep data that must survive a restart on disk; a map inside the app fits only a throwaway prototype. Appending to a log is the cheapest write, but reads have to scan it.

@@ -193,6 +193,8 @@ Give every network call a timeout. Retry temporary failures only when repeating 
 
 When a dependency keeps failing, retries only make it worse. A **circuit breaker** stops calling it for a while and fails fast instead. <!-- link: patterns/resilience -->
 
+::mark-as-read
+
 ## Cheat sheet
 
 - In request-response, the client starts and the server answers. One component can be a server to its caller and a client to the database.

@@ -394,6 +394,8 @@ Treat an offer as a hold with a deadline on the unit, and on the person when the
 When asked how a ride reaches one driver, name both rules: a ride is offered to one driver at a time, and a driver has at most one open offer. Then say what happens on a refusal, on silence, and on an acceptance that comes after the deadline.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - When buyers do not care which unit they get, keep a count per unit type and period, and take every period of a request in one transaction with an atomic update that checks the count. Hand out the concrete unit late.

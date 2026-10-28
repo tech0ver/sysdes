@@ -451,6 +451,8 @@ The marketplace ends with UUIDv7 keys, made by the database, for orders and mess
 Ask what the IDs must do before you pick a generator: fit in 64 bits, follow creation time, be made without a round trip, hide the count, or have no gaps. Then name the scheme, what it costs, and how it fails: who assigns node numbers, what happens when a clock goes back, and where the unique key catches a duplicate.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - In one database, use a `bigint` identity column. A sequence promises unique numbers only: it leaves gaps, and when it hands out numbers in batches, numbers from different connections interleave.

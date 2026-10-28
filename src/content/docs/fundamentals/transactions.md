@@ -478,6 +478,8 @@ Where such stores offer transactions across records, they come with limits: a ca
 If asked about ACID versus BASE, say that ACID names guarantees of transactions, and its isolation is often weaker than serializable by default. BASE names stores that put availability first, often with atomicity for one record only, and let copies disagree for a while. Then say which rule of the design needs more than one record and how you would guard it.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - Put changes that must happen together into one transaction: a commit applies all of them, a rollback none. Keep only database work inside, and run emails and other outside actions after the commit, from a record written in the same transaction.

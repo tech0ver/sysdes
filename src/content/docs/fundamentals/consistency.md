@@ -432,6 +432,8 @@ The wallet now runs in two regions, with sharded accounts, the majority of each 
 For each operation in a design, name the guarantee it needs and why. Then say what it costs without failures, in latency, and during a network partition, in refused requests. "The system is strongly consistent" is not an answer: say which reads and writes are linearizable, which checks are atomic, and which reads may be stale.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - Linearizability: every operation takes effect at one moment between its request and its answer, in one order that matches real time. Use it for reads that follow a signal; guard rules with atomic conditional writes or transactions.

@@ -359,6 +359,8 @@ The session store owns the sessions: they have no copy in a database, so losing 
 Start with cache-aside, a TTL on every value, and a delete after each commit. Cache shared responses in browsers and a CDN with an explicit `Cache-Control`. Add a local cache, stampede protection, and negative caching when hot keys, expiries, or missing keys show up in the database load.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - A cache pays off when many requests read the same values and they change rarely compared with how often they are read. Average time = T_cache + (1 − H) × T_db, and the database gets (1 − H) × R; misses keep their full latency. Rank candidates by database time × rate × expected hit ratio.

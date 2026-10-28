@@ -782,6 +782,8 @@ Start on one PostgreSQL primary with standbys, and say what would make you chang
 Push one primary as far as tuning, a larger machine, standbys, and caches take it. Move independent groups of tables out when they share little with the rest, shard by key when one data set is the limit, and use many logical shards on few servers so that you can move them later.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - One instance is a postmaster with a process per connection, shared buffers on top of the OS page cache, and background processes for writing pages, vacuuming, and sending WAL to standbys. All writes go to one primary; start shared buffers at about a quarter of RAM on a dedicated machine.

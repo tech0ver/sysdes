@@ -397,6 +397,8 @@ Most data starts in the relational store, and each move to another store needs a
 
 Each fact still has one owner. The feeds, counters, search index, vectors, and rollups are copies that follow their owners, with a stated delay, and every delete must reach them.
 
+::mark-as-read
+
 ## Cheat sheet
 
 - List the queries and the rules that must hold before you pick a store. Keep core entities in normalized relational tables: a join table per many-to-many relation, indexes for frequent queries, constraints for the rules.

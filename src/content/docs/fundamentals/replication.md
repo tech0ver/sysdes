@@ -320,6 +320,8 @@ During a network break, a system either refuses some requests or lets copies dis
 When asked how data is replicated, answer three questions: who accepts writes, when a write counts as done, and what a read may see. Then say what a failover loses, and which reads must go to the leader.
 :::
 
+::mark-as-read
+
 ## Cheat sheet
 
 - Replication keeps the same data on several nodes. In the usual design, one leader takes all writes and sends them to followers in one order through the replication log; reads can go to any replica.
