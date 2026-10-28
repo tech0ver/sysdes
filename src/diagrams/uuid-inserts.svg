@@ -1,6 +1,6 @@
 <svg class="diagram-svg" viewBox="0 0 706 272" role="img" aria-labelledby="uuid-inserts-title uuid-inserts-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="uuid-inserts-title">Where new keys land in a B-tree index</title>
-  <desc id="uuid-inserts-desc">The same six leaf pages of a primary key index in both panels. Left, bigint or uuidv7 keys: five new keys all go to the last page. Right, random UUIDv4 keys: the five new keys land on five different pages. With 100 million rows, the inserts took 83 s with bigint and 388 s with UUIDv4.</desc>
+  <desc id="uuid-inserts-desc">The same six leaf pages of a primary key index in both panels. Left, bigint or uuidv7 keys: five new keys all go to the last page. Right, random UUIDv4 keys: the five new keys land on five different pages. Adding 50 million rows to a table that already held 50 million took 1 min 40 s with uuidv7 and 46 min with UUIDv4.</desc>
   <defs>
     <marker id="uuid-inserts-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
     <marker id="uuid-inserts-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
@@ -32,7 +32,7 @@
   <text class="dg-code" x="261.0" y="223.0" text-anchor="middle">p5</text>
   <rect class="dg-box-accent" x="290" y="204" width="46" height="30" rx="4"/>
   <text class="dg-code" x="313.0" y="223.0" text-anchor="middle">p6</text>
-  <text class="dg-result" x="180" y="258" text-anchor="middle">83 s</text>
+  <text class="dg-result" x="180" y="258" text-anchor="middle">uuidv7: 1 min 40 s</text>
   <text class="dg-name" x="540.0" y="22" text-anchor="middle">UUIDv4</text>
   <text class="dg-sub" x="540.0" y="40" text-anchor="middle">new keys at random</text>
   <rect class="dg-box" x="390.0" y="146" width="46" height="20" rx="4"/>
@@ -62,6 +62,6 @@
   <text class="dg-code" x="621.0" y="223.0" text-anchor="middle">p5</text>
   <rect class="dg-box-accent" x="650" y="204" width="46" height="30" rx="4"/>
   <text class="dg-code" x="673.0" y="223.0" text-anchor="middle">p6</text>
-  <text class="dg-result" x="540" y="258" text-anchor="middle">388 s</text>
+  <text class="dg-result" x="540" y="258" text-anchor="middle">UUIDv4: 46 min</text>
   </g>
 </svg>
