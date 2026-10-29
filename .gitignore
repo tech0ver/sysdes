@@ -20,8 +20,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# local agent workspace
-.agents/
+# local agent workspace, except shared project skills
+/.agents/*
+!/.agents/skills/
 
 # Python
 __pycache__/

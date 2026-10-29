@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "skills": "skills",
+    "skills:list": "skills list --agent codex claude-code",
+    "skills:update": "skills update --project"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.2",
@@ -14,5 +17,8 @@
     "@tech0ver/starlight": "0.6.1",
     "astro": "7.3.5",
     "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "skills": "1.7.4"
   }
 }
