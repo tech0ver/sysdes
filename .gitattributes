@@ -1,0 +1,3 @@
+# Preserve upstream skill snapshots, including line endings and whitespace.
+/.agents/skills/diagram-design/** -text -whitespace
+/.agents/skills/humanizer/** -text -whitespace
