@@ -1,0 +1,51 @@
+<svg class="diagram-svg" viewBox="0 0 720 262" role="img" aria-labelledby="one-group-vs-many-title one-group-vs-many-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="one-group-vs-many-title">Many consensus groups in a database, one in a coordination service</title>
+  <desc id="one-group-vs-many-desc">Left, a distributed database: three consensus groups of three nodes each hold a part of the keys, a to h, i to p, and q to z, and each group has its own leader that takes writes. Right, a coordination service: one group of three nodes, each holding every key from a to z, and one leader takes every write.</desc>
+  <defs>
+    <marker id="one-group-vs-many-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="one-group-vs-many-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="220"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Distributed database</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">each group holds a part of the keys</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Coordination service</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">one group, every key on every node</text>
+  <rect class="dg-zone" x="18" y="56" width="100" height="136" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="33" y="76">GROUP 1</text>
+  <rect class="dg-box-accent" x="28" y="86" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="68.0" y="103.0" text-anchor="middle">a–h</text>
+  <rect class="dg-box" x="28" y="120" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="68.0" y="137.0" text-anchor="middle">a–h</text>
+  <rect class="dg-box" x="28" y="154" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="68.0" y="171.0" text-anchor="middle">a–h</text>
+  <rect class="dg-zone" x="130" y="56" width="100" height="136" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="145" y="76">GROUP 2</text>
+  <rect class="dg-box-accent" x="140" y="86" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="103.0" text-anchor="middle">i–p</text>
+  <rect class="dg-box" x="140" y="120" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="137.0" text-anchor="middle">i–p</text>
+  <rect class="dg-box" x="140" y="154" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="180.0" y="171.0" text-anchor="middle">i–p</text>
+  <rect class="dg-zone" x="242" y="56" width="100" height="136" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="257" y="76">GROUP 3</text>
+  <rect class="dg-box-accent" x="252" y="86" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="103.0" text-anchor="middle">q–z</text>
+  <rect class="dg-box" x="252" y="120" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="137.0" text-anchor="middle">q–z</text>
+  <rect class="dg-box" x="252" y="154" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="292.0" y="171.0" text-anchor="middle">q–z</text>
+  <rect class="dg-zone" x="490" y="56" width="100" height="136" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="505" y="76">ONE GROUP</text>
+  <rect class="dg-box-accent" x="500" y="86" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="103.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box" x="500" y="120" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="137.0" text-anchor="middle">a–z</text>
+  <rect class="dg-box" x="500" y="154" width="80" height="26" rx="4"/>
+  <text class="dg-code" x="540.0" y="171.0" text-anchor="middle">a–z</text>
+  <text class="dg-result" x="180" y="214" text-anchor="middle">Three leaders share the writes</text>
+  <text class="dg-result" x="540" y="214" text-anchor="middle">One leader takes every write</text>
+  <rect class="dg-box-accent" x="300" y="240" width="18" height="14" rx="3"/>
+  <text class="dg-sub" x="326" y="251" text-anchor="start">leader</text>
+  <rect class="dg-box" x="386" y="240" width="18" height="14" rx="3"/>
+  <text class="dg-sub" x="412" y="251" text-anchor="start">follower</text>
+</svg>

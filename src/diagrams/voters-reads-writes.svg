@@ -1,0 +1,26 @@
+<svg class="diagram-svg" viewBox="0 0 720 266" role="img" aria-labelledby="voters-reads-writes-title voters-reads-writes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="voters-reads-writes-title">More voting servers: more reads, fewer writes</title>
+  <desc id="voters-reads-writes-desc">Results from the ZooKeeper paper's 2010 benchmark. Reads per second: 87,000 with 3 servers and 460,000 with 13. Writes per second: 21,000 with 3 servers and 8,000 with 13.</desc>
+  <defs>
+    <marker id="voters-reads-writes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="voters-reads-writes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="234"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Reads per second</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Writes per second</text>
+  <rect class="dg-box" x="90" y="183.52173913043478" width="60" height="26.47826086956522" rx="3"/>
+  <text class="dg-code" x="120" y="175.52173913043478" text-anchor="middle">87,000</text>
+  <text class="dg-sub" x="120" y="230" text-anchor="middle">3 servers</text>
+  <rect class="dg-box" x="210" y="70.0" width="60" height="140.0" rx="3"/>
+  <text class="dg-code" x="240" y="62.0" text-anchor="middle">460,000</text>
+  <text class="dg-sub" x="240" y="230" text-anchor="middle">13 servers</text>
+  <line class="dg-line" x1="60" y1="210" x2="300" y2="210"/>
+  <rect class="dg-box" x="450" y="70.0" width="60" height="140.0" rx="3"/>
+  <text class="dg-code" x="480" y="62.0" text-anchor="middle">21,000</text>
+  <text class="dg-sub" x="480" y="230" text-anchor="middle">3 servers</text>
+  <rect class="dg-box-accent" x="570" y="156.66666666666666" width="60" height="53.333333333333336" rx="3"/>
+  <text class="dg-code" x="600" y="148.66666666666666" text-anchor="middle">8,000</text>
+  <text class="dg-sub" x="600" y="230" text-anchor="middle">13 servers</text>
+  <line class="dg-line" x1="420" y1="210" x2="660" y2="210"/>
+  <text class="dg-sub" x="360" y="254" text-anchor="middle">ZooKeeper paper, 2010: 250 clients, 1 KB requests · each panel has its own scale</text>
+</svg>

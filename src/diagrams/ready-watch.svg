@@ -1,0 +1,34 @@
+<svg class="diagram-svg" viewBox="0 0 720 356" role="img" aria-labelledby="ready-watch-title ready-watch-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ready-watch-title">A watch on the ready marker tells a reader to drop half a change</title>
+  <desc id="ready-watch-desc">The reader checks that ready exists and sets a watch on it, then reads 0017 and gets the old value. The controller deletes ready. The reader gets the event that ready was deleted before it could see any new value, so it drops what it read and waits for ready to come back while the controller sets 0042.</desc>
+  <defs>
+    <marker id="ready-watch-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ready-watch-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">CONTROLLER</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="346"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">ZOOKEEPER</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="346"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">READER</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="346"/>
+  <rect class="dg-box" x="310.0" y="44" width="100" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">ready</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="84" text-anchor="middle">DOES ready EXIST? + WATCH</text>
+  <path class="dg-arrow" d="M610 92 H368" marker-end="url(#ready-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="110" text-anchor="middle">YES</text>
+  <path class="dg-arrow" d="M360 118 H602" marker-end="url(#ready-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="146" text-anchor="middle">READ 0017</text>
+  <path class="dg-arrow" d="M610 154 H368" marker-end="url(#ready-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="172" text-anchor="middle">OLD 0017</text>
+  <path class="dg-arrow" d="M360 180 H602" marker-end="url(#ready-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="206" text-anchor="middle">DELETE ready</text>
+  <path class="dg-arrow" d="M110 214 H352" marker-end="url(#ready-watch-head)"/>
+  <rect class="dg-box-failed" x="310.0" y="224" width="100" height="24" rx="4"/>
+  <text class="dg-code-muted" x="360.0" y="240.0" text-anchor="middle">no ready</text>
+  <text class="dg-mono dg-accent-text" x="485.0" y="262" text-anchor="middle">EVENT: ready DELETED</text>
+  <path class="dg-arrow dg-message" d="M360 270 H602" marker-end="url(#ready-watch-head-accent)"/>
+  <rect class="dg-box-accent" x="520.0" y="282" width="180" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="298.0" text-anchor="middle">drop 0017, wait</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="322" text-anchor="middle">SET 0042</text>
+  <path class="dg-arrow" d="M110 330 H352" marker-end="url(#ready-watch-head)"/>
+</svg>

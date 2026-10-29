@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="ephemeral-expiry-title ephemeral-expiry-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ephemeral-expiry-title">The service deletes the key of a node that stopped its heartbeats</title>
+  <desc id="ephemeral-expiry-desc">Node 9 sends heartbeats to the service leader, then loses power. The leader waits for the timeout of 10 seconds, then writes the deletion of node 9's key through consensus: a follower saves it, and the key is gone.</desc>
+  <defs>
+    <marker id="ephemeral-expiry-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ephemeral-expiry-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">NODE 9</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="320"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="320"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">FOLLOWER</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="320"/>
+  <rect class="dg-box" x="295.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">node 9's key</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="88" text-anchor="middle">HEARTBEAT</text>
+  <path class="dg-arrow" d="M110 96 H352" marker-end="url(#ephemeral-expiry-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="118" text-anchor="middle">HEARTBEAT</text>
+  <path class="dg-arrow" d="M110 126 H352" marker-end="url(#ephemeral-expiry-head)"/>
+  <line class="dg-cross" x1="104" y1="152" x2="116" y2="164"/>
+  <line class="dg-cross" x1="104" y1="164" x2="116" y2="152"/>
+  <text class="dg-sub" x="124" y="162" text-anchor="start">loses power</text>
+  <line class="dg-arrow dg-wait" x1="360" y1="132" x2="360" y2="236"/>
+  <text class="dg-mono dg-accent-text" x="372" y="188" text-anchor="start">TIMEOUT 10 s</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="254" text-anchor="middle">DELETE NODE 9'S KEY</text>
+  <path class="dg-arrow" d="M360 262 H602" marker-end="url(#ephemeral-expiry-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="282" text-anchor="middle">SAVED</text>
+  <path class="dg-arrow" d="M610 290 H368" marker-end="url(#ephemeral-expiry-head)"/>
+  <rect class="dg-box-failed" x="275.0" y="300" width="170" height="24" rx="4"/>
+  <text class="dg-code-muted" x="360.0" y="316.0" text-anchor="middle">deleted: 2 of 3 saved</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg class="diagram-svg" viewBox="0 0 720 318" role="img" aria-labelledby="data-models-title data-models-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="data-models-title">The same key in ZooKeeper, etcd, and Consul</title>
+  <desc id="data-models-desc">Three panels with the same keys: a node record and shards 0017 and 0018. ZooKeeper keeps a tree: under /kv are nodes and shards, under nodes is node-09, and under shards are 0017 and 0018. etcd keeps flat keys sorted as bytes. Consul keeps keys by path, next to a catalog of nodes, services, and health checks. For /kv/shards/0017, ZooKeeper records version 3, czxid 410, and mzxid 902; etcd records version 3, create_revision 410, and mod_revision 902; Consul records CreateIndex 410 and ModifyIndex 902.</desc>
+  <defs>
+    <marker id="data-models-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="data-models-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="310"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="310"/>
+  <text class="dg-name" x="120.0" y="22" text-anchor="middle">ZooKeeper</text>
+  <text class="dg-sub" x="120.0" y="40" text-anchor="middle">a tree of znodes</text>
+  <text class="dg-name" x="360.0" y="22" text-anchor="middle">etcd</text>
+  <text class="dg-sub" x="360.0" y="40" text-anchor="middle">flat keys, sorted as bytes</text>
+  <text class="dg-name" x="600.0" y="22" text-anchor="middle">Consul</text>
+  <text class="dg-sub" x="600.0" y="40" text-anchor="middle">keys by path, plus a catalog</text>
+  <rect class="dg-chip" x="98.0" y="60" width="44" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="76.0" text-anchor="middle">/kv</text>
+  <path class="dg-line" d="M120 84 V94 H72 V104" fill="none"/>
+  <rect class="dg-chip" x="46.0" y="104" width="52" height="24" rx="4"/>
+  <text class="dg-code" x="72.0" y="120.0" text-anchor="middle">nodes</text>
+  <path class="dg-line" d="M120 84 V94 H170 V104" fill="none"/>
+  <rect class="dg-chip" x="140.0" y="104" width="60" height="24" rx="4"/>
+  <text class="dg-code" x="170.0" y="120.0" text-anchor="middle">shards</text>
+  <path class="dg-line" d="M72 128 V148" fill="none"/>
+  <rect class="dg-chip" x="40.0" y="148" width="64" height="24" rx="4"/>
+  <text class="dg-code" x="72.0" y="164.0" text-anchor="middle">node-09</text>
+  <path class="dg-line" d="M170 128 V138 H146 V148" fill="none"/>
+  <rect class="dg-box-accent" x="124.0" y="148" width="44" height="24" rx="4"/>
+  <text class="dg-code" x="146.0" y="164.0" text-anchor="middle">0017</text>
+  <path class="dg-line" d="M170 128 V138 H196 V148" fill="none"/>
+  <rect class="dg-chip" x="174.0" y="148" width="44" height="24" rx="4"/>
+  <text class="dg-code" x="196.0" y="164.0" text-anchor="middle">0018</text>
+  <rect class="dg-chip" x="266" y="60" width="188" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="76.0" text-anchor="middle">/kv/nodes/node-09</text>
+  <rect class="dg-box-accent" x="266" y="104" width="188" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="120.0" text-anchor="middle">/kv/shards/0017</text>
+  <rect class="dg-chip" x="266" y="148" width="188" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="164.0" text-anchor="middle">/kv/shards/0018</text>
+  <rect class="dg-chip" x="506" y="60" width="188" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="76.0" text-anchor="middle">/kv/nodes/node-09</text>
+  <rect class="dg-box-accent" x="506" y="104" width="188" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="120.0" text-anchor="middle">/kv/shards/0017</text>
+  <rect class="dg-chip" x="506" y="148" width="188" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="164.0" text-anchor="middle">/kv/shards/0018</text>
+  <text class="dg-sub" x="600" y="200" text-anchor="middle">+ catalog: nodes, services, checks</text>
+  <text class="dg-code-muted" x="120" y="226" text-anchor="middle">/kv/shards/0017</text>
+  <rect class="dg-box" x="26" y="236" width="188" height="72" rx="6"/>
+  <text class="dg-code-muted" x="40" y="256" text-anchor="start">version</text>
+  <text class="dg-code" x="200" y="256" text-anchor="end">3</text>
+  <text class="dg-code-muted" x="40" y="276" text-anchor="start">czxid</text>
+  <text class="dg-code" x="200" y="276" text-anchor="end">410</text>
+  <text class="dg-code-muted" x="40" y="296" text-anchor="start">mzxid</text>
+  <text class="dg-code" x="200" y="296" text-anchor="end">902</text>
+  <text class="dg-code-muted" x="360" y="226" text-anchor="middle">/kv/shards/0017</text>
+  <rect class="dg-box" x="266" y="236" width="188" height="72" rx="6"/>
+  <text class="dg-code-muted" x="280" y="256" text-anchor="start">version</text>
+  <text class="dg-code" x="440" y="256" text-anchor="end">3</text>
+  <text class="dg-code-muted" x="280" y="276" text-anchor="start">create_revision</text>
+  <text class="dg-code" x="440" y="276" text-anchor="end">410</text>
+  <text class="dg-code-muted" x="280" y="296" text-anchor="start">mod_revision</text>
+  <text class="dg-code" x="440" y="296" text-anchor="end">902</text>
+  <text class="dg-code-muted" x="600" y="226" text-anchor="middle">/kv/shards/0017</text>
+  <rect class="dg-box" x="506" y="236" width="188" height="72" rx="6"/>
+  <text class="dg-code-muted" x="520" y="256" text-anchor="start">version = ModifyIndex</text>
+  <text class="dg-code" x="680" y="256" text-anchor="end"></text>
+  <text class="dg-code-muted" x="520" y="276" text-anchor="start">CreateIndex</text>
+  <text class="dg-code" x="680" y="276" text-anchor="end">410</text>
+  <text class="dg-code-muted" x="520" y="296" text-anchor="start">ModifyIndex</text>
+  <text class="dg-code" x="680" y="296" text-anchor="end">902</text>
+</svg>

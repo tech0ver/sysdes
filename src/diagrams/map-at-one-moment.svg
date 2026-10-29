@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="map-at-one-moment-title map-at-one-moment-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="map-at-one-moment-title">Reading the whole map as of one moment</title>
+  <desc id="map-at-one-moment-desc">Shards 17 and 42 both have node 9 as their primary at revision 900, and change 901 moves both to node 14. Left, etcd: the router reads the range /kv/shards/ in one request and gets every key as of revision 900, before or after change 901 but never a mix. Right, ZooKeeper: the router reads 0017 and gets node 9, then change 901 lands, then it reads 0042 and gets node 14: a map that never existed.</desc>
+  <defs>
+    <marker id="map-at-one-moment-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="map-at-one-moment-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">etcd</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">one range read</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">ZooKeeper</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">one read per znode</text>
+  <text class="dg-mono dg-muted-text" x="90" y="66" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="90" y1="76" x2="90" y2="284"/>
+  <text class="dg-mono dg-muted-text" x="270" y="66" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="270" y1="76" x2="270" y2="284"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="100" text-anchor="middle">RANGE /kv/shards/</text>
+  <path class="dg-arrow" d="M90 108 H262" marker-end="url(#map-at-one-moment-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="130" text-anchor="middle">17: 9, 42: 9 AT 900</text>
+  <path class="dg-arrow" d="M270 138 H98" marker-end="url(#map-at-one-moment-head)"/>
+  <rect class="dg-box" x="195.0" y="156" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="172.0" text-anchor="middle">901: 17, 42 → 14</text>
+  <rect class="dg-box" x="30.0" y="252" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="90.0" y="268.0" text-anchor="middle">17: 9, 42: 9</text>
+  <text class="dg-result" x="180" y="318" text-anchor="middle">One moment: revision 900</text>
+  <text class="dg-mono dg-muted-text" x="450" y="66" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="450" y1="76" x2="450" y2="284"/>
+  <text class="dg-mono dg-muted-text" x="630" y="66" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="630" y1="76" x2="630" y2="284"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="100" text-anchor="middle">GET 0017</text>
+  <path class="dg-arrow" d="M450 108 H622" marker-end="url(#map-at-one-moment-head)"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="130" text-anchor="middle">17: NODE 9</text>
+  <path class="dg-arrow" d="M630 138 H458" marker-end="url(#map-at-one-moment-head)"/>
+  <rect class="dg-box" x="555.0" y="156" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="630.0" y="172.0" text-anchor="middle">901: 17, 42 → 14</text>
+  <text class="dg-mono dg-muted-text" x="540.0" y="202" text-anchor="middle">GET 0042</text>
+  <path class="dg-arrow" d="M450 210 H622" marker-end="url(#map-at-one-moment-head)"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="232" text-anchor="middle">42: NODE 14</text>
+  <path class="dg-arrow" d="M630 240 H458" marker-end="url(#map-at-one-moment-head)"/>
+  <rect class="dg-box-accent" x="390.0" y="252" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="268.0" text-anchor="middle">17: 9, 42: 14</text>
+  <text class="dg-result" x="540" y="318" text-anchor="middle">A mix of old and new</text>
+</svg>

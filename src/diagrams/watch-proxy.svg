@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 300" role="img" aria-labelledby="watch-proxy-title watch-proxy-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="watch-proxy-title">Proxies merge the watches of 3,000 routers into ten</title>
+  <desc id="watch-proxy-desc">3,000 routers in ten groups of 300 each watch the shard map through one of ten etcd gRPC proxies. Each proxy holds one watch on the cluster, so etcd serves ten watches instead of 3,000.</desc>
+  <defs>
+    <marker id="watch-proxy-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="watch-proxy-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="60" y="16" width="600" height="44" rx="6"/>
+  <text class="dg-name" x="360.0" y="43.0" text-anchor="middle">etcd cluster</text>
+  <rect class="dg-box" x="60" y="124" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="130.0" y="147.0" text-anchor="middle">Proxy 1</text>
+  <rect class="dg-box" x="55" y="236" width="150" height="44" rx="6"/>
+  <text class="dg-name" x="130.0" y="256.0" text-anchor="middle">Routers</text>
+  <text class="dg-sub" x="130.0" y="272.0" text-anchor="middle">300, /kv/shards/</text>
+  <path class="dg-arrow" d="M130 236 V168" marker-end="url(#watch-proxy-head)"/>
+  <path class="dg-arrow dg-message" d="M130 124 V68" marker-end="url(#watch-proxy-head-accent)"/>
+  <rect class="dg-box" x="230" y="124" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="300.0" y="147.0" text-anchor="middle">Proxy 2</text>
+  <rect class="dg-box" x="225" y="236" width="150" height="44" rx="6"/>
+  <text class="dg-name" x="300.0" y="256.0" text-anchor="middle">Routers</text>
+  <text class="dg-sub" x="300.0" y="272.0" text-anchor="middle">300, /kv/shards/</text>
+  <path class="dg-arrow" d="M300 236 V168" marker-end="url(#watch-proxy-head)"/>
+  <path class="dg-arrow dg-message" d="M300 124 V68" marker-end="url(#watch-proxy-head-accent)"/>
+  <text class="dg-code-muted" x="445" y="142" text-anchor="middle">…</text>
+  <rect class="dg-box" x="520" y="124" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="590.0" y="147.0" text-anchor="middle">Proxy 10</text>
+  <rect class="dg-box" x="515" y="236" width="150" height="44" rx="6"/>
+  <text class="dg-name" x="590.0" y="256.0" text-anchor="middle">Routers</text>
+  <text class="dg-sub" x="590.0" y="272.0" text-anchor="middle">300, /kv/shards/</text>
+  <path class="dg-arrow" d="M590 236 V168" marker-end="url(#watch-proxy-head)"/>
+  <path class="dg-arrow dg-message" d="M590 124 V68" marker-end="url(#watch-proxy-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="445" y="254" text-anchor="middle">…</text>
+  <text class="dg-mono dg-muted-text" x="138" y="206" text-anchor="start">300 WATCHES</text>
+  <text class="dg-mono dg-muted-text" x="308" y="206" text-anchor="start">300 WATCHES</text>
+  <text class="dg-mono dg-muted-text" x="598" y="206" text-anchor="start">300 WATCHES</text>
+  <text class="dg-mono dg-accent-text" x="598" y="96" text-anchor="start">ONE WATCH EACH</text>
+</svg>

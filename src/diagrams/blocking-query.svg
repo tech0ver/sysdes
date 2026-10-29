@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 410" role="img" aria-labelledby="blocking-query-title blocking-query-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="blocking-query-title">A Consul blocking query holds the read until the result changes</title>
+  <desc id="blocking-query-desc">The client reads the keys under /kv/shards/ and gets X-Consul-Index 900. It repeats the read with index=900, and the server holds the request until change 905, then returns the whole result with index 905. The next read with index=905 waits for the default 5 minutes plus a small random extra and returns the same result: a return does not prove a change.</desc>
+  <defs>
+    <marker id="blocking-query-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="blocking-query-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="180" y="20" text-anchor="middle">CLIENT</text>
+  <line class="dg-lifeline" x1="180" y1="34" x2="180" y2="400"/>
+  <text class="dg-mono dg-muted-text" x="540" y="20" text-anchor="middle">CONSUL</text>
+  <line class="dg-lifeline" x1="540" y1="34" x2="540" y2="400"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="58" text-anchor="middle">READ PREFIX /kv/shards/</text>
+  <path class="dg-arrow" d="M180 66 H532" marker-end="url(#blocking-query-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="84" text-anchor="middle">RESULT, INDEX 900</text>
+  <path class="dg-arrow" d="M540 92 H188" marker-end="url(#blocking-query-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="124" text-anchor="middle">REPEAT WITH index=900</text>
+  <path class="dg-arrow" d="M180 132 H532" marker-end="url(#blocking-query-head)"/>
+  <line class="dg-arrow dg-wait" x1="540" y1="140" x2="540" y2="206"/>
+  <text class="dg-mono dg-accent-text" x="552" y="178" text-anchor="start">HELD</text>
+  <rect class="dg-box" x="485.0" y="210" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="226.0" text-anchor="middle">change 905</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="254" text-anchor="middle">WHOLE RESULT, INDEX 905</text>
+  <path class="dg-arrow" d="M540 262 H188" marker-end="url(#blocking-query-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="292" text-anchor="middle">REPEAT WITH index=905</text>
+  <path class="dg-arrow" d="M180 300 H532" marker-end="url(#blocking-query-head)"/>
+  <line class="dg-arrow dg-wait" x1="540" y1="308" x2="540" y2="370"/>
+  <text class="dg-mono dg-accent-text" x="552" y="344" text-anchor="start">DEFAULT 5 min + JITTER</text>
+  <text class="dg-mono dg-muted-text" x="360.0" y="386" text-anchor="middle">SAME RESULT, INDEX 905</text>
+  <path class="dg-arrow" d="M540 394 H188" marker-end="url(#blocking-query-head)"/>
+</svg>

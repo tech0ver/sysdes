@@ -1,0 +1,75 @@
+<svg class="diagram-svg" viewBox="0 0 720 350" role="img" aria-labelledby="read-paths-title read-paths-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="read-paths-title">Four ways a coordination service answers a read</title>
+  <desc id="read-paths-desc">Four panels, each with a leader L, two followers F, and a client. Any server: the client reads from a follower, which answers from its own copy and may be behind; etcd serializable reads, ZooKeeper reads, and Consul stale reads work this way. Leader alone: the leader answers without asking anyone; Consul's default mode, stale only just after an election. Leader and majority: the leader confirms its role with one more server, 2 of 3, before it answers; etcd's default and Consul's consistent mode, the latest value. After sync: a ZooKeeper follower first catches up with the leader, which narrows the gap but is not strictly linearizable.</desc>
+  <defs>
+    <marker id="read-paths-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="read-paths-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="180" y1="8" x2="180" y2="326"/>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="326"/>
+  <line class="dg-rule" x1="540" y1="8" x2="540" y2="326"/>
+  <text class="dg-name" x="90" y="22" text-anchor="middle">Any server</text>
+  <text class="dg-mono dg-accent-text" x="90" y="46" text-anchor="middle">F ANSWERS ITSELF</text>
+  <rect class="dg-box" x="65.0" y="65.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="90" y="85" text-anchor="middle">L</text>
+  <rect class="dg-box" x="10.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="35" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="120.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="145" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="15" y="214" width="150" height="28" rx="6"/>
+  <text class="dg-name" x="90" y="233" text-anchor="middle">Client</text>
+  <path class="dg-arrow dg-message" d="M35 214 V173" marker-end="url(#read-paths-head-accent)"/>
+  <text class="dg-sub" x="90" y="268" text-anchor="middle">etcd serializable</text>
+  <text class="dg-sub" x="90" y="284" text-anchor="middle">ZooKeeper read</text>
+  <text class="dg-sub" x="90" y="300" text-anchor="middle">Consul stale</text>
+  <text class="dg-result" x="90" y="318" text-anchor="middle">may be behind</text>
+  <text class="dg-name" x="270" y="22" text-anchor="middle">Leader alone</text>
+  <text class="dg-mono dg-accent-text" x="270" y="46" text-anchor="middle">L ANSWERS ITSELF</text>
+  <rect class="dg-box" x="245.0" y="65.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="270" y="85" text-anchor="middle">L</text>
+  <rect class="dg-box" x="190.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="215" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="300.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="325" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="195" y="214" width="150" height="28" rx="6"/>
+  <text class="dg-name" x="270" y="233" text-anchor="middle">Client</text>
+  <path class="dg-arrow dg-message" d="M270 214 V103" marker-end="url(#read-paths-head-accent)"/>
+  <text class="dg-sub" x="270" y="268" text-anchor="middle">Consul default</text>
+  <text class="dg-sub" x="270" y="284" text-anchor="middle"></text>
+  <text class="dg-sub" x="270" y="300" text-anchor="middle"></text>
+  <text class="dg-result" x="270" y="318" text-anchor="middle">rarely behind</text>
+  <text class="dg-name" x="450" y="22" text-anchor="middle">Leader + majority</text>
+  <text class="dg-mono dg-accent-text" x="450" y="46" text-anchor="middle">L CONFIRMS: 2 OF 3</text>
+  <rect class="dg-box" x="425.0" y="65.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="450" y="85" text-anchor="middle">L</text>
+  <rect class="dg-box" x="370.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="395" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="480.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="505" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="375" y="214" width="150" height="28" rx="6"/>
+  <text class="dg-name" x="450" y="233" text-anchor="middle">Client</text>
+  <path class="dg-arrow" d="M450 214 V103" marker-end="url(#read-paths-head)"/>
+  <path class="dg-arrow dg-message" d="M425 80 H395 V127" marker-end="url(#read-paths-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M475 80 H505 V127" marker-end="url(#read-paths-head-accent)"/>
+  <text class="dg-sub" x="450" y="268" text-anchor="middle">etcd default</text>
+  <text class="dg-sub" x="450" y="284" text-anchor="middle">Consul consistent</text>
+  <text class="dg-sub" x="450" y="300" text-anchor="middle"></text>
+  <text class="dg-result" x="450" y="318" text-anchor="middle">latest</text>
+  <text class="dg-name" x="630" y="22" text-anchor="middle">After sync</text>
+  <text class="dg-mono dg-accent-text" x="630" y="46" text-anchor="middle">F CATCHES UP FIRST</text>
+  <rect class="dg-box" x="605.0" y="65.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="630" y="85" text-anchor="middle">L</text>
+  <rect class="dg-box" x="550.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="575" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="660.0" y="135.0" width="50" height="30" rx="6"/>
+  <text class="dg-name" x="685" y="155" text-anchor="middle">F</text>
+  <rect class="dg-box" x="555" y="214" width="150" height="28" rx="6"/>
+  <text class="dg-name" x="630" y="233" text-anchor="middle">Client</text>
+  <path class="dg-arrow" d="M575 214 V173" marker-end="url(#read-paths-head)"/>
+  <path class="dg-arrow dg-message" d="M575 135 V80 H597" marker-end="url(#read-paths-head-accent)"/>
+  <text class="dg-sub" x="630" y="268" text-anchor="middle">ZooKeeper sync</text>
+  <text class="dg-sub" x="630" y="284" text-anchor="middle">and a read</text>
+  <text class="dg-sub" x="630" y="300" text-anchor="middle"></text>
+  <text class="dg-result" x="630" y="318" text-anchor="middle">gap narrowed</text>
+  <text class="dg-sub" x="360" y="344" text-anchor="middle">L: leader · F: follower</text>
+</svg>

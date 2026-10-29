@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 400" role="img" aria-labelledby="generation-takeover-title generation-takeover-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="generation-takeover-title">A generation number stored by a majority fences the old primary</title>
+  <desc id="generation-takeover-desc">Shard 17 has replicas on nodes 9, 12, and 14. Node 9 was its primary in generation 6 and is now cut off from the controller. The controller makes node 14 the primary with generation 7. Node 14 has a majority of the replicas, itself and node 12, store generation 7 durably, and recovers every acknowledged write before it serves. Node 9 sends a write with generation 6 to node 12, which rejects it, so the write never reaches a majority.</desc>
+  <defs>
+    <marker id="generation-takeover-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="generation-takeover-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-sub" x="360" y="18" text-anchor="middle">shard 17: replicas on nodes 9, 12, 14</text>
+  <text class="dg-mono dg-muted-text" x="70" y="44" text-anchor="middle">CONTROLLER</text>
+  <line class="dg-lifeline" x1="70" y1="56" x2="70" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="260" y="44" text-anchor="middle">NODE 14</text>
+  <line class="dg-lifeline" x1="260" y1="56" x2="260" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="450" y="44" text-anchor="middle">NODE 12</text>
+  <line class="dg-lifeline" x1="450" y1="56" x2="450" y2="390"/>
+  <text class="dg-mono dg-muted-text" x="640" y="44" text-anchor="middle">NODE 9</text>
+  <line class="dg-lifeline" x1="640" y1="56" x2="640" y2="390"/>
+  <rect class="dg-box" x="580.0" y="66" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="640.0" y="82.0" text-anchor="middle">primary, gen 6</text>
+  <rect class="dg-box" x="405.0" y="66" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="82.0" text-anchor="middle">gen 6</text>
+  <rect class="dg-box-failed" x="580.0" y="96" width="120" height="24" rx="4"/>
+  <text class="dg-code-muted" x="640.0" y="112.0" text-anchor="middle">cut off</text>
+  <text class="dg-mono dg-muted-text" x="165.0" y="128" text-anchor="middle">LEAD 17, GEN 7</text>
+  <path class="dg-arrow" d="M70 136 H252" marker-end="url(#generation-takeover-head)"/>
+  <rect class="dg-box" x="195.0" y="146" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="162.0" text-anchor="middle">gen 7 on disk</text>
+  <text class="dg-mono dg-muted-text" x="355.0" y="188" text-anchor="middle">GEN 7</text>
+  <path class="dg-arrow" d="M260 196 H442" marker-end="url(#generation-takeover-head)"/>
+  <rect class="dg-box" x="395.0" y="206" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="450.0" y="222.0" text-anchor="middle">gen 7 on disk</text>
+  <text class="dg-mono dg-muted-text" x="355.0" y="246" text-anchor="middle">STORED</text>
+  <path class="dg-arrow" d="M450 254 H268" marker-end="url(#generation-takeover-head)"/>
+  <rect class="dg-box-accent" x="185.0" y="264" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="280.0" text-anchor="middle">gen 7 on 2 of 3</text>
+  <rect class="dg-box" x="145.0" y="296" width="230" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="312.0" text-anchor="middle">recover acknowledged writes</text>
+  <rect class="dg-box" x="195.0" y="328" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="344.0" text-anchor="middle">serves 17</text>
+  <text class="dg-mono dg-muted-text" x="545.0" y="342" text-anchor="middle">WRITE, GEN 6</text>
+  <path class="dg-arrow" d="M640 350 H458" marker-end="url(#generation-takeover-head)"/>
+  <text class="dg-mono dg-accent-text" x="545.0" y="370" text-anchor="middle">REJECTED: 6 &lt; 7</text>
+  <path class="dg-arrow dg-message" d="M450 378 H632" marker-end="url(#generation-takeover-head-accent)"/>
+</svg>

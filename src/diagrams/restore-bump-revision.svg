@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 318" role="img" aria-labelledby="restore-bump-revision-title restore-bump-revision-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="restore-bump-revision-title">Restoring etcd with a plain restore or a raised revision</title>
+  <desc id="restore-bump-revision-desc">A router has processed changes up to revision 5,000. etcd is restored from a snapshot at revision 3,000. Left, a plain restore: new changes get revisions 3,001 and up, and the router's watch from 5,001 waits, so it skips changes 3,001 to 5,000. Right, a restore that raises the revision by 1,000,000 and marks older revisions compacted: the watch from 5,001 is canceled, and the router reads the whole map again.</desc>
+  <defs>
+    <marker id="restore-bump-revision-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="restore-bump-revision-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="310"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Plain restore</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">snapshot at 3,000</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Raised revision, compacted</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">snapshot at 3,000</text>
+  <text class="dg-mono dg-muted-text" x="80" y="66" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="80" y1="76" x2="80" y2="278"/>
+  <text class="dg-mono dg-muted-text" x="260" y="66" text-anchor="middle">ETCD</text>
+  <line class="dg-lifeline" x1="260" y1="76" x2="260" y2="278"/>
+  <rect class="dg-box" x="20.0" y="86" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="80.0" y="102.0" text-anchor="middle">saw up to 5,000</text>
+  <rect class="dg-box" x="185.0" y="86" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="102.0" text-anchor="middle">next: 3,001</text>
+  <text class="dg-mono dg-muted-text" x="170.0" y="152" text-anchor="middle">WATCH FROM 5,001</text>
+  <path class="dg-arrow" d="M80 160 H252" marker-end="url(#restore-bump-revision-head)"/>
+  <rect class="dg-box" x="185.0" y="172" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="188.0" text-anchor="middle">3,001 … 5,000 made</text>
+  <line class="dg-arrow dg-wait" x1="80" y1="172" x2="80" y2="250"/>
+  <text class="dg-mono dg-accent-text" x="90" y="214" text-anchor="start">WAITS FOR 5,001</text>
+  <text class="dg-mono dg-muted-text" x="440" y="66" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="440" y1="76" x2="440" y2="278"/>
+  <text class="dg-mono dg-muted-text" x="620" y="66" text-anchor="middle">ETCD</text>
+  <line class="dg-lifeline" x1="620" y1="76" x2="620" y2="278"/>
+  <rect class="dg-box" x="380.0" y="86" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="440.0" y="102.0" text-anchor="middle">saw up to 5,000</text>
+  <rect class="dg-box" x="545.0" y="86" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="620.0" y="102.0" text-anchor="middle">next: 1,003,001</text>
+  <text class="dg-mono dg-muted-text" x="530.0" y="152" text-anchor="middle">WATCH FROM 5,001</text>
+  <path class="dg-arrow" d="M440 160 H612" marker-end="url(#restore-bump-revision-head)"/>
+  <text class="dg-mono dg-accent-text" x="530.0" y="180" text-anchor="middle">CANCELED: COMPACTED</text>
+  <path class="dg-arrow dg-message" d="M620 188 H448" marker-end="url(#restore-bump-revision-head-accent)"/>
+  <rect class="dg-box" x="370.0" y="200" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="440.0" y="216.0" text-anchor="middle">reads the map</text>
+  <text class="dg-result" x="180" y="304" text-anchor="middle">3,001 to 5,000 skipped</text>
+  <text class="dg-result" x="540" y="304" text-anchor="middle">The router starts over</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg class="diagram-svg" viewBox="0 0 720 320" role="img" aria-labelledby="polling-vs-watch-title polling-vs-watch-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="polling-vs-watch-title">Polling the map against waiting for a change</title>
+  <desc id="polling-vs-watch-desc">Both panels show one of 300 routers and the service, with the same change: shard 17 moves. Left, polling: the router reads the whole map every second and gets the same map until the change, then learns of it up to a second later; all routers together make 300 reads of the map per second. Right, waiting: the router reads the map once and waits; after the change, the service tells it, and while nothing changes no router reads the map again.</desc>
+  <defs>
+    <marker id="polling-vs-watch-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="polling-vs-watch-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="312"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Polling every second</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">one of 300 routers</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Waiting for a change</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">one of 300 routers</text>
+  <text class="dg-mono dg-muted-text" x="90" y="56" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="90" y1="66" x2="90" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="270" y="56" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="270" y1="66" x2="270" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="84" text-anchor="middle">READ MAP</text>
+  <path class="dg-arrow" d="M90 92 H262" marker-end="url(#polling-vs-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="106" text-anchor="middle">MAP</text>
+  <path class="dg-arrow" d="M270 114 H98" marker-end="url(#polling-vs-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="138" text-anchor="middle">READ MAP</text>
+  <path class="dg-arrow" d="M90 146 H262" marker-end="url(#polling-vs-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="180.0" y="160" text-anchor="middle">SAME MAP</text>
+  <path class="dg-arrow" d="M270 168 H98" marker-end="url(#polling-vs-watch-head)"/>
+  <rect class="dg-box" x="215.0" y="184" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="270.0" y="200.0" text-anchor="middle">17 moves</text>
+  <text class="dg-mono dg-muted-text" x="180.0" y="230" text-anchor="middle">READ MAP</text>
+  <path class="dg-arrow" d="M90 238 H262" marker-end="url(#polling-vs-watch-head)"/>
+  <text class="dg-mono dg-accent-text" x="180.0" y="252" text-anchor="middle">17 MOVED</text>
+  <path class="dg-arrow dg-message" d="M270 260 H98" marker-end="url(#polling-vs-watch-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="450" y="56" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="450" y1="66" x2="450" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="630" y="56" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="630" y1="66" x2="630" y2="270"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="84" text-anchor="middle">READ MAP</text>
+  <path class="dg-arrow" d="M450 92 H622" marker-end="url(#polling-vs-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="106" text-anchor="middle">MAP</text>
+  <path class="dg-arrow" d="M630 114 H458" marker-end="url(#polling-vs-watch-head)"/>
+  <text class="dg-mono dg-muted-text" x="540.0" y="138" text-anchor="middle">WAIT FOR A CHANGE</text>
+  <path class="dg-arrow" d="M450 146 H622" marker-end="url(#polling-vs-watch-head)"/>
+  <rect class="dg-box" x="575.0" y="184" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="630.0" y="200.0" text-anchor="middle">17 moves</text>
+  <text class="dg-mono dg-accent-text" x="540.0" y="218" text-anchor="middle">17 MOVED</text>
+  <path class="dg-arrow dg-message" d="M630 226 H458" marker-end="url(#polling-vs-watch-head-accent)"/>
+  <text class="dg-result" x="180" y="302" text-anchor="middle">All routers: 300 reads per second</text>
+  <text class="dg-result" x="540" y="302" text-anchor="middle">All routers: no reads while idle</text>
+</svg>

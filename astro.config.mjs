@@ -53,7 +53,6 @@ export default defineTech0verConfig({
 			{ label: 'Elasticsearch', slug: 'technologies/elasticsearch' },
 			{ label: 'Object storage', slug: 'technologies/object-storage' },
 			{ label: 'ClickHouse', slug: 'technologies/clickhouse' },
-			{ label: 'etcd and ZooKeeper', slug: 'technologies/etcd' },
 			{ label: 'Kubernetes', slug: 'technologies/kubernetes' },
 			{ label: 'OpenTelemetry', slug: 'technologies/opentelemetry' },
 			{ label: 'Time-series databases', slug: 'technologies/time-series-databases' },
@@ -109,7 +108,7 @@ export default defineTech0verConfig({
 			},
 			{
 				label: 'Technologies',
-				items: ['technologies/postgresql', 'technologies/redis'],
+				items: ['technologies/postgresql', 'technologies/redis', 'technologies/coordination-services'],
 			},
 			{
 				label: 'Systems',

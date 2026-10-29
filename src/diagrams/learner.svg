@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="learner-title learner-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="learner-title">A new etcd member joins as a learner and votes only after promotion</title>
+  <desc id="learner-desc">Two voting members remain, so a write needs both. The operator adds a new member as a learner: it gets a snapshot and then every change, but does not vote, so the majority stays 2. After it has caught up, the operator promotes it; etcd checks that it has caught up, and now 3 voters need 2.</desc>
+  <defs>
+    <marker id="learner-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="learner-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">OPERATOR</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="320"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="320"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">NEW MEMBER</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="320"/>
+  <rect class="dg-box" x="275.0" y="44" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">voters 2, need 2</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="88" text-anchor="middle">MEMBER ADD --learner</text>
+  <path class="dg-arrow" d="M110 96 H352" marker-end="url(#learner-head)"/>
+  <text class="dg-mono dg-accent-text" x="485.0" y="124" text-anchor="middle">SNAPSHOT, THEN CHANGES</text>
+  <path class="dg-arrow dg-message" d="M360 132 H602" marker-end="url(#learner-head-accent)"/>
+  <rect class="dg-box" x="535.0" y="144" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="160.0" text-anchor="middle">learner: no vote</text>
+  <rect class="dg-box" x="535.0" y="194" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="210.0" text-anchor="middle">caught up</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="242" text-anchor="middle">PROMOTE</text>
+  <path class="dg-arrow" d="M110 250 H352" marker-end="url(#learner-head)"/>
+  <rect class="dg-box" x="275.0" y="260" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="276.0" text-anchor="middle">checks it caught up</text>
+  <rect class="dg-box-accent" x="275.0" y="294" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="310.0" text-anchor="middle">voters 3, need 2</text>
+</svg>

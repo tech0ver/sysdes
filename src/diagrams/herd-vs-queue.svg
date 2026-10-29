@@ -1,0 +1,49 @@
+<svg class="diagram-svg" viewBox="0 0 720 270" role="img" aria-labelledby="herd-vs-queue-title herd-vs-queue-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="herd-vs-queue-title">One key that wakes every waiter, or a queue that wakes one</title>
+  <desc id="herd-vs-queue-desc">Both panels have the holder W1 and waiters W2 to W5 out of 100. Left, all waiters watch one key: when W1 releases it, every waiter wakes and tries again at once. Right, a queue in ZooKeeper or etcd: each waiter watches the one just before it, shown by dashed arrows, so when W1 releases, only W2 wakes.</desc>
+  <defs>
+    <marker id="herd-vs-queue-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="herd-vs-queue-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="262"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Everyone watches one key</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Each watches the one before</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">ZooKeeper, etcd</text>
+  <rect class="dg-box-failed" x="140" y="64" width="80" height="30" rx="4"/>
+  <text class="dg-code-muted" x="180.0" y="83.0" text-anchor="middle">W1</text>
+  <text class="dg-mono dg-muted-text" x="230" y="84" text-anchor="start">RELEASES</text>
+  <rect class="dg-box" x="16" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="36.0" y="176.0" text-anchor="middle">W2</text>
+  <rect class="dg-box" x="100" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="120.0" y="176.0" text-anchor="middle">W3</text>
+  <rect class="dg-box" x="184" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="204.0" y="176.0" text-anchor="middle">W4</text>
+  <rect class="dg-box" x="268" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="288.0" y="176.0" text-anchor="middle">W5</text>
+  <text class="dg-code-muted" x="334" y="177" text-anchor="middle">… 100</text>
+  <path class="dg-arrow dg-message" d="M180 94 V120"/>
+  <path class="dg-arrow dg-message" d="M36 120 H288"/>
+  <path class="dg-arrow dg-message" d="M36 120 V150" marker-end="url(#herd-vs-queue-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M120 120 V150" marker-end="url(#herd-vs-queue-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M204 120 V150" marker-end="url(#herd-vs-queue-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M288 120 V150" marker-end="url(#herd-vs-queue-head-accent)"/>
+  <rect class="dg-box-failed" x="500" y="64" width="80" height="30" rx="4"/>
+  <text class="dg-code-muted" x="540.0" y="83.0" text-anchor="middle">W1</text>
+  <text class="dg-mono dg-muted-text" x="590" y="84" text-anchor="start">RELEASES</text>
+  <rect class="dg-box" x="376" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="396.0" y="176.0" text-anchor="middle">W2</text>
+  <rect class="dg-box" x="460" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="480.0" y="176.0" text-anchor="middle">W3</text>
+  <rect class="dg-box" x="544" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="564.0" y="176.0" text-anchor="middle">W4</text>
+  <rect class="dg-box" x="628" y="158" width="40" height="28" rx="4"/>
+  <text class="dg-code" x="648.0" y="176.0" text-anchor="middle">W5</text>
+  <text class="dg-code-muted" x="694" y="177" text-anchor="middle">… 100</text>
+  <path class="dg-arrow dg-message" d="M540 94 V120 H396 V150" marker-end="url(#herd-vs-queue-head-accent)"/>
+  <path class="dg-arrow dg-empty" d="M460 172 H424" marker-end="url(#herd-vs-queue-head)"/>
+  <path class="dg-arrow dg-empty" d="M544 172 H508" marker-end="url(#herd-vs-queue-head)"/>
+  <path class="dg-arrow dg-empty" d="M628 172 H592" marker-end="url(#herd-vs-queue-head)"/>
+  <text class="dg-mono dg-muted-text" x="522" y="212" text-anchor="middle">DASHED: WATCHES THE ONE BEFORE</text>
+  <text class="dg-result" x="180" y="248" text-anchor="middle">Every waiter wakes and retries</text>
+  <text class="dg-result" x="540" y="248" text-anchor="middle">Only W2 wakes</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 350" role="img" aria-labelledby="lost-shard-update-title lost-shard-update-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="lost-shard-update-title">Two writers undo each other's change</title>
+  <desc id="lost-shard-update-desc">Shard 17 lists replicas 5, 9, and 12 at version 7. The tool and the controller both read it. The tool drains node 5 and writes 3, 9, 12. The controller replaces dead node 9 and writes 5, 14, 12. The later write wins: shard 17 lists node 5 again, and the tool's change is lost.</desc>
+  <defs>
+    <marker id="lost-shard-update-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="lost-shard-update-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">TOOL</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="340"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="340"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">CONTROLLER</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="340"/>
+  <rect class="dg-box" x="295.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">17: [5, 9, 12] v7</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="84" text-anchor="middle">READ 17</text>
+  <path class="dg-arrow" d="M110 92 H352" marker-end="url(#lost-shard-update-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="110" text-anchor="middle">[5, 9, 12]</text>
+  <path class="dg-arrow" d="M360 118 H118" marker-end="url(#lost-shard-update-head)"/>
+  <rect class="dg-box" x="35.0" y="130" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="146.0" text-anchor="middle">drain 5: [3, 9, 12]</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="142" text-anchor="middle">READ 17</text>
+  <path class="dg-arrow" d="M610 150 H368" marker-end="url(#lost-shard-update-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="168" text-anchor="middle">[5, 9, 12]</text>
+  <path class="dg-arrow" d="M360 176 H602" marker-end="url(#lost-shard-update-head)"/>
+  <rect class="dg-box" x="525.0" y="188" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="204.0" text-anchor="middle">replace 9: [5, 14, 12]</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="232" text-anchor="middle">WRITE [3, 9, 12]</text>
+  <path class="dg-arrow" d="M110 240 H352" marker-end="url(#lost-shard-update-head)"/>
+  <rect class="dg-box" x="295.0" y="250" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="266.0" text-anchor="middle">17: [3, 9, 12] v8</text>
+  <text class="dg-mono dg-accent-text" x="485.0" y="292" text-anchor="middle">WRITE [5, 14, 12]</text>
+  <path class="dg-arrow dg-message" d="M610 300 H368" marker-end="url(#lost-shard-update-head-accent)"/>
+  <rect class="dg-box-accent" x="290.0" y="310" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="326.0" text-anchor="middle">17: [5, 14, 12] v9</text>
+</svg>

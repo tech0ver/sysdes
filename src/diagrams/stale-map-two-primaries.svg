@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 262" role="img" aria-labelledby="stale-map-two-primaries-title stale-map-two-primaries-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stale-map-two-primaries-title">An old copy of the shard map gives shard 17 two primaries</title>
+  <desc id="stale-map-two-primaries-desc">The controller has moved the primary of shard 17 from node 9 to node 14. Nodes 12 and 14 have the new map; node 9 has not received it and still lists itself as the primary. A router with the new map sends writes for shard 17 to node 14, and a router with an old map sends them to node 9, which accepts them.</desc>
+  <defs>
+    <marker id="stale-map-two-primaries-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stale-map-two-primaries-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="220" y="14" width="280" height="48" rx="6"/>
+  <text class="dg-name" x="360.0" y="36.0" text-anchor="middle">Controller</text>
+  <text class="dg-sub" x="360.0" y="52.0" text-anchor="middle">primary of shard 17: node 9 → node 14</text>
+  <rect class="dg-box-accent" x="40" y="122" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="130" y="144" text-anchor="middle">Node 9</text>
+  <text class="dg-code" x="130" y="164" text-anchor="middle">17: primary 9</text>
+  <rect class="dg-box" x="270" y="122" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="360" y="144" text-anchor="middle">Node 12</text>
+  <text class="dg-code" x="360" y="164" text-anchor="middle">17: primary 14</text>
+  <rect class="dg-box" x="500" y="122" width="180" height="56" rx="6"/>
+  <text class="dg-name" x="590" y="144" text-anchor="middle">Node 14</text>
+  <text class="dg-code" x="590" y="164" text-anchor="middle">17: primary 14</text>
+  <path class="dg-arrow dg-empty" d="M330 62 V92 H130 V114" marker-end="url(#stale-map-two-primaries-head)"/>
+  <text class="dg-mono dg-muted-text" x="230" y="86" text-anchor="middle">NOT RECEIVED</text>
+  <path class="dg-arrow" d="M360 62 V114" marker-end="url(#stale-map-two-primaries-head)"/>
+  <path class="dg-arrow" d="M390 62 V92 H590 V114" marker-end="url(#stale-map-two-primaries-head)"/>
+  <text class="dg-mono dg-muted-text" x="490" y="86" text-anchor="middle">NEW MAP</text>
+  <rect class="dg-box" x="55" y="222" width="150" height="32" rx="6"/>
+  <text class="dg-name" x="130" y="243" text-anchor="middle">Router, old map</text>
+  <path class="dg-arrow dg-message" d="M130 222 V186" marker-end="url(#stale-map-two-primaries-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="140" y="207" text-anchor="start">WRITE TO 17</text>
+  <rect class="dg-box" x="515" y="222" width="150" height="32" rx="6"/>
+  <text class="dg-name" x="590" y="243" text-anchor="middle">Router, new map</text>
+  <path class="dg-arrow" d="M590 222 V186" marker-end="url(#stale-map-two-primaries-head)"/>
+  <text class="dg-mono dg-muted-text" x="600" y="207" text-anchor="start">WRITE TO 17</text>
+</svg>

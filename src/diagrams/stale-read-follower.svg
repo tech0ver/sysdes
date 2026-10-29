@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 360" role="img" aria-labelledby="stale-read-follower-title stale-read-follower-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stale-read-follower-title">A read from a lagging server returns the old primary</title>
+  <desc id="stale-read-follower-desc">The controller writes that node 14 is now the primary of shard 17. The leader saves it with follower 1, a majority, and confirms. Follower 2 has not received it yet. Node 9 reads shard 17 from follower 2, gets node 9 as the primary, and starts taking writes for shard 17. The change reaches follower 2 later.</desc>
+  <defs>
+    <marker id="stale-read-follower-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="stale-read-follower-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="60" y="20" text-anchor="middle">CONTROLLER</text>
+  <line class="dg-lifeline" x1="60" y1="34" x2="60" y2="350"/>
+  <text class="dg-mono dg-muted-text" x="210" y="20" text-anchor="middle">LEADER</text>
+  <line class="dg-lifeline" x1="210" y1="34" x2="210" y2="350"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">FOLLOWER 1</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="350"/>
+  <text class="dg-mono dg-muted-text" x="510" y="20" text-anchor="middle">FOLLOWER 2</text>
+  <line class="dg-lifeline" x1="510" y1="34" x2="510" y2="350"/>
+  <text class="dg-mono dg-muted-text" x="660" y="20" text-anchor="middle">NODE 9</text>
+  <line class="dg-lifeline" x1="660" y1="34" x2="660" y2="350"/>
+  <rect class="dg-box" x="450.0" y="44" width="120" height="24" rx="4"/>
+  <text class="dg-code" x="510.0" y="60.0" text-anchor="middle">17: primary 9</text>
+  <text class="dg-mono dg-muted-text" x="135.0" y="76" text-anchor="middle">17: PRIMARY 14</text>
+  <path class="dg-arrow" d="M60 84 H202" marker-end="url(#stale-read-follower-head)"/>
+  <text class="dg-mono dg-muted-text" x="285.0" y="104" text-anchor="middle">APPEND</text>
+  <path class="dg-arrow" d="M210 112 H352" marker-end="url(#stale-read-follower-head)"/>
+  <text class="dg-mono dg-muted-text" x="285.0" y="130" text-anchor="middle">SAVED</text>
+  <path class="dg-arrow" d="M360 138 H218" marker-end="url(#stale-read-follower-head)"/>
+  <rect class="dg-box" x="155.0" y="148" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="210.0" y="164.0" text-anchor="middle">committed</text>
+  <text class="dg-mono dg-muted-text" x="135.0" y="188" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M210 196 H68" marker-end="url(#stale-read-follower-head)"/>
+  <text class="dg-mono dg-muted-text" x="585.0" y="218" text-anchor="middle">LOCAL READ 17</text>
+  <path class="dg-arrow" d="M660 226 H518" marker-end="url(#stale-read-follower-head)"/>
+  <text class="dg-mono dg-accent-text" x="585.0" y="244" text-anchor="middle">PRIMARY 9</text>
+  <path class="dg-arrow dg-message" d="M510 252 H652" marker-end="url(#stale-read-follower-head-accent)"/>
+  <rect class="dg-box-accent" x="605.0" y="262" width="110" height="24" rx="4"/>
+  <text class="dg-code" x="660.0" y="278.0" text-anchor="middle">takes writes</text>
+  <text class="dg-mono dg-muted-text" x="360" y="312" text-anchor="middle">APPEND, LATE</text>
+  <path class="dg-arrow dg-empty" d="M210 320 H502" marker-end="url(#stale-read-follower-head)"/>
+</svg>

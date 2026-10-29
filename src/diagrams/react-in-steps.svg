@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 250" role="img" aria-labelledby="react-in-steps-title react-in-steps-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="react-in-steps-title">Reacting to a lost node in two steps</title>
+  <desc id="react-in-steps-desc">Shard 17 has replicas on nodes 9, 12, and 14, and node 9 is its primary. Node 9 dies. After the timeout, the controller makes node 14 the primary: only the metadata changes, and no data moves. Only if node 9 stays away for minutes does the controller replace its replica with one on node 20, which copies the data of the shard from node 14 over the network.</desc>
+  <defs>
+    <marker id="react-in-steps-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="react-in-steps-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="40" y="36" text-anchor="start">AFTER THE TIMEOUT: MOVE THE PRIMARY ROLE</text>
+  <rect class="dg-box-failed" x="50" y="50" width="120" height="44" rx="6"/>
+  <text class="dg-name-muted" x="110" y="69" text-anchor="middle">Node 9</text>
+  <text class="dg-sub" x="110" y="85" text-anchor="middle">dead</text>
+  <line class="dg-cross" x1="154" y1="54" x2="162" y2="62"/>
+  <line class="dg-cross" x1="154" y1="62" x2="162" y2="54"/>
+  <rect class="dg-box" x="210" y="50" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="270" y="69" text-anchor="middle">Node 12</text>
+  <text class="dg-sub" x="270" y="85" text-anchor="middle">follower</text>
+  <rect class="dg-box-accent" x="370" y="50" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="430" y="69" text-anchor="middle">Node 14</text>
+  <text class="dg-sub" x="430" y="85" text-anchor="middle">primary now</text>
+  <text class="dg-mono dg-muted-text" x="510" y="76" text-anchor="start">METADATA ONLY</text>
+  <text class="dg-mono dg-muted-text" x="40" y="156" text-anchor="start">AFTER MINUTES AWAY: REPLACE THE REPLICA</text>
+  <rect class="dg-box-failed" x="50" y="170" width="120" height="44" rx="6"/>
+  <text class="dg-name-muted" x="110" y="189" text-anchor="middle">Node 9</text>
+  <text class="dg-sub" x="110" y="205" text-anchor="middle">removed</text>
+  <rect class="dg-box" x="210" y="170" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="270" y="189" text-anchor="middle">Node 12</text>
+  <text class="dg-sub" x="270" y="205" text-anchor="middle">follower</text>
+  <rect class="dg-box" x="370" y="170" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="430" y="189" text-anchor="middle">Node 14</text>
+  <text class="dg-sub" x="430" y="205" text-anchor="middle">primary</text>
+  <rect class="dg-box" x="570" y="170" width="120" height="44" rx="6"/>
+  <text class="dg-name" x="630" y="189" text-anchor="middle">Node 20</text>
+  <text class="dg-sub" x="630" y="205" text-anchor="middle">new follower</text>
+  <path class="dg-arrow dg-message" d="M490 192 H562" marker-end="url(#react-in-steps-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="526" y="184" text-anchor="middle">COPY DATA</text>
+</svg>
