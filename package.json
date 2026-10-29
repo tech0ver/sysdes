@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/markdown-satteri": "0.4.2",
     "@astrojs/starlight": "0.42.5",
-    "@tech0ver/starlight": "0.6.1",
+    "@tech0ver/starlight": "0.7.0",
     "astro": "7.3.5",
     "sharp": "^0.35.3"
   },

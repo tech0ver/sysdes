@@ -7,6 +7,7 @@ export default defineTech0verConfig({
 	base: '/sysdes',
 	brand: { name: 'SystemDesign', suffix: '0ver' },
 	sidebarWidth: 256,
+	reading: { position: { ignoreSections: ['cheat-sheet', 'sources'] } },
 	plannedTopLevel: [{ label: 'Framework', slug: 'framework' }],
 	plannedTopics: {
 		Fundamentals: [
@@ -82,7 +83,7 @@ export default defineTech0verConfig({
 	glossary: { entries: glossary, skip: glossarySkip },
 	diagrams: { directory: new URL('./src/diagrams/', import.meta.url) },
 	socialImage: 'social-preview.png',
-	socialImageAlt: 'SystemDesign0ver — system design materials for interview preparation.',
+	socialImageAlt: 'SystemDesign0ver — system design knowledge base for interviews and engineering.',
 	tutor: {
 		enabled: true,
 		title: 'Concise article — AI can help',
@@ -91,6 +92,7 @@ export default defineTech0verConfig({
 	rawMarkdown: { enabled: true },
 	starlight: {
 		title: 'SystemDesign0ver',
+		description: 'System design knowledge base for interviews and engineering.',
 		disable404Route: true,
 		components: {
 			Head: './src/components/Head.astro',
