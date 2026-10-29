@@ -1,0 +1,51 @@
+<svg class="diagram-svg" viewBox="0 0 720 510" role="img" aria-labelledby="encoding-avro-rewrite-title encoding-avro-rewrite-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-avro-rewrite-title">A reader projection is not a replacement record</title>
+  <desc id="encoding-avro-rewrite-desc">Both paths read order 501 with a delivery note. A reduced Avro reader schema leaves the note out of the resolved record; writing only that record under the old schema loses it. Reading with the complete writer schema and encoding with a schema that includes all the fields preserves it.</desc>
+  <defs>
+    <marker id="encoding-avro-rewrite-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-avro-rewrite-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="494"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Reduced reader schema</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">read only the old fields</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Complete writer's schema</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">runtime tools read all written fields</text>
+  <rect class="dg-box" x="24" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="100">writer includes delivery_note</text>
+  <text class="dg-code" x="38" y="126">reader omits delivery_note</text>
+  <path class="dg-arrow" d="M180 148 V208" marker-end="url(#encoding-avro-rewrite-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="182.0">READ / EDIT</text>
+  <rect class="dg-box" x="24" y="208" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="38" y="233">id</text>
+  <text class="dg-code" x="169" y="233">"501"</text>
+  <text class="dg-code" x="38" y="259">status</text>
+  <text class="dg-code" x="169" y="259">"confirmed"</text>
+  <rect class="dg-box-failed" x="32" y="274" width="296" height="30" rx="4"/>
+  <text class="dg-code-muted" x="38" y="293">delivery_note</text>
+  <text class="dg-note" x="169" y="293">(not in model)</text>
+  <path class="dg-arrow" d="M180 316 V384" marker-end="url(#encoding-avro-rewrite-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="354.0">WRITE</text>
+  <rect class="dg-box" x="24" y="384" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="412">status: "confirmed"</text>
+  <text class="dg-code" x="38" y="438">delivery_note: (missing)</text>
+  <text class="dg-result" x="180" y="490" text-anchor="middle">Old schema writes no note</text>
+  <rect class="dg-box" x="384" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="100">writer includes delivery_note</text>
+  <text class="dg-code" x="398" y="126">reader uses complete writer schema</text>
+  <path class="dg-arrow" d="M540 148 V208" marker-end="url(#encoding-avro-rewrite-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="182.0">READ / EDIT</text>
+  <rect class="dg-box" x="384" y="208" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="398" y="233">id</text>
+  <text class="dg-code" x="529" y="233">"501"</text>
+  <text class="dg-code" x="398" y="259">status</text>
+  <text class="dg-code" x="529" y="259">"confirmed"</text>
+  <rect class="dg-box-accent" x="392" y="274" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="398" y="293">delivery_note</text>
+  <text class="dg-code" x="529" y="293">"Leave at reception"</text>
+  <path class="dg-arrow" d="M540 316 V384" marker-end="url(#encoding-avro-rewrite-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="354.0">WRITE</text>
+  <rect class="dg-box" x="384" y="384" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="412">status: "confirmed"</text>
+  <text class="dg-code" x="398" y="438">delivery_note: "Leave at reception"</text>
+  <text class="dg-result" x="540" y="490" text-anchor="middle">Writing schema includes the note</text>
+</svg>

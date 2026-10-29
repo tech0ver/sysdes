@@ -1,0 +1,26 @@
+<svg class="diagram-svg" viewBox="0 0 720 326" role="img" aria-labelledby="encoding-field-presence-title encoding-field-presence-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-field-presence-title">Absence, null, and an empty string</title>
+  <desc id="encoding-field-presence-desc">For order 501, JSON can omit delivery_note, include null when allowed, or include an empty string. A proto3 optional string distinguishes absence from an explicitly supplied empty string; null is not a separate value of that binary string field.</desc>
+  <defs>
+    <marker id="encoding-field-presence-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-field-presence-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="24" y="28">ORDER 501 · DELIVERY_NOTE</text>
+  <text class="dg-mono dg-muted-text" x="340" y="68" text-anchor="middle">JSON</text>
+  <text class="dg-mono dg-muted-text" x="588" y="68" text-anchor="middle">PROTO3 OPTIONAL STRING</text>
+  <text class="dg-name" x="24" y="120" text-anchor="start">Absent</text>
+  <rect class="dg-box" x="204" y="90" width="236" height="48" rx="4"/>
+  <text class="dg-code" x="322.0" y="118.0" text-anchor="middle">(property missing)</text>
+  <rect class="dg-box" x="464" y="90" width="232" height="48" rx="4"/>
+  <text class="dg-code" x="580.0" y="118.0" text-anchor="middle">present: false</text>
+  <text class="dg-name" x="24" y="190" text-anchor="start">Present null</text>
+  <rect class="dg-box" x="204" y="160" width="236" height="48" rx="4"/>
+  <text class="dg-code" x="322.0" y="188.0" text-anchor="middle">null (if allowed)</text>
+  <rect class="dg-box" x="464" y="160" width="232" height="48" rx="4"/>
+  <text class="dg-code" x="580.0" y="188.0" text-anchor="middle">(no null string value)</text>
+  <text class="dg-name" x="24" y="260" text-anchor="start">Present empty</text>
+  <rect class="dg-box-accent" x="204" y="230" width="236" height="48" rx="4"/>
+  <text class="dg-code" x="322.0" y="258.0" text-anchor="middle">""</text>
+  <rect class="dg-box-accent" x="464" y="230" width="232" height="48" rx="4"/>
+  <text class="dg-code" x="580.0" y="258.0" text-anchor="middle">present: true, value: ""</text>
+</svg>

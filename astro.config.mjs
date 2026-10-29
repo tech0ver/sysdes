@@ -13,7 +13,6 @@ export default defineTech0verConfig({
 		Fundamentals: [
 			{ label: 'Messaging', slug: 'fundamentals/messaging' },
 			{ label: 'Observability', slug: 'fundamentals/observability' },
-			{ label: 'Encoding', slug: 'fundamentals/encoding' },
 			{ label: 'Data processing', slug: 'fundamentals/data-processing' },
 			{ label: 'Failures', slug: 'fundamentals/failures' },
 			{ label: 'Security', slug: 'fundamentals/security' },
@@ -102,7 +101,7 @@ export default defineTech0verConfig({
 		sidebar: [
 			{
 				label: 'Fundamentals',
-				items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching'],
+				items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching', 'fundamentals/encoding'],
 			},
 			{
 				label: 'Patterns',

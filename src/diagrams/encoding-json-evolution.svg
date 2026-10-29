@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 720 376" role="img" aria-labelledby="encoding-json-evolution-title encoding-json-evolution-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-json-evolution-title">JSON additions depend on validation rules</title>
+  <desc id="encoding-json-evolution-desc">Left: a new writer adds a string delivery_note and an old closed reader rejects the extra property. Right: an old open schema allowed a numeric delivery_note, which a new reader requiring a string rejects. In both panels id is 501; these are separate possible validation policies.</desc>
+  <defs>
+    <marker id="encoding-json-evolution-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-json-evolution-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="360"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">New writer → old reader</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">old schema rejects extra properties</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Old writer → new reader</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">old open schema allowed other types</text>
+  <rect class="dg-box" x="24" y="76" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="104">id: "501"</text>
+  <text class="dg-code" x="38" y="130">delivery_note: "Leave at reception"</text>
+  <path class="dg-arrow" d="M180 152 V220" marker-end="url(#encoding-json-evolution-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="190.0">VALIDATE</text>
+  <rect class="dg-box-failed" x="24" y="220" width="312" height="80" rx="6"/>
+  <text class="dg-name" x="180.0" y="258.0" text-anchor="middle">Rejected</text>
+  <text class="dg-sub" x="180.0" y="274.0" text-anchor="middle">additionalProperties: false</text>
+  <text class="dg-result" x="180" y="340" text-anchor="middle">Unknown property</text>
+  <rect class="dg-box" x="384" y="76" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="104">id: "501"</text>
+  <text class="dg-code" x="398" y="130">delivery_note: 7</text>
+  <path class="dg-arrow" d="M540 152 V220" marker-end="url(#encoding-json-evolution-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="190.0">VALIDATE</text>
+  <rect class="dg-box-failed" x="384" y="220" width="312" height="80" rx="6"/>
+  <text class="dg-name" x="540.0" y="258.0" text-anchor="middle">Rejected</text>
+  <text class="dg-sub" x="540.0" y="274.0" text-anchor="middle">delivery_note must be a string</text>
+  <text class="dg-result" x="540" y="340" text-anchor="middle">Known name, wrong type</text>
+</svg>

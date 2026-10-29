@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 372" role="img" aria-labelledby="encoding-protobuf-schema-title encoding-protobuf-schema-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-protobuf-schema-title">Giving a Protobuf reader field knowledge</title>
+  <desc id="encoding-protobuf-schema-desc">The same Order schema maps field 2 to int64 amount_minor. Generated code or a schema description loaded at runtime can supply that knowledge when reading the same binary message.</desc>
+  <defs>
+    <marker id="encoding-protobuf-schema-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-protobuf-schema-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="356"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Generated access</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">schema used by a code generator</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Runtime access</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">schema description loaded by the program</text>
+  <rect class="dg-box" x="24" y="68" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="38" y="96">int64 amount_minor = 2;</text>
+  <path class="dg-arrow" d="M180 118 V180" marker-end="url(#encoding-protobuf-schema-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="153.0">GENERATE</text>
+  <rect class="dg-box" x="24" y="180" width="312" height="60" rx="6"/>
+  <text class="dg-name" x="180.0" y="215.0" text-anchor="middle">Generated Order code</text>
+  <path class="dg-arrow" d="M180 240 V296" marker-end="url(#encoding-protobuf-schema-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="272.0">READ MESSAGE</text>
+  <rect class="dg-box-accent" x="24" y="296" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="38" y="324">field 2: 1990 → amount_minor: 1990</text>
+  <rect class="dg-box" x="384" y="68" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="398" y="96">int64 amount_minor = 2;</text>
+  <path class="dg-arrow" d="M540 118 V180" marker-end="url(#encoding-protobuf-schema-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="153.0">LOAD</text>
+  <rect class="dg-box" x="384" y="180" width="312" height="60" rx="6"/>
+  <text class="dg-name" x="540.0" y="215.0" text-anchor="middle">Runtime schema description</text>
+  <path class="dg-arrow" d="M540 240 V296" marker-end="url(#encoding-protobuf-schema-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="272.0">READ MESSAGE</text>
+  <rect class="dg-box-accent" x="384" y="296" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="398" y="324">field 2: 1990 → amount_minor: 1990</text>
+</svg>

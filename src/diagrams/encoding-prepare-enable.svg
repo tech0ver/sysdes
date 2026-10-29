@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 558" role="img" aria-labelledby="encoding-prepare-enable-title encoding-prepare-enable-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-prepare-enable-title">Prepare readers before enabling new writes</title>
+  <desc id="encoding-prepare-enable-desc">Time runs down from the original release, which reads and writes the old shape, to a preparation release, which reads both but still writes old, to the enabled release. After new records are written, restoring the prepared release is safe for those shapes; restoring the original release is not.</desc>
+  <defs>
+    <marker id="encoding-prepare-enable-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-prepare-enable-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="172" y="20" width="376" height="76" rx="6"/>
+  <text class="dg-name" x="360.0" y="56.0" text-anchor="middle">Original</text>
+  <text class="dg-sub" x="360.0" y="72.0" text-anchor="middle">reads old · writes old</text>
+  <rect class="dg-box-accent" x="172" y="144" width="376" height="76" rx="6"/>
+  <text class="dg-name" x="360.0" y="180.0" text-anchor="middle">Prepared</text>
+  <text class="dg-sub" x="360.0" y="196.0" text-anchor="middle">reads old + new · writes old</text>
+  <rect class="dg-box" x="172" y="268" width="376" height="76" rx="6"/>
+  <text class="dg-name" x="360.0" y="304.0" text-anchor="middle">Enabled</text>
+  <text class="dg-sub" x="360.0" y="320.0" text-anchor="middle">reads old + new · writes new</text>
+  <path class="dg-arrow" d="M360 96 V144" marker-end="url(#encoding-prepare-enable-head)"/>
+  <text class="dg-mono dg-muted-text" x="374" y="124.0">RELEASE</text>
+  <path class="dg-arrow" d="M360 220 V268" marker-end="url(#encoding-prepare-enable-head)"/>
+  <text class="dg-mono dg-muted-text" x="374" y="248.0">RELEASE</text>
+  <path class="dg-arrow dg-empty" d="M280 344 V376 H180 V424" marker-end="url(#encoding-prepare-enable-head)"/>
+  <path class="dg-arrow dg-message" d="M440 344 V376 H540 V424" marker-end="url(#encoding-prepare-enable-head-accent)"/>
+  <text class="dg-sub" x="360" y="404" text-anchor="middle">after writing new-shaped order 501</text>
+  <line class="dg-rule" x1="360" y1="424" x2="360" y2="542"/>
+  <rect class="dg-box-failed" x="24" y="424" width="312" height="76" rx="6"/>
+  <text class="dg-name" x="180.0" y="460.0" text-anchor="middle">Restore original</text>
+  <text class="dg-sub" x="180.0" y="476.0" text-anchor="middle">reads old only</text>
+  <rect class="dg-box-accent" x="384" y="424" width="312" height="76" rx="6"/>
+  <text class="dg-name" x="540.0" y="460.0" text-anchor="middle">Restore prepared</text>
+  <text class="dg-sub" x="540.0" y="476.0" text-anchor="middle">reads old + new</text>
+  <text class="dg-result" x="180" y="534" text-anchor="middle">Cannot read the new records</text>
+  <text class="dg-result" x="540" y="534" text-anchor="middle">Can read the new records</text>
+</svg>

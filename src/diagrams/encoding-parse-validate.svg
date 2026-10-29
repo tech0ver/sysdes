@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 390" role="img" aria-labelledby="encoding-parse-validate-title encoding-parse-validate-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-parse-validate-title">Parsing and field validation</title>
+  <desc id="encoding-parse-validate-desc">Both records are valid JSON. A JSON Schema integer rule for amount_minor rejects the string 1990 and accepts the number 1990. Neither check establishes what unit the number measures.</desc>
+  <defs>
+    <marker id="encoding-parse-validate-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-parse-validate-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="374"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">String amount</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">valid JSON, wrong field type</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Integer amount</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">valid JSON, accepted field type</text>
+  <rect class="dg-box" x="24" y="68" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="96">id: "501"</text>
+  <text class="dg-code" x="38" y="122">amount_minor: "1990"</text>
+  <path class="dg-arrow" d="M180 144 V192" marker-end="url(#encoding-parse-validate-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="172.0">PARSE</text>
+  <rect class="dg-box" x="24" y="192" width="312" height="44" rx="6"/>
+  <text class="dg-name" x="180.0" y="219.0" text-anchor="middle">JSON accepted</text>
+  <path class="dg-arrow" d="M180 236 V290" marker-end="url(#encoding-parse-validate-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="267.0">VALIDATE</text>
+  <rect class="dg-box-failed" x="24" y="290" width="312" height="68" rx="6"/>
+  <text class="dg-name" x="180.0" y="322.0" text-anchor="middle">Rejected</text>
+  <text class="dg-sub" x="180.0" y="338.0" text-anchor="middle">rule: amount_minor is an integer</text>
+  <rect class="dg-box" x="384" y="68" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="96">id: "501"</text>
+  <text class="dg-code" x="398" y="122">amount_minor: 1990</text>
+  <path class="dg-arrow" d="M540 144 V192" marker-end="url(#encoding-parse-validate-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="172.0">PARSE</text>
+  <rect class="dg-box" x="384" y="192" width="312" height="44" rx="6"/>
+  <text class="dg-name" x="540.0" y="219.0" text-anchor="middle">JSON accepted</text>
+  <path class="dg-arrow" d="M540 236 V290" marker-end="url(#encoding-parse-validate-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="267.0">VALIDATE</text>
+  <rect class="dg-box-accent" x="384" y="290" width="312" height="68" rx="6"/>
+  <text class="dg-name" x="540.0" y="322.0" text-anchor="middle">Accepted</text>
+  <text class="dg-sub" x="540.0" y="338.0" text-anchor="middle">rule: amount_minor is an integer</text>
+</svg>

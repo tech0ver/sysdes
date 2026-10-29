@@ -1,0 +1,29 @@
+<svg class="diagram-svg" viewBox="0 0 720 348" role="img" aria-labelledby="encoding-bytes-reference-title encoding-bytes-reference-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-bytes-reference-title">Where binary data travels</title>
+  <desc id="encoding-bytes-reference-desc">A small binary value can be Base64 text inside the JSON for order 501. A large file can travel separately, with JSON carrying only its reference. The field names here illustrate two alternatives.</desc>
+  <defs>
+    <marker id="encoding-bytes-reference-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-bytes-reference-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="332"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Bytes inside JSON</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">small binary value</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Reference inside JSON</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">file transferred separately</text>
+  <rect class="dg-box" x="24" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="100">id: "501"</text>
+  <text class="dg-code" x="38" y="126">attachment_base64: "AQID"</text>
+  <path class="dg-arrow" d="M180 148 V224" marker-end="url(#encoding-bytes-reference-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="190.0">DECODE</text>
+  <rect class="dg-box-accent" x="24" y="224" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="38" y="252">bytes: 01 02 03</text>
+  <text class="dg-sub" x="180" y="308" text-anchor="middle">from JSON text</text>
+  <rect class="dg-box" x="384" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="100">id: "501"</text>
+  <text class="dg-code" x="398" y="126">attachment_ref: "/files/501"</text>
+  <path class="dg-arrow" d="M540 148 V224" marker-end="url(#encoding-bytes-reference-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="190.0">FETCH FILE</text>
+  <rect class="dg-box-accent" x="384" y="224" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="398" y="252">bytes: 01 02 03</text>
+  <text class="dg-sub" x="540" y="308" text-anchor="middle">from the separate file</text>
+</svg>

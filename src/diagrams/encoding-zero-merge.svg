@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 436" role="img" aria-labelledby="encoding-zero-merge-title encoding-zero-merge-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-zero-merge-title">A supplied zero needs presence during a merge</title>
+  <desc id="encoding-zero-merge-desc">Both Protobuf messages start with amount_minor 1990 and receive a patch intended to set it to zero. Merge with implicit scalar presence skips the default zero. With explicit presence, the supplied zero is merged. This illustrates merge semantics, not a change to the order schema.</desc>
+  <defs>
+    <marker id="encoding-zero-merge-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-zero-merge-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="420"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Implicit presence</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">default zero is skipped by merge</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Explicit presence</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">a supplied zero is merged</text>
+  <rect class="dg-box" x="24" y="72" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="38" y="100">stored amount_minor: 1990</text>
+  <path class="dg-arrow" d="M180 122 V182" marker-end="url(#encoding-zero-merge-head)"/>
+  <rect class="dg-box-accent" x="24" y="182" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="210">patch amount_minor: 0</text>
+  <text class="dg-code" x="38" y="236">no explicit presence</text>
+  <path class="dg-arrow" d="M180 258 V320" marker-end="url(#encoding-zero-merge-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="293.0">MERGE</text>
+  <rect class="dg-box" x="24" y="320" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="38" y="348">result amount_minor: 1990</text>
+  <text class="dg-result" x="180" y="412" text-anchor="middle">Original amount remains</text>
+  <rect class="dg-box" x="384" y="72" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="398" y="100">stored amount_minor: 1990</text>
+  <path class="dg-arrow" d="M540 122 V182" marker-end="url(#encoding-zero-merge-head)"/>
+  <rect class="dg-box-accent" x="384" y="182" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="210">patch amount_minor: 0</text>
+  <text class="dg-code" x="398" y="236">present: true</text>
+  <path class="dg-arrow" d="M540 258 V320" marker-end="url(#encoding-zero-merge-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="293.0">MERGE</text>
+  <rect class="dg-box" x="384" y="320" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="398" y="348">result amount_minor: 0</text>
+  <text class="dg-result" x="540" y="412" text-anchor="middle">Supplied zero takes effect</text>
+</svg>

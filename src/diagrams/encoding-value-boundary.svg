@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 720 338" role="img" aria-labelledby="encoding-value-boundary-title encoding-value-boundary-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-value-boundary-title">Preserving an amount across programs</title>
+  <desc id="encoding-value-boundary-desc">Order 501 has an exact decimal amount of 19.90 USD in the service. JSON carries amount_minor 1990 and currency USD. The browser reads these as 19 dollars and 90 cents using the agreed unit.</desc>
+  <defs>
+    <marker id="encoding-value-boundary-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-value-boundary-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="24" y="46">ORDER SERVICE</text>
+  <rect class="dg-box" x="220" y="16" width="476" height="76" rx="6"/>
+  <text class="dg-code" x="234" y="44">order 501</text>
+  <text class="dg-code" x="234" y="70">decimal amount: 19.90 USD</text>
+  <text class="dg-mono dg-muted-text" x="24" y="160">JSON / UTF-8</text>
+  <rect class="dg-box-accent" x="220" y="130" width="476" height="76" rx="6"/>
+  <text class="dg-code" x="234" y="158">amount_minor: 1990</text>
+  <text class="dg-code" x="234" y="184">currency: "USD"</text>
+  <text class="dg-mono dg-muted-text" x="24" y="274">BROWSER</text>
+  <rect class="dg-box" x="220" y="244" width="476" height="76" rx="6"/>
+  <text class="dg-code" x="234" y="272">order 501</text>
+  <text class="dg-code" x="234" y="298">display amount: $19.90 USD</text>
+  <path class="dg-arrow" d="M458 92 V130" marker-end="url(#encoding-value-boundary-head)"/>
+  <text class="dg-mono dg-muted-text" x="472" y="115.0">ENCODE</text>
+  <path class="dg-arrow" d="M458 206 V244" marker-end="url(#encoding-value-boundary-head)"/>
+  <text class="dg-mono dg-muted-text" x="472" y="229.0">DECODE</text>
+</svg>

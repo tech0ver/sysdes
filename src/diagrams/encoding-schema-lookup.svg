@@ -1,0 +1,37 @@
+<svg class="diagram-svg" viewBox="0 0 720 424" role="img" aria-labelledby="encoding-schema-lookup-title encoding-schema-lookup-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-schema-lookup-title">Reading with a stored writer schema</title>
+  <desc id="encoding-schema-lookup-desc">Both records carry schema identifier 42 and an Avro binary payload for order 501. The matching writer schema makes the values readable. If it is unavailable, the identifier alone cannot tell the reader how to decode the payload.</desc>
+  <defs>
+    <marker id="encoding-schema-lookup-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-schema-lookup-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="408"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Schema available</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">identifier resolves to a stored schema</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Schema unavailable</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">identifier remains, schema is missing</text>
+  <rect class="dg-box" x="24" y="68" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="96">schema id: 42</text>
+  <text class="dg-code" x="38" y="122">payload: binary order record</text>
+  <path class="dg-arrow" d="M180 144 V208" marker-end="url(#encoding-schema-lookup-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="180.0">LOOK UP 42</text>
+  <rect class="dg-box-accent" x="24" y="208" width="312" height="64" rx="6"/>
+  <text class="dg-name" x="180.0" y="238.0" text-anchor="middle">Writer schema 42</text>
+  <text class="dg-sub" x="180.0" y="254.0" text-anchor="middle">id, amount_minor, currency, …</text>
+  <path class="dg-arrow" d="M180 272 V332" marker-end="url(#encoding-schema-lookup-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="306.0">DECODE</text>
+  <rect class="dg-box" x="24" y="332" width="312" height="50" rx="6"/>
+  <text class="dg-code" x="38" y="360">id: "501", amount_minor: 1990</text>
+  <rect class="dg-box" x="384" y="68" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="96">schema id: 42</text>
+  <text class="dg-code" x="398" y="122">payload: binary order record</text>
+  <path class="dg-arrow" d="M540 144 V208" marker-end="url(#encoding-schema-lookup-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="180.0">LOOK UP 42</text>
+  <rect class="dg-box-failed" x="384" y="208" width="312" height="64" rx="6"/>
+  <text class="dg-name" x="540.0" y="238.0" text-anchor="middle">Writer schema 42 missing</text>
+  <text class="dg-sub" x="540.0" y="254.0" text-anchor="middle">payload cannot be interpreted</text>
+  <path class="dg-arrow dg-empty" d="M540 272 V332" marker-end="url(#encoding-schema-lookup-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="306.0">BLOCKED</text>
+  <rect class="dg-box-failed" x="384" y="332" width="312" height="50" rx="6"/>
+  <text class="dg-code-muted" x="398" y="360">no decoded record</text>
+</svg>

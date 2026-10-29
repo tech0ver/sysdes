@@ -1,0 +1,18 @@
+<svg class="diagram-svg" viewBox="0 0 720 316" role="img" aria-labelledby="encoding-api-directions-title encoding-api-directions-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-api-directions-title">An API promise spans both directions</title>
+  <desc id="encoding-api-directions-desc">An old client writes a request that the new server reads: backward compatibility. The new server writes a response that the old client reads: forward compatibility.</desc>
+  <defs>
+    <marker id="encoding-api-directions-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-api-directions-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="130" y="24" text-anchor="middle">OLD CLIENT</text>
+  <line class="dg-lifeline" x1="130" y1="48" x2="130" y2="282"/>
+  <text class="dg-mono dg-muted-text" x="590" y="24" text-anchor="middle">NEW SERVER</text>
+  <line class="dg-lifeline" x1="590" y1="48" x2="590" y2="282"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="102" text-anchor="middle">REQUEST · OLD WRITER → NEW READER</text>
+  <path class="dg-arrow dg-message" d="M130 110 H582" marker-end="url(#encoding-api-directions-head-accent)"/>
+  <text class="dg-sub" x="360" y="138" text-anchor="middle">backward compatibility</text>
+  <text class="dg-mono dg-accent-text" x="360.0" y="210" text-anchor="middle">RESPONSE · NEW WRITER → OLD READER</text>
+  <path class="dg-arrow dg-message" d="M590 218 H138" marker-end="url(#encoding-api-directions-head-accent)"/>
+  <text class="dg-sub" x="360" y="246" text-anchor="middle">forward compatibility</text>
+</svg>

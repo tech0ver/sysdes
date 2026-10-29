@@ -87,6 +87,16 @@ export const glossarySkip = ['SQL Server', 'commit the layout', 'Recall.ai'];
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
 export const glossary = [
 	{
+		id: 'cpu',
+		term: 'CPU',
+		aliases: ['CPU', 'CPUs'],
+		expansion: 'Central processing unit',
+		short: 'The processor that executes a program\'s instructions.',
+		explanation:
+			'Its available processing time limits how much computational work a machine can do. Measure this work under the intended workload when comparing implementations.',
+		readMore: { href: 'https://aws.amazon.com/what-is/cpu/', label: 'AWS: What is a CPU?' },
+	},
+	{
 		id: 'client-server',
 		term: 'Client-server',
 		aliases: ['client-server', 'Client-server'],
@@ -1210,14 +1220,233 @@ export const glossary = [
 		readMore: databases('copying-data-for-fast-reads', 'Copying data for fast reads'),
 	},
 	{
+		id: 'encoding',
+		explainedIn: ['patterns/unique-ids', 'technologies/redis'],
+		term: 'Encoding',
+		aliases: ['encoding', 'Encoding', 'serialization', 'Serialization'],
+		short: 'Turning values into bytes for storage or transmission.',
+		explanation:
+			'The receiving program must understand the format and preserve the required types, precision, and units. A portable format lets programs in different languages exchange data.',
+		readMore: { href: 'fundamentals/encoding/#preserving-values-across-programs', label: 'Encoding: Preserving values across programs' },
+	},
+	{
+		id: 'decoding',
+		term: 'Decoding',
+		aliases: ['decoding', 'Decoding', 'deserialization', 'Deserialization'],
+		short: 'Turning encoded bytes back into values a program can use.',
+		explanation:
+			'The reader needs to understand the representation. Successfully reading the bytes does not guarantee that the resulting values keep the intended precision or meaning.',
+		readMore: { href: 'fundamentals/encoding/#preserving-values-across-programs', label: 'Encoding: Preserving values across programs' },
+	},
+	{
+		id: 'utf-8',
+		term: 'UTF-8',
+		aliases: ['UTF-8'],
+		expansion: 'Unicode Transformation Format, 8-bit',
+		short: 'A way to represent Unicode text as bytes.',
+		explanation:
+			'Programs must agree on a character encoding to read the same text. JSON exchanged between systems outside a closed ecosystem uses UTF-8.',
+		readMore: { href: 'https://www.rfc-editor.org/rfc/rfc8259.html#section-8.1', label: 'RFC 8259: Character encoding' },
+	},
+	{
+		id: 'base64',
+		term: 'Base64',
+		aliases: ['Base64', 'base64'],
+		short: 'A way to represent arbitrary bytes using text characters.',
+		explanation:
+			'It lets binary values travel through text formats such as JSON. The representation takes more space than the original bytes.',
+		readMore: { href: 'https://www.rfc-editor.org/rfc/rfc4648.html#section-4', label: 'RFC 4648: Base64' },
+	},
+	{
+		id: 'utc',
+		term: 'UTC',
+		aliases: ['UTC'],
+		expansion: 'Coordinated Universal Time',
+		short: 'The common time reference used to express instants across time zones.',
+		explanation:
+			'A timestamp with a UTC offset identifies an instant without depending on the reader\'s local time zone. The Z suffix in an Internet timestamp means a zero offset from UTC.',
+		readMore: { href: 'https://www.rfc-editor.org/rfc/rfc3339.html#section-4.1', label: 'RFC 3339: UTC' },
+	},
+	{
 		id: 'json',
 		term: 'JSON',
 		aliases: ['JSON'],
 		expansion: 'JavaScript Object Notation',
-		short: 'A text format for nested data: objects with named fields, lists, strings, numbers, and booleans.',
+		short: 'A text format for nested values: objects, arrays, strings, numbers, booleans, and null.',
 		explanation:
-			'Document stores keep records as JSON or a binary form of it, and relational databases have JSON columns.',
-		readMore: { href: 'https://en.wikipedia.org/wiki/JSON', label: 'Wikipedia: JSON' },
+			'Programs in different languages can read it, but they still need to agree on numeric precision and representations for values such as times and arbitrary bytes.',
+		readMore: { href: 'fundamentals/encoding/#preserving-values-across-programs', label: 'Encoding: Preserving values across programs' },
+	},
+	{
+		id: 'json-schema',
+		term: 'JSON Schema',
+		aliases: ['JSON Schema'],
+		short: 'A language for describing constraints on JSON values.',
+		explanation:
+			'A validator can check field types, required properties, and other declared rules. Parsing JSON checks its syntax; validating it against a schema checks those additional constraints.',
+		readMore: { href: 'fundamentals/encoding/#knowing-what-the-bytes-mean', label: 'Encoding: Knowing what the bytes mean' },
+	},
+	{
+		id: 'protobuf',
+		term: 'Protocol Buffers',
+		aliases: ['Protocol Buffers', 'Protobuf'],
+		short: 'A format and schema language for exchanging typed records across programs.',
+		explanation:
+			'The binary encoding identifies fields by stable numbers. Generated code or runtime schema descriptors tell a reader how to interpret them; schema changes must preserve the field identities.',
+		readMore: { href: 'fundamentals/encoding/#knowing-what-the-bytes-mean', label: 'Encoding: Knowing what the bytes mean' },
+	},
+	{
+		id: 'avro',
+		term: 'Avro',
+		aliases: ['Avro', 'Apache Avro'],
+		short: 'A format that uses a writer\'s schema to interpret encoded data.',
+		explanation:
+			'Binary records contain field values without field names or numbers. The reader needs the writer\'s schema, supplied with the data or obtained through a schema identifier.',
+		readMore: { href: 'fundamentals/encoding/#knowing-what-the-bytes-mean', label: 'Encoding: Knowing what the bytes mean' },
+	},
+	{
+		id: 'writer-schema',
+		term: 'Writer\'s schema',
+		aliases: ['writer\'s schema', 'writer’s schema', 'writer schema', 'writer schemas'],
+		short: 'The schema under which data was encoded.',
+		explanation:
+			'A reader may expect a different structure. For Avro binary data, the writer\'s schema is needed to interpret the stored values before resolving differences with the reader\'s schema.',
+		readMore: { href: 'fundamentals/encoding/#knowing-what-the-bytes-mean', label: 'Encoding: Knowing what the bytes mean' },
+	},
+	{
+		id: 'schema-registry',
+		term: 'Schema registry',
+		aliases: ['schema registry', 'Schema registry', 'schema registries'],
+		short: 'A store that lets programs retrieve schemas by identifier.',
+		explanation:
+			'Data can carry an identifier instead of repeating its schema. Readers must be able to obtain the matching schema for as long as they need to read the data.',
+		readMore: { href: 'fundamentals/encoding/#knowing-what-the-bytes-mean', label: 'Encoding: Knowing what the bytes mean' },
+	},
+	{
+		id: 'backward-compatibility',
+		term: 'Backward compatibility',
+		aliases: ['backward compatibility', 'Backward compatibility', 'backwards compatibility', 'backward-compatible'],
+		short: 'The ability of a new reader to read data from an old writer.',
+		explanation:
+			'A new reader must handle fields or values missing from older records. API guides also use the phrase for old clients working with new servers, which combines different directions for requests and responses.',
+		readMore: { href: 'fundamentals/encoding/#reading-data-from-another-version', label: 'Encoding: Reading data from another version' },
+	},
+	{
+		id: 'forward-compatibility',
+		term: 'Forward compatibility',
+		aliases: ['forward compatibility', 'Forward compatibility', 'forwards compatibility', 'forward-compatible'],
+		short: 'The ability of an old reader to read data from a new writer.',
+		explanation:
+			'The old reader needs a way to tolerate additions it does not understand. Reading successfully does not guarantee that it will preserve those additions when writing the data back.',
+		readMore: { href: 'fundamentals/encoding/#reading-data-from-another-version', label: 'Encoding: Reading data from another version' },
+	},
+	{
+		id: 'reader-schema',
+		term: 'Reader\'s schema',
+		aliases: ['reader\'s schema', 'reader’s schema', 'reader schema', 'reader schemas'],
+		short: 'The schema describing the structure a reading program expects.',
+		explanation:
+			'It can differ from the schema used to write the data. Avro resolves the writer\'s fields into this expected structure, using reader defaults for missing fields where available.',
+		readMore: { href: 'fundamentals/encoding/#reading-data-from-another-version', label: 'Encoding: Reading data from another version' },
+	},
+	{
+		id: 'schema-resolution',
+		term: 'Schema resolution',
+		aliases: ['schema resolution', 'Schema resolution'],
+		short: 'Mapping data written under one schema into the structure another schema expects.',
+		explanation:
+			'Avro uses both writer and reader schemas for this. Its rules match fields, skip fields the reader does not expect, and fill missing fields from reader defaults or report an error.',
+		readMore: { href: 'fundamentals/encoding/#reading-data-from-another-version', label: 'Encoding: Reading data from another version' },
+	},
+	{
+		id: 'unknown-fields',
+		term: 'Unknown fields',
+		aliases: ['unknown fields', 'Unknown fields'],
+		short: 'Fields present in encoded data but absent from a reader\'s schema or model.',
+		explanation:
+			'A reader that rewrites or forwards data may need to preserve fields it cannot interpret. Parsing successfully does not guarantee that rebuilding the record will keep them.',
+		readMore: { href: 'fundamentals/encoding/#keeping-fields-the-reader-does-not-know', label: 'Encoding: Keeping fields the reader does not know' },
+	},
+	{
+		id: 'wire-compatibility',
+		term: 'Wire compatibility',
+		aliases: ['wire compatibility', 'Wire compatibility'],
+		short: 'The ability of supported programs to exchange encoded values correctly.',
+		explanation:
+			'Check the actual format, readers, and written values. A change that preserves the encoding can still break generated code or application behavior.',
+		readMore: { href: 'fundamentals/encoding/#changing-fields-without-changing-their-meaning', label: 'Encoding: Changing fields without changing their meaning' },
+	},
+	{
+		id: 'source-compatibility',
+		term: 'Source compatibility',
+		aliases: ['source compatibility', 'Source compatibility'],
+		short: 'Existing code continues to compile and work with updated libraries or generated code.',
+		explanation:
+			'A schema change may preserve the encoded data while changing generated names or types. Rebuilding a client can therefore fail even when its old binary can still read the messages.',
+		readMore: { href: 'fundamentals/encoding/#changing-fields-without-changing-their-meaning', label: 'Encoding: Changing fields without changing their meaning' },
+	},
+	{
+		id: 'semantic-compatibility',
+		term: 'Semantic compatibility',
+		aliases: ['semantic compatibility', 'Semantic compatibility'],
+		short: 'Preserving the meaning of values and the behavior callers rely on.',
+		explanation:
+			'A record can decode successfully while its units, defaults, or allowed values change the result. Compatibility checks must cover application behavior as well as the encoding.',
+		readMore: { href: 'fundamentals/encoding/#changing-fields-without-changing-their-meaning', label: 'Encoding: Changing fields without changing their meaning' },
+	},
+	{
+		id: 'protojson',
+		term: 'ProtoJSON',
+		aliases: ['ProtoJSON'],
+		short: 'The JSON mapping for Protocol Buffers messages.',
+		explanation:
+			'It uses field names and has different evolution rules from the binary encoding. Passing through it can lose unknown fields that a binary message would retain.',
+		readMore: { href: 'fundamentals/encoding/#changing-fields-without-changing-their-meaning', label: 'Encoding: Changing fields without changing their meaning' },
+	},
+	{
+		id: 'enum',
+		term: 'Enum',
+		aliases: ['enum', 'enums', 'Enum'],
+		short: 'A type that names a set of allowed values.',
+		explanation:
+			'New values require behavior from older readers that do not recognize them. How an unfamiliar value is represented or rejected depends on the format and runtime.',
+		readMore: { href: 'fundamentals/encoding/#changing-fields-without-changing-their-meaning', label: 'Encoding: Changing fields without changing their meaning' },
+	},
+	{
+		id: 'expand-and-contract',
+		term: 'Expand and contract',
+		aliases: ['Expand and contract', 'expand and contract'],
+		short: 'Changing a schema by adding a representation before removing the old one.',
+		explanation:
+			'Readers and writers move to the new representation while both are supported. The old one can be removed only after its users and retained data no longer require it.',
+		readMore: { href: 'fundamentals/encoding/#changing-fields-without-changing-their-meaning', label: 'Encoding: Changing fields without changing their meaning' },
+	},
+	{
+		id: 'transitive-compatibility-checking',
+		term: 'Transitive compatibility checking',
+		aliases: ['transitive compatibility checking', 'Transitive compatibility checking'],
+		short: 'Checking a proposed schema against every earlier schema in its configured history.',
+		explanation:
+			'The selected direction determines whether old data must work with new readers, new data with old readers, or both. Checking only the previous version can miss incompatibility with older retained data.',
+		readMore: { href: 'fundamentals/encoding/#keeping-old-formats-readable', label: 'Encoding: Keeping old formats readable' },
+	},
+	{
+		id: 'contract-versioning',
+		term: 'Contract versioning',
+		aliases: ['contract versioning', 'Contract versioning'],
+		short: 'Identifying which data shape and behavior a program supports.',
+		explanation:
+			'A version selects a contract and the code that handles it. Supporting multiple contracts still requires implementations or translations that preserve their promised behavior.',
+		readMore: { href: 'fundamentals/encoding/#introducing-an-incompatible-contract', label: 'Encoding: Introducing an incompatible contract' },
+	},
+	{
+		id: 'contract-adapter',
+		term: 'Adapter',
+		aliases: ['adapter', 'adapters', 'Adapter'],
+		short: 'A translation between a supported contract and a program\'s current model.',
+		explanation:
+			'It can isolate representation differences at a boundary. It must preserve the contract\'s meaning; it cannot recover information that the representation does not contain.',
+		readMore: { href: 'fundamentals/encoding/#introducing-an-incompatible-contract', label: 'Encoding: Introducing an incompatible contract' },
 	},
 	{
 		id: 'document-model',

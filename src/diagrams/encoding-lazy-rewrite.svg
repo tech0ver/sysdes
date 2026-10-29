@@ -1,0 +1,63 @@
+<svg class="diagram-svg" viewBox="0 0 720 398" role="img" aria-labelledby="encoding-lazy-rewrite-title encoding-lazy-rewrite-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-lazy-rewrite-title">Conversion on access leaves untouched records</title>
+  <desc id="encoding-lazy-rewrite-desc">Both stores begin with orders 501, 502 and 503 in the old shape. Conversion on access reads and writes back order 501 in the new shape but leaves 502 and 503 old. A separate dataset rewrite converts all three shown records. Labels old and new identify the stored shape, not order status.</desc>
+  <defs>
+    <marker id="encoding-lazy-rewrite-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-lazy-rewrite-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="382"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Convert on access</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">normal traffic touches order 501</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Rewrite the dataset</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">conversion covers every shown record</text>
+  <rect class="dg-box" x="24" y="72" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="72" y="98" text-anchor="middle">501</text>
+  <text class="dg-sub" x="72" y="120" text-anchor="middle">old</text>
+  <rect class="dg-box" x="132" y="72" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="180" y="98" text-anchor="middle">502</text>
+  <text class="dg-sub" x="180" y="120" text-anchor="middle">old</text>
+  <rect class="dg-box" x="240" y="72" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="288" y="98" text-anchor="middle">503</text>
+  <text class="dg-sub" x="288" y="120" text-anchor="middle">old</text>
+  <path class="dg-arrow" d="M72 140 V194" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <rect class="dg-box" x="24" y="194" width="312" height="62" rx="6"/>
+  <text class="dg-name" x="180.0" y="223.0" text-anchor="middle">Read 501 → write it back</text>
+  <text class="dg-sub" x="180.0" y="239.0" text-anchor="middle">encode the new shape</text>
+  <path class="dg-arrow" d="M72 256 V310" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <rect class="dg-box-accent" x="24" y="310" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="72" y="336" text-anchor="middle">501</text>
+  <text class="dg-sub" x="72" y="358" text-anchor="middle">new</text>
+  <rect class="dg-box" x="132" y="310" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="180" y="336" text-anchor="middle">502</text>
+  <text class="dg-sub" x="180" y="358" text-anchor="middle">old</text>
+  <rect class="dg-box" x="240" y="310" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="288" y="336" text-anchor="middle">503</text>
+  <text class="dg-sub" x="288" y="358" text-anchor="middle">old</text>
+  <rect class="dg-box" x="384" y="72" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="432" y="98" text-anchor="middle">501</text>
+  <text class="dg-sub" x="432" y="120" text-anchor="middle">old</text>
+  <rect class="dg-box" x="492" y="72" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="540" y="98" text-anchor="middle">502</text>
+  <text class="dg-sub" x="540" y="120" text-anchor="middle">old</text>
+  <rect class="dg-box" x="600" y="72" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="648" y="98" text-anchor="middle">503</text>
+  <text class="dg-sub" x="648" y="120" text-anchor="middle">old</text>
+  <path class="dg-arrow" d="M432 140 V194" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <path class="dg-arrow" d="M540 140 V194" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <path class="dg-arrow" d="M648 140 V194" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <rect class="dg-box" x="384" y="194" width="312" height="62" rx="6"/>
+  <text class="dg-name" x="540.0" y="223.0" text-anchor="middle">Read and write all three</text>
+  <text class="dg-sub" x="540.0" y="239.0" text-anchor="middle">encode the new shape</text>
+  <path class="dg-arrow" d="M432 256 V310" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <path class="dg-arrow" d="M540 256 V310" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <path class="dg-arrow" d="M648 256 V310" marker-end="url(#encoding-lazy-rewrite-head)"/>
+  <rect class="dg-box-accent" x="384" y="310" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="432" y="336" text-anchor="middle">501</text>
+  <text class="dg-sub" x="432" y="358" text-anchor="middle">new</text>
+  <rect class="dg-box-accent" x="492" y="310" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="540" y="336" text-anchor="middle">502</text>
+  <text class="dg-sub" x="540" y="358" text-anchor="middle">new</text>
+  <rect class="dg-box-accent" x="600" y="310" width="96" height="68" rx="6"/>
+  <text class="dg-code" x="648" y="336" text-anchor="middle">503</text>
+  <text class="dg-sub" x="648" y="358" text-anchor="middle">new</text>
+</svg>

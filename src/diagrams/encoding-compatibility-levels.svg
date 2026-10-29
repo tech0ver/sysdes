@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 474" role="img" aria-labelledby="encoding-compatibility-levels-title encoding-compatibility-levels-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-compatibility-levels-title">Three checks for a field change</title>
+  <desc id="encoding-compatibility-levels-desc">Two considered changes illustrate independent checks. A binary Protobuf rename keeps field 6 and the string value but can break use of a generated field name. Keeping amount_minor as the integer 1990 while changing cents to dollars preserves decoding and code access but changes the amount. Neither change is applied to the running order schema.</desc>
+  <defs>
+    <marker id="encoding-compatibility-levels-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-compatibility-levels-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="458"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Rename a Protobuf field</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">same binary number and string type</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Change the unit</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">same field name and integer type</text>
+  <rect class="dg-box" x="24" y="68" width="312" height="102" rx="6"/>
+  <text class="dg-code" x="38" y="96">6: delivery_note →</text>
+  <text class="dg-code" x="38" y="122">   delivery_instructions</text>
+  <text class="dg-code" x="38" y="148">value: "Leave at reception"</text>
+  <text class="dg-mono dg-muted-text" x="32" y="200">WIRE</text>
+  <rect class="dg-box" x="24" y="210" width="312" height="58" rx="6"/>
+  <text class="dg-name" x="180.0" y="237.0" text-anchor="middle">Reads correctly</text>
+  <text class="dg-sub" x="180.0" y="253.0" text-anchor="middle">same encoded identity and type</text>
+  <text class="dg-mono dg-muted-text" x="32" y="280">SOURCE</text>
+  <rect class="dg-box-accent" x="24" y="290" width="312" height="58" rx="6"/>
+  <text class="dg-name" x="180.0" y="317.0" text-anchor="middle">Code can break</text>
+  <text class="dg-sub" x="180.0" y="333.0" text-anchor="middle">generated field name changed</text>
+  <text class="dg-mono dg-muted-text" x="32" y="360">SEMANTIC</text>
+  <rect class="dg-box" x="24" y="370" width="312" height="58" rx="6"/>
+  <text class="dg-name" x="180.0" y="397.0" text-anchor="middle">Meaning unchanged</text>
+  <text class="dg-sub" x="180.0" y="413.0" text-anchor="middle">the delivery instruction is still text</text>
+  <rect class="dg-box" x="384" y="68" width="312" height="102" rx="6"/>
+  <text class="dg-code" x="398" y="96">amount_minor: 1990</text>
+  <text class="dg-code" x="398" y="122">unit: cents → dollars</text>
+  <text class="dg-code" x="398" y="148">$19.90 → $1,990.00</text>
+  <text class="dg-mono dg-muted-text" x="392" y="200">WIRE</text>
+  <rect class="dg-box" x="384" y="210" width="312" height="58" rx="6"/>
+  <text class="dg-name" x="540.0" y="237.0" text-anchor="middle">Reads correctly</text>
+  <text class="dg-sub" x="540.0" y="253.0" text-anchor="middle">same encoded identity and type</text>
+  <text class="dg-mono dg-muted-text" x="392" y="280">SOURCE</text>
+  <rect class="dg-box" x="384" y="290" width="312" height="58" rx="6"/>
+  <text class="dg-name" x="540.0" y="317.0" text-anchor="middle">Field access still works</text>
+  <text class="dg-sub" x="540.0" y="333.0" text-anchor="middle">name and type unchanged</text>
+  <text class="dg-mono dg-muted-text" x="392" y="360">SEMANTIC</text>
+  <rect class="dg-box-accent" x="384" y="370" width="312" height="58" rx="6"/>
+  <text class="dg-name" x="540.0" y="397.0" text-anchor="middle">Amount changed</text>
+  <text class="dg-sub" x="540.0" y="413.0" text-anchor="middle">the number now measures dollars</text>
+</svg>
