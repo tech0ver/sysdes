@@ -22,7 +22,7 @@ jobs:
       contents: read
       packages: read
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PACKAGES_READ_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v7
       - uses: withastro/action@v6
