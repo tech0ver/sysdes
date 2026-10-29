@@ -32,19 +32,17 @@ For now, write every topic in full breadth and depth. A reader skips what their 
 - `src/pages/404.astro` — redirects missing pages to the site's home page.
 - `ARTICLES.md` — the map of written and planned articles, and the hidden link markers for articles that do not exist yet.
 - The shared package supplies the tech0ver favicon. The site title sits at the top of the sidebar.
-- `.agents/skills/` — shared project skills for Codex and Claude Code: `write-article`, [diagram-design](https://github.com/cathrynlavery/diagram-design), and [humanizer](https://github.com/blader/humanizer). `.claude/skills` is a relative symlink to this directory. Skill descriptions are discovered automatically; full instructions load when a skill is used. Sources and update instructions are in [.agents/skills/README.md](.agents/skills/README.md).
 
 ## Conventions
 
-- To write or rewrite an article, use the `write-article` skill (`.agents/skills/write-article/`, with scripts for drawing diagrams and taking their screenshots in `scripts/`). The rules for the result are in [WRITING.md](WRITING.md). Which topic goes into which article is in [ARTICLES.md](ARTICLES.md).
-- Use `humanizer` when editing article prose and `diagram-design` for diagram layout ideas. WRITING.md takes priority over their defaults, including diagram output: site diagrams are SVGs in `src/diagrams/` with `dg-*` classes.
+- For project skills and the article workflow, read [.agents/skills/README.md](.agents/skills/README.md).
 - Internal links are relative (`../caching/`) so they keep working under `base`.
 - Do not duplicate information between README.md and AGENTS.md: README is for running the project, AGENTS.md is for working on it.
 - Before finishing a change, run `bun run build` — it must pass with no errors.
 
 ## Task workspace
 
-Notes, drafts, and task briefs live in `.agents/` outside `skills/` and are git-ignored. They are local working files: do not assume they exist in a fresh clone. `.agents/skills/` is tracked in Git and available in every checkout.
+Notes, drafts, and task briefs live in `.agents/` outside `skills/` and are git-ignored. They are local working files: do not assume they exist in a fresh clone.
 
 ## Change workflow
 

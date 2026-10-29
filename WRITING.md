@@ -1,6 +1,6 @@
 # WRITING.md
 
-What an article on this site must look like. Read it before you add or change a page in `src/content/docs/`. For the step-by-step process of writing an article, use the `write-article` skill (`.agents/skills/write-article/`). [Networking](src/content/docs/fundamentals/networking.md) is the reference article: when this file is unclear, do what it does.
+What an article on this site must look like. Read it before you add or change a page in `src/content/docs/`. [Networking](src/content/docs/fundamentals/networking.md) is the reference article: when this file is unclear, do what it does.
 
 ## Reader and goal
 
