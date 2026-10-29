@@ -8,17 +8,10 @@ Astro/Starlight UI for tech0ver sites.
 Use Node.js 24 and [Bun](https://bun.sh) 1.4.0.
 
 The shared package is installed from GitHub Packages through the committed
-`.npmrc`. Set `NODE_AUTH_TOKEN` to a GitHub personal access token (classic) with
+`.npmrc`. Set `GITHUB_PACKAGES_READ_TOKEN` to a GitHub personal access token (classic) with
 `read:packages` and access to `@tech0ver/starlight`. Authentication is required
-even for public packages. Keep the token outside the repository, for example in
-`~/.config/tech0ver/npm.env` as `NODE_AUTH_TOKEN=...`, with file permissions `600`.
-Load this file for installation in any checkout:
-
-```sh
-bun --env-file="$HOME/.config/tech0ver/npm.env" install
-```
-
-If `NODE_AUTH_TOKEN` is already exported in your shell, plain `bun install` works.
+even for public packages. Keep the token outside the repository and export it in
+your shell before installing dependencies.
 
 ```sh
 bun install
