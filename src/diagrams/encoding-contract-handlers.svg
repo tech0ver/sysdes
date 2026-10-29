@@ -1,0 +1,54 @@
+<svg class="diagram-svg" viewBox="0 0 720 454" role="img" aria-labelledby="encoding-contract-handlers-title encoding-contract-handlers-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-contract-handlers-title">Two ways to support both contracts</title>
+  <desc id="encoding-contract-handlers-desc">Left: old and new contracts have separate handling paths. Right: boundary adapters translate each contract to a shared current model. The old contract exposes a note string; the new one exposes a steps list. Required contract behavior must be implemented in either design.</desc>
+  <defs>
+    <marker id="encoding-contract-handlers-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-contract-handlers-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="438"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Separate handling paths</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">each path keeps its own behavior</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Boundary adapters</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">representation changes near the boundary</text>
+  <rect class="dg-box" x="24" y="72" width="144" height="64" rx="6"/>
+  <text class="dg-name" x="96.0" y="102.0" text-anchor="middle">Old contract</text>
+  <text class="dg-sub" x="96.0" y="118.0" text-anchor="middle">note: string</text>
+  <path class="dg-arrow" d="M96 136 V200" marker-end="url(#encoding-contract-handlers-head)"/>
+  <rect class="dg-box" x="192" y="72" width="144" height="64" rx="6"/>
+  <text class="dg-name" x="264.0" y="102.0" text-anchor="middle">New contract</text>
+  <text class="dg-sub" x="264.0" y="118.0" text-anchor="middle">steps: list</text>
+  <path class="dg-arrow" d="M264 136 V200" marker-end="url(#encoding-contract-handlers-head)"/>
+  <rect class="dg-box" x="24" y="200" width="144" height="80" rx="6"/>
+  <text class="dg-name" x="96.0" y="238.0" text-anchor="middle">Old handler</text>
+  <text class="dg-sub" x="96.0" y="254.0" text-anchor="middle">text behavior</text>
+  <rect class="dg-box" x="192" y="200" width="144" height="80" rx="6"/>
+  <text class="dg-name" x="264.0" y="238.0" text-anchor="middle">New handler</text>
+  <text class="dg-sub" x="264.0" y="254.0" text-anchor="middle">list behavior</text>
+  <path class="dg-arrow" d="M96 280 V346" marker-end="url(#encoding-contract-handlers-head)"/>
+  <path class="dg-arrow" d="M264 280 V346" marker-end="url(#encoding-contract-handlers-head)"/>
+  <rect class="dg-box" x="24" y="346" width="144" height="64" rx="6"/>
+  <text class="dg-name" x="96.0" y="376.0" text-anchor="middle">Old path</text>
+  <text class="dg-sub" x="96.0" y="392.0" text-anchor="middle">fixes and checks</text>
+  <rect class="dg-box" x="192" y="346" width="144" height="64" rx="6"/>
+  <text class="dg-name" x="264.0" y="376.0" text-anchor="middle">New path</text>
+  <text class="dg-sub" x="264.0" y="392.0" text-anchor="middle">fixes and checks</text>
+  <rect class="dg-box" x="384" y="72" width="144" height="64" rx="6"/>
+  <text class="dg-name" x="456.0" y="102.0" text-anchor="middle">Old contract</text>
+  <text class="dg-sub" x="456.0" y="118.0" text-anchor="middle">note: string</text>
+  <path class="dg-arrow" d="M456 136 V200" marker-end="url(#encoding-contract-handlers-head)"/>
+  <rect class="dg-box" x="552" y="72" width="144" height="64" rx="6"/>
+  <text class="dg-name" x="624.0" y="102.0" text-anchor="middle">New contract</text>
+  <text class="dg-sub" x="624.0" y="118.0" text-anchor="middle">steps: list</text>
+  <path class="dg-arrow" d="M624 136 V200" marker-end="url(#encoding-contract-handlers-head)"/>
+  <rect class="dg-box-accent" x="384" y="200" width="144" height="80" rx="6"/>
+  <text class="dg-name" x="456.0" y="238.0" text-anchor="middle">Old adapter</text>
+  <text class="dg-sub" x="456.0" y="254.0" text-anchor="middle">text ↔ model</text>
+  <rect class="dg-box-accent" x="552" y="200" width="144" height="80" rx="6"/>
+  <text class="dg-name" x="624.0" y="238.0" text-anchor="middle">New adapter</text>
+  <text class="dg-sub" x="624.0" y="254.0" text-anchor="middle">list ↔ model</text>
+  <path class="dg-arrow" d="M456 280 V346" marker-end="url(#encoding-contract-handlers-head)"/>
+  <path class="dg-arrow" d="M624 280 V346" marker-end="url(#encoding-contract-handlers-head)"/>
+  <rect class="dg-box" x="384" y="346" width="312" height="64" rx="6"/>
+  <text class="dg-name" x="540.0" y="376.0" text-anchor="middle">Shared current model</text>
+  <text class="dg-sub" x="540.0" y="392.0" text-anchor="middle">contract behavior still needs support</text>
+</svg>

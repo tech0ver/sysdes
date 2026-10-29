@@ -1,0 +1,24 @@
+<svg class="diagram-svg" viewBox="0 0 720 384" role="img" aria-labelledby="encoding-unknown-status-title encoding-unknown-status-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-unknown-status-title">An accepted value still needs application behavior</title>
+  <desc id="encoding-unknown-status-desc">Order 501 arrives with string status cancelled. JSON parsing accepts the string, but an old application that knows only created and confirmed must choose an appropriate fallback or refuse processing. Parser acceptance alone cannot choose that behavior. This is the string-status example, not a claim about every enum implementation.</desc>
+  <defs>
+    <marker id="encoding-unknown-status-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-unknown-status-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-box" x="172" y="16" width="376" height="76" rx="6"/>
+  <text class="dg-code" x="186" y="44">id: "501"</text>
+  <text class="dg-code" x="186" y="70">status: "cancelled"</text>
+  <path class="dg-arrow" d="M360 92 V144" marker-end="url(#encoding-unknown-status-head)"/>
+  <text class="dg-mono dg-muted-text" x="374" y="122.0">PARSE JSON</text>
+  <rect class="dg-box" x="172" y="144" width="376" height="64" rx="6"/>
+  <text class="dg-name" x="360.0" y="174.0" text-anchor="middle">String accepted</text>
+  <text class="dg-sub" x="360.0" y="190.0" text-anchor="middle">old code knows created and confirmed</text>
+  <path class="dg-arrow" d="M260 208 V248 H180 V280" marker-end="url(#encoding-unknown-status-head)"/>
+  <path class="dg-arrow" d="M460 208 V248 H540 V280" marker-end="url(#encoding-unknown-status-head)"/>
+  <rect class="dg-box-accent" x="24" y="280" width="312" height="68" rx="6"/>
+  <text class="dg-name" x="180.0" y="312.0" text-anchor="middle">Use a defined fallback</text>
+  <text class="dg-sub" x="180.0" y="328.0" text-anchor="middle">only if it preserves the required meaning</text>
+  <rect class="dg-box" x="384" y="280" width="312" height="68" rx="6"/>
+  <text class="dg-name" x="540.0" y="312.0" text-anchor="middle">Refuse processing</text>
+  <text class="dg-sub" x="540.0" y="328.0" text-anchor="middle">wait for a capable reader</text>
+</svg>

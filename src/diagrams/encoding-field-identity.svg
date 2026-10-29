@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 384" role="img" aria-labelledby="encoding-field-identity-title encoding-field-identity-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-field-identity-title">Where field identity comes from</title>
+  <desc id="encoding-field-identity-desc">Conceptual layouts for the same id, amount and currency, not literal bytes: JSON carries names, Protobuf carries field numbers, and Avro carries values in writer-schema order. Only three fields are shown. Each schema identifies amount_minor.</desc>
+  <defs>
+    <marker id="encoding-field-identity-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-field-identity-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-sub" x="360" y="24" text-anchor="middle">Order 501 · three fields · conceptual layouts, not byte dumps</text>
+  <text class="dg-mono dg-muted-text" x="24" y="83">JSON</text>
+  <rect class="dg-box" x="156" y="54" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="244.0" y="82.0" text-anchor="middle">id: "501"</text>
+  <rect class="dg-box-accent" x="336" y="54" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="424.0" y="82.0" text-anchor="middle">amount_minor: 1990</text>
+  <rect class="dg-box" x="516" y="54" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="604.0" y="82.0" text-anchor="middle">currency: "USD"</text>
+  <text class="dg-sub" x="156" y="124">names travel with the values</text>
+  <text class="dg-mono dg-muted-text" x="24" y="185">PROTOBUF</text>
+  <rect class="dg-box" x="156" y="156" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="244.0" y="184.0" text-anchor="middle">1: "501"</text>
+  <rect class="dg-box-accent" x="336" y="156" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="424.0" y="184.0" text-anchor="middle">2: 1990</text>
+  <rect class="dg-box" x="516" y="156" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="604.0" y="184.0" text-anchor="middle">3: "USD"</text>
+  <text class="dg-sub" x="156" y="226">schema: 1 = id, 2 = amount_minor, 3 = currency</text>
+  <text class="dg-mono dg-muted-text" x="24" y="287">AVRO</text>
+  <rect class="dg-box" x="156" y="258" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="244.0" y="286.0" text-anchor="middle">"501"</text>
+  <rect class="dg-box-accent" x="336" y="258" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="424.0" y="286.0" text-anchor="middle">1990</text>
+  <rect class="dg-box" x="516" y="258" width="176" height="48" rx="4"/>
+  <text class="dg-code" x="604.0" y="286.0" text-anchor="middle">"USD"</text>
+  <text class="dg-sub" x="156" y="328">writer schema order: id, amount_minor, currency</text>
+</svg>

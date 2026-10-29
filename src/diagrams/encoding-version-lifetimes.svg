@@ -1,0 +1,40 @@
+<svg class="diagram-svg" viewBox="0 0 720 384" role="img" aria-labelledby="encoding-version-lifetimes-title encoding-version-lifetimes-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-version-lifetimes-title">Data can outlive a service update</title>
+  <desc id="encoding-version-lifetimes-desc">Time runs down. The service deployment finishes while an old stored order, an independently updated old client, and a retained event can still reach current readers later. The spacing is schematic and does not claim a retention duration.</desc>
+  <defs>
+    <marker id="encoding-version-lifetimes-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-version-lifetimes-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="108" y="28" text-anchor="middle">SERVICE</text>
+  <text class="dg-mono dg-muted-text" x="300" y="28" text-anchor="middle">RECORDS</text>
+  <text class="dg-mono dg-muted-text" x="492" y="28" text-anchor="middle">CLIENTS</text>
+  <text class="dg-mono dg-muted-text" x="648" y="28" text-anchor="middle">MESSAGES</text>
+  <rect class="dg-box" x="24" y="60" width="168" height="68" rx="6"/>
+  <text class="dg-name" x="108.0" y="92.0" text-anchor="middle">Old + new code</text>
+  <text class="dg-sub" x="108.0" y="108.0" text-anchor="middle">update in progress</text>
+  <rect class="dg-box" x="216" y="60" width="168" height="68" rx="6"/>
+  <text class="dg-name" x="300.0" y="92.0" text-anchor="middle">Order 501</text>
+  <text class="dg-sub" x="300.0" y="108.0" text-anchor="middle">old shape</text>
+  <rect class="dg-box" x="408" y="60" width="168" height="68" rx="6"/>
+  <text class="dg-name" x="492.0" y="92.0" text-anchor="middle">Old browser</text>
+  <text class="dg-sub" x="492.0" y="108.0" text-anchor="middle">old contract</text>
+  <rect class="dg-box" x="600" y="60" width="96" height="68" rx="6"/>
+  <text class="dg-name" x="648.0" y="92.0" text-anchor="middle">Old event</text>
+  <text class="dg-sub" x="648.0" y="108.0" text-anchor="middle">retained</text>
+  <path class="dg-arrow" d="M108 128 V184" marker-end="url(#encoding-version-lifetimes-head)"/>
+  <rect class="dg-box" x="24" y="184" width="168" height="68" rx="6"/>
+  <text class="dg-name" x="108.0" y="216.0" text-anchor="middle">Current code only</text>
+  <text class="dg-sub" x="108.0" y="232.0" text-anchor="middle">deployment finished</text>
+  <path class="dg-arrow dg-message" d="M300 128 V284" marker-end="url(#encoding-version-lifetimes-head-accent)"/>
+  <rect class="dg-box-accent" x="216" y="284" width="168" height="68" rx="6"/>
+  <text class="dg-name" x="300.0" y="316.0" text-anchor="middle">Read order 501</text>
+  <text class="dg-sub" x="300.0" y="332.0" text-anchor="middle">old shape still stored</text>
+  <path class="dg-arrow dg-message" d="M492 128 V284" marker-end="url(#encoding-version-lifetimes-head-accent)"/>
+  <rect class="dg-box-accent" x="408" y="284" width="168" height="68" rx="6"/>
+  <text class="dg-name" x="492.0" y="316.0" text-anchor="middle">Send old request</text>
+  <text class="dg-sub" x="492.0" y="332.0" text-anchor="middle">client returns later</text>
+  <path class="dg-arrow dg-message" d="M648 128 V284" marker-end="url(#encoding-version-lifetimes-head-accent)"/>
+  <rect class="dg-box-accent" x="600" y="284" width="96" height="68" rx="6"/>
+  <text class="dg-name" x="648.0" y="316.0" text-anchor="middle">Replay</text>
+  <text class="dg-sub" x="648.0" y="332.0" text-anchor="middle">old event</text>
+</svg>

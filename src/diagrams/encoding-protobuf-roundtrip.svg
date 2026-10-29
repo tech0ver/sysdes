@@ -1,0 +1,41 @@
+<svg class="diagram-svg" viewBox="0 0 720 462" role="img" aria-labelledby="encoding-protobuf-roundtrip-title encoding-protobuf-roundtrip-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-protobuf-roundtrip-title">Preservation depends on the Protobuf path</title>
+  <desc id="encoding-protobuf-roundtrip-desc">An old program does not know field 6, delivery_note. Editing the parsed binary message or copying the whole message can preserve it. Rebuilding only known fields or converting through JSON loses it before the next binary write. Only status and the note are shown.</desc>
+  <defs>
+    <marker id="encoding-protobuf-roundtrip-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-protobuf-roundtrip-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="446"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Keep the parsed message</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">edit or copy the whole message</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Rebuild or convert</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">known fields or an intermediate JSON model</text>
+  <rect class="dg-box" x="24" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="100">4 / status: "created"</text>
+  <text class="dg-code" x="38" y="126">6 / delivery_note: "Leave at reception"</text>
+  <path class="dg-arrow" d="M180 148 V210" marker-end="url(#encoding-protobuf-roundtrip-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="183.0">PARSE / EDIT</text>
+  <rect class="dg-box-accent" x="24" y="210" width="312" height="64" rx="6"/>
+  <text class="dg-name" x="180.0" y="240.0" text-anchor="middle">Unknown field 6 retained</text>
+  <text class="dg-sub" x="180.0" y="256.0" text-anchor="middle">binary message keeps its unknown fields</text>
+  <path class="dg-arrow" d="M180 274 V336" marker-end="url(#encoding-protobuf-roundtrip-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="309.0">ENCODE BINARY</text>
+  <rect class="dg-box" x="24" y="336" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="364">4 / status: "confirmed"</text>
+  <text class="dg-code" x="38" y="390">6 / delivery_note: "Leave at reception"</text>
+  <text class="dg-result" x="180" y="444" text-anchor="middle">Delivery note kept</text>
+  <rect class="dg-box" x="384" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="100">4 / status: "created"</text>
+  <text class="dg-code" x="398" y="126">6 / delivery_note: "Leave at reception"</text>
+  <path class="dg-arrow" d="M540 148 V210" marker-end="url(#encoding-protobuf-roundtrip-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="183.0">PARSE / EDIT</text>
+  <rect class="dg-box-failed" x="384" y="210" width="312" height="64" rx="6"/>
+  <text class="dg-name" x="540.0" y="240.0" text-anchor="middle">Unknown field 6 discarded</text>
+  <text class="dg-sub" x="540.0" y="256.0" text-anchor="middle">information lost in the transformation</text>
+  <path class="dg-arrow" d="M540 274 V336" marker-end="url(#encoding-protobuf-roundtrip-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="309.0">ENCODE BINARY</text>
+  <rect class="dg-box" x="384" y="336" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="364">4 / status: "confirmed"</text>
+  <text class="dg-code" x="398" y="390">6 / delivery_note: (missing)</text>
+  <text class="dg-result" x="540" y="444" text-anchor="middle">Delivery note lost</text>
+</svg>

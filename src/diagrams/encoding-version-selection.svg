@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 412" role="img" aria-labelledby="encoding-version-selection-title encoding-version-selection-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-version-selection-title">A version label does not translate a record</title>
+  <desc id="encoding-version-selection-desc">Both panels start with order 501 and a new delivery_steps list. Relabelling the payload as the old contract does not produce its delivery_note string. Selecting a real translation path can do so for this one-item example, if the old plain-text meaning is preserved.</desc>
+  <defs>
+    <marker id="encoding-version-selection-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-version-selection-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="396"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Change only the label</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">payload remains a list</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Select a translation</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">handler implements the old contract</text>
+  <rect class="dg-box" x="24" y="72" width="312" height="102" rx="6"/>
+  <text class="dg-code" x="38" y="100">id: "501"</text>
+  <text class="dg-code" x="38" y="126">delivery_steps:</text>
+  <text class="dg-code" x="38" y="152">  ["Leave at reception"]</text>
+  <path class="dg-arrow" d="M180 174 V230" marker-end="url(#encoding-version-selection-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="206.0">RELABEL</text>
+  <rect class="dg-box-accent" x="24" y="230" width="312" height="102" rx="6"/>
+  <text class="dg-code" x="38" y="258">contract: old</text>
+  <text class="dg-code" x="38" y="284">delivery_steps:</text>
+  <text class="dg-code" x="38" y="310">  ["Leave at reception"]</text>
+  <text class="dg-result" x="180" y="378" text-anchor="middle">Old field is still missing</text>
+  <rect class="dg-box" x="384" y="72" width="312" height="102" rx="6"/>
+  <text class="dg-code" x="398" y="100">id: "501"</text>
+  <text class="dg-code" x="398" y="126">delivery_steps:</text>
+  <text class="dg-code" x="398" y="152">  ["Leave at reception"]</text>
+  <path class="dg-arrow" d="M540 174 V230" marker-end="url(#encoding-version-selection-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="206.0">TRANSLATE</text>
+  <rect class="dg-box-accent" x="384" y="230" width="312" height="102" rx="6"/>
+  <text class="dg-code" x="398" y="258">contract: old</text>
+  <text class="dg-code" x="398" y="284">delivery_note:</text>
+  <text class="dg-code" x="398" y="310">  "Leave at reception"</text>
+  <text class="dg-result" x="540" y="378" text-anchor="middle">Old text shape is produced</text>
+</svg>

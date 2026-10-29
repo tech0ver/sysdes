@@ -1,0 +1,25 @@
+<svg class="diagram-svg" viewBox="0 0 720 436" role="img" aria-labelledby="encoding-restored-data-title encoding-restored-data-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-restored-data-title">An old copy can return after live records change</title>
+  <desc id="encoding-restored-data-desc">Time runs down. Order 501 is copied in its old shape. The live store is rewritten into the new shape, while the saved copy remains old. A later restore or replay brings that old shape back to a reading path that still needs its decoder and any required writer schema.</desc>
+  <defs>
+    <marker id="encoding-restored-data-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-restored-data-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="180" y="28" text-anchor="middle">LIVE STORE</text>
+  <text class="dg-mono dg-muted-text" x="540" y="28" text-anchor="middle">BACKUP OR RETAINED MESSAGE</text>
+  <rect class="dg-box" x="24" y="60" width="312" height="60" rx="6"/>
+  <text class="dg-name" x="180.0" y="95.0" text-anchor="middle">Order 501 · old shape</text>
+  <rect class="dg-box" x="384" y="60" width="312" height="60" rx="6"/>
+  <text class="dg-name" x="540.0" y="95.0" text-anchor="middle">Order 501 · old shape</text>
+  <path class="dg-arrow" d="M336 90 H384" marker-end="url(#encoding-restored-data-head)"/>
+  <path class="dg-arrow" d="M180 120 V200" marker-end="url(#encoding-restored-data-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="164.0">REWRITE</text>
+  <rect class="dg-box" x="24" y="200" width="312" height="60" rx="6"/>
+  <text class="dg-name" x="180.0" y="235.0" text-anchor="middle">Order 501 · new shape</text>
+  <path class="dg-arrow dg-message" d="M540 120 V320" marker-end="url(#encoding-restored-data-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="554" y="224.0">RESTORE / REPLAY</text>
+  <path class="dg-arrow" d="M180 260 V290 H220 V320" marker-end="url(#encoding-restored-data-head)"/>
+  <rect class="dg-box-accent" x="24" y="320" width="672" height="92" rx="6"/>
+  <text class="dg-name" x="360.0" y="364.0" text-anchor="middle">Current reading path</text>
+  <text class="dg-sub" x="360.0" y="380.0" text-anchor="middle">old decoder + required writer schema still needed for the returning copy</text>
+</svg>

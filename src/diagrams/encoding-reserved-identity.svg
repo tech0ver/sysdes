@@ -1,0 +1,31 @@
+<svg class="diagram-svg" viewBox="0 0 720 382" role="img" aria-labelledby="encoding-reserved-identity-title encoding-reserved-identity-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-reserved-identity-title">Do not reuse a removed Protobuf identity</title>
+  <desc id="encoding-reserved-identity-desc">Hypothetical removal of field 6: reserving its number and name prevents reuse. If number 6 is instead assigned to a new string field called customer_comment, old delivery-note bytes can be decoded with the wrong meaning. The actual order service keeps delivery_note.</desc>
+  <defs>
+    <marker id="encoding-reserved-identity-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-reserved-identity-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="366"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Remove and reserve</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">hypothetical Protobuf change</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Remove and reuse</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">hypothetical Protobuf change</text>
+  <rect class="dg-box" x="24" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="100">old field 6: delivery_note</text>
+  <text class="dg-code" x="38" y="126">value: "Leave at reception"</text>
+  <path class="dg-arrow" d="M180 148 V210" marker-end="url(#encoding-reserved-identity-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="183.0">CHANGE SCHEMA</text>
+  <rect class="dg-box-accent" x="24" y="210" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="238">reserved 6;</text>
+  <text class="dg-code" x="38" y="264">reserved "delivery_note";</text>
+  <text class="dg-result" x="180" y="334" text-anchor="middle">Number cannot be reassigned</text>
+  <rect class="dg-box" x="384" y="72" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="100">old field 6: delivery_note</text>
+  <text class="dg-code" x="398" y="126">value: "Leave at reception"</text>
+  <path class="dg-arrow" d="M540 148 V210" marker-end="url(#encoding-reserved-identity-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="183.0">CHANGE SCHEMA</text>
+  <rect class="dg-box-accent" x="384" y="210" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="238">string customer_comment = 6;</text>
+  <text class="dg-code" x="398" y="264">value: "Leave at reception"</text>
+  <text class="dg-result" x="540" y="334" text-anchor="middle">Old bytes acquire a new meaning</text>
+</svg>

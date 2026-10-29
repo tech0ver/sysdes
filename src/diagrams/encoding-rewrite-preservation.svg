@@ -1,0 +1,77 @@
+<svg class="diagram-svg" viewBox="0 0 720 582" role="img" aria-labelledby="encoding-rewrite-preservation-title encoding-rewrite-preservation-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-rewrite-preservation-title">Keeping an unknown field when replacing a record</title>
+  <desc id="encoding-rewrite-preservation-desc">Both panels start with order 501: status created and delivery_note Leave at reception. Both change status to confirmed. On the left, the old model omits the note and the replacement record loses it. On the right, editing the parsed record keeps the note through the write. Only id, status, and delivery_note are shown; a dashed row marks a field absent from the model or record.</desc>
+  <defs>
+    <marker id="encoding-rewrite-preservation-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-rewrite-preservation-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="566"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Rebuild known fields</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">new record from old model</text>
+  <text class="dg-mono dg-muted-text" x="180" y="64" text-anchor="middle">STORED</text>
+  <rect class="dg-box" x="24" y="76" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="38" y="101">id</text>
+  <text class="dg-code" x="169" y="101">"501"</text>
+  <text class="dg-code" x="38" y="127">status</text>
+  <text class="dg-code" x="169" y="127">"created"</text>
+  <rect class="dg-box-accent" x="32" y="142" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="38" y="161">delivery_note</text>
+  <text class="dg-code" x="169" y="161">"Leave at reception"</text>
+  <text class="dg-mono dg-muted-text" x="180" y="239" text-anchor="middle">IN MEMORY</text>
+  <rect class="dg-box" x="24" y="251" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="38" y="276">id</text>
+  <text class="dg-code" x="169" y="276">"501"</text>
+  <text class="dg-code" x="38" y="302">status</text>
+  <text class="dg-code" x="169" y="302">"confirmed"</text>
+  <rect class="dg-box-failed" x="32" y="317" width="296" height="30" rx="4"/>
+  <text class="dg-code-muted" x="38" y="336">delivery_note</text>
+  <text class="dg-note" x="169" y="336">(not in model)</text>
+  <text class="dg-mono dg-muted-text" x="180" y="414" text-anchor="middle">STORED AGAIN</text>
+  <rect class="dg-box" x="24" y="426" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="38" y="451">id</text>
+  <text class="dg-code" x="169" y="451">"501"</text>
+  <text class="dg-code" x="38" y="477">status</text>
+  <text class="dg-code" x="169" y="477">"confirmed"</text>
+  <rect class="dg-box-failed" x="32" y="492" width="296" height="30" rx="4"/>
+  <text class="dg-code-muted" x="38" y="511">delivery_note</text>
+  <text class="dg-note" x="169" y="511">(missing)</text>
+  <path class="dg-arrow" d="M180 184 V219" marker-end="url(#encoding-rewrite-preservation-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="205.5">READ / EDIT</text>
+  <path class="dg-arrow" d="M180 359 V394" marker-end="url(#encoding-rewrite-preservation-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="380.5">WRITE</text>
+  <text class="dg-result" x="180" y="562" text-anchor="middle">Delivery note lost</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Edit the parsed record</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">keep unknown fields</text>
+  <text class="dg-mono dg-muted-text" x="540" y="64" text-anchor="middle">STORED</text>
+  <rect class="dg-box" x="384" y="76" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="398" y="101">id</text>
+  <text class="dg-code" x="529" y="101">"501"</text>
+  <text class="dg-code" x="398" y="127">status</text>
+  <text class="dg-code" x="529" y="127">"created"</text>
+  <rect class="dg-box-accent" x="392" y="142" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="398" y="161">delivery_note</text>
+  <text class="dg-code" x="529" y="161">"Leave at reception"</text>
+  <text class="dg-mono dg-muted-text" x="540" y="239" text-anchor="middle">IN MEMORY</text>
+  <rect class="dg-box" x="384" y="251" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="398" y="276">id</text>
+  <text class="dg-code" x="529" y="276">"501"</text>
+  <text class="dg-code" x="398" y="302">status</text>
+  <text class="dg-code" x="529" y="302">"confirmed"</text>
+  <rect class="dg-box-accent" x="392" y="317" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="398" y="336">delivery_note</text>
+  <text class="dg-code" x="529" y="336">"Leave at reception"</text>
+  <text class="dg-mono dg-muted-text" x="540" y="414" text-anchor="middle">STORED AGAIN</text>
+  <rect class="dg-box" x="384" y="426" width="312" height="108" rx="6"/>
+  <text class="dg-code" x="398" y="451">id</text>
+  <text class="dg-code" x="529" y="451">"501"</text>
+  <text class="dg-code" x="398" y="477">status</text>
+  <text class="dg-code" x="529" y="477">"confirmed"</text>
+  <rect class="dg-box-accent" x="392" y="492" width="296" height="30" rx="4"/>
+  <text class="dg-code" x="398" y="511">delivery_note</text>
+  <text class="dg-code" x="529" y="511">"Leave at reception"</text>
+  <path class="dg-arrow" d="M540 184 V219" marker-end="url(#encoding-rewrite-preservation-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="205.5">READ / EDIT</text>
+  <path class="dg-arrow" d="M540 359 V394" marker-end="url(#encoding-rewrite-preservation-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="380.5">WRITE</text>
+  <text class="dg-result" x="540" y="562" text-anchor="middle">Delivery note kept</text>
+</svg>

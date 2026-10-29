@@ -327,7 +327,7 @@ Ways to lose less and recover faster:
 - Warm the cache before it takes traffic. Fill a new cache from a warm one or from a list of hot keys, slowly enough not to overload the source, and with the same checked fills, since a copied value can race with a delete. Facebook [brought new cache clusters to full capacity](https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf) in a few hours instead of a few days this way (2013).
 - Protect the database. Limit the rate of misses that reach it and reject or serve stale values for the rest, rather than let it fall over. <!-- link: patterns/resilience -->
 
-Deploys cause the same misses. Local caches start empty, so replace a few app servers at a time and most local caches stay warm. During a rolling deploy, old and new code run together, so each must read values the other wrote; otherwise put the format version in the key, and plan for the misses and the extra memory while both sets of keys exist.
+Deploys cause the same misses. Local caches start empty, so replace a few app servers at a time and most local caches stay warm. During a rolling deploy, old and new code run together, so each must [read values the other wrote](../encoding/#reading-data-from-another-version); otherwise put the format version in the key, and plan for the misses and the extra memory while both sets of keys exist.
 
 Watch the miss rate, the cache's latency and errors, and the load on the database, not only the hit ratio: a high hit ratio can hide misses that are expensive.
 

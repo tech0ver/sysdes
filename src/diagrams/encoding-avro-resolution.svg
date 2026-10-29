@@ -1,0 +1,45 @@
+<svg class="diagram-svg" viewBox="0 0 720 510" role="img" aria-labelledby="encoding-avro-resolution-title encoding-avro-resolution-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-avro-resolution-title">Avro writer and reader schemas meet</title>
+  <desc id="encoding-avro-resolution-desc">Left: the old writer has no delivery_note; the new reader adds it with default null, so resolution supplies null. Right: the new writer encodes delivery_note as null; the old reader omits that field, so resolution leaves it out. A declared writer field is still encoded, even when its value equals a default.</desc>
+  <defs>
+    <marker id="encoding-avro-resolution-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-avro-resolution-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="494"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Old writer → new reader</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">reader supplies the missing field</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">New writer → old reader</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">reader leaves out the extra field</text>
+  <text class="dg-mono dg-muted-text" x="180" y="70" text-anchor="middle">WRITER SCHEMA + RECORD</text>
+  <rect class="dg-box" x="24" y="82" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="110">id: "501"</text>
+  <text class="dg-code" x="38" y="136">(no delivery_note field)</text>
+  <path class="dg-arrow" d="M300 158 V178 H348 V326 H300 V360" marker-end="url(#encoding-avro-resolution-head)"/>
+  <text class="dg-mono dg-muted-text" x="32" y="202">READER SCHEMA</text>
+  <rect class="dg-box-accent" x="24" y="216" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="244">delivery_note: [null, string]</text>
+  <text class="dg-code" x="38" y="270">default: null</text>
+  <path class="dg-arrow" d="M180 292 V360" marker-end="url(#encoding-avro-resolution-head)"/>
+  <text class="dg-mono dg-muted-text" x="194" y="330.0">RESOLVE</text>
+  <text class="dg-mono dg-muted-text" x="32" y="346">RESOLVED RECORD</text>
+  <rect class="dg-box" x="24" y="360" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="38" y="388">id: "501"</text>
+  <text class="dg-code" x="38" y="414">delivery_note: null</text>
+  <text class="dg-sub" x="180" y="476" text-anchor="middle">null comes from the reader default</text>
+  <text class="dg-mono dg-muted-text" x="540" y="70" text-anchor="middle">WRITER SCHEMA + RECORD</text>
+  <rect class="dg-box" x="384" y="82" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="110">id: "501"</text>
+  <text class="dg-code" x="398" y="136">delivery_note: null</text>
+  <path class="dg-arrow" d="M660 158 V178 H708 V326 H660 V360" marker-end="url(#encoding-avro-resolution-head)"/>
+  <text class="dg-mono dg-muted-text" x="392" y="202">READER SCHEMA</text>
+  <rect class="dg-box-accent" x="384" y="216" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="244">id and other original fields</text>
+  <text class="dg-code" x="398" y="270">(no delivery_note field)</text>
+  <path class="dg-arrow" d="M540 292 V360" marker-end="url(#encoding-avro-resolution-head)"/>
+  <text class="dg-mono dg-muted-text" x="554" y="330.0">RESOLVE</text>
+  <text class="dg-mono dg-muted-text" x="392" y="346">RESOLVED RECORD</text>
+  <rect class="dg-box" x="384" y="360" width="312" height="76" rx="6"/>
+  <text class="dg-code" x="398" y="388">id: "501"</text>
+  <text class="dg-code" x="398" y="414">(delivery_note omitted)</text>
+  <text class="dg-sub" x="540" y="476" text-anchor="middle">writer encoded null; reader skipped it</text>
+</svg>

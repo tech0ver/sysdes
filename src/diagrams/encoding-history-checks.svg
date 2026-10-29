@@ -1,0 +1,28 @@
+<svg class="diagram-svg" viewBox="0 0 720 366" role="img" aria-labelledby="encoding-history-checks-title encoding-history-checks-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="encoding-history-checks-title">Adjacent schema checks miss an older writer</title>
+  <desc id="encoding-history-checks-desc">Avro v1 has no delivery_note. The v2 reader adds it with default null and can read v1. The v3 reader removes that default and can still read v2, whose writer encodes a note value, but cannot read v1. The two adjacent backward checks pass while v3 reading v1 fails. This is schema resolution, not status handling.</desc>
+  <defs>
+    <marker id="encoding-history-checks-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="encoding-history-checks-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="388" y="30" text-anchor="middle">WRITER V1</text>
+  <text class="dg-mono dg-muted-text" x="604" y="30" text-anchor="middle">WRITER V2</text>
+  <text class="dg-sub" x="388" y="52" text-anchor="middle">no delivery_note field</text>
+  <text class="dg-sub" x="604" y="52" text-anchor="middle">note value encoded</text>
+  <text class="dg-name" x="24" y="128" text-anchor="start">Reader v2</text>
+  <text class="dg-sub" x="24" y="150">note default: null</text>
+  <text class="dg-name" x="24" y="248" text-anchor="start">Reader v3</text>
+  <text class="dg-sub" x="24" y="270">note has no default</text>
+  <rect class="dg-box" x="288" y="100" width="192" height="84" rx="6"/>
+  <text class="dg-name" x="384.0" y="140.0" text-anchor="middle">Read OK</text>
+  <text class="dg-sub" x="384.0" y="156.0" text-anchor="middle">adjacent: default supplies null</text>
+  <rect class="dg-box" x="504" y="100" width="192" height="84" rx="6"/>
+  <text class="dg-name" x="600.0" y="140.0" text-anchor="middle">Read OK</text>
+  <text class="dg-sub" x="600.0" y="156.0" text-anchor="middle">writer supplies a note value</text>
+  <rect class="dg-box-accent" x="288" y="220" width="192" height="84" rx="6"/>
+  <text class="dg-name" x="384.0" y="260.0" text-anchor="middle">Read fails</text>
+  <text class="dg-sub" x="384.0" y="276.0" text-anchor="middle">no field and no reader default</text>
+  <rect class="dg-box" x="504" y="220" width="192" height="84" rx="6"/>
+  <text class="dg-name" x="600.0" y="260.0" text-anchor="middle">Read OK</text>
+  <text class="dg-sub" x="600.0" y="276.0" text-anchor="middle">adjacent: writer supplies value</text>
+</svg>
