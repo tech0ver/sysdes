@@ -37,7 +37,7 @@ Framework serves the interview focus, Practices serves the engineering focus, an
 
 Write the planned articles in arcs. An arc starts with a fundamentals article, when it has one, and goes on with the patterns and technologies that grow from it, so each new article mostly links back to written ones. Within an arc, follow the listed order.
 
-1. One service on one database grows: `technologies/postgresql`, `technologies/redis`, `patterns/reservations`, `patterns/unique-ids`, `technologies/etcd`, `patterns/distributed-locks`, `patterns/proximity-search`, `patterns/counting`, `technologies/elasticsearch`, `patterns/search`, `patterns/vector-search`, `patterns/scaling` (last, as the summary of the data fundamentals).
+1. One service on one database grows: `technologies/postgresql`, `technologies/redis`, `patterns/reservations`, `patterns/unique-ids`, `technologies/coordination-services`, `patterns/distributed-locks`, `patterns/proximity-search`, `patterns/counting`, `technologies/elasticsearch`, `patterns/search`, `patterns/vector-search`, `patterns/scaling` (last, as the summary of the data fundamentals).
 2. Decoupling in time: `fundamentals/encoding`, `fundamentals/messaging`, `patterns/async-processing`, `technologies/kafka`, `technologies/rabbitmq`, `patterns/job-scheduling`, `patterns/real-time`, `technologies/webrtc`, `fundamentals/data-processing`, `technologies/flink`, `technologies/spark`, `patterns/cqrs`, `patterns/news-feed`, `technologies/clickhouse`, `technologies/object-storage`, `patterns/large-files`.
 3. Many services: `technologies/api-styles`, `patterns/api-gateway`, `patterns/service-discovery`, `technologies/load-balancers`, `patterns/sagas`, `technologies/temporal`, `patterns/ledger`, `technologies/distributed-sql`, `patterns/data-migration`.
 4. Staying up: `fundamentals/failures`, `patterns/resilience`, `patterns/rate-limiting`, `technologies/cdn`.
@@ -143,7 +143,7 @@ The word means different things in different articles. Each article says which o
 - `technologies/object-storage` — Object storage (Amazon S3 and similar): keys and buckets, pre-signed URLs, multipart upload, durability and availability.
 - `technologies/clickhouse` — ClickHouse: a column store for analytics.
 - `technologies/distributed-sql` — Distributed SQL databases (CockroachDB, YugabyteDB, and the Spanner design they follow): sharding, consensus, and transactions across nodes inside one database.
-- `technologies/etcd` — etcd and ZooKeeper: coordination services for configuration, leader election, and locks.
+- `technologies/coordination-services` **(written)** — Coordination services (etcd, ZooKeeper, Consul): small consensus-backed stores for configuration, leader election, and locks.
 - `technologies/kubernetes` — Kubernetes: running services in containers, deployments and rollouts, service discovery, autoscaling.
 - `technologies/opentelemetry` — OpenTelemetry: collecting metrics, logs, and traces in one format.
 - `technologies/time-series-databases` — Time-series databases (Prometheus, InfluxDB, TimescaleDB): ingestion, retention, rollups, cardinality.

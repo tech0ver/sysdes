@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 366" role="img" aria-labelledby="observers-title observers-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="observers-title">ZooKeeper observers serve reads without voting</title>
+  <desc id="observers-desc">Three voting servers, a leader and two followers, decide every write: it needs 2 of 3. Two observers below them get every change the majority has accepted and take no part in the vote. Routers read from the observers and watch through them.</desc>
+  <defs>
+    <marker id="observers-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="observers-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="16" y="16" width="688" height="112" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="36">VOTERS: A WRITE NEEDS 2 OF 3</text>
+  <rect class="dg-box" x="60" y="56" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="120.0" y="79.0" text-anchor="middle">Follower</text>
+  <rect class="dg-box" x="300" y="56" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="360.0" y="79.0" text-anchor="middle">Leader</text>
+  <rect class="dg-box" x="540" y="56" width="120" height="36" rx="6"/>
+  <text class="dg-name" x="600.0" y="79.0" text-anchor="middle">Follower</text>
+  <path class="dg-arrow" d="M300 74 H188" marker-end="url(#observers-head)"/>
+  <path class="dg-arrow" d="M420 74 H532" marker-end="url(#observers-head)"/>
+  <rect class="dg-zone" x="16" y="176" width="688" height="100" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="196">OBSERVERS: NO VOTE</text>
+  <rect class="dg-box" x="180" y="212" width="150" height="36" rx="6"/>
+  <text class="dg-name" x="255.0" y="235.0" text-anchor="middle">Observer</text>
+  <rect class="dg-box" x="390" y="212" width="150" height="36" rx="6"/>
+  <text class="dg-name" x="465.0" y="235.0" text-anchor="middle">Observer</text>
+  <path class="dg-arrow dg-message" d="M340 92 V156 H255 V204" marker-end="url(#observers-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M380 92 V156 H465 V204" marker-end="url(#observers-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="475" y="150" text-anchor="start">ACCEPTED CHANGES</text>
+  <rect class="dg-box" x="180" y="318" width="150" height="36" rx="6"/>
+  <text class="dg-name" x="255.0" y="341.0" text-anchor="middle">Routers</text>
+  <path class="dg-arrow" d="M255 318 V256" marker-end="url(#observers-head)"/>
+  <text class="dg-mono dg-muted-text" x="263" y="296" text-anchor="start">READ, WATCH</text>
+  <rect class="dg-box" x="390" y="318" width="150" height="36" rx="6"/>
+  <text class="dg-name" x="465.0" y="341.0" text-anchor="middle">Routers</text>
+  <path class="dg-arrow" d="M465 318 V256" marker-end="url(#observers-head)"/>
+  <text class="dg-mono dg-muted-text" x="473" y="296" text-anchor="start">READ, WATCH</text>
+</svg>

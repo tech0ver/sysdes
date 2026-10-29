@@ -1,0 +1,32 @@
+<svg class="diagram-svg" viewBox="0 0 720 340" role="img" aria-labelledby="shrinking-window-title shrinking-window-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="shrinking-window-title">The holder stops early, and the service waits before giving the lock away</title>
+  <desc id="shrinking-window-desc">Controller A loses its connection to Consul and, if it is still running, stops acting at once. Consul ends A's session after its timeout, then keeps the lock free for a lock-delay of 15 seconds. Only then does controller B acquire the lock and start acting.</desc>
+  <defs>
+    <marker id="shrinking-window-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="shrinking-window-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">CONTROLLER A</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="330"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">CONSUL</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="330"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">CONTROLLER B</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="330"/>
+  <rect class="dg-box" x="295.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">lock: A</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="78" text-anchor="middle">CONNECTION LOST</text>
+  <path class="dg-arrow dg-empty" d="M110 86 H352" marker-end="url(#shrinking-window-head)"/>
+  <line class="dg-cross" x1="295" y1="81" x2="305" y2="91"/>
+  <line class="dg-cross" x1="295" y1="91" x2="305" y2="81"/>
+  <rect class="dg-box-accent" x="25.0" y="108" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="124.0" text-anchor="middle">if it runs: stops</text>
+  <line class="dg-arrow" x1="360" y1="82" x2="360" y2="156"/>
+  <text class="dg-mono dg-muted-text" x="372" y="124" text-anchor="start">SESSION TIMEOUT</text>
+  <rect class="dg-box" x="295.0" y="160" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="176.0" text-anchor="middle">session ends</text>
+  <line class="dg-arrow dg-wait" x1="360" y1="196" x2="360" y2="262"/>
+  <text class="dg-mono dg-accent-text" x="372" y="234" text-anchor="start">LOCK-DELAY 15 s</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="282" text-anchor="middle">ACQUIRE</text>
+  <path class="dg-arrow" d="M610 290 H368" marker-end="url(#shrinking-window-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="308" text-anchor="middle">LOCK: B</text>
+  <path class="dg-arrow" d="M360 316 H602" marker-end="url(#shrinking-window-head)"/>
+</svg>

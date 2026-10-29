@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 720 350" role="img" aria-labelledby="etcd-watch-resume-title etcd-watch-resume-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="etcd-watch-resume-title">An etcd watch resumes from the revision after the last one processed</title>
+  <desc id="etcd-watch-resume-desc">The router reads the map at revision 900 and watches from revision 901. It gets changes 901 and 902 with their values, then the connection breaks while changes 903 and 904 are made. The router watches again from 903 and gets both, so it misses nothing. If etcd had already removed 903 from its history, the watch would be canceled and the router would read the whole map again.</desc>
+  <defs>
+    <marker id="etcd-watch-resume-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="etcd-watch-resume-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="180" y="20" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="180" y1="34" x2="180" y2="340"/>
+  <text class="dg-mono dg-muted-text" x="540" y="20" text-anchor="middle">ETCD</text>
+  <line class="dg-lifeline" x1="540" y1="34" x2="540" y2="340"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="58" text-anchor="middle">READ /kv/shards/</text>
+  <path class="dg-arrow" d="M180 66 H532" marker-end="url(#etcd-watch-resume-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="84" text-anchor="middle">MAP AT REVISION 900</text>
+  <path class="dg-arrow" d="M540 92 H188" marker-end="url(#etcd-watch-resume-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="122" text-anchor="middle">WATCH FROM 901</text>
+  <path class="dg-arrow" d="M180 130 H532" marker-end="url(#etcd-watch-resume-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="152" text-anchor="middle">901: 17 → NODE 14</text>
+  <path class="dg-arrow" d="M540 160 H188" marker-end="url(#etcd-watch-resume-head)"/>
+  <text class="dg-mono dg-muted-text" x="360.0" y="180" text-anchor="middle">902: 42 → NODE 3</text>
+  <path class="dg-arrow" d="M540 188 H188" marker-end="url(#etcd-watch-resume-head)"/>
+  <rect class="dg-box" x="115.0" y="200" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="216.0" text-anchor="middle">processed 902</text>
+  <line class="dg-cross" x1="354" y1="234" x2="366" y2="246"/>
+  <line class="dg-cross" x1="354" y1="246" x2="366" y2="234"/>
+  <text class="dg-sub" x="374" y="244" text-anchor="start">connection breaks</text>
+  <rect class="dg-box" x="475.0" y="254" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="270.0" text-anchor="middle">903, 904 made</text>
+  <text class="dg-mono dg-accent-text" x="360.0" y="298" text-anchor="middle">WATCH FROM 903</text>
+  <path class="dg-arrow dg-message" d="M180 306 H532" marker-end="url(#etcd-watch-resume-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="360.0" y="324" text-anchor="middle">903, 904</text>
+  <path class="dg-arrow dg-message" d="M540 332 H188" marker-end="url(#etcd-watch-resume-head-accent)"/>
+</svg>

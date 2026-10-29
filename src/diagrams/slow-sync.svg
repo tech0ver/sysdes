@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 182" role="img" aria-labelledby="slow-sync-title slow-sync-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="slow-sync-title">One slow disk sync holds up every write behind it</title>
+  <desc id="slow-sync-desc">The leader takes writes in one order. Write 1 from the controller waits for a sync to the leader's disk, which a backup job keeps busy, so the sync takes a second instead of a few milliseconds. Writes 2 and 3 from storage nodes wait behind it.</desc>
+  <defs>
+    <marker id="slow-sync-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="slow-sync-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <rect class="dg-zone" x="200" y="16" width="320" height="150" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="215" y="36">LEADER, ONE ORDER</text>
+  <rect class="dg-box-accent" x="230" y="48" width="260" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="66.0" text-anchor="middle">write 1: sync, 1 s</text>
+  <rect class="dg-box" x="230" y="88" width="260" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="106.0" text-anchor="middle">write 2: waits</text>
+  <rect class="dg-box" x="230" y="128" width="260" height="28" rx="4"/>
+  <text class="dg-code" x="360.0" y="146.0" text-anchor="middle">write 3: waits</text>
+  <rect class="dg-box" x="16" y="48" width="120" height="28" rx="6"/>
+  <text class="dg-name" x="76.0" y="67.0" text-anchor="middle">Controller</text>
+  <path class="dg-arrow" d="M136 62 H222" marker-end="url(#slow-sync-head)"/>
+  <rect class="dg-box" x="16" y="88" width="120" height="28" rx="6"/>
+  <text class="dg-name" x="76.0" y="107.0" text-anchor="middle">Node 3</text>
+  <path class="dg-arrow" d="M136 102 H222" marker-end="url(#slow-sync-head)"/>
+  <rect class="dg-box" x="16" y="128" width="120" height="28" rx="6"/>
+  <text class="dg-name" x="76.0" y="147.0" text-anchor="middle">Node 9</text>
+  <path class="dg-arrow" d="M136 142 H222" marker-end="url(#slow-sync-head)"/>
+  <rect class="dg-box" x="580" y="48" width="124" height="44" rx="6"/>
+  <text class="dg-name" x="642.0" y="68.0" text-anchor="middle">Leader's disk</text>
+  <text class="dg-sub" x="642.0" y="84.0" text-anchor="middle">backup job too</text>
+  <path class="dg-arrow dg-message" d="M490 62 H572" marker-end="url(#slow-sync-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="548" y="54" text-anchor="middle">SYNC</text>
+</svg>

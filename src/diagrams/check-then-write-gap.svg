@@ -1,0 +1,38 @@
+<svg class="diagram-svg" viewBox="0 0 720 318" role="img" aria-labelledby="check-then-write-gap-title check-then-write-gap-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="check-then-write-gap-title">A check and a write apart, or in one transaction</title>
+  <desc id="check-then-write-gap-desc">Both panels have the same events. Left, check then write: the tool reads node 14's key and finds it, node 14's key then expires, and the tool writes shard 17 with node 14 anyway: the shard points to a dead node. Right, one transaction: after the key has expired, the tool sends "if node 14's key exists, write shard 17", and the transaction fails without writing.</desc>
+  <defs>
+    <marker id="check-then-write-gap-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="check-then-write-gap-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="310"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Check, then write</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">One transaction</text>
+  <text class="dg-mono dg-muted-text" x="80" y="56" text-anchor="middle">TOOL</text>
+  <line class="dg-lifeline" x1="80" y1="66" x2="80" y2="274"/>
+  <text class="dg-mono dg-muted-text" x="260" y="56" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="260" y1="66" x2="260" y2="274"/>
+  <text class="dg-mono dg-muted-text" x="170.0" y="90" text-anchor="middle">NODE 14'S KEY?</text>
+  <path class="dg-arrow" d="M80 98 H252" marker-end="url(#check-then-write-gap-head)"/>
+  <text class="dg-mono dg-muted-text" x="170.0" y="118" text-anchor="middle">EXISTS</text>
+  <path class="dg-arrow" d="M260 126 H88" marker-end="url(#check-then-write-gap-head)"/>
+  <rect class="dg-box-failed" x="185.0" y="140" width="150" height="24" rx="4"/>
+  <text class="dg-code-muted" x="260.0" y="156.0" text-anchor="middle">14's key expires</text>
+  <text class="dg-mono dg-muted-text" x="170.0" y="200" text-anchor="middle">WRITE 17: [3, 14, 12]</text>
+  <path class="dg-arrow" d="M80 208 H252" marker-end="url(#check-then-write-gap-head)"/>
+  <rect class="dg-box-accent" x="185.0" y="220" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="236.0" text-anchor="middle">17: [3, 14, 12]</text>
+  <text class="dg-result" x="180" y="304" text-anchor="middle">Shard 17 points to a dead node</text>
+  <text class="dg-mono dg-muted-text" x="440" y="56" text-anchor="middle">TOOL</text>
+  <line class="dg-lifeline" x1="440" y1="66" x2="440" y2="274"/>
+  <text class="dg-mono dg-muted-text" x="620" y="56" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="620" y1="66" x2="620" y2="274"/>
+  <rect class="dg-box-failed" x="545.0" y="140" width="150" height="24" rx="4"/>
+  <text class="dg-code-muted" x="620.0" y="156.0" text-anchor="middle">14's key expires</text>
+  <text class="dg-mono dg-muted-text" x="530.0" y="186" text-anchor="middle">IF 14'S KEY EXISTS</text>
+  <text class="dg-mono dg-muted-text" x="530.0" y="200" text-anchor="middle">THEN WRITE 17</text>
+  <path class="dg-arrow" d="M440 208 H612" marker-end="url(#check-then-write-gap-head)"/>
+  <text class="dg-mono dg-accent-text" x="530.0" y="230" text-anchor="middle">FAILED, NOTHING WRITTEN</text>
+  <path class="dg-arrow dg-message" d="M620 238 H448" marker-end="url(#check-then-write-gap-head-accent)"/>
+  <text class="dg-result" x="540" y="304" text-anchor="middle">Nothing changes</text>
+</svg>

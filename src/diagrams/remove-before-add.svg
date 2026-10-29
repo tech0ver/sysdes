@@ -1,0 +1,52 @@
+<svg class="diagram-svg" viewBox="0 0 720 330" role="img" aria-labelledby="remove-before-add-title remove-before-add-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="remove-before-add-title">Replacing a dead member: add first or remove first</title>
+  <desc id="remove-before-add-desc">Members M1 and M2 are up and M3 is dead. Left, add first: with M4 added but not started, 4 members need a majority of 3 and only 2 are up, so writes stop; etcd refuses this change by default. Once M4 starts, 3 of 4 are up and no further failure is survivable. Right, remove first: M1 and M2 form a majority of 2 and keep working; after M4 is added and started, 3 members need 2 and all 3 are up.</desc>
+  <defs>
+    <marker id="remove-before-add-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="remove-before-add-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="322"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Add first</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">etcd refuses this by default</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">Remove first</text>
+  <text class="dg-mono dg-muted-text" x="24" y="70" text-anchor="start">1. ADD M4</text>
+  <rect class="dg-box" x="24.0" y="95.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="52" y="115" text-anchor="middle">M1</text>
+  <rect class="dg-box" x="96.0" y="95.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="124" y="115" text-anchor="middle">M2</text>
+  <rect class="dg-box-failed" x="168.0" y="95.0" width="56" height="30" rx="6"/>
+  <text class="dg-name-muted" x="196" y="115" text-anchor="middle">M3</text>
+  <text class="dg-mono dg-muted-text" x="196" y="140" text-anchor="middle">DEAD</text>
+  <rect class="dg-box-failed" x="240.0" y="95.0" width="56" height="30" rx="6"/>
+  <text class="dg-name-muted" x="268" y="115" text-anchor="middle">M4</text>
+  <text class="dg-mono dg-muted-text" x="268" y="140" text-anchor="middle">NOT STARTED</text>
+  <rect class="dg-box-accent" x="14" y="154" width="300" height="28" rx="4"/>
+  <text class="dg-code" x="24" y="172" text-anchor="start">majority 3, up 2: writes stop</text>
+  <text class="dg-mono dg-muted-text" x="24" y="204" text-anchor="start">2. M4 STARTS</text>
+  <rect class="dg-box" x="24.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="52" y="249" text-anchor="middle">M1</text>
+  <rect class="dg-box" x="96.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="124" y="249" text-anchor="middle">M2</text>
+  <rect class="dg-box-failed" x="168.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name-muted" x="196" y="249" text-anchor="middle">M3</text>
+  <text class="dg-mono dg-muted-text" x="196" y="274" text-anchor="middle">DEAD</text>
+  <rect class="dg-box" x="240.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="268" y="249" text-anchor="middle">M4</text>
+  <text class="dg-code" x="24" y="306" text-anchor="start">majority 3, up 3: no spare</text>
+  <text class="dg-mono dg-muted-text" x="384" y="70" text-anchor="start">1. REMOVE M3</text>
+  <rect class="dg-box" x="384.0" y="95.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="412" y="115" text-anchor="middle">M1</text>
+  <rect class="dg-box" x="456.0" y="95.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="484" y="115" text-anchor="middle">M2</text>
+  <text class="dg-code-muted" x="556" y="115" text-anchor="middle">removed</text>
+  <text class="dg-code" x="384" y="172" text-anchor="start">majority 2, up 2</text>
+  <text class="dg-mono dg-muted-text" x="384" y="204" text-anchor="start">2. ADD AND START M4</text>
+  <rect class="dg-box" x="384.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="412" y="249" text-anchor="middle">M1</text>
+  <rect class="dg-box" x="456.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="484" y="249" text-anchor="middle">M2</text>
+  <text class="dg-code-muted" x="556" y="249" text-anchor="middle">removed</text>
+  <rect class="dg-box" x="600.0" y="229.0" width="56" height="30" rx="6"/>
+  <text class="dg-name" x="628" y="249" text-anchor="middle">M4</text>
+  <text class="dg-code" x="384" y="306" text-anchor="start">majority 2, up 3</text>
+</svg>

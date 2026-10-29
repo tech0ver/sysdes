@@ -1,0 +1,36 @@
+<svg class="diagram-svg" viewBox="0 0 720 384" role="img" aria-labelledby="zookeeper-watch-once-title zookeeper-watch-once-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="zookeeper-watch-once-title">A one-time ZooKeeper watch reports a change without its value</title>
+  <desc id="zookeeper-watch-once-desc">The router reads znode 0017 at version 7 and sets a watch. The controller sets 0017 to version 8, and the router gets an event that says only that 0017 changed. Before the router reads again, the controller sets version 9. The router's read returns version 9 and sets a new watch: it never sees version 8.</desc>
+  <defs>
+    <marker id="zookeeper-watch-once-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="zookeeper-watch-once-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="374"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">ZOOKEEPER</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="374"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">CONTROLLER</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="374"/>
+  <rect class="dg-box" x="315.0" y="44" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">0017 v7</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="88" text-anchor="middle">READ 0017 + WATCH</text>
+  <path class="dg-arrow" d="M110 96 H352" marker-end="url(#zookeeper-watch-once-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="114" text-anchor="middle">v7</text>
+  <path class="dg-arrow" d="M360 122 H118" marker-end="url(#zookeeper-watch-once-head)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="152" text-anchor="middle">SET 0017</text>
+  <path class="dg-arrow" d="M610 160 H368" marker-end="url(#zookeeper-watch-once-head)"/>
+  <rect class="dg-box" x="315.0" y="170" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="186.0" text-anchor="middle">0017 v8</text>
+  <text class="dg-mono dg-accent-text" x="235.0" y="214" text-anchor="middle">EVENT: 0017 CHANGED</text>
+  <path class="dg-arrow dg-message" d="M360 222 H118" marker-end="url(#zookeeper-watch-once-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="485.0" y="248" text-anchor="middle">SET 0017</text>
+  <path class="dg-arrow" d="M610 256 H368" marker-end="url(#zookeeper-watch-once-head)"/>
+  <rect class="dg-box" x="315.0" y="266" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="282.0" text-anchor="middle">0017 v9</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="310" text-anchor="middle">READ 0017 + WATCH</text>
+  <path class="dg-arrow" d="M110 318 H352" marker-end="url(#zookeeper-watch-once-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="336" text-anchor="middle">v9</text>
+  <path class="dg-arrow" d="M360 344 H118" marker-end="url(#zookeeper-watch-once-head)"/>
+  <rect class="dg-box-accent" x="40.0" y="354" width="140" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="370.0" text-anchor="middle">v8 never seen</text>
+</svg>

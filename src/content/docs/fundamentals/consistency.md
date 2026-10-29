@@ -294,11 +294,10 @@ Give every client request an idempotency key. Use the read barrier where a stale
 
 Each night the wallet sends payouts to banks. The job runs on three machines in case one fails, but only one of them may send. The map of which shard holds which accounts must also exist in one version that every router trusts (more on [finding the shard for a request](../sharding/#finding-the-shard-for-a-request)).
 
-Both can share a **coordination service**: a small consensus group, such as etcd, ZooKeeper, or Consul, that other systems use for such decisions. It stores small keys with linearizable writes and compare-and-set, and adds:
+Both can share a coordination service, such as etcd, ZooKeeper, or Consul: a small consensus group that keeps such facts for other systems. Two of its features matter here:
 
-- Leases for clients. A client renews its session with heartbeats, and when the renewals stop, the service deletes the keys tied to the session. A lock is such a key: the first client to create it holds the lock, and when the holder dies, the key expires and another client takes over. Electing a leader for an app works the same way.
-- Watches: a client is told when a key changes, instead of polling.
-- A number that grows with every change: the [revision](https://etcd.io/docs/v3.6/learning/api_guarantees/) in etcd, the transaction ID, or [zxid](https://zookeeper.apache.org/doc/current/zookeeperInternals.html), in ZooKeeper.
+- Leases for clients. A client renews its lease with heartbeats, and when the renewals stop, the service deletes the keys tied to it. A lock is such a key: the first client to create it holds the lock, and when the holder dies, the key expires and another client takes over. Electing a leader for an app works the same way.
+- A number that grows with every change: the revision in etcd, or the zxid in ZooKeeper.
 
 ::diagram{name="coordination-service"}
 
@@ -310,7 +309,7 @@ A bank's API cannot check tokens. For a fixed payout, a payout ID helps instead:
 
 A lock has one of two purposes, and they need different tools. A lock for efficiency stops two machines from doing the same work, and a rare double run only costs time, so a single Redis key with an expiry is enough (more on [locks in Redis](../../technologies/redis/#letting-one-worker-act-at-a-time)). <!-- link: patterns/distributed-locks --> A lock for correctness keeps data right, and a double holder corrupts it. It needs a consensus store and a fencing token checked by the receiver, as Martin Kleppmann [explains](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html).
 
-Use a coordination service for small, shared metadata, such as locks, leaders, configuration, and shard maps. Keep the wallet's balances in a database that spreads them over many consensus groups. Reads from a coordination service are not always linearizable: etcd's are [by default](https://etcd.io/docs/v3.6/learning/api_guarantees/), but a ZooKeeper server answers reads from its own copy, which may be behind, and a sync before a read does not [guarantee a fresh value](https://zookeeper.apache.org/doc/current/zookeeperInternals.html) in every failure. Clients that only need to find services can cache what they read and accept data a moment old.
+Keep the wallet's balances in a database that spreads them over many consensus groups: a coordination service holds only small, shared metadata, such as locks, leaders, configuration, and shard maps, and keeps all of it on every node (more on [what goes into a coordination service](../../technologies/coordination-services/#keeping-a-few-facts-every-server-trusts)).
 
 :::avoid
 Do not rely on a lock with an expiry alone where two holders would corrupt data. A paused holder can act after its lock has passed to another. Check a fencing token where the work lands, or, for a fixed piece of work, use an ID that the receiver processes only once.

@@ -1,0 +1,35 @@
+<svg class="diagram-svg" viewBox="0 0 720 230" role="img" aria-labelledby="two-checks-title two-checks-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="two-checks-title">Stopping the old controller in the service and at a storage node</title>
+  <desc id="two-checks-desc">In etcd, controller A won when the election key /kv/controller was created at revision 1200; B's key was created at 1350. Left, A writes into the service on the condition that create_revision of /kv/controller is 1200: the transaction fails. Right, A sends node 20 a command with token 1200; the node has already stored 1350 from B durably and rejects it.</desc>
+  <defs>
+    <marker id="two-checks-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="two-checks-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="222"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">A write into the service</text>
+  <text class="dg-sub" x="180.0" y="40" text-anchor="middle">etcd</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">A command to a storage node</text>
+  <text class="dg-sub" x="540.0" y="40" text-anchor="middle">node 20</text>
+  <text class="dg-mono dg-muted-text" x="80" y="56" text-anchor="middle">A</text>
+  <line class="dg-lifeline" x1="80" y1="66" x2="80" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="260" y="56" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="260" y1="66" x2="260" y2="220"/>
+  <rect class="dg-box" x="172.0" y="76" width="176" height="24" rx="4"/>
+  <text class="dg-code" x="260.0" y="92.0" text-anchor="middle">/kv/controller: 1350</text>
+  <text class="dg-mono dg-muted-text" x="170.0" y="138" text-anchor="middle">IF create_revision = 1200</text>
+  <text class="dg-mono dg-muted-text" x="170.0" y="152" text-anchor="middle">THEN 17 → NODE 20</text>
+  <path class="dg-arrow" d="M80 160 H252" marker-end="url(#two-checks-head)"/>
+  <text class="dg-mono dg-accent-text" x="170.0" y="182" text-anchor="middle">FAILED</text>
+  <path class="dg-arrow dg-message" d="M260 190 H88" marker-end="url(#two-checks-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="440" y="56" text-anchor="middle">A</text>
+  <line class="dg-lifeline" x1="440" y1="66" x2="440" y2="220"/>
+  <text class="dg-mono dg-muted-text" x="620" y="56" text-anchor="middle">NODE 20</text>
+  <line class="dg-lifeline" x1="620" y1="66" x2="620" y2="220"/>
+  <rect class="dg-box" x="532.0" y="76" width="176" height="24" rx="4"/>
+  <text class="dg-code" x="620.0" y="92.0" text-anchor="middle">stored on disk: 1350</text>
+  <text class="dg-mono dg-muted-text" x="530.0" y="138" text-anchor="middle">TOKEN 1200</text>
+  <text class="dg-mono dg-muted-text" x="530.0" y="152" text-anchor="middle">LEAD SHARD 17</text>
+  <path class="dg-arrow" d="M440 160 H612" marker-end="url(#two-checks-head)"/>
+  <text class="dg-mono dg-accent-text" x="530.0" y="182" text-anchor="middle">REJECTED: 1200 &lt; 1350</text>
+  <path class="dg-arrow dg-message" d="M620 190 H448" marker-end="url(#two-checks-head-accent)"/>
+</svg>

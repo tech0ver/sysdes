@@ -1,0 +1,62 @@
+<svg class="diagram-svg" viewBox="0 0 720 392" role="img" aria-labelledby="region-options-title region-options-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="region-options-title">Three ways to place a coordination service across regions</title>
+  <desc id="region-options-desc">Left, one cluster in Europe with a leader and two voters, and a ZooKeeper observer in the US that gets changes from Europe: writes stay in Europe, and reads in the US are local. Middle, one cluster per region with nothing shared: each region depends only on itself. Right, one voter in each of three regions, with the leader in Europe: every write waits for an answer from one more region, and the cluster survives the loss of a region.</desc>
+  <defs>
+    <marker id="region-options-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="region-options-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="240" y1="8" x2="240" y2="358"/>
+  <line class="dg-rule" x1="480" y1="8" x2="480" y2="358"/>
+  <text class="dg-name" x="120.0" y="22" text-anchor="middle">Far readers</text>
+  <text class="dg-name" x="360.0" y="22" text-anchor="middle">One per region</text>
+  <text class="dg-name" x="600.0" y="22" text-anchor="middle">One across three</text>
+  <rect class="dg-zone" x="16" y="44" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="64">EUROPE</text>
+  <rect class="dg-box" x="50.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="70" y="99" text-anchor="middle">L</text>
+  <rect class="dg-box" x="100.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="120" y="99" text-anchor="middle">V</text>
+  <rect class="dg-box" x="150.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="170" y="99" text-anchor="middle">V</text>
+  <rect class="dg-zone" x="16" y="150" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="31" y="170">US</text>
+  <rect class="dg-box" x="100.0" y="187.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="120" y="205" text-anchor="middle">O</text>
+  <path class="dg-arrow dg-message" d="M120 124 V179" marker-end="url(#region-options-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="128" y="140" text-anchor="start">CHANGES</text>
+  <rect class="dg-zone" x="256" y="44" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="271" y="64">EUROPE</text>
+  <rect class="dg-box" x="290.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="310" y="99" text-anchor="middle">L</text>
+  <rect class="dg-box" x="340.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="360" y="99" text-anchor="middle">V</text>
+  <rect class="dg-box" x="390.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="410" y="99" text-anchor="middle">V</text>
+  <rect class="dg-zone" x="256" y="150" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="271" y="170">US</text>
+  <rect class="dg-box" x="290.0" y="187.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="310" y="205" text-anchor="middle">L</text>
+  <rect class="dg-box" x="340.0" y="187.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="360" y="205" text-anchor="middle">V</text>
+  <rect class="dg-box" x="390.0" y="187.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="410" y="205" text-anchor="middle">V</text>
+  <text class="dg-mono dg-muted-text" x="360" y="140" text-anchor="middle">NOTHING SHARED</text>
+  <rect class="dg-zone" x="496" y="44" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="511" y="64">EUROPE</text>
+  <rect class="dg-zone" x="496" y="150" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="511" y="170">US</text>
+  <rect class="dg-zone" x="496" y="256" width="208" height="80" rx="8"/>
+  <text class="dg-mono dg-muted-text" x="511" y="276">REGION 3</text>
+  <rect class="dg-box" x="580.0" y="81.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="600" y="99" text-anchor="middle">L</text>
+  <rect class="dg-box" x="580.0" y="187.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="600" y="205" text-anchor="middle">V</text>
+  <rect class="dg-box" x="580.0" y="293.0" width="40" height="26" rx="6"/>
+  <text class="dg-name" x="600" y="311" text-anchor="middle">V</text>
+  <path class="dg-arrow dg-message" d="M600 107 V187"/>
+  <path class="dg-arrow dg-message" d="M620 94 H680 V306 H620"/>
+  <text class="dg-result" x="120" y="362" text-anchor="middle">Writes stay in Europe</text>
+  <text class="dg-result" x="360" y="362" text-anchor="middle">Each region on its own</text>
+  <text class="dg-result" x="600" y="362" text-anchor="middle">Leader + one more region</text>
+  <text class="dg-sub" x="360" y="384" text-anchor="middle">L: leader · V: voter · O: observer, no vote</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg class="diagram-svg" viewBox="0 0 720 496" role="img" aria-labelledby="election-race-title election-race-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="election-race-title">Electing a controller by a race for one key</title>
+  <desc id="election-race-desc">In ZooKeeper or etcd, copies A, B, and C each try to create /kv/controller only if it does not exist, tied to their session or lease. A's write comes first and wins; B and C are told the key exists and watch it. A dies, its session or lease ends, and the service deletes the key. B and C are told and race again; B wins.</desc>
+  <defs>
+    <marker id="election-race-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="election-race-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="80" y="20" text-anchor="middle">A</text>
+  <line class="dg-lifeline" x1="80" y1="34" x2="80" y2="486"/>
+  <text class="dg-mono dg-muted-text" x="220" y="20" text-anchor="middle">B</text>
+  <line class="dg-lifeline" x1="220" y1="34" x2="220" y2="486"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">C</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="486"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">ZOOKEEPER OR ETCD</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="486"/>
+  <text class="dg-mono dg-muted-text" x="485" y="62" text-anchor="middle">CREATE IF ABSENT</text>
+  <path class="dg-arrow" d="M80 70 H602" marker-end="url(#election-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="88" text-anchor="middle">CREATE IF ABSENT</text>
+  <path class="dg-arrow" d="M220 96 H602" marker-end="url(#election-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="114" text-anchor="middle">CREATE IF ABSENT</text>
+  <path class="dg-arrow" d="M360 122 H602" marker-end="url(#election-race-head)"/>
+  <rect class="dg-box" x="525.0" y="130" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="146.0" text-anchor="middle">/kv/controller = A</text>
+  <text class="dg-mono dg-accent-text" x="485" y="176" text-anchor="middle">CREATED</text>
+  <path class="dg-arrow dg-message" d="M610 184 H88" marker-end="url(#election-race-head-accent)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="202" text-anchor="middle">EXISTS</text>
+  <path class="dg-arrow" d="M610 210 H228" marker-end="url(#election-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="228" text-anchor="middle">EXISTS</text>
+  <path class="dg-arrow" d="M610 236 H368" marker-end="url(#election-race-head)"/>
+  <rect class="dg-box" x="185.0" y="248" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="220.0" y="264.0" text-anchor="middle">watch</text>
+  <rect class="dg-box" x="325.0" y="248" width="70" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="264.0" text-anchor="middle">watch</text>
+  <line class="dg-cross" x1="74" y1="284" x2="86" y2="296"/>
+  <line class="dg-cross" x1="74" y1="296" x2="86" y2="284"/>
+  <text class="dg-sub" x="92" y="294" text-anchor="start">dies</text>
+  <rect class="dg-box-failed" x="510.0" y="286" width="200" height="24" rx="4"/>
+  <text class="dg-code-muted" x="610.0" y="302.0" text-anchor="middle">session or lease ends</text>
+  <rect class="dg-box-failed" x="510.0" y="316" width="200" height="24" rx="4"/>
+  <text class="dg-code-muted" x="610.0" y="332.0" text-anchor="middle">key deleted</text>
+  <text class="dg-mono dg-muted-text" x="485" y="358" text-anchor="middle">DELETED</text>
+  <path class="dg-arrow" d="M610 366 H228" marker-end="url(#election-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="384" text-anchor="middle">DELETED</text>
+  <path class="dg-arrow" d="M610 392 H368" marker-end="url(#election-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="412" text-anchor="middle">CREATE IF ABSENT</text>
+  <path class="dg-arrow" d="M220 420 H602" marker-end="url(#election-race-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="438" text-anchor="middle">CREATE IF ABSENT</text>
+  <path class="dg-arrow" d="M360 446 H602" marker-end="url(#election-race-head)"/>
+  <rect class="dg-box-accent" x="525.0" y="456" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="472.0" text-anchor="middle">/kv/controller = B</text>
+</svg>

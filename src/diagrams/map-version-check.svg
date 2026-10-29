@@ -1,0 +1,30 @@
+<svg class="diagram-svg" viewBox="0 0 720 268" role="img" aria-labelledby="map-version-check-title map-version-check-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="map-version-check-title">A storage node rejects a request made with an old map</title>
+  <desc id="map-version-check-desc">The router still has map version 40, in which node 9 is the primary of shard 17. It sends a write for shard 17 with map version 40 to node 9, which already knows version 41, in which node 14 leads shard 17. Node 9 rejects it. The router refreshes its map and sends the write to node 14 with version 41.</desc>
+  <defs>
+    <marker id="map-version-check-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="map-version-check-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">ROUTER</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="258"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">NODE 9</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="258"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">NODE 14</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="258"/>
+  <rect class="dg-box" x="25.0" y="44" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="60.0" text-anchor="middle">map v40: 17 on 9</text>
+  <rect class="dg-box" x="275.0" y="44" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">map v41: 17 on 14</text>
+  <rect class="dg-box" x="525.0" y="44" width="170" height="24" rx="4"/>
+  <text class="dg-code" x="610.0" y="60.0" text-anchor="middle">map v41: 17 on 14</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="98" text-anchor="middle">WRITE 17, MAP v40</text>
+  <path class="dg-arrow" d="M110 106 H352" marker-end="url(#map-version-check-head)"/>
+  <text class="dg-mono dg-accent-text" x="235.0" y="126" text-anchor="middle">REJECTED: MAP v41</text>
+  <path class="dg-arrow dg-message" d="M360 134 H118" marker-end="url(#map-version-check-head-accent)"/>
+  <rect class="dg-box" x="35.0" y="146" width="150" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="162.0" text-anchor="middle">refresh to v41</text>
+  <text class="dg-mono dg-muted-text" x="485" y="204" text-anchor="middle">WRITE 17, MAP v41</text>
+  <path class="dg-arrow" d="M110 212 H602" marker-end="url(#map-version-check-head)"/>
+  <text class="dg-mono dg-muted-text" x="485" y="232" text-anchor="middle">OK</text>
+  <path class="dg-arrow" d="M610 240 H118" marker-end="url(#map-version-check-head)"/>
+</svg>

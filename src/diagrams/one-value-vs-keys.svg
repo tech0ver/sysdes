@@ -1,0 +1,62 @@
+<svg class="diagram-svg" viewBox="0 0 720 254" role="img" aria-labelledby="one-value-vs-keys-title one-value-vs-keys-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="one-value-vs-keys-title">The shard map as one value or as one key per shard</title>
+  <desc id="one-value-vs-keys-desc">Left, one value of about 100 KB holds all 1,024 shards. The controller changes shard 17 and a tool changes shard 42 at the same time; both rewrite the same value and collide, and each change sends 100 KB to every reader. Right, one key per shard: the controller writes key 0017 and the tool writes key 0042 without meeting, and each change sends about 100 bytes.</desc>
+  <defs>
+    <marker id="one-value-vs-keys-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="one-value-vs-keys-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="246"/>
+  <text class="dg-name" x="180" y="22" text-anchor="middle">One value</text>
+  <rect class="dg-box" x="65" y="40" width="110" height="44" rx="6"/>
+  <text class="dg-name" x="120.0" y="60.0" text-anchor="middle">Controller</text>
+  <text class="dg-sub" x="120.0" y="76.0" text-anchor="middle">shard 17</text>
+  <rect class="dg-box" x="185" y="40" width="110" height="44" rx="6"/>
+  <text class="dg-name" x="240.0" y="60.0" text-anchor="middle">Tool</text>
+  <text class="dg-sub" x="240.0" y="76.0" text-anchor="middle">shard 42</text>
+  <rect class="dg-box" x="10" y="124" width="340" height="68" rx="6"/>
+  <text class="dg-code-muted" x="180" y="146" text-anchor="middle">/kv/shards: one value, 100 KB</text>
+  <rect class="dg-chip" x="20.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="38.0" y="172.0" text-anchor="middle">0000</text>
+  <rect class="dg-chip" x="65.0" y="156" width="18" height="24" rx="4"/>
+  <text class="dg-code" x="74.0" y="172.0" text-anchor="middle">…</text>
+  <rect class="dg-chip" x="102.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="120.0" y="172.0" text-anchor="middle">0017</text>
+  <rect class="dg-chip" x="171.0" y="156" width="18" height="24" rx="4"/>
+  <text class="dg-code" x="180.0" y="172.0" text-anchor="middle">…</text>
+  <rect class="dg-chip" x="222.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="240.0" y="172.0" text-anchor="middle">0042</text>
+  <rect class="dg-chip" x="277.0" y="156" width="18" height="24" rx="4"/>
+  <text class="dg-code" x="286.0" y="172.0" text-anchor="middle">…</text>
+  <rect class="dg-chip" x="304.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="322.0" y="172.0" text-anchor="middle">1023</text>
+  <path class="dg-arrow dg-message" d="M120 84 V116" marker-end="url(#one-value-vs-keys-head-accent)"/>
+  <path class="dg-arrow dg-message" d="M240 84 V116" marker-end="url(#one-value-vs-keys-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="180" y="108" text-anchor="middle">COLLIDE</text>
+  <text class="dg-mono dg-muted-text" x="180" y="206" text-anchor="middle">ENTRIES IN ONE VALUE</text>
+  <text class="dg-name" x="540" y="22" text-anchor="middle">One key per shard</text>
+  <rect class="dg-box" x="425" y="40" width="110" height="44" rx="6"/>
+  <text class="dg-name" x="480.0" y="60.0" text-anchor="middle">Controller</text>
+  <text class="dg-sub" x="480.0" y="76.0" text-anchor="middle">shard 17</text>
+  <rect class="dg-box" x="545" y="40" width="110" height="44" rx="6"/>
+  <text class="dg-name" x="600.0" y="60.0" text-anchor="middle">Tool</text>
+  <text class="dg-sub" x="600.0" y="76.0" text-anchor="middle">shard 42</text>
+  <rect class="dg-box" x="380.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="398.0" y="172.0" text-anchor="middle">0000</text>
+  <rect class="dg-box" x="425.0" y="156" width="18" height="24" rx="4"/>
+  <text class="dg-code" x="434.0" y="172.0" text-anchor="middle">…</text>
+  <rect class="dg-box-accent" x="462.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="480.0" y="172.0" text-anchor="middle">0017</text>
+  <rect class="dg-box" x="531.0" y="156" width="18" height="24" rx="4"/>
+  <text class="dg-code" x="540.0" y="172.0" text-anchor="middle">…</text>
+  <rect class="dg-box-accent" x="582.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="600.0" y="172.0" text-anchor="middle">0042</text>
+  <rect class="dg-box" x="637.0" y="156" width="18" height="24" rx="4"/>
+  <text class="dg-code" x="646.0" y="172.0" text-anchor="middle">…</text>
+  <rect class="dg-box" x="664.0" y="156" width="36" height="24" rx="4"/>
+  <text class="dg-code" x="682.0" y="172.0" text-anchor="middle">1023</text>
+  <path class="dg-arrow" d="M480 84 V148" marker-end="url(#one-value-vs-keys-head)"/>
+  <path class="dg-arrow" d="M600 84 V148" marker-end="url(#one-value-vs-keys-head)"/>
+  <text class="dg-mono dg-muted-text" x="540" y="206" text-anchor="middle">SEPARATE KEYS</text>
+  <text class="dg-result" x="180" y="238" text-anchor="middle">Each change: 100 KB to every reader</text>
+  <text class="dg-result" x="540" y="238" text-anchor="middle">Each change: about 100 B</text>
+</svg>

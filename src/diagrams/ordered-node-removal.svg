@@ -1,0 +1,33 @@
+<svg class="diagram-svg" viewBox="0 0 600 260" role="img" aria-labelledby="ordered-node-removal-title ordered-node-removal-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="ordered-node-removal-title">Removing a dead node with single-key writes in a safe order</title>
+  <desc id="ordered-node-removal-desc">Node 9 sits in the replicas of 128 shards. Each row is one compare-and-set write. Replacing node 9 in shard 0003 leaves 127 shards that list node 9, then 126, and so on down to 0 after shard 1011. Only then is the record /kv/nodes/node-09 deleted. In every state between the writes, each shard that lists node 9 still finds its record.</desc>
+  <defs>
+    <marker id="ordered-node-removal-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="ordered-node-removal-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="20" y="28" text-anchor="start">WRITES, ONE AT A TIME</text>
+  <text class="dg-mono dg-muted-text" x="380" y="28" text-anchor="middle">SHARDS LISTING NODE 9</text>
+  <text class="dg-mono dg-muted-text" x="520" y="28" text-anchor="middle">RECORD OF NODE 9</text>
+  <text class="dg-code-muted" x="20" y="61" text-anchor="start">before</text>
+  <text class="dg-code" x="380" y="61" text-anchor="middle">128</text>
+  <text class="dg-code" x="520" y="61" text-anchor="middle">exists</text>
+  <rect class="dg-box" x="20" y="78" width="260" height="26" rx="4"/>
+  <text class="dg-code" x="150.0" y="95.0" text-anchor="middle">replace 9 in 0003</text>
+  <text class="dg-code" x="380" y="95" text-anchor="middle">127</text>
+  <text class="dg-code" x="520" y="95" text-anchor="middle">exists</text>
+  <rect class="dg-box" x="20" y="112" width="260" height="26" rx="4"/>
+  <text class="dg-code" x="150.0" y="129.0" text-anchor="middle">replace 9 in 0017</text>
+  <text class="dg-code" x="380" y="129" text-anchor="middle">126</text>
+  <text class="dg-code" x="520" y="129" text-anchor="middle">exists</text>
+  <text class="dg-code-muted" x="150" y="163" text-anchor="middle">…</text>
+  <text class="dg-code-muted" x="380" y="163" text-anchor="middle">…</text>
+  <text class="dg-code-muted" x="520" y="163" text-anchor="middle">…</text>
+  <rect class="dg-box" x="20" y="180" width="260" height="26" rx="4"/>
+  <text class="dg-code" x="150.0" y="197.0" text-anchor="middle">replace 9 in 1011</text>
+  <text class="dg-code" x="380" y="197" text-anchor="middle">0</text>
+  <text class="dg-code" x="520" y="197" text-anchor="middle">exists</text>
+  <rect class="dg-box-accent" x="20" y="214" width="260" height="26" rx="4"/>
+  <text class="dg-code" x="150.0" y="231.0" text-anchor="middle">delete /kv/nodes/node-09</text>
+  <text class="dg-code" x="380" y="231" text-anchor="middle">0</text>
+  <text class="dg-code" x="520" y="231" text-anchor="middle">deleted</text>
+</svg>

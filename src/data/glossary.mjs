@@ -67,6 +67,11 @@ const redis = (anchor, section) => ({
 	label: `Redis: ${section}`,
 });
 
+const coordinationServices = (anchor, section) => ({
+	href: `technologies/coordination-services/#${anchor}`,
+	label: `Coordination services: ${section}`,
+});
+
 const reservations = (anchor, section) => ({
 	href: `patterns/reservations/#${anchor}`,
 	label: `Reservations: ${section}`,
@@ -531,6 +536,7 @@ export const glossary = [
 		explanation:
 			'It frees the space taken by old and deleted records. It also competes with requests for the disk, and when writes outrun it, files pile up.',
 		readMore: storageEngines('reclaiming-space', 'Reclaiming space'),
+		explainedIn: ['technologies/coordination-services'],
 	},
 	{
 		id: 'tombstone',
@@ -979,7 +985,7 @@ export const glossary = [
 		explanation:
 			'A write takes an exclusive lock on its row until the transaction ends, and readers can share a shared lock. Locks prevent conflicting writes but cause waits and deadlocks.',
 		readMore: transactions('seeing-unfinished-changes', 'Seeing unfinished changes'),
-		explainedIn: ['technologies/redis'],
+		explainedIn: ['technologies/redis', 'technologies/coordination-services'],
 	},
 	{
 		id: 'read-skew',
@@ -1106,6 +1112,7 @@ export const glossary = [
 		explanation:
 			'It rules out every anomaly, at the cost of waits or retries. It covers only transactions that run at this level.',
 		readMore: transactions('running-as-if-one-at-a-time', 'Running as if one at a time'),
+		explainedIn: ['technologies/coordination-services'],
 	},
 	{
 		id: 'serial-execution',
@@ -2076,8 +2083,126 @@ export const glossary = [
 		aliases: ['coordination service', 'coordination services', 'Coordination service'],
 		short: 'A small consensus group, such as etcd, ZooKeeper, or Consul, that other systems use for locks, leaders, and configuration.',
 		explanation:
-			'It stores small keys with linearizable writes, leases, and watches. It is meant for shared metadata; app data belongs in a database that spreads it over many groups.',
-		readMore: consistency('letting-only-one-node-act', 'Letting only one node act'),
+			'It keeps a few small facts that many servers must agree on, with linearizable writes, keys that vanish when their owner dies, and change notifications. All data sits on every node, so user data belongs in a database.',
+		readMore: coordinationServices('keeping-a-few-facts-every-server-trusts', 'Keeping a few facts every server trusts'),
+	},
+	{
+		id: 'znode',
+		term: 'Znode',
+		aliases: ['znode', 'znodes', 'Znode', 'Znodes'],
+		short: 'A node in the tree of ZooKeeper data, with a path, a small value, and children.',
+		explanation:
+			'A read returns its whole value and a write replaces it. Each znode keeps its own version, used for compare-and-set, and can be ephemeral or sequential.',
+		readMore: coordinationServices('shaping-the-metadata', 'Shaping the metadata'),
+	},
+	{
+		id: 'zxid',
+		term: 'zxid',
+		aliases: ['zxid', 'zxids'],
+		short: 'The number that ZooKeeper gives to every change, in one order across the whole tree.',
+		explanation:
+			'Each znode records the zxid of the change that created it and of its last change. A later change always has a larger zxid, so it can serve as a fencing token.',
+		readMore: coordinationServices('shaping-the-metadata', 'Shaping the metadata'),
+	},
+	{
+		id: 'etcd-revision',
+		term: 'Revision (etcd)',
+		aliases: ['revision', 'revisions', 'Revision'],
+		short: 'A cluster-wide counter in etcd that grows by one with each write or transaction that changes the data.',
+		explanation:
+			'Each key records the revision that created it and the one of its last change. Reads and watches can start from a revision, until history compaction removes it.',
+		readMore: coordinationServices('shaping-the-metadata', 'Shaping the metadata'),
+	},
+	{
+		id: 'ephemeral-key',
+		term: 'Ephemeral key',
+		aliases: ['ephemeral key', 'ephemeral keys', 'Ephemeral key', 'ephemeral znode', 'ephemeral znodes'],
+		short: 'A key that the service deletes when its owner stops sending heartbeats.',
+		explanation:
+			'ZooKeeper ties it to a session, etcd to a lease, and Consul to a session created with the delete behavior. It lets other servers see which processes are alive and who holds a role.',
+		readMore: coordinationServices('knowing-which-nodes-are-alive', 'Knowing which nodes are alive'),
+	},
+	{
+		id: 'coordination-session',
+		term: 'Session (coordination service)',
+		aliases: ['ZooKeeper session', 'ZooKeeper sessions', 'Consul session', 'Consul sessions'],
+		short: 'A client\'s registration with a coordination service that ends when its owner is no longer seen alive.',
+		explanation:
+			'ZooKeeper ends a session when heartbeats stop; Consul ends it when its node or health checks fail or its TTL runs out. The service then deletes or frees the keys it owned, and a client cut off from the servers learns it only later.',
+		readMore: coordinationServices('knowing-which-nodes-are-alive', 'Knowing which nodes are alive'),
+	},
+	{
+		id: 'zookeeper-watch',
+		term: 'Watch (ZooKeeper)',
+		aliases: ['ZooKeeper watch', 'ZooKeeper watches'],
+		short: 'A request to be told when a znode changes.',
+		explanation:
+			'A standard watch fires once and says only what changed, so the client reads again and sets a new watch. Changes in between are seen only as the latest value.',
+		readMore: coordinationServices('learning-about-changes-without-polling', 'Learning about changes without polling'),
+	},
+	{
+		id: 'blocking-query',
+		term: 'Blocking query',
+		aliases: ['blocking query', 'blocking queries', 'Blocking query'],
+		short: 'Consul\'s long polling: a read that waits until its result changes.',
+		explanation:
+			'The client passes the change number from its last answer, and the server holds the request until something newer exists or the wait ends. The answer is the whole result, not a list of changes.',
+		readMore: coordinationServices('learning-about-changes-without-polling', 'Learning about changes without polling'),
+	},
+	{
+		id: 'herd-effect',
+		term: 'Herd effect',
+		aliases: ['herd effect', 'Herd effect'],
+		short: 'Many waiting clients woken at once by one event, of which only one can make progress.',
+		explanation:
+			'They all hit the server together and most of them go back to waiting. A queue in which each client watches only the one before it wakes one client per event.',
+		readMore: coordinationServices('choosing-one-controller', 'Choosing one controller'),
+	},
+	{
+		id: 'zookeeper-observer',
+		term: 'Observer (ZooKeeper)',
+		aliases: ['observer', 'observers', 'Observer', 'Observers'],
+		short: 'A ZooKeeper server that receives every change and serves clients but does not vote.',
+		explanation:
+			'Observers add read capacity without enlarging the majority that every write waits for, though the leader still sends them every change. Their failure does not hurt the cluster, and they can serve clients in a far region.',
+		readMore: coordinationServices('many-clients-reading-the-same-data', 'Many clients reading the same data'),
+	},
+	{
+		id: 'history-compaction',
+		term: 'History compaction',
+		aliases: ['history compaction', 'History compaction'],
+		short: 'Removing all old versions of keys before a chosen revision in etcd.',
+		explanation:
+			'Reads and watches from earlier revisions then fail. etcd does not compact by default, and without it the database grows until its quota stops writes.',
+		readMore: coordinationServices('metadata-history-that-keeps-growing', 'Metadata history that keeps growing'),
+	},
+	{
+		id: 'defragmentation',
+		term: 'Defragmentation',
+		aliases: ['defragmentation', 'Defragmentation', 'defragments', 'defragment'],
+		short: 'Rewriting a database file to return its free space to the disk.',
+		explanation:
+			'In etcd it runs on one member at a time, and that member serves no requests while it runs.',
+		readMore: coordinationServices('metadata-history-that-keeps-growing', 'Metadata history that keeps growing'),
+	},
+	{
+		id: 'learner',
+		term: 'Learner',
+		aliases: ['learner', 'learners', 'Learner', 'Learners'],
+		short: 'A new member of a consensus group that receives every change but does not vote until promoted.',
+		explanation:
+			'It catches up with the leader without changing the size of the majority, so adding it cannot cost the group its majority.',
+		readMore: coordinationServices('replacing-a-failed-member', 'Replacing a failed member'),
+	},
+	{
+		id: 'bsl',
+		term: 'BSL',
+		aliases: ['BSL', 'Business Source License'],
+		expansion: 'Business Source License',
+		short: 'A license that publishes the source but forbids some commercial uses for a few years.',
+		explanation:
+			'Consul 1.17 and later allow production use except a paid hosted or embedded offering that competes with IBM, and each version becomes MPL 2.0 four years after its release.',
+		readMore: coordinationServices('picking-a-service-or-none', 'Picking a service, or none'),
 	},
 	{
 		id: 'lease',
@@ -3433,6 +3558,7 @@ export const glossary = [
 		explanation:
 			'Sales need no shared row, but units get stranded: one place turns buyers away while another still has stock. A quota moves only after its old owner records that it gave it up.',
 		readMore: reservations('selling-a-unit-everyone-wants', 'Selling a unit everyone wants'),
+		explainedIn: ['technologies/coordination-services'],
 	},
 	{
 		id: 'waiting-room',

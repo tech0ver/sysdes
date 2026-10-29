@@ -1,0 +1,43 @@
+<svg class="diagram-svg" viewBox="0 0 720 244" role="img" aria-labelledby="one-publisher-title one-publisher-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="one-publisher-title">Every router a client of the service, or one component that publishes</title>
+  <desc id="one-publisher-desc">Left, 3,000 routers each keep a session with the coordination service and watch the map. Right, the controller is the only client of the service for the map and pushes the map to the 3,000 routers itself.</desc>
+  <defs>
+    <marker id="one-publisher-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="one-publisher-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <line class="dg-rule" x1="360" y1="8" x2="360" y2="236"/>
+  <text class="dg-name" x="180.0" y="22" text-anchor="middle">Routers read the service</text>
+  <text class="dg-name" x="540.0" y="22" text-anchor="middle">The controller publishes</text>
+  <rect class="dg-box" x="20" y="56" width="320" height="36" rx="6"/>
+  <text class="dg-name" x="180.0" y="79.0" text-anchor="middle">Service</text>
+  <text class="dg-mono dg-accent-text" x="148" y="150" text-anchor="start">3,000 SESSIONS</text>
+  <rect class="dg-box" x="26" y="206" width="68" height="28" rx="6"/>
+  <text class="dg-name" x="60" y="225" text-anchor="middle">Router</text>
+  <path class="dg-arrow dg-message" d="M60 206 V100" marker-end="url(#one-publisher-head-accent)"/>
+  <rect class="dg-box" x="106" y="206" width="68" height="28" rx="6"/>
+  <text class="dg-name" x="140" y="225" text-anchor="middle">Router</text>
+  <path class="dg-arrow dg-message" d="M140 206 V100" marker-end="url(#one-publisher-head-accent)"/>
+  <text class="dg-code-muted" x="220" y="225" text-anchor="middle">…</text>
+  <rect class="dg-box" x="266" y="206" width="68" height="28" rx="6"/>
+  <text class="dg-name" x="300" y="225" text-anchor="middle">Router</text>
+  <path class="dg-arrow dg-message" d="M300 206 V100" marker-end="url(#one-publisher-head-accent)"/>
+  <rect class="dg-box" x="380" y="56" width="320" height="36" rx="6"/>
+  <text class="dg-name" x="540.0" y="79.0" text-anchor="middle">Service</text>
+  <rect class="dg-box" x="470" y="116" width="140" height="36" rx="6"/>
+  <text class="dg-name" x="540.0" y="139.0" text-anchor="middle">Controller</text>
+  <path class="dg-arrow dg-message" d="M540 116 V100" marker-end="url(#one-publisher-head-accent)"/>
+  <text class="dg-mono dg-accent-text" x="548" y="110" text-anchor="start">ONE SESSION</text>
+  <path class="dg-arrow" d="M540 152 V172"/>
+  <path class="dg-arrow" d="M420 172 H660"/>
+  <text class="dg-mono dg-muted-text" x="548" y="190" text-anchor="start">MAP</text>
+  <rect class="dg-box" x="386" y="206" width="68" height="28" rx="6"/>
+  <text class="dg-name" x="420" y="225" text-anchor="middle">Router</text>
+  <path class="dg-arrow" d="M420 172 V198" marker-end="url(#one-publisher-head)"/>
+  <rect class="dg-box" x="466" y="206" width="68" height="28" rx="6"/>
+  <text class="dg-name" x="500" y="225" text-anchor="middle">Router</text>
+  <path class="dg-arrow" d="M500 172 V198" marker-end="url(#one-publisher-head)"/>
+  <text class="dg-code-muted" x="580" y="225" text-anchor="middle">…</text>
+  <rect class="dg-box" x="626" y="206" width="68" height="28" rx="6"/>
+  <text class="dg-name" x="660" y="225" text-anchor="middle">Router</text>
+  <path class="dg-arrow" d="M660 172 V198" marker-end="url(#one-publisher-head)"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg class="diagram-svg" viewBox="0 0 720 366" role="img" aria-labelledby="receipt-key-title receipt-key-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="receipt-key-title">A receipt key tells a writer whether its timed-out write ran</title>
+  <desc id="receipt-key-desc">The controller writes shard 17 if the version is 7, together with a separate receipt key op-81 in the same transaction. The service applies both, but the answer is lost, and the controller times out. The tool then changes shard 17 to version 9; the receipt stays. The controller's retry with version 7 fails, which only says that the key changed. The controller reads receipt op-81, finds it, and knows that its first attempt ran.</desc>
+  <defs>
+    <marker id="receipt-key-head" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head" d="M0,0 L8,4 L0,8 z"/></marker>
+    <marker id="receipt-key-head-accent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="dg-head-accent" d="M0,0 L8,4 L0,8 z"/></marker>
+  </defs>
+  <text class="dg-mono dg-muted-text" x="110" y="20" text-anchor="middle">CONTROLLER</text>
+  <line class="dg-lifeline" x1="110" y1="34" x2="110" y2="356"/>
+  <text class="dg-mono dg-muted-text" x="360" y="20" text-anchor="middle">SERVICE</text>
+  <line class="dg-lifeline" x1="360" y1="34" x2="360" y2="356"/>
+  <text class="dg-mono dg-muted-text" x="610" y="20" text-anchor="middle">TOOL</text>
+  <line class="dg-lifeline" x1="610" y1="34" x2="610" y2="356"/>
+  <rect class="dg-box" x="295.0" y="44" width="130" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="60.0" text-anchor="middle">17: v7</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="74" text-anchor="middle">WRITE 17 IF v7</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="88" text-anchor="middle">+ RECEIPT op-81</text>
+  <path class="dg-arrow" d="M110 96 H352" marker-end="url(#receipt-key-head)"/>
+  <rect class="dg-box" x="265.0" y="106" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="122.0" text-anchor="middle">17: v8 · receipt op-81</text>
+  <path class="dg-arrow dg-empty" d="M360 152 H180"/>
+  <line class="dg-cross" x1="165" y1="147" x2="175" y2="157"/>
+  <line class="dg-cross" x1="165" y1="157" x2="175" y2="147"/>
+  <text class="dg-mono dg-muted-text" x="265.0" y="144" text-anchor="middle">OK, LOST</text>
+  <rect class="dg-box" x="65.0" y="164" width="90" height="24" rx="4"/>
+  <text class="dg-code" x="110.0" y="180.0" text-anchor="middle">timeout</text>
+  <text class="dg-mono dg-muted-text" x="485.0" y="202" text-anchor="middle">WRITE 17 IF v8</text>
+  <path class="dg-arrow" d="M610 210 H368" marker-end="url(#receipt-key-head)"/>
+  <rect class="dg-box" x="265.0" y="220" width="190" height="24" rx="4"/>
+  <text class="dg-code" x="360.0" y="236.0" text-anchor="middle">17: v9 · receipt op-81</text>
+  <text class="dg-mono dg-muted-text" x="235.0" y="260" text-anchor="middle">RETRY: WRITE 17 IF v7</text>
+  <path class="dg-arrow" d="M110 268 H352" marker-end="url(#receipt-key-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="286" text-anchor="middle">FAILED: VERSION CHANGED</text>
+  <path class="dg-arrow" d="M360 294 H118" marker-end="url(#receipt-key-head)"/>
+  <text class="dg-mono dg-muted-text" x="235.0" y="318" text-anchor="middle">READ RECEIPT op-81</text>
+  <path class="dg-arrow" d="M110 326 H352" marker-end="url(#receipt-key-head)"/>
+  <text class="dg-mono dg-accent-text" x="235.0" y="344" text-anchor="middle">FOUND: IT RAN</text>
+  <path class="dg-arrow dg-message" d="M360 352 H118" marker-end="url(#receipt-key-head-accent)"/>
+</svg>
