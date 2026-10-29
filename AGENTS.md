@@ -35,7 +35,7 @@ For now, write every topic in full breadth and depth. A reader skips what their 
 
 ## Conventions
 
-- For project skills and the article workflow, read [.agents/skills/README.md](.agents/skills/README.md).
+- To write or rewrite an article, use the [write-article](.agents/skills/write-article/SKILL.md) skill.
 - Internal links are relative (`../caching/`) so they keep working under `base`.
 - Do not duplicate information between README.md and AGENTS.md: README is for running the project, AGENTS.md is for working on it.
 - Before finishing a change, run `bun run build` — it must pass with no errors.
