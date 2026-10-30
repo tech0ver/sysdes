@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test:browser": "playwright test",
     "astro": "astro",
     "skills": "skills",
     "skills:list": "skills list --agent codex claude-code",
@@ -19,6 +20,7 @@
     "sharp": "^0.35.3"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "skills": "1.7.4"
   }
 }

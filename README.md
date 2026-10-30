@@ -25,12 +25,39 @@ production preview to check search results.
 
 ## Shared UI updates
 
-Update `@tech0ver/starlight` in `package.json` and `bun.lock`, then rebuild.
-Use the peer dependency versions documented by that release. Site settings are
-in `astro.config.mjs`; articles, glossary entries, diagrams, and site extensions
-stay in this repository. Shared visual changes belong in the package.
+After a successful package publication, Starlight sends a `starlight-release`
+event to this repository. **Update shared Starlight** calls the shared updater
+pinned in `.github/workflows/starlight-update.yml`. It opens a PR with the package
+version, required peer dependency versions, and `bun.lock`. Run the same workflow
+manually from `main` with a published version to retry an update. Repeated events
+do not create duplicate PRs or downgrade the dependency. Review release notes and
+any migration before approving; updates do not merge automatically.
 
-Pull requests run a frozen install and production build. GitHub Actions uses
+The receiver must be on the default branch. Configure Actions secrets
+`UPDATE_APP_ID` and `UPDATE_APP_PRIVATE_KEY` for the update GitHub App, installed
+on this repository with **Contents: Read and write** and **Pull requests: Read
+and write** permissions. Organization secrets can be shared with selected
+repositories. See the [Starlight rollout instructions](https://github.com/tech0ver/starlight/blob/main/WORKFLOW.md#consumer-update-notifications)
+for publisher setup and enabling delivery after the receiver is ready.
+
+To update manually, change `@tech0ver/starlight` in `package.json` and `bun.lock`
+using the peer dependency versions documented by that release, then rebuild.
+Site settings are in `astro.config.mjs`; articles, glossary entries, diagrams,
+and site extensions stay in this repository. Shared visual changes belong in
+the package.
+
+Pull requests run a frozen install, production build, and Chromium checks on
+desktop and mobile in light and dark themes. The checks cover the home page,
+articles, glossary, Markdown exports, search, theme persistence, navigation, and
+browser errors. Run them against a fresh production build locally:
+
+```sh
+bunx --no-install playwright install --with-deps chromium
+bun run build
+bun run test:browser
+```
+
+Failed CI runs upload a browser report with screenshots and traces. GitHub Actions uses
 `GITHUB_TOKEN` with `packages: read`; this repository must have read access under
 the package's **Manage Actions access** settings. Pushes to `main` build and
 deploy to GitHub Pages.
