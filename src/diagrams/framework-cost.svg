@@ -1,0 +1,5 @@
+<svg class="sk-svg" viewBox="0 0 706 132" role="img" aria-labelledby="framework-cost-title framework-cost-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="framework-cost-title">Board after the cost</title>
+<desc id="framework-cost-desc">Cost per month (cloud): / SMS fees: 10% of 30B messages x price per SMS -&gt; most of the bill / Servers: 15 API + 3 queue + 45 store + ~10 senders = ~75 x price per instance / Total: SMS fees + servers (disks are in the instance price) / Proposed cut: push first, SMS as a fallback</desc>
+<g class="sk-el"><text class="sk-name" text-anchor="start" dominant-baseline="central" style="font-size:16px"><tspan x="16" y="26">Cost per month (cloud):</tspan></text><text class="sk-name" text-anchor="start" dominant-baseline="central" style="font-size:16px"><tspan x="16" y="46">SMS fees: 10% of 30B messages x price per SMS -&gt; most of the bill</tspan><tspan x="16" y="66">Servers: 15 API + 3 queue + 45 store + ~10 senders = ~75 x price per instance</tspan><tspan x="16" y="86">Total: SMS fees + servers (disks are in the instance price)</tspan><tspan x="16" y="106">Proposed cut: push first, SMS as a fallback</tspan></text></g>
+</svg>

@@ -21,7 +21,7 @@ What an article on this site must look like. Read it before you add or change a 
    - ends with one short standalone sentence that names the next problem, but only when this block's solution causes it ("the file keeps growing"). When the next block starts from a new feature or requirement, end without a bridge: the next block opens with it. The last block never bridges to another article.
 4. **Callouts, tables, and diagrams** go where the point comes up, not in a fixed order (see below).
 5. **Mark as read.** Put `::mark-as-read` after the last block and before the cheat sheet, and again at the very end of the article, after the sources. Do not add it to the framework page.
-6. **Cheat sheet.** The last section: one line per block, for a quick review before an interview. Keep the conditions from the text; a cheat sheet line must never state a stricter or broader rule than the block it comes from.
+6. **Cheat sheet.** The last section: one line per block, for a quick review before an interview. Keep the conditions from the text; a cheat sheet line must never state a stricter or broader rule than the block it comes from. The framework page has no cheat sheet and no Sources section: it is itself a page to review before an interview, read in full.
 
 ## Style
 
@@ -76,6 +76,18 @@ Diagrams let the reader see the material on the running example, and grasp it fa
 - Every SVG has `role="img"`, `aria-labelledby`, a `<title>`, and a `<desc>` that says what the diagram shows (it is the alt text). Prefix all IDs with the diagram name.
 - Before showing a diagram, check it in both themes and at phone width.
 
+### Board diagrams
+
+The rules above are for explaining diagrams, which teach one idea in a crisp style. A board diagram shows a system being designed as a candidate draws it on an interview whiteboard: hand-drawn shapes, the board font, short text. Use it on the framework page and in system design articles, for the design and the text written next to it. Everything else stays an explaining diagram.
+
+- Draw only what a candidate can draw in an interview: a few shapes, lines, and short text. No accent color and no bold.
+- Write a scene in `src/diagrams/board/<page>.mjs` and render it with the [board-diagrams](.agents/skills/board-diagrams/SKILL.md) skill. Never edit the SVG by hand. Insert it with `::diagram`, as any diagram.
+- A design grows one scenario at a time, in steps. Each view has a caption that says what it shows. The key part and the design after a deep dive are the whole board with what matters in focus.
+- A step before the design leaves board text: a heading and short lines, as a candidate writes them. What is only spoken, such as the wrap-up, goes into the prose as a quote.
+- The board uses the numbers and names of the prose. When the text says the queue keeps messages 7 days, so does the note on the board.
+- The rules and their reasons are in the skill's DECISIONS.md. Add each new decision about board diagrams there.
+- Step through every view in both themes and at phone width before showing it.
+
 ## Other articles
 
 [ARTICLES.md](ARTICLES.md) is the map of written and planned articles. Use it to decide what goes into this article and what gets one line plus a link to another one.
@@ -111,7 +123,7 @@ The glossary (`src/data/glossary.mjs`) is the one place where terms are defined.
 - The author names the sources for each article: study notes, books, sites, or their own experience.
 - Back every claim with a primary source: a specification, official documentation, a paper, an engineering post about a real system, or a book that goes deep. Interview prep books, such as Alex Xu's, are often shallow: they show what interviews ask, but they are never the proof of a claim.
 - Prefer current material. When a topic changed in recent years (a new standard, a new database feature, a new practice), say what is current, not only the classic cases.
-- The article ends with a `## Sources` section after the cheat sheet: one list of the books, papers, and articles whose ideas made it into the text. Books come first, then papers and articles; each group is sorted by the first author's last name. The text has no footnotes.
+- The article ends with a `## Sources` section after the cheat sheet (the framework page has neither): one list of the books, papers, and articles whose ideas made it into the text. Books come first, then papers and articles; each group is sorted by the first author's last name. The text has no footnotes.
 - A book entry gives the authors, the title as a link, the edition, the publisher, the year, and the chapters used: "Martin Kleppmann, Chris Riccomini. [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), 2nd edition. O'Reilly, 2026. Chapter 7." Link the edition you used, on the publisher's site, or on the book's own site or a store when the publisher has no page. A paper or an article gives the authors or the company, the title as a link, where it appeared, and the year.
 - List only English books and articles. When we read a translation or another language's edition, cite the English edition; when there is none, leave the source out. Personal notes are never a source: cite the book or article they summarize.
 - A number or a test result taken from a source, such as a benchmark in a book, links to that source in the text: end the sentence with the author's name as a link, for example "([Angelakos](https://www.manning.com/books/postgresql-mistakes-and-how-to-avoid-them))". Name the conditions of the test that matter (data size, hardware, number of clients) and never present a single test as a general rule.

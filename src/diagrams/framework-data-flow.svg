@@ -1,0 +1,5 @@
+<svg class="sk-svg" viewBox="0 0 312 212" role="img" aria-labelledby="framework-data-flow-title framework-data-flow-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="framework-data-flow-title">Board after the data flow</title>
+<desc id="framework-data-flow-desc">Flow: / request / -&gt; accept: message / -&gt; check settings: channels / -&gt; build per channel: texts / -&gt; send: result / slow: messages wait before it / calls a provider: can fail / -&gt; record: status</desc>
+<g class="sk-el"><text class="sk-name" text-anchor="start" dominant-baseline="central" style="font-size:16px"><tspan x="16" y="26">Flow:</tspan></text><text class="sk-name" text-anchor="start" dominant-baseline="central" style="font-size:16px"><tspan x="16" y="46">request</tspan><tspan x="16" y="66">-&gt; accept: message</tspan><tspan x="16" y="86">-&gt; check settings: channels</tspan><tspan x="16" y="106">-&gt; build per channel: texts</tspan><tspan x="16" y="126">-&gt; send: result</tspan><tspan x="42.23" y="146">slow: messages wait before it</tspan><tspan x="42.23" y="166">calls a provider: can fail</tspan><tspan x="16" y="186">-&gt; record: status</tspan></text></g>
+</svg>

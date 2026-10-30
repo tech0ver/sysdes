@@ -8,7 +8,6 @@ export default defineTech0verConfig({
 	brand: { name: 'SystemDesign', suffix: '0ver' },
 	sidebarWidth: 256,
 	reading: { position: { ignoreSections: ['cheat-sheet', 'sources'] } },
-	plannedTopLevel: [{ label: 'Framework', slug: 'framework' }],
 	plannedTopics: {
 		Fundamentals: [
 			{ label: 'Messaging', slug: 'fundamentals/messaging' },
@@ -99,6 +98,7 @@ export default defineTech0verConfig({
 			Footer: './src/components/Footer.astro',
 		},
 		sidebar: [
+			'framework',
 			{
 				label: 'Fundamentals',
 				items: ['fundamentals/networking', 'fundamentals/storage-engines', 'fundamentals/databases', 'fundamentals/transactions', 'fundamentals/replication', 'fundamentals/sharding', 'fundamentals/consistency', 'fundamentals/caching', 'fundamentals/encoding'],

@@ -82,6 +82,11 @@ const uniqueIds = (anchor, section) => ({
 	label: `Unique IDs: ${section}`,
 });
 
+const framework = (anchor, section) => ({
+	href: `framework/#${anchor}`,
+	label: `Framework: ${section}`,
+});
+
 export const glossarySkip = ['SQL Server', 'commit the layout', 'Recall.ai'];
 
 /** @type {Array<{id: string, term: string, aliases?: string[], expansion?: string, short: string, explanation: string, readMore?: {href: string, label: string}, explainedIn?: string[]}>} */
@@ -3925,5 +3930,23 @@ export const glossary = [
 		explanation:
 			'It needs no escaping in a URL, so it suits short codes: 7 characters give about 3.5 trillion values.',
 		readMore: uniqueIds('short-codes-people-type-and-share', 'Short codes people type and share'),
+	},
+	{
+		id: 'data-plane',
+		term: 'Data plane',
+		aliases: ['data plane', 'data planes', 'Data plane'],
+		short: 'The part of a system that does its main job at full load, such as serving requests or moving messages.',
+		explanation:
+			'It gets most of the traffic and the strictest requirements. It should keep working with the settings it already has when the control plane is down.',
+		readMore: framework('api-and-entities', 'API and entities'),
+	},
+	{
+		id: 'control-plane',
+		term: 'Control plane',
+		aliases: ['control plane', 'control planes', 'Control plane'],
+		short: 'The part of a system that changes how it works, such as settings, accounts, and configuration.',
+		explanation:
+			'It gets far fewer requests than the data plane and can be slower, so it often gets separate components and looser requirements.',
+		readMore: framework('api-and-entities', 'API and entities'),
 	},
 ];

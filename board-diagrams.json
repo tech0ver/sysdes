@@ -1,0 +1,6 @@
+{
+	"scenes": "src/diagrams/board",
+	"output": "src/diagrams",
+	"medium": 16,
+	"small": 14
+}
