@@ -7,7 +7,7 @@
       "dependencies": {
         "@astrojs/markdown-satteri": "0.4.2",
         "@astrojs/starlight": "0.42.5",
-        "@tech0ver/starlight": "0.8.1",
+        "@tech0ver/starlight": "0.8.2",
         "astro": "7.3.5",
         "sharp": "^0.35.3",
       },
@@ -286,7 +286,7 @@
 
     "@shikijs/vscode-textmate": ["@shikijs/vscode-textmate@10.0.2", "", {}, "sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg=="],
 
-    "@tech0ver/starlight": ["@tech0ver/starlight@0.8.1", "https://npm.pkg.github.com/download/@tech0ver/starlight/0.8.1/6dbb69e58b6042ce8a831840a2c3806b7bc05fcd", { "peerDependencies": { "@astrojs/markdown-satteri": "0.4.2", "@astrojs/starlight": "0.42.5", "astro": "7.3.5" } }, "sha512-jZ0BSbvhhsKJDWTRkQaosJLwBSgHcI9vovaEGdwQ0A3nZd0c28EzLdf3ihOP6eo+DzY5AlH0zLGLEX0lMf1zzw=="],
+    "@tech0ver/starlight": ["@tech0ver/starlight@0.8.2", "https://npm.pkg.github.com/download/@tech0ver/starlight/0.8.2/0f325efeade1ca8b1d44bf1b7cdaf86d87cf9767", { "peerDependencies": { "@astrojs/markdown-satteri": "0.4.2", "@astrojs/starlight": "0.42.5", "astro": "7.3.5" } }, "sha512-jlaPUyUa2BA+Y+YrxOjrCIp54a5kWa76fdMHqoUlk9QjaELJK4r7d9Z5Ozn819e6WhC8WJch6NlVGZEyp+6rRA=="],
 
     "@tybys/wasm-util": ["@tybys/wasm-util@0.10.4", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A=="],
 
