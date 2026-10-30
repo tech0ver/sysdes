@@ -24,3 +24,14 @@ jobs:
           bun-version: 1.4.0
       - run: bun install --frozen-lockfile
       - run: bun run build
+      - run: bunx --no-install playwright install --with-deps chromium
+      - run: bun run test:browser
+      - name: Upload browser report
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

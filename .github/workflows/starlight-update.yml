@@ -1,0 +1,30 @@
+name: Update shared Starlight
+
+on:
+  repository_dispatch:
+    types: [starlight-release]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Published stable Starlight version (x.y.z)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  update:
+    if: >-
+      (github.event_name == 'repository_dispatch' &&
+       github.event.client_payload.package == '@tech0ver/starlight') ||
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
+    uses: tech0ver/starlight/.github/workflows/update-consumer.yml@343a40df718723aed65150befe6e323f0b7bac98
+    with:
+      version: ${{ github.event.client_payload.version || inputs.version }}
+      release-url: ${{ github.event.client_payload.release_url || '' }}
+    secrets:
+      UPDATE_APP_ID: ${{ secrets.UPDATE_APP_ID }}
+      UPDATE_APP_PRIVATE_KEY: ${{ secrets.UPDATE_APP_PRIVATE_KEY }}
