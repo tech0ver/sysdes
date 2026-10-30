@@ -21,7 +21,7 @@ jobs:
        github.event.client_payload.package == '@tech0ver/starlight') ||
       (github.event_name == 'workflow_dispatch' &&
        github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
-    uses: tech0ver/starlight/.github/workflows/update-consumer.yml@19901485d9edfb325577a8fa016a3cd1950f129d
+    uses: tech0ver/starlight/.github/workflows/update-consumer.yml@343a40df718723aed65150befe6e323f0b7bac98
     with:
       version: ${{ github.event.client_payload.version || inputs.version }}
       release-url: ${{ github.event.client_payload.release_url || '' }}
