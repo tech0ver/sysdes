@@ -27,7 +27,7 @@ production preview to check search results.
 
 After a successful package publication, Starlight sends a `starlight-release`
 event to this repository. **Update shared Starlight** calls the shared updater
-pinned in `.github/workflows/starlight-update.yml`. It opens a PR with the package
+from the Starlight `main` branch. It opens a PR with the package
 version, required peer dependency versions, and `bun.lock`. Run the same workflow
 manually from `main` with a published version to retry an update. Repeated events
 do not create duplicate PRs or downgrade the dependency. Review release notes and
