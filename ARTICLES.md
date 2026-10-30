@@ -150,7 +150,7 @@ The word means different things in different articles. Each article says which o
 
 ## Framework
 
-- `framework` — The whole design interview, one block per step: how the interview runs and what interviewers check; functional requirements (users and their main actions, core scenarios, scope, when to move on); non-functional requirements and estimates; API and data model; high-level design; deep dives, picked by the type of system; presenting the design and defending trade-offs. Each block gives the purpose of the step, example questions, expected outputs, and time to spend.
+- `framework` **(written)** — The whole design interview, one block per step: how the interview runs and what interviewers check; defending a decision; opening; functional and non-functional requirements; estimates in two passes; API, entities, data plane and control plane; data flow; high-level design; the key part and choosing technologies; resources, cost, and operations as optional steps; deep dives by type of system; wrap-up. Each step says when to take it, what to ask, what stays on the board, and how long it takes. How to pick requirements and how to count go to `fundamentals/requirements`.
 
 ## Practices
 

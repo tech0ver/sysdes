@@ -1,0 +1,5 @@
+<svg class="sk-svg" viewBox="0 0 540 132" role="img" aria-labelledby="framework-functional-title framework-functional-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="framework-functional-title">Board after the functional requirements</title>
+<desc id="framework-functional-desc">Functional: / 1. A team sends a message to a user by push, SMS, or email / 2. A user chooses which channels to receive / 3. A team checks whether a message was delivered / Out: templates, campaigns to many users, scheduled sending</desc>
+<g class="sk-el"><text class="sk-name" text-anchor="start" dominant-baseline="central" style="font-size:16px"><tspan x="16" y="26">Functional:</tspan></text><text class="sk-name" text-anchor="start" dominant-baseline="central" style="font-size:16px"><tspan x="16" y="46">1. A team sends a message to a user by push, SMS, or email</tspan><tspan x="16" y="66">2. A user chooses which channels to receive</tspan><tspan x="16" y="86">3. A team checks whether a message was delivered</tspan><tspan x="16" y="106">Out: templates, campaigns to many users, scheduled sending</tspan></text></g>
+</svg>
